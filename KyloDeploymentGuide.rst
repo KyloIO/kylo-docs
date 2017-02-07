@@ -1,0 +1,480 @@
+
+=====================
+Deployment Guide
+=====================
+
++---------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **Warning**   | There is an issue with the spark client using the SQL context with Orc tables using HDP 2.4.2. Please see this troubleshooting tip to configure the spark client to work around the issue: https://wiki.thinkbiganalytics.com/display/RD/Spark+SQL+fails+on+empty+ORC+table%2C+HDP+2.4.2   |
++---------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
+About
+=====
+
+This document explains how to install the Kylo
+framework as well as Elasticsearch, NiFi, and ActiveMQ. There are a few
+different ways you can install it depending on whether or not you are
+installing all components on one edge node vs. multiple nodes.
+
+System Requirements
+===================
+
+**Dependencies**
+
+Kylo services should be installed on an edge node.
+The following should be available prior to the installing the Data Lake
+Starter.
+
+See the Dependencies section in the deployment checklist: `Deployment
+Checklist <https://github.com/kyloio/kylo/blob/master/docs/latest/deployment/deployment-checklist.adoc>`__
+
++-----------------------+-------------------------------------------------------------+----------------+
+| **Platform**          | **URL**                                                     | **Version**    |
++-----------------------+-------------------------------------------------------------+----------------+
+| Hortonworks Sandbox   | http://hortonworks.com/products/hortonworks-sandbox/        | HDP 2.3, 2.4   |
++-----------------------+-------------------------------------------------------------+----------------+
+| Cloudera Sandobx      | http://www.cloudera.com/downloads/quickstart_vms/5-7.html   | 5.7            |
++-----------------------+-------------------------------------------------------------+----------------+
+
+Prerequisites
+=============
+
+Hortonworks Sandbox
+-------------------
+
+If installing in a new Hortonworks sandbox make sure to do the following
+first before running through the installation steps below.
+
+`Configure Hortonworks Sandbox <http://kylo-docs-test.readthedocs.io/en/latest/HortonworksSandboxConfiguration.html>`__
+
+Java Requirements
+-----------------
+
+Kylo requires Java 8 for NiFi, kylo-ui, and
+kylo-services. If you already have Java 8 installed as the system
+level Java you have the option to leverage that.
+
+In some cases, such as with an HDP install, Java 7 is the system version
+and you likely will not want to change it to Java 8. In this case you
+can leverage the mentioned scripts below to download and configure Java
+8 in the /opt/java directory. The scripts will also modify the startup
+scripts for NiFi, kylo-ui and kylo-services to reference the
+/opt/java JAVA\_HOME.
+
+If you already have Java 8 installed in a different location you will
+have the option to use that as well.
+
++------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **Note**   | When installing the RPM the applications are defaulted to use the /opt/java/current location. This default saves a step for developers so that they can uninstall and re-install the RPM without having to run any other scripts.   |
++------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Linux Users
+-----------
+
+If you will be creating Linux users as part of the install the commands
+will be documented. If using an external user management system for
+adding users to a linux box you must have those users created before
+installing the Kylo stack. You will need a user/group including:
+
+-  activemq
+
+-  elasticsearch
+
+-  kylo
+
+-  nifi
+
++------------+--------------------------------------------------------+
+| **Note**   | Those exact names are required (note the lowercase).   |
++------------+--------------------------------------------------------+
+
+Installation
+============
+
+There are multiple procedures you can follow to deploy Kylo. In a test
+and production environment you will likely want to follow the manual
+installation guide as it has more detailed instructions on how to
+install each individual component. For local development and 1 node
+development boxes you can leverage the setup wizard procedure to quickly
+bootstrap your environment.
+
++--------+---------------------------------------------------------------------------------------------------------------------+
+| Note   | If you are installing Kylo on SUSE please read the following doc to work around ActiveMQ and Elasticsearch issues   |
++--------+---------------------------------------------------------------------------------------------------------------------+
+
+`SUSE Configuration
+Changes <http://kylo-docs-test.readthedocs.io/en/latest/SuseConfigurationChanges.html>`__
+
+Install Procedure 1:
+---------------------
+
+Installing all components on one edge node with internet access using
+the wizard.
+
+Follow the steps below to install Kylo using the
+installation wizard script. This is convenient for local sandboxes
+(HDP/Cloudera) and 1 node development boxes. The WGET command is used to
+download binaries so internet access is required.
+
+Click on the below link to go to the wizard driven deployment
+instructions
+
+`Wizard Driven Deployment
+Guide <http://kylo-docs-test.readthedocs.io/en/latest/KyloSetupWizardDeploymentGuide.html>`__
+
+Install Procedure 2:
+--------------------
+
+Installing each component manually.
+
+Click on the below link to go to the manual deployment instructions
+
+`Manual Deployment
+Guide <http://kylo-docs-test.readthedocs.io/en/latest/KyloManualDeploymentGuide.html>`__
+
+Install Procedure 3:
+--------------------
+
+Cloudera EC2 Docker Sandbox.
+
+This is an option for those who want to deploy Kylo to a single node
+Cloudera sandbox in AWS. This is useful when you need to get a quick
+Cloudera instance running to test Kylo but don’t have the resources to
+install a Cloudera cluster
+
+`Cloudera EC2 Docker Sandbox Deployment
+Guide <http://kylo-docs-test.readthedocs.io/en/latest/ClouderaDockerSandboxDeploymentGuide.html>`__
+
+Install Procedure 4:
+--------------------
+
+Tar file install (instead of RPM).
+
+This is optional for those who have to install Kylo in a different
+folder than /opt/kylo or run as a different user.
+
+`Kylo TAR File Installation
+Guide <http://kylo-docs-test.readthedocs.io/en/latest/KyloTARFileInstallation.html>`__
+
+Install Procedure 5:
+--------------------
+
+HDP 2.5 Cluster Ranger/Kerberos with 2 Edge Nodes.
+
+This document provides an example of how to install Kylo on an HDP 2.5
+cluster with minimal admin privileges and shows how to configure
+installation with NiFi on a separate edge node.
+
+`HDP 2.5 Ranger/Kerberos Deployment
+Guide <http://kylo-docs-test.readthedocs.io/en/latest/HDP25ClusterDeploymentGuide.html>`__
+
+Configuration
+=============
+
+Ranger / Sentry
+---------------
+
+If you’ve changed the default Ranger or Sentry permissions then you will
+need to add permissions for Kylo and NiFi.
+
+`Ranger Authorization
+Guide <http://kylo-docs-test.readthedocs.io/en/latest/EnableRangerAuthorizationGuide.html>`__
+
+`Sentry Authorization
+Guide <http://kylo-docs-test.readthedocs.io/en/latest/EnableSentryAuthorizationGuide.html>`__
+
+Kerberos
+--------
+
+If you are installing Kylo on a kerberos cluster you will need to
+configure the applications before certain features will work
+
+Optional: Configure Kerberos For Your Local HDP Sandbox
+-------------------------------------------------------
+
+This guide will help you enabled kerberos for your local development
+sandbox for development and testing
+
+`HDP 2.4 Sandbox Kerberos Setup
+Example <http://kylo-docs-test.readthedocs.io/en/latest/KerberosInstallationExample-Cloudera.html>`__
+
+Step 1: Configure Kerberos for NiFi
+-----------------------------------
+
+Some additional configuration is required for allowing the NiFi
+components to work with a Kerberos cluster.
+
+`Configure NiFi for
+Kerberos <http://kylo-docs-test.readthedocs.io/en/latest/NiFiConfigurationforaKerberosCluster.html>`__
+
+Step 2: Configure Kerberos for Kylo Applications
+------------------------------------------------
+
+Additional configuration is required for allowing some features in the
+Kylo applications to work with a Kerberos cluster.
+
+`Configure Kylo for
+Kerberos <http://kylo-docs-test.readthedocs.io/en/latest/KylosConfigurationforaKerborosCluster.html>`__
+
+Configuration Files
+===================
+
+Configuration for Kylo services are located under
+the following files:
+
+.. code-block:: shell
+
+  /opt/kylo/kylo-ui/conf/application.properties
+  /opt/kylo/kylo-services/conf/application.properties
+
+..
+
+Encrypting Configuration Property Values
+----------------------------------------
+
+By default, a new Kylo installation does not have any of its
+configuration properties encrypted. Once you have started Kylo for the
+first time, the easiest way to derive encrypted versions of property
+values is to post values to the Kylo services /encrypt endpoint to have
+it generate an encrypted form for you. You could then paste the
+encrypted value back into your properties file and mark it as encrypted
+by prepending the values with {cipher}. For instance, if you wanted to
+encrypt the Hive datasource password specified in
+applicaition.properties (assuming the password is “mypassword”), you can
+get it’s encrypted form using the curl command like this:
+
+.. code-block:: shell
+
+    $ curl localhost:8420/encrypt –d mypassword
+    29fcf1534a84700c68f5c79520ecf8911379c8b5ef4427a696d845cc809b4af0
+
+..
+
+You would then copy that value and replace the clear text password
+string in the properties file with the encrypted value:
+
+.. code-block:: shell
+
+    hive.datasource.password={cipher}29fcf1534a84700c68f5c79520ecf8911379c8b5ef4427a696d845cc809b4af0
+
+..
+
+The benefit of this approach is that you will be getting a value that is
+guaranteed to work with the encryption settings of the server where that
+configuration value is being used. Once you have replaced all properties
+you wish encrypted in the properties files you can restart the Kylo the
+services to use them.
+
+Optimizing Performance
+======================
+
+You can adjust the memory setting for each services using the below
+environment variables:
+
+.. code-block:: shell
+
+    /opt/kylo/kylo-ui/bin/run-kylo-ui.sh
+    export KYLO\_UI\_OPTS= -Xmx4g
+
+    /opt/kylo/kylo-services/bin/run-kylo-services.sh
+    export KYLO\_SERVICES\_OPTS= -Xmx4g
+
+..
+
+The setting above would set the Java maximum heap size to 4 GB.
+
+Change the Java Home
+--------------------
+
+By default the kylo-services and kylo-ui application set the
+JAVA\_HOME location to /opt/java/current. This can easily be changed by
+editing the JAVA\_HOME environment variable in the following two files:
+
+.. code-block:: shell
+
+    /opt/kylo/kylo-ui/bin/run-kylo-ui.sh
+    /opt/kylo/kylo-services/bin/run-kylo-services.sh
+
+..
+
+In addition, if you run the script to modify the NiFI JAVA\_HOME
+variable you will need to edit:
+
+.. code-block:: shell
+
+    /opt/nifi/current/bin/nifi.sh
+
+..
+
+S3 Support For Data Transformations
+-----------------------------------
+
+Spark requires additional configuration in order to read Hive tables
+located in S3. Please see the `Accessing S3 from the Data
+Wrangler <http://kylo-docs-test.readthedocs.io/en/latest/AccessingS3fromthedatawrangler.html>`__
+how-to article.
+
+Starting and Stopping the Services Manually
+===========================================
+
+If you follow the instructions for the installations steps above all of
+the below applications will be set to startup automatically if you
+restart the server. In the Hortonworks sandbox the services for Kylo
+and NiFI are set to start after all of the services managed by Ambari
+start up.
+
+For starting and stopping the 3 Kylo services there you
+can run the following scripts.
+
+.. code-block:: shell
+
+    /opt/kylo/start-kylo-apps.sh
+    /opt/kylo/stop-kylo-apps.sh
+
+..
+
+1. To Start Individual Services:
+
+.. code-block:: shell
+
+  $ service activemq start
+  $ service elasticsearch start
+  $ service nifi start
+  $ service kylo-spark-shell start
+  $ service kylo-services start
+  $ service kylo-ui start  
+
+..
+
+2.  To Stop individual services:
+
+.. code-block:: shell
+
+  $ service activemq stop
+  $ service elasticsearch stop
+  $ service nifi stop
+  $ service kylo-spark-shell stop
+  $ service kylo-services stop
+  $ service kylo-ui stop  
+
+..
+
+3. To get the status of individual services $ service activemq status:
+
+.. code-block:: shell
+
+  $ service elasticsearch status
+  $ service nifi status
+  $ service kylo-spark-shell status
+  $ service kylo-services status
+  $ service kylo-ui status  
+
+..
+
+Log Output
+==========
+
+Configuring Log Output
+----------------------
+
+Log output for the services mentioned above are configured at:
+
+.. code-block:: shell
+
+    /opt/kylo/kylo-ui/conf/log4j.properties
+    /opt/kylo/kylo-services/conf/log4j.properties
+
+..
+
+You may place logs where desired according to the
+'log4j.appender.file.File' property. Note the configuration line:
+
+.. code-block:: shell
+
+    log4j.appender.file.File=/var/log/<app>/<app>.log
+
+..
+
+Viewing Log Output
+------------------
+
+The default log locations for the various applications are located at:
+
+.. code-block:: shell
+
+    /var/log/<service\_name>
+
+..
+
+Web and REST Access
+===================
+
+Below are the default URL’s and ports for the services:
+
+.. code-block:: shell
+
+    Feed Manager and Operations UI
+    http://127.0.0.1:8400
+    username: dladmin
+    password: thinkbig
+
+    NiFi UI
+    http://127.0.0.1:8079/nifi
+
+    Elasticsearch REST API
+    http://127.0.0.1:9200
+
+    ActiveMQ Admin
+    http://127.0.0.1:8161/admin
+
+..
+
+Appendix: Cleanup scripts
+=========================
+
+For development and sandbox environments you can leverage the cleanup
+script to remove all of the Think Big services as well as Elasticsearch,
+ActiveMQ, and NiFi.
+
+.. code-block:: shell
+
+    $ /opt/kylo/setup/dev/cleanup-env.sh
+
+..
+
++---------------+-------------------------------------------------------------------------------------------+
+|**IMPORTANT!** | Only run this in a DEV environment. This will delete all application and the MySQL schema.|
++---------------+-------------------------------------------------------------------------------------------+
+
+
+In addition there is a script for cleaning up the hive schema and HDFS
+folders that are related to a specific "category" that is defined in the
+UI.
+
+.. code-block:: shell
+
+    $ /opt/kylo/setup/dev/cleanupCategory.sh [categoryName]
+
+    Example: /opt/kylo/setup/dev/cleanupCategory.sh customers
+
+..
+
+Appendix: Postgres Integration
+==============================
+
+`Postgres Hive Metadata
+Configuration <http://kylo-docs-test.readthedocs.io/en/latest/Postgres_Hive_Metadata_Configuration.html>`__
+
+Icons and Icon Colors
+=====================
+
+Icons and the colors can be configured using 2 JSON files found in the
+/opt/kylo/kylo-services/conf directory
+
+**icons.json** This is an array of valid icon names. Valid names that
+can be used can be found here:
+https://klarsys.github.io/angular-material-icons/. Kylo is currently
+using the 0.7.1 version of this icon package.
+
+**icon-colors.json** This is an array of objects indicating the display
+name and respective Hex color code.
