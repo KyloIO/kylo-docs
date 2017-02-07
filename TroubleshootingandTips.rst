@@ -328,7 +328,7 @@ Related articles
   - `*Tuning ExecuteSparkJob Processor* <https://wiki.thinkbiganalytics.com/display/RD/Tuning+ExecuteSparkJob+Processor>`__
   - `*Dealing with a non-standard file formats* <https://wiki.thinkbiganalytics.com/display/RD/Dealing+with+a+non-standard+file+formats>`__
   - `*Indexing categories and feeds* <https://wiki.thinkbiganalytics.com/display/RD/Indexing+categories+and+feeds>`__
-  - *Merge Table fails when storing as Parquet using HDP* <https://wiki.thinkbiganalytics.com/display/RD/Merge+Table+fails+when+storing+as+Parquet+using+HDP>`__
+  - `*Merge Table fails when storing as Parquet using HDP* <https://wiki.thinkbiganalytics.com/display/RD/Merge+Table+fails+when+storing+as+Parquet+using+HDP>`__
 
 NiFi becomes non-responsive
 ===========================
