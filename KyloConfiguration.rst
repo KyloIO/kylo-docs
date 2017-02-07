@@ -1,16 +1,13 @@
 
 =============================
-Configuration Guide
+Security Configuration
 =============================
 
 Overview
 ========
 
-We are currently adding authentication and authorization support to
-Kylo. The goal is to support authentication and authorization seamlessly
-between the Think Big applications and the Hortonworks/Cloudera cluster,
-keeping in mind that vendors such as MapR and Databricks will need to be
-supported in future release.
+A goal is to support authentication and authorization seamlessly
+between the Think Big applications and the Hadoop cluster.
 
 Authentication
 --------------

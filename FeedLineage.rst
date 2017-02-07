@@ -1,20 +1,20 @@
 
-============
-Feed Lineage
-============
+======================
+Lineage Configuration
+======================
 
 Introduction
 ============
 
-Feeds now track and show their dependencies to other feeds and also
-their connections through their datasources.
+Feeds track and display dependencies to other feeds and also their connections through their datasources.
 
-The Lineage view on the Feed Details page is an interactive canvas
-that allows the user to analyze and inspect the feeds relationships.
+The Lineage view on the Feed Details page is an interactive canvas that allows the user to analyze and inspect the feeds relationships.
+
+The Designer must indicate NiFi processors that represent a source or sink to be tracked. The following guide describes how lineage is tracked and the role of designers.
+
 
 |image0|
 
- 
 
 Feed Connections
 ================

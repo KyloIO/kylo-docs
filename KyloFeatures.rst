@@ -1,9 +1,9 @@
 
 =============
-Kylo Features
+Features
 =============
 
-Kylo is a Data Lake platform built on Apache Hadoop, Spark, and uses NiFi for pipeline orchestration.
+Kylo is a full-featured Data Lake platform built on Apache Hadoop and Spark. Kylo provides a turn-key, business-friendly Data Lake solution enabling data ingest, data preparation, and data discovery.
 
 +--------------------------------------------+---------------------------------------------------+
 | .. rubric:: Features                       | **Description**                                   |

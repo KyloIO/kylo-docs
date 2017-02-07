@@ -6,7 +6,7 @@ Operations Guide
 Purpose
 =======
 
-This guide provides sample instructions for operating and maintaining
+This guide provides instructions for operating and maintaining
 the Kylo solution. The information is used by the Operations and Support
 Team in the deployment, installation, updating, monitoring and support
 of Kylo.
@@ -34,7 +34,7 @@ This document specifically serves to guide those who will be
 maintaining, supporting, and using the Kylo solution in day-to-day
 operational basis.
 
-Abbreviations and Definitions
+Abbreviations
 =============================
 
 +------------------------------+---------------------------------------------------------------------------------------------+
@@ -42,167 +42,13 @@ Abbreviations and Definitions
 +------------------------------+---------------------------------------------------------------------------------------------+
 | **O&M**                      | Operations and Maintenance                                                                  |
 +------------------------------+---------------------------------------------------------------------------------------------+
-| **AWS**                      | Amazon Web Services                                                                         |
-+------------------------------+---------------------------------------------------------------------------------------------+
-| **IAAS**                     | Infrastructure-as-a-Service, usually used in the context of the Hadoop cluster deployment   |
-+------------------------------+---------------------------------------------------------------------------------------------+
-| **PCF**                      | Pivotal Cloud Foundry                                                                       |
-+------------------------------+---------------------------------------------------------------------------------------------+
-| **HDP**                      | Hortonworks Data Platform                                                                   |
-+------------------------------+---------------------------------------------------------------------------------------------+
 | **CLI**                      | Command Line Interface                                                                      |
 +------------------------------+---------------------------------------------------------------------------------------------+
 | **ES**                       | ElasticSearch                                                                               |
 +------------------------------+---------------------------------------------------------------------------------------------+
 
-System Overview
-===============
-
-This section provides an overview of the network, servers and service
-components deployed in an environment. Details of each component and
-specific responsibilities, configurations, installations and maintenance
-tasks are outlined in subsequent sections of this document.
-
-System Architecture Overview
-----------------------------
-
-The Kylo-based Data Lake platform is composed of two main components:
-
--  The **data processing framework** (Hive or Spark jobs running on
-   Hortonworks Data Platform 2.4) is the core of the platform hosting
-   data storage and analytics jobs runtime.
-
--  The **microservices,** which can be broken down into two
-   sub-components:
-
-   -  The **ingestion framework** (Kylo/NiFi load, validation and
-      profiling processing)
-
-   -  The **Processing Framework** (NiFi + Spark)
-
-   -  The **Access Framework** (Kylo/NiFi, SparkSQL, Views, Presto,
-      Hive, Elastic Search )
-
-   -  The graphic shown here depicts the solution architecture overview:
-
-|image1|
-
-Functional System Overview
---------------------------
-
-Data Processing Framework
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Kylo provides support for the following pipelines functions:
-
--  pipeline definition
-
--  pipeline deployment
-
--  pipeline execution
-
--  pipeline management
-
--  pipeline monitoring
-
-Microservices
-~~~~~~~~~~~~~
-
-The microservices are materialized in a string of containerized
-executables. These services are generated, developed and orchestrated
-through Kylo (Kylo + Apache NiFi). Each will need to link up with a
-Providence Service
-
--  **Provenance:**
-
-    -  All services are responsible for sending provenance or trace messages to an external/pluggable provenance system. Provenance messages are a step above basic logging in that they will be more well defined (what should be logged) and they will be collected by a central provenance system.
-
-    -  The Provenance Service collects provenance messages posted by the ingestion microservices and persists the messages for traceability and obtaining lineage of a message through the various services. The Provenance Service consists of two components: Provenance Persistence and Provenance Query Service.
-
-    -  The Provenance Persistence Service is a microservice that reads the messages posted by the ingestion microservice and persists them to Elasticsearch.
-
-    -  The Provenance Query Service is a microservice that responds to user queries on data traceability by searching Elasticsearch.
-
-Ingestion Framework
-~~~~~~~~~~~~~~~~~~~
-
-The Ingestion framework supports reception and storage of incoming data
-files to a “landing zone” from which it is available for processing. The
-framework consists of several microservices:
-
--  **Producer:**
-
-    -  Source Data systems are the entry point for all data that is to be ingested. Source Producers will be developed to extract and to post their data sets and/or requests to transfer data sets. It receives data in a variety of formats (for example: XML, CSV, binary, or by URI reference) through a variety of protocols (for example: HTTP/REST, SFTP Kafka/JSON).
-
-    -  In addition to extracting payload information from the source systems to the Landing Zone, each producer instance extracts metadata relating to the request. Further, data type and validation classification information is also extracted if it is part of the request URI.
-
-    -  Each Producer instance logs each request to “some enterprise providence service”. On completion of processing, if a failure occurred (for example: the payload is missing information), the request is logged into the Exception Service. This is part of the processing of ensuring full tracking of successful and failed processing.
-
-    -  Messages successfully processed are put into a standard Ingestion Framework message format for downstream processing. These messages are output to a message queue that is configurable, that will be read by the next microservice in the ingestion workflow.
-
--  **Consumer:**
-
-    -  Consumer is a simple, configurable, message-driven microservice for transferring data from point A to point B.
-
-    -  It stores data to long-term, durable storage for subsequent processing (Staging Zone).
-
-    -  The Consumer Service (NiFi processor) listens for requests on an inbound queue. Each message represents a request to copy a blob (payload of data) from a sourc location to a target location. The source and target locations are configurable The specific process for determining the source blob name and the destination blob nam from the metadata request are also configurable via the transfer service plugins.
-
-    -  After successful completion of the copy from the source location to staging zone and the archive zone, the consumer service posts a new message on the configured outbound queue as a notification to any interested parties to indicate that the resource is available in the new location.
-
--  **Checkpoint:**
-
-    -  Checkpoint service is a microservice that updates and conveys the outcome of the processing of an Ingestion F) to the Provenance service. Both successful and failed processing IMF notify the Checkpoint service. Checkpoint updates the IMF (see Checkpoint IMF classification below) and posts the updated message to Checkpoint outbound Provenance service's message queue.
-
-    -  Checkpoint service currently supports configurations for the ingestion pipeline and for the Data Processing Framework (DPF).
-
-    -  For ingestion pipeline processing Checkpoint service listens for messages on an inbound message queue and posts modifications to the IMF to the outbound Provenance and Regulator message queues.
-
-    -  For the Data Processing Framework (DPF) configurations, messages are posted to Checkpoint's secure HTTPS endpoint by Kylo, as well as the aforementioned outbound queues.
-
-Processing Framework
-~~~~~~~~~~~~~~~~~~~~
-
-This framework is responsible for validating the data, parsing and converting it to a Relational Format, and adding a Hive Schema to it.
-
--  **Validate:**
-
-    -  Validation determines if data has any exceptions and pushes validated data to the core zone.
-
-    -  Exception service is a microservice indicating that an error occurred and conveys the error to the Checkpoint and Provenance services. When an ingestion step fails, the message is posted on the inbound Exception service queue, and then the Exception service posts the update.
-
-    -  Exception service currently supports configurations for the ingestion pipeline.
-
-    -  For ingestion pipeline processing, the Exception service listens for messages on an inbound message queue and posts modifications to the Provenance message queues as well as the secure HTTPS endpoint for Kylo.
-
--  **Flatten & Schema:**
-
-    -  The flattening process parses the data (XML unbundling, or mapping of text fields and keys) and puts the fields into Hive columns with hive data types (because Spark reads Hive Tables faster).
-
-    -  This creates the new Hive Schema.
-
-    -  If exceptions occur, interfacing is with the same exception service identified in Validate, and the same processes are followed.
-
-Access Framework
-~~~~~~~~~~~~~~~~
-
-This framework is responsible for validating the data, parsing and converting it to a Relational Format, and then adding a Hive Schema to
-it.
-
--  **Transform:**
-
-    -  Transformation Services in this example is for future use and is not part of the scope beyond the processing framework identified above.
-
-    -  Conceptually, data mappings can be generated with NiFi and executed and monitored by Kylo.
-
--  **Application Views:**
-
-    -  Hive/Presto Views should be created to provide specific data access protections in addition to the other security measures being put in place (for example: Encrypted files in flight, Kerberos, Ranger Policies and Vormetric Transparent Encryption, and Files at rest). This limits what can be retrieved by individual users.
-
-    -  Semantic mapping to application specific requirements can also be generated here, which can represent logical mapping that occurs during access and not during the traditional ETL phase of processing.
-
 Introduction
-~~~~~~~~~~~~
+==============
 
 Kylo is a software application that provides scheduling, monitoring, and control for data processing jobs. Kylo includes its own web-based
 interface intended for an Operations user to visualize status of processing and assist with troubleshooting problems.
@@ -211,7 +57,7 @@ Please note, this Operations Guide is provided in its entirety, despite the fact
 solution.
 
 Common Definitions
-~~~~~~~~~~~~~~~~~~
+====================
 
 The following terms are used in this document or are relevant to understanding the nature of Kylo processing.
 
@@ -236,7 +82,7 @@ The following terms are used in this document or are relevant to understanding t
 +--------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 User Interface
-~~~~~~~~~~~~~~
+===============
 
 Kylo has a web-based user interface designed for an Operations user to
 monitor and managing data processing. The default URL is
@@ -295,7 +141,6 @@ clicking on the corresponding Job Name cell. Jobs can be controlled via
 action buttons. Refer to the `*Controlling Jobs* <#controlling-jobs>`__
 section to see the different actions that can be performed for a Job.
 
-|image9|
 
 Understanding Job Status
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -338,7 +183,7 @@ performed based on its Job Status:
 |image10|
 
 Feed History Page
-~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
 
 Kylo stores history of each time a feed is executed. You can access this
 data by clicking on the specific feed name in the Feed Summary table on
@@ -393,7 +238,7 @@ parameters.\ |image16|
 Job Context Data
 ~~~~~~~~~~~~~~~~
 
-As a Job runs it can capture metadata related to the Job itself.
+As a Job runs operational metadata is captured and step status is visible in the Job page.
 
 This metadata is stored in the Job Context section. Access this section
 by clicking on the **Execution Context Data** button next to the Job
@@ -445,14 +290,12 @@ Data Table Operations
 ~~~~~~~~~~~~~~~~~~~~~
 
 Sorting Content
-+++++++++++++++
 
 All tables allow for the columns to be sorted. An arrow will appear next
 to the column indicating the sort direction. Click on the column header
 to change the sort.
 
 Filtering Tables
-++++++++++++++++
 
 All Tables in Kylo have a Filter bar above them. The rows can be
 filtered using the search bar at the top.
@@ -468,7 +311,7 @@ Click on any of the column headers, or click on the |image25| icon in
 the top right of the table, to sort.
 
 Charts and Pivot Tables
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Charts tab allows you to query and perform data analysis on the Jobs
 in the system. The right panel allows you to provide filter input that
@@ -497,7 +340,7 @@ This interface allows you to filter the job data and create many
 different combinations of tables and charts.
 
 Software Components
-~~~~~~~~~~~~~~~~~~~
+====================
 
 The following provides a basic overview of the components and
 dependencies for Kylo:
@@ -510,19 +353,19 @@ dependencies for Kylo:
 
 -  Stores job history and metadata in Postgres or MySQL
 
--  NiFi 0.5 – 0.7
+-  NiFi 1.x+
 
 -  ActiveMQ
 
 -  Elasticsearch (optional, but required for full featureset)
 
 Installation
-~~~~~~~~~~~~
+=============
 
 Please refer to the installation guide for Kylo installation procedures.
 
 Application Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~
+============================
 
 Configuration files for Kylo are located at:
 
@@ -530,12 +373,11 @@ Configuration files for Kylo are located at:
 
     /opt/kylo/kylo-services/conf/application.properties
     /opt/kylo/kylo-ui/conf/application.properties
-    /opt/kylo/kylo-ui/conf/application.properties
 
 ..
 
 Application Properties
-++++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *application.properties* file in kylo-services specifies most of
 the standard configuration in pipeline.
@@ -662,8 +504,56 @@ Below is a sample properties file with Spring Datasource properties for spring b
 
 ..
 
+
+Kylo Metadata
+~~~~~~~~~~~~~
+
+Kylo stores its metadata in the database configured in
+/opt/kylo/kylo-services/conf/application.properties in the
+following lines:
+
+.. code-block:: shell
+
+    metadata.datasource.driverClassName=com.mysql.jdbc.Driver
+    metadata.datasource.url=jdbc:mysql://localhost:3306/kylo
+    metadata.datasource.username=root
+    metadata.datasource.password=
+
+..
+
+The metadata database needs to be configured in order to have Kylo
+metadata backed up and recovered.
+
+For example, MySQL backup can be configured using the methods provided
+at *http://dev.mysql.com/doc/refman/5.7/en/backup-methods.html.*
+
+NiFi Data
+~~~~~~~~~
+
+Data and metadata in NiFi is intended to be transient, and depends on
+the state of the flows in NiFi. However, NiFi can be configured to keep
+metadata and data in certain directories, and those directories can be
+backed up as seen fit. For example, in the nifi.properties file,
+changing
+
+.. code-block:: shell
+
+    nifi.flow.configuration.file=/opt/nifi/data/conf/flow.xml.gz
+
+..
+
+will have NiFi store its flows in /opt/nifi/data/conf/flow.xml.gz.
+
+With a default Kylo installation, NiFi is configured to put all of its
+flows, templates, data in the content repository, data in the flowfile
+repository, and data in the provenance repository in /opt/nifi/data. For
+more information about these configurations, the NiFi system
+administrator’s guide is the authority.
+
+    `*https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html* <https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html>`__
+
 Startup and Shutdown
-~~~~~~~~~~~~~~~~~~~~
+=====================
 
 Kylo service automatically starts on system boot.
 
@@ -674,12 +564,13 @@ Kylo service automatically starts on system boot.
     $ sudo /etc/init.d/kylo-services start
     $ sudo /etc/init.d/kylo-ui start
     $ sudo /etc/init.d/kylo-spark-shell start
+
     $ sudo /etc/init.d/kylo-services stop
     $ sudo /etc/init.d/kylo-ui stop
     $ sudo /etc/init.d/kylo-spark-shell stop
 
 Log Files
-~~~~~~~~~
+==========
 
 Kylo uses Log4J as its logging provider.
 
@@ -703,7 +594,7 @@ Kylo uses Log4J as its logging provider.
 ..
 
 Additional Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~
+==========================
 
 The following section contains additional configuration that is
 possible.
@@ -759,7 +650,7 @@ The below is the service configuration monitoring 4 services:
 ..
 
 Migrating Templates and Feeds
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+================================
 
 Exporting Registered Templates
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -873,7 +764,7 @@ Continuous Integration / Continuous Deployment (CICD)
 
 Kylo currently does not have built-in or integrated CICD. However, Kylo
 allows you to export both templates (along with any registered
-properties) and feeds thatcan then be imported to any environment.
+properties) and feeds that can then be imported to any environment.
 
 The following approach for CICD should be incorporated:
 
@@ -933,7 +824,7 @@ custom plugins in this directory and manually start and stop the
 kylo-services service.
 
 Operational Considerations
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+============================
 
 When considering promoting Kylo/NiFi metatdata you will need to restart
 Kylo:
@@ -944,56 +835,6 @@ Kylo:
 
 -  Upon changing/adding any new Kylo plugin/extension (changing the java
    jar)  you will need to bounce Kylo (kylo-services)
-
-Disaster Recovery (DR)
-~~~~~~~~~~~~~~~~~~~~~~
-
-Kylo Metadata
-~~~~~~~~~~~~~
-
-Kylo stores its metadata in the database configured in
-/opt/kylo/kylo-services/conf/application.properties in the
-following lines:
-
-.. code-block:: shell
-
-    metadata.datasource.driverClassName=com.mysql.jdbc.Driver
-    metadata.datasource.url=jdbc:mysql://localhost:3306/kylo
-    metadata.datasource.username=root
-    metadata.datasource.password=
-
-..
-
-The metadata database needs to be configured in order to have Kylo
-metadata backed up and recovered.
-
-For example, MySQL backup can be configured using the methods provided
-at *http://dev.mysql.com/doc/refman/5.7/en/backup-methods.html.*
-
-NiFi Data
-~~~~~~~~~
-
-Data and metadata in NiFi is intended to be transient, and depends on
-the state of the flows in NiFi. However, NiFi can be configured to keep
-metadata and data in certain directories, and those directories can be
-backed up as seen fit. For example, in the nifi.properties file,
-changing
-
-.. code-block:: shell
-
-    nifi.flow.configuration.file=/opt/nifi/data/conf/flow.xml.gz
-
-..
-
-will have NiFi store its flows in /opt/nifi/data/conf/flow.xml.gz.
-
-With a default Kylo installation, NiFi is configured to put all of its
-flows, templates, data in the content repository, data in the flowfile
-repository, and data in the provenance repository in /opt/nifi/data. For
-more information about these configurations, the NiFi system
-administrator’s guide is the authority.
-
-    `*https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html* <https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html>`__
 
 
 .. |image1| image:: media/operations-guide/image2.png

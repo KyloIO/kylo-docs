@@ -1,6 +1,6 @@
 
 ====================================
-Postgres Hive Metadata Configuration
+Postgres Metastore Configuration
 ====================================
 
 Introduction

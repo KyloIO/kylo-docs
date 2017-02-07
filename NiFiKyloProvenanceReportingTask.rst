@@ -6,7 +6,7 @@ NiFi Kylo Provenance Reporting Task
 Introduction
 ============
 
-Kylo now communicates with NiFi via a NiFi Reporting Task.  
+Kylo communicates with NiFi via a NiFi Reporting Task.  
 
 Setup the Reporting Task in NiFi
 ================================

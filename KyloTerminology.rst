@@ -3,18 +3,14 @@
 Terminology
 ================
 
-Introduction
-------------
-
 There are a lot of new terms with Kylo and NiFi, and trying to learn
 them all, including distinctions between Kylo and NiFi usage, can be
 overwhelming. The goal of this document is to detail the semantics of
 these terms within the context of Kylo and NiFi. This document does not
 aim to write a definition for every term you will encounter in Kylo and
-NiFi.
+Apache NiFi.
 
 Additional Resources:
-~~~~~~~~~~~~~~~~~~~~~
 
 -  NiFi has documentation on its terminology
    at \ `*https://nifi.apache.org/docs/nifi-docs/html/user-guide.html#terminology* <https://nifi.apache.org/docs/nifi-docs/html/user-guide.html#terminology>`__.

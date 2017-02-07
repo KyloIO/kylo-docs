@@ -11,52 +11,39 @@ Kylo is a comprehensive open-source Data Lake platform built-on Apache Hadoop, S
 
 The documentation for the site is organized into a few sections:
 
-* :ref:`getting-started`
+* :ref:`about`
 * :ref:`user-docs`
 * :ref:`designer-docs`
-* :ref:`operations-docs`
 * :ref:`installation-docs`
+* :ref:`advanced-installation-docs`
 * :ref:`developer-docs`
 
-.. _getting-started:
+.. _about:
 
 .. toctree::
-   :maxdepth: 1
-   :caption: Getting Started
+   :maxdepth: 2
+   :caption: About
 
    KyloFrequentlyAskedQuestions
    KyloFeatures
-   KyloTerminology
-   KyloDependencies
 
 .. _user-docs:
-
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: User Documentation
-   :titlesonly:
 
-   FeedLineage
+   KyloOperationsGuide
 
 .. _designer-docs:
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Designer Documentation
 
+   KyloTerminology
+   TroubleshootingandTips
    KyloBestPractices
-   ImportSqoop_Processor
-   Postgres_Hive_Metadata_Configuration
-
-.. _operations-docs:
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Operations Documentation
-   :titlesonly:
-
-   KyloOperationsGuide
-   KyloConfiguration
+   FeedLineage
 
 .. _installation-docs:
 
@@ -67,28 +54,35 @@ The documentation for the site is organized into a few sections:
 
    KyloDeploymentChecklist
    KyloDeploymentGuide
-   KyloManualDeploymentGuide
-   KyloSetupWizardDeploymentGuide
-   KyloTARFileInstallation
    NiFiKyloProvenanceReportingTask
 
+.. _advanced-installation-docs:
+.. toctree::
+   :maxdepth: 2
+   :caption: Advanced Installation
+   :titlesonly:
+
+   KyloManualDeploymentGuide
+   KyloTARFileInstallation
+   KyloSetupWizardDeploymentGuide
    ConfigNififorHDFSEncryption
    SuseConfigurationChanges
-
+   KyloConfiguration
    KylosConfigurationforaKerborosCluster
    NiFiConfigurationforaKerberosCluster
    KerberosHDP
    HDP25ClusterDeploymentGuide
    KerberosInstallationExample-Cloudera
-
+   Postgres_Hive_Metadata_Configuration
    EnableRangerAuthorizationGuide
    EnableSentryAuthorizationGuide
    SentryInstallationGuide
+   ImportSqoop_Processor
 
 .. _developer-docs:
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Developer Documentation
    :titlesonly:
 

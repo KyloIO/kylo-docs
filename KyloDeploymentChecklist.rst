@@ -9,6 +9,8 @@ deployment.
 Edge Node Resource Requirements
 -------------------------------
 
+-  Kylo and Apache NiFi can be installed on a single edge node, however it is recommended they run on separate edge nodes.
+
 -  Minimum production recommendation is 4 cores CPU, 16 GB RAM.
 
 -  Preferred production recommendation is 8 cores CPU, 32 GB RAM.
@@ -21,23 +23,23 @@ Dependencies
 +----------------------------------------------+
 | RPM (for install)                            |
 +----------------------------------------------+
-| Java 1.8 (or greater)                        |
+| Java 1.8+                                    |
 +----------------------------------------------+
-| Hadoop 2.4+                                  |
+| Hadoop 2.4+ cluster                          |
 +----------------------------------------------+
-| Spark 1.5.x+                                 |
+| Spark 1.5.2+                                 |
 +----------------------------------------------+
-| Apache NiFi 0.5+ (or Hortonworks DataFlow)   |
+| Apache NiFi 1.x+ (or HDF 2.x)                |
 +----------------------------------------------+
-| Hive                                         |
+| Hive  1.2.x+                                 |
 +----------------------------------------------+
-| MySQL                                        |
+| MySQL 5.x+                                   |
 +----------------------------------------------+
 
 Linux User/Group Creation
 -------------------------
 
-There are three Linux users accounts that need to exist before
+There are three Linux users accounts that need to be created before
 installing the Kylo stack. If an external user management tool is used,
 these user accounts need to be created ahead of time. If not, there are
 instructions in the deployment guide on how to create the users and
@@ -49,12 +51,12 @@ groups.
 
 -  activemq
 
-In addition, and group need to be created with the same names.
+Please create the above users and groups with the same names.
 
 Edge Node Ports
 ---------------
 
-The following ports are required to be open for browser access
+The following ports are required to be open for browser access unless using a web proxy server:
 
 -  Think Big UI – 8400
 
@@ -74,13 +76,13 @@ Collect the following information to speed up configuration of Kylo
 
 -  Hive Hostname/IP Address:
 
--  Ambari IP Hostname/IP Address:
+-  Ambari IP Hostname/IP Address (if used):
 
--  Ambari "kylo" user username/password:
+-  Ambari "kylo" user username/password (if used):
 
--  KDC Hostname/IP Address:
+-  KDC Hostname/IP Address (if used):
 
--  MySQL Hostname/IP Address:
+-  MySQL Metastore Hostname/IP Address:
 
 -  Kylo Edge Hostname/IP Address:
 
@@ -92,8 +94,8 @@ Collect the following information to speed up configuration of Kylo
 -  Kylo MySQL application username/password (For the kylo-services
    application and Hive metadata access):
 
-Kerberos Principals
--------------------
+Kerberos Principals (if using Kerberos)
+----------------------------------------
 
 Note the following Kerberos principals after the step of creating the
 Keytabs
@@ -104,11 +106,3 @@ Keytabs
 
 -  Kerberos Principal for "hive" on the Hive Server2 Host:
 
-Feed Categories
----------------
-
-If you are installing Kylo using non-priviledged users you may need to
-grant access to HDFS folders and hive databases ahead of time. If so,
-determine what the initial category names in Kylo should be.
-
--  List of feed categories:

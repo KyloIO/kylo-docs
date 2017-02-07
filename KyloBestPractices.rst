@@ -3,19 +3,28 @@
 Best Practices
 ==============
 
-The following document describes patterns and best practices oriented to IT Designers and System Administrators. Designers are responsible for developing templates for pipelines using Apache NiFi.
-When configured in Kylo provide the processing model for feeds created by end-users.  System Administrators are responsible for activities such as install, configuration, connections, security,
-performance tuning and role-based security.
+The following document describes patterns and best practices particularly oriented to IT Designers and System Administrators.
+
+Organizational Roles
+--------------------
+
+Kylo supports the division of responsibility between IT designers, administrators, operations, and end-users.
 
 Role separation
----------------
+~~~~~~~~~~~~~~~
 
-A key tenet of Kylo is enabling self-service, particularly by a Data
-Analyst (end-user) who may have deep understanding of their data but not
-appreciate the advanced data processing concepts of Hadoop. It is the
-responsibility of the Designer to build models that incorporate best
-practices and maintain the ability for end-users to easily configure
-feeds.
+A key tenet of Kylo is IT governed self-service. Most activities such as data ingest and preparation are possible by data analysts who may have deep understanding of their data but not appreciate the advanced data processing concepts of Hadoop. It is the
+responsibility of the Designer to build models that incorporate best practices and maintain the ability for end-users to easily configure feeds.
+
+Designers are responsible for developing templates for pipelines using Apache NiFi. When configured in Kylo provide the processing model for feeds created by end-users.  System Administrators are
+responsible for activities such as install, configuration, connections, security, performance tuning and role-based security.
+
+Designers
+~~~~~~~~~~~
+
+Designers are responsible for developing templates for pipelines using
+Apache NiFi. When configured in Kylo provide the processing model for feeds created by end-users.  System Administrators are responsible for activities such as install, configuration, connections,
+security, performance tuning and role-based security.
 
 Designers should limit the properties exposed to end-users and assume a
 user has limited knowledge of the internal working of the pipeline. For
@@ -29,8 +38,8 @@ Designers use the NiFi expression language and Kylo’s built-in metadata
 properties to auto-wire processor components in the NiFi flow to the
 wizard UI.
 
-Administrators vs. Designers
-----------------------------
+Administrators
+~~~~~~~~~~~~~~~~~
 
 NiFi/Hadoop Administrators are typically system administrators who need
 to control resource utilization, such as memory and concurrency. These
@@ -52,14 +61,26 @@ implications or security vulnerabilities introduced as NiFi operates as
 a privileged user.
 
 Operations
-----------
+~~~~~~~~~~
 
 An Operator uses the Operations Manager dashboard to monitor activity in
 the system and relies on alerts. The Designer should consider that an
 Operations user may need to respond to problems and recover from errors.
 
-NiFi Template Design
+Users
+~~~~~~~~~~
+
+Users can include data analytics, data scientists, and data stewards who interact with the Kylo application.  Administrator determines what features are available to users based on roles.
+Designers determine how users are able to configure feeds based on templates.
+
+
+Designers
 --------------------
+
+Guidance for designers who design pipeline templates and enable self-service.
+
+NiFi Template Design
+~~~~~~~~~~~~~~~~~~~~
 
 The Designer is responsible for developing Apache NiFi templates, which
 provide the processing model for feeds in Kylo. Once a template has been
@@ -87,40 +108,8 @@ A good reference model is Think Big’s standard ingest template. This can
 serve as a model for best practices and can be adapted to an
 organization’s individual requirements.
 
-Environment Portability
------------------------
-
-NiFi Templates and associated Kylo configuration can be exported from
-one environment and imported into another environment. The Designer
-should ensure that Apache NiFi templates are designed to be portable
-across development, test and production environments .
-
-Environment-specific settings such as library paths or URLs should be
-specified in the environment-specific settings file in Kylo. See
-documentation. Environment-specific variables can be set through an
-environment specific properties file. Kylo provides an expression syntax
-for a Designer to utilize these properties when registering the
-template.  An Administrator typically maintains the environment-specific
-settings.
-
-Security Vulnerabilities
-------------------------
-
-Designers and Administrators should be aware of introducing a backdoor
-for malicious users,or even for developers.  Although NiFi components
-are extremely powerful, be aware of SQL Injection or exposing the
-ability for a user to paste script.
-
-Consider issues such a malicious user configuring an ingestion path that
-accesses secure files on the file system.
-
-When importing feeds from other environments, the Administrator should
-always ensure that the security group is appropriate to the environment.
-A security group that may be appropriate in a development environment
-might not be inappropriate for production.
-
 Use Reusable Flows
-------------------
+~~~~~~~~~~~~~~~~~~
 
 When possible, consider using re-usable flows.  A reusable flow is a
 template that creates just a single instance of a flow.  A single
@@ -141,7 +130,7 @@ output. Kylo will take care of auto-wiring these each time a new feed is
 created.
 
 Error Handling
---------------
+~~~~~~~~~~~~~~
 
 Error handling is essential to building robust flows.
 
@@ -163,7 +152,7 @@ temporarily unavailable. Rather than failing, the flowfile will be
 penalized (delayed) and re-attempted at a later point.
 
 Preserve Edge Resources
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~
 
 The edge node is a limited resource, particularly compared to the Hadoop
 cluster. The cluster will have a magnitude greater IO and processing
@@ -181,7 +170,7 @@ small NiFi cluster along the edge.
 
 
 Generalize Templates
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 Templates allow the Designer to promote the “write-once,use-many”
 principle. That is, once a template is registered with Kylo, any feeds
@@ -202,7 +191,7 @@ consider other best practices, such as portability. See chaining feeds
 below for a possible alternative to this.
 
 Chaining Feeds
---------------
+~~~~~~~~~~~~~~
 
 Instead of creating long special-purposed pipelines, consider breaking
 the pipeline into a series of feeds. Each feed then represents a
@@ -218,7 +207,7 @@ process.  This allows for sophisticated chaining of feeds without
 resorting to the need to build specially-purpose pipelines.
 
 One-Time Setup and Deletion
----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Designer should incorporate any one-time setup, and any processing
 flow required for deletion of a feed. One time setup is referred to as
@@ -231,7 +220,7 @@ by a feed. Delete allows a user to test a feed and easily delete it if
 needed.
 
 Lineage Tracking
-----------------
+~~~~~~~~~~~~~~~~
 
 Kylo framework only automatically maintains lineage at the “feed-level”
 and by any sources and sinks identified by the template designer when
@@ -244,61 +233,31 @@ may wish to track detailed lineage between a series of transforms and
 data sources. See Metadata Server REST API documentation.
 
 Idempotence
------------
+~~~~~~~~~~~
 
 Pipelines and template steps should be idempotent, such that if work is
 replayed it will produce the same result without a harmful side effect
 such as duplicates.
 
-When to Use Timer (vs. Cron)
-----------------------------
+Environment Portability
+~~~~~~~~~~~~~~~~~~~~~~~
 
-Timer is a good scheduling technique for lightweight polling behavior.
-Be aware, however, that all timers fire concurrently when NiFi starts.
-Avoid using for processors that place heavy demand on a source when
-triggered. For example: database sources or launching a transformation
-workflow. Cron is a more appropriate scheduling option for these
-resource-intensive processors.
+NiFi Templates and associated Kylo configuration can be exported from
+one environment and imported into another environment. The Designer
+should ensure that Apache NiFi templates are designed to be portable
+across development, test and production environments .
 
-Development Process
--------------------
+Environment-specific settings such as library paths or URLs should be
+specified in the environment-specific settings file in Kylo. See
+documentation. Environment-specific variables can be set through an
+environment specific properties file. Kylo provides an expression syntax
+for a Designer to utilize these properties when registering the
+template.  An Administrator typically maintains the environment-specific
+settings.
 
-NiFi templates should be developed and tested in a personal development
-environment. Do not develop NiFi templates in the production NiFi
-instance used by Kylo.
-
-It is recommended to do initial testing in NiFi. Once the flow has been
-tested and debugged within NiFi, then register the template with Kylo in
-the development environment, where one can test feed creation.
-
-+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|**NOTE:** | Controller Services that contain service, cluster, and database connection information should be setup by the Developer using their personal login information. In production, an Administrator manages these controller services, and they typically operate as an application account with elevated permissions. |
-+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-Template Export/Import
-----------------------
-
-As stated previously, it is recommended that Apache NiFi template
-development occur in a development environment. This is a best practice
-from a security and operations perspective. Kylo allows templates and
-the registration metadata to be exported to a ZIP file. This file can be
-imported into a new environment.
-
-Feed Export/Import
-------------------
-
-Although Kylo can be used for self-service feed creation in production,
-some organizations prefer to lock this ability down and perform feed
-development and testing in a separate environment.
-
-Version Control
----------------
-
-It is recommended to manage exported templates and feeds through an SCM
-tool such as git, subversion, or CVS.
 
 Data Confidence
----------------
+~~~~~~~~~~~~~~~
 
 In addition to NiFi templates for feeds, a Designer can and should
 create templates for performing Data Quality (DQ) verification of those
@@ -315,8 +274,8 @@ A special field identifies the template as a DQ check related to a feed
 and used for Data Confidence KPI, alerts, and feed health by the Ops
 manager. See Manual.
 
-Data Ingestion Guidelines
--------------------------
+Data Ingestion
+~~~~~~~~~~~~~~~
 
 **Archival**: It is best practice to preserve original raw content and
 consider regulatory compliance. Also, consider security and encryption
@@ -338,37 +297,15 @@ source (although consider protecting sensitive data) and avoid
 transformation of the data.
 
 Cleanup Intermediate Data
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The intermediate data generated by feed processing should be
 periodically deleted. It may be useful to have a brief retention period
 (for example: 72 hours) for troubleshooting. A single cleanup feed can
 be created to do this cleanup.
 
-Back-Pressure
--------------
-
-Administrators (and Designers) should understand NiFi capabilities
-regarding back-pressure. Administrators can configure backpressure
-limits at the processor level to control how many flow files can be
-queued before upstream processors start to throttle activity. This can
-assure that a problem with a service doesn’t cause a huge queue or
-result in a large number of failed jobs.
-
-Business Metadata
------------------
-
-Business metadata is any information that enriches the usefulness of the
-data, or is potentially helpful for future processing or error handling.
-
-Kylo allows an Administrator to setup business metadata fields that a
-user sees when creating a feed.  These business metadata templates can
-be setup either globally or at the category-level.  Once setup, the user
-is prompted to fill this information in the Properties step of the
-Ingest wizard.
-
 Data Cleansing and Standardization
-----------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Kylo includes a number of useful cleansing and standardization functions
 that can be configured by an end-user in the feed creation wizard UI.
@@ -383,7 +320,7 @@ Kylo provides an extensible Java API for developing custom cleansing and
 standardization routines.
 
 Validation
-----------
+~~~~~~~~~~
 
 Hive is extremely tolerant of inconsistencies between source data and
 the HCatalog schema. Using Hive without additional validation will allow
@@ -401,7 +338,7 @@ Kylo provides an extensible Java API for developing custom validation
 routines.
 
 Data Profiling
---------------
+~~~~~~~~~~~~~~
 
 Kylo’s Data profiling routine generates statistics for each field in an
 incoming dataset.
@@ -410,8 +347,80 @@ Beyond being useful to Data Scientists, profiling is useful for
 validating data quality (See Data Quality checking).
 
 
+RDBMS Data
+~~~~~~~~~~
+
+Joins in Hadoop are inefficient. Consider de-normalizing data during
+ingest.  One strategy is to ingest data via views.
+
+File Ingest
+~~~~~~~~~~~~
+
+One common problem with files is ensuring they are fully written from a
+source before they are picked up for processing. A strategy for this is
+to set the process writing the file to either change permissions on the
+file after the write is complete, or append a suffix such as DONE.
+
+
+Character Conversion and Hive
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Hive works with UTF-8. Character conversion may be required for any
+records that should be queried from Hive.  NiFi provides a character
+conversion processor that can be used for this. Kylo can detect source
+encoding using Tikka.
+
+
+Development Patterns
+-----------------------
+
+Best practices and guidance oriented to the development process, release, and testing.
+
+Development Process
+~~~~~~~~~~~~~~~~~~~
+
+NiFi templates should be developed and tested in a personal development
+environment. Do not develop NiFi templates in the production NiFi
+instance used by Kylo.
+
+It is recommended to do initial testing in NiFi. Once the flow has been
+tested and debugged within NiFi, then register the template with Kylo in
+the development environment, where one can test feed creation.
+
++----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|**NOTE:** | Controller Services that contain service, cluster, and database connection information should be setup by the Developer using their personal login information. In production, an Administrator manages these controller services, and they typically operate as an application account with elevated permissions. |
++----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Template Export/Import
+~~~~~~~~~~~~~~~~~~~~~~
+
+As stated previously, it is recommended that Apache NiFi template
+development occur in a development environment. This is a best practice
+from a security and operations perspective. Kylo allows templates and
+the registration metadata to be exported to a ZIP file. This file can be
+imported into a new environment.
+
+Feed Export/Import
+~~~~~~~~~~~~~~~~~~
+
+Although Kylo can be used for self-service feed creation in production,
+some organizations prefer to lock this ability down and perform feed
+development and testing in a separate environment.
+
+Version Control
+~~~~~~~~~~~~~~~~
+
+It is recommended to manage exported templates and feeds through an SCM
+tool such as git, subversion, or CVS.
+
+
+Users
+--------------
+
+Best practices and guidance oriented to end-users (users of the Kylo application).
+
 When to Use Snapshot
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 Think Big allows users to configure feeds to do incremental updates or
 to enable the use of a snapshot (replacing the target with the entire
@@ -419,30 +428,18 @@ contents). In the case of RDBMS, where there small source tables, it may
 be more efficient to simply overwrite (snapshot) the data each time.
 Tables with less than 100k records probably fit the snapshot pattern.
 
-RDBMS Data
-----------
+When to Use Timer (vs. Cron)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Joins in Hadoop are inefficient. Consider de-normalizing data during
-ingest.  One strategy is to ingest data via views.
-
-Character Conversion and Hive
------------------------------
-
-Hive works with UTF-8. Character conversion may be required for any
-records that should be queried from Hive.  NiFi provides a character
-conversion processor that can be used for this. Kylo can detect source
-encoding using Tikka.
-
-File Ingest
------------
-
-One common problem with files is ensuring they are fully written from a
-source before they are picked up for processing. A strategy for this is
-to set the process writing the file to either change permissions on the
-file after the write is complete, or append a suffix such as DONE.
+Timer is a good scheduling technique for lightweight polling behavior.
+Be aware, however, that all timers fire concurrently when NiFi starts.
+Avoid using for processors that place heavy demand on a source when
+triggered. For example: database sources or launching a transformation
+workflow. Cron is a more appropriate scheduling option for these
+resource-intensive processors.
 
 Wrangling
----------
+~~~~~~~~~
 
 The wrangling utility allows for users to do visual drag-drop SQL joins
 and apply transform functions to build complex transformations in a
@@ -450,7 +447,7 @@ WYSIWG, Excel-like interface. This is a recommended method for
 performing transformations on raw data.
 
 Service Level Agreements
-------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Service level agreements are created by users to enforce service levels,
 typically related to feeds. An SLA may set a threshold tolerance for
@@ -460,3 +457,48 @@ invalid data from a source.
 SLAs are useful for alerting and measuring service level performance
 over-time.
 
+Administrators
+--------------------------
+
+Back-Pressure
+~~~~~~~~~~~~~
+
+Administrators (and Designers) should understand NiFi capabilities
+regarding back-pressure. Administrators can configure backpressure
+limits at the processor level to control how many flow files can be
+queued before upstream processors start to throttle activity. This can
+assure that a problem with a service doesn’t cause a huge queue or
+result in a large number of failed jobs.
+
+Business Metadata
+~~~~~~~~~~~~~~~~~
+
+Business metadata is any information that enriches the usefulness of the
+data, or is potentially helpful for future processing or error handling.
+
+Kylo allows an Administrator to setup business metadata fields that a
+user sees when creating a feed.  These business metadata templates can
+be setup either globally or at the category-level.  Once setup, the user
+is prompted to fill this information in the Properties step of the
+Ingest wizard.
+
+Security
+---------
+
+Guidance around security.
+
+Security Vulnerabilities
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Designers and Administrators should be aware of introducing a backdoor
+for malicious users,or even for developers.  Although NiFi components
+are extremely powerful, be aware of SQL Injection or exposing the
+ability for a user to paste script.
+
+Consider issues such a malicious user configuring an ingestion path that
+accesses secure files on the file system.
+
+When importing feeds from other environments, the Administrator should
+always ensure that the security group is appropriate to the environment.
+A security group that may be appropriate in a development environment
+might not be inappropriate for production.

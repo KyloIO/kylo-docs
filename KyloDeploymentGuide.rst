@@ -22,8 +22,7 @@ System Requirements
 **Dependencies**
 
 Kylo services should be installed on an edge node.
-The following should be available prior to the installing the Data Lake
-Starter.
+The following should be available prior to the installation.
 
 See the Dependencies section in the deployment checklist: `Deployment
 Checklist <https://github.com/kyloio/kylo/blob/master/docs/latest/deployment/deployment-checklist.adoc>`__
@@ -31,7 +30,7 @@ Checklist <https://github.com/kyloio/kylo/blob/master/docs/latest/deployment/dep
 +-----------------------+-------------------------------------------------------------+----------------+
 | **Platform**          | **URL**                                                     | **Version**    |
 +-----------------------+-------------------------------------------------------------+----------------+
-| Hortonworks Sandbox   | http://hortonworks.com/products/hortonworks-sandbox/        | HDP 2.3, 2.4   |
+| Hortonworks Sandbox   | http://hortonworks.com/products/hortonworks-sandbox/        | HDP 2.3,2.4,2.5|
 +-----------------------+-------------------------------------------------------------+----------------+
 | Cloudera Sandobx      | http://www.cloudera.com/downloads/quickstart_vms/5-7.html   | 5.7            |
 +-----------------------+-------------------------------------------------------------+----------------+
@@ -311,7 +310,7 @@ S3 Support For Data Transformations
 
 Spark requires additional configuration in order to read Hive tables
 located in S3. Please see the `Accessing S3 from the Data
-Wrangler <http://kylo-docs-test.readthedocs.io/en/latest/AccessingS3fromthedatawrangler.html>`__
+Wrangler <http://kylo-docs-test.readthedocs.io/en/latest/AccessingS3fromtheDataWrangler.html>`__
 how-to article.
 
 Starting and Stopping the Services Manually
