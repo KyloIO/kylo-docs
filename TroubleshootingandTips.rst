@@ -170,7 +170,7 @@ the kylo-services configuration.
 ..
 
 2. Indexes are defined in
-   the /opt/thinkbig/thinkbig-services/conf/metadata-repository.json file.
+   the /opt/kylo/kylo-services/conf/metadata-repository.json file.
    Each index must specify a node type (tba:category or tba:feed)
    and a comma-separated list of columns to be indexed. User-defined
    properties must be URL-encoded and prefixed with ``usr:``. As an
