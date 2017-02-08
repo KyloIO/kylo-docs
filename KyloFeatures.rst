@@ -141,7 +141,3 @@ Kylo is a full-featured Data Lake platform built on Apache Hadoop and Spark. Kyl
 +--------------------------------------------+---------------------------------------------------+
 | Edge Clustering                            | Scale edge resources                              |
 +--------------------------------------------+---------------------------------------------------+
-
-.. |image0| image:: media/common/thinkbig-logo.png
-   :width: 3.09891in
-   :height: 2.03724in
