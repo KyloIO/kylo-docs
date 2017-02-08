@@ -132,7 +132,7 @@ Step 4: Build a Cloudera Distribution of Kylo and Copy it to the Docker Containe
         <version>0.3.0-SNAPSHOT</version> 
       </dependency/>
 
-      To
+        To
 
       <dependency> 
         <groupId>com.thinkbiganalytics.datalake</groupId> 
