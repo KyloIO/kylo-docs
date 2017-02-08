@@ -140,7 +140,7 @@ Follow the guide below to install and configure the Hortonworks sandbox:
 .. code-block:: shell
 
     `*Configure Hortonworks
-    Sandbox* <https://github.com/kyloio/kylo/blob/master/docs/latest/hortonworks-sandbox.adoc>`__
+    Sandbox* <http://kylo.readthedocs.io/en/latest/HortonworksSandboxConfiguration.html>`__
 
 ..
 
@@ -151,7 +151,7 @@ To install the Kylo apps, NiFi, ActiveMQ, and Elasticsearch in the
 VM you can use the deployment wizard instructions found here:
 
     `*Wizard Driven Deployment
-    Guide* <https://github.com/kyloio/kylo/blob/master/docs/latest/deployment/wizard-deployment-guide.adoc>`__
+    Guide* <http://kylo.readthedocs.io/en/latest/KyloSetupWizardDeploymentGuide.html>`__
 
 Instead of downloading the RPM file on the first step from Artifactory,
 copy the RPM file from your project folder after running a Maven build.
