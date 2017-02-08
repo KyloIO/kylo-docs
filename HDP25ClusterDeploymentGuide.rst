@@ -110,13 +110,9 @@ Before installing the Kylo stack, prepare the cluster by doing the following:
 
 5. Apply the Spark ORC fix: 
 
-   Edit the configuration file with the details provided in this article, "Spark SQL Fails on Empty ORC Table HDP 2.4 and HDP 2.5":
+   Edit the configuration file with the details provided in this article:
 
-.. code-block:: console
-
-      http://kylo.readthedocs.io/en/latest/Spark+SQL+fails+on+empty+ORC+table%2C+HDP+2.4.2%2C+HDP+2.5   .html
-
-..
+        `Spark SQL Fails on Empty ORC Table HDP 2.4 and HDP 2.5 <http://kylo.readthedocs.io/en/latest/Spark+SQL+fails+on+empty+ORC+table%2C+HDP+2.4.2%2C+HDP+2.5   .html>`
 
    You can add this property in Ambari rather than editing the configuration file.  
 
