@@ -137,12 +137,9 @@ Install and Configure the Hortonworks Sandbox
 
 Follow the guide below to install and configure the Hortonworks sandbox:
 
-.. code-block:: shell
-
     `*Configure Hortonworks
     Sandbox* <http://kylo.readthedocs.io/en/latest/HortonworksSandboxConfiguration.html>`__
 
-..
 
 Install the Kylo Applications
 -----------------------------
