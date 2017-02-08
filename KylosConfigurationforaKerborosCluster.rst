@@ -28,7 +28,7 @@ lake platform.
 Configuration Steps
 ===================
 
-1. Create a Headless Keytab File for the Hive and Think Big User.
+1. Create a Headless Keytab File for the Hive and Kylo User.
 
 +-------------+--------------------------------------------------------------------------------------+
 | **Note:**   | Perform the following as root. Replace "sandbox.hortonworks.com" with your domain.   |
