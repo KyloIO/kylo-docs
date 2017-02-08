@@ -58,7 +58,7 @@ Edge Node Ports
 
 The following ports are required to be open for browser access unless using a web proxy server:
 
--  Think Big UI – 8400
+-  Kylo UI – 8400
 
 -  NiFi – 8079
 
@@ -105,4 +105,3 @@ Keytabs
 -  Kerberos Principal for "nifi":
 
 -  Kerberos Principal for "hive" on the Hive Server2 Host:
-

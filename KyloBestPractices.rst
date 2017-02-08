@@ -104,7 +104,7 @@ A well-written template may support many feeds. It should incorporate
 best practices and consider security, regulatory requirements, and error
 handling.
 
-A good reference model is Think Big’s standard ingest template. This can
+A good reference model is Kylo’s standard ingest template. This can
 serve as a model for best practices and can be adapted to an
 organization’s individual requirements.
 
@@ -226,7 +226,7 @@ Kylo framework only automatically maintains lineage at the “feed-level”
 and by any sources and sinks identified by the template designer when
 registering the template.
 
-A Designer may utilize additional capabilities of Think Big’s metadata
+A Designer may utilize additional capabilities of Kylo’s metadata
 server by issuing REST calls from a NiFi flow. This can be done one time
 at registration, or for each feed instance. For example, the Designer
 may wish to track detailed lineage between a series of transforms and
@@ -422,7 +422,7 @@ Best practices and guidance oriented to end-users (users of the Kylo application
 When to Use Snapshot
 ~~~~~~~~~~~~~~~~~~~~
 
-Think Big allows users to configure feeds to do incremental updates or
+Kylo allows users to configure feeds to do incremental updates or
 to enable the use of a snapshot (replacing the target with the entire
 contents). In the case of RDBMS, where there small source tables, it may
 be more efficient to simply overwrite (snapshot) the data each time.

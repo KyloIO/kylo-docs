@@ -7,7 +7,7 @@ Overview
 ========
 
 A goal is to support authentication and authorization seamlessly
-between the Think Big applications and the Hadoop cluster.
+between the Kylo applications and the Hadoop cluster.
 
 Authentication
 --------------
