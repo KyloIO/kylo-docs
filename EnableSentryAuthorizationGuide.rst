@@ -177,7 +177,7 @@ Enabled HDFS ACL
 |image3|
 
 Sentry authorization is configured successfully. Now create a feed from
-ThinkBig UI and test it.
+the Kylo UI and test it.
 
 .. |image1| image:: media/sentry-auth/S1.png
    :width: 6.50000in
