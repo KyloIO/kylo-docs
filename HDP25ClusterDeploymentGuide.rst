@@ -114,7 +114,7 @@ Before installing the Kylo stack, prepare the cluster by doing the following:
 
 .. code-block:: console
 
-      https://wiki.thinkbiganalytics.com/display/RD/Spark+SQL+fails+on+empty+ORC+table%2C+HDP+2.4.2%2C+HDP+2.5   
+      http://kylo.readthedocs.io/en/latest/Spark+SQL+fails+on+empty+ORC+table%2C+HDP+2.4.2%2C+HDP+2.5   .html
 
 ..
 
