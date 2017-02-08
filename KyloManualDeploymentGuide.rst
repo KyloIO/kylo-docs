@@ -90,7 +90,7 @@ everything to one node, the setup directory would typically be:
     SETUP\_DIR=/opt/kylo/setup
 
 Sometimes administrators install NiFi on a second edge node to communicate with a Hortonworks or Cloudera cluster. In this case, copy
-the setup folder to nodes that do not have the Think Big applications installed. In that case, use this SETUP\_DIR command:
+the setup folder to nodes that do not have the Kylo applications installed. In that case, use this SETUP\_DIR command:
 
 .. code-block:: shell
 
@@ -151,8 +151,8 @@ If the groups are missing, then run the following:
 
     $ groupadd activemq
 
-Step 3: Install Think Big Services
-==================================
+Step 3: Install Kylo Services
+=============================
 
 1. Find and download the RPM file from the artifactory and place it on the host linux machine that you want to install Kylo services on.
 
@@ -416,7 +416,7 @@ required to run NiFi with our customizations. Make sure Java 8 is installed on t
 
 **Option 1**: Install NiFi from our scripts.
 
-This method downloads and installs NiFi, and also installs and configures the Think Big specific libraries. This instance of NiFi is configured to store persistent data outside of the NiFi installation folder in /opt/nifi/data. This makes it easy to upgrade since you can change the version of NiFi without migrating data out of the old version.
+This method downloads and installs NiFi, and also installs and configures the Kylo specific libraries. This instance of NiFi is configured to store persistent data outside of the NiFi installation folder in /opt/nifi/data. This makes it easy to upgrade since you can change the version of NiFi without migrating data out of the old version.
 
     a. Install NiFi
 
@@ -444,7 +444,7 @@ This method downloads and installs NiFi, and also installs and configures the Th
 
 ..
 
-    c. Install Think Big specific components.
+    c. Install Kylo specific components.
 
 .. code-block:: shell
 
@@ -454,7 +454,7 @@ This method downloads and installs NiFi, and also installs and configures the Th
 
 **Option 2**: Leverage an existing NiFi instance
 
-In some cases you may have a separate instance of NiFi or Hortonworks Data Flow you want to leverage. Follow the steps below to include the Think Big resources.
+In some cases you may have a separate instance of NiFi or Hortonworks Data Flow you want to leverage. Follow the steps below to include the Kylo resources.
 
 +-------------+------------------------------------------------------------------------------------------------+
 | **Note:**   | If Java 8 isn't being used for the existing instance then you will be required to change it.   |
@@ -666,8 +666,8 @@ See the appendix section in the deployment guide "Cloudera Configuration File Ch
 Step 12: Edit the Properties Files
 ==================================
 
-Step 13: Final Step: Start the 3 Think Big services
-===================================================
+Step 13: Final Step: Start the 3 Kylo Services
+==============================================
 
 .. code-block:: shell
 
