@@ -263,7 +263,7 @@ Step 5: Install Kylo in the Docker Container
 
 ..
 
-5. Start up the Think Big Apps:
+5. Start up the Kylo Apps:
 
 .. code-block:: shell
 
