@@ -24,8 +24,7 @@ http://hortonworks.com/products/sandbox/
 Add Virtual Box Shared Folder
 =============================
 
-Adding a shared folder to Virtual Box will allow you to access the Data
-Lake Accelerator project folder outside of the VM so you can copy
+Adding a shared folder to Virtual Box will allow you to access the Kylo project folder outside of the VM so you can copy
 project artifacts to the sandbox for testing.
 
 +--------+------------------------------------------------------------------------------------+
@@ -60,9 +59,9 @@ This table shows the ports to add.
 +-------------------------+-------------+--------------+------------------------------------------------------------------------------------------------------+
 | Application Name        | Host Port   | Guest Port   | Comment                                                                                              |
 +-------------------------+-------------+--------------+------------------------------------------------------------------------------------------------------+
-| Think Big UI            | 8401        | 8400         | Use 8401 on the HostIP side so that you can run it in your IDE under 8400 and still test in the VM   |
+| Kylo UI                 | 8401        | 8400         | Use 8401 on the HostIP side so that you can run it in your IDE under 8400 and still test in the VM   |
 +-------------------------+-------------+--------------+------------------------------------------------------------------------------------------------------+
-| Think Big Spark Shell   | 8450        | 8450         |                                                                                                      |
+| Kylo Spark Shell        | 8450        | 8450         |                                                                                                      |
 +-------------------------+-------------+--------------+------------------------------------------------------------------------------------------------------+
 | NiFi                    | 8079        | 8079         |                                                                                                      |
 +-------------------------+-------------+--------------+------------------------------------------------------------------------------------------------------+
