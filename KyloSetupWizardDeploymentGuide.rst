@@ -150,7 +150,7 @@ b. Offline mode from another directory (using TAR file)
 
     -  Java 8 (If the system Java is 7 or below)
 
-    -  NiFi and the Think Big dependencies
+    -  NiFi and the Kylo dependencies
 
     The Elasticsearch, NiFi, and ActiveMQ services start when the wizard
     is finished.
@@ -226,8 +226,8 @@ See the appendix section below "Cloudera Configuration File Changes".
 Step 10: Edit the Properties Files
 ----------------------------------
 
-Step 11: Start the Three Think Big Services
--------------------------------------------
+Step 11: Start the Three Kylo Services
+--------------------------------------
 
 .. code-block:: shell
 
