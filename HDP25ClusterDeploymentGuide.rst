@@ -110,7 +110,7 @@ Before installing the Kylo stack, prepare the cluster by doing the following:
 
 5. Apply the Spark ORC fix: 
 
-   Edit the configuration file with the details provided on the Wiki:
+   Edit the configuration file with the details provided in this article, "Spark SQL Fails on Empty ORC Table HDP 2.4 and HDP 2.5":
 
 .. code-block:: console
 
