@@ -427,7 +427,7 @@ Appendix: Cleanup scripts
 =========================
 
 For development and sandbox environments you can leverage the cleanup
-script to remove all of the Think Big services as well as Elasticsearch,
+script to remove all of the Kylo services as well as Elasticsearch,
 ActiveMQ, and NiFi.
 
 .. code-block:: shell

@@ -144,10 +144,10 @@ Follow the guide below to install and configure the Hortonworks sandbox:
 
 ..
 
-Install the Think Big Applications
-----------------------------------
+Install the Kylo Applications
+-----------------------------
 
-To install the Think Big apps, NiFi, ActiveMQ, and Elasticsearch in the
+To install the Kylo apps, NiFi, ActiveMQ, and Elasticsearch in the
 VM you can use the deployment wizard instructions found here:
 
     `*Wizard Driven Deployment
@@ -167,9 +167,9 @@ copy the RPM file from your project folder after running a Maven build.
 Follow the rest of the deployment wizard steps to install the rest of
 the tools in the VM.
 
-+------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Important!**   | You only need to install Elasticsearch, NiFi, and ActiveMQ once. During development you will frequently uninstall the Think Big RPM and re-install it for testing.   |
-+------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **Important!**   | You only need to install Elasticsearch, NiFi, and ActiveMQ once. During development you will frequently uninstall the Kylo RPM and re-install it for testing.   |
++------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 You now have a distribution of the stack running in your Hortonworks
 sandbox.
