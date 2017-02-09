@@ -59,25 +59,23 @@ and they can be registered 2 ways.
 Registration on Startup
 -----------------------
 
-Kylo read the file
-"`*datasource-definitions.json* `__"
+Kylo read the file *datasource-definitions.json*
 found in the classpath on startup and will update the datasource
-definitions.  This will be in the /opt/kylo/kylo-services/conf
-directory and can be referenced on git
-here: \ `*datasource-definitions.json* <https://github.com/kyloio/kylo/blob/master/services/service-app/src/main/resources/datasource-definitions.json>`__.
- Kylo ships with many of the NiFi processors defined.
+definitions.  This will be in the */opt/kylo/kylo-services/conf*
+directory.  Kylo ships with many of the NiFi processors defined, but you may find you want to alter or add new ones.
 
 Registration via REST
 ---------------------
 
-| If you need to update or add new datasource definitions there is a
-  REST endpoint that allows you to post the new definition data.
-| `*http://localhost:8400/api-docs/index.html#!/feed-manager-feeds/updateDatasourceDefinitions* <http://localhost:8400/api-docs/index.html#!/feed-manager-feeds/updateDatasourceDefinitions>`__
+If you need to update or add new datasource definitions there is a
+REST endpoint that allows you to post the new definition data.
+
+@TODO screenshot of swagger endpoints
 
 To list the metadata store of defined datasources you can use this REST
 call
 
-`*http://localhost:8400/proxy/metadata/datasource/datasource-definitions* <http://localhost:8400/proxy/metadata/datasource/datasource-definitions>`__ 
+`*http://localhost:8400/proxy/v1/metadata/datasource/datasource-definitions* <http://localhost:8400/proxy/v1/metadata/datasource/datasource-definitions>`__ 
 
 Datasource Definition Structure
 -------------------------------
@@ -144,11 +142,6 @@ available datasources it found in your flow.  Kylo reads the template
 and then matches each processor with the datasource definition (see
 above).  You will then need to select the datasources you wish to track.
 
-Note: If using the "Data Ingest" template it has already been updated to
-track the 3 main datasources  (GetFile, GetTableData, MergeTable).  You
-will need to reimport the data-ingest.zip or re-register the template
-and select those datasources for tracking.
-
 This step is necessary because you may have a variety of processors in
 the flow that match a processor type in the datasource definition (i.e.
 PutFile for failed flows), but those don't define the true destination of
@@ -164,26 +157,21 @@ framework \ `*http://visjs.org/* <http://visjs.org/>`__  to build the
 interactive canvas.
 
 If needed you can adjust the styles of the feeds and each type of
-datasource.  Kylo reads styles on startup from the
-"`*datasource-styles.json* <https://github.com/kyloio/kylo/blob/master/services/service-app/src/main/resources/datasource-styles.json>`__"
+datasource.  Kylo reads styles on startup from the */opt/kylo/kylo-services/conf/datasource-styles.json*
 This file can be found in /opt/kylo/kylo-services/conf.  Styles
 are not stored in the metadata.  They are read from this file on
 startup.  You can alter styles using the REST endpoint below, but to
 persist it for the next time you will want to update this JSON file.
 
-`*http://localhost:8400/api-docs/index.html#!/feed-manager-feeds/updateFeedLineageStyles* <http://localhost:8400/api-docs/index.html#!/feed-manager-feeds/updateFeedLineageStyles>`__
+@TODO: image of REST ENDPOINTS
 
  
 
  
 
- 
-
- 
-
-.. |image0| image:: ../media/feed-lineage/1-feed-details.png
-   :width: 6.50000in
-   :height: 3.75278in
+.. |image0| image:: ../media/feed-lineage/feed-lineage.png
+   :width: 1885px
+   :height: 928px
 .. |image1| image:: ../media/feed-lineage/2-feed-lineage-datasources.png
    :width: 6.50000in
    :height: 4.11458in

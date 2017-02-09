@@ -7,6 +7,8 @@
 Welcome to the Kylo Project
 ===========================
 
+|image1|
+
 Capturing and processing big data isn’t easy.
 Products such as Spark, Kafka, Hadoop, and NiFi are
 great at processing immense data volumes at scale; however,
@@ -106,6 +108,14 @@ The documentation for the site is organized into a few sections:
     tips-tricks/KyloBestPractices
 
 
+.. |image1| image:: media/common/kylo-logo-orange.png
+    :width: 600px
+    :height: 338px
+    :scale: 50%
+    :align: middle
+    :alt: kylo logo
+
+
 ..  files that are not part of the toctree:
     how-to-guides/KyloIconsAndColors
     installation/KyloDependencies
@@ -121,6 +131,7 @@ The documentation for the site is organized into a few sections:
     installation/KylosConfigurationforaKerborosCluster
     installation/NiFiConfigurationforaKerberosCluster
     installation/Postgres_Hive_Metadata_Configuration
+
 
 
 
