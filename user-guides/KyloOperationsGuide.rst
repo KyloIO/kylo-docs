@@ -837,138 +837,138 @@ Kylo:
    jar)  you will need to bounce Kylo (kylo-services)
 
 
-.. |image1| image:: media/operations-guide/image2.png
+.. |image1| image:: ../media/operations-guide/image2.png
    :width: 6.61323in
    :height: 2.91941in
-.. |image2| image:: media/operations-guide/image3.png
+.. |image2| image:: ../media/operations-guide/image3.png
    :width: 6.66832in
    :height: 3.23885in
-.. |image3| image:: media/operations-guide/image4.png
+.. |image3| image:: ../media/operations-guide/image4.png
    :width: 1.80000in
    :height: 1.46000in
-.. |image4| image:: media/operations-guide/image5.png
+.. |image4| image:: ../media/operations-guide/image5.png
    :width: 1.80000in
    :height: 1.46000in
-.. |image5| image:: media/operations-guide/image6.png
+.. |image5| image:: ../media/operations-guide/image6.png
    :width: 1.80000in
    :height: 1.49000in
-.. |image6| image:: media/operations-guide/image7.png
+.. |image6| image:: ../media/operations-guide/image7.png
    :width: 1.80000in
    :height: 1.46000in
-.. |image7| image:: media/operations-guide/image8.png
+.. |image7| image:: ../media/operations-guide/image8.png
    :width: 1.80000in
    :height: 1.12000in
-.. |image8| image:: media/operations-guide/image9.png
+.. |image8| image:: ../media/operations-guide/image9.png
    :width: 6.50000in
    :height: 3.18002in
-.. |image9| image:: media/operations-guide/image10.png
+.. |image9| image:: ../media/operations-guide/image10.png
    :width: 6.51110in
    :height: 2.30963in
-.. |image10| image:: media/operations-guide/image11.png
+.. |image10| image:: ../media/operations-guide/image11.png
    :width: 5.61419in
    :height: 1.59744in
-.. |image11| image:: media/operations-guide/image12.png
+.. |image11| image:: ../media/operations-guide/image12.png
    :width: 6.76832in
    :height: 3.37599in
-.. |image12| image:: media/operations-guide/image13.png
+.. |image12| image:: ../media/operations-guide/image13.png
    :width: 1.68125in
    :height: 3.07330in
-.. |image13| image:: media/operations-guide/image14.png
+.. |image13| image:: ../media/operations-guide/image14.png
    :width: 6.67915in
    :height: 3.24509in
-.. |image14| image:: media/operations-guide/image15.png
+.. |image14| image:: ../media/operations-guide/image15.png
    :width: 6.70476in
    :height: 3.27361in
-.. |image15| image:: media/operations-guide/image16.png
+.. |image15| image:: ../media/operations-guide/image16.png
    :width: 1.90114in
    :height: 2.70649in
-.. |image16| image:: media/operations-guide/image17.png
+.. |image16| image:: ../media/operations-guide/image17.png
    :width: 6.67268in
    :height: 5.20017in
-.. |image17| image:: media/operations-guide/image18.png
+.. |image17| image:: ../media/operations-guide/image18.png
    :width: 6.66645in
    :height: 4.93406in
-.. |image18| image:: media/operations-guide/image19.png
+.. |image18| image:: ../media/operations-guide/image19.png
    :width: 5.31587in
    :height: 2.73313in
-.. |image19| image:: media/operations-guide/image20.png
+.. |image19| image:: ../media/operations-guide/image20.png
    :width: 1.11049in
    :height: 2.52633in
-.. |image20| image:: media/operations-guide/image21.png
+.. |image20| image:: ../media/operations-guide/image21.png
    :width: 5.23424in
    :height: 1.43268in
-.. |image21| image:: media/operations-guide/image22.png
+.. |image21| image:: ../media/operations-guide/image22.png
    :width: 6.16716in
    :height: 6.00747in
-.. |image22| image:: media/operations-guide/image23.png
+.. |image22| image:: ../media/operations-guide/image23.png
    :width: 6.59095in
    :height: 1.99935in
-.. |image23| image:: media/operations-guide/image24.png
+.. |image23| image:: ../media/operations-guide/image24.png
    :width: 0.34534in
    :height: 0.24153in
-.. |image24| image:: media/operations-guide/image25.png
+.. |image24| image:: ../media/operations-guide/image25.png
    :width: 6.56336in
    :height: 2.48447in
-.. |image25| image:: media/operations-guide/image26.png
+.. |image25| image:: ../media/operations-guide/image26.png
    :width: 0.22973in
    :height: 0.29792in
-.. |image26| image:: media/operations-guide/image27.png
+.. |image26| image:: ../media/operations-guide/image27.png
    :width: 2.02206in
    :height: 3.57755in
-.. |image27| image:: media/operations-guide/image28.png
+.. |image27| image:: ../media/operations-guide/image28.png
    :width: 2.06297in
    :height: 2.23186in
-.. |image28| image:: media/operations-guide/image29.png
+.. |image28| image:: ../media/operations-guide/image29.png
    :width: 6.46702in
    :height: 2.72710in
-.. |image29| image:: media/operations-guide/image30.png
+.. |image29| image:: ../media/operations-guide/image30.png
    :width: 3.43314in
    :height: 2.98492in
-.. |image30| image:: media/operations-guide/image31.png
+.. |image30| image:: ../media/operations-guide/image31.png
    :width: 6.49428in
    :height: 2.52562in
-.. |image31| image:: media/operations-guide/image32.png
+.. |image31| image:: ../media/operations-guide/image32.png
    :width: 6.41679in
    :height: 3.17705in
-.. |image32| image:: media/operations-guide/image33.png
+.. |image32| image:: ../media/operations-guide/image33.png
    :width: 6.40737in
    :height: 3.17975in
-.. |image33| image:: media/operations-guide/image34.png
+.. |image33| image:: ../media/operations-guide/image34.png
    :width: 1.73253in
    :height: 3.10227in
-.. |image34| image:: media/operations-guide/image35.png
+.. |image34| image:: ../media/operations-guide/image35.png
    :width: 6.55045in
    :height: 3.82498in
-.. |image35| image:: media/operations-guide/image36.png
+.. |image35| image:: ../media/operations-guide/image36.png
    :width: 0.26214in
    :height: 0.20351in
-.. |image36| image:: media/operations-guide/image37.png
+.. |image36| image:: ../media/operations-guide/image37.png
    :width: 3.80625in
    :height: 2.54990in
-.. |image37| image:: media/operations-guide/image38.png
+.. |image37| image:: ../media/operations-guide/image38.png
    :width: 6.56951in
    :height: 3.32098in
-.. |image38| image:: media/operations-guide/image39.png
+.. |image38| image:: ../media/operations-guide/image39.png
    :width: 6.59348in
    :height: 3.84250in
-.. |image39| image:: media/operations-guide/image36.png
+.. |image39| image:: ../media/operations-guide/image36.png
    :width: 0.30043in
    :height: 0.23323in
-.. |image40| image:: media/operations-guide/image40.png
+.. |image40| image:: ../media/operations-guide/image40.png
    :width: 3.10773in
    :height: 2.95859in
-.. |image41| image:: media/operations-guide/image41.png
+.. |image41| image:: ../media/operations-guide/image41.png
    :width: 6.55189in
    :height: 2.98465in
-.. |image42| image:: media/operations-guide/image42.png
+.. |image42| image:: ../media/operations-guide/image42.png
    :width: 6.54856in
    :height: 3.88046in
-.. |image43| image:: media/operations-guide/image43.png
+.. |image43| image:: ../media/operations-guide/image43.png
    :width: 0.25625in
    :height: 0.27903in
-.. |image44| image:: media/operations-guide/image44.png
+.. |image44| image:: ../media/operations-guide/image44.png
    :width: 6.55164in
    :height: 2.66935in
-.. |image45| image:: media/operations-guide/image45.jpg
+.. |image45| image:: ../media/operations-guide/image45.jpg
    :width: 6.41353in
    :height: 3.01020in

@@ -41,21 +41,21 @@ Installation Steps
     Sentry is installed successfully.
 
 
-.. |image1| image:: media/sentry-install/SN1.png
+.. |image1| image:: ../media/sentry-install/SN1.png
    :width: 6.42699in
    :height: 2.42660in
-.. |image2| image:: media/sentry-install/SN2.png
+.. |image2| image:: ../media/sentry-install/SN2.png
    :width: 6.50000in
    :height: 2.37222in
-.. |image3| image:: media/sentry-install/SN3.png
+.. |image3| image:: ../media/sentry-install/SN3.png
    :width: 6.50000in
    :height: 2.99792in
-.. |image4| image:: media/sentry-install/SN4.png
+.. |image4| image:: ../media/sentry-install/SN4.png
    :width: 6.50000in
    :height: 2.78819in
-.. |image5| image:: media/sentry-install/SN5.png
+.. |image5| image:: ../media/sentry-install/SN5.png
    :width: 6.50000in
    :height: 2.99583in
-.. |image6| image:: media/sentry-install/SN6.png
+.. |image6| image:: ../media/sentry-install/SN6.png
    :width: 6.50000in
    :height: 2.96042in

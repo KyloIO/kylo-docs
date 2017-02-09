@@ -131,24 +131,24 @@ Configuration Steps
     You have successfully configured NiFi DataLake Platform with Kerberos.
 
 
-.. |image1| image:: media/nifi-kerberos/N1.png
+.. |image1| image:: ../media/nifi-kerberos/N1.png
    :width: 5.82219in
    :height: 0.67700in
-.. |image2| image:: media/nifi-kerberos/N3.png
+.. |image2| image:: ../media/nifi-kerberos/N3.png
    :width: 5.93388in
    :height: 3.26871in
-.. |image3| image:: media/nifi-kerberos/N4.png
+.. |image3| image:: ../media/nifi-kerberos/N4.png
    :width: 5.93770in
    :height: 3.20230in
-.. |image4| image:: media/nifi-kerberos/N5.png
+.. |image4| image:: ../media/nifi-kerberos/N5.png
    :width: 5.93250in
    :height: 1.18396in
-.. |image5| image:: media/nifi-kerberos/N6.png
+.. |image5| image:: ../media/nifi-kerberos/N6.png
    :width: 5.88170in
    :height: 1.66837in
-.. |image6| image:: media/nifi-kerberos/N7.png
+.. |image6| image:: ../media/nifi-kerberos/N7.png
    :width: 5.93631in
    :height: 3.30429in
-.. |image7| image:: media/nifi-kerberos/N8.png
+.. |image7| image:: ../media/nifi-kerberos/N8.png
    :width: 5.86186in
    :height: 2.45309in

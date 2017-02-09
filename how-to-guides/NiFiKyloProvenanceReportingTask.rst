@@ -85,18 +85,18 @@ Kylo Provenance Event Reporting Task Properties
 |                                    |                     |                                                                                                                                                                           | Supports Expression Language: true                                                                                                                                                                                                                                                                                               |
 +------------------------------------+---------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-.. |image0| image:: media/provenance-reporting/1-controller-settings.png
+.. |image0| image:: ../media/provenance-reporting/1-controller-settings.png
    :width: 2.36458in
    :height: 3.12500in
-.. |image1| image:: media/provenance-reporting/2-nifi-settings.png
+.. |image1| image:: ../media/provenance-reporting/2-nifi-settings.png
    :width: 6.50000in
    :height: 2.83819in
-.. |image2| image:: media/provenance-reporting/2a-properties-required.png
+.. |image2| image:: ../media/provenance-reporting/2a-properties-required.png
    :width: 6.50000in
    :height: 2.83819in
-.. |image3| image:: media/provenance-reporting/3-reporting-tasks.png
+.. |image3| image:: ../media/provenance-reporting/3-reporting-tasks.png
    :width: 6.50000in
    :height: 4.46250in
-.. |image4| image:: media/provenance-reporting/4-settings.png
+.. |image4| image:: ../media/provenance-reporting/4-settings.png
    :width: 6.19792in
    :height: 2.93750in

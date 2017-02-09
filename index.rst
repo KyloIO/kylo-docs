@@ -11,86 +11,111 @@ Kylo is a comprehensive open-source Data Lake platform built-on Apache Hadoop, S
 
 The documentation for the site is organized into a few sections:
 
+* :ref:`quickstart`
 * :ref:`about`
-* :ref:`user-docs`
-* :ref:`designer-docs`
-* :ref:`installation-docs`
-* :ref:`advanced-installation-docs`
-* :ref:`developer-docs`
+* :ref:`installation`
+* :ref:`security`
+* :ref:`how_to_guides`
+* :ref:`developer_guides`
+* :ref:`user_guides`
+* :ref:`tips_tricks`
+
+
+.. _quickstart:
+.. toctree::
+    :maxdepth: 1
+    :caption: Quickstart
+
+    quickstart/QuickStart
 
 .. _about:
-
 .. toctree::
-   :maxdepth: 2
-   :caption: About
+    :maxdepth: 2
+    :caption: About
 
-   KyloFrequentlyAskedQuestions
-   KyloFeatures
+    about/KyloFeatures
+    about/KyloFrequentlyAskedQuestions
+    about/KyloTerminology
 
-.. _user-docs:
+.. _installation:
 .. toctree::
-   :maxdepth: 2
-   :caption: User Documentation
+    :maxdepth: 2
+    :caption: Installation
 
-   KyloOperationsGuide
+    installation/KyloDeploymentChecklist
+    installation/KyloDeploymentGuide
+    installation/InstallationConfigurationGuide
 
-.. _designer-docs:
-
+.. _security:
 .. toctree::
-   :maxdepth: 2
-   :caption: Designer Documentation
+    :maxdepth: 2
+    :caption: Security
 
-   KyloTerminology
-   TroubleshootingandTips
-   KyloBestPractices
-   FeedLineage
+    security/AccessControl
+    security/KyloKerberosSPNEGO
+    security/EnableRangerAuthorizationGuide
+    security/EnableSentryAuthorizationGuide
+    security/KerberosHDP
 
-.. _installation-docs:
 
+.. _how_to_guides:
 .. toctree::
-   :maxdepth: 2
-   :caption: Installation Documentation
-   :titlesonly:
+    :maxdepth: 1
+    :caption: How to guides
 
-   KyloDeploymentChecklist
-   KyloDeploymentGuide
-   NiFiKyloProvenanceReportingTask
+    how-to-guides/SetupaNiFiClusterinaKyloSandbox
+    how-to-guides/ConfigureNiFiWithSSL
+    how-to-guides/ConfigNififorHDFSEncryption
+    how-to-guides/NiFiKyloProvenanceReportingTask
+    how-to-guides/NiFiProcessorsDocs
+    how-to-guides/AccessingS3fromtheDataWrangler
+    how-to-guides/FeedLineage
+    how-to-guides/SentryInstallationGuide
+    how-to-guides/SuseConfigurationChanges
 
-.. _advanced-installation-docs:
+.. _developer_guides:
 .. toctree::
-   :maxdepth: 2
-   :caption: Advanced Installation
-   :titlesonly:
+    :maxdepth: 1
+    :caption: Developer guides
 
-   KyloManualDeploymentGuide
-   KyloTARFileInstallation
-   KyloSetupWizardDeploymentGuide
-   ConfigNififorHDFSEncryption
-   SuseConfigurationChanges
-   KyloConfiguration
-   KylosConfigurationforaKerborosCluster
-   NiFiConfigurationforaKerberosCluster
-   KerberosHDP
-   HDP25ClusterDeploymentGuide
-   KerberosInstallationExample-Cloudera
-   Postgres_Hive_Metadata_Configuration
-   EnableRangerAuthorizationGuide
-   EnableSentryAuthorizationGuide
-   SentryInstallationGuide
-   ImportSqoop_Processor
+    developer-guides/KyloDeveloperGuide
+    developer-guides/ContributingtoKylo
+    developer-guides/KyloRestApi
 
-.. _developer-docs:
-
+.. _user_guides:
 .. toctree::
-   :maxdepth: 2
-   :caption: Developer Documentation
-   :titlesonly:
+    :maxdepth: 2
+    :caption: User guides
 
-   KyloDeveloperGuide
-   ContributingtoKylo
-   SetupaNiFiClusterinaKyloSandbox
-   HortonworksSandboxConfiguration
-   ClouderaDockerSandboxDeploymentGuide
+    user-guides/KyloOperationsGuide
+
+.. _tips_tricks:
+.. toctree::
+    :maxdepth: 2
+    :caption: Tips and tricks
+
+    tips-tricks/TroubleshootingandTips
+    tips-tricks/KyloBestPractices
+
+
+..  files that are not part of the toctree:
+    how-to-guides/KyloIconsAndColors
+    installation/KyloDependencies
+    installation/ClouderaDockerSandboxDeploymentGuide
+    installation/HDP25ClusterDeploymentGuide
+    installation/HortonworksSandboxConfiguration
+    installation/KerberosInstallationExample-Cloudera
+    installation/KyloConfiguration
+    installation/KyloDependencies
+    installation/KyloManualDeploymentGuide
+    installation/KyloSetupWizardDeploymentGuide
+    installation/KyloTARFileInstallation
+    installation/KylosConfigurationforaKerborosCluster
+    installation/NiFiConfigurationforaKerberosCluster
+    installation/Postgres_Hive_Metadata_Configuration
+
+
+
 
 Indices and tables
 ==================
@@ -98,3 +123,6 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+
+

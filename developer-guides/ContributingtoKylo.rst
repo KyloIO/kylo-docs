@@ -173,5 +173,5 @@ pulling in your changes. After your pull request is merged you can
 safely delete your branch and pull in the changes from the official
 Kylo repository.
 
-.. |image0| image:: media/kylo-contributing/1_0doctheme.png
-.. |image1| image:: media/kylo-contributing/2_new-pull-request.png
+.. |image0| image:: ../media/kylo-contributing/1_0doctheme.png
+.. |image1| image:: ../media/kylo-contributing/2_new-pull-request.png

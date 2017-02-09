@@ -1,7 +1,7 @@
 
-======================
-Lineage Configuration
-======================
+==========================
+Feed Lineage Configuration
+==========================
 
 Introduction
 ============
@@ -60,7 +60,7 @@ Registration on Startup
 -----------------------
 
 Kylo read the file
-"`*datasource-definitions.json* <https://github.com/kyloio/kylo/blob/master/services/service-app/src/main/resources/datasource-definitions.json>`__"
+"`*datasource-definitions.json* `__"
 found in the classpath on startup and will update the datasource
 definitions.  This will be in the /opt/kylo/kylo-services/conf
 directory and can be referenced on git
@@ -181,9 +181,9 @@ persist it for the next time you will want to update this JSON file.
 
  
 
-.. |image0| image:: media/feed-lineage/1-feed-details.png
+.. |image0| image:: ../media/feed-lineage/1-feed-details.png
    :width: 6.50000in
    :height: 3.75278in
-.. |image1| image:: media/feed-lineage/2-feed-lineage-datasources.png
+.. |image1| image:: ../media/feed-lineage/2-feed-lineage-datasources.png
    :width: 6.50000in
    :height: 4.11458in

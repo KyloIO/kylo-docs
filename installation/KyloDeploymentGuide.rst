@@ -19,8 +19,7 @@ System Requirements
 Kylo services should be installed on an edge node.
 The following should be available prior to the installation.
 
-See the Dependencies section in the deployment checklist: `Deployment
-Checklist <https://github.com/kyloio/kylo/blob/master/docs/latest/deployment/deployment-checklist.adoc>`__
+See the Dependencies section in the deployment checklist: :doc:`KyloDependencies`
 
 +-----------------------+-------------------------------------------------------------+----------------+
 | **Platform**          | **URL**                                                     | **Version**    |
@@ -39,7 +38,7 @@ Hortonworks Sandbox
 If installing in a new Hortonworks sandbox make sure to do the following
 first before running through the installation steps below.
 
-`Configure Hortonworks Sandbox <http://kylo-docs-test.readthedocs.io/en/latest/HortonworksSandboxConfiguration.html>`__
+:doc:`HortonworksSandboxConfiguration`
 
 Java Requirements
 -----------------
@@ -96,8 +95,7 @@ bootstrap your environment.
 | Note   | If you are installing Kylo on SUSE please read the following doc to work around ActiveMQ and Elasticsearch issues   |
 +--------+---------------------------------------------------------------------------------------------------------------------+
 
-`SUSE Configuration
-Changes <http://kylo-docs-test.readthedocs.io/en/latest/SuseConfigurationChanges.html>`__
+:doc:`../how-to-guides/SuseConfigurationChanges`
 
 Install Procedure 1:
 ---------------------
@@ -113,8 +111,7 @@ download binaries so internet access is required.
 Click on the below link to go to the wizard driven deployment
 instructions
 
-`Wizard Driven Deployment
-Guide <http://kylo-docs-test.readthedocs.io/en/latest/KyloSetupWizardDeploymentGuide.html>`__
+:doc:`KyloSetupWizardDeploymentGuide`
 
 Install Procedure 2:
 --------------------
@@ -123,8 +120,8 @@ Installing each component manually.
 
 Click on the below link to go to the manual deployment instructions
 
-`Manual Deployment
-Guide <http://kylo-docs-test.readthedocs.io/en/latest/KyloManualDeploymentGuide.html>`__
+:doc:`KyloManualDeploymentGuide`
+
 
 Install Procedure 3:
 --------------------
@@ -136,8 +133,7 @@ Cloudera sandbox in AWS. This is useful when you need to get a quick
 Cloudera instance running to test Kylo but don’t have the resources to
 install a Cloudera cluster
 
-`Cloudera EC2 Docker Sandbox Deployment
-Guide <http://kylo-docs-test.readthedocs.io/en/latest/ClouderaDockerSandboxDeploymentGuide.html>`__
+:doc:`ClouderaDockerSandboxDeploymentGuide`
 
 Install Procedure 4:
 --------------------
@@ -147,8 +143,7 @@ Tar file install (instead of RPM).
 This is optional for those who have to install Kylo in a different
 folder than /opt/kylo or run as a different user.
 
-`Kylo TAR File Installation
-Guide <http://kylo-docs-test.readthedocs.io/en/latest/KyloTARFileInstallation.html>`__
+:doc:`KyloTARFileInstallation`
 
 Install Procedure 5:
 --------------------
@@ -159,8 +154,7 @@ This document provides an example of how to install Kylo on an HDP 2.5
 cluster with minimal admin privileges and shows how to configure
 installation with NiFi on a separate edge node.
 
-`HDP 2.5 Ranger/Kerberos Deployment
-Guide <http://kylo-docs-test.readthedocs.io/en/latest/HDP25ClusterDeploymentGuide.html>`__
+:doc:`HDP25ClusterDeploymentGuide`
 
 Configuration
 =============
@@ -171,11 +165,9 @@ Ranger / Sentry
 If you’ve changed the default Ranger or Sentry permissions then you will
 need to add permissions for Kylo and NiFi.
 
-`Ranger Authorization
-Guide <http://kylo-docs-test.readthedocs.io/en/latest/EnableRangerAuthorizationGuide.html>`__
+:doc:`../security/EnableRangerAuthorizationGuide`
 
-`Sentry Authorization
-Guide <http://kylo-docs-test.readthedocs.io/en/latest/EnableSentryAuthorizationGuide.html>`__
+:doc:`../security/EnableSentryAuthorizationGuide`
 
 Kerberos
 --------
@@ -189,8 +181,7 @@ Optional: Configure Kerberos For Your Local HDP Sandbox
 This guide will help you enabled kerberos for your local development
 sandbox for development and testing
 
-`HDP 2.4 Sandbox Kerberos Setup
-Example <http://kylo-docs-test.readthedocs.io/en/latest/KerberosInstallationExample-Cloudera.html>`__
+:doc:`KerberosInstallationExample-Cloudera`
 
 Step 1: Configure Kerberos for NiFi
 -----------------------------------
@@ -198,8 +189,7 @@ Step 1: Configure Kerberos for NiFi
 Some additional configuration is required for allowing the NiFi
 components to work with a Kerberos cluster.
 
-`Configure NiFi for
-Kerberos <http://kylo-docs-test.readthedocs.io/en/latest/NiFiConfigurationforaKerberosCluster.html>`__
+:doc:`NiFiConfigurationforaKerberosCluster`
 
 Step 2: Configure Kerberos for Kylo Applications
 ------------------------------------------------
@@ -207,8 +197,7 @@ Step 2: Configure Kerberos for Kylo Applications
 Additional configuration is required for allowing some features in the
 Kylo applications to work with a Kerberos cluster.
 
-`Configure Kylo for
-Kerberos <http://kylo-docs-test.readthedocs.io/en/latest/KylosConfigurationforaKerborosCluster.html>`__
+:doc:`KylosConfigurationforaKerborosCluster`
 
 Configuration Files
 ===================
@@ -304,9 +293,7 @@ S3 Support For Data Transformations
 -----------------------------------
 
 Spark requires additional configuration in order to read Hive tables
-located in S3. Please see the `Accessing S3 from the Data
-Wrangler <http://kylo-docs-test.readthedocs.io/en/latest/AccessingS3fromtheDataWrangler.html>`__
-how-to article.
+located in S3. Please see the :doc:`../how-to-guides/AccessingS3fromtheDataWrangler` how-to article.
 
 Starting and Stopping the Services Manually
 ===========================================
@@ -456,19 +443,5 @@ UI.
 Appendix: Postgres Integration
 ==============================
 
-`Postgres Hive Metadata
-Configuration <http://kylo-docs-test.readthedocs.io/en/latest/Postgres_Hive_Metadata_Configuration.html>`__
+:doc:`Postgres Hive Metadata Configuration <Postgres_Hive_Metadata_Configuration>`
 
-Icons and Icon Colors
-=====================
-
-Icons and the colors can be configured using 2 JSON files found in the
-/opt/kylo/kylo-services/conf directory
-
-**icons.json** This is an array of valid icon names. Valid names that
-can be used can be found here:
-https://klarsys.github.io/angular-material-icons/. Kylo is currently
-using the 0.7.1 version of this icon package.
-
-**icon-colors.json** This is an array of objects indicating the display
-name and respective Hex color code.

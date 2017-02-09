@@ -295,18 +295,18 @@ Create a keytab file for NiFi user.
 
 Make sure all services started properly. Kerberos is successfully installed on the cluster.
 
-.. |image1| image:: media/kerberos-hdp/1.png
+.. |image1| image:: ../media/kerberos-hdp/1.png
    :width: 5.79174in
    :height: 3.25785in
-.. |image2| image:: media/kerberos-hdp/2.png
+.. |image2| image:: ../media/kerberos-hdp/2.png
    :width: 6.50000in
    :height: 3.65625in
-.. |image3| image:: media/kerberos-hdp/3.png
+.. |image3| image:: ../media/kerberos-hdp/3.png
    :width: 6.50000in
    :height: 4.31250in
-.. |image4| image:: media/kerberos-hdp/4.png
+.. |image4| image:: ../media/kerberos-hdp/4.png
    :width: 6.50000in
    :height: 3.65625in
-.. |image5| image:: media/kerberos-hdp/5.png
+.. |image5| image:: ../media/kerberos-hdp/5.png
    :width: 6.50000in
    :height: 3.65625in

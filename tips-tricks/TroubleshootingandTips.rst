@@ -665,4 +665,4 @@ creation, you can set the SerDe and properties:
 
 Notice the double escape required!
 
-.. |image1| image:: media/kylo-troubleshooting/2_executesparkjob.png
+.. |image1| image:: ../media/kylo-troubleshooting/2_executesparkjob.png

@@ -78,27 +78,27 @@ Configure CreateHDFSFolder Processor
    You have successfully configured NiFi DataLake Platform for HDFS Encryption.
 
 
-.. |image1| image:: media/Config_NiFi/E1.png
+.. |image1| image:: ../media/Config_NiFi/E1.png
    :width: 2.86302in
    :height: 2.48958in
-.. |image2| image:: media/Config_NiFi/E2.png
+.. |image2| image:: ../media/Config_NiFi/E2.png
    :width: 6.13542in
    :height: 2.09430in
-.. |image3| image:: media/Config_NiFi/E3.png
+.. |image3| image:: ../media/Config_NiFi/E3.png
    :width: 6.13542in
    :height: 1.94223in
-.. |image4| image:: media/Config_NiFi/E4.png
+.. |image4| image:: ../media/Config_NiFi/E4.png
    :width: 5.91667in
    :height: 4.48238in
-.. |image5| image:: media/Config_NiFi/E5.png
+.. |image5| image:: ../media/Config_NiFi/E5.png
    :width: 6.01042in
    :height: 2.64368in
-.. |image6| image:: media/Config_NiFi/E5.5.png
+.. |image6| image:: ../media/Config_NiFi/E5.5.png
    :width: 5.98958in
    :height: 1.52811in
-.. |image7| image:: media/Config_NiFi/E6.png
+.. |image7| image:: ../media/Config_NiFi/E6.png
    :width: 5.97917in
    :height: 2.44788in
-.. |image8| image:: media/Config_NiFi/E7.png
+.. |image8| image:: ../media/Config_NiFi/E7.png
    :width: 5.98958in
    :height: 2.76314in

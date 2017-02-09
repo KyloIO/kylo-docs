@@ -86,15 +86,15 @@ Ranger authorization is configured successfully. Now create a feed from the
 Kylo UI and create feed for testing.
 
 
-.. |image1| image:: media/ranger-enable-auth/R1.png
+.. |image1| image:: ../media/ranger-enable-auth/R1.png
    :width: 6.50000in
    :height: 1.24861in
-.. |image2| image:: media/ranger-enable-auth/R2.png
+.. |image2| image:: ../media/ranger-enable-auth/R2.png
    :width: 6.50000in
    :height: 1.96250in
-.. |image3| image:: media/ranger-enable-auth/R3.png
+.. |image3| image:: ../media/ranger-enable-auth/R3.png
    :width: 6.50000in
    :height: 3.28403in
-.. |image4| image:: media/ranger-enable-auth/R4.png
+.. |image4| image:: ../media/ranger-enable-auth/R4.png
    :width: 6.50000in
    :height: 3.08194in

@@ -308,24 +308,24 @@ KeyTab Generation
 ..
 
 
-.. |image1| image:: media/kerberos-install/CK111.png
+.. |image1| image:: ../media/kerberos-install/CK111.png
    :width: 5.91892in
    :height: 1.58407in
-.. |image2| image:: media/kerberos-install/CK2.png
+.. |image2| image:: ../media/kerberos-install/CK2.png
    :width: 5.94884in
    :height: 1.49293in
-.. |image3| image:: media/kerberos-install/CK3.png
+.. |image3| image:: ../media/kerberos-install/CK3.png
    :width: 5.84438in
    :height: 2.93343in
-.. |image4| image:: media/kerberos-install/CK4.png
+.. |image4| image:: ../media/kerberos-install/CK4.png
    :width: 5.93220in
    :height: 3.05483in
-.. |image5| image:: media/kerberos-install/CK5.png
+.. |image5| image:: ../media/kerberos-install/CK5.png
    :width: 5.99531in
    :height: 3.11679in
-.. |image6| image:: media/kerberos-install/CK6.png
+.. |image6| image:: ../media/kerberos-install/CK6.png
    :width: 5.87381in
    :height: 2.87415in
-.. |image7| image:: media/kerberos-install/CK8.png
+.. |image7| image:: ../media/kerberos-install/CK8.png
    :width: 5.86554in
    :height: 2.62320in

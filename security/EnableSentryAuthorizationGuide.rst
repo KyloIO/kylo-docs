@@ -179,12 +179,12 @@ Enabled HDFS ACL
 Sentry authorization is configured successfully. Now create a feed from
 the Kylo UI and test it.
 
-.. |image1| image:: media/sentry-auth/S1.png
+.. |image1| image:: ../media/sentry-auth/S1.png
    :width: 6.50000in
    :height: 2.35556in
-.. |image2| image:: media/sentry-auth/S2.png
+.. |image2| image:: ../media/sentry-auth/S2.png
    :width: 6.50000in
    :height: 2.87500in
-.. |image3| image:: media/sentry-auth/S3.png
+.. |image3| image:: ../media/sentry-auth/S3.png
    :width: 6.50000in
    :height: 2.98819in
