@@ -22,13 +22,14 @@ The NiFi Flow Cache REST API
 
 |image6|
 
-The above REST endpoints allow you to manage the cache.  Kylo and the ReportingTask should make sure this cache is sync'd and working but if you need to you can use these REST endpoints to manage, view, and reset the cache.
-Note: If for some reason the Reporting task is reporting Kylo as "not available" you can try to reset the cache to fix the problem using the "reset-cache" endpoint.
+The above REST endpoints allow you to manage the cache.  Kylo and the reporting task will automatically keep the cache in sync.  If needed you can use these REST endpoints to manage, view, and reset the cache.
+
+*Note*: If for some reason the reporting task is reporting Kylo as "not available" you can try to reset the cache to fix the problem using the "reset-cache" endpoint.
 
 
 Reporting Task Creation
 -----------------------
-When Kylo starts up it will attempt to auto create the controller service and reporting task in NiFi that is needed to communicate with Kylo.  If this process doesnt work or if you want more control you can manually create it following the steps below.
+When Kylo starts up it will attempt to auto create the controller service and reporting task in NiFi that is needed to communicate with Kylo.  If this process doesn't work or if you want more control you can manually create it following the steps below.
 
 Manual Setup of the Reporting Task in NiFi
 ------------------------------------------
