@@ -1,15 +1,37 @@
 
-===================================
-NiFi Kylo Provenance Reporting Task
-===================================
+==========================
+NiFi & Kylo Reporting Task
+==========================
 
 Introduction
-============
+------------
 
-Kylo communicates with NiFi via a NiFi Reporting Task.  
+Kylo communicates with NiFi via a NiFi reporting task.  As flow files run through NiFi each processor creates provenance events that track metadata and status information of a running flow.
+A NiFi reporting task is used to query for these provenance events and send them to Kylo to display job and step executions in Kylo's operations manager.
 
-Setup the Reporting Task in NiFi
-================================
+Processing Provenance Events
+----------------------------
+
+The Kylo reporting task relies on Kylo to provide feed information which it uses to augment the provenance event giving the NiFi event feed context.  It does this through a cache called the "NiFi Flow Cache" which is maintained by the Kylo Feed manager and kept in sync with the NiFi reporting task.
+As feeds are created and updated this cache is updated and synchronized back to the NiFi reporting task upon processing provenance events.  The cache is exposed through a REST API, which is used by the reporting task.
+
+|image5|
+
+The NiFi Flow Cache REST API
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|image6|
+
+The above REST endpoints allow you to manage the cache.  Kylo and the ReportingTask should make sure this cache is sync'd and working but if you need to you can use these REST endpoints to manage, view, and reset the cache.
+Note: If for some reason the Reporting task is reporting Kylo as "not available" you can try to reset the cache to fix the problem using the "reset-cache" endpoint.
+
+
+Reporting Task Creation
+-----------------------
+When Kylo starts up it will attempt to auto create the controller service and reporting task in NiFi that is needed to communicate with Kylo.  If this process doesnt work or if you want more control you can manually create it following the steps below.
+
+Manual Setup of the Reporting Task in NiFi
+------------------------------------------
 
 1. To setup the reporting task click the menu icon on the top right and
    click the "Controller Settings" link.
@@ -45,8 +67,8 @@ Setup the Reporting Task in NiFi
 
      
 
-Kylo Provenance Event Reporting Task Properties
-===============================================
+Reporting Task Properties
+-------------------------
 
 +------------------------------------+---------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | **Name**                           | **Default Value**   | **Allowable Values**                                                                                                                                                      | **Description**                                                                                                                                                                                                                                                                                                                  |
@@ -54,7 +76,6 @@ Kylo Provenance Event Reporting Task Properties
 | Metadata Service                   |                     | Controller Service API:                                                                                                                                                   | Kylo metadata service                                                                                                                                                                                                                                                                                                            |
 |                                    |                     | MetadataProviderService                                                                                                                                                   |                                                                                                                                                                                                                                                                                                                                  |
 |                                    |                     | Implementation:                                                                                                                                                           |                                                                                                                                                                                                                                                                                                                                  |
-|                                    |                     | `MetadataProviderSelectorService <http://localhost:8079/nifi-docs/components/com.thinkbiganalytics.nifi.v2.core.metadata.MetadataProviderSelectorService/index.html>`__   |                                                                                                                                                                                                                                                                                                                                  |
 +------------------------------------+---------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Max batch feed events per second   | 10                  |                                                                                                                                                                           | The maximum number of events/second for a given feed allowed to go through to Kylo. This is used to safeguard Kylo against a feed that starts acting like a stream                                                                                                                                                               |
 |                                    |                     |                                                                                                                                                                           | Supports Expression Language: true                                                                                                                                                                                                                                                                                               |
@@ -100,3 +121,9 @@ Kylo Provenance Event Reporting Task Properties
 .. |image4| image:: ../media/provenance-reporting/4-settings.png
    :width: 6.19792in
    :height: 2.93750in
+.. |image5| image:: ../media/provenance-reporting/nifi-flow-cache-rest-api.png
+   :width: 989px
+   :height: 372px
+.. |image6| image:: ../media/provenance-reporting/KyloProvenanceReportingTask.png
+   :width: 1803px
+   :height: 1352px
