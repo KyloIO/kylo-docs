@@ -14,7 +14,7 @@ The documentation for the site is organized into a few sections:
 * :ref:`quickstart`
 * :ref:`about`
 * :ref:`installation`
-* :ref:`security`
+* :ref:`security_toc`
 * :ref:`how_to_guides`
 * :ref:`developer_guides`
 * :ref:`user_guides`
@@ -46,7 +46,7 @@ The documentation for the site is organized into a few sections:
     installation/KyloDeploymentGuide
     installation/InstallationConfigurationGuide
 
-.. _security:
+.. _security_toc:
 .. toctree::
     :maxdepth: 2
     :caption: Security
