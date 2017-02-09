@@ -16,7 +16,7 @@ Kylo is a full-featured Data Lake platform built on Apache Hadoop and Spark. Kyl
 +--------------------------------------------+---------------------------------------------------+
 | Data Ingest                                |Users can easily configure feeds in guided UI      |
 +--------------------------------------------+---------------------------------------------------+
-| Visual data transformation                 |Visual sql builder and data wrangling              |
+| Data Preparation                           |Visual sql builder and data wrangling              |
 +--------------------------------------------+---------------------------------------------------+
 | Operations dashboard                       |Feed health and service monitoring                 |
 +--------------------------------------------+---------------------------------------------------+
@@ -76,7 +76,7 @@ Kylo is a full-featured Data Lake platform built on Apache Hadoop and Spark. Kyl
 +--------------------------------------------+---------------------------------------------------+
 | HDFS                                       | Store data in HDFS                                |
 +--------------------------------------------+---------------------------------------------------+
-| HIVE/Impala                                | Store data in Hive tables                         |
+| HIVE                                       | Store data in Hive tables                         |
 +--------------------------------------------+---------------------------------------------------+
 | HBase                                      | Store data in HBase                               |
 +--------------------------------------------+---------------------------------------------------+
@@ -126,7 +126,7 @@ Kylo is a full-featured Data Lake platform built on Apache Hadoop and Spark. Kyl
 +--------------------------------------------+---------------------------------------------------+
 | Dashboard                                  | KPIs, alerts, performance, troubleshooting        |
 +--------------------------------------------+---------------------------------------------------+
-| Built-in Scheduler                         | Timer, Cron-style based on Quartz engine          |
+| Scheduler                                  | Timer, Cron-style based on Quartz engine          |
 +--------------------------------------------+---------------------------------------------------+
 | SLA Monitoring                             | Service level agreements tied to feed performance |
 +--------------------------------------------+---------------------------------------------------+
