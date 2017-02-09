@@ -51,12 +51,11 @@ The documentation for the site is organized into a few sections:
     :maxdepth: 2
     :caption: Security
 
-    security/AccessControl
-    security/KyloKerberosSPNEGO
-    security/EnableRangerAuthorizationGuide
-    security/EnableSentryAuthorizationGuide
-    security/KerberosHDP
-
+    Access Control <security/AccessControl>
+    Ranger <security/EnableRangerAuthorizationGuide>
+    Sentry <security/EnableSentryAuthorizationGuide>
+    Kerberos <security/KerberosHDP>
+    Kerberos SPNEGO <security/KyloKerberosSPNEGO>
 
 .. _how_to_guides:
 .. toctree::
