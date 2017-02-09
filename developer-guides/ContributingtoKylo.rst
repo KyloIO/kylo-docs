@@ -77,10 +77,28 @@ Requests <#pull-requests>`__.
 Development Guidelines
 ======================
 
-Our source code follows the `Google Java Style
-Guide <https://google.github.io/styleguide/javaguide.html>`__ with a
-line-length of 200 characters and an indent of 4 spaces. We adhere to
-the following guidelines to ensure consistency in our code:
+We adhere to the following guidelines to ensure consistency in our code:
+
+-  Our source code follows the `Google Java Style Guide
+   <https://google.github.io/styleguide/javaguide.html>`__ with the following
+   exceptions noted:
+
+   +  indent of 4 spaces.
+   +  line-length of 200 characters
+   +  formatter markers in comments are enabled
+   +  To import our standard IntelliJ formatter:
+
+     - Download the template from here: :download:`thinkbig-googlestyle-intellij-v2-1.xml<../media/kylo-contributing/thinkbig-googlestyle-intellij-v2-1.xml>`.
+     - Preferences -> Editor -> Code Style -> Manage
+     - Select "Import" and choose the downloaded preferences file
+     - Make sure the "scheme" shows thinkbig-googlestyle-intellij-vX.Y
+
+   +  To import our standard Eclipse formatter:
+
+     - Download the template from here: :download:`thinkbig-googlestyle-eclipse-v2-1.xml<../media/kylo-contributing/thinkbig-googlestyle-eclipse-v2-1.xml>`.
+     - Preferences -> Java -> Code Style -> Formatter
+     - Select "Import" and choose the downloaded preferences file
+     - Make sure the "Active Profile" shows thinkbig-googlestyle-eclipse-v2-1.xml
 
 -  Public API methods should be documented. Use Swagger annotations for
    REST endpoints.
