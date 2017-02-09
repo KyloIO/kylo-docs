@@ -9,14 +9,14 @@ About
 This document provides procedures for installing the Kylo framework, as well as Elasticsearch, NiFi, and ActiveMQ.
 Installation options allow new users to choose the method best suited to their interests and installation environments:
 
-  - Setup Wizard - For local development and single node development boxes, the Setup Wizard can be used to quickly bootstrap your environment to get you up and running.
-  - Manual - In a test and production environment, you will likely be installing on multiple nodes. The Manual Deployment Guide provides detailed instructions on how to install each individual component.
+  - **Setup Wizard** - For local development and single node development boxes, the :doc:`../installation/KyloSetupWizardDeploymentGuide` can be used to quickly bootstrap your environment to get you up and running.
+  - **Manual** - In a test and production environment, you will likely be installing on multiple nodes. The Manual Deployment Guide provides detailed instructions on how to install each individual component.
 
 For advanced users, there are additional installation options:
 
-  - Cloudera EC2 Docker Sandbox – The Cloudera Docker Sandbox Deployment Guide details options for those who want to deploy Kylo to a single node Cloudera sandbox in AWS. This is useful when you need to get a quick Cloudera instance running to test Kylo but don’t have the resources to install a Cloudera cluster.
-  - TAR File – The previous install options are Red-Hat Package Manager (RPM) installations, but TAR File installation is available for those who want to install Kylo in a folder other than /opt/kylo, or want to run Kylo as a different user. See the Kylo TAR File Installation guide.
-  - HDP 2.5 Cluster Ranger/Kerberos with 2 Edge Nodes - Kylo may also be installed, with minimal admin privileges, on an HDP 2.5 cluster. A procedure is provided for configuring an installation with NiFi on a separate edge node. See the HDP 2.5 Kerberos/Ranger Cluster Deployment Guide.
+  - **Cloudera EC2 Docker Sandbox** – The Cloudera Docker Sandbox Deployment Guide details options for those who want to deploy Kylo to a single node Cloudera sandbox in AWS. This is useful when you need to get a quick Cloudera instance running to test Kylo but don’t have the resources to install a Cloudera cluster.
+  - **TAR File** – The previous install options are Red-Hat Package Manager (RPM) installations, but TAR File installation is available for those who want to install Kylo in a folder other than /opt/kylo, or want to run Kylo as a different user. See the Kylo TAR File Installation guide.
+  - **HDP 2.5 Cluster Ranger/Kerberos with 2 Edge Nodes** - Kylo may also be installed, with minimal admin privileges, on an HDP 2.5 cluster. A procedure is provided for configuring an installation with NiFi on a separate edge node. See the HDP 2.5 Kerberos/Ranger Cluster Deployment Guide.
 
 Whichever installation option you choose, refer to the System Requirements and Prerequisites sections of this Kylo Deployment Guide to verify that your system is prepared for a Kylo Installation.
 
