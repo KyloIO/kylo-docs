@@ -14,7 +14,7 @@ Installation options allow new users to choose the method best suited to their i
 
 For advanced users, there are additional installation options:
 
-  - **Cloudera EC2 Docker Sandbox** – The :doc:`../installation/ClouderaDockerSandboxDeploymentGuide`details options for those who want to deploy Kylo to a single node Cloudera sandbox in AWS. This is useful when you need to get a quick Cloudera instance running to test Kylo but don’t have the resources to install a Cloudera cluster.
+  - **Cloudera EC2 Docker Sandbox** – The :doc:`../installation/ClouderaDockerSandboxDeploymentGuide` details options for those who want to deploy Kylo to a single node Cloudera sandbox in AWS. This is useful when you need to get a quick Cloudera instance running to test Kylo but don’t have the resources to install a Cloudera cluster.
   - **TAR File** – The previous install options are Red-Hat Package Manager (RPM) installations, but TAR File installation is available for those who want to install Kylo in a folder other than /opt/kylo, or want to run Kylo as a different user. See the :doc:`../installation/KyloTARFileInstallation`.
   - **HDP 2.5 Cluster Ranger/Kerberos with 2 Edge Nodes** - Kylo may also be installed, with minimal admin privileges, on an HDP 2.5 cluster. A procedure is provided for configuring an installation with NiFi on a separate edge node. See the :doc:`../installation/HDP25ClusterDeploymentGuide`.
 
