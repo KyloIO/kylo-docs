@@ -6,10 +6,19 @@ Deployment Guide
 About
 =====
 
-This document explains how to install the Kylo
-framework as well as Elasticsearch, NiFi, and ActiveMQ. There are a few
-different ways you can install it depending on whether or not you are
-installing all components on one edge node vs. multiple nodes.
+This document provides procedures for installing the Kylo framework, as well as Elasticsearch, NiFi, and ActiveMQ.
+Installation options allow new users to choose the method best suited to their interests and installation environments:
+
+  - Setup Wizard - For local development and single node development boxes, the Setup Wizard can be used to quickly bootstrap your environment to get you up and running.
+  - Manual - In a test and production environment, you will likely be installing on multiple nodes. The Manual Deployment Guide provides detailed instructions on how to install each individual component.
+
+For advanced users, there are additional installation options:
+
+  - Cloudera EC2 Docker Sandbox – The Cloudera Docker Sandbox Deployment Guide details options for those who want to deploy Kylo to a single node Cloudera sandbox in AWS. This is useful when you need to get a quick Cloudera instance running to test Kylo but don’t have the resources to install a Cloudera cluster.
+  - TAR File – The previous install options are Red-Hat Package Manager (RPM) installations, but TAR File installation is available for those who want to install Kylo in a folder other than /opt/kylo, or want to run Kylo as a different user. See the Kylo TAR File Installation guide.
+  - HDP 2.5 Cluster Ranger/Kerberos with 2 Edge Nodes - Kylo may also be installed, with minimal admin privileges, on an HDP 2.5 cluster. A procedure is provided for configuring an installation with NiFi on a separate edge node. See the HDP 2.5 Kerberos/Ranger Cluster Deployment Guide.
+
+Whichever installation option you choose, refer to the System Requirements and Prerequisites sections of this Kylo Deployment Guide to verify that your system is prepared for a Kylo Installation.
 
 System Requirements
 ===================
@@ -81,83 +90,17 @@ installing the Kylo stack. You will need a user/group including:
 | **Note**   | Those exact names are required (note the lowercase).   |
 +------------+--------------------------------------------------------+
 
-Installation
-============
-
-There are multiple procedures you can follow to deploy Kylo. In a test
-and production environment you will likely want to follow the manual
-installation guide as it has more detailed instructions on how to
-install each individual component. For local development and 1 node
-development boxes you can leverage the setup wizard procedure to quickly
-bootstrap your environment.
-
-+--------+---------------------------------------------------------------------------------------------------------------------+
-| Note   | If you are installing Kylo on SUSE please read the following doc to work around ActiveMQ and Elasticsearch issues   |
-+--------+---------------------------------------------------------------------------------------------------------------------+
-
-:doc:`../how-to-guides/SuseConfigurationChanges`
-
-Install Procedure 1:
----------------------
-
-Installing all components on one edge node with internet access using
-the wizard.
-
-Follow the steps below to install Kylo using the
-installation wizard script. This is convenient for local sandboxes
-(HDP/Cloudera) and 1 node development boxes. The WGET command is used to
-download binaries so internet access is required.
-
-Click on the below link to go to the wizard driven deployment
-instructions
-
-:doc:`KyloSetupWizardDeploymentGuide`
-
-Install Procedure 2:
---------------------
-
-Installing each component manually.
-
-Click on the below link to go to the manual deployment instructions
-
-:doc:`KyloManualDeploymentGuide`
-
-
-Install Procedure 3:
---------------------
-
-Cloudera EC2 Docker Sandbox.
-
-This is an option for those who want to deploy Kylo to a single node
-Cloudera sandbox in AWS. This is useful when you need to get a quick
-Cloudera instance running to test Kylo but don’t have the resources to
-install a Cloudera cluster
-
-:doc:`ClouderaDockerSandboxDeploymentGuide`
-
-Install Procedure 4:
---------------------
-
-Tar file install (instead of RPM).
-
-This is optional for those who have to install Kylo in a different
-folder than /opt/kylo or run as a different user.
-
-:doc:`KyloTARFileInstallation`
-
-Install Procedure 5:
---------------------
-
-HDP 2.5 Cluster Ranger/Kerberos with 2 Edge Nodes.
-
-This document provides an example of how to install Kylo on an HDP 2.5
-cluster with minimal admin privileges and shows how to configure
-installation with NiFi on a separate edge node.
-
-:doc:`HDP25ClusterDeploymentGuide`
-
 Configuration
 =============
+
+Configuration for Kylo services are located under the following files:
+
+.. code-block:: shell
+
+  /opt/kylo/kylo-ui/conf/application.properties
+  /opt/kylo/kylo-services/conf/application.properties
+
+..
 
 Ranger / Sentry
 ---------------
@@ -199,18 +142,12 @@ Kylo applications to work with a Kerberos cluster.
 
 :doc:`KylosConfigurationforaKerborosCluster`
 
-Configuration Files
-===================
+SUSE Configuration
+------------------
 
-Configuration for Kylo services are located under
-the following files:
+If you are installing Kylo on SUSE please read the following document to work around ActiveMQ and Elasticsearch issues.
 
-.. code-block:: shell
-
-  /opt/kylo/kylo-ui/conf/application.properties
-  /opt/kylo/kylo-services/conf/application.properties
-
-..
+:doc:`../how-to-guides/SuseConfigurationChanges`
 
 Encrypting Configuration Property Values
 ----------------------------------------
@@ -444,4 +381,3 @@ Appendix: Postgres Integration
 ==============================
 
 :doc:`Postgres Hive Metadata Configuration <Postgres_Hive_Metadata_Configuration>`
-
