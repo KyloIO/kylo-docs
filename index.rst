@@ -62,24 +62,24 @@ The documentation for the site is organized into a few sections:
     :maxdepth: 1
     :caption: How to guides
 
-    how-to-guides/SetupaNiFiClusterinaKyloSandbox
-    how-to-guides/ConfigureNiFiWithSSL
-    how-to-guides/ConfigNififorHDFSEncryption
-    how-to-guides/NiFiKyloProvenanceReportingTask
+    NiFi Cluster <how-to-guides/SetupaNiFiClusterinaKyloSandbox>
+    NiFi & SSL <how-to-guides/ConfigureNiFiWithSSL>
+    NiFi & HDF Encryption <how-to-guides/ConfigNififorHDFSEncryption>
+    NiFi & Kylo Reporting Task <how-to-guides/NiFiKyloProvenanceReportingTask>
     how-to-guides/NiFiProcessorsDocs
-    how-to-guides/AccessingS3fromtheDataWrangler
-    how-to-guides/FeedLineage
+    S3 & Data Wrangler <how-to-guides/AccessingS3fromtheDataWrangler>
+    Feed Lineage <how-to-guides/FeedLineage>
     how-to-guides/SentryInstallationGuide
-    how-to-guides/SuseConfigurationChanges
+    SUSE Configuration <how-to-guides/SuseConfigurationChanges>
 
 .. _developer_guides:
 .. toctree::
     :maxdepth: 1
     :caption: Developer guides
 
-    developer-guides/KyloDeveloperGuide
-    developer-guides/ContributingtoKylo
-    developer-guides/KyloRestApi
+    Developer Guide <developer-guides/KyloDeveloperGuide>
+    Contributing <developer-guides/ContributingtoKylo>
+    REST API <developer-guides/KyloRestApi>
 
 .. _user_guides:
 .. toctree::
