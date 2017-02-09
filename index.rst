@@ -30,7 +30,7 @@ The documentation for the site is organized into a few sections:
 
 .. _about:
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
     :caption: About
 
     about/KyloFeatures
@@ -39,7 +39,7 @@ The documentation for the site is organized into a few sections:
 
 .. _installation:
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
     :caption: Installation
 
     installation/KyloDeploymentChecklist
@@ -48,7 +48,7 @@ The documentation for the site is organized into a few sections:
 
 .. _security_toc:
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
     :caption: Security
 
     Access Control <security/AccessControl>
@@ -83,14 +83,14 @@ The documentation for the site is organized into a few sections:
 
 .. _user_guides:
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
     :caption: User guides
 
     user-guides/KyloOperationsGuide
 
 .. _tips_tricks:
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
     :caption: Tips and tricks
 
     tips-tricks/TroubleshootingandTips
