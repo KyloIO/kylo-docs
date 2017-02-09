@@ -126,5 +126,5 @@ Reporting Task Properties
    :width: 989px
    :height: 372px
 .. |image6| image:: ../media/provenance-reporting/KyloProvenanceReportingTask.png
-   :width: 1803px
-   :height: 1352px
+   :width: 1759px
+   :height: 1280px
