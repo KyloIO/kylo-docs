@@ -24,15 +24,15 @@ The NiFi Flow Cache REST API
 
 The above REST endpoints allow you to manage the cache.  Kylo and the reporting task will automatically keep the cache in sync.  If needed you can use these REST endpoints to manage, view, and reset the cache.
 
-*Note*: If for some reason the reporting task is reporting Kylo as "not available" you can try to reset the cache to fix the problem using the "reset-cache" endpoint.
+**Note** : If for some reason the reporting task is reporting Kylo as "not available" you can try to reset the cache to fix the problem using the "reset-cache" endpoint.
 
 
 Reporting Task Creation
 -----------------------
 When Kylo starts up it will attempt to auto create the controller service and reporting task in NiFi that is needed to communicate with Kylo.  If this process doesn't work or if you want more control you can manually create it following the steps below.
 
-Manual Setup of the Reporting Task in NiFi
-------------------------------------------
+Manual Setup
+~~~~~~~~~~~~
 
 1. To setup the reporting task click the menu icon on the top right and
    click the "Controller Settings" link.
@@ -46,13 +46,13 @@ Manual Setup of the Reporting Task in NiFi
    Service** and set the properties to communicate with your Kylo
    instance.
 
-|image1|
+    |image1|
 
-|image2|   
+    |image2|   
 
 3. Next add the reporting task.
 
-|image3|
+    |image3|
 
     A rundown of the various properties can be found by hovering over
     the **?** icon or at the bottom of this page:\ ** Kylo Provenance
@@ -122,9 +122,9 @@ Reporting Task Properties
 .. |image4| image:: ../media/provenance-reporting/4-settings.png
    :width: 6.19792in
    :height: 2.93750in
-.. |image5| image:: ../media/provenance-reporting/nifi-flow-cache-rest-api.png
-   :width: 989px
-   :height: 372px
-.. |image6| image:: ../media/provenance-reporting/KyloProvenanceReportingTask.png
+.. |image5| image:: ../media/provenance-reporting/KyloProvenanceReportingTask.png
    :width: 1759px
    :height: 1280px
+.. |image6| image:: ../media/provenance-reporting/nifi-flow-cache-rest-api.png
+   :width: 989px
+   :height: 372px
