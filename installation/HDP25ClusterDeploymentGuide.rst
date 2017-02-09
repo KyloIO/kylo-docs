@@ -108,13 +108,21 @@ Before installing the Kylo stack, prepare the cluster by doing the following:
 
    f. Assign the "kylo" user to the "Cluster User" role.
 
-5. Apply the Spark ORC fix: 
+5. If your spark job fails when running in HDP 2.4.2 while interacting with an empty ORC table, you will get this error message:
 
-   Edit the configuration file with the details provided in this article:
+.. code-block:: shell
 
-        `Spark SQL Fails on Empty ORC Table HDP 2.4 and HDP 2.5 <http://kylo.readthedocs.io/en/latest/Spark+SQL+fails+on+empty+ORC+table%2C+HDP+2.4.2%2C+HDP+2.5   .html>`__
+   "ExecuteSparkJob[id=1fb1b9a0-e7b5-4d85-87d2-90d7103557f6] java.util.NoSuchElementException: next on empty iterator "
 
-   You can add this property in Ambari rather than editing the configuration file.  
+..
+
+   This is due to a change Hortonworks added to change how it loads the schema for the table. To fix the issue you can modify the following properties:
+
+   a. On the edge node edit /usr/hdp/current/spark-client/conf/spark-defaults.conf.
+
+   b. Add this line to the file "spark.sql.hive.convertMetastoreOrc false"
+
+   Optionally, rather than editing the configuration file you can add this property in Ambari:
 
    a. Login to Ambari.
 
