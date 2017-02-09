@@ -199,7 +199,7 @@ utilities.
 
 ..
 
-11. Confirm that this admin principal has permissions in the KDC ACL. Using a text editor, open the KDC ACL file:
+10. Confirm that this admin principal has permissions in the KDC ACL. Using a text editor, open the KDC ACL file:
 
 .. code-block:: shell
 
@@ -207,7 +207,7 @@ utilities.
 
 ..
 
-12. Ensure that the KDC ACL file includes an entry so to allow the admin principal to administer the KDC for your specific realm. The file should have an entry:
+11. Ensure that the KDC ACL file includes an entry so to allow the admin principal to administer the KDC for your specific realm. The file should have an entry:
 
 .. code-block:: shell
 
@@ -215,7 +215,7 @@ utilities.
 
 ..
 
-13. After editing and saving the kadm5.acl file, you must restart the kadmin process.
+12. After editing and saving the kadm5.acl file, you must restart the kadmin process.
 
 .. code-block:: shell
 
@@ -223,13 +223,13 @@ utilities.
 
 ..
 
-14. Create a user in Linux by typing the adduser command shown below. We will use this user to test whether the Kerberos authentication is working or not. We will first run the command hadoop fs –ls / but switching to this user. And we will run the same command again when we enable Kerberos.
+13. Create a user in Linux by typing the adduser command shown below. We will use this user to test whether the Kerberos authentication is working or not. We will first run the command hadoop fs –ls / but switching to this user. And we will run the same command again when we enable Kerberos.
 
 .. code-block:: shell
 
-    adduser testUser
-    su testUser
-    hadoop fs –ls /
+      adduser testUser
+      su testUser
+      hadoop fs –ls /
 
 ..
 
