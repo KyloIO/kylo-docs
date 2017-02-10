@@ -233,7 +233,7 @@ Job Parameters
 
 A Job has a set of parameters that are used as inputs into that job. The
 top section of the Job Details page displays these
-parameters.\ |image16|
+parameters. |image16|
 
 Job Context Data
 ~~~~~~~~~~~~~~~~
@@ -407,15 +407,15 @@ Below is a sample properties file with Spring Datasource properties for spring b
     #
     #Postgres datasource configuration
     #
-    #spring.datasource.url=jdbc:postgresql://localhost:5432/pipeline\_db
+    #spring.datasource.url=jdbc:postgresql://localhost:5432/pipeline_db
     #spring.datasource.driverClassName=org.postgresql.Driver
     #spring.datasource.username=root
     #spring.datasource.password=thinkbig
     #spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
     ###
     # Current available authentication/authorization profiles:
-    # \* auth-simple - Uses authenticationService.username and authenticationService.password for authentication (development only)
-    # \* auth-file - Uses users.properties and roles.properties for authentication and role assignment
+    # * auth-simple - Uses authenticationService.username and authenticationService.password for authentication (development only)
+    # * auth-file - Uses users.properties and roles.properties for authentication and role assignment
     #
     spring.profiles.active=auth-simple
     authenticationService.username=dladmin
@@ -436,7 +436,7 @@ Below is a sample properties file with Spring Datasource properties for spring b
     server.port=8420
     #
     # General configuration - Note: Supported configurations include
-    STANDALONE, BUFFER\_NODE\_ONLY, BUFFER\_NODE, EDGE\_NODE
+    STANDALONE, BUFFER_NODE_ONLY, BUFFER_NODE, EDGE_NODE
     #
     application.mode=STANDALONE
     #
@@ -480,19 +480,19 @@ Below is a sample properties file with Spring Datasource properties for spring b
     elasticsearch.clustername=demo-cluster
     ## used to map Nifi Controller Service connections to the User Interface
     ## naming convention for the property is
-    nifi.service.NIFI\_CONTROLLER\_SERVICE\_NAME.NIFI\_PROPERTY\_NAME
+    nifi.service.NIFI_CONTROLLER_SERVICE_NAME.NIFI_PROPERTY_NAME
     ##anything prefixed with nifi.service will be used by the UI. Replace
     Spaces with underscores and make it lowercase.
     nifi.service.mysql.password=
-    nifi.service.example\_mysql\_connection\_pool.password=
+    nifi.service.example_mysql_connection_pool.password=
     jms.activemq.broker.url:tcp://localhost:61616
     jms.client.id=thinkbig.feedmgr
     ## nifi Property override with static defaults
     ##Static property override supports 2 usecases
     # 1) store properties in the file starting with the prefix defined in the "PropertyExpressionResolver class" default = config.
     # 2) store properties in the file starting with
-    "nifi.<PROCESSORTYPE>.<PROPERTY\_KEY> where PROCESSORTYPE and
-    PROPERTY\_KEY are all lowercase and the spaces are substituted with underscore
+    "nifi.<PROCESSORTYPE>.<PROPERTY_KEY> where PROCESSORTYPE and
+    PROPERTY_KEY are all lowercase and the spaces are substituted with underscore
     ##Below are Ambari configuration options for Hive Metastore and Spark location
     config.hive.schema=hive
     nifi.executesparkjob.sparkhome=/usr/hdp/current/spark-client
@@ -500,7 +500,7 @@ Below is a sample properties file with Spring Datasource properties for spring b
     #config.hive.schema=metastore
     #nifi.executesparkjob.sparkhome=/usr/lib/spark
     ## how often should SLAs be checked
-    sla.cron.default=0 0/5 \* 1/1 \* ? \*
+    sla.cron.default=0 0/5 * 1/1 * ? *
 
 ..
 
@@ -603,13 +603,13 @@ Configuring JVM Memory
 ~~~~~~~~~~~~~~~~~~~~~~
 
 You can adjust the memory setting of the Kylo Service using the
-KYLO\_SERVICES \_OPTS environment variable. This may be necessary if
+KYLO_SERVICES _OPTS environment variable. This may be necessary if
 the application is experiencing OutOfMemory errors. These would appear
 in the log files.
 
 .. code-block:: shell
 
-    export KYLO\_SERVICES\_OPTS=Xmx2g
+    export KYLO_SERVICES_OPTS=Xmx2g
 
 ..
 
@@ -662,7 +662,7 @@ clicking Feed Manager on the left pane.
 |image33|
 
 Then navigate to the Templates tab. All of the templates that have been
-registered in this instance of Kylo will be listed here.\ |image34|
+registered in this instance of Kylo will be listed here. |image34|
 
 To export a template, click the Export button for that template. This
 will download a zip archive of the template.
