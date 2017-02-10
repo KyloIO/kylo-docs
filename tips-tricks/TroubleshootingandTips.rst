@@ -396,8 +396,8 @@ Configure YARN to handle additional concurrent jobs:
 Note: In Ambari, find this under Yarn | Configs (advanced) |
 Scheduler.
 
-Spark SQL fails on empty ORC table
-==================================
+Spark SQL fails on empty ORC and Parquet tables
+================================================
 
 Problem
 -------
@@ -427,6 +427,7 @@ To fix the issue you can modify the following property
 .. code-block:: none
 
     spark.sql.hive.convertMetastoreOrc false
+    spark.sql.hive.convertMetastoreParquet false
 
 See: https://community.hortonworks.com/questions/44637/spark-sql-fails-on-empty-orc-table-hdp-242.html
 
