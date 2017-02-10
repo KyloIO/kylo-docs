@@ -14,12 +14,12 @@ All client node should have java installed on it.
 .. code-block:: shell
 
     $ java -version
-      $ java version "1.8.0\_92"
-    $ OpenJDK Runtime Environment (rhel-2.6.4.0.el6\_7-x86\_64 u95-b00)
+      $ java version "1.8.0_92"
+    $ OpenJDK Runtime Environment (rhel-2.6.4.0.el6_7-x86_64 u95-b00)
       $ OpenJDK 64-Bit Server VM (build 24.95-b01, mixed mode)
 
-    $ echo $JAVA\_HOME
-    $ /opt/java/jdk1.8.0\_92/
+    $ echo $JAVA_HOME
+    $ /opt/java/jdk1.8.0_92/
 
 ..
 
@@ -53,7 +53,7 @@ Create NiFi Super User Policy in Hive
 
 4. Create policy as shown in image below.
 
-    Policy Name : ranger\_superuser\_policy
+    Policy Name : ranger_superuser_policy
     Select user : nifi
     Permission : All
 
@@ -73,7 +73,7 @@ Create hive user policy in HDFS repository.
 
 .. code-block:: shell
 
-    Policy Name : hive\_user\_policy\_kylo
+    Policy Name : hive_user_policy_kylo
     Resource Path : /model.db/
                                         /app/warehouse/
                                         /etl/

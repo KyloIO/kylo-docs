@@ -110,7 +110,7 @@ Configuration Steps
     # This property will default the URL when importing a template using
     the thrift connection
 
-    nifi.service.hive\_thrift\_service.database\_connection\_url=jdbc:hive2://localhost:10000/default;principal=hive/sandbox.hortonworks.com@sandbox.hortonworks.com
+    nifi.service.hive_thrift_service.database_connection_url=jdbc:hive2://localhost:10000/default;principal=hive/sandbox.hortonworks.com@sandbox.hortonworks.com
 
     # Set Kerberos to true for the kylo-services application and set
     the 3 required properties
@@ -126,11 +126,11 @@ Configuration Steps
     # uncomment these 3 properties to default all NiFi processors that
     have these fields. Saves time when importing a template
 
-    nifi.all\_processors.kerberos\_principal=nifi
+    nifi.all_processors.kerberos_principal=nifi
 
-    nifi.all\_processors.kerberos\_keytab=/etc/security/keytabs/nifi.headless.keytab
+    nifi.all_processors.kerberos_keytab=/etc/security/keytabs/nifi.headless.keytab
 
-    nifi.all\_processors.hadoop\_configuration\_resources=/etc/hadoop/conf/core-site.xml,/etc/hadoop/conf/hdfs-site.xml
+    nifi.all_processors.hadoop_configuration_resources=/etc/hadoop/conf/core-site.xml,/etc/hadoop/conf/hdfs-site.xml
 
 4. Restart the kylo-services and kylo-spark-shell.
 

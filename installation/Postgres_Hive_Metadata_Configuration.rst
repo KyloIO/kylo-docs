@@ -31,7 +31,7 @@ application.properties file.
 Elasticsearch NiFi Template Changes
 ===================================
 
-The index\_schema\_service template is used to query out feed metadata
+The index_schema_service template is used to query out feed metadata
 from the hive tables, which is then stored in elasticsearch so it can be
 searched for in Kylo. The following steps need to be taken to the
 template to support Postgres:
@@ -84,13 +84,13 @@ Edit the “Query Hive Table Schema” processor and make two changes:
 
 .. code-block:: shell
 
-      SELECT d."NAME", d."OWNER\_NAME", t."CREATE\_TIME", t."TBL\_NAME",
-      t."TBL\_TYPE",
-        c."COLUMN\_NAME", c."TYPE\_NAME"
-        FROM "COLUMNS\_V2" c
-        JOIN "TBLS" t ON c."CD\_ID"=t."TBL\_ID"
-        JOIN "DBS" d on d."DB\_ID" = t."DB\_ID"
-        where d."NAME" = '${category}'and t."TBL\_NAME" like '${feed}';
+      SELECT d."NAME", d."OWNER_NAME", t."CREATE_TIME", t."TBL_NAME",
+      t."TBL_TYPE",
+        c."COLUMN_NAME", c."TYPE_NAME"
+        FROM "COLUMNS_V2" c
+        JOIN "TBLS" t ON c."CD_ID"=t."TBL_ID"
+        JOIN "DBS" d on d."DB_ID" = t."DB_ID"
+        where d."NAME" = '${category}'and t."TBL_NAME" like '${feed}';
 
 ..
 

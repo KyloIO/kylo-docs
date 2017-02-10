@@ -18,7 +18,7 @@ Determine Service Account and Kylo Install Location
 ---------------------------------------------------
 
 Let’s assume, for this example, that Kylo will run under an account name
-"kylo\_user", and it will be installed in /opt/apps/.
+"kylo_user", and it will be installed in /opt/apps/.
 
 Step 1: Install the RPM and copy the /opt/kylo folder to a temporary location.
 ----------------------------------------------------------------------------------
@@ -68,13 +68,13 @@ Step 5: Create Log Folders
 .. code-block:: shell
 
     [root@sandbox tb-test]# mkdir /var/log/kylo-services
-    [root@sandbox tb-test]# chown kylo\_user:kylo\_user
+    [root@sandbox tb-test]# chown kylo_user:kylo_user
     /var/log/kylo-services
     [root@sandbox tb-test]# mkdir /var/log/kylo-ui
-    [root@sandbox tb-test]# chown kylo\_user:kylo\_user
+    [root@sandbox tb-test]# chown kylo_user:kylo_user
     /var/log/kylo-ui
     [root@sandbox tb-test]# mkdir /var/log/kylo-spark-shell
-    [root@sandbox tb-test]# chown kylo\_user:kylo\_user
+    [root@sandbox tb-test]# chown kylo_user:kylo_user
     /var/log/kylo-spark-shell/
 
 ..
@@ -86,7 +86,7 @@ Set this line to be the correct user:
 
 .. code-block:: shell
 
-    RUN\_AS\_USER=kylo\_user
+    RUN_AS_USER=kylo_user
 
 ..
 

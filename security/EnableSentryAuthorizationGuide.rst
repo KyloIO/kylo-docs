@@ -14,12 +14,12 @@ All client nodes should have java installed.
 .. code-block:: shell
 
     $ java -version
-      $ java version "1.8.0\_92"
-    $ OpenJDK Runtime Environment (rhel-2.6.4.0.el6\_7-x86\_64 u95-b00)
+      $ java version "1.8.0_92"
+    $ OpenJDK Runtime Environment (rhel-2.6.4.0.el6_7-x86_64 u95-b00)
       $ OpenJDK 64-Bit Server VM (build 24.95-b01, mixed mode)
 
-    $ echo $JAVA\_HOME
-    $ /opt/java/jdk1.8.0\_92/
+    $ echo $JAVA_HOME
+    $ /opt/java/jdk1.8.0_92/
 
 Cluster Requirements
 --------------------
@@ -153,9 +153,9 @@ Once sentryAdmin is group is part of Sentry Admin list ,it will be able
 to create policies in Sentry but it sentryAdmin will not be allowed to
 read/write any table. We need to grant privileges to sentryAdmin group.
 
-    CREATE ROLE admin\_role
-    GRANT ALL ON SERVER server1 TO ROLE admin\_role;
-    GRANT ROLE admin\_role TO GROUP sentryAdmin;
+    CREATE ROLE admin_role
+    GRANT ALL ON SERVER server1 TO ROLE admin_role;
+    GRANT ROLE admin_role TO GROUP sentryAdmin;
 
 Enabled HDFS ACL
 ----------------
