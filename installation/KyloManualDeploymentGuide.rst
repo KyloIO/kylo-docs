@@ -87,14 +87,14 @@ everything to one node, the setup directory would typically be:
 
 .. code-block:: shell
 
-    SETUP\_DIR=/opt/kylo/setup
+    SETUP_DIR=/opt/kylo/setup
 
 Sometimes administrators install NiFi on a second edge node to communicate with a Hortonworks or Cloudera cluster. In this case, copy
-the setup folder to nodes that do not have the Kylo applications installed. In that case, use this SETUP\_DIR command:
+the setup folder to nodes that do not have the Kylo applications installed. In that case, use this SETUP_DIR command:
 
 .. code-block:: shell
 
-    SETUP\_DIR=/tmp/kylo-install
+    SETUP_DIR=/tmp/kylo-install
 
 Optional - Offline Mode
 =======================
@@ -110,7 +110,7 @@ c. Copy the /opt/kylo/setup/kylo-install.tar file to the node you install the RP
 
 d. Run "tar -xvf kylo-install.tar".
 
-e. Note the directory name where you untar’d the files. This will be referred to in the rest of the doc by OFFLINE\_SETUP\_DIR.
+e. Note the directory name where you untar’d the files. This will be referred to in the rest of the doc by OFFLINE_SETUP_DIR.
 
 The script will download all application binaries and puts them in their respective directory in the setup folder. Last it will TAR up the setup folder.
 
@@ -181,10 +181,10 @@ install to that schema. Run the following script:
 
 .. code-block:: shell
 
-    $ <SETUP\_DIR>/sql/mysql/setup-mysql.sh [db\_host\_or\_ip] [db\_user] [db\_password]
+    $ <SETUP_DIR>/sql/mysql/setup-mysql.sh [db_host_or_ip] [db_user] [db_password]
 
 +-------------+------------------------------------------------------------------------------------------------------------------------------------------+
-| **Note:**   | The HDP sandbox doesn't have a password set for the root user so you would run "<SETUP\_DIR>/sql/mysql/setup-mysql.sh localhost root".   |
+| **Note:**   | The HDP sandbox doesn't have a password set for the root user so you would run "<SETUP_DIR>/sql/mysql/setup-mysql.sh localhost root".   |
 +-------------+------------------------------------------------------------------------------------------------------------------------------------------+
 
 Step 5: Install and Configure Elasticsearch
@@ -206,7 +206,7 @@ stack you will likely want to leverage the same instance.
 
 .. code-block:: shell
 
-        $ <SETUP\_DIR>/elasticsearch/install-elasticsearch.sh
+        $ <SETUP_DIR>/elasticsearch/install-elasticsearch.sh
 
 ..
 
@@ -214,14 +214,14 @@ stack you will likely want to leverage the same instance.
 
 .. code-block:: shell
 
-        $ <SETUP\_DIR>/elasticsearch/install-elasticsearch.sh -o <SETUP\_DIR>
+        $ <SETUP_DIR>/elasticsearch/install-elasticsearch.sh -o <SETUP_DIR>
 
           Example:  /tmp/kylo-install/setup/elasticsearch/install-elasticsearch.sh -o /tmp/kylo-install/setup
 
 ..
 
 **Option 2**: Use an existing Elasticsearch.
-To leverage an existing Elasticsearch instance, you must update all feed templates that you created with the correct Elasticsearch URL.You can do this by going to the "Additional Properties" tab for that feed. If you added any re-usable flow templates you will need to modify the Elasticsearch processors in NiFI.
+To leverage an existing Elasticsearch instance, you must update all feed templates that you created with the correct Elasticsearch URL.You can do this by going to the "Additional Properties" tab for that feed. If you added any reusable flow templates you will need to modify the Elasticsearch processors in NiFI.
 
 +------------+-----------------------------------------------------------------------------------------------------+
 | **Tip:**   | To test that Elasticsearch is running type "curl localhost:9200". You should see a JSON response.   |
@@ -249,7 +249,7 @@ The included ActiveMQ script was meant to speed up installation in a sandbox or 
 
 .. code-block:: shell
 
-        $ <SETUP\_DIR>/activemq/install-activemq.sh -o <SETUP\_DIR>
+        $ <SETUP_DIR>/activemq/install-activemq.sh -o <SETUP_DIR>
 
        Example: /opt/kylo/setup/activemq/install-activemq.sh -o /opt/kylo/setup
 
@@ -297,11 +297,11 @@ When installing ActiveMQ, you might see the following error:
 
 .. code-block:: shell
 
-        ERROR: Configuration variable JAVA\_HOME or JAVACMD is not defined correctly. (JAVA\_HOME='', JAVACMD='java')
+        ERROR: Configuration variable JAVA_HOME or JAVACMD is not defined correctly. (JAVA_HOME='', JAVACMD='java')
 
-This indicates that ActiveMQ isn’t properly using Java as it is set in the system. To fix this issue, use the following steps to set the JAVA\_HOME directly:
+This indicates that ActiveMQ isn’t properly using Java as it is set in the system. To fix this issue, use the following steps to set the JAVA_HOME directly:
 
-   1. Edit /etc/default/activemq and set JAVA\_HOME at the bottom.
+   1. Edit /etc/default/activemq and set JAVA_HOME at the bottom.
 
    2. Restart ActiveMQ (service activemq restart).
 
@@ -354,14 +354,14 @@ There are 3 scenarios for configuring the applications with Java 8.
 
 **Scenario 1**: Java 8 is installed on the system and is already in the classpath.
 
-In this case you need to remove the default JAVA\_HOME used as part of the install. Run the following script:
+In this case you need to remove the default JAVA_HOME used as part of the install. Run the following script:
 
 .. code-block:: shell
 
     For kylo-ui and kylo-services
-    $ <SETUP\_DIR>/java/remove-default-kylo-java-home.sh
+    $ <SETUP_DIR>/java/remove-default-kylo-java-home.sh
 
-To test this you can look at each file referenced in the scripts for kylo-ui and kylo-services to validate the 2 lines setting and exporting the JAVA\_HOME are gone.
+To test this you can look at each file referenced in the scripts for kylo-ui and kylo-services to validate the 2 lines setting and exporting the JAVA_HOME are gone.
 
 **Scenario 2**: Install Java in the default /opt/java/current location.
 
@@ -371,7 +371,7 @@ To test this you can look at each file referenced in the scripts for kylo-ui and
 
 .. code-block:: shell
 
-         $ <SETUP\_DIR>/java/install-java8.sh
+         $ <SETUP_DIR>/java/install-java8.sh
 
 ..
 
@@ -379,13 +379,13 @@ To test this you can look at each file referenced in the scripts for kylo-ui and
 
 .. code-block:: shell
 
-         $ <SETUP\_DIR>/java/install-java8.sh -o <SETUP\_DIR>
+         $ <SETUP_DIR>/java/install-java8.sh -o <SETUP_DIR>
 
          Example: /opt/kylo/setup/java/install-java8.sh -o /opt/kylo/setup
 
 ..
 
-**Scenario 3**: Java 8 is installed on the node, but it’s not in the default JAVA\_HOME path.
+**Scenario 3**: Java 8 is installed on the node, but it’s not in the default JAVA_HOME path.
 
 If you already have Java 8 installed and want to reference that one one there is a script to remove the existing path and another script to set the new path for the kylo apps.
 
@@ -393,20 +393,20 @@ If you already have Java 8 installed and want to reference that one one there is
 
         For kylo-ui and kylo-services
         $ /opt/kylo/setup/java/remove-default-kylo-java-home.sh
-        $ /opt/kylo/setup/java/change-kylo-java-home.sh <PATH\_TO\_JAVA\_HOME>
+        $ /opt/kylo/setup/java/change-kylo-java-home.sh <PATH_TO_JAVA_HOME>
 
 Step 8: Install Java Cryptographic Extension
 ============================================
 
-The Java 8 install script above will automatically download and install the \ `*Java Cryptographic Extension* <http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html>`__.
+The Java 8 install script above will automatically download and install the `*Java Cryptographic Extension* <http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html>`__.
 This extension is required to allow encrypted property values in the Kylo configuration files. If you already have a Java 8 installed on the
 system, you can install the Java Cryptographic Extension by running the following script:
 
 .. code-block:: shell
 
-    $ <SETUP\_DIR>/java/install-java-crypt-ext.sh <PATH\_TO\_JAVA\_HOME>
+    $ <SETUP_DIR>/java/install-java-crypt-ext.sh <PATH_TO_JAVA_HOME>
 
-This script downloads the extension zip file and extracts the replacement jar files into the JRE security directory ($JAVA\_HOME/jre/lib/security). It will first make backup copies of the original jars it is replacing.
+This script downloads the extension zip file and extracts the replacement jar files into the JRE security directory ($JAVA_HOME/jre/lib/security). It will first make backup copies of the original jars it is replacing.
 
 Step 9: Install NiFi
 ====================
@@ -424,7 +424,7 @@ This method downloads and installs NiFi, and also installs and configures the Ky
 
 .. code-block:: shell
 
-          $ <SETUP\_DIR>/nifi/install-nifi.sh
+          $ <SETUP_DIR>/nifi/install-nifi.sh
 
 ..
 
@@ -432,15 +432,15 @@ This method downloads and installs NiFi, and also installs and configures the Ky
 
 .. code-block:: shell
 
-          $ <SETUP\_DIR>/nifi/install-nifi.sh -o <SETUP\_DIR>
+          $ <SETUP_DIR>/nifi/install-nifi.sh -o <SETUP_DIR>
 
 ..
 
-    b. Update JAVA\_HOME (default is /opt/java/current).
+    b. Update JAVA_HOME (default is /opt/java/current).
 
 .. code-block:: shell
 
-          $ <SETUP\_DIR>/java/change-nifi-java-home.sh <path to JAVA\_HOME>
+          $ <SETUP_DIR>/java/change-nifi-java-home.sh <path to JAVA_HOME>
 
 ..
 
@@ -448,7 +448,7 @@ This method downloads and installs NiFi, and also installs and configures the Ky
 
 .. code-block:: shell
 
-          $ <SETUP\_DIR>/nifi/install-kylo-components.sh
+          $ <SETUP_DIR>/nifi/install-kylo-components.sh
 
 ..
 
@@ -460,7 +460,7 @@ In some cases you may have a separate instance of NiFi or Hortonworks Data Flow 
 | **Note:**   | If Java 8 isn't being used for the existing instance then you will be required to change it.   |
 +-------------+------------------------------------------------------------------------------------------------+
 
-    a. Copy the <SETUP\_DIR>/nifi/kylo- \*.nar and kylo-spark- \*.jar files to the node NiFi is running on. If it’s on the same
+    a. Copy the <SETUP_DIR>/nifi/kylo- *.nar and kylo-spark- *.jar files to the node NiFi is running on. If it’s on the same
        node you can skip this step.
 
     b. Shutdown the NiFi instance.
@@ -469,35 +469,35 @@ In some cases you may have a separate instance of NiFi or Hortonworks Data Flow 
 
 .. code-block:: shell
 
-           $ mkdir -p <NIFI\_HOME>/kylo/lib/app
+           $ mkdir -p <NIFI_HOME>/kylo/lib/app
 
 ..
 
-    d. Copy the kylo-\*.nar files to the <NIFI\_HOME>/kylo/lib directory.
+    d. Copy the kylo-*.nar files to the <NIFI_HOME>/kylo/lib directory.
 
-    e. Create a directory called "app" in the <NIFI\_HOME>/lib directory.
+    e. Create a directory called "app" in the <NIFI_HOME>/lib directory.
 
 .. code-block:: shell
 
-           $ mkdir <NIFI\_HOME>/lib/app
+           $ mkdir <NIFI_HOME>/lib/app
 
 ..
 
-    f. Copy the kylo-spark-\*.jar files to the <NIFI\_HOME>/kylo/lib/app directory.
+    f. Copy the kylo-spark-*.jar files to the <NIFI_HOME>/kylo/lib/app directory.
 
     g. Create symbolic links for all of the jars. Below is an example of how to create it for one NAR file and one JAR file. At the time of
        this writing there are 8 NAR files and 3 spark JAR files.
 
 .. code-block:: shell
 
-           $ ln -s <NIFI\_HOME>/kylo/lib/kylo-nifi-spark-nar-\*.nar <NIFI\_HOME>/lib/kylo-nifi-spark-nar.nar
+           $ ln -s <NIFI_HOME>/kylo/lib/kylo-nifi-spark-nar-*.nar <NIFI_HOME>/lib/kylo-nifi-spark-nar.nar
 
-           $ ln -s <NIFI\_HOME>/kylo/lib/app/kylo-spark-interpreter-\*-jar-with-dependencies.jar
-                     <NIFI\_HOME>/lib/app/kylo-spark-interpreter-jar-with-dependencies.jar
+           $ ln -s <NIFI_HOME>/kylo/lib/app/kylo-spark-interpreter-*-jar-with-dependencies.jar
+                     <NIFI_HOME>/lib/app/kylo-spark-interpreter-jar-with-dependencies.jar
 
 ..
 
-    h. Modify <NIFI\_HOME>/conf/nifi.properties and update the following property. This modifies NiFI to use our custom provenance repository to send data to the kylo-services application.
+    h. Modify <NIFI_HOME>/conf/nifi.properties and update the following property. This modifies NiFI to use our custom provenance repository to send data to the kylo-services application.
 
 .. code-block:: shell
 
