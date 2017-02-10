@@ -61,7 +61,7 @@ and you likely will not want to change it to Java 8. In this case you
 can leverage the mentioned scripts below to download and configure Java
 8 in the /opt/java directory. The scripts will also modify the startup
 scripts for NiFi, kylo-ui and kylo-services to reference the
-/opt/java JAVA\_HOME.
+/opt/java JAVA_HOME.
 
 If you already have Java 8 installed in a different location you will
 have the option to use that as well.
@@ -194,10 +194,10 @@ environment variables:
 .. code-block:: shell
 
     /opt/kylo/kylo-ui/bin/run-kylo-ui.sh
-    export KYLO\_UI\_OPTS= -Xmx4g
+    export KYLO_UI_OPTS= -Xmx4g
 
     /opt/kylo/kylo-services/bin/run-kylo-services.sh
-    export KYLO\_SERVICES\_OPTS= -Xmx4g
+    export KYLO_SERVICES_OPTS= -Xmx4g
 
 ..
 
@@ -207,8 +207,8 @@ Change the Java Home
 --------------------
 
 By default the kylo-services and kylo-ui application set the
-JAVA\_HOME location to /opt/java/current. This can easily be changed by
-editing the JAVA\_HOME environment variable in the following two files:
+JAVA_HOME location to /opt/java/current. This can easily be changed by
+editing the JAVA_HOME environment variable in the following two files:
 
 .. code-block:: shell
 
@@ -217,7 +217,7 @@ editing the JAVA\_HOME environment variable in the following two files:
 
 ..
 
-In addition, if you run the script to modify the NiFI JAVA\_HOME
+In addition, if you run the script to modify the NiFI JAVA_HOME
 variable you will need to edit:
 
 .. code-block:: shell
@@ -320,7 +320,7 @@ The default log locations for the various applications are located at:
 
 .. code-block:: shell
 
-    /var/log/<service\_name>
+    /var/log/<service_name>
 
 ..
 

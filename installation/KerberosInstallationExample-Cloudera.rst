@@ -17,12 +17,12 @@ All client node should have java installed on it.
 
 .. code-block:: shell
 
-    $ java version "1.7.0\_80"
-    $ Java(TM) SE Runtime Environment (build 1.7.0\_80-b15)
+    $ java version "1.7.0_80"
+    $ Java(TM) SE Runtime Environment (build 1.7.0_80-b15)
     $ Java HotSpot(TM) 64-Bit Server VM (build 24.80-b11, mixed mode)
 
-    $ echo $JAVA\_HOME
-    $ /usr/java/jdk1.7.0\_80
+    $ echo $JAVA_HOME
+    $ /usr/java/jdk1.7.0_80
 
 ..
 
@@ -35,15 +35,15 @@ Install Java Cryptography Extensions (JCE)
     oraclelicense=accept-securebackup-cookie"
     http://download.oracle.com/otn-pub/java/jce/7/UnlimitedJCEPolicyJDK7.zip
     -O
-    /usr/java/jdk1.7.0\_80/jre/lib/security/UnlimitedJCEPolicyJDK7.zip
+    /usr/java/jdk1.7.0_80/jre/lib/security/UnlimitedJCEPolicyJDK7.zip
 
-    cd /usr/java/jdk1.7.0\_80/jre/lib/security
+    cd /usr/java/jdk1.7.0_80/jre/lib/security
 
     sudo unzip UnlimitedJCEPolicyJDK7.zip
 
-    sudo cp UnlimitedJCEPolicy/\* .
+    sudo cp UnlimitedJCEPolicy/* .
 
-    #sudo rm -r UnlimitedJCEPolicy\*
+    #sudo rm -r UnlimitedJCEPolicy*
 
     ls -l
 
@@ -119,20 +119,20 @@ On a cluster, go to the master node for installation of Kerberos utilities.
     [logging]
       default = FILE:/var/log/krb5libs.log
       kdc = FILE:/var/log/krb5kdc.log
-      admin\_server = FILE:/var/log/kadmind.log
+      admin_server = FILE:/var/log/kadmind.log
 
     [libdefaults]
-      default\_realm = CLOUDERA
-      dns\_lookup\_realm = false
-      dns\_lookup\_kdc = false
-      ticket\_lifetime = 24h
-      renew\_lifetime = 7d
+      default_realm = CLOUDERA
+      dns_lookup_realm = false
+      dns_lookup_kdc = false
+      ticket_lifetime = 24h
+      renew_lifetime = 7d
       forwardable = true
 
     [realms]
       CLOUDERA = {
       kdc = quickstart.cloudera
-      admin\_server = quickstart.cloudera
+      admin_server = quickstart.cloudera
       }
 
 ..
@@ -142,16 +142,16 @@ On a cluster, go to the master node for installation of Kerberos utilities.
 .. code-block:: shell
 
     [kdcdefaults]
-      kdc\_ports = 88
-      kdc\_tcp\_ports = 88
+      kdc_ports = 88
+      kdc_tcp_ports = 88
 
     [realms]
       CLOUDERA = {
-        #master\_key\_type = aes256-cts
-        acl\_file = /var/kerberos/krb5kdc/kadm5.acl
-        dict\_file = /usr/share/dict/words
-        admin\_keytab = /var/kerberos/krb5kdc/kadm5.keytab
-        supported\_enctypes = aes256-cts:normal aes128-cts:normal
+        #master_key_type = aes256-cts
+        acl_file = /var/kerberos/krb5kdc/kadm5.acl
+        dict_file = /usr/share/dict/words
+        admin_keytab = /var/kerberos/krb5kdc/kadm5.keytab
+        supported_enctypes = aes256-cts:normal aes128-cts:normal
         des3-hmac-sha1:normal arcfour-hmac:normal des-hmac-sha1:normal
         des-cbc-md5:normal des-cbc-crc:normal
       }
@@ -162,15 +162,15 @@ On a cluster, go to the master node for installation of Kerberos utilities.
 
 .. code-block:: shell
 
-    \*/admin@CLOUDERA\*
+    */admin@CLOUDERA*
 
 ..
 
-6. Create the Kerberos Database. Use the utility kdb5\_util to create the Kerberos database. While asking for password , enter password as thinkbig.
+6. Create the Kerberos Database. Use the utility kdb5_util to create the Kerberos database. While asking for password , enter password as thinkbig.
 
 .. code-block:: shell
 
-    kdb5\_util create -s
+    kdb5_util create -s
 
 ..
 
@@ -214,7 +214,7 @@ On a cluster, go to the master node for installation of Kerberos utilities.
 
 .. code-block:: shell
 
-    \*/CLOUDERA\*
+    */CLOUDERA*
 
 ..
 
