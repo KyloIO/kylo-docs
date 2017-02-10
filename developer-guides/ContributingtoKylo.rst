@@ -14,11 +14,9 @@ pull request.
 Reporting Issues
 ================
 
-We monitor `Stack
-Overflow <http://stackoverflow.com/questions/tagged/kylo>`__ for
-questions tagged with *kylo*. If you’re not sure about something then
-please search on `Stack
-Overflow <http://stackoverflow.com/questions/tagged/kylo>`__ first and
+We monitor `Group Groups <https://groups.google.com/forum/#!forum/kylo-community>`__
+for questions. If you’re not sure about something then please search on `Group
+Groups <https://groups.google.com/forum/#!forum/kylo-community>`__ first and
 ask a new question if necessary. Bug reports, feature requests, and pull
 requests can be submitted to our
 `JIRA <https://kylo-io.atlassian.net/>`__ for tracking. If you find an
