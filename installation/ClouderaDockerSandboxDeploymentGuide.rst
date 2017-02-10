@@ -50,7 +50,7 @@ running Docker images.
 
 .. code-block:: shell
 
-    $ ssh -i <private\_key> core@<IP\_ADDRESS>
+    $ ssh -i <private_key> core@<IP_ADDRESS>
 
 Step 2: Create Script to Start Docker Container
 -----------------------------------------------
@@ -112,7 +112,7 @@ Step 3: Login to the Cloudera Container and Start Cloudera Manager
 
     $ /home/cloudera/cloudera-manager --express
 
-3. Login to Cloudera Manager at <EC2\_HOST>:7180 (username/password is
+3. Login to Cloudera Manager at <EC2_HOST>:7180 (username/password is
    cloudera/cloudera ).
 
 4. Start all services in Cloudera Manager.
@@ -152,9 +152,9 @@ Step 4: Build a Cloudera Distribution of Kylo and Copy it to the Docker Containe
 
 .. code-block:: shell
 
-    $ scp -i ~/.ssh/<EC2\_PRIVATE\_KEY>
-    <DLA\_HOME>/install/target/rpm/tkylo/RPMS/noarch/kylo
-    core@<EC2\_IP\_ADDRESS>:/home/core
+    $ scp -i ~/.ssh/<EC2_PRIVATE_KEY>
+    <DLA_HOME>/install/target/rpm/tkylo/RPMS/noarch/kylo
+    core@<EC2_IP_ADDRESS>:/home/core
 
 4. From the CoreOS host, copy the RPM file to the Docker container.
 
@@ -271,7 +271,7 @@ Step 5: Install Kylo in the Docker Container
 
 ..
 
-6. Try logging into <EC2\_HOST>:8400 and <EC2\_HOST>:8079.
+6. Try logging into <EC2_HOST>:8400 and <EC2_HOST>:8079.
 
 Shutting down the container when not in use
 ===========================================

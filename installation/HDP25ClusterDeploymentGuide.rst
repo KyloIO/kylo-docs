@@ -177,7 +177,7 @@ Prepare the Kylo Edge Node
 .. code-block:: console
 
         Example:   
-        GRANT ALL PRIVILEGES ON \*.\* TO 'root'@'KYLO\_EDGE\_NODE\_HOSTNAME'
+        GRANT ALL PRIVILEGES ON *.* TO 'root'@'KYLO_EDGE_NODE_HOSTNAME'
         IDENTIFIED BY 'abc123' WITH GRANT OPTION; FLUSH PRIVILEGES;  
 
 ..
@@ -186,8 +186,8 @@ Prepare the Kylo Edge Node
 
 .. code-block:: console
 
-        CREATE USER 'kylo'@'<KYLO\_EDGE\_NODE>' IDENTIFIED BY 'abc123';
-        grant create, select, insert, update, delete, execute ON kylo.\* to kylo'@'KYLO\_EDGE\_NODE\_HOSTNAME';
+        CREATE USER 'kylo'@'<KYLO_EDGE_NODE>' IDENTIFIED BY 'abc123';
+        grant create, select, insert, update, delete, execute ON kylo.* to kylo'@'KYLO_EDGE_NODE_HOSTNAME';
         FLUSH PRIVILEGES;  
 
 ..
@@ -196,10 +196,10 @@ Prepare the Kylo Edge Node
 
 .. code-block:: console
 
-        GRANT select ON hive.SDS TO 'kylo'@'KYLO\_EDGE\_NODE\_HOSTNAME';
-        GRANT select ON hive.TBLS TO 'kylo'@'KYLO\_EDGE\_NODE\_HOSTNAME';
-        GRANT select ON hive.DBS TO 'kylo'@'KYLO\_EDGE\_NODE\_HOSTNAME';
-        GRANT select ON hive.COLUMNS\_V2 TO 'kylo'@'KYLO\_EDGE\_NODE\_HOSTNAME';   
+        GRANT select ON hive.SDS TO 'kylo'@'KYLO_EDGE_NODE_HOSTNAME';
+        GRANT select ON hive.TBLS TO 'kylo'@'KYLO_EDGE_NODE_HOSTNAME';
+        GRANT select ON hive.DBS TO 'kylo'@'KYLO_EDGE_NODE_HOSTNAME';
+        GRANT select ON hive.COLUMNS_V2 TO 'kylo'@'KYLO_EDGE_NODE_HOSTNAME';   
 
 ..
 
@@ -239,7 +239,7 @@ Prepare the Kylo Edge Node
 .. code-block:: console
 
            [root]$ su - hdfs
-        [hdfs]$ kinit -kt /etc/security/keytabs/hdfs.headless.keytab <hdfs\_principal\_name>
+        [hdfs]$ kinit -kt /etc/security/keytabs/hdfs.headless.keytab <hdfs_principal_name>
         [hdfs]$ hdfs dfs -mkdir /user/kylo
         [hdfs]$ hdfs dfs -chown kylo:kylo /user/kylo
         [hdfs]$ hdfs dfs -ls /user   
@@ -267,7 +267,7 @@ Prepare the NiFi Edge Node
 
 .. code-block:: console
 
-        GRANT ALL PRIVILEGES ON \*.\* TO 'kylo'@'nifi\_edge\_node' IDENTIFIED BY 'abc123';
+        GRANT ALL PRIVILEGES ON *.* TO 'kylo'@'nifi_edge_node' IDENTIFIED BY 'abc123';
         FLUSH PRIVILEGES;  
 
 ..
@@ -293,7 +293,7 @@ Prepare the NiFi Edge Node
 .. code-block:: console
 
         [root]$ su - hdfs
-        [hdfs]$ kinit -kt /etc/security/keytabs/hdfs.headless.keytab <hdfs\_principal\_name>
+        [hdfs]$ kinit -kt /etc/security/keytabs/hdfs.headless.keytab <hdfs_principal_name>
         [hdfs]$ hdfs dfs -mkdir /user/nifi
         [hdfs]$ hdfs dfs -chown nifi:nifi /user/nifi
         [hdfs]$ hdfs dfs -ls /user   
@@ -316,10 +316,10 @@ Create the Keytabs for "nifi" and "kylo" Users
 .. code-block:: console
 
         [root]# kadmin.local
-        kadmin.local: addprinc -randkey "kylo/<KYLO\_EDGE\_HOSTNAME>@US-WEST-2.COMPUTE.INTERNAL"
-        kadmin.local: addprinc -randkey "nifi/<NIFI\_EDGE\_HOSTNAME>@US-WEST-2.COMPUTE.INTERNAL"
-        kadmin.local: xst -k /tmp/kylo.service.keytab kylo/<KYLO\_EDGE\_HOSTNAME>@US-WEST-2.COMPUTE.INTERNAL
-        kadmin.local: xst -k /tmp/nifi.service.keytab nifi/<NIFI\_EDGE\_HOSTNAME>@US-WEST-2.COMPUTE.INTERNAL  
+        kadmin.local: addprinc -randkey "kylo/<KYLO_EDGE_HOSTNAME>@US-WEST-2.COMPUTE.INTERNAL"
+        kadmin.local: addprinc -randkey "nifi/<NIFI_EDGE_HOSTNAME>@US-WEST-2.COMPUTE.INTERNAL"
+        kadmin.local: xst -k /tmp/kylo.service.keytab kylo/<KYLO_EDGE_HOSTNAME>@US-WEST-2.COMPUTE.INTERNAL
+        kadmin.local: xst -k /tmp/nifi.service.keytab nifi/<NIFI_EDGE_HOSTNAME>@US-WEST-2.COMPUTE.INTERNAL  
 
 ..
 
@@ -359,10 +359,10 @@ Create the Keytabs for "nifi" and "kylo" Users
 .. code-block:: console
 
         [root keytabs]# su - kylo
-        [kylo ~]$ kinit -kt /etc/security/keytabs/kylo.service.keytab kylo/<KYLO\_EDGE\_HOSTNAME>@US-WEST-2.COMPUTE.INTERNAL
+        [kylo ~]$ kinit -kt /etc/security/keytabs/kylo.service.keytab kylo/<KYLO_EDGE_HOSTNAME>@US-WEST-2.COMPUTE.INTERNAL
         [kylo ~]$ klist
         [kylo ~]$ klist
-        Ticket cache: FILE:/tmp/krb5cc\_496
+        Ticket cache: FILE:/tmp/krb5cc_496
         Default principal: kylo/ip-172-31-42-133.us-west-2.compute.internal@US-WEST-2.COMPUTE.INTERNAL
         Valid starting Expires Service principal
         11/29/2016 22:37:57 11/30/2016 22:37:57 krbtgt/US-WEST-2.COMPUTE.INTERNAL@US-WEST-2.COMPUTE.INTERNAL   
@@ -390,10 +390,10 @@ Create the Keytabs for "nifi" and "kylo" Users
 .. code-block:: console
 
     [root keytabs]# su - nifi
-    [nifi ~]$ kinit -kt /etc/security/keytabs/nifi.service.keytab nifi/i<NIFI\_EDGE\_HOSTNAME>@US-WEST-2.COMPUTE.INTERNAL
+    [nifi ~]$ kinit -kt /etc/security/keytabs/nifi.service.keytab nifi/i<NIFI_EDGE_HOSTNAME>@US-WEST-2.COMPUTE.INTERNAL
     [nifi ~]$ klist
-    Ticket cache: FILE:/tmp/krb5cc\_497
-    Default principal: nifi/<NIFI\_EDGE\_HOSTNAME>@US-WEST-2.COMPUTE.INTERNAL
+    Ticket cache: FILE:/tmp/krb5cc_497
+    Default principal: nifi/<NIFI_EDGE_HOSTNAME>@US-WEST-2.COMPUTE.INTERNAL
     Valid starting Expires Service principal
     11/29/2016 22:40:08 11/30/2016 22:40:08 krbtgt/US-WEST-2.COMPUTE.INTERNAL@US-WEST-2.COMPUTE.INTERNAL   
 
@@ -461,7 +461,7 @@ Install NiFi on the NiFi Edge Node
 .. code-block:: console
 
     [root]# vi /opt/nifi/ext-config/config.properties   
-    jms.activemq.broker.url=tcp://<KYLO\_EDGE\_HOST>:61616  
+    jms.activemq.broker.url=tcp://<KYLO_EDGE_HOST>:61616  
 
 ..
 
@@ -522,7 +522,7 @@ Install the Kylo Application on the Kylo Edge Node
 .. code-block:: console
 
     $ vi /etc/elasticsearch/elasticsearch.yml
-    network.host: localhost,<KYLO\_EDGE\_HOST>  
+    network.host: localhost,<KYLO_EDGE_HOST>  
 
 ..
 
@@ -534,7 +534,7 @@ Install the Kylo Application on the Kylo Edge Node
 
     kerberos.kylo.kerberosEnabled=true
     kerberos.kylo.hadoopConfigurationResources=/etc/hadoop/conf/core-site.xml,/etc/hadoop/conf/hdfs-site.xml
-    kerberos.kylo.kerberosPrincipal=<kylo\_principal\_name>
+    kerberos.kylo.kerberosPrincipal=<kylo_principal_name>
     kerberos.kylo.keytabLocation=/etc/security/keytabs/kylo.service.keytab  
 
 ..
@@ -545,56 +545,56 @@ Install the Kylo Application on the Kylo Edge Node
 
     [root /]# vi /opt/kylo/kylo-services/conf/application.properties   
 
-    spring.datasource.url=jdbc:mysql://<MYSQL\_HOSTNAME>:3306/kylo?noAccessToProcedureBodies=true
+    spring.datasource.url=jdbc:mysql://<MYSQL_HOSTNAME>:3306/kylo?noAccessToProcedureBodies=true
     spring.datasource.username=kylo
     spring.datasource.password=password   
 
-    ambariRestClientConfig.host=<AMBARI\_SERVER\_HOSTNAME>
+    ambariRestClientConfig.host=<AMBARI_SERVER_HOSTNAME>
     ambariRestClientConfig.username=kylo
     ambariRestClientConfig.password=password   
 
-    metadata.datasource.url=jdbc:mysql://<MYSQL\_HOSTNAME>:3306/kylo?noAccessToProcedureBodies=true
+    metadata.datasource.url=jdbc:mysql://<MYSQL_HOSTNAME>:3306/kylo?noAccessToProcedureBodies=true
     metadata.datasource.username=kylo
     metadata.datasource.password=password   
 
-    hive.datasource.url=jdbc:hive2://<HIVE\_SERVER2\_HOSTNAME>:10000/default;principal=<HIVE\_PRINCIPAL\_NAME>   
+    hive.datasource.url=jdbc:hive2://<HIVE_SERVER2_HOSTNAME>:10000/default;principal=<HIVE_PRINCIPAL_NAME>   
 
-    hive.metastore.datasource.url=jdbc:mysql://<MYSQL\_HOSTNAME>:3306/hive
+    hive.metastore.datasource.url=jdbc:mysql://<MYSQL_HOSTNAME>:3306/hive
     hive.metastore.datasource.username=kylo
     hive.metastore.datasource.password=password   
 
-    modeshape.datasource.url=jdbc:mysql://<MYSQL\_HOSTNAME>:3306/kylo?noAccessToProcedureBodies=true
+    modeshape.datasource.url=jdbc:mysql://<MYSQL_HOSTNAME>:3306/kylo?noAccessToProcedureBodies=true
     modeshape.datasource.username=kylo
     modeshape.datasource.password=password   
 
-    nifi.rest.host=<NIFI\_EDGE\_HOST>   
+    nifi.rest.host=<NIFI_EDGE_HOST>   
 
     kerberos.hive.kerberosEnabled=true
     kerberos.hive.hadoopConfigurationResources=/etc/hadoop/conf/core-site.xml,/etc/hadoop/conf/hdfs-site.xml
-    kerberos.hive.kerberosPrincipal=<KYLO\_PRINCIPAL\_NAME>
+    kerberos.hive.kerberosPrincipal=<KYLO_PRINCIPAL_NAME>
     kerberos.hive.keytabLocation=/etc/security/keytabs/kylo.service.keytab   
 
-    nifi.service.mysql.database\_user=kylo
+    nifi.service.mysql.database_user=kylo
     nifi.service.mysql.password=password
-    nifi.service.mysql.database\_connection\_url=jdbc:mysql://<MYSQL\_HOSTNAME>   
+    nifi.service.mysql.database_connection_url=jdbc:mysql://<MYSQL_HOSTNAME>   
 
-    nifi.service.hive\_thrift\_service.database\_connection\_url=jdbc:hive2://<HIVE\_SERVER2\_HOSTNAME>:10000/default;principal=<HIVE\_PRINCIPAL\_NAME>
-    nifi.service.hive\_thrift\_service.kerberos\_principal=<NIFI\_PRINCIPAL\_NAME>
-    nifi.service.hive\_thrift\_service.kerberos\_keytab=/etc/security/keytabs/nifi.service.keytab
-    nifi.service.hive\_thrift\_service.hadoop\_configuration\_resources=/etc/hadoop/conf/core-site.xml,/etc/hadoop/conf/hdfs-site.xml
+    nifi.service.hive_thrift_service.database_connection_url=jdbc:hive2://<HIVE_SERVER2_HOSTNAME>:10000/default;principal=<HIVE_PRINCIPAL_NAME>
+    nifi.service.hive_thrift_service.kerberos_principal=<NIFI_PRINCIPAL_NAME>
+    nifi.service.hive_thrift_service.kerberos_keytab=/etc/security/keytabs/nifi.service.keytab
+    nifi.service.hive_thrift_service.hadoop_configuration_resources=/etc/hadoop/conf/core-site.xml,/etc/hadoop/conf/hdfs-site.xml
 
-       nifi.service.think\_big\_metadata\_service.rest\_client\_url=http://<KYLO\_EDGE\_HOSTNAME>:8400/proxy/metadata   
+       nifi.service.think_big_metadata_service.rest_client_url=http://<KYLO_EDGE_HOSTNAME>:8400/proxy/metadata   
 
     nifi.executesparkjob.sparkmaster=yarn-cluster
-    nifi.executesparkjob.extra\_jars=/usr/hdp/current/spark-client/lib/datanucleus-api-jdo-3.2.6.jar,/usr/hdp/current/spark-client/lib/datanucleus-core-3.2.10.jar,/usr/hdp/current/spark-client/lib/datanucleus-rdbms-3.2.9.jar
-    nifi.executesparkjob.extra\_files=/usr/hdp/current/spark-client/conf/hive-site.xml   
+    nifi.executesparkjob.extra_jars=/usr/hdp/current/spark-client/lib/datanucleus-api-jdo-3.2.6.jar,/usr/hdp/current/spark-client/lib/datanucleus-core-3.2.10.jar,/usr/hdp/current/spark-client/lib/datanucleus-rdbms-3.2.9.jar
+    nifi.executesparkjob.extra_files=/usr/hdp/current/spark-client/conf/hive-site.xml   
 
-    nifi.all\_processors.kerberos\_principal=<NIFI\_PRINCIPAL\_NAME>
-    nifi.all\_processors.kerberos\_keytab=/etc/security/keytabs/nifi.service.keytab
-    nifi.all\_processors.hadoop\_configuration\_resources=/etc/hadoop/conf/core-site.xml,/etc/hadoop/conf/hdfs-site.xml   
+    nifi.all_processors.kerberos_principal=<NIFI_PRINCIPAL_NAME>
+    nifi.all_processors.kerberos_keytab=/etc/security/keytabs/nifi.service.keytab
+    nifi.all_processors.hadoop_configuration_resources=/etc/hadoop/conf/core-site.xml,/etc/hadoop/conf/hdfs-site.xml   
 
     Set the JMS server hostname for the Kylo hosted JMS server
-    config.elasticsearch.jms.url=tcp://<KYLO\_EDGE\_HOST>:61616  
+    config.elasticsearch.jms.url=tcp://<KYLO_EDGE_HOST>:61616  
 
 ..
 
@@ -619,7 +619,7 @@ Install the Kylo Application on the Kylo Edge Node
 
       vi /opt/kylo/kylo-services/conf/authorization.ranger.properties
 
-      ranger.hostName=<RANGER\_HOST\_NAME>
+      ranger.hostName=<RANGER_HOST_NAME>
       ranger.port=6080
       ranger.userName=admin
       ranger.password=admin  
@@ -648,7 +648,7 @@ Install the Kylo Application on the Kylo Edge Node
 
 .. code-block:: console
 
-      http://<KYLO\_EDGE\_HOSTNAME>:8400  
+      http://<KYLO_EDGE_HOSTNAME>:8400  
 
 ..
 
@@ -672,7 +672,7 @@ Create Folders for NiFi standard-ingest Feed
 
     [root]# su - hdfs
     [hdfs ~]$ kinit -kt /etc/security/keytabs/hdfs.service.keytab
-    <HDFS\_PRINCIPAL\_NAME>
+    <HDFS_PRINCIPAL_NAME>
     [hdfs ~]$ hdfs dfs -mkdir /etl
     [hdfs ~]$ hdfs dfs -chown nifi:nifi /etl
     [hdfs ~]$ hdfs dfs -mkdir /model.db
@@ -700,10 +700,10 @@ Create Ranger Policies
 
         name: kylo-nifi-access
         Resource Path:
-          /model.db/\*
-          /archive/\*
-          /etl/\*
-          /app/warehouse/\*
+          /model.db/*
+          /archive/*
+          /etl/*
+          /app/warehouse/*
         user: nifi
         permissions: all  
 
@@ -719,8 +719,8 @@ Create Ranger Policies
 
         Policy Name: kylo-nifi-access
         Hive Database: userdata, default (required for access for some reason)
-        table: \*
-        column: \*
+        table: *
+        column: *
         user: nifi
         permissions: all  
 
@@ -742,8 +742,8 @@ Create Ranger Policies
 
         Policy Name: kylo-kylo-access
         Hive Database: userdata
-        table: \*
-        column: \*
+        table: *
+        column: *
         user: kylo
         permissions: select  
 
@@ -754,9 +754,9 @@ Import Kylo Templates
 
 1. Import Index Schema Template (For Elasticsearch).
 
-   a. Locate the index\_schema\_service.zip file. You will need the file locally to upload it. You can find it in one of two places:
+   a. Locate the index_schema_service.zip file. You will need the file locally to upload it. You can find it in one of two places:
 
-        1) <data\_lake\_accelerator\_project>/samples/feeds/nifi-1.0/
+        1) <data_lake_accelerator_project>/samples/feeds/nifi-1.0/
         2) /opt/kylo/setup/data/feeds/nifi-1.0
 
    b. Go to the the Feeds page in Kylo.
@@ -765,7 +765,7 @@ Import Kylo Templates
 
    d. Select "Import from a file".
 
-   e. Choose the index\_schema\_service.zip file.
+   e. Choose the index_schema_service.zip file.
 
    f. Click "Import Feed".
 
@@ -773,17 +773,17 @@ Import Kylo Templates
 
    a. Login to NiFi.
 
-   b. Go to the system → index\_schema\_service process group
+   b. Go to the system → index_schema_service process group
 
-        1) Edit the "Receive Schema Index Request" processor and set the URL value to <KYLO\_EDGE\_HOSTNAME>.
+        1) Edit the "Receive Schema Index Request" processor and set the URL value to <KYLO_EDGE_HOSTNAME>.
         2) In addition to the URL field you might have to edit the jms-subscription property file as instructed above.
-        3) Edit the "Index Metadata Elasticsearch" processor and set the HostName value to <KYLO\_EDGE\_HOSTNAME>.
+        3) Edit the "Index Metadata Elasticsearch" processor and set the HostName value to <KYLO_EDGE_HOSTNAME>.
 
 3. Import Index Text Template (For Elasticsearch).
 
-   a. Locate the index\_text\_service.zip file. You will need the file locally to upload it. You can find it in one of two places:
+   a. Locate the index_text_service.zip file. You will need the file locally to upload it. You can find it in one of two places:
 
-        - <data\_lake\_accelerator\_project>/samples/feeds/nifi-1.0/
+        - <data_lake_accelerator_project>/samples/feeds/nifi-1.0/
         - /opt/kylo/setup/data/feeds/nifi-1.0
 
    b. Go to the the Feeds page in Kylo.
@@ -792,7 +792,7 @@ Import Kylo Templates
 
    d. Select "Import from a file".
 
-   e. Choose the index\_text\_service.zip file.
+   e. Choose the index_text_service.zip file.
 
    f. Click "Import Feed".
 
@@ -800,13 +800,13 @@ Import Kylo Templates
 
    a. Login to NiFi.
 
-   b. Go to the system → index\_text\_service process group.
+   b. Go to the system → index_text_service process group.
 
-        1) Edit the "Receive Index Request" processor and set the URL value to <KYLO\_EDGE\_HOSTNAME>.
+        1) Edit the "Receive Index Request" processor and set the URL value to <KYLO_EDGE_HOSTNAME>.
 
         2) In addition to the URL field you might have to edit the jms-subscription property file as instructed above.
 
-        3) Edit the "Update Elasticsearch" processor and set the HostName value to <KYLO\_EDGE\_HOSTNAME>.
+        3) Edit the "Update Elasticsearch" processor and set the HostName value to <KYLO_EDGE_HOSTNAME>.
 
 
 5. Note: An issue was found with the getJmsTopic processor URL. If you import the template using localhost and need to change it there is a bug that won’t allow the URL to be changed. The value is persisted to a file.
@@ -828,7 +828,7 @@ Import Kylo Templates
 
 ..
 
-   a. Edit the file named named "jms-subscription-<processor\_id>".
+   a. Edit the file named named "jms-subscription-<processor_id>".
 
    b. Change the hostname.
 
@@ -840,11 +840,11 @@ Import Kylo Templates
 
    b. Manually update the spark validate processor.
 
-      Add this variable to the ${table\_field\_policy\_json\_file}. It should look like this:
+      Add this variable to the ${table_field_policy_json_file}. It should look like this:
 
 .. code-block:: console
 
-       ${table\_field\_policy\_json\_file},/usr/hdp/current/spark-client/conf/hive-site.xml  
+       ${table_field_policy_json_file},/usr/hdp/current/spark-client/conf/hive-site.xml  
 
 ..
 
@@ -856,11 +856,11 @@ Import Kylo Templates
 
    a. Login to NiFi.
 
-   b. Go to the reusable\_templates → standard-ingest process group.
+   b. Go to the reusable_templates → standard-ingest process group.
 
-      1) Edit the "Register Index" processor and set the URL to the <KYLO\_EDGE\_HOSTNAME>.
+      1) Edit the "Register Index" processor and set the URL to the <KYLO_EDGE_HOSTNAME>.
 
-      2) Edit the "Update Index" processor and set teh URL to the <KYLO\_EDGE\_HOSTNAME>.
+      2) Edit the "Update Index" processor and set teh URL to the <KYLO_EDGE_HOSTNAME>.
 
 8. Import the transform feed (Optional).
 
@@ -873,6 +873,6 @@ Create Data Ingest Feed Test
 
 .. code-block:: console
 
-    cp -p <PATH\_TO\_FILE>/userdata1.csv /var/dropzone/
+    cp -p <PATH_TO_FILE>/userdata1.csv /var/dropzone/
 
 ..

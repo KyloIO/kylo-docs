@@ -16,15 +16,15 @@ ActiveMQ
 
 When installing ActiveMQ you might see the following error.
 
-    ERROR: Configuration variable JAVA\_HOME or JAVACMD is not defined
+    ERROR: Configuration variable JAVA_HOME or JAVACMD is not defined
     correctly.
 
-    (JAVA\_HOME='', JAVACMD='java')
+    (JAVA_HOME='', JAVACMD='java')
 
 For some reason ActiveMQ isn’t properly using the system Java that is
-set. To fix this issue I had to set the JAVA\_HOME directly.
+set. To fix this issue I had to set the JAVA_HOME directly.
 
-1. Edit /etc/default/activemq and set JAVA\_HOME at the bottom
+1. Edit /etc/default/activemq and set JAVA_HOME at the bottom
 
 2. Restart ActiveMQ (service activemq restart)
 

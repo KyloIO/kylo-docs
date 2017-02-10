@@ -3,7 +3,7 @@ NiFi and SSL
 
 This link provides additional instruction for enabling SSL for NiFi:
 
-    `*https://docs.hortonworks.com/HDPDocuments/HDF2/HDF-2.0.0/bk\_ambari-installation/content/ch\_enabling-ssl-for-nifi.html* <https://docs.hortonworks.com/HDPDocuments/HDF2/HDF-2.0.0/bk_ambari-installation/content/ch_enabling-ssl-for-nifi.html>`__
+    `*https://docs.hortonworks.com/HDPDocuments/HDF2/HDF-2.0.0/bk_ambari-installation/content/ch_enabling-ssl-for-nifi.html* <https://docs.hortonworks.com/HDPDocuments/HDF2/HDF-2.0.0/bk_ambari-installation/content/ch_enabling-ssl-for-nifi.html>`__
 
 .. rubric:: Creating a Self-signed Cert
 
@@ -31,13 +31,13 @@ This link provides additional instruction for enabling SSL for NiFi:
 
 ..      
 
-4. Update the "tls-toolkit.sh" file and add the current version of JAVA\_HOME.
+4. Update the "tls-toolkit.sh" file and add the current version of JAVA_HOME.
 
    1. Add this line to the start of the script:   
 
 .. code-block:: shell
 
-         export JAVA\_HOME=/opt/java/current
+         export JAVA_HOME=/opt/java/current
 
 ..
 
@@ -80,8 +80,8 @@ This link provides additional instruction for enabling SSL for NiFi:
 
 .. code-block:: shell
 
-    chown nifi -R /opt/nifi/data/ssl/\*
-    chmod 755 -R /opt/nifi/data/ssl/\*
+    chown nifi -R /opt/nifi/data/ssl/*
+    chmod 755 -R /opt/nifi/data/ssl/*
 
 ..
 
@@ -166,8 +166,8 @@ This link provides additional instruction for enabling SSL for NiFi:
     ##the truststore password below needs to match that found in the nifi.properties file (nifi.security.truststorePasswd)
     **nifi.rest.truststorePassword=UsqLPVksIe/taZbfpVIsYElF8qFLhXbeVGRgB0pLjKE**
     nifi.rest.truststoreType=JKS
-    nifi.rest.keystorePath=/opt/nifi/data/ssl/CN=kylo\_OU=NIFI.p12
-    ###value found in the .password file /opt/nifi/data/ssl/CN=kylo\_OU=NIFI.password
+    nifi.rest.keystorePath=/opt/nifi/data/ssl/CN=kylo_OU=NIFI.p12
+    ###value found in the .password file /opt/nifi/data/ssl/CN=kylo_OU=NIFI.password
     **nifi.rest.keystorePassword=mw5ePri**
     nifi.rest.keystoreType=PKCS12
 
@@ -175,7 +175,7 @@ This link provides additional instruction for enabling SSL for NiFi:
 
 .. rubric:: Importing the Client Cert on the Mac
 
-1. Copy the .p12 file that you created above (/opt/nifi/data/ssl/CN=kylo\_OU=NIFI.p12) in step 6 to your Mac.
+1. Copy the .p12 file that you created above (/opt/nifi/data/ssl/CN=kylo_OU=NIFI.p12) in step 6 to your Mac.
 
 2. Open Keychain Access.
 

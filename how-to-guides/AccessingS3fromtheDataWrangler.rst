@@ -20,7 +20,7 @@ file:
 
 .. code-block:: shell
 
-    export SPARK\_DIST\_CLASSPATH=$(hadoop classpath)
+    export SPARK_DIST_CLASSPATH=$(hadoop classpath)
 
 ..
 

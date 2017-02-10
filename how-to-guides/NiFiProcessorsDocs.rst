@@ -47,9 +47,9 @@ Sqoop requires the JDBC drivers for the specific database server in order to tra
 
 The drivers need to be downloaded, and the .jar files must be copied over to Sqoop’s /lib directory.
 
-As an example, consider that the MySQL driver is downloaded and available in a file named: \ **mysql-connector-java.jar.**
+As an example, consider that the MySQL driver is downloaded and available in a file named: **mysql-connector-java.jar.**
 
-This would have to be copied over into Sqoop’s /lib directory, which may be in a location similar to: \ **/usr/hdp/current/sqoop-client/lib.**
+This would have to be copied over into Sqoop’s /lib directory, which may be in a location similar to: **/usr/hdp/current/sqoop-client/lib.**
 
 The driver class can then be referred to in the property **Source Driver** in **StandardSqoopConnectionService** controller service
 configuration. For example: **com.mysql.jdbc.Driver.**
@@ -123,7 +123,7 @@ populated the specified matching keys.
 
 For example:
 
-    Feed\_A runs and has the following attributes in the flow-file as it
+    Feed_A runs and has the following attributes in the flow-file as it
     runs:
 
 .. code-block:: shell
@@ -135,7 +135,7 @@ For example:
 
 ..
 
-    Feed\_B depends on Feed A and has a Trigger Feed that has "Matching
+    Feed_B depends on Feed A and has a Trigger Feed that has "Matching
     Execution Context Keys" set to "property"’
 
     It will then get the ExecutionContext for Feed A populated with 2
@@ -143,7 +143,7 @@ For example:
 
 .. code-block:: shell
 
-    "Feed\_A":{property.name:"first name", property.age:23}
+    "Feed_A":{property.name:"first name", property.age:23}
 
 ..
 
@@ -178,7 +178,7 @@ JSON structure with  field description:
      "feedName":"<THE NAME OF THIS FEED>",
      "feedId":"<THE UUID OF THIS FEED>",
      "dependentFeedNames":[<array of the dependent feed names],
-     "feedJobExecutionContexts":{<dependent\_feed\_name>:[
+     "feedJobExecutionContexts":{<dependent_feed_name>:[
   {
   "jobExecutionId":<Long ops mgr job id>,
               "startTime":<millis>,
@@ -191,7 +191,7 @@ JSON structure with  field description:
         ]
      },
      "latestFeedJobExecutionContext":{
-        <dependent\_feed\_name>:{  
+        <dependent_feed_name>:{  
           "jobExecutionId":<Long ops mgr job id>,
               "startTime":<millis>,
               "endTime":<millis>,
@@ -210,13 +210,13 @@ Example JSON for a Feed:
 .. code-block:: shell
 
   {
-     "feedName":"companies.check\_test",
+     "feedName":"companies.check_test",
      "feedId":"b4ed909e-8e46-4bb2-965c-7788beabf20d",
      "dependentFeedNames":[
-        "companies.company\_data"
+        "companies.company_data"
      ],
      "feedJobExecutionContexts":{
-        "companies.company\_data":[
+        "companies.company_data":[
            {
               "jobExecutionId":21342,
               "startTime":1478275338000,
@@ -227,7 +227,7 @@ Example JSON for a Feed:
         ]
      },
      "latestFeedJobExecutionContext":{
-        "companies.company\_data":{
+        "companies.company_data":{
            "jobExecutionId":21342,
            "startTime":1478275338000,
            "endTime":1478275500000,
@@ -249,7 +249,7 @@ The screenshot shown here is an example of a flow in which the inspection of the
 The EvaluateJSONPath processor is used to extract JSON content from the flow file.
 
 Refer to the Data Confidence Invalid Records flow for an example:
-`*data\_confidence\_invalid\_records.zip* <https://github.com/ThinkBigAnalytics/data-lake-accelerator/blob/master/samples/templates/nifi-1.0/data_confidence_invalid_records.zip>`__
+`*data_confidence_invalid_records.zip* <https://github.com/ThinkBigAnalytics/data-lake-accelerator/blob/master/samples/templates/nifi-1.0/data_confidence_invalid_records.zip>`__
 
 
 

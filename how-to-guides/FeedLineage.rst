@@ -40,7 +40,7 @@ In order to get your feed to see its lineage you will need to do 2
 things.
 
 1. Assign the datasources to the template.  See the
-   section \ **Registering Datasources with a Template** below. 
+   section **Registering Datasources with a Template** below. 
 
 2. Save the Feed.  Once the template has been registered you will need
    to save the feed.  Go to the feed details.  Click the Pencil icon on
@@ -153,7 +153,7 @@ Styling the Feed Lineage User Interface
 =======================================
 
 Feed Lineage uses a JavaScript
-framework \ `*http://visjs.org/* <http://visjs.org/>`__  to build the
+framework `*http://visjs.org/* <http://visjs.org/>`__  to build the
 interactive canvas.
 
 If needed you can adjust the styles of the feeds and each type of
