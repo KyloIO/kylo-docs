@@ -9,16 +9,7 @@ Welcome to the Kylo Project
 
 |image1|
 
-Capturing and processing big data isn’t easy.
-Products such as Spark, Kafka, Hadoop, and NiFi are
-great at processing immense data volumes at scale; however,
-they are not easy for business users to access, create, optimize,
-and analyze their data.  Kylo overcomes this challenge and
-lets businesses easily create, configure
-and monitor data pipelines in and through the data lake
-so users have constant access to high quality data.
-Kylo also enhances data profiling and discovery with
-extensible metadata.
+The documentation provided here will guide you through the process of unlocking the power of Kylo to create, configure and monitor data pipelines so that you may leverage that data to drive key insights for your organization.
 
 The documentation for the site is organized into a few sections:
 
@@ -131,7 +122,3 @@ The documentation for the site is organized into a few sections:
     installation/KylosConfigurationforaKerborosCluster
     installation/NiFiConfigurationforaKerberosCluster
     installation/Postgres_Hive_Metadata_Configuration
-
-
-
-
