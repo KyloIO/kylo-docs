@@ -45,7 +45,7 @@ Verifying Access
 ~~~~~~~~~~~~~~~~
 
 Once Kylo is configured for Kerberos SPNEGO you can use ``curl`` to verify
-access. See the ``curl`` `—negotiate` option documentation to see the library 
+access. See the ``curl`` `—negotiate` option documentation to see the library
 requirements to support SPNEGO, and use the `-V` option to verify whether
 these requirements are met.
 
@@ -60,12 +60,12 @@ file, and the service principal name added to Kylo’s configuration
 property ``security.auth.krb.service-principal``.
 
 First, log into Kerberos with your username (“myname” here) using kinit. The
-@YOUR\_REALM part is optional if your KDC configuration has a default
+@YOUR_REALM part is optional if your KDC configuration has a default
 realm:
 
 .. code-block:: shell
 
-    $ kinit myname@YOUR\_REALM
+    $ kinit myname@YOUR_REALM
 
 Attempt to access the feeds API of kylo-services directly:
 
@@ -94,19 +94,19 @@ as these:
 .. code-block:: shell
 
     > GET /proxy/v1/metadata/feed/ HTTP/1.1
-    
+
     < HTTP/1.1 401 Unauthorized
-    
+
     < WWW-Authenticate: Negotiate
-    
+
     > GET /proxy/v1/metadata/feed/ HTTP/1.1
     > Authorization: Negotiate YII...
-    
+
     < HTTP/1.1 200 OK
-    
+
 ..
 
-This shows ``curl``: 
+This shows ``curl``:
     1. Attempt to get the feed resource
     #. Receive an unauthorized response (401) and a challenge to negotiate authentication
     #. ``curl`` retrying the request again but this time supplying the Kerberos ticket in an authorization header

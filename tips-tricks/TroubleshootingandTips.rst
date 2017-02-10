@@ -40,7 +40,7 @@ to run in *yarn-cluster* mode.
 
 3. The “Validate and Split Records” processor from standard-ingest
    requires access to the json policy file. Add
-   “${table\_field\_policy\_json\_file}” to the “Extra Files”
+   “${table_field_policy_json_file}” to the “Extra Files”
    property to make this file available.
 
     |image1|
@@ -58,7 +58,7 @@ following:
 
 1. It is ideal to have 3 executors per node minus 1 used by the manager:
 
-   a. num-executor = 3 \* (number of nodes) - 1
+   a. num-executor = 3 * (number of nodes) - 1
 
 2. Executor cores should be either 4, 5, or 6 depending on the total number
    of available cores. This should be tested. Starting with 6 tends
@@ -68,13 +68,13 @@ following:
 
 3. Determine the total memory using the following equation:
 
-   a. total.memory (GB) = yarn.nodemanager.resource.memory-mb \*
+   a. total.memory (GB) = yarn.nodemanager.resource.memory-mb *
       (spark.executor.cores / yarn.nodemanager.resource.cpu-vcores)
 
 4. Use total.memory and split it between spark.executor.memory and
    spark.yarn.executor.memoryOverhead (15-20% of total memory):
 
-   a. spark.yarn.executor.memoryOverhead = total.memory \* (0.15)
+   a. spark.yarn.executor.memoryOverhead = total.memory * (0.15)
 
    b. spark.executor.memory = total.memory
       - spark.yarn.executor.memoryOverhead
@@ -393,7 +393,7 @@ Configure YARN to handle additional concurrent jobs:
 
     service nifi restart
 
-Note: In Ambari, find this under Yarn \| Configs (advanced) \|
+Note: In Ambari, find this under Yarn | Configs (advanced) |
 Scheduler.
 
 Spark SQL fails on empty ORC table
