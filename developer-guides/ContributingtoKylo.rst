@@ -136,7 +136,7 @@ Before you start
 The easiest way to contribute code is to create a separate branch for
 every feature or bug fix. This will allow you to make separate pull
 requests for every contribution. You can create your branch off
-our \ *master* branch to get the latest code, or off a \ *release*
+our *master* branch to get the latest code, or off a *release*
 branch if you need more stable code.
 
 .. code-block:: bash
@@ -145,7 +145,7 @@ branch if you need more stable code.
    cd kylo
    git checkout -b my-fix-branch master
 
-Every change you commit should refer to a \ `JIRA
+Every change you commit should refer to a `JIRA
 issue <https://kylo-io.atlassian.net/>`__ that describes the feature
 or bug. Please open a JIRA issue if one does not already exist.
 
