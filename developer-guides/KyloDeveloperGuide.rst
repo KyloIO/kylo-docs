@@ -47,10 +47,10 @@ Edit ~/.bashrc and add the following:
 
 .. code-block:: shell
 
-    export MVN\_HOME=/Users/<HomeFolderName>/tools/apache-maven-3.3.3
-    export MAVEN\_OPTS="-Xms256m -Xmx512m"
-    export JAVA\_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0\_45.jdk/Contents/Home
-    export PATH=$JAVA\_HOME/bin:$MVN\_HOME/bin:$PATH
+    export MVN_HOME=/Users/<HomeFolderName>/tools/apache-maven-3.3.3
+    export MAVEN_OPTS="-Xms256m -Xmx512m"
+    export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home
+    export PATH=$JAVA_HOME/bin:$MVN_HOME/bin:$PATH
 
 ..
 
@@ -93,7 +93,7 @@ the command line.
 
    a. cd to the directory you want to install the project to.
 
-   b. Type "git clone \ `*https://github.com/kyloio/kylo.git"* <https://github.com/kyloio/kylo.git>`__.
+   b. Type "git clone `*https://github.com/kyloio/kylo.git"* <https://github.com/kyloio/kylo.git>`__.
 
 2. Import from your IDE using the
    "`*https://github.com/kyloio/kylo.git* <https://github.com/kyloio/kylo.git>`__"
@@ -156,7 +156,7 @@ copy the RPM file from your project folder after running a Maven build.
 .. code-block:: shell
 
     $ cd /opt
-    $ cp /media/sf\_kylo/install/target/rpm/kylo/RPMS/noarch/kylo-<version>.noarch.rpm.
+    $ cp /media/sf_kylo/install/target/rpm/kylo/RPMS/noarch/kylo-<version>.noarch.rpm.
     $ rpm -ivh kylo-<version>.noarch.rpm
 
 ..
