@@ -8,6 +8,7 @@ Welcome to the Kylo Project
 ===========================
 
 |image1|
+.. Kylo website: http://kylo.io
 
 The documentation provided here will guide you through the process of unlocking the power of Kylo to create, configure and monitor data pipelines so that you may leverage that data to drive key insights for your organization.
 
