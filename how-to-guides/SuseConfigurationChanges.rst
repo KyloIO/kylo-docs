@@ -74,8 +74,8 @@ how we installed Elasticsearch on a SUSE box.
 
 15. service elasticsearch start
 
-  .. container:: custom
+.. container:: shell
 
       Test quote
 
-  ..
+..
