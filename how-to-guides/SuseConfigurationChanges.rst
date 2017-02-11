@@ -35,7 +35,11 @@ RPM installation isn’t supported on SUSE. To work around this issue we
 created a custom init.d service script and wrote up a manual procedure
 to install Elasticsearch on a single node.
 
+.. seealso::
+
 `*https://www.elastic.co/support/matrix* <https://www.elastic.co/support/matrix>`__
+
+..
 
 We have created a service script to make it easy to start and stop
 Elasticsearch, as well as leverage chkconfig to automatically start
