@@ -13,7 +13,6 @@ The documentation provided here will guide you through the process of unlocking 
 
 The documentation for the site is organized into a few sections:
 
-* :ref:`quickstart`
 * :ref:`about`
 * :ref:`installation`
 * :ref:`security_toc`
@@ -21,14 +20,6 @@ The documentation for the site is organized into a few sections:
 * :ref:`developer_guides`
 * :ref:`user_guides`
 * :ref:`tips_tricks`
-
-
-.. _quickstart:
-.. toctree::
-    :maxdepth: 1
-    :caption: Quickstart
-
-    quickstart/QuickStart
 
 .. _about:
 .. toctree::
