@@ -33,7 +33,7 @@ Elasticsearch
 
 .. "pull-quote"::
 
-  "RPM installation isn’t supported on SUSE. To work around this issue we created a custom init.d service script and wrote up a manual procedure to install Elasticsearch on a single node.""
+  "RPM installation isn’t supported on SUSE. To work around this issue we created a custom init.d service script and wrote up a manual procedure to install Elasticsearch on a single node.
 
 ..
 
