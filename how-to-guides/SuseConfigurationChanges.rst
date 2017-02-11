@@ -31,9 +31,7 @@ set. To fix this issue I had to set the JAVA_HOME directly.
 Elasticsearch
 =============
 
-.. class:: highlights
-..
-  RPM installation isn’t supported on SUSE. To work around this issue we created a custom init.d service script and wrote up a manual procedure to install Elasticsearch on a single node.
+RPM installation isn’t supported on SUSE. To work around this issue we created a custom init.d service script and wrote up a manual procedure to install Elasticsearch on a single node.
 
   `*https://www.elastic.co/support/matrix* <https://www.elastic.co/support/matrix>`__
 
