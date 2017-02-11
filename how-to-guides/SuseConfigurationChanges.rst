@@ -73,3 +73,12 @@ how we installed Elasticsearch on a SUSE box.
 14. chkconfig elasticsearch on
 
 15. service elasticsearch start
+
+
+.. topic:: Topic Title
+
+  Kylo may provide an opportunity to leverage open source innovations while allowing the opportunity to give back to the open source community.
+    - Ka Tang Director, Enterprise Data Architecture
+    Discover Financial Services
+
+..
