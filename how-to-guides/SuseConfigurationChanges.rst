@@ -37,7 +37,7 @@ to install Elasticsearch on a single node.
 
 .. seealso::
 
-`*https://www.elastic.co/support/matrix* <https://www.elastic.co/support/matrix>`__
+  `*https://www.elastic.co/support/matrix* <https://www.elastic.co/support/matrix>`__
 
 ..
 
