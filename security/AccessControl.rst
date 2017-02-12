@@ -1,38 +1,49 @@
 
-=============================
-Security Configuration
-=============================
+==============
+Access Control
+==============
 
 Overview
-========
+--------
 
 A goal is to support authentication and authorization seamlessly
 between the Kylo applications and the Hadoop cluster.
 
-Authentication
---------------
-
-Kylo supports a pluggable authentication architecture that allows
-customers to integrate their existing infrastructure when authenticating
-a user.  The pluggability is built around  JAAS LoginModules.  Kylo
-supplies LoginModule implementations fort the most common authentication
-scenarios, though customers will be able to provide their own modules to
-replace or augment the modules provided by Kylo.
-
-JAAS Authentication
-~~~~~~~~~~~~~~~~~~~
-
-The JAAS authentication framework provides a means of configuring the
-multiple modules that are engaged in an authentication attempt.
-
 Authorization
-=============
+-------------
 
 Authorization within Kylo will use access control lists (ACL) to control
 what actions users may perform and what data they may see.  The actions
 that a user or group may perform, whether to invoke a function or access
 data, are organized into a hierarchy, and privileges may be granted at
 any level.
+
+Default Users and Groups
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+When Kylo is newly installed it will be pre-configured with have a few default users
+and groups defined; with varying permissions assiged to each group.  The default groups are:
+
+   * Administrators
+   * Operations
+   * Designers
+   * Analysts
+   * Users
+   
+The default users and their assigned groups are:
+
+   * Data Lake Administrator - Administrators, Users
+   * Analyst - Analysts, Users
+   * Designer - Designers, Users
+   * Operator - Operations, Users
+
+The initial installation will also
+have the `auth-kylo` and `auth-file` included in the active profiles configured in
+the conf/application.properties file of both the UI and Services.  With these profiles
+active the authentication process will use both the built-in Kylo user store and a username/password
+file to authenticate requests.  In this configuration, the login modules activated 
+by these profiles would both have to successfully athenticate a request before access
+would be granted.
 
 Service-Level Authorization
 ---------------------------
