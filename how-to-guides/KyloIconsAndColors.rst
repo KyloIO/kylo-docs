@@ -3,7 +3,7 @@ Icons and Icon Colors
 =====================
 
 Icons and the colors can be configured using 2 JSON files found in the
-/opt/kylo/kylo-services/conf directory
+/opt/kylo/kylo-services/conf directory.
 
 **icons.json**
 
