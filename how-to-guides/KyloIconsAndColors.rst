@@ -15,8 +15,8 @@ name and respective Hex color code.
 
 .. pull-quote::
 
-    Kylo may provide an opportunity to leverage open source innovations
-    while allowing the opportunity to give back to the open source community.
-         - Ka Tang Director, Enterprise Data Architecture Discover Financial Services
+    "Kylo may provide an opportunity to leverage open source innovations
+    while allowing the opportunity to give back to the open source community."
+         Ka Tang Director, Enterprise Data Architecture Discover Financial Services
 
 ..
