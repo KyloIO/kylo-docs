@@ -44,6 +44,7 @@ The documentation for the site is organized into a few sections:
     :maxdepth: 1
     :caption: Security
 
+    Authentication <security/Authentication>
     Access Control <security/AccessControl>
     Ranger <security/EnableRangerAuthorizationGuide>
     Sentry <security/EnableSentryAuthorizationGuide>

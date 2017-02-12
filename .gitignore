@@ -3,4 +3,5 @@ _build
 .idea
 KerberosInstallationGuide.docx
 *.iml
+.DS_Store
 
