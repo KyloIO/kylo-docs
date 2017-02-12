@@ -2,12 +2,8 @@
 QuickStart
 =============
 
-Kylo is a full-featured Data Lake platform built on Apache Hadoop and Spark. Kylo provides a turn-key, business-friendly Data Lake solution enabling data ingest, data preparation, and data discovery.
+The Kylo Sandbox is a personal virtual environment so you can quickly get started with Kylo. The sandbox is a pre-configured Kylo instance with Apache Hadoop, Spark, and NiFi
 
-
-Try it now link
-
-
-Creating your first feed
+Please access the `Kylo website <http://kylo.io/quickstart.html>`_ to try it out.  There you will find download instructions and helpful tutorials on using Kylo.
 
 

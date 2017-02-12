@@ -14,15 +14,24 @@ The documentation provided here will guide you through the process of unlocking 
 
 The documentation for the site is organized into a few sections:
 
-* :ref:`about`
-* :ref:`installation`
+* :ref:`quickstart_toc`
+* :ref:`about_toc`
+* :ref:`installation_toc`
 * :ref:`security_toc`
 * :ref:`how_to_guides`
 * :ref:`developer_guides`
 * :ref:`user_guides`
 * :ref:`tips_tricks`
 
-.. _about:
+.. _quickstart_toc:
+.. toctree::
+    :maxdepth: 1
+    :caption: Quickstart
+    :titlesonly:
+
+    quickstart/QuickStart
+
+.. _about_toc:
 .. toctree::
     :maxdepth: 1
     :caption: About
@@ -31,14 +40,13 @@ The documentation for the site is organized into a few sections:
     about/KyloFrequentlyAskedQuestions
     about/KyloTerminology
 
-.. _installation:
+.. _installation_toc:
 .. toctree::
     :maxdepth: 1
     :caption: Installation
 
     installation/KyloDeploymentChecklist
     installation/KyloDeploymentGuide
-    installation/InstallationConfigurationGuide
 
 .. _security_toc:
 .. toctree::
