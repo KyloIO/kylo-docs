@@ -12,3 +12,12 @@ using the 0.7.1 version of this icon package.
 
 **icon-colors.json** This is an array of objects indicating the display
 name and respective Hex color code.
+
+.. code-block:: shell
+    :font: 12 pt
+
+    Kylo may provide an opportunity to leverage open source innovations
+    while allowing the opportunity to give back to the open source community.
+         - Ka Tang Director, Enterprise Data Architecture Discover Financial Services
+
+..
