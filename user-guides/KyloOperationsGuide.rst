@@ -603,13 +603,13 @@ Configuring JVM Memory
 ~~~~~~~~~~~~~~~~~~~~~~
 
 You can adjust the memory setting of the Kylo Service using the
-KYLO_SERVICES _OPTS environment variable. This may be necessary if
+KYLO_SERVICES_OPTS environment variable. This may be necessary if
 the application is experiencing OutOfMemory errors. These would appear
 in the log files.
 
 .. code-block:: shell
 
-    export KYLO_SERVICES_OPTS=Xmx2g
+    export KYLO_SERVICES_OPTS="-Xmx2g"
 
 ..
 
