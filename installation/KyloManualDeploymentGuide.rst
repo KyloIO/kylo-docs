@@ -167,7 +167,7 @@ Step 3: Install Kylo Services
 
 .. code-block:: shell
 
-    $ rpm -ivh kylo-datalake-accelerator-<version>.noarch.rpm
+    $ rpm -ivh kylo-<version>.noarch.rpm
 
 +-------------+-------------------------------------------------------------------+
 | **Note:**   | The RPM is hard coded at this time to install to /opt/kylo.       |
@@ -184,7 +184,7 @@ install to that schema. Run the following script:
     $ <SETUP_DIR>/sql/mysql/setup-mysql.sh [db_host_or_ip] [db_user] [db_password]
 
 +-------------+------------------------------------------------------------------------------------------------------------------------------------------+
-| **Note:**   | The HDP sandbox doesn't have a password set for the root user so you would run "<SETUP_DIR>/sql/mysql/setup-mysql.sh localhost root".   |
+| **Note:**   | The HDP sandbox doesn't have a password set for the root user so you would run "<SETUP_DIR>/sql/mysql/setup-mysql.sh localhost root".    |
 +-------------+------------------------------------------------------------------------------------------------------------------------------------------+
 
 Step 5: Install and Configure Elasticsearch
@@ -460,7 +460,7 @@ In some cases you may have a separate instance of NiFi or Hortonworks Data Flow 
 | **Note:**   | If Java 8 isn't being used for the existing instance then you will be required to change it.   |
 +-------------+------------------------------------------------------------------------------------------------+
 
-    a. Copy the <SETUP_DIR>/nifi/kylo- *.nar and kylo-spark- *.jar files to the node NiFi is running on. If it’s on the same
+    a. Copy the <SETUP_DIR>/nifi/kylo-\*.nar and kylo-spark-\*.jar files to the node NiFi is running on. If it’s on the same
        node you can skip this step.
 
     b. Shutdown the NiFi instance.
@@ -473,7 +473,7 @@ In some cases you may have a separate instance of NiFi or Hortonworks Data Flow 
 
 ..
 
-    d. Copy the kylo-*.nar files to the <NIFI_HOME>/kylo/lib directory.
+    d. Copy the kylo-\*.nar files to the <NIFI_HOME>/kylo/lib directory.
 
     e. Create a directory called "app" in the <NIFI_HOME>/lib directory.
 
@@ -483,7 +483,7 @@ In some cases you may have a separate instance of NiFi or Hortonworks Data Flow 
 
 ..
 
-    f. Copy the kylo-spark-*.jar files to the <NIFI_HOME>/kylo/lib/app directory.
+    f. Copy the kylo-spark-\*.jar files to the <NIFI_HOME>/kylo/lib/app directory.
 
     g. Create symbolic links for all of the jars. Below is an example of how to create it for one NAR file and one JAR file. At the time of
        this writing there are 8 NAR files and 3 spark JAR files.

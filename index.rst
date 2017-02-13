@@ -58,7 +58,7 @@ The documentation for the site is organized into a few sections:
 
     NiFi Cluster <how-to-guides/SetupaNiFiClusterinaKyloSandbox>
     NiFi & SSL <how-to-guides/ConfigureNiFiWithSSL>
-    NiFi & HDF Encryption <how-to-guides/ConfigNififorHDFSEncryption>
+    NiFi & HDFS Encryption <how-to-guides/ConfigNififorHDFSEncryption>
     NiFi & Kylo Reporting Task <how-to-guides/NiFiKyloProvenanceReportingTask>
     how-to-guides/NiFiProcessorsDocs
     S3 & Data Wrangler <how-to-guides/AccessingS3fromtheDataWrangler>

@@ -756,7 +756,7 @@ Import Kylo Templates
 
    a. Locate the index_schema_service.zip file. You will need the file locally to upload it. You can find it in one of two places:
 
-        1) <data_lake_accelerator_project>/samples/feeds/nifi-1.0/
+        1) <kylo_project>/samples/feeds/nifi-1.0/
         2) /opt/kylo/setup/data/feeds/nifi-1.0
 
    b. Go to the the Feeds page in Kylo.
@@ -783,7 +783,7 @@ Import Kylo Templates
 
    a. Locate the index_text_service.zip file. You will need the file locally to upload it. You can find it in one of two places:
 
-        - <data_lake_accelerator_project>/samples/feeds/nifi-1.0/
+        - <kylo_project>/samples/feeds/nifi-1.0/
         - /opt/kylo/setup/data/feeds/nifi-1.0
 
    b. Go to the the Feeds page in Kylo.

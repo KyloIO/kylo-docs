@@ -1,6 +1,6 @@
-===================================
-Configuring NiFi for HDF Encryption
-===================================
+====================================
+Configuring NiFi for HDFS Encryption
+====================================
 
 Key Creation Process
 ====================

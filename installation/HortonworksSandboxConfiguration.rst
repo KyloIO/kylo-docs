@@ -39,7 +39,7 @@ project artifacts to the sandbox for testing.
 
 -  Folder Path = <pathToProjectFolder>
 
--  Folder Name = data-lake-accelerator 
+-  Folder Name = kylo
 
 Choose Auto-mount so that it remembers next time you start the VM.
 

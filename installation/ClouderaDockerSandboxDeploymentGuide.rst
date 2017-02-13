@@ -142,7 +142,7 @@ Step 4: Build a Cloudera Distribution of Kylo and Copy it to the Docker Containe
 
 ..
 
-2. From the data-lake-accelerator root folder, run:
+2. From the kylo root folder, run:
 
 .. code-block:: shell
 
@@ -161,7 +161,7 @@ Step 4: Build a Cloudera Distribution of Kylo and Copy it to the Docker Containe
 .. code-block:: shell
 
     $ docker cp
-    /home/core/thinkbig-datalake-accelerator-<VERSION>.noarch.rpm
+    /home/core/kylo-<VERSION>.noarch.rpm
     cloudera:/tmp
 
 Step 5: Install Kylo in the Docker Container
