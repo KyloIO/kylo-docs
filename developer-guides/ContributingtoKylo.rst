@@ -12,7 +12,7 @@ adhere to as a team. Please take a moment to review before submitting a
 pull request.
 
 Why Contribute
-===============
+==============
 
 Think Big originally developed Kylo based on experience gained on over 150 big data projects. Many of the best improvements came from exercising the technology in the field on the huge variety of
 situations faced by customers. Contributing to Kylo allows you to influence the roadmap and evolution of Kylo and contribute back to the community at large.
@@ -128,7 +128,7 @@ We adhere to the following guidelines to ensure consistency in our code:
 Pull Requests
 =============
 
-To get started go to GitHub and fork the Kylo repository.
+To get started go to GitHub and fork the `Kylo <https://github.com/KyloIO/kylo>`__ repository.
 
 |image0|
 
