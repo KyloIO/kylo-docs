@@ -175,7 +175,7 @@ Submitting a pull request
 
 Once you are ready to have us add your changes to the Kylo repository,
 go to your repository in GitHub and select the branch with your changes.
-Then click the *New pull request* button.
+Then click the *New pull request* button. 
 
 |image1|
 
