@@ -216,7 +216,7 @@ IntelliJ Configuration
       module.
 
    e. Set the "Main Class" property to
-      "com.thinkbiganalytics.KyloDataLakeUiApplication".
+      "com.thinkbiganalytics.KyloUiApplication".
 
 4. Run both applications.
 
