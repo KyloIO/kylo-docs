@@ -163,15 +163,14 @@ If the groups are missing, then run the following:
 Step 3: Install Kylo Services
 =============================
 
-1. Find and download the RPM file from the artifactory and place it on the host Linux machine that you want to install Kylo services on.
+1. Download the RPM and place it on the host Linux machine that you want to install Kylo services on.
 
 +-------------+------------------------------------------------------------------------+
 | **Note:**   | To use wget instead, right-click the download link and copy the url.   |
 +-------------+------------------------------------------------------------------------+
 
-    http://52.38.44.80:8081/artifactory/webapp/#/search/quick/eyJzZWFyY2giOiJxdWljayIsInF1ZXJ5Ijoia3lsby0wIn0=
+    `*Download the latest RPM* <http://bit.ly/2l5p1tK>`__
 
-    Modify the search criteria if required.
 
 2. Run the Kylo RPM install.
 
