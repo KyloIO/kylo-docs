@@ -148,8 +148,7 @@ VM you can use the deployment wizard instructions found here:
     `*Wizard Driven Deployment
     Guide* <http://kylo.readthedocs.io/en/latest/KyloSetupWizardDeploymentGuide.html>`__
 
-Instead of downloading the RPM file on the first step from Artifactory,
-copy the RPM file from your project folder after running a Maven build.
+Instead of downloading the RPM file copy the RPM file from your project folder after running a Maven build.
 
 .. code-block:: shell
 
