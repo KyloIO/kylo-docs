@@ -59,7 +59,7 @@ Build or download the rpm.
 
 .. code-block:: shell
 
-    /opt/kylo/start-kylo-apps.sh.
+    /opt/kylo/start-kylo-apps.sh
 
 ..
 
