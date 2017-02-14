@@ -6,28 +6,23 @@ Manual Deployment Guide
 Preface
 =======
 
-This document explains how to install each component of the framework
-manually. This is useful for when you are installing across multiple
-edge nodes. Use this link to the install wizard if you would prefer not
-to do the installation manually.
+This document explains how to install each component of the Kylo framework
+manually. This is useful when you are installing across multiple
+edge nodes. Use this link to the install wizard (:doc:`../installation/KyloSetupWizardDeploymentGuide`)
+if you would prefer not to do the installation manually.
 
 +-----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | **Tip**   | Many of the steps below are similar to running the wizard-based install. If you want to take advantage of the same scripts as the wizard you can tar up the /opt/kylo/setup folder and untar it to a temp directory on each node. |
 +-----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Information on the operation and maintenance of the Kylo solution is
-available at `*https://www.thinkbiganalytics.com/kylo/* <https://www.thinkbiganalytics.com/kylo/>`__.
-
 Audience
 ========
 
-This guide provides step-by-step instruction for installing the Kylo
-application on your computer. The reader is assumed to be an IT
-Administrator knowledgeable of IT terms and trained with the appropriate
-skillset.
+This guide provides step-by-step instruction for installing Kylo.
+The reader is assumed to be a systems administrator, with knowledge of Linux.
 
-Refer to the Kylo Operations and Maintenance (O&M) guide for detailed
-instruction on how to effectively manage:
+Refer to the Kylo Operations Guide (:doc:`../user-guides/KyloOperationsGuide`) for detailed
+instructions on how to effectively manage:
 
 - Production processing
 
@@ -35,25 +30,23 @@ instruction on how to effectively manage:
 
 - Performance monitoring
 
-Guides on the Continuous Integration and Deployment of Kylo, including
-instructions for maintaining, supporting, and using the solution in
-day-to-day operational basis, are available at at
-`*https://www.thinkbiganalytics.com/kylo/* <https://www.thinkbiganalytics.com/kylo/>`__.
+For enterprise support options, please visit:
+`https://www.thinkbiganalytics.com/kylo/ <https://www.thinkbiganalytics.com/kylo/>`__.
 
 Installation Components
 =======================
 
 Installing Kylo installs the following software:
 
--  Kylo Applications: Kylo provides services to produce Hive tables, generate a schema based on data brought into Hadoop, perform Spark-based transformations, track metadata, monitor feeds and SLA policies, and to publish to target systems.
+-  **Kylo Applications**: Kylo provides services to produce Hive tables, generate a schema based on data brought into Hadoop, perform Spark-based transformations, track metadata, monitor feeds and SLA policies, and publish to target systems.
 
--  Java 8: Kylo uses the Java 8 development platform.
+-  **Java 8**: Kylo uses the Java 8 development platform.
 
--  NiFi: Kylo uses Apache NiFi for orchestrating data pipelines.
+-  **NiFi**: Kylo uses Apache NiFi for orchestrating data pipelines.
 
--  ActiveMQ: Kylo uses Apache ActiveMQ to manage communications with clients and servers.
+-  **ActiveMQ**: Kylo uses Apache ActiveMQ to manage communications with clients and servers.
 
--  Elasticsearch: Kylo uses Elasticsearch, a distributed, multitenant-capable full-text search engine.
+-  **Elasticsearch**: Kylo uses Elasticsearch, a distributed, multi-tenant capable full-text search engine.
 
 Installation Locations
 ======================
@@ -69,8 +62,7 @@ system locations:
 
 -  ActiveMQ - /opt/activemq
 
-Elasticsearch - RPM Installation Default Location
-=================================================
+-  Elasticsearch - RPM installation default location
 
 Installation
 ============
@@ -104,15 +96,29 @@ downloaded application binaries.
 
 a. Install the Kylo RPM on a node that has internet access.
 
-b. Run "/opt/kylo/setup/generate-offline-install.sh.
+.. code-block:: shell
+
+    $ rpm -ivh kylo-<version>.noarch.rpm.rpm
+..
+
+b. Run the script, which will download all application binaries and put them in their respective directory in the setup folder.
+
+.. code-block:: shell
+
+    $ /opt/kylo/setup/generate-offline-install.sh
+..
 
 c. Copy the /opt/kylo/setup/kylo-install.tar file to the node you install the RPM on. This can be copied to a temp directory. It doesn’t have to be put in the /opt/kylo/setup folder.
 
-d. Run "tar -xvf kylo-install.tar".
+d. Run the command to tar up the setup folder.
+
+.. code-block:: shell
+
+    tar -xvf kylo-install.tar
+..
 
 e. Note the directory name where you untar’d the files. This will be referred to in the rest of the doc by OFFLINE_SETUP_DIR.
 
-The script will download all application binaries and puts them in their respective directory in the setup folder. Last it will TAR up the setup folder.
 
 Step 2: Create Linux Users and Groups
 =====================================
@@ -132,14 +138,16 @@ script it as part of the RPM install.
     $ useradd -r -m -s /bin/bash kylo
 
     $ useradd -r -m -s /bin/bash activemq
+..
 
 Confirm that the above commands created groups as intended by looking at
-/etc/group level in the directory. Some operating systems may not create
+/etc/group. Some operating systems may not create
 them by default.
 
 .. code-block:: shell
 
     $ cat /etc/group
+..
 
 If the groups are missing, then run the following:
 
@@ -150,24 +158,27 @@ If the groups are missing, then run the following:
     $ groupadd nifi
 
     $ groupadd activemq
+..
 
 Step 3: Install Kylo Services
 =============================
 
-1. Find and download the RPM file from the artifactory and place it on the host linux machine that you want to install Kylo services on.
+1. Find and download the RPM file from the artifactory and place it on the host Linux machine that you want to install Kylo services on.
 
 +-------------+------------------------------------------------------------------------+
 | **Note:**   | To use wget instead, right-click the download link and copy the url.   |
 +-------------+------------------------------------------------------------------------+
 
-    http://<FILLMEIN>:8080/artifactory/webapp/search/artifact/?7&q=kylo
+    http://52.38.44.80:8081/artifactory/webapp/#/search/quick/eyJzZWFyY2giOiJxdWljayIsInF1ZXJ5Ijoia3lsby0wIn0=
 
+    Modify the search criteria if required.
 
 2. Run the Kylo RPM install.
 
 .. code-block:: shell
 
     $ rpm -ivh kylo-<version>.noarch.rpm
+..
 
 +-------------+-------------------------------------------------------------------+
 | **Note:**   | The RPM is hard coded at this time to install to /opt/kylo.       |
@@ -182,10 +193,11 @@ install to that schema. Run the following script:
 .. code-block:: shell
 
     $ <SETUP_DIR>/sql/mysql/setup-mysql.sh [db_host_or_ip] [db_user] [db_password]
+..
 
-+-------------+------------------------------------------------------------------------------------------------------------------------------------------+
-| **Note:**   | The HDP sandbox doesn't have a password set for the root user so you would run "<SETUP_DIR>/sql/mysql/setup-mysql.sh localhost root".    |
-+-------------+------------------------------------------------------------------------------------------------------------------------------------------+
++-------------+-----------------------------------------------------------------------------------------------------------------------+
+| **Note:**   | If db_user does not have password, the *db_password* can be provided as ''. (For example, if using HDP 2.4 sandbox)   |
++-------------+-----------------------------------------------------------------------------------------------------------------------+
 
 Step 5: Install and Configure Elasticsearch
 ===========================================
@@ -214,7 +226,7 @@ stack you will likely want to leverage the same instance.
 
 .. code-block:: shell
 
-        $ <SETUP_DIR>/elasticsearch/install-elasticsearch.sh -o <SETUP_DIR>
+        $ <OFFLINE_SETUP_DIR>/elasticsearch/install-elasticsearch.sh -o <OFFLINE_SETUP_DIR>
 
           Example:  /tmp/kylo-install/setup/elasticsearch/install-elasticsearch.sh -o /tmp/kylo-install/setup
 
@@ -235,13 +247,15 @@ instance. You can also leverage an existing ActiveMQ instance.
 
 **Option 1**: Install ActiveMQ from the script
 
-The included ActiveMQ script was meant to speed up installation in a sandbox or DEV environment. It is not a production ready configuration.
++----------------------------------------------------------------------------------------------------------------------------------------------+
+| The included ActiveMQ script was meant to speed up installation in a sandbox or DEV environment. It is not a production ready configuration. |
++----------------------------------------------------------------------------------------------------------------------------------------------+
 
     a. Online Mode
 
 .. code-block:: shell
 
-        $ /opt/kylo/setup/activemq/install-activemq.sh
+        $ <SETUP_DIR>/activemq/install-activemq.sh
 
 ..
 
@@ -249,26 +263,25 @@ The included ActiveMQ script was meant to speed up installation in a sandbox or 
 
 .. code-block:: shell
 
-        $ <SETUP_DIR>/activemq/install-activemq.sh -o <SETUP_DIR>
+        $ <OFFLINE_SETUP_DIR>/activemq/install-activemq.sh -o <OFFLINE_SETUP_DIR>
 
-       Example: /opt/kylo/setup/activemq/install-activemq.sh -o /opt/kylo/setup
+       Example: /tmp/kylo-install/setup/activemq/install-activemq.sh -o /tmp/kylo-install/setup
 
 ..
 
-+----------+---------------------------------------------------------------------------------------------------------------------+
-|**Note:** | If installing on a different node than NiFi and kylo-services you will need to update the following properties:     |
-+----------+---------------------------------------------------------------------------------------------------------------------+
+**Note:** If installing on a different node than NiFi and kylo-services you will need to update the following properties:
 
 .. code-block:: shell
 
            1. /opt/nifi/ext-config/config.properties
 
                  spring.activemq.broker-url
+                 (Perform this configuration update after installing NiFi, which is step 9 in this guide)
 
            2. /opt/kylo/kylo-services/conf/application.properties
 
                  jms.activemq.broker.url
-
+                 (By default, its value is tcp://localhost:61616)
 ..
 
 **Option 2**: Leverage an existing ActiveMQ instance
@@ -279,17 +292,17 @@ Update the below properties so that NiFI and kylo-services can communicate with 
 
    1. /opt/nifi/ext-config/config.properties
 
-      spring.activemq.broker-url
+        spring.activemq.broker-url
 
    2. /opt/kylo/kylo-services/conf/application.properties
 
-      jms.activemq.broker.url
+        jms.activemq.broker.url
 
 ..
 
 **Installing on SUSE**
 
-The deployment guide currently addresses installation in a Redhat based environment. There are a couple of issues installing Elasticsearch and ActiveMQ on SUSE. Below are some instructions on how to install these two on SUSE.
+The deployment guide currently addresses installation in a Red Hat based environment. There are a couple of issues installing Elasticsearch and ActiveMQ on SUSE. Below are some instructions on how to install these two on SUSE.
 
 -  **ActiveMQ**
 
@@ -303,45 +316,60 @@ This indicates that ActiveMQ isn’t properly using Java as it is set in the sys
 
    1. Edit /etc/default/activemq and set JAVA_HOME at the bottom.
 
-   2. Restart ActiveMQ (service activemq restart).
+.. code-block:: shell
+
+    #JAVA_HOME=
+
+..
+
+   2. Restart ActiveMQ
+
+.. code-block:: shell
+
+    $ service activemq restart
+..
 
 -  **Elasticsearch**
 
 RPM installation isn’t supported on SUSE. To work around this issue, we created a custom init.d service script and wrote up a manual procedure to install Elasticsearch on a single node.
 
-    `*https://www.elastic.co/support/matrix* <https://www.elastic.co/support/matrix>`__
+Reference: `https://www.elastic.co/support/matrix <https://www.elastic.co/support/matrix>`__
 
 We have created a service script to make it easy to start and stop Elasticsearch, as well as leverage chkconfig to automatically start Elasticsearch when booting up the machine. Below are the instructions on how we installed Elasticsearch on a SUSE box.
 
-1. Make sure Elasticsearch service user/group exists
+.. code-block:: shell
 
-2. mkdir /opt/elasticsearch
+    1. Make sure Elasticsearch service user/group exists
 
-3. cd /opt/elasticsearch
+    2. mkdir /opt/elasticsearch
 
-4. mv /tmp/elasticsearch-2.3.5.tar.gz
+    3. cd /opt/elasticsearch
 
-5. tar -xvf elasticsearch-2.3.5.tar.gz
+    4. mv /tmp/elasticsearch-2.3.5.tar.gz
 
-6. rm elasticsearch-2.3.5.tar.gz
+    5. tar -xvf elasticsearch-2.3.5.tar.gz
 
-7. ln -s elasticsearch-2.3.5 current
+    6. rm elasticsearch-2.3.5.tar.gz
 
-8. cp elasticsearch.yml elasticsearch.yml.orig
+    7. ln -s elasticsearch-2.3.5 current
 
-9. Modify elasticsearch.yml if you want to change the cluster name. Our copy, that installed the wizard scripts, is located in /opt/kylo/setup/elasticsearch.
+    8. cp elasticsearch.yml elasticsearch.yml.orig
 
-10. chown -R elasticsearch:elasticsearch /opt/elasticsearch/
+    9. Modify elasticsearch.yml if you want to change the cluster name. The standard Kylo installation scripts have this file in directory: /opt/kylo/setup/elasticsearch
 
-11. vi /etc/init.d/elasticsearch - paste in the values from /opt/kylo/setup/elasticsearch/init.d/sles/elasticsearch
+    10. chown -R elasticsearch:elasticsearch /opt/elasticsearch/
 
-12. Uncomment and set the java home on line 44 of the init.d file in step #10
+    11. Uncomment and set the JAVA_HOME on line 44 of the file: /opt/kylo/setup/elasticsearch/init.d/sles/elasticsearch
 
-13. chmod 755 /etc/init.d/elasticsearch
+    12. vi /etc/init.d/elasticsearch - paste in the values from /opt/kylo/setup/elasticsearch/init.d/sles/elasticsearch
 
-14. chkconfig elasticsearch on
+    13. chmod 755 /etc/init.d/elasticsearch
 
-15. service elasticsearch start
+    14. chkconfig elasticsearch on
+
+    15. service elasticsearch start
+
+..
 
 Step 7: Install Java 8
 ======================
@@ -379,9 +407,9 @@ To test this you can look at each file referenced in the scripts for kylo-ui and
 
 .. code-block:: shell
 
-         $ <SETUP_DIR>/java/install-java8.sh -o <SETUP_DIR>
+         $ <OFFLINE_SETUP_DIR>/java/install-java8.sh -o <OFFLINE_SETUP_DIR>
 
-         Example: /opt/kylo/setup/java/install-java8.sh -o /opt/kylo/setup
+         Example: /tmp/kylo-install/setup/java/install-java8.sh -o /tmp/kylo-install/setup
 
 ..
 
@@ -398,7 +426,7 @@ If you already have Java 8 installed and want to reference that one one there is
 Step 8: Install Java Cryptographic Extension
 ============================================
 
-The Java 8 install script above will automatically download and install the `*Java Cryptographic Extension* <http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html>`__.
+The Java 8 install script above will automatically download and install the `Java Cryptographic Extension <http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html>`__.
 This extension is required to allow encrypted property values in the Kylo configuration files. If you already have a Java 8 installed on the
 system, you can install the Java Cryptographic Extension by running the following script:
 
@@ -432,7 +460,7 @@ This method downloads and installs NiFi, and also installs and configures the Ky
 
 .. code-block:: shell
 
-          $ <SETUP_DIR>/nifi/install-nifi.sh -o <SETUP_DIR>
+          $ <OFFLINE_SETUP_DIR>/nifi/install-nifi.sh -o <OFFLINE_SETUP_DIR>
 
 ..
 
@@ -456,9 +484,9 @@ This method downloads and installs NiFi, and also installs and configures the Ky
 
 In some cases you may have a separate instance of NiFi or Hortonworks Data Flow you want to leverage. Follow the steps below to include the Kylo resources.
 
-+-------------+------------------------------------------------------------------------------------------------+
-| **Note:**   | If Java 8 isn't being used for the existing instance then you will be required to change it.   |
-+-------------+------------------------------------------------------------------------------------------------+
++-------------+-------------------------------------------------------------------------------------------------+
+| **Note:**   | If Java 8 isn't being used for the existing instance, then you will be required to change it.   |
++-------------+-------------------------------------------------------------------------------------------------+
 
     a. Copy the <SETUP_DIR>/nifi/kylo-\*.nar and kylo-spark-\*.jar files to the node NiFi is running on. If it’s on the same
        node you can skip this step.
@@ -469,17 +497,17 @@ In some cases you may have a separate instance of NiFi or Hortonworks Data Flow 
 
 .. code-block:: shell
 
-           $ mkdir -p <NIFI_HOME>/kylo/lib/app
+           $ mkdir -p <NIFI_HOME>/kylo/lib
 
 ..
 
     d. Copy the kylo-\*.nar files to the <NIFI_HOME>/kylo/lib directory.
 
-    e. Create a directory called "app" in the <NIFI_HOME>/lib directory.
+    e. Create a directory called "app" in the <NIFI_HOME>/kylo/lib directory.
 
 .. code-block:: shell
 
-           $ mkdir <NIFI_HOME>/lib/app
+           $ mkdir <NIFI_HOME>/kylo/lib/app
 
 ..
 
@@ -497,28 +525,24 @@ In some cases you may have a separate instance of NiFi or Hortonworks Data Flow 
 
 ..
 
-    h. Modify <NIFI_HOME>/conf/nifi.properties and update the following property. This modifies NiFI to use our custom provenance repository to send data to the kylo-services application.
+    h. Modify <NIFI_HOME>/conf/nifi.properties and update the port NiFi runs on.
 
 .. code-block:: shell
 
-           nifi.provenance.repository.implementation=com.thinkbiganalytics.nifi.provenance.v2.ThinkbigProvenanceEventRepository
-
            nifi.web.http.port=8079
-
 ..
 
 +-------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | **Note:**   | If you decide to leave the port number set to the current value you must update the "nifi.rest.port" property in the kylo-services application.properties file.       |
 +-------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-    i. There is a controller service that requires a MySQL database connection. You will need to copy the MySQL connector jar to a
-       location on the NiFI node. The pre-defined templates have the default location set to /opt/nifi/mysql.
+    \i.  There is a controller service that requires a MySQL database connection. You will need to copy the driver jar to a location on the NiFi node. The pre-defined templates have the default location set to /opt/nifi/mysql.
 
-           1. Create a folder to store the MySQL jar in.
+           1. Create a folder to store the driver jar in.
 
-           2. SCP the /opt/kylo/kylo-services/lib/mysql-connector-java-<version>.jar to the folder in step #1.
+           2. Copy the /opt/kylo/kylo-services/lib/mariadb-java-client-<version>.jar to the folder in step #1.
 
-           3. If you created a folder name other than the /opt/nifi/mysql default folder you will need to update the "MySQL" controller service and set the new location. You can do this by logging into NiFi and going to the Controller Services section on the top right.
+           3. If you created a folder name other than the /opt/nifi/mysql default folder you will need to update the "MySQL" controller service and set the new location. You can do this by logging into NiFi and going to the Controller Services section at root process group level.
 
     j. Create H2 folder for fault tolerance. If the JMS queue goes down for
        some reason our custom Provenance library will startup a local H2
@@ -528,7 +552,7 @@ In some cases you may have a separate instance of NiFi or Hortonworks Data Flow 
        configure the H2 folder.
 
 +-------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Note:**   | Right now the plugin is hard coded to use the /opt/nifi/ext-config directory to load the properties file. There is a Jira to address this PC-261.   |
+| **Note:**   | Right now the plugin is hard coded to use the /opt/nifi/ext-config directory to load the properties file.                                           |
 +-------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
 
            Below are steps to configure the H2 folder:
@@ -542,7 +566,7 @@ In some cases you may have a separate instance of NiFi or Hortonworks Data Flow 
 
 ..
 
-               2. SCP the /opt/kylo/setup/nifi/config.properties file to the /opt/nifi/ext-config folder.
+               2. Copy the /opt/kylo/setup/nifi/config.properties file to the /opt/nifi/ext-config folder.
 
                3. Change the ownership of the above folders to the same owner that nifi runs under. For example, if nifi runs as the "nifi" user:
 
@@ -562,7 +586,7 @@ correct permissions for the "nifi" user to access HDFS.
 
 1. NiFi Node - Add nifi user to the HDFS supergroup or the group defined in hdfs-site.xml, for example:
 
-  **Hortonworks**
+  **Hortonworks (HDP)**
 
 .. code-block:: shell
 
@@ -570,7 +594,7 @@ correct permissions for the "nifi" user to access HDFS.
 
 ..
 
-  **Cloudera**
+  **Cloudera (CDH)**
 
 .. code-block:: shell
 
@@ -593,7 +617,7 @@ correct permissions for the "nifi" user to access HDFS.
 
 2. kylo-services node - Add kylo user to the HDFS supergroup or the group defined in hdfs-site.xml, for example:
 
-  **Hortonworks**
+  **Hortonworks (HDP)**
 
 .. code-block:: shell
 
@@ -601,7 +625,7 @@ correct permissions for the "nifi" user to access HDFS.
 
 ..
 
-  **Cloudera**
+  **Cloudera (CDH)**
 
 .. code-block:: shell
 
@@ -623,9 +647,9 @@ correct permissions for the "nifi" user to access HDFS.
 
 3. For Clusters:
 
-   In addition to adding the nifi/kylo user to the supergroup on the edge node you also need to add the users/groups to the name nodes on a cluster.
+   In addition to adding the nifi and kylo users to the supergroup on the edge node you also need to add the users/groups to the **NameNodes** on a cluster.
 
-   **Hortonworks**
+   **Hortonworks (HDP)**
 
 .. code-block:: shell
 
@@ -639,7 +663,7 @@ correct permissions for the "nifi" user to access HDFS.
 
 ..
 
-  **Cloudera** - <Fill me in after testing >
+  **Cloudera (CDH)** - <Fill me in after testing >
 
 Step 11: Create a dropzone folder on the edge node for file ingest, for example:
 ================================================================================
@@ -673,4 +697,9 @@ Step 13: Final Step: Start the 3 Kylo Services
 
     $ /opt/kylo/start-kylo-apps.sh
 
-At this point all services should be running.
+At this point all services should be running. Verify by running:
+
+.. code-block:: shell
+
+    $ /opt/kylo/status-kylo-apps.sh
+..
