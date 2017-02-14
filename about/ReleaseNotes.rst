@@ -284,21 +284,21 @@ Build or download the rpm:
 
 .. code-block:: shell
 
-    /opt/kylo/kylo-ui/conf/
-    /opt/kylo/kylo-services/conf/
-    /opt/kylo/kylo-spark-shell/conf/  
+     /opt/kylo/kylo-ui/conf/
+     /opt/kylo/kylo-services/conf/
+     /opt/kylo/kylo-spark-shell/conf/  
+
+..
 
     A backup of the previous version's configuration is available from /opt/kylo/bkup-config/.
 
-11. If using NiFi v0.7 or earlier, modify
-   /opt/kylo/kylo-services/conf/application.properties by
-   changing spring.profiles.active from nifi-v1 to nifi-v0.
+11. If using NiFi v0.7 or earlier, modify /opt/kylo/kylo-services/conf/application.properties by changing spring.profiles.active from nifi-v1 to nifi-v0.
 
 12. Start Kylo apps:
 
 .. code-block:: shell
 
-    /opt/kylo/start-kylo-apps.sh
+     /opt/kylo/start-kylo-apps.sh
 
 ..
 
@@ -306,7 +306,7 @@ Build or download the rpm:
 
 .. code-block:: shell
 
-    index_schema_service, and the index_text_service 
+     index_schema_service, and the index_text_service 
 
 ..
 
