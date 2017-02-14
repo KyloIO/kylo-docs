@@ -336,7 +336,9 @@ Build or download the rpm:
 
       iv.  Choose one of the Elasticsearch templates and check the overwrite box.
 
-14. A ReportingTask is now used for communication between NiFi and Operations Manager.  In order to see Jobs and Steps in Ops Manager you will need to configure this following these instructions: :doc: `NiFi KyloProvenanceReportingTask`
+14. A ReportingTask is now used for communication between NiFi and Operations Manager.  In order to see Jobs and Steps in Ops Manager you will need to configure this following these instructions:
+
+:doc: `NiFiKyloProvenanceReportingTask`
 
 V0.5.0 RELEASE (DEC. 14, 2016)
 ==============================
