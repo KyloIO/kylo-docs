@@ -1,5 +1,5 @@
 =============
-RELEASE NOTES
+Release Notes
 =============
 
 V0.6.2 RELEASE (FEB. 7, 2017)
