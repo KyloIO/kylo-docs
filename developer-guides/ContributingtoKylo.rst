@@ -74,9 +74,8 @@ Pull Requests
 Changes that apply to every Kylo user should be submitted as a pull
 request in GitHub. You should do your work in a fork of Kylo and submit
 a request to pull in those changes. Don't forget to confirm the target
-branch (master or point release) before submitting the request.  For
-instructions on creating pull requests please see `Pull
-Requests <#pull-requests>`__.
+branch (master or point release) before submitting the request. Please
+continue reading for instructions on creating a pull request.
 
 Development Guidelines
 ======================
