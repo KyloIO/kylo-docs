@@ -138,7 +138,7 @@ Build or download the rpm:
 
 8.  Start kylo apps:
 
-.. cell-block:: shell
+.. code-block:: shell
 
 /opt/kylo/start-kylo-apps.sh
 
@@ -239,7 +239,7 @@ Build or download the rpm:
 
 6. Execute the database upgrade script: 
 
-.. code-block::
+.. code-block:: shell
 
    /opt/kylo/setup/sql/mysql/kylo/0.6.0/update.sh localhost root
    <password or blank>
@@ -250,9 +250,9 @@ Build or download the rpm:
 
 .. code-block:: shell
 
-    $ mkdir /opt/nifi/activemq $ cp
-    /opt/kylo/setup/nifi/activemq/*.jar /opt/nifi/activemq $ chown
-    -R nifi /opt/nifi/activemq/
+    $ mkdir /opt/nifi/activemq 
+    $ cp /opt/kylo/setup/nifi/activemq/*.jar /opt/nifi/activemq 
+    $ chown -R nifi /opt/nifi/activemq/
 
 ..
 
@@ -296,9 +296,9 @@ Build or download the rpm:
 
 12. Start Kylo apps:
 
-.. cell-block:: shell
+.. code-block:: shell
 
-/opt/kylo/start-kylo-apps.sh
+    /opt/kylo/start-kylo-apps.sh
 
 ..
 
@@ -336,10 +336,7 @@ Build or download the rpm:
 
       iv.  Choose one of the Elasticsearch templates and check the overwrite box.
 
-14. A ReportingTask is now used for communication between NiFi and
-   Operations Manager.  In order to see Jobs and Steps in Ops Manager
-   you will need to configure this following these instructions: :doc: `NiFi
-   KyloProvenanceReportingTask`
+14. A ReportingTask is now used for communication between NiFi and Operations Manager.  In order to see Jobs and Steps in Ops Manager you will need to configure this following these instructions: :doc: `NiFi KyloProvenanceReportingTask`
 
 V0.5.0 RELEASE (DEC. 14, 2016)
 ==============================
