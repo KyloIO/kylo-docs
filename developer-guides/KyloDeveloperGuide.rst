@@ -223,10 +223,6 @@ IntelliJ Configuration
 Eclipse Configuration
 ---------------------
 
-
-    `*http://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-running-your-application.html* <http://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-running-your-application.html>`__
-
-
 1. Open Eclipse.
 
 2. Import the Kylo project.
@@ -240,15 +236,17 @@ Eclipse Configuration
 
    d. Click finish
 
-   e. Import takes a bit - got error about scala plugin - just clicked
-      finish
+   e. Import takes a bit - if you get an error about scala plugin, just click
+      finish to ignore it.
 
 3. Find and open the
    "com.thinkbiganalytics.server.KyloServerApplication" class.
 
 4. Right click and choose to debug as a Java application.
 
-5. Repeat for "com.thinkbiganalytics.KyloDataLakeUiApplication".
+5. Repeat for "com.thinkbiganalytics.KyloUiApplication".
 
     OPTIONAL: Install the spring tools suite and run as a spring boot
     option
+
+.. note:: Consult the Spring Boot documentation for  `Running Your Application <http://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-running-your-application.html>`__ for additional ways to run with spring boot.
