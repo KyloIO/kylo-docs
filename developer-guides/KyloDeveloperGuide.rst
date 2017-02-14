@@ -33,9 +33,7 @@ Install Maven 3
 This project requires Maven to execute a build. Use this link to
 download to the Maven installation file:
 
-.. code-block:: shell
-
-    `*https://maven.apache.org/install.html* <https://maven.apache.org/install.html>`__
+.. note:: For instructions on installing Apache Maven see the `Installing Apache Maven <https://maven.apache.org/install.html>`__ docs at the Apache Maven project site.
 
 Optional - Add Java 8 to Bash Profile
 -------------------------------------
