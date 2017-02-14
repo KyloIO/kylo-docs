@@ -19,11 +19,6 @@ Highlights
 
 -  The Audit Log table in Kylo will now track feed updates
 
-RPM
----
-
-`kylo-0.6.2-1.noarch.rpm <http://52.203.91.75:8080/artifactory/simple/libs-release-local/com/thinkbiganalytics/datalake/kylo/0.6.2/kylo-0.6.2-1.noarch.rpm>`__
-
 Upgrade Instructions from v0.6.0
 --------------------------------
 
@@ -98,10 +93,6 @@ Potential Impacts
 
 Upon upgrading, the ExecuteSparkJob processors will be marked as invalid and you will get a note saying: “Max wait time is invalid property”.  You will need to stop these processors and delete the "Max wait time" property
 
-RPM
----
-
-`kylo-0.6.1-1.noarch.rpm <http://52.203.91.75:8080/artifactory/simple/libs-release-local/com/thinkbiganalytics/datalake/kylo/0.6.1/kylo-0.6.1-1.noarch.rpm>`__
 
 Upgrade Instructions from v0.6.0
 --------------------------------
@@ -212,12 +203,6 @@ Potential Impacts
    changed. If you are using default config files deployed via RPM, 
    modify your MySQL password to match or alter the configuration files.
 
-RPM
----
-
-`kylo-0.6.0-1.noarch.rpm <http://52.203.91.75:8080/artifactory/simple/libs-release-local/com/thinkbiganalytics/datalake/kylo/0.6.0/kylo-0.6.0-1.noarch.rpm>`__
-
-(RPM file size: 786393081 bytes)
 
 Upgrade Instructions from v0.5.0
 --------------------------------
@@ -407,13 +392,6 @@ Potential Impacts
    portability and timezone consistency.  Any custom reports will need
    to be modified
 
-RPM
----
-
-`kylo-0.5.0-1.noarch.rpm <http://52.203.91.75:8080/artifactory/simple/libs-release-local/com/thinkbiganalytics/datalake/kylo/0.5.0/kylo-0.5.0-1.noarch.rpm>`__
-
-(RPM file size: 766437912 bytes)
-
 V0.4.3 RELEASE (NOV. 18, 2016)
 ==============================
 
@@ -469,14 +447,6 @@ Potential Impacts
 
 -  All non-feed tables will now be created as managed table **s**.
 
-RPM
----
-
-http://52.203.91.75:8080/artifactory/simple/libs-release-local/com/thinkbiganalytics/datalake/kylo/0.4.3/kylo-0.4.3-1.noarch.rpm
-
-(RPM file size: 726786538 bytes)
-
-**Note**: VPN is required to download the rpm from Artifactory
 
 V0.4.2 RELEASE (NOV. 4, 2016)
 =============================
@@ -511,15 +481,6 @@ Highlights
    See `Kylo TAR
    install <https://github.com/ThinkBigAnalytics/data-lake-accelerator/blob/master/docs/latest/deployment/kylo-tar-install.adoc>`__
 
-RPM
----
-
-`**http://52.203.91.75:8080/artifactory/simple/libs-release-local/com/thinkbiganalytics/datalake/kylo/0.4.2/kylo-0.4.2-1.noarch.rpm** <http://52.203.91.75:8080/artifactory/simple/libs-release-local/com/thinkbiganalytics/datalake/kylo/0.4.2/kylo-0.4.2-1.noarch.rpm>`__
-
-(RPM file size: 724528459 bytes)
-
-**Note**: VPN is required to download the rpm from Artifactory
-
 
 V0.4.1 RELEASE (OCT. 20, 2016)
 ==============================
@@ -553,15 +514,6 @@ Highlights
 -  Documentation updates
 
 -  UI usability improvements (validation, etc)
-
-RPM
----
-
-`**http://52.203.91.75:8080/artifactory/simple/libs-release-local/com/thinkbiganalytics/datalake/kylo/0.4.1/kylo-0.4.1-1.noarch.rpm** <http://52.203.91.75:8080/artifactory/simple/libs-release-local/com/thinkbiganalytics/datalake/kylo/0.4.1/kylo-0.4.1-1.noarch.rpm>`__
-
-(RPM file size: 474232649 bytes)
-
-**Note**: VPN is required to download the rpm from Artifactory
 
 Known Issues
 ------------
@@ -621,14 +573,6 @@ Highlights
    overridden when importing a template. This includes support to auto
    fill all kerberos properties
 
-RPM
----
-
-http://52.203.91.75:8080/artifactory/simple/libs-release-local/com/thinkbiganalytics/datalake/kylo/0.4.0/kylo-0.4.0-1.noarch.rpm
-
-(RPM file size: 473690416 bytes)
-
-**Note**: VPN is required to download the rpm from artifactory
 
 Known Issues
 ------------
