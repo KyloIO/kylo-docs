@@ -7,8 +7,7 @@
 Welcome to the Kylo Project
 ===========================
 
-|image1|
-.. Kylo website: http://kylo.io
+|image1| Kylo website: |kylo_io_link|
 
 The documentation provided here will guide you through the process of unlocking the power of Kylo to create, configure and monitor data pipelines so that you may leverage that data to drive key insights for your organization.
 
@@ -114,3 +113,7 @@ The documentation for the site is organized into a few sections:
     installation/KylosConfigurationforaKerborosCluster
     installation/NiFiConfigurationforaKerberosCluster
     installation/Postgres_Hive_Metadata_Configuration
+
+.. |kylo_io_link| raw:: html
+
+   <a href="http://kylo.io" target="_blank">http://kylo.io</a>
