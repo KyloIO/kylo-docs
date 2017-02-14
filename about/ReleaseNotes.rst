@@ -338,7 +338,7 @@ Build or download the rpm:
 
 14. A ReportingTask is now used for communication between NiFi and Operations Manager.  In order to see Jobs and Steps in Ops Manager you will need to configure this following these instructions:
 
-:doc:`NiFiKyloProvenanceReportingTask`
+:doc:   `NiFiKyloProvenanceReportingTask`
 
 V0.5.0 RELEASE (DEC. 14, 2016)
 ==============================
