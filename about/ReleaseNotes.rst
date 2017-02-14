@@ -140,7 +140,7 @@ Build or download the rpm:
 
 .. code-block:: shell
 
-/opt/kylo/start-kylo-apps.sh
+     /opt/kylo/start-kylo-apps.sh
 
 ..
 
@@ -375,7 +375,7 @@ Highlights
 -  New installation document showing an example on how to install Kylo
    on AWS in an HDP 2.5 cluster with the following: 
 
-    :doc: `HDP25ClusterDeploymentGuide`
+:doc: `HDP25ClusterDeploymentGuide`
 
 -  Ranger enabled
 
