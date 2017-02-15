@@ -7,10 +7,10 @@ Highlights
 -  67 issues resolved
 
 -  Hive user impersonation. Ability to restrict Hive table access
-   throughout Kylo based on permissions of logged-in user
+   throughout Kylo based on permissions of logged-in user.
 
 -  Visual data lineage.   Visualization of relationship between feeds,
-   data sources, and sinks. Refer to :do:`FeedLineage`
+   data sources, and sinks. Refer to :doc:`../how-to-guides/FeedLineage`
 
 -  Auto-layout NiFi feeds. Beautified display of Kylo-generated feeds in
    NiFi.
@@ -21,7 +21,7 @@ Highlights
 -  Hive table formats.  Final Hive table format extended to: RCFILE,
    CSV, AVRO (in addition to ORC, PARQUET).
 
--  Hive change tracking.  Batch timestamp (processing\_dttm partition
+-  Hive change tracking.  Batch timestamp (processing_dttm partition
    value) carried into final table for change tracking.
 
 -  Delete, disable, reorder templates. Ability to disable and/or remove
@@ -44,10 +44,10 @@ Potential Impacts
 -----------------
 
 -  Existing wrangler feed tables will need to ALTER TABLE to add a
-   processing\_dttm field to table in order to work.
+   processing_dttm field to table in order to work.
 
--  Processing\_dttm field is now java epoch time instead of formatted
+-  Processing_dttm field is now java epoch time instead of formatted
    date to be timezone independent. Older feeds will now have partition
    keys in two different formats.
 
--  All non-feed tables will now be created as managed table\ **s**
+-  All non-feed tables will now be created as managed table **s**
