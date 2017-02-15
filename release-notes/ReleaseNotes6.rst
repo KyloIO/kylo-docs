@@ -56,12 +56,6 @@ Potential Impacts
    changed. If you are using default config files deployed via RPM, 
    modify your MySQL password to match or alter the configuration files.
 
-RPM
----
-
-`thinkbig-datalake-accelerator-0.6.0-1.noarch.rpm <http://52.203.91.75:8080/artifactory/simple/libs-release-local/com/thinkbiganalytics/datalake/thinkbig-datalake-accelerator/0.6.0/thinkbig-datalake-accelerator-0.6.0-1.noarch.rpm>`__
-
-(RPM file size: 786393081 bytes)
 
 Upgrade Instructions from v0.5.0
 --------------------------------
@@ -70,19 +64,19 @@ Build or download the rpm:
 
 1. Shut down nifi - "service nifi stop"
 
-2. Run /opt/thinkbig/remove-thinkbig-datalake-accelerator.sh to
+2. Run /opt/kylo/remove-kylo.sh to
    uninstall the RPM
 
 3. Install the new RPM "rpm –ivh <RPM\_FILE>"
 
-4. Run /opt/thinkbig/setup/nifi/update-nars-jars.sh
+4. Run /opt/kylo/setup/nifi/update-nars-jars.sh
 
 5. Update /opt/nifi/current/conf/nifi.properties file and change it to
    use the default PersistentProvenanceRepository:
    nifi.provenance.repository.implementation=org.apache.nifi.provenance.PersistentProvenanceRepository
 
 6. Execute the database upgrade script: 
-   /opt/thinkbig/setup/sql/mysql/thinkbig/0.6.0/update.sh localhost root
+   /opt/kylo/setup/sql/mysql/kylo/0.6.0/update.sh localhost root
    <password or blank>
 
 7. Create the "/opt/nifi/activemq" folder and copy the jars:
@@ -90,20 +84,20 @@ Build or download the rpm:
 .. code-block:: shell
 
     $ mkdir /opt/nifi/activemq 
-    $ cp /opt/thinkbig/setup/nifi/activemq/*.jar
+    $ cp /opt/kylo/setup/nifi/activemq/*.jar
     /opt/nifi/activemq 
     $ chown -R nifi /opt/nifi/activemq/
 
 ..
 
-8. Add a service account for thinkbig application to nifi group (This
+8. Add a service account for Kylo application to nifi group (This
    will allow Kylo to upload files to the dropzone location defined in
    NiFi). This step will differ per operating system. Note also that these may differ depending
    on how the service accounts where created.
 
 .. code-block:: shell
 
-      $ sudo usermod -a -G nifi thinkbig
+      $ sudo usermod -a -G nifi kylo
 
 ..
 
@@ -132,23 +126,23 @@ Build or download the rpm:
 
 .. code-block:: shell
 
-    /opt/thinkbig/thinkbig-ui/conf/
-    /opt/thinkbig/thinkbig-services/conf/
-    /opt/thinkbig/thinkbig-spark-shell/conf/
+    /opt/kylo/kylo-ui/conf/
+    /opt/kylo/kylo-services/conf/
+    /opt/kylo/kylo-spark-shell/conf/
 
-    A backup of the previous version's configuration is available from /opt/thinkbig/bkup-config/.
+    A backup of the previous version's configuration is available from /opt/kylo/bkup-config/.
 
 11. If using NiFi v0.7 or earlier, modify
-   /opt/thinkbig/thinkbig-services/conf/application.properties by
+   /opt/kylo/kylo-services/conf/application.properties by
    changing spring.profiles.active from nifi-v1 to nifi-v0.
 
-12. Start thinkbig apps - /opt/thinkbig/start-thinkbig-apps.sh
+12. Start kylo apps - /opt/kylo/start-kylo-apps.sh
 
 13. Update the re-usable standard-ingest template,
    index\_schema\_service, and the index\_text\_service 
 
    a. The standard-ingest template can be updated through the templates
-      page. (/opt/thinkbig/setup/data/templates/nifi-1.0/) The upgrade
+      page. (/opt/kylo/setup/data/templates/nifi-1.0/) The upgrade
       will:
 
       i.   Add "json field policy file" path as one of the parameters to
@@ -163,7 +157,7 @@ Build or download the rpm:
 
    b. The index\_schema\_service and index\_text\_service templates are
       feed templates and should be updated through the feeds page.
-      (/opt/thinkbig/setup/data/feeds/nifi-1.0/.
+      (/opt/kylo/setup/data/feeds/nifi-1.0/.
 
       i.   Go to the feeds page
 
