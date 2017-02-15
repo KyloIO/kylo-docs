@@ -107,10 +107,11 @@ Build or download the rpm.
 
 .. code-block:: shell
 
-    mv /opt/kylo/encrypt.key /opt/kylo (If prompted for overwrite,
-    answer 'yes')
+    mv /opt/kylo/encrypt.key /opt/kylo
 
 ..
+
+     If prompted for overwrite, answer 'yes'.
 
 12.  Run: 
 
@@ -188,8 +189,7 @@ Build or download the rpm.
 
     A backup of the previous version's configuration is available from /opt/kylo/bkup-config/.
 
-22. Modify both of the metadata controller services in NiFi with the new
-   REST endpoint.
+22. Modify both of the metadata controller services in NiFi with the new REST endpoint.
 
    -  The first one should be under the root process group and is used by our processors.  The REST Client URL property should be changed to http://localhost:8400/proxy/v1/metadata.
 
