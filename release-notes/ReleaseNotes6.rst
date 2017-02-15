@@ -178,25 +178,25 @@ Build or download the RPM:
 
       i.   Add "json field policy file" path as one of the parameters to
            Profiler processor to support selective column profiling. See
-           "Configurable data profiling" in highlights
+           "Configurable data profiling" in highlights.
 
       ii.  Add feed field specification to support UI ability to modify
-           feeds. See "Improved schema manipulation" in highlights above
+           feeds. See "Improved schema manipulation" in highlights above.
 
       iii. Adds shared library path to activemq libraries required going
-           forward
+           forward.
 
    b. The index_schema_service and index_text_service templates are
       feed templates and should be updated through the feeds page.
       (/opt/kylo/setup/data/feeds/nifi-1.0/.
 
-      i.   Go to the feeds page
+      i.   Go to the feeds page.
 
-      ii.  Click the Plus icon
+      ii.  Click the Plus icon.
 
-      iii. Click on the "import from file" link
+      iii. Click on the "import from file" link.
 
-      iv.  Choose one of the Elasticsearch templates and check the overwrite box
+      iv.  Choose one of the Elasticsearch templates and check the overwrite box.
 
 14. A ReportingTask is now used for communication between NiFi and Operations Manager.  In order to see Jobs and Steps in Ops Manager you will need to configure this following these instructions:
 
