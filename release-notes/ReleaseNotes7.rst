@@ -129,9 +129,10 @@ Build or download the rpm.
 
 .. code-block:: shell
 
-    > cp /opt/kylo/kylo-services/lib/mariadb-java-client-\*.jar
-    /opt/nifi/mysql > chown nifi:users
-    /opt/nifi/mysql/mariadb-java-client-\*.jar
+      > cp /opt/kylo/kylo-services/lib/mariadb-java-client-\*.jar
+      /opt/nifi/mysql 
+      > chown nifi:users
+      /opt/nifi/mysql/mariadb-java-client-\*.jar
 
 ..
 
