@@ -87,11 +87,16 @@ Build or download the rpm:
 
 7. Create the "/opt/nifi/activemq" folder and copy the jars:
 
-    $ mkdir /opt/nifi/activemq $ cp
-    /opt/thinkbig/setup/nifi/activemq/\*.jar /opt/nifi/activemq $ chown
-    -R nifi /opt/nifi/activemq/.
+.. code-block:: shell
 
-1. Add a service account for thinkbig application to nifi group (This
+    $ mkdir /opt/nifi/activemq $ cp
+    /opt/thinkbig/setup/nifi/activemq/*.jar
+    /opt/nifi/activemq 
+    $ chown -R nifi /opt/nifi/activemq/
+
+..
+
+8. Add a service account for thinkbig application to nifi group (This
    will allow Kylo to upload files to the dropzone location defined in
    NiFi). This step will differ per operating system!
 
@@ -99,24 +104,38 @@ Build or download the rpm:
     on how the service accounts where created) Note: All dropzone
     locations must allow thinkbig service account to write
 
-1. Start NiFi - "service nifi start"  (wait to start)
+9. Start NiFi: (wait to start)
 
-1. Note: If errors occur, try removing the transient provenance data:   
-   rm -fR /PATH/TO/NIFI/provenance\_repository/.
+.. code-block:: shell
 
-1. Update the configuration files at /opt/thinkbig/thinkbig-ui/conf/,
-   /opt/thinkbig/thinkbig-services/conf/, and
-   /opt/thinkbig/thinkbig-spark-shell/conf/ with your custom
-   configuration.  A backup of the previous version's configuration is
-   available from /opt/thinkbig/bkup-config/.
+    service nifi start
 
-2. If using NiFi v0.7 or earlier, modify
+..
+
+.. note::
+
+    If errors occur, try removing the transient provenance data:   
+    rm -fR /PATH/TO/NIFI/provenance\_repository/.
+
+..
+
+10. Update, using your custom configuration, the configuration files at:
+
+.. code-block:: shell
+
+    /opt/thinkbig/thinkbig-ui/conf/
+    /opt/thinkbig/thinkbig-services/conf/
+    /opt/thinkbig/thinkbig-spark-shell/conf/
+
+    A backup of the previous version's configuration is available from /opt/thinkbig/bkup-config/.
+
+11. If using NiFi v0.7 or earlier, modify
    /opt/thinkbig/thinkbig-services/conf/application.properties by
    changing spring.profiles.active from nifi-v1 to nifi-v0.
 
-3. Start thinkbig apps - /opt/thinkbig/start-thinkbig-apps.sh
+12. Start thinkbig apps - /opt/thinkbig/start-thinkbig-apps.sh
 
-4. Update the re-usable standard-ingest template,
+13. Update the re-usable standard-ingest template,
    index\_schema\_service, and the index\_text\_service 
 
    a. The standard-ingest template can be updated through the templates
@@ -137,18 +156,15 @@ Build or download the rpm:
       feed templates and should be updated through the feeds page.
       (/opt/thinkbig/setup/data/feeds/nifi-1.0/.
 
-i.   Go to the feeds page
+      i.   Go to the feeds page
 
-ii.  Click the Plus icon
+      ii.  Click the Plus icon
 
-iii. Click on the "import from file" link
+      iii. Click on the "import from file" link
 
-iv.  Choose one of the Elasticsearch templates and check the overwrite
-     box
+      iv.  Choose one of the Elasticsearch templates and check the overwrite box
 
-1. A ReportingTask is now used for communication between NiFi and
+14. A ReportingTask is now used for communication between NiFi and
    Operations Manager.  In order to see Jobs and Steps in Ops Manager
    you will need to configure this following these instructions: `NiFi
    KyloProvenanceReportingTask <https://wiki.thinkbiganalytics.com/display/RD/NiFi+KyloProvenanceReportingTask>`__
-
-   -  
