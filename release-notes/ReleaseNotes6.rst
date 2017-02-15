@@ -13,30 +13,30 @@ Highlights
    streaming type to optimize display.
 
 -  Improved schema manipulation. Ability for feeds and target Hive
-   tables to diverge (e.g. drop fields, rename fields, and change data
-   types for fields the exist in raw files regardless of raw type)
+   tables to diverge (for example: drop fields, rename fields, and change data
+   types for fields the exist in raw files regardless of raw type).
 
 -  Alert persistence.  Ability for alert panel to store alerts (and
    clear) including and APIs for plugging in custom alert responder and
-   incorporate SLA alerts
+   incorporate SLA alerts.
 
 -  Configurable data profiling.  Profiled columns can be toggled to
-   avoid excessive Spark processing
+   avoid excessive Spark processing.
 
--  Tags in search. Ability to search tags in global search
+-  Tags in search. Ability to search tags in global search.
 
 -  Legacy NiFi version cleanup.  Deletes retired version of NiFi feed
-   flows
+   flows.
 
 -  Avro format option for database fetch.  GetTableData processor has
    been updated to allow writing rows in Avro format and to allow
    setting a custom column delimiter when the output type is a delimited
-   text file
+   text file.
 
 -  Feed file upload.  Ability to upload a file directly to a feed and
-   have it trigger immediately (for feeds using filesystem)
+   have it trigger immediately (for feeds using filesystem).
 
--  Tutorials. New admin tutorial videos
+-  Tutorials. New admin tutorial videos.
 
 Potential Impacts
 -----------------
@@ -60,24 +60,49 @@ Potential Impacts
 Upgrade Instructions from v0.5.0
 --------------------------------
 
-Build or download the rpm:
+Build or download the RPM:
 
-1. Shut down nifi - "service nifi stop"
+1. Shut down nifi: service nifi stop
 
-2. Run /opt/kylo/remove-kylo.sh to
-   uninstall the RPM
+2. Run the following to uninstall the RPM:
 
-3. Install the new RPM "rpm –ivh <RPM\_FILE>"
+.. code-block:: shell
 
-4. Run /opt/kylo/setup/nifi/update-nars-jars.sh
+    /opt/kylo/remove-kylo.sh
 
-5. Update /opt/nifi/current/conf/nifi.properties file and change it to
-   use the default PersistentProvenanceRepository:
-   nifi.provenance.repository.implementation=org.apache.nifi.provenance.PersistentProvenanceRepository
+..
+
+3. Install the new RPM:
+
+.. code-block:: shell
+
+    rpm –ivh <RPM_FILE>"
+
+..
+
+4. Run:
+
+.. code-block:: shell
+
+    /opt/kylo/setup/nifi/update-nars-jars.sh
+
+..
+
+5. Update /opt/nifi/current/conf/nifi.properties file and change it to use the default PersistentProvenanceRepository:
+
+.. code-block:: shell
+
+    nifi.provenance.repository.implementation=org.apache.nifi.provenance.PersistentProvenanceRepository
+
+..
 
 6. Execute the database upgrade script: 
-   /opt/kylo/setup/sql/mysql/kylo/0.6.0/update.sh localhost root
-   <password or blank>
+
+.. code-block:: shell
+
+    /opt/kylo/setup/sql/mysql/kylo/0.6.0/update.sh localhost root <password or blank>
+
+..
 
 7. Create the "/opt/nifi/activemq" folder and copy the jars:
 
@@ -90,10 +115,7 @@ Build or download the rpm:
 
 ..
 
-8. Add a service account for Kylo application to nifi group (This
-   will allow Kylo to upload files to the dropzone location defined in
-   NiFi). This step will differ per operating system. Note also that these may differ depending
-   on how the service accounts where created.
+8. Add a service account for Kylo application to nifi group. (This will allow Kylo to upload files to the dropzone location defined in NiFi). This step will differ per operating system. Note also that these may differ depending on how the service accounts where created.
 
 .. code-block:: shell
 
@@ -118,7 +140,7 @@ Build or download the rpm:
 .. note::
 
     If errors occur, try removing the transient provenance data:   
-    rm -fR /PATH/TO/NIFI/provenance\_repository/.
+    rm -fR /PATH/TO/NIFI/provenance_repository/.
 
 ..
 
@@ -130,20 +152,23 @@ Build or download the rpm:
     /opt/kylo/kylo-services/conf/
     /opt/kylo/kylo-spark-shell/conf/
 
+..
+
     A backup of the previous version's configuration is available from /opt/kylo/bkup-config/.
 
-11. If using NiFi v0.7 or earlier, modify
-   /opt/kylo/kylo-services/conf/application.properties by
-   changing spring.profiles.active from nifi-v1 to nifi-v0.
+11. If using NiFi v0.7 or earlier, modify /opt/kylo/kylo-services/conf/application.properties by changing spring.profiles.active from nifi-v1 to nifi-v0.
 
-12. Start kylo apps - /opt/kylo/start-kylo-apps.sh
+12. Start Kylo apps:
 
-13. Update the re-usable standard-ingest template,
-   index\_schema\_service, and the index\_text\_service 
+.. code-block:: shell
 
-   a. The standard-ingest template can be updated through the templates
-      page. (/opt/kylo/setup/data/templates/nifi-1.0/) The upgrade
-      will:
+      /opt/kylo/start-kylo-apps.sh
+
+..
+
+13. Update the re-usable standard-ingest template, index_schema_service, and the index_text_service. 
+
+   a. The standard-ingest template can be updated through the templates page. (/opt/kylo/setup/data/templates/nifi-1.0/) The upgrade will:
 
       i.   Add "json field policy file" path as one of the parameters to
            Profiler processor to support selective column profiling. See
@@ -155,7 +180,7 @@ Build or download the rpm:
       iii. Adds shared library path to activemq libraries required going
            forward
 
-   b. The index\_schema\_service and index\_text\_service templates are
+   b. The index_schema_service and index_text_service templates are
       feed templates and should be updated through the feeds page.
       (/opt/kylo/setup/data/feeds/nifi-1.0/.
 
@@ -167,8 +192,6 @@ Build or download the rpm:
 
       iv.  Choose one of the Elasticsearch templates and check the overwrite box
 
-14. A ReportingTask is now used for communication between NiFi and
-   Operations Manager.  In order to see Jobs and Steps in Ops Manager
-   you will need to configure this following these instructions:
+14. A ReportingTask is now used for communication between NiFi and Operations Manager.  In order to see Jobs and Steps in Ops Manager you will need to configure this following these instructions:
 
 :doc:`../how-to-guides/NiFiKyloProvenanceReportingTask`
