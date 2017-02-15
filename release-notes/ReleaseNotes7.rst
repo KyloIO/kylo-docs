@@ -8,7 +8,7 @@ Highlights
 
 -  Our REST API documentation has been updated and reorganized for
    easier reading. If you have Kylo running you can
-   open \ http://localhost:8400/api-docs/index.html to view the docs.
+   open http://localhost:8400/api-docs/index.html to view the docs.
 
 -  Kylo is now available under the Apache 2 open-source license. Visit
    our new `GitHub <https://github.com/KyloIO>`__ page!
@@ -64,7 +64,7 @@ Build or download the rpm.
 
 .. code-block:: shell
 
-     rpm –ivh <RPM\_FILE>
+     rpm –ivh <RPM_FILE>
 
 ..
 
@@ -126,10 +126,10 @@ Build or download the rpm.
 
 .. code-block:: shell
 
-      > cp /opt/kylo/kylo-services/lib/mariadb-java-client-\*.jar
+      > cp /opt/kylo/kylo-services/lib/mariadb-java-client-*.jar
       /opt/nifi/mysql 
       > chown nifi:users
-      /opt/nifi/mysql/mariadb-java-client-\*.jar
+      /opt/nifi/mysql/mariadb-java-client-*.jar
 
 ..
 
@@ -164,7 +164,7 @@ Build or download the rpm.
     Location(s): file:///opt/nifi/mysql/mariadb-java-client-1.5.7.jar
 
 19. For the JMSConnectionFactoryProvider controller service, set
-    the \ *MQ Client Libraries path* property value to:
+    the *MQ Client Libraries path* property value to:
 
 .. code-block:: shell
 
@@ -172,9 +172,9 @@ Build or download the rpm.
 
 ..
 
-20. For the StandardSqoopConnectionService, copy the value of \ *Source
-    Driver* to \ *Source Driver (Avoid providing value)* then delete
-    the \ *Source Driver *\ property.
+20. For the StandardSqoopConnectionService, copy the value of *Source
+    Driver* to *Source Driver (Avoid providing value)* then delete
+    the *Source Driver* property.
 
 21. Update, with your custom configuration, the configuration files at:
 
@@ -191,7 +191,7 @@ Build or download the rpm.
 22. Modify both of the metadata controller services in NiFi with the new
    REST endpoint.
 
-   -  The first one should be under the root process group and is used by our processors.  The REST Client URL property should be changed to \ http://localhost:8400/proxy/v1/metadata.
+   -  The first one should be under the root process group and is used by our processors.  The REST Client URL property should be changed to http://localhost:8400/proxy/v1/metadata.
 
    -  The second is under the right-hand menu and is used by our reporting task. The REST Client URL property should be changed to http://localhost:8400/proxy/v1/metadata.
 
@@ -202,7 +202,7 @@ Build or download the rpm.
 24. Modify permissions to allow existing NiFi flows to use /tmp/kylo
    directory.
 
-   (Note: After re-importing data\_ingest.zip in a later step, any new
+   (Note: After re-importing data_ingest.zip in a later step, any new
    feeds created will use the /tmp/kylo-nifi folder. The below command
    will allow existing flows to continue using the /tmp/kylo folder.)
 
@@ -216,7 +216,7 @@ Build or download the rpm.
 
 ..
 
-26. Re-import the data\_ingest.zip template. (New feeds will use the temp location /tmp/kylo-nifi.)
+26. Re-import the data_ingest.zip template. (New feeds will use the temp location /tmp/kylo-nifi.)
 
 27. (Optional) If unused, the mysql driver in /opt/nifi/mysql can be deleted.
 
