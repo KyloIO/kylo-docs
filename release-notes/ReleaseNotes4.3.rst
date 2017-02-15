@@ -50,4 +50,4 @@ Potential Impacts
    date to be timezone independent. Older feeds will now have partition
    keys in two different formats.
 
--  All non-feed tables will now be created as managed table **s**
+-  All non-feed tables will now be created as managed tables.
