@@ -66,7 +66,7 @@ Build or download the RPM:
 
 .. code-block:: shell
 
-service nifi stop
+    service nifi stop
 
 ..
 
