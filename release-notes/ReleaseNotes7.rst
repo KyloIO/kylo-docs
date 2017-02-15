@@ -31,7 +31,7 @@ Build or download the rpm.
 
 .. code-block:: shell
 
-   "service nifi stop"
+    service nifi stop
 
 ..
 
@@ -64,7 +64,7 @@ Build or download the rpm.
 
 .. code-block:: shell
 
-    "rpm –ivh <RPM\_FILE>"
+     rpm –ivh <RPM\_FILE>
 
 ..
 
@@ -90,13 +90,10 @@ Build or download the rpm.
 
 9. Edit:
 
-.. code-block:: shell
-
     /opt/nifi/current/conf/bootstrap.conf and change "java.arg.15=
     Dthinkbig.nifi.configPath=/opt/nifi/ext-config" **to** "java.arg.15=
     Dkylo.nifi.configPath=/opt/nifi/ext-config"
 
-..
 
 10. Run:
 
@@ -140,7 +137,7 @@ Build or download the rpm.
 
 .. code-block:: shell
 
-    "service nifi start"
+     service nifi start
 
 ..
 
@@ -148,7 +145,7 @@ Build or download the rpm.
 
 .. code-block:: shell
 
-    "/opt/nifi/current/lib/app/kylo-spark-validate-cleanse-jar-with-dependencies.jar"
+     /opt/nifi/current/lib/app/kylo-spark-validate-cleanse-jar-with-dependencies.jar
 
 ..
 
@@ -157,7 +154,7 @@ Build or download the rpm.
 
 .. code-block:: shell
 
-    "/opt/nifi/current/lib/app/kylo-spark-job-profiler-jar-with-dependencies.jar"
+     /opt/nifi/current/lib/app/kylo-spark-job-profiler-jar-with-dependencies.jar
 
 ..
 
