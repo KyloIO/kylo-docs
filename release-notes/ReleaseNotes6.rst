@@ -62,7 +62,13 @@ Upgrade Instructions from v0.5.0
 
 Build or download the RPM:
 
-1. Shut down nifi: service nifi stop
+1. Shut down NiFi:
+
+.. code-block:: shell
+
+service nifi stop
+
+..
 
 2. Run the following to uninstall the RPM:
 
