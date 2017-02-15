@@ -150,8 +150,7 @@ Build or download the rpm.
 
 ..
 
-17.  In the standard-ingest template update the"Profile Data" procesor
-    and change the ApplicationJAR value to: 
+17.  In the standard-ingest template update the"Profile Data" processor and change the ApplicationJAR value to: 
 
 .. code-block:: shell
 
@@ -159,17 +158,16 @@ Build or download the rpm.
 
 ..
 
-18.  For the MySQL controller service (type: DBCPConnectionPool), update
-    the properties to use mariadb driver: Database Driver Class
-    Name: org.mariadb.jdbc.Driver Database Driver
-    Location(s): file:///opt/nifi/mysql/mariadb-java-client-1.5.7.jar
+18.  For the MySQL controller service (type: DBCPConnectionPool), update the properties to use mariadb driver: Database Driver Class:
 
-19. For the JMSConnectionFactoryProvider controller service, set
-    the *MQ Client Libraries path* property value to:
+     - Name: org.mariadb.jdbc.Driver Database Driver
+     - Location(s): file:///opt/nifi/mysql/mariadb-java-client-1.5.7.jar
+
+19. For the JMSConnectionFactoryProvider controller service, set the *MQ Client Libraries path* property value to:
 
 .. code-block:: shell
 
-    /opt/kylo/kylo-services/lib
+     /opt/kylo/kylo-services/lib
 
 ..
 
