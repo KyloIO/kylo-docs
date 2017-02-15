@@ -6,8 +6,11 @@ Highlights
 
 -  Support Streaming/Rapid Fire feeds from NiFi
 
--  Note: Operations Manager User Interfaces for viewing Streaming feeds
-   will come in a near future release
+.. note::
+
+    Operations Manager User Interfaces for viewing Streaming feeds will come in a near future release.
+
+..
 
 -  Security enhancements including integration with LDAP and
    administration of users and groups through the web UI
@@ -39,7 +42,7 @@ Highlights
 -  Allow injection of properties for any processor or controller service
    in the application.properties file. The feed properties will be
    overridden when importing a template. This includes support to auto
-   fill all kerberos properties
+   fill all kerberos properties.
 
 Known Issues
 ------------
@@ -62,7 +65,7 @@ Running in the IDE
 -  mvn generate-sources     
 
     This is because it is now using JPA along with
-    QueryDSL(\ http://www.querydsl.com/) which generates helper Query
+    QueryDSL(http://www.querydsl.com/), which generates helper Query
     classes for the JPA entities.  Once this runs you will notice it
     generates a series of Java classes prefixed with "Q" (i.e.
     QNifiJobExecution) in the
@@ -71,5 +74,5 @@ Running in the IDE
     Optionally you could just run a mvn install on this module which
     will also trigger the generate-sources.
 
--  Additionally if you havent done so you need to ensure the latest
+-  Additionally, if you havent done so, you need to ensure the latest
    nifi-provenance-repo.nar file is in the /opt/nifi/data/lib folder.
