@@ -68,9 +68,7 @@ Build or download the rpm.
 
 ..
 
-6. Migrate the "thinkbig" database schema to "kylo" - `Schema migration
-   (thinkbig -> kylo) (MySQL
-   DB) <https://wiki.thinkbiganalytics.com/pages/viewpage.action?pageId=13242764>`__.
+6. Migrate the "thinkbig" database schema to "kylo" - `Schema migration (thinkbig -> kylo) (MySQLDB) <https://wiki.thinkbiganalytics.com/pages/viewpage.action?pageId=13242764>`__.
 
 7. Update the database:  
 
@@ -92,11 +90,11 @@ Build or download the rpm.
 
 .. code-block:: shell
 
-    /opt/nifi/current/conf/bootstrap.conf and change "java.arg.15=
-    Dthinkbig.nifi.configPath=/opt/nifi/ext-config" **to** "java.arg.15=
-    Dkylo.nifi.configPath=/opt/nifi/ext-config"
+    /opt/nifi/current/conf/bootstrap.conf
 
 ..
+
+    Change "java.arg.15=Dthinkbig.nifi.configPath=/opt/nifi/ext-config" **to** "java.arg.15=Dkylo.nifi.configPath=/opt/nifi/ext-config".
 
 10. Run:
 
