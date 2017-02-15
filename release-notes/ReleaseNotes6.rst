@@ -98,11 +98,20 @@ Build or download the rpm:
 
 8. Add a service account for thinkbig application to nifi group (This
    will allow Kylo to upload files to the dropzone location defined in
-   NiFi). This step will differ per operating system!
+   NiFi). This step will differ per operating system. Note also that these may differ depending
+   on how the service accounts where created.
 
-    $ sudo usermod -a -G nifi thinkbig (note: these may differ depending
-    on how the service accounts where created) Note: All dropzone
-    locations must allow thinkbig service account to write
+.. code-block:: shell
+
+      $ sudo usermod -a -G nifi thinkbig
+
+..
+
+.. Note::
+
+    All dropzone locations must allow the Kylo service account to write.
+
+..
 
 9. Start NiFi: (wait to start)
 
