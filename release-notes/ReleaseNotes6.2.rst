@@ -24,7 +24,7 @@ Build or download the RPM.
 
 .. code-block:: shell
 
-    "service nifi stop"
+     service nifi stop
 
 ..
 
@@ -40,7 +40,7 @@ Build or download the RPM.
 
 .. code-block:: shell
 
-    "rpm –ivh <RPM\_FILE>"
+     rpm –ivh <RPM\_FILE>
 
 ..
 
@@ -56,7 +56,7 @@ Build or download the RPM.
 
 .. code-block:: shell
 
-    "service nifi start"
+     service nifi start
 
 ..
 
