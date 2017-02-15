@@ -8,11 +8,11 @@ Highlights
 
 -  NiFi version 1.0 and HDF version 2.0 support
 
--  Encrypted properties and passwords in configuration files. Refer to "Encrypting Configuration Property Values" in the :doc:`KyloDeploymentGuide`
+-  Encrypted properties and passwords in configuration files. Refer to "Encrypting Configuration Property Values" in the :doc:`../installation/KyloDeploymentGuide`
 
--  SSL support. SSL between services. Refer to :doc:`ConfigureNiFiWithSSL`
+-  SSL support. SSL between services. Refer to :doc:`../how-to-guides/ConfigureNiFiWithSSL`
 
--  Feed-chaining context.   Context can be passed from dependent feeds. Refer to Trigger Feed in the :doc:`NiFiProcessorDocs`
+-  Feed-chaining context.   Context can be passed from dependent feeds. Refer to Trigger Feed in the :doc:`../how-to-guides/NiFiProcessorDocs`
 
 -  Lineage tracking.  Schema, feed, and preconditions.
 
@@ -22,4 +22,4 @@ Highlights
 
 -  NiFi Template upgrades
 
--  Procedure for relocating install locations of Kylo and dependencies. Refer to :doc"`KyloTARFileInstallation`
+-  Procedure for relocating install locations of Kylo and dependencies. Refer to :doc:`../installation/KyloTARFileInstallation`
