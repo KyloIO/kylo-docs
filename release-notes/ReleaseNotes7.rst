@@ -159,7 +159,7 @@ Build or download the rpm.
 
 ..
 
-18.  For the MySQL controller service (type: DBCPConnectionPool), update the properties to use mariadb driver: Database Driver Class:
+18.  For the MySQL controller service (type: DBCPConnectionPool), update the properties to use the mariadb driver: Database Driver Class:
 
      - Name: org.mariadb.jdbc.Driver Database Driver
      - Location(s): file:///opt/nifi/mysql/mariadb-java-client-1.5.7.jar
