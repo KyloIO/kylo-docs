@@ -18,6 +18,17 @@ that a user or group may perform, whether to invoke a function or access
 data, are organized into a hierarchy, and privileges may be granted at
 any level.
 
+Users and Groups can be updated using the Users and Groups Kylo admin pages:
+
+::
+
+   http://<hostname>:8400/feed-mgr/index.html#/users
+   http://<hostname>:8400/feed-mgr/index.html#/groups
+
+Note, for authetication plugin modules with groups enabled, user groups
+will be provided by the external provider and may not be updatable from 
+the Users page.
+
 Default Users and Groups
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
