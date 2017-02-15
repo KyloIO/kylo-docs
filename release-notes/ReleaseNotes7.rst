@@ -90,10 +90,13 @@ Build or download the rpm.
 
 9. Edit:
 
+.. code-block:: shell
+
     /opt/nifi/current/conf/bootstrap.conf and change "java.arg.15=
     Dthinkbig.nifi.configPath=/opt/nifi/ext-config" **to** "java.arg.15=
     Dkylo.nifi.configPath=/opt/nifi/ext-config"
 
+..
 
 10. Run:
 
@@ -193,9 +196,15 @@ Build or download the rpm.
 
    -  The second is under the right-hand menu and is used by our reporting task. The REST Client URL property should be changed to http://localhost:8400/proxy/v1/metadata.
 
-23. If using NiFi v0.7 or earlier, modify
-   /opt/kylo/kylo-services/conf/application.properties by changing
-   spring.profiles.active from nifi-v1 to nifi-v0.
+23. If using NiFi v0.7 or earlier, modify:
+
+.. code-block:: shell
+
+      /opt/kylo/kylo-services/conf/application.properties
+
+..
+
+    Change spring.profiles.active from **nifi-v1** to **nifi-v0**.
 
 24. Modify permissions to allow existing NiFi flows to use /tmp/kylo directory.
 
@@ -225,6 +234,6 @@ Build or download the rpm.
 
 .. code-block:: shell
 
-  > rm /opt/nifi/mysql/mysql-connector-java-*.jar
+    > rm /opt/nifi/mysql/mysql-connector-java-*.jar
 
 ..
