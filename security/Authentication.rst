@@ -4,97 +4,6 @@ Authentication
 Overview
 ~~~~~~~~
 
-Kylo uses a pluggable authentication scheme based on `JAAS 
-<http://docs.oracle.com/javase/7/docs/technotes/guides/security/jaas/JAASRefGuide.html>`__. 
-JAAS allows multiple `LoginModules 
-<http://docs.oracle.com/javase/7/docs/technotes/guides/security/jaas/JAASRefGuide.html#LoginModule>`__
-to be configured to collaborate in an authentication attempt.
-
-Pre-Configured Pluggable Authentication Modules
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Kylo comes with some pre-configured authentication plugins that may be
-activated by adding the approperiate Spring profiles to the UI and server
-configuration property files.  By default, whenever any of these profiles
-are added to the configuration it is equivalent to adding their associated
-LoginModules to the overall JAAS configuration using the "required" control flag.
-
-+------------------+----------------+-----------------+
-| Login Method     | Spring Profile | Description     |
-+==================+================+=================+
-| Kylo User        | auth-kylo      | Authenticates   |
-|                  |                | users           |
-|                  |                | against the     |
-|                  |                | Kylo            |
-|                  |                | user/group      |
-|                  |                | store (Kylo     |
-|                  |                | services        |
-|                  |                | only)           |
-+------------------+----------------+-----------------+
-| LDAP             | auth-ldap      | Authenticates   |
-|                  |                | users stored    |
-|                  |                | in LDAP         |
-+------------------+----------------+-----------------+
-| Active Directory | auth-ad        | Authenticates   |
-|                  |                | users stored    |
-|                  |                | in Active       |
-|                  |                | Directory       |
-+------------------+----------------+-----------------+
-| Users file       | auth-file      | Authenticates   |
-|                  |                | users in a      |
-|                  |                | file            |
-|                  |                | users.properies |
-|                  |                | (typically      |
-|                  |                | used in         |
-|                  |                | development     |
-|                  |                | only)           |
-+------------------+----------------+-----------------+
-| Simple           | auth-simple    | Allows only     |
-|                  |                | one admin       |
-|                  |                | user defined    |
-|                  |                | in the          |
-|                  |                | configuration   |
-|                  |                | properties      |
-|                  |                | (development    |
-|                  |                | only)           |
-+------------------+----------------+-----------------+
-
-Default Authentication Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-When Kylo is newly installed it will be pre-configured with have a few default users
-and groups defined; with varying permissions assiged to each group.  The default groups are:
-
-   * Administrators
-   * Operations
-   * Designers
-   * Analysts
-   * Users
-   
-The default users and their assigned groups are:
-
-   * Data Lake Administrator - Administrators, Users
-   * Analyst - Analysts, Users
-   * Designer - Designers, Users
-   * Operator - Operations, Users
-
-The initial installation will also
-have the `auth-kylo` and `auth-file` included in the active profiles configured in
-the conf/application.properties file of both the UI and Services.  With these profiles
-active the authentication process will use both the built-in Kylo user store and a username/password
-file to authenticate requests.  In this configuration, the login modules activated 
-by these profiles would both have to successfully athenticate a request before access
-would be granted.
-
-Note that the `auth-file` profile should generally not be used in a production
-environment because it currently stores user passwords in the clear.  It is primarily
-used only in development and testing.
-
-JAAS Configuration
-~~~~~~~~~~~~~~~~~~
-
-Currently, there are two applications for which LoginModules may be
-===================================================================
 Kylo supports a pluggable authentication architecture that allows
 customers to integrate their existing infrastructure when authenticating
 a user.  The pluggability is built around `JAAS 
@@ -326,7 +235,7 @@ being processed. JAAS LogionModules have two responsibilities:
    #. To optionally associate principals (user and group identifiers) with the securiity conext of the request
    
 A number of authentication profiles described above support loading of user groups at login time.
-For `auth-kylo` this is done automatically; for others (`auth-ldap`, 'auth-file`, etc.) this must be configured.
+For `auth-kylo` this is done automatically, for others (`auth-ldap`, 'auth-file`, etc.) this must be configured.
 If more than one group-loading profiles are configured then the result is additive.  For example, if your configuraton
 activates the profiles `auth-kylo` and `auth-LDAP`, and the LDAP properties enable groups, then any groups associated
 with the user in both LDAP and the Kylo user store will be combined and associated with the user's security
@@ -335,8 +244,7 @@ context.
 JAAS Application Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Currently, there are two applications (from a JAAS standpoint) for which LoginModules may be
->>>>>>> Added Authentication section and updated auth docs
+Currently, there are two applications (from a JAAS perspective) for which LoginModules may be
 configured for authentication: the Kylo UI and Services REST API. Kylo
 provides an API that allows plugins to easily integrate custom login
 modules into the authentication process.
