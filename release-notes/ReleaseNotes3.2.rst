@@ -1,4 +1,4 @@
-V0.3.2 RELEASE (SEPT. 19, 2016)
+Release 0.3.2 (Sept. 19, 2016)
 ===============================
 
 Highlights

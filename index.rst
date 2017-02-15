@@ -38,6 +38,7 @@ The documentation for the site is organized into a few sections:
 
     installation/KyloDeploymentChecklist
     installation/KyloDeploymentGuide
+    release-notes/ReleaseNotes
 
 .. _security_toc:
 .. toctree::

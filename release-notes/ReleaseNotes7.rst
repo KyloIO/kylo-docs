@@ -1,6 +1,3 @@
-RELEASE NOTES
-=============
-
 Release 0.7.0 (Feb. 7, 2017)
 ============================
 
@@ -215,7 +212,7 @@ Build or download the rpm.
 
 25. Start kylo apps:
 
-.. code-block::
+.. code-block:: shell
 
     /opt/kylo/start-kylo-apps.sh
 
@@ -227,7 +224,7 @@ Build or download the rpm.
 
 28. Run:
 
-.. code-block::
+.. code-block:: shell
 
   > rm /opt/nifi/mysql/mysql-connector-java-*.jar
 
