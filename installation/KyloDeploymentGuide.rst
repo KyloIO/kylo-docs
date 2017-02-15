@@ -115,13 +115,13 @@ need to add permissions for Kylo and NiFi.
 Kerberos
 --------
 
-If you are installing Kylo on a kerberos cluster you will need to
+If you are installing Kylo on a Kerberos cluster you will need to
 configure the applications before certain features will work
 
 Optional: Configure Kerberos For Your Local HDP Sandbox
 -------------------------------------------------------
 
-This guide will help you enabled kerberos for your local development
+This guide will help you enabled Kerberos for your local development
 sandbox for development and testing:
 
 :doc:`KerberosInstallationExample-Cloudera`

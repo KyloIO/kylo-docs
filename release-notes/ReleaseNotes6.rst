@@ -168,4 +168,4 @@ Build or download the rpm:
    Operations Manager.  In order to see Jobs and Steps in Ops Manager
    you will need to configure this following these instructions:
 
-:doc:`NiFiKyloProvenanceReportingTask`
+:doc:`../how-to-guides/NiFiKyloProvenanceReportingTask`
