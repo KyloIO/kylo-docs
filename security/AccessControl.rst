@@ -41,8 +41,8 @@ The initial installation will also
 have the `auth-kylo` and `auth-file` included in the active profiles configured in
 the conf/application.properties file of both the UI and Services.  With these profiles
 active the authentication process will use both the built-in Kylo user store and a username/password
-file to authenticate requests.  In this configuration, the login modules activated
-by these profiles must successfully authenticate a request before access
+file to authenticate requests.  In this configuration, both login modules activated
+would have to successfully authenticate a request before access
 would be granted.
 
 Service-Level Authorization
