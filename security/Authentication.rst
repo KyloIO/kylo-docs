@@ -8,14 +8,14 @@ Kylo supports a pluggable authentication architecture that allows
 customers to integrate their existing infrastructure when authenticating
 a user.  The pluggability is built around `JAAS 
 <http://docs.oracle.com/javase/7/docs/technotes/guides/security/jaas/JAASRefGuide.html>`__; 
-which delegtes authentication to one or more configured `LoginModules 
+which delegates authentication to one or more configured `LoginModules 
 <http://docs.oracle.com/javase/7/docs/technotes/guides/security/jaas/JAASRefGuide.html#LoginModule>`__
 that all collaborate in an authentication attempt.  Kylo
 supplies LoginModule implementations for the most common authentication
 scenarios, though customers will be able to provide their own modules to
 replace or augment the modules provided by Kylo.
 
-In addition to performing authentication, LoginModules may, upon successfull login, associate with
+In addition to performing authentication, LoginModules may, upon successful login, associate with
 the logged-in user a set of principals (user ID and groups/roles) which can be used
 to make authorization checks.  For instance, a LoginModule that authenticates
 a user's credentials using LDAP may also load any groups defined in the LDAP store
@@ -24,8 +24,8 @@ for that user, and these groups can have permissions granted to them in Kylo.
 Built-In Pluggable Authentication Profiles
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Kylo comes with some pre-built authentications configuration that may be
-activated by adding the approperiate Spring profiles to the UI and server
+Kylo comes with some pre-built authentication configurations that may be
+activated by adding the appropriate Spring profiles to the UI and server
 configuration `application.properties` files.  By default, whenever any of these profiles
 are added to the configuration it is equivalent to adding their associated
 LoginModules to the overall JAAS configuration using the "required" control flag.
@@ -92,7 +92,7 @@ a mapping of usernames top passwords in the form:
    user2=pw2
    ...
    
-If authentication is successfull then it will also look for a file `groups.properties` on
+If authentication is successful then it will also look for a file `groups.properties` on
 the classpath to load the groups that have been assigned to the authenticated user.  The
 format of this file is:
 
@@ -102,7 +102,7 @@ format of this file is:
    user2=groupA,groupC
    ...
    
-Note that use of the `groups.properties` file is optional when used in conjuction with other
+Note that use of the `groups.properties` file is optional when used in conjunction with other
 authentication profiles.  For instance, it would be redundant (but not illegal) to have a groups
 file when `auth-file` is used along with `auth-kylo`, as the latter profile will load any user 
 assigned groups on successful login and it could be confusing to manage groups in two different
@@ -141,7 +141,7 @@ password against an LDAP server.
 |                                                 |          |                                              | entry for the   |
 |                                                 |          |                                              | user. The       |
 |                                                 |          |                                              | username is     |
-|                                                 |          |                                              | substitued for  |
+|                                                 |          |                                              | substituted for |
 |                                                 |          |                                              | the ``{0}``     |
 |                                                 |          |                                              | tag. If more    |
 |                                                 |          |                                              | than one        |
@@ -218,7 +218,7 @@ the only one able to login to Kylo.  Obviously, this profile should only be used
 +--------------------------------+----------+---------------+-----------------------------------+
 | Property                       | Required | Example Value | Description                       |
 +================================+==========+===============+===================================+
-| authenticationService.username | Yes      | ``dlamin``    | The username of the administrator |
+| authenticationService.username | Yes      | ``dladmin``   | The username of the administrator |
 +--------------------------------+----------+---------------+-----------------------------------+
 | authenticationService.password | Yes      | ``thinkbig``  | The password of the administrator |
 +--------------------------------+----------+---------------+-----------------------------------+
@@ -229,7 +229,7 @@ User Group Handling
 Kylo access control is governed by permissions assigned to user groups,
 so upon successful authentication any groups to which the user belongs
 must be loaded and associated with the current authenticated request
-being processed. JAAS LogionModules have two responsibilities: 
+being processed. JAAS LoginModules have two responsibilities: 
 
    #. To authenticate a login attempt
    #. To optionally associate principals (user and group identifiers) with the securiity conext of the request
