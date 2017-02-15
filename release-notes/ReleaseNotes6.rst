@@ -89,8 +89,8 @@ Build or download the rpm:
 
 .. code-block:: shell
 
-    $ mkdir /opt/nifi/activemq $ cp
-    /opt/thinkbig/setup/nifi/activemq/*.jar
+    $ mkdir /opt/nifi/activemq 
+    $ cp /opt/thinkbig/setup/nifi/activemq/*.jar
     /opt/nifi/activemq 
     $ chown -R nifi /opt/nifi/activemq/
 
