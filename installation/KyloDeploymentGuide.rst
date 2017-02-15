@@ -122,7 +122,7 @@ Optional: Configure Kerberos For Your Local HDP Sandbox
 -------------------------------------------------------
 
 This guide will help you enabled kerberos for your local development
-sandbox for development and testing
+sandbox for development and testing:
 
 :doc:`KerberosInstallationExample-Cloudera`
 
