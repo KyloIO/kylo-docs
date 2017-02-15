@@ -199,14 +199,17 @@ Build or download the rpm.
    /opt/kylo/kylo-services/conf/application.properties by changing
    spring.profiles.active from nifi-v1 to nifi-v0.
 
-24. Modify permissions to allow existing NiFi flows to use /tmp/kylo
-   directory.
+24. Modify permissions to allow existing NiFi flows to use /tmp/kylo directory.
 
-   (Note: After re-importing data_ingest.zip in a later step, any new
-   feeds created will use the /tmp/kylo-nifi folder. The below command
-   will allow existing flows to continue using the /tmp/kylo folder.)
+.. Note::
 
-   > chmod 777 /tmp/kylo
+    After re-importing data_ingest.zip in a later step, any new feeds created will use the /tmp/kylo-nifi folder. The below command will allow existing flows to continue using the /tmp/kylo folder.
+
+.. code-block:: shell
+
+      > chmod 777 /tmp/kylo
+
+..
 
 25. Start kylo apps:
 
