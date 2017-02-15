@@ -159,10 +159,10 @@ Build or download the rpm.
 
 ..
 
-18.  For the MySQL controller service (type: DBCPConnectionPool), update the properties to use the mariadb driver Database Driver Class:
+18.  For the MySQL controller service (type: DBCPConnectionPool), update the properties to use the mariadb driver: 
 
-     - **Name:** org.mariadb.jdbc.Driver Database Driver
-     - **Location(s):** file:///opt/nifi/mysql/mariadb-java-client-1.5.7.jar
+     - **Database Driver Class Name:** org.mariadb.jdbc.Driver 
+     - **Database Driver Location(s):** file:///opt/nifi/mysql/mariadb-java-client-1.5.7.jar
 
 19. For the JMSConnectionFactoryProvider controller service, set the *MQ Client Libraries path* property value to:
 
