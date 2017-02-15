@@ -12,7 +12,7 @@ Highlights
 
 -  SSL support. SSL between services. Refer to :doc:`../how-to-guides/ConfigureNiFiWithSSL`
 
--  Feed-chaining context.   Context can be passed from dependent feeds. Refer to the Trigger Feed section in :doc:`../how-to-guides/NiFiProcessorDocs`
+-  Feed-chaining context.   Context can be passed from dependent feeds. Refer to the Trigger Feed section in :doc:`../how-to-guides/NiFiProcessorsDocs`
 
 -  Lineage tracking.  Schema, feed, and preconditions.
 
