@@ -103,7 +103,8 @@ Build or download the rpm.
 
 .. code-block:: shell
 
-    mv /opt/kylo/bkup-config /opt/kylo
+    mv /opt/thinkbig/bkup-config /opt/kylo
+    chown -R kylo:kylo bkup-config
 
 ..
 
@@ -111,7 +112,7 @@ Build or download the rpm.
 
 .. code-block:: shell
 
-    mv /opt/kylo/encrypt.key /opt/kylo
+    mv /opt/thinkbig/encrypt.key /opt/kylo
 
 ..
 
@@ -131,10 +132,8 @@ Build or download the rpm.
 
 .. code-block:: shell
 
-      > cp /opt/kylo/kylo-services/lib/mariadb-java-client-*.jar
-      /opt/nifi/mysql 
-      > chown nifi:users
-      /opt/nifi/mysql/mariadb-java-client-*.jar
+      > cp /opt/kylo/kylo-services/lib/mariadb-java-client-*.jar /opt/nifi/mysql 
+      > chown nifi:users  /opt/nifi/mysql/mariadb-java-client-*.jar
 
 ..
 
