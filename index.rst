@@ -29,7 +29,7 @@ The documentation for the site is organized into a few sections:
     about/KyloFeatures
     about/KyloFrequentlyAskedQuestions
     about/KyloTerminology
-    about/ReleaseNotes
+    release-notes/ReleaseNotes
 
 .. _installation_toc:
 .. toctree::

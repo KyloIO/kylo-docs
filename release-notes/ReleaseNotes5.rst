@@ -33,7 +33,7 @@ Highlights
    epoch time to preserve the ability to apply timezones 
 
 -  New installation document showing an example on how to install Kylo
-   on AWS in an HDP 2.5 cluster. Refer to :doc:`HDP25ClusterDeploymentGuide
+   on AWS in an HDP 2.5 cluster. Refer to :doc:`HDP25ClusterDeploymentGuide`
 
 -  Ranger enabled
 
