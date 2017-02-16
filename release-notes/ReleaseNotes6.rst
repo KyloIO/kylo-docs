@@ -74,7 +74,7 @@ Build or download the RPM:
 
 .. code-block:: shell
 
-    /opt/kylo/remove-kylo.sh
+    /opt/thinkbig/remove-thinkbig.sh
 
 ..
 
@@ -90,7 +90,7 @@ Build or download the RPM:
 
 .. code-block:: shell
 
-    /opt/kylo/setup/nifi/update-nars-jars.sh
+    /opt/thinkbig/setup/nifi/update-nars-jars.sh
 
 ..
 
@@ -106,7 +106,7 @@ Build or download the RPM:
 
 .. code-block:: shell
 
-    /opt/kylo/setup/sql/mysql/kylo/0.6.0/update.sh localhost root <password or blank>
+    /opt/thinkbig/setup/sql/mysql/thinkbig/0.6.0/update.sh localhost root <password or blank>
 
 ..
 
@@ -115,23 +115,23 @@ Build or download the RPM:
 .. code-block:: shell
 
     $ mkdir /opt/nifi/activemq 
-    $ cp /opt/kylo/setup/nifi/activemq/*.jar
+    $ cp /opt/thinkbig/setup/nifi/activemq/*.jar
     /opt/nifi/activemq 
     $ chown -R nifi /opt/nifi/activemq/
 
 ..
 
-8. Add a service account for Kylo application to nifi group. (This will allow Kylo to upload files to the dropzone location defined in NiFi). This step will differ per operating system. Note also that these may differ depending on how the service accounts where created.
+8. Add a service account for thinkbig application to nifi group. (This will allow Kylo to upload files to the dropzone location defined in NiFi). This step will differ per operating system. Note also that these may differ depending on how the service accounts where created.
 
 .. code-block:: shell
 
-      $ sudo usermod -a -G nifi kylo
+      $ sudo usermod -a -G nifi thinkbig
 
 ..
 
 .. Note::
 
-    All dropzone locations must allow the Kylo service account to write.
+    All dropzone locations must allow the thinkbig service account to write.
 
 ..
 
@@ -154,27 +154,27 @@ Build or download the RPM:
 
 .. code-block:: shell
 
-    /opt/kylo/kylo-ui/conf/
-    /opt/kylo/kylo-services/conf/
-    /opt/kylo/kylo-spark-shell/conf/
+    /opt/thinkbig/thinkbig-ui/conf/
+    /opt/thinkbig/thinkbig-services/conf/
+    /opt/thinkbig/thinkbig-spark-shell/conf/
 
 ..
 
-    A backup of the previous version's configuration is available from /opt/kylo/bkup-config/.
+    A backup of the previous version's configuration is available from /opt/thinkbig/bkup-config/.
 
-11. If using NiFi v0.7 or earlier, modify /opt/kylo/kylo-services/conf/application.properties by changing spring.profiles.active from nifi-v1 to nifi-v0.
+11. If using NiFi v0.7 or earlier, modify /opt/thinkbig/thinkbig-services/conf/application.properties by changing spring.profiles.active from nifi-v1 to nifi-v0.
 
-12. Start Kylo apps:
+12. Start thinkbig apps:
 
 .. code-block:: shell
 
-      /opt/kylo/start-kylo-apps.sh
+      /opt/thinkbig/start-thinkbig-apps.sh
 
 ..
 
 13. Update the re-usable standard-ingest template, index_schema_service, and the index_text_service. 
 
-   a. The standard-ingest template can be updated through the templates page. (/opt/kylo/setup/data/templates/nifi-1.0/) The upgrade will:
+   a. The standard-ingest template can be updated through the templates page. (/opt/thinkbig/setup/data/templates/nifi-1.0/) The upgrade will:
 
       i.   Add "json field policy file" path as one of the parameters to
            Profiler processor to support selective column profiling. See
@@ -188,7 +188,7 @@ Build or download the RPM:
 
    b. The index_schema_service and index_text_service templates are
       feed templates and should be updated through the feeds page.
-      (/opt/kylo/setup/data/feeds/nifi-1.0/.
+      (/opt/thinkbig/setup/data/feeds/nifi-1.0/.
 
       i.   Go to the feeds page.
 

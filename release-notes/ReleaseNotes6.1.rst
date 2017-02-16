@@ -11,8 +11,8 @@ Highlights
 -  Fixed missing Cloudera dependency
 
    -  To build for Cloudera, substitute
-      "kylo-service-monitor-ambari" with
-      "kylo-service-monitor-cloudera-service" in
+      "thinkbig-service-monitor-ambari" with
+      "thinkbig-service-monitor-cloudera-service" in
       services/service-app/pom.xml
 
 Potential Impacts
@@ -39,7 +39,7 @@ Build or download the RPM:
 
 .. code-block:: shell
 
-    /opt/kylo/remove-kylo.sh
+    /opt/thinkbig/remove-thinkbig.sh
 
 ..
 
@@ -55,7 +55,7 @@ Build or download the RPM:
 
 .. code-block:: shell
 
-    /opt/kylo/setup/nifi/update-nars-jars.sh
+    /opt/thinkbig/setup/nifi/update-nars-jars.sh
 
 ..
 
@@ -71,23 +71,23 @@ Build or download the RPM:
 
 .. code-block:: shell
 
-    /opt/kylo/kylo-ui/conf/
-    /opt/kylo/kylo-services/conf/
-    /opt/kylo/kylo-spark-shell/conf/ 
+    /opt/thinkbig/thinkbig-ui/conf/
+    /opt/thinkbig/thinkbig-services/conf/
+    /opt/thinkbig/thinkbig-spark-shell/conf/ 
 
 ..
 
-    A backup of the previous version's configuration is available from /opt/kylo/bkup-config/.
+    A backup of the previous version's configuration is available from /opt/thinkbig/bkup-config/.
 
 7.  If using NiFi v0.7 or earlier, modify
-    /opt/kylo/kylo-services/conf/application.properties by
+    /opt/thinkbig/thinkbig-services/conf/application.properties by
     changing spring.profiles.active from nifi-v1 to nifi-v0.
 
-8.  Start kylo apps: -
+8.  Start thinkbig apps: -
 
 .. code-block:: shell
 
-    /opt/kylo/start-kylo-apps.sh
+    /opt/thinkbig/start-thinkbig-apps.sh
 
 ..
 

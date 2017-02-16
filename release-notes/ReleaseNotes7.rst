@@ -55,7 +55,7 @@ Build or download the rpm.
 
 .. code-block:: shell
 
-   /opt/kylo/remove-kylo-datalake-accelerator.sh to uninstall
+   /opt/thinkbig/remove-kylo-datalake-accelerator.sh to uninstall
    the RPM
 
 ..
