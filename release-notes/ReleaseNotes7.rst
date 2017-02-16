@@ -68,13 +68,16 @@ Build or download the rpm.
 
 ..
 
-6. Migrate the "thinkbig" database schema to "kylo" - `Schema migration (thinkbig -> kylo) (MySQLDB) <https://wiki.thinkbiganalytics.com/pages/viewpage.action?pageId=13242764>`__.
+6. Migrate the "thinkbig" database schema to "kylo"
+
+    - `Schema migration (thinkbig -> kylo) (MySQLDB) <https://wiki.thinkbiganalytics.com/pages/viewpage.action?pageId=13242764>`__.
+
 
 7. Update the database:  
 
 .. code-block:: shell
 
-    /opt/kylo/setup/sql/mysql/0.7.0/update.sh localhost root <password or blank>
+    /opt/kylo/setup/sql/mysql/kylo/0.7.0/update.sh localhost root <password or blank>
 
 ..
 
