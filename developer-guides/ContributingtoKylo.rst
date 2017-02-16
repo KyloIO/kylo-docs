@@ -82,13 +82,10 @@ Development Guidelines
 
 We adhere to the following guidelines to ensure consistency in our code:
 
--  Our source code follows the `Google Java Style Guide
-   <https://google.github.io/styleguide/javaguide.html>`__ with the following
-   exceptions noted:
+-  Source code should be formatted according to our IntelliJ or Eclipse
+   formatter. Formatter markers in comments are enabled but should be used
+   sparingly.
 
-   +  indent of 4 spaces.
-   +  line-length of 200 characters
-   +  formatter markers in comments are enabled
    +  To import our standard IntelliJ formatter:
 
      - Download the template from here: :download:`thinkbig-googlestyle-intellij-v2-1.xml<../media/kylo-contributing/thinkbig-googlestyle-intellij-v2-1.xml>`.
