@@ -417,12 +417,12 @@ schema for the table. 
 Solution
 --------
 
-To fix the issue you can modify the following property
+To fix the issue, you can take these steps:
 
-1. On the edge node
-   edit /usr/hdp/current/spark-client/conf/spark-defaults.conf
+1. On the edge node,
+   edit the file: /usr/hdp/current/spark-client/conf/spark-defaults.conf
 
-2. Add this line to the file:
+2. Add these configuration entries to the file:
 
 .. code-block:: none
 
