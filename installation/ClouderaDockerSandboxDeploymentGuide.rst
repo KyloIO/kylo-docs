@@ -132,13 +132,11 @@ Step 4: Build a Cloudera Distribution of Kylo and Copy it to the Docker Containe
 
 .. code-block:: shell
 
-   <dependency> 
-   <groupId>com.thinkbiganalytics.datalake</groupId> <artifactId>kylo-service-monitor-ambari</artifactId> <version>0.3.0-SNAPSHOT</version> </dependency/>
+   <dependency>  <groupId>com.thinkbiganalytics.datalake</groupId>  <artifactId>kylo-service-monitor-ambari</artifactId>  <version>0.3.0-SNAPSHOT</version>  </dependency/>
 
         To
 
-   <dependency> 
-   <groupId>com.thinkbiganalytics.datalake</groupId> <artifactId>kylo-service-monitor-cloudera</artifactId> <version>0.3.0-SNAPSHOT</version> </dependency/>
+   <dependency>  <groupId>com.thinkbiganalytics.datalake</groupId>  <artifactId>kylo-service-monitor-cloudera</artifactId>  <version>0.3.0-SNAPSHOT</version>  </dependency/>
 
 ..
 
