@@ -28,7 +28,7 @@ System Requirements
 Kylo services should be installed on an edge node.
 The following should be available prior to the installation.
 
-See the Dependencies section in the deployment checklist: :doc:`KyloDependencies`
+See the Dependencies section in the deployment checklist: :doc:`../installation/KyloDependencies`
 
 +-----------------------+-------------------------------------------------------------+----------------+
 | **Platform**          | **URL**                                                     | **Version**    |
@@ -44,8 +44,7 @@ Prerequisites
 Hortonworks Sandbox
 -------------------
 
-If installing in a new Hortonworks sandbox make sure to do the following
-first before running through the installation steps below.
+If you are installing in a new Hortonworks sandbox, make sure to do the following first before running through the installation steps below.
 
 :doc:`HortonworksSandboxConfiguration`
 
@@ -105,8 +104,7 @@ Configuration for Kylo services are located under the following files:
 Ranger / Sentry
 ---------------
 
-If you’ve changed the default Ranger or Sentry permissions then you will
-need to add permissions for Kylo and NiFi.
+If you’ve changed the default Ranger or Sentry permissions, then you will need to add permissions for Kylo and NiFi.
 
 :doc:`../security/EnableRangerAuthorizationGuide`
 
