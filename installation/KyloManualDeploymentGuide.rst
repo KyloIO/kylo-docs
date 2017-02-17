@@ -429,7 +429,7 @@ You can leverage an existing NiFi installation or follow the steps in the setup 
 
 This method downloads and installs NiFi, and also installs and configures the Kylo-specific libraries. This instance of NiFi is configured to store persistent data outside of the NiFi installation folder in /opt/nifi/data. This makes it easy to upgrade since you can change the version of NiFi without migrating data out of the old version.
 
-a. Install NiFi
+a. Install NiFi in either online or offline mode:
 
     **Online Mode**
 
