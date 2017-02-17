@@ -419,8 +419,9 @@ This script downloads the extension zip file and extracts the replacement jar fi
 Step 9: Install NiFi
 ====================
 
-You can leverage an existing NiFi installation or follow the steps in the setup directory that are used by the wizard. Note that Java 8 is
-required to run NiFi with our customizations. Make sure Java 8 is installed on the node.
+You can leverage an existing NiFi installation or follow the steps in the setup directory that are used by the wizard.
+
+.. note:: Note that Java 8 is required to run NiFi with our customizations. Make sure Java 8 is installed on the node.
 
 **Option 1**: Install NiFi from our scripts.
 
