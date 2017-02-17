@@ -113,7 +113,7 @@ If you’ve changed the default Ranger or Sentry permissions, then you will need
 Kerberos
 --------
 
-If you are installing Kylo on a Kerberos cluster you will need to
+If you are installing Kylo on a Kerberos cluster, you will need to
 configure the applications before certain features will work
 
 Optional: Configure Kerberos For Your Local HDP Sandbox
