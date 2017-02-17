@@ -13,9 +13,9 @@ on your local computer. Cloudera offers a Docker image that is simliar
 to the Cloudera sandbox that you would download and install to your
 laptop.
 
-+-----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Warning   | Once you create the docker container called "cloudera" do not remove the container unless you intend to delete all of your work and start cleanly. There are instructions below on how to start and stop an existing container to retain your data   |
-+-----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+.. warning:: Once you create the docker container called "cloudera" do not remove the container unless you intend to delete all of your work and start cleanly. There are instructions below on how to start and stop an existing container to retain your data.
+
+..
 
 If you don’t know Docker and want help setting this up contact Jeremy
 Merrifield.
