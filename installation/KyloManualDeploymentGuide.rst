@@ -555,7 +555,7 @@ correct permissions for the "nifi" user to access HDFS.
 
 1. NiFi Node - Add nifi user to the HDFS supergroup or the group defined in hdfs-site.xml, for example:
 
-    **Hortonworks (HDP)**
+   **Hortonworks (HDP)**
 
 .. code-block:: shell
 
