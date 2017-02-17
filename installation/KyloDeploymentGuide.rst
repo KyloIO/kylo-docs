@@ -180,7 +180,7 @@ string in the properties file with the encrypted value:
 The benefit of this approach is that you will be getting a value that is
 guaranteed to work with the encryption settings of the server where that
 configuration value is being used. Once you have replaced all properties
-you wish encrypted in the properties files you can restart the Kylo the
+you wish to have encrypted in the properties files, you can restart the Kylo 
 services to use them.
 
 Optimizing Performance
