@@ -113,8 +113,13 @@ Step 3: Login to the Cloudera Container and Start Cloudera Manager
 
     $ /home/cloudera/cloudera-manager --express
 
-3. Login to Cloudera Manager at <EC2_HOST>:7180 (username/password is
-   cloudera/cloudera ).
+3. Login to Cloudera Manager:
+
+.. code-block:: shell
+
+    <EC2_HOST>:7180 (username/password is cloudera/cloudera)
+
+..
 
 4. Start all services in Cloudera Manager.
 
