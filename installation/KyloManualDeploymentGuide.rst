@@ -29,7 +29,7 @@ instructions on how to effectively manage:
 - Performance monitoring
 
 For enterprise support options, please visit:
-`https://www.thinkbiganalytics.com/kylo/ <https://www.thinkbiganalytics.com/kylo/>`__.
+`http://kylo.io`
 
 Installation Components
 =======================
@@ -465,7 +465,7 @@ In some cases you may have a separate instance of NiFi or Hortonworks Data Flow 
 
 .. note:: If Java 8 isn't being used for the existing instance, then you will be required to change it.
 
-a.  Copy the <SETUP_DIR>/nifi/kylo-\*.nar and kylo-spark-\*.jar files to the node NiFi is running on. If it’s on the same node you can skip this step.
+a.  Copy the <SETUP_DIR>/nifi/kylo-*.nar and kylo-spark-*.jar files to the node NiFi is running on. If it’s on the same node you can skip this step.
 
 b. Shutdown the NiFi instance.
 
@@ -477,7 +477,7 @@ c. Create folders for the jar files. You may choose to store the jars in another
 
 ..
 
-d. Copy the kylo-\*.nar files to the <NIFI_HOME>/kylo/lib directory.
+d. Copy the kylo-*.nar files to the <NIFI_HOME>/kylo/lib directory.
 
 e. Create a directory called "app" in the <NIFI_HOME>/kylo/lib directory.
 
@@ -487,7 +487,7 @@ e. Create a directory called "app" in the <NIFI_HOME>/kylo/lib directory.
 
 ..
 
-f. Copy the kylo-spark-\*.jar files to the <NIFI_HOME>/kylo/lib/app directory.
+f. Copy the kylo-spark-*.jar files to the <NIFI_HOME>/kylo/lib/app directory.
 
 g. Create symbolic links for all of the .NARs and .JARs. Below is an example of how to create it for one NAR file and one JAR file. At the time of this writing there are 8 NAR files and 3 spark JAR files.
 
@@ -509,7 +509,7 @@ h. Modify <NIFI_HOME>/conf/nifi.properties and update the port NiFi runs on.
 
 .. note:: If you decide to leave the port number set to the current value you must update the "nifi.rest.port" property in the kylo-services application.properties file.
 
-\i.  There is a controller service that requires a MySQL database connection. You will need to copy the driver jar to a location on the NiFi node. The pre-defined templates have the default location set to /opt/nifi/mysql.
+i.  There is a controller service that requires a MySQL database connection. You will need to copy the driver jar to a location on the NiFi node. The pre-defined templates have the default location set to /opt/nifi/mysql.
 
            1. Create a folder to store the driver jar in.
 
