@@ -375,6 +375,8 @@ To test this you can look at each file referenced in the scripts for kylo-ui and
 
 .. note:: You can modify and use the following script to unstall Java 8:
 
+..
+
     **Online Mode**
 
 .. code-block:: shell
