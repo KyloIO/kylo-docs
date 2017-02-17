@@ -614,7 +614,7 @@ correct permissions for the "nifi" user to access HDFS.
 
    In addition to adding the nifi and kylo users to the supergroup on the edge node you also need to add the users/groups to the **NameNodes** on a cluster.
 
-    **Hortonworks (HDP)**
+   **Hortonworks (HDP)**
 
 .. code-block:: shell
 
