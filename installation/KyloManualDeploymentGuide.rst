@@ -584,7 +584,7 @@ correct permissions for the "nifi" user to access HDFS.
 
 2. kylo-services node - Add kylo user to the HDFS supergroup or the group defined in hdfs-site.xml, for example:
 
-    **Hortonworks (HDP)**
+   **Hortonworks (HDP)**
 
 .. code-block:: shell
 
