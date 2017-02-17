@@ -106,13 +106,25 @@ including the downloaded application binaries.
 a. Install the Kylo RPM on a node that has internet
    access.
 
-b. Run "/opt/kylo/setup/generate-offline-install.sh
+b. Run the offline install:
+
+.. code-block:: shell
+
+    "/opt/kylo/setup/generate-offline-install.sh"
+
+..
 
 c. Copy the /opt/kylo/setup/kylo-install.tar file to the node
    you install the RPM on. This can be copied to a temp directory. It
    doesn’t have to be put in the /opt/kylo/setup folder
 
-d. Run "tar -xvf kylo-install.tar" on file.
+d. Run the Kylo TAR install: 
+
+.. code-block:: shell
+
+    "tar -xvf kylo-install.tar"
+
+..
 
 The script downloads all application binaries and puts them in their
 respective directory in the setup folder. Last it will TAR up the setup
