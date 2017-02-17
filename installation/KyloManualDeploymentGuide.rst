@@ -356,7 +356,7 @@ We have created a service script to make it easy to start and stop Elasticsearch
 Step 7: Install Java 8
 ======================
 
-.. note:: If you are installing NiFi and the kylo services on two separate nodes , you may need to perform this step on each node.
+.. note:: If you are installing NiFi and the kylo services on two separate nodes, you may need to perform this step on each node.
 
 There are 3 scenarios for configuring the applications with Java 8.
 
@@ -395,7 +395,7 @@ Install Java 8 - You can modify and use the following script if you want:
 
 **Scenario 3**: Java 8 is installed on the node, but it’s not in the default JAVA_HOME path.
 
-If you already have Java 8 installed and want to reference that one one there is a script to remove the existing path and another script to set the new path for the kylo apps.
+If you already have Java 8 installed, and want to reference that installation, there is a script to remove the existing path and another script to set the new path for the kylo apps.
 
 .. code-block:: shell
 
