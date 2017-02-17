@@ -93,30 +93,30 @@ Optional - Offline Mode
 If an edge node has no internet access, you can generate a TAR file that contains everything in the /opt/kylo/setup folder, including the
 downloaded application binaries.
 
-a. Install the Kylo RPM on a node that has internet access.
+1. Install the Kylo RPM on a node that has internet access.
 
 .. code-block:: shell
 
     $ rpm -ivh kylo-<version>.noarch.rpm.rpm
 ..
 
-b. Run the script, which will download all application binaries and put them in their respective directory in the setup folder.
+2. Run the script, which will download all application binaries and put them in their respective directory in the setup folder.
 
 .. code-block:: shell
 
     $ /opt/kylo/setup/generate-offline-install.sh
 ..
 
-c. Copy the /opt/kylo/setup/kylo-install.tar file to the node you install the RPM on. This can be copied to a temp directory. It doesn’t have to be put in the /opt/kylo/setup folder.
+3. Copy the /opt/kylo/setup/kylo-install.tar file to the node you install the RPM on. This can be copied to a temp directory. It doesn’t have to be put in the /opt/kylo/setup folder.
 
-d. Run the command to tar up the setup folder.
+4. Run the command to tar up the setup folder.
 
 .. code-block:: shell
 
     tar -xvf kylo-install.tar
 ..
 
-e. Note the directory name where you untar’d the files. This will be referred to in the rest of the doc by OFFLINE_SETUP_DIR.
+5. Note the directory name where you untar’d the files. This will be referred to in the rest of the doc by OFFLINE_SETUP_DIR.
 
 
 Step 2: Create Linux Users and Groups
