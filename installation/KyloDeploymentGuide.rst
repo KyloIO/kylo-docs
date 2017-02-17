@@ -239,8 +239,7 @@ restart the server. In the Hortonworks sandbox, the services for Kylo
 and NiFI are set to start after all of the services managed by Ambari have
 started.
 
-For starting and stopping the 3 Kylo services there you
-can run the following scripts.
+To start and stop the three Kylo services, run the following scripts:
 
 .. code-block:: shell
 
