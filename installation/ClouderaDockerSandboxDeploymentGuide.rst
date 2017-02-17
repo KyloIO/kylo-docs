@@ -29,8 +29,7 @@ Installation
 Step 1: Create an EC2 instance
 ------------------------------
 
-For this document we will configure a CoreOS AMI which is optimized for
-running Docker images.
+For this document, we will configure a CoreOS AMI which is optimized for running Docker images.
 
 1. Choose an AMI for the region you will configure the EC2 instance in.
 
@@ -38,10 +37,9 @@ running Docker images.
 
     https://coreos.com/os/docs/latest/booting-on-ec2.html
 
-2. Create the EC2 instance. You might want to add more disk space than
-   the default 8GB.
+2. Create the EC2 instance. You might want to add more disk space than the default 8GB.
 
-3. Configure the EC2 security group
+3. Configure the EC2 security group.
 
 4. After starting up the instance, Login to the EC2 instance:
 
@@ -56,7 +54,13 @@ Create a shell script to startup the Docker container. This makes it
 easier to create a new container if you decided to delete it at some
 point and start clean.
 
-1. vi startCloudera.sh
+1. Start Cloudera:
+
+.. code-block:: shell
+
+    vi startCloudera.sh
+
+..
 
 2. Add the following:
 
@@ -87,7 +91,7 @@ point and start clean.
 
 .. code-block:: shell
 
-    $ ./startCloudera.sh
+    $ /startCloudera.sh
 
 ..
 
