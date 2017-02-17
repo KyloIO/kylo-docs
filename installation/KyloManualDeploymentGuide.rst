@@ -491,7 +491,7 @@ e. Create a directory called "app" in the <NIFI_HOME>/kylo/lib directory.
 
 f. Copy the kylo-spark-*.jar files to the <NIFI_HOME>/kylo/lib/app directory.
 
-g. Create symbolic links for all of the .NARs and .JARs. Below is an example of how to create it for one NAR file and one JAR file. At the time of this writing there are 8 NAR files and 3 spark JAR files.
+g. Create symbolic links for all of the .NARs and .JARs. Below is an example of how to create it for one NAR file and one JAR file. At the time of this writing there are eight NAR files and three spark JAR files.
 
 .. code-block:: shell
 
