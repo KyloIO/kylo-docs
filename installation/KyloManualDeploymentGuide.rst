@@ -467,11 +467,11 @@ In some cases you may want to leverage separate instances of NiFi or Hortonworks
 
 .. note:: If Java 8 isn't being used for the existing instance, then you will be required to change it.
 
-  a.  Copy the <SETUP_DIR>/nifi/kylo-*.nar and kylo-spark-*.jar files to the node NiFi is running on. If it’s on the same node you can skip this step.
+1.  Copy the <SETUP_DIR>/nifi/kylo-*.nar and kylo-spark-*.jar files to the node NiFi is running on. If it’s on the same node you can skip this step.
 
-  b.  Shutdown the NiFi instance.
+2.  Shutdown the NiFi instance.
 
-  c.  Create folders for the jar files. You may choose to store the jars in another location if you want.
+3.  Create folders for the jar files. You may choose to store the jars in another location if you want.
 
 .. code-block:: shell
 
@@ -479,9 +479,9 @@ In some cases you may want to leverage separate instances of NiFi or Hortonworks
 
 ..
 
-  d.  Copy the kylo-*.nar files to the <NIFI_HOME>/kylo/lib directory.
+4.  Copy the kylo-*.nar files to the <NIFI_HOME>/kylo/lib directory.
 
-  e.  Create a directory called "app" in the <NIFI_HOME>/kylo/lib directory.
+5.  Create a directory called "app" in the <NIFI_HOME>/kylo/lib directory.
 
 .. code-block:: shell
 
@@ -489,9 +489,9 @@ In some cases you may want to leverage separate instances of NiFi or Hortonworks
 
 ..
 
-  f.  Copy the kylo-spark-*.jar files to the <NIFI_HOME>/kylo/lib/app directory.
+6.  Copy the kylo-spark-*.jar files to the <NIFI_HOME>/kylo/lib/app directory.
 
-  g.  Create symbolic links for all of the .NARs and .JARs. Below is an example of how to create it for one NAR file and one JAR file. At the time of this writing there are eight NAR files and three spark JAR files.
+7.  Create symbolic links for all of the .NARs and .JARs. Below is an example of how to create it for one NAR file and one JAR file. At the time of this writing there are eight NAR files and three spark JAR files.
 
 .. code-block:: shell
 
@@ -502,7 +502,7 @@ In some cases you may want to leverage separate instances of NiFi or Hortonworks
 
 ..
 
-  h.  Modify <NIFI_HOME>/conf/nifi.properties and update the port NiFi runs on.
+8.  Modify <NIFI_HOME>/conf/nifi.properties and update the port NiFi runs on.
 
 .. code-block:: shell
 
@@ -511,7 +511,7 @@ In some cases you may want to leverage separate instances of NiFi or Hortonworks
 
 .. note:: If you decide to leave the port number set to the current value, you must update the "nifi.rest.port" property in the kylo-services application.properties file.
 
-  i.  There is a controller service that requires a MySQL database connection. You will need to copy the driver jar to a location on the NiFi node. The pre-defined templates have the default location set to /opt/nifi/mysql.
+9.  There is a controller service that requires a MySQL database connection. You will need to copy the driver jar to a location on the NiFi node. The pre-defined templates have the default location set to /opt/nifi/mysql.
 
            1. Create a folder to store the driver jar in.
 
@@ -519,7 +519,7 @@ In some cases you may want to leverage separate instances of NiFi or Hortonworks
 
            3. If you created a folder name other than the /opt/nifi/mysql default folder you will need to update the "MySQL" controller service and set the new location. You can do this by logging into NiFi and going to the Controller Services section at root process group level.
 
-  j.  Create an ext-config folder to provide JMS information and location of cache to store running feed flowfile data if NiFi goes down.
+10.  Create an ext-config folder to provide JMS information and location of cache to store running feed flowfile data if NiFi goes down.
 
 .. note:: Right now the plugin is hard coded to use the /opt/nifi/ext-config directory to load the properties file.
 
