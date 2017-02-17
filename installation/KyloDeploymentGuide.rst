@@ -235,8 +235,8 @@ Starting and Stopping the Services Manually
 
 If you follow the instructions for the installations steps above, all of
 the below applications will be set to startup automatically if you
-restart the server. In the Hortonworks sandbox the services for Kylo
-and NiFI are set to start after all of the services managed by Ambari are
+restart the server. In the Hortonworks sandbox, the services for Kylo
+and NiFI are set to start after all of the services managed by Ambari have
 started.
 
 For starting and stopping the 3 Kylo services there you
