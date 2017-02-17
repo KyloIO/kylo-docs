@@ -47,7 +47,7 @@ Download the RPM and place it on the host Linux machine that you want to install
 
 .. code-block:: shell
 
-`*Download the latest RPM* <http://bit.ly/2l5p1tK>`__
+    `*Download the latest RPM* <http://bit.ly/2l5p1tK>`__
 ..
 
 Step 2: Create the Linux Users/Groups
