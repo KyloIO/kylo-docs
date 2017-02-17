@@ -511,7 +511,7 @@ h. Modify <NIFI_HOME>/conf/nifi.properties and update the port NiFi runs on.
 
 .. note:: If you decide to leave the port number set to the current value, you must update the "nifi.rest.port" property in the kylo-services application.properties file.
 
-i.  There is a controller service that requires a MySQL database connection. You will need to copy the driver jar to a location on the NiFi node. The pre-defined templates have the default location set to /opt/nifi/mysql.
+| i.  There is a controller service that requires a MySQL database connection. You will need to copy the driver jar to a location on the NiFi node. The pre-defined templates have the default location set to /opt/nifi/mysql.
 
            1. Create a folder to store the driver jar in.
 
