@@ -45,9 +45,11 @@ Download the RPM and place it on the host Linux machine that you want to install
 | **Note:**   | To use wget instead, right-click the download link and copy the url.   |
 +-------------+------------------------------------------------------------------------+
 
-.. code-block:: shell
+**Download the Latest RPM**
 
-    `*Download the latest RPM* <http://bit.ly/2l5p1tK>`__
+.. code-block:: html
+
+    http://bit.ly/2l5p1tK
 ..
 
 Step 2: Create the Linux Users/Groups
