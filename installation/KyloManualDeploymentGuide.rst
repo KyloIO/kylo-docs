@@ -431,7 +431,7 @@ This method downloads and installs NiFi, and also installs and configures the Ky
 
 a. Install NiFi in either online or offline mode:
 
-    **Online Mode**
+  **Online Mode**
 
 .. code-block:: shell
 
