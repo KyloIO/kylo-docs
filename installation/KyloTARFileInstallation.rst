@@ -1,18 +1,18 @@
 
-==========================
+=====================
 TAR File Installation
-==========================
+=====================
 
 Introduction
 ============
 
-At this time an RPM file is the only artifact built in Kylo. An RPM
+At this time, an RPM file is the only artifact built into Kylo. An RPM
 installation is meant to be an opioninated way of installing an
-application and reduces the number of steps required during
-installation. However, some clients have strict requirements as to where
-they need install Kylo and what user to run Kylo under. These
-instructions will guide you on an alternative way to install Kylo if
-required.
+application, and it reduces the number of steps required to complete the
+installation. That said, some clients have strict requirements as to where
+they need to install Kylo, and the user that Kylo must be run under. These
+instructions will guide you through an alternative way to install Kylo, if
+that is required in your case.
 
 Determine Service Account and Kylo Install Location
 ---------------------------------------------------
@@ -21,7 +21,7 @@ Let’s assume, for this example, that Kylo will run under an account name
 "kylo_user", and it will be installed in /opt/apps/.
 
 Step 1: Install the RPM and copy the /opt/kylo folder to a temporary location.
-----------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 
 .. code-block:: shell
 
@@ -58,9 +58,9 @@ Step 3 (Optional): Tar up the folder and copy it to the edge node if you aren’
 Step 4: Install the files.
 --------------------------
 
-1. Copy the kylo folder to /opt/apps
+1. Copy the Kylo folder to /opt/apps.
 
-2. Copy the 3 init.d scripts to /etc/init.d
+2. Copy the 3 init.d scripts to /etc/init.d.
 
 Step 5: Create Log Folders
 --------------------------
