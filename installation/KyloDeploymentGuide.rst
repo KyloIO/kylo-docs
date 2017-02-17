@@ -204,7 +204,7 @@ The setting above would set the Java maximum heap size to 4 GB.
 Change the Java Home
 --------------------
 
-By default the kylo-services and kylo-ui application set the
+By default, the kylo-services and kylo-ui application set the
 JAVA_HOME location to /opt/java/current. This can easily be changed by
 editing the JAVA_HOME environment variable in the following two files:
 
@@ -233,11 +233,11 @@ located in S3. Please see the :doc:`../how-to-guides/AccessingS3fromtheDataWrang
 Starting and Stopping the Services Manually
 ===========================================
 
-If you follow the instructions for the installations steps above all of
+If you follow the instructions for the installations steps above, all of
 the below applications will be set to startup automatically if you
 restart the server. In the Hortonworks sandbox the services for Kylo
-and NiFI are set to start after all of the services managed by Ambari
-start up.
+and NiFI are set to start after all of the services managed by Ambari are
+started.
 
 For starting and stopping the 3 Kylo services there you
 can run the following scripts.
