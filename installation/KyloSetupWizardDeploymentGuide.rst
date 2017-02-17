@@ -7,7 +7,7 @@ About
 =====
 
 Follow the steps below to install Kylo using the installation wizard
-script. This is convenient for local sandboxes (HDP/Cloudera) and 1 node
+script. This is convenient for local sandboxes (HDP/Cloudera) and single node
 development boxes. The WGET command is used to download binaries so
 internet access is required.
 
