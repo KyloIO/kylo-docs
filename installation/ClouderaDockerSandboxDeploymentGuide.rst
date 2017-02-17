@@ -17,8 +17,6 @@ laptop.
 
 ..
 
-If you don’t know Docker and want help setting this up contact Jeremy
-Merrifield.
 
 Prerequisites
 =============
