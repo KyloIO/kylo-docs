@@ -66,7 +66,7 @@ system locations:
 Installation
 ============
 
-For each step below you will need to login to the target machine with root
+For each step below, you will need to login to the target machine with root
 access permissions. Installation commands will be executed from the
 command-line interface (CLI).
 
