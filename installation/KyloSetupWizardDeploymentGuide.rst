@@ -118,7 +118,7 @@ c. Copy the /opt/kylo/setup/kylo-install.tar file to the node
    you install the RPM on. This can be copied to a temp directory. It
    doesn’t have to be put in the /opt/kylo/setup folder
 
-d. Run the Kylo TAR install: 
+d. Run the Kylo TAR install:
 
 .. code-block:: shell
 
@@ -191,7 +191,7 @@ to the group defined in hdfs-site.xml. For example:
     $ usermod -a -G supergroup nifi
     $ usermod -a -G supergroup hdfs
 
-**Optional:** If you want to perform actions as a root user in a development environment run the below command
+**Optional:** If you want to perform actions as a root user in a development environment run the below command:
 
 .. code-block:: shell
 
