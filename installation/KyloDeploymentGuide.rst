@@ -28,7 +28,7 @@ System Requirements
 Kylo services should be installed on an edge node.
 The following should be available prior to the installation.
 
-See the Dependencies section in the deployment checklist: :doc:`../installation/KyloDependencies`
+See the Dependencies section in the deployment checklist: :doc:`../installation/KyloDeploymentChecklist`
 
 +-----------------------+-------------------------------------------------------------+----------------+
 | **Platform**          | **URL**                                                     | **Version**    |
