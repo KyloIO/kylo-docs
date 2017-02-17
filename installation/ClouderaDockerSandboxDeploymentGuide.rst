@@ -7,11 +7,11 @@ Cloudera Docker Sandbox Deployment Guide
 About
 =====
 
-In some cases you may want to deploy a Cloudera sandbox in AWS for a
-team to perform a simple proof of concept or avoid system resource usage
-on your local computer. Cloudera offers a Docker image that is simliar
-to the Cloudera sandbox that you would download and install to your
-laptop.
+In some cases, you may want to deploy a Cloudera sandbox in AWS for a
+team to perform a simple proof-of-concept, or to avoid system resource usage
+on the local computer. Cloudera offers a Docker image, similar
+to the Cloudera sandbox, that you download and install to your
+computer.
 
 .. warning:: Once you create the docker container called "cloudera" do not remove the container unless you intend to delete all of your work and start cleanly. There are instructions below on how to start and stop an existing container to retain your data.
 
@@ -21,8 +21,7 @@ laptop.
 Prerequisites
 =============
 
-You need access to an AWS instance and permission to create an EC2
-instance.
+You need access to an AWS instance and permission to create an EC2 instance.
 
 Installation
 ============
