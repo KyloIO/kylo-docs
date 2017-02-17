@@ -373,9 +373,9 @@ To test this you can look at each file referenced in the scripts for kylo-ui and
 
 **Scenario 2**: Install Java in the default /opt/java/current location.
 
-Install Java 8 - You can modify and use the following script if you want:
+.. note:: You can modify and use the following script to unstall Java 8:
 
-**Online Mode**
+    **Online Mode**
 
 .. code-block:: shell
 
@@ -383,7 +383,7 @@ Install Java 8 - You can modify and use the following script if you want:
 
 ..
 
-**Offline Mode**
+    **Offline Mode**
 
 .. code-block:: shell
 
@@ -429,7 +429,7 @@ This method downloads and installs NiFi, and also installs and configures the Ky
 
 a. Install NiFi
 
-**Online Mode**
+    **Online Mode**
 
 .. code-block:: shell
 
@@ -437,7 +437,7 @@ a. Install NiFi
 
 ..
 
-**Offline Mode**
+    **Offline Mode**
 
 .. code-block:: shell
 
@@ -523,7 +523,8 @@ In some cases you may want to leverage separate instances of NiFi or Hortonworks
 
 .. note:: Right now the plugin is hard coded to use the /opt/nifi/ext-config directory to load the properties file.
 
-Below are steps to configure the ext-config folder:
+Configure the ext-config Folder
+-------------------------------
 
 1. Create the folder.
 
@@ -552,7 +553,7 @@ correct permissions for the "nifi" user to access HDFS.
 
 1. NiFi Node - Add nifi user to the HDFS supergroup or the group defined in hdfs-site.xml, for example:
 
-  **Hortonworks (HDP)**
+    **Hortonworks (HDP)**
 
 .. code-block:: shell
 
@@ -560,7 +561,7 @@ correct permissions for the "nifi" user to access HDFS.
 
 ..
 
-  **Cloudera (CDH)**
+    **Cloudera (CDH)**
 
 .. code-block:: shell
 
@@ -581,7 +582,7 @@ correct permissions for the "nifi" user to access HDFS.
 
 2. kylo-services node - Add kylo user to the HDFS supergroup or the group defined in hdfs-site.xml, for example:
 
-  **Hortonworks (HDP)**
+    **Hortonworks (HDP)**
 
 .. code-block:: shell
 
@@ -589,7 +590,7 @@ correct permissions for the "nifi" user to access HDFS.
 
 ..
 
-  **Cloudera (CDH)**
+    **Cloudera (CDH)**
 
 .. code-block:: shell
 
@@ -611,7 +612,7 @@ correct permissions for the "nifi" user to access HDFS.
 
    In addition to adding the nifi and kylo users to the supergroup on the edge node you also need to add the users/groups to the **NameNodes** on a cluster.
 
-   **Hortonworks (HDP)**
+    **Hortonworks (HDP)**
 
 .. code-block:: shell
 
@@ -625,7 +626,7 @@ correct permissions for the "nifi" user to access HDFS.
 
 ..
 
-  **Cloudera (CDH)** - <Fill me in after testing >
+    **Cloudera (CDH)** - <Fill me in after testing >
 
 Step 11: Create a dropzone folder on the edge node for file ingest
 ==================================================================
