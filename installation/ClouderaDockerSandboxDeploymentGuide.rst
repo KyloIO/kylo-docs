@@ -175,9 +175,7 @@ Step 5: Install Kylo in the Docker Container
 
 2. Create Linux Users and Groups.
 
-    Creation of users and groups is done manually because many
-    organizations have their own user and group management system. Therefore we cannot script it as part of the RPM
-    install.
+   Creation of users and groups is done manually because many organizations have their own user and group management system. Therefore we cannot script it as part of the RPM install.
 
 .. code-block:: shell
 
@@ -187,8 +185,7 @@ Step 5: Install Kylo in the Docker Container
 
 ..
 
-    Validate the above commands created a group as well by looking at
-    /etc/group. Some operating systems may not create them by default.
+   Validate the above commands created a group as well by looking at /etc/group. Some operating systems may not create them by default.
 
 .. code-block:: shell
 
@@ -204,13 +201,11 @@ Step 5: Install Kylo in the Docker Container
     $ groupadd nifi
     $ groupadd activemq
 
-3. Follow the instructions in the Deployment Wizard guide to install the
-   RPM and other components.
+3. Follow the instructions in the Deployment Wizard guide to install the RPM and other components.
 
 .. note:: There is an issue installing the database script so say No to the wizard step asking to install the database script. We will do that manually. I will update this section when it's fixed.
 
-4. Follow these steps, that are not in the wizard deployment guide but
-   are required to run Kylo in this environment:
+4. Follow these steps, that are not in the wizard deployment guide but are required to run Kylo in this environment:
 
    a. Run the database scripts:
 
