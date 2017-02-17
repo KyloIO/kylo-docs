@@ -425,7 +425,7 @@ You can leverage an existing NiFi installation or follow the steps in the setup 
 
 **Option 1**: Install NiFi from our scripts.
 
-This method downloads and installs NiFi, and also installs and configures the Kylo specific libraries. This instance of NiFi is configured to store persistent data outside of the NiFi installation folder in /opt/nifi/data. This makes it easy to upgrade since you can change the version of NiFi without migrating data out of the old version.
+This method downloads and installs NiFi, and also installs and configures the Kylo-specific libraries. This instance of NiFi is configured to store persistent data outside of the NiFi installation folder in /opt/nifi/data. This makes it easy to upgrade since you can change the version of NiFi without migrating data out of the old version.
 
 a. Install NiFi
 
@@ -463,7 +463,7 @@ c. Install Kylo specific components.
 
 **Option 2**: Leverage an existing NiFi instance
 
-In some cases you may have a separate instance of NiFi or Hortonworks Data Flow you want to leverage. Follow the steps below to include the Kylo resources.
+In some cases you may want to leverage separate instances of NiFi or Hortonworks Data Flow. Follow the steps below to include the Kylo resources.
 
 .. note:: If Java 8 isn't being used for the existing instance, then you will be required to change it.
 
