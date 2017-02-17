@@ -29,7 +29,8 @@ instructions on how to effectively manage:
 - Performance monitoring
 
 For enterprise support options, please visit:
-`http://kylo.io`
+
+    `http://kylo.io/ <http://kylo.io/>`__
 
 Installation Components
 =======================
