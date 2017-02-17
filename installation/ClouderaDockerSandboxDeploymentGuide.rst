@@ -168,7 +168,7 @@ Step 4: Build a Cloudera Distribution of Kylo and Copy it to the Docker Containe
 Step 5: Install Kylo in the Docker Container
 --------------------------------------------
 
-1. Login to the cloudera Docker container.
+1. Login to the Cloudera Docker container.
 
 .. code-block:: shell
 
@@ -210,9 +210,7 @@ Step 5: Install Kylo in the Docker Container
 3. Follow the instructions in the Deployment Wizard guide to install the
    RPM and other components.
 
-    NOTE: There is an issue installing the database script so say No to
-    the wizard step asking to install the database script. We will do
-    that manually. I will update this section when it's fixed.
+.. note:: There is an issue installing the database script so say No to the wizard step asking to install the database script. We will do that manually. I will update this section when it's fixed.
 
 4. Follow these steps, that are not in the wizard deployment guide but
    are required to run Kylo in this environment:
@@ -284,7 +282,7 @@ sandbox and CoreOS host.
 
 1. Login to Cloudera Manager and tell it to stop all services.
 
-2. On the CoreOS host type "docker stop cloudera".
+2. On the CoreOS host, type "docker stop cloudera".
 
 3. Shutdown the EC2 Instance.
 
