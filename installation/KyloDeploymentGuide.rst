@@ -143,7 +143,7 @@ Kylo applications to work with a Kerberos cluster.
 SUSE Configuration
 ------------------
 
-If you are installing Kylo on SUSE please read the following document to work around ActiveMQ and Elasticsearch issues.
+If you are installing Kylo on SUSE, please read the following document to work around ActiveMQ and Elasticsearch issues.
 
 :doc:`../how-to-guides/SuseConfigurationChanges`
 
@@ -153,13 +153,13 @@ Encrypting Configuration Property Values
 By default, a new Kylo installation does not have any of its
 configuration properties encrypted. Once you have started Kylo for the
 first time, the easiest way to derive encrypted versions of property
-values is to post values to the Kylo services /encrypt endpoint to have
+values is to post values to the Kylo services/encrypt endpoint to have
 it generate an encrypted form for you. You could then paste the
 encrypted value back into your properties file and mark it as encrypted
 by prepending the values with {cipher}. For instance, if you wanted to
 encrypt the Hive datasource password specified in
 applicaition.properties (assuming the password is “mypassword”), you can
-get it’s encrypted form using the curl command like this:
+get its encrypted form using the curl command like this:
 
 .. code-block:: shell
 
