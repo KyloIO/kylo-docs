@@ -268,7 +268,7 @@ Shutting down the container when not in use
 ===========================================
 
 EC2 instance can get expensive to run. If you don’t plan to use the
-sandbox for a period of time we recommend shutting down the EC2
+sandbox for a period of time, we recommend shutting down the EC2
 instance. Here are instructions on how to safely shut down the Cloudera
 sandbox and CoreOS host.
 
