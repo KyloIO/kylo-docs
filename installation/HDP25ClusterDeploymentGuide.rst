@@ -196,9 +196,7 @@ Prepare the Kylo Edge Node
 
 ..
 
-+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|**NOTE:** | If the hive database is installed in a separate MySQL instance then you will need to create the "kylo" non privileged user in that database before running the grants.|
-+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+.. note:: If the hive database is installed in a separate MySQL instance then you will need to create the "kylo" non privileged user in that database before running the grants.
 
 5. Make sure the spark client and hive client is installed.
 
@@ -240,7 +238,7 @@ Prepare the Kylo Edge Node
 ..
 
 
-**TIP:** If you do not know the HDFS Kerberos principal name run "klist -kt/etc/security/keytabs/hdfs.headless.keytab". 
+..tip:: If you do not know the HDFS Kerberos principal name run "klist -kt/etc/security/keytabs/hdfs.headless.keytab". 
 
 
 Prepare the NiFi Edge Node
