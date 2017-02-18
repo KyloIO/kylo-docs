@@ -317,7 +317,8 @@ Create the Keytabs for "nifi" and "kylo" Users
 .. code-block:: console
 
         # Write down the principal name for hive for the KDC node
-        kadmin.local: listprincs    kadmin.local: exit  
+        kadmin.local: listprincs   
+        kadmin.local: exit  
 
 ..
 
