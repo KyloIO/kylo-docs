@@ -72,9 +72,9 @@ have the option to use that as well.
 Linux Users
 -----------
 
-If you will be creating Linux users as part of the install the commands
+If you will be creating Linux users as part of the install, the commands
 will be documented. If using an external user management system for
-adding users to a linux box you must have those users created before
+adding users to a linux box, you must have those users created before
 installing the Kylo stack. You will need a user/group including:
 
 -  activemq
@@ -85,9 +85,7 @@ installing the Kylo stack. You will need a user/group including:
 
 -  nifi
 
-+------------+--------------------------------------------------------+
-| **Note**   | Those exact names are required (note the lowercase).   |
-+------------+--------------------------------------------------------+
+.. note:: Those exact names are required (note the lowercase).
 
 Configuration
 =============
@@ -122,7 +120,7 @@ Optional: Configure Kerberos For Your Local HDP Sandbox
 This guide will help you enabled Kerberos for your local development
 sandbox for development and testing:
 
-:doc:`KerberosInstallationExample-Cloudera`
+:doc:`../installation/KerberosInstallationExample-Cloudera`
 
 Step 1: Configure Kerberos for NiFi
 -----------------------------------
@@ -130,7 +128,7 @@ Step 1: Configure Kerberos for NiFi
 Some additional configuration is required for allowing the NiFi
 components to work with a Kerberos cluster.
 
-:doc:`NiFiConfigurationforaKerberosCluster`
+:doc:`../installation/NiFiConfigurationforaKerberosCluster`
 
 Step 2: Configure Kerberos for Kylo Applications
 ------------------------------------------------
@@ -138,7 +136,7 @@ Step 2: Configure Kerberos for Kylo Applications
 Additional configuration is required for allowing some features in the
 Kylo applications to work with a Kerberos cluster.
 
-:doc:`KylosConfigurationforaKerborosCluster`
+:doc:`../installation/KylosConfigurationforaKerborosCluster`
 
 SUSE Configuration
 ------------------
@@ -158,7 +156,7 @@ it generate an encrypted form for you. You could then paste the
 encrypted value back into your properties file and mark it as encrypted
 by prepending the values with {cipher}. For instance, if you wanted to
 encrypt the Hive datasource password specified in
-applicaition.properties (assuming the password is “mypassword”), you can
+application.properties (assuming the password is “mypassword”), you can
 get its encrypted form using the curl command like this:
 
 .. code-block:: shell
@@ -357,10 +355,10 @@ ActiveMQ, and NiFi.
 
 ..
 
-+---------------+-------------------------------------------------------------------------------------------+
-|**IMPORTANT!** | Only run this in a DEV environment. This will delete all application and the MySQL schema.|
-+---------------+-------------------------------------------------------------------------------------------+
 
+.. important:: Only run this in a DEV environment. This will delete all application and the MySQL schema.
+
+..
 
 In addition there is a script for cleaning up the hive schema and HDFS
 folders that are related to a specific "category" that is defined in the
@@ -377,4 +375,4 @@ UI.
 Appendix: Postgres Integration
 ==============================
 
-:doc:`Postgres Hive Metadata Configuration <Postgres_Hive_Metadata_Configuration>`
+:doc:`../installation/Postgres_Hive_Metadata_Configuration`
