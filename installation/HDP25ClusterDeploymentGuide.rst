@@ -238,7 +238,7 @@ Prepare the Kylo Edge Node
 ..
 
 
-..tip:: If you do not know the HDFS Kerberos principal name run "klist -kt/etc/security/keytabs/hdfs.headless.keytab". 
+.. tip:: If you do not know the HDFS Kerberos principal name run "klist -kt/etc/security/keytabs/hdfs.headless.keytab". 
 
 
 Prepare the NiFi Edge Node
