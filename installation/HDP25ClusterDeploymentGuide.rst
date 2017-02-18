@@ -314,10 +314,10 @@ Create the Keytabs for "nifi" and "kylo" Users
 
 2. Note the hive principal name for the thrift connection later. 
 
-   # Write down the principal name for hive for the KDC node
 
-.. code-block:: console
+.. code-block:: shell
 
+    # Write down the principal name for hive for the KDC node
         kadmin.local: listprincs   
         kadmin.local: exit  
 
