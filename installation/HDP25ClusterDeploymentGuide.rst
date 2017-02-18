@@ -291,9 +291,7 @@ Prepare the NiFi Edge Node
 
 ..
 
-   **TIP:** If you don't know the HDFS Kerberos principal name, run:
-
-.. code-block:: console
+.. tip:: If you don't know the HDFS Kerberos principal name, run:
 
         "klist -kt /etc/security/keytabs/hdfs.headless.keytab"  
 
