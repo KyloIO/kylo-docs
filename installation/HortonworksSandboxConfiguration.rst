@@ -27,9 +27,7 @@ Add Virtual Box Shared Folder
 Adding a shared folder to Virtual Box will allow you to access the Kylo project folder outside of the VM so you can copy
 project artifacts to the sandbox for testing.
 
-+--------+------------------------------------------------------------------------------------+
-|**NOTE**| This should be done before starting the VM to that you can auto mount the folder   |
-+--------+------------------------------------------------------------------------------------+
+.. note:: This should be done before starting the VM to that you can auto mount the folder.
 
 .. code-block:: shell
 
@@ -85,9 +83,9 @@ Startup the Sandbox
 
 ..
 
-+----------+-----------------------------------------------+
-|**NOTE:** | You will be prompted to change your password. |
-+----------+-----------------------------------------------+
+
+.. note:: You will be prompted to change your password.
+
 
 3.  Add the Ambari admin password.
 
