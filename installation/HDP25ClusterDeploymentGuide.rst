@@ -167,11 +167,7 @@ Prepare the Kylo Edge Node
 
    This is required to install the "kylo" schema during Kylo installation.   
 
-.. code-block:: console
-
-        Example:   
-        GRANT ALL PRIVILEGES ON *.* TO 'root'@'KYLO_EDGE_NODE_HOSTNAME'
-        IDENTIFIED BY 'abc123' WITH GRANT OPTION; FLUSH PRIVILEGES;  
+.. example:: GRANT ALL PRIVILEGES ON *.* TO 'root'@'KYLO_EDGE_NODE_HOSTNAME' IDENTIFIED BY 'abc123' WITH GRANT OPTION; FLUSH PRIVILEGES;  
 
 ..
 
