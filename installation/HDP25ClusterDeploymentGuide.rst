@@ -55,11 +55,7 @@ the thrift server.
 
 You may see an error similar to the following:
 
-.. code-block:: console
-
-    Requested user nifi is not whitelisted and has id 496, which is below the minimum allowed 500".  
-
-..
+.. error:: Requested user nifi is not whitelisted and has id 496, which is below the minimum allowed 500".  
 
 If you do, do the following to change the user ID or lower the minimum ID:
 
@@ -72,8 +68,7 @@ Prepare a Checklist
 
 Leverage the deployment checklist to take note of information you will need to speed up configuration.
 
-`Deployment Checklist
-<http://kylo-docs-test.readthedocs.io/en/latest/KyloDeploymentChecklist.html>`__
+:doc:`../installation/KyloDeploymentChecklist`
 
 Prepare the HDP Cluster
 =======================
