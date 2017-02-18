@@ -719,9 +719,8 @@ Create Ranger Policies
 
    Grant hive access to "kylo" user for hive tables, profile, and wrangler.
 
-+----------+------------------------------------------------------------+
-|**Note:** | Kylo supports user impersonation (add doc and reference it)|
-+----------+------------------------------------------------------------+
+
+.. note:: Kylo supports user impersonation (add doc and reference it).
 
    a. Click into the Hive repository.
 
