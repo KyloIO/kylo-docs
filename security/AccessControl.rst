@@ -18,11 +18,22 @@ that a user or group may perform, whether to invoke a function or access
 data, are organized into a hierarchy, and privileges may be granted at
 any level.
 
+Users and Groups can be updated using the Users and Groups Kylo admin pages:
+
+::
+
+   http://<hostname>:8400/feed-mgr/index.html#/users
+   http://<hostname>:8400/feed-mgr/index.html#/groups
+
+Note, for authetication plugin modules with groups enabled, user groups
+will be provided by the external provider and may not be updatable from 
+the Users page.
+
 Default Users and Groups
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-When Kylo is newly installed it will be pre-configured with have a few default users
-and groups defined; with varying permissions assiged to each group.  The default groups are:
+When Kylo is newly installed it will be pre-configured with a few default users
+and groups defined; with varying permissions assigned to each group.  The default groups are:
 
    * Administrators
    * Operations
@@ -41,8 +52,8 @@ The initial installation will also
 have the `auth-kylo` and `auth-file` included in the active profiles configured in
 the conf/application.properties file of both the UI and Services.  With these profiles
 active the authentication process will use both the built-in Kylo user store and a username/password
-file to authenticate requests.  In this configuration, the login modules activated 
-by these profiles would both have to successfully athenticate a request before access
+file to authenticate requests.  In this configuration, both login modules activated 
+would have to successfully authenticate a request before access
 would be granted.
 
 Service-Level Authorization
