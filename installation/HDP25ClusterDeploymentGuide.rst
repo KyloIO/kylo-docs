@@ -127,9 +127,9 @@ Before installing the Kylo stack, prepare the cluster by doing the following:
 
 6. Create the "nifi" and "kylo" user on the master and data nodes. 
 
-   +---------+-----------------------------------------------------------------------------------+
-   |**NOTE:**| If the operations team uses a user management tool then create the users that way.|
-   +---------+-----------------------------------------------------------------------------------+   
+.. note:: If the operations team uses a user management tool then create the users that way.
+
+..
 
    If you are using linux /etc/group based authorization in your cluster you are required to create any users that will have access to HDFS or Hive on the following:   
 
