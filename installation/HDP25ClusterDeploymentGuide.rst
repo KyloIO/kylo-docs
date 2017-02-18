@@ -797,7 +797,7 @@ Import Kylo Templates
         3) Edit the "Update Elasticsearch" processor and set the HostName value to <KYLO_EDGE_HOSTNAME>.
 
 
-5. Note: An issue was found with the getJmsTopic processor URL. If you import the template using localhost and need to change it there is a bug that won’t allow the URL to be changed. The value is persisted to a file.
+.. note:: An issue was found with the getJmsTopic processor URL. If you import the template using localhost and need to change it there is a bug that won’t allow the URL to be changed. The value is persisted to a file.
 
 .. code-block:: console
 
