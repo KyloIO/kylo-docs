@@ -65,9 +65,9 @@ scripts for NiFi, kylo-ui and kylo-services to reference the
 If you already have Java 8 installed in a different location you will
 have the option to use that as well.
 
-+------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Note**   | When installing the RPM the applications are defaulted to use the /opt/java/current location. This default saves a step for developers so that they can uninstall and re-install the RPM without having to run any other scripts.   |
-+------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+.. note:: When installing the RPM the applications are defaulted to use the /opt/java/current location. This default saves a step for developers so that they can uninstall and re-install the RPM without having to run any other scripts.
+
 
 Linux Users
 -----------
