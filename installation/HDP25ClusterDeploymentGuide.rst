@@ -105,9 +105,7 @@ Before installing the Kylo stack, prepare the cluster by doing the following:
 
 5. If your spark job fails when running in HDP 2.4.2 while interacting with an empty ORC table, you will get this error message:
 
-.. code-block:: shell
-
-   "ExecuteSparkJob[id=1fb1b9a0-e7b5-4d85-87d2-90d7103557f6] java.util.NoSuchElementException: next on empty iterator "
+.. error:: "ExecuteSparkJob[id=1fb1b9a0-e7b5-4d85-87d2-90d7103557f6] java.util.NoSuchElementException: next on empty iterator "
 
 ..
 
