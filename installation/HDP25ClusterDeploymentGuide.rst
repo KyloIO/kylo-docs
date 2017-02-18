@@ -822,7 +822,7 @@ Import Kylo Templates
 
    c. Restart NiFi.
 
-6. Import the data ingest template.
+5. Import the data ingest template.
 
    a. Go to the templates page and import the data ingest template.
 
@@ -838,7 +838,7 @@ Import Kylo Templates
 
    c. Edit the "Upload to HDFS" and remove "Remote Owner" and "Remote Group" (since we aren’t using superuser).
 
-7. Update NiFi processors for Kylo template versions prior to 0.5.0.
+6. Update NiFi processors for Kylo template versions prior to 0.5.0.
 
    We need to update a few settings in the elasticsearch and standard ingest template. This is not required with 0.5.0 or greater since they will be set during import.  
 
