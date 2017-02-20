@@ -21,15 +21,15 @@ any level.
 Default Users and Groups
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-When Kylo is newly installed it will be pre-configured with have a few default users
-and groups defined; with varying permissions assiged to each group.  The default groups are:
+When Kylo is newly installed, it will be pre-configured with  a few default users
+and groups defined; with varying permissions assigned to each group.  The default groups are:
 
    * Administrators
    * Operations
    * Designers
    * Analysts
    * Users
-   
+
 The default users and their assigned groups are:
 
    * Data Lake Administrator - Administrators, Users
@@ -41,7 +41,7 @@ The initial installation will also
 have the `auth-kylo` and `auth-file` included in the active profiles configured in
 the conf/application.properties file of both the UI and Services.  With these profiles
 active the authentication process will use both the built-in Kylo user store and a username/password
-file to authenticate requests.  In this configuration, the login modules activated 
+file to authenticate requests.  In this configuration, the login modules activated
 by these profiles would both have to successfully athenticate a request before access
 would be granted.
 
