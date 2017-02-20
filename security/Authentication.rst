@@ -6,20 +6,20 @@ Overview
 
 Kylo supports a pluggable authentication architecture that allows
 customers to integrate their existing infrastructure when authenticating
-a user.  The pluggability is built around `JAAS 
-<http://docs.oracle.com/javase/7/docs/technotes/guides/security/jaas/JAASRefGuide.html>`__; 
-which delegates authentication to one or more configured `LoginModules 
+a user.  The pluggability is built around `JAAS
+<http://docs.oracle.com/javase/7/docs/technotes/guides/security/jaas/JAASRefGuide.html>`__,
+which delegates authentication to one or more configured `LoginModules
 <http://docs.oracle.com/javase/7/docs/technotes/guides/security/jaas/JAASRefGuide.html#LoginModule>`__
 that all collaborate in an authentication attempt.  Kylo
 supplies LoginModule implementations for the most common authentication
 scenarios, though customers will be able to provide their own modules to
 replace or augment the modules provided by Kylo.
 
-In addition to performing authentication, LoginModules may, upon successful login, associate with
-the logged-in user a set of principals (user ID and groups/roles) which can be used
+In addition to performing authentication, LoginModules may, upon successful login, associate
+the logged-in user with a set of principals (user ID and groups/roles) that can be used
 to make authorization checks.  For instance, a LoginModule that authenticates
 a user's credentials using LDAP may also load any groups defined in the LDAP store
-for that user, and these groups can have permissions granted to them in Kylo. 
+for that user, and these groups can have permissions granted to them in Kylo.
 
 Built-In Pluggable Authentication Profiles
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -32,9 +32,9 @@ LoginModules to the overall JAAS configuration using the "required" control flag
 
 Note that more than one profile may be activated at one time.  If multiple profiles are used
 then authentication in Kylo will only occur if all of the login requirements
-of each of the profiles are satisfied.  
+of each of the profiles are satisfied.
 
-The table below lists all of the profiles currently supported by Kylo out-of-the-box.  When any 
+The table below lists all of the profiles currently supported by Kylo out-of-the-box.  When any
 of these profiles are activated certain properties are
 expected to be present in the `application.properties` files.
 
@@ -65,10 +65,10 @@ expected to be present in the `application.properties` files.
 
 `auth-kylo`
 '''''''''''
-When this profile is active a LoginModule will be added to the configuration 
+When this profile is active a LoginModule will be added to the configuration
 which validates whether authenticating user is present in the Kylo user store.
-Note that this profile is typically used in conjunction with 
-other profiles (such as auth-ldap) as this configuration does 
+Note that this profile is typically used in conjunction with
+other profiles (such as auth-ldap) as this configuration does
 not perform any password validation.
 
 +-----------------------------------+----------+--------------+------------------------------------------------------------------------------------------------------------------------+
@@ -91,7 +91,7 @@ a mapping of usernames top passwords in the form:
    user1=pw1
    user2=pw2
    ...
-   
+
 If authentication is successful then it will also look for a file `groups.properties` on
 the classpath to load the groups that have been assigned to the authenticated user.  The
 format of this file is:
@@ -101,10 +101,10 @@ format of this file is:
    user1=groupA,groupB
    user2=groupA,groupC
    ...
-   
+
 Note that use of the `groups.properties` file is optional when used in conjunction with other
 authentication profiles.  For instance, it would be redundant (but not illegal) to have a groups
-file when `auth-file` is used along with `auth-kylo`, as the latter profile will load any user 
+file when `auth-file` is used along with `auth-kylo`, as the latter profile will load any user
 assigned groups on successful login and it could be confusing to manage groups in two different
 sources.
 
@@ -211,7 +211,7 @@ password against an Active Directory server.
 
 `auth-simple`
 '''''''''''''
-This profile configures a LoginModule that authenticates a single user as an administrator using 
+This profile configures a LoginModule that authenticates a single user as an administrator using
 username and password properties specified in `application.properties`.  The specified user will be
 the only one able to login to Kylo.  Obviously, this profile should only be used in development.
 
@@ -229,11 +229,11 @@ User Group Handling
 Kylo access control is governed by permissions assigned to user groups,
 so upon successful authentication any groups to which the user belongs
 must be loaded and associated with the current authenticated request
-being processed. JAAS LoginModules have two responsibilities: 
+being processed. JAAS LoginModules have two responsibilities:
 
    #. To authenticate a login attempt
    #. To optionally associate principals (user and group identifiers) with the securiity conext of the request
-   
+
 A number of authentication profiles described above support loading of user groups at login time.
 For `auth-kylo` this is done automatically, for others (`auth-ldap`, 'auth-file`, etc.) this must be configured.
 If more than one group-loading profiles are configured then the result is additive.  For example, if your configuraton
@@ -266,7 +266,7 @@ create a Spring configuration class, which will be bundled into your
 plugin jar along with your custom LoginModule, that uses the framework-provided
 LoginConfigurationBuilder to incorporate your LoginModule into the
 authentication sequence. The following is an example of a configuration
-class that adds a new module to the authentication sequence of both the 
+class that adds a new module to the authentication sequence of both the
 Kylo UI and Services; each with different configuration options:
 
 .. code:: java
@@ -297,6 +297,3 @@ module class, and a ``plugin/plugin-context.xml`` file to bootstrap
 your plugin configuration. Dropping this jar into the plugin directories of
 the UI and Services would allow your custom LoginModule to participate in their
 login process.
-
-
-
