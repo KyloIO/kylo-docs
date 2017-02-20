@@ -51,7 +51,9 @@ these requirements are met.
 In these examples we will be accessing Kylo using URLs in the form:
 ``http://localhost:8420/``. Therefore, curl will
 be requesting tickets from Kerberos for access to the service principle:
-``HTTP/localhost.localdomain@YOUR_REALM``. If you use a different URL, say
+``HTTP/localhost.localdomain@YOUR_REALM``.
+
+If you use a different URL, say
 ``http://host.example.com:8400/``, then the requested service principal will
 look like: ``HTTP/host.example.com@YOUR_REALM``. In either case these
 service principals must be present in your KDC, exported into the keytab
@@ -108,8 +110,8 @@ as these:
 This shows ``curl``:
     1. Attempt to get the feed resource
     #. Receive an unauthorized response (401) and a challenge to negotiate authentication
-    #. ``curl`` retrying the request again but this time supplying the Kerberos ticket in an authorization header
-    #. Finally receiving a successful response (200).
+    #. Retry the request, but this time supplying the Kerberos ticket in an authorization header
+    #. Finally receiving a successful response (200)
 
 Test Environment
 ----------------
