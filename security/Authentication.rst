@@ -77,8 +77,8 @@ that validates whether the authenticating user is present in the Kylo user store
 
 `auth-file`
 '''''''''''
-When this profile is active a LoginModule will be added to the configuration
-which authenticates a username/password using user information within specific
+When this profile is active, a LoginModule will be added to the configuration
+that authenticates a username/password using user information within specific
 files on the file system.  For validating the credentials it looks by default,
 unless configured otherwise, for a file called `users.properties` on the classpath containing
 a mapping of usernames top passwords in the form:
@@ -89,7 +89,7 @@ a mapping of usernames top passwords in the form:
    user2=pw2
    ...
 
-If authentication is successful then it will also look for a file `groups.properties` on
+If authentication is successful it will then look for a `groups.properties` file on
 the classpath to load the groups that have been assigned to the authenticated user.  The
 format of this file is:
 
@@ -99,15 +99,13 @@ format of this file is:
    user2=groupA,groupC
    ...
 
-Note that use of the `groups.properties` file is optional when used in conjunction with other
-authentication profiles.  For instance, it would be redundant (but not illegal) to have a groups
-file when `auth-file` is used along with `auth-kylo`, as the latter profile will load any user
-assigned groups on successful login and it could be confusing to manage groups in two different
+The use of the `groups.properties` file is optional when used in conjunction with other
+authentication profiles.  For instance, it would be redundant to have a groups
+file when `auth-file` is used along with `auth-kylo`, as the latter profile would load any user
+assigned groups on successful login. It could be confusing to manage groups in two different
 sources.
 
-Note also that the `auth-file` profile should generally not be used in a production
-environment because it currently stores user passwords in the clear.  It is primarily
-used only in development and testing.
+.. note:: The `auth-file` profile should generally not be used in a production environment because it currently stores user passwords in the clear.  It is primarily used only in development and testing.
 
 +---------------------------------+----------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
 | Properties                      | Required | Example               | Description                                                                                                        |
