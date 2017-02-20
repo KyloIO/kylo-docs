@@ -9,7 +9,7 @@ Prerequisite
 Java
 ----
 
-All client nodes should have java installed.
+Java must be installed on all client nodes.
 
 .. code-block:: shell
 
@@ -27,10 +27,10 @@ Cluster Requirements
 -  This documentation assumes that you have Kylo installed and running on
    a cluster.
 
--  Kerberos is mandatory. For testing purposes, we can set
+-  Kerberos is mandatory. For testing purposes, set
    sentry.hive.testing.mode to true.
 
--  It works with Only Hive Server2.
+-  You must be running Hive Server2.
 
 -  In order to define policy for a role, you should have the user-group
    created on all nodes of a cluster, and you must then map each role to
@@ -43,35 +43,35 @@ Cluster Requirements
 Grant Sentry Admin Access to NiFi User
 --------------------------------------
 
--  Create sentryAdmin group and assign NiFi user to it.
+1. Create a sentryAdmin group and assign a NiFi user to it.
 
     groupadd sentryAdmin
     usermod -a -G sentryAdmin nifi
 
--  Add sentryAdmin group to Sentry Admin List
+2. Add sentryAdmin group to Sentry Admin List.
 
-   -  Log in to Cloudera Manager
+   a. Log in to Cloudera Manager.
 
-   -  Select Sentry Service
+   b. Select Sentry Service.
 
-   -  Go to Configuration tab.
+   c. Go to Configuration tab.
 
-   -  Select Sentry(Service-Wide) from Scope
+   d. Select Sentry(Service-Wide) from Scope.
 
-   -  Select Main from Category
+   e. Select Main from Category.
 
-   -  Look for sentry.service.admin.group property.
+   f. Look for sentry.service.admin.group property.
 
-   -  Add sentryAdmin to list.
+   g. Add sentryAdmin to list.
 
-   -  Click on Save and Restart Service
+   h. Click **Save** and **Restart Service**.
 
 |image1|
 
 Enabling Sentry for Hive
 ========================
 
-Change Hive warehouse ownership
+Change Hive Warehouse Ownership
 -------------------------------
 
 The Hive warehouse directory (/user/hive/warehouse or any path you
@@ -83,7 +83,7 @@ owned by the Hive user and group.
     $ sudo -u hdfs hdfs dfs -chmod -R 771 /user/hive/warehouse
     $ sudo -u hdfs hdfs dfs -chown -R hive:hive /user/hive/warehouse
 
-If you have Kerberos enabled cluster.
+If you have a Kerberos-enabled cluster:
 
 .. code-block:: shell
 
@@ -91,67 +91,65 @@ If you have Kerberos enabled cluster.
     $ sudo -u hdfs hdfs dfs -chmod -R 771 /user/hive/warehouse
     $ sudo -u hdfs hdfs dfs -chown -R hive:hive /user/hive/warehouse
 
-Disable impersonation for HiveServer2
+Disable Impersonation for HiveServer2
 -------------------------------------
 
--  Go to the Hive service.
+1. Go to the Hive service.
 
--  Click the Configuration tab.
+2. Click the Configuration tab.
 
--  Select Scope > HiveServer2.
+3. Select Scope > HiveServer2.
 
--  Select Category > Main.
+4. Select Category > Main.
 
--  Uncheck the HiveServer2 Enable Impersonation checkbox.
+5. Uncheck the HiveServer2 Enable Impersonation checkbox.
 
--  Click Save Changes to commit the changes.
+6. Click **Save Changes** to commit the changes.
 
 Yarn Setting For Hive User
 --------------------------
 
--  Open the Cloudera Manager Admin Console and go to the YARN service.
+1. Open the Cloudera Manager Admin Console and go to the YARN service.
 
--  Click the Configuration tab.
+2. Click the Configuration tab.
 
--  Select Scope > NodeManager.
+3. Select Scope > NodeManager.
 
--  Select Category > Security.
+4. Select Category > Security.
 
--  Ensure the Allowed System Users property includes the hive user. If
-   not, add hive.
+5. Ensure the Allowed System Users property includes the Hive user. If not, add Hive.
 
--  Click Save Changes to commit the changes.
+6. Click **Save Changes** to commit the changes.
 
--  Repeat steps 1-6 for every NodeManager role group for the YARN
-   service that is associated with Hive.
+7. Repeat steps 1-6 for every NodeManager role group for the YARN service that is associated with Hive.
 
--  Restart the YARN service.
+8. Restart the YARN service.
 
 Enabled Sentry
 --------------
 
--  Go to the Hive service.
+1. Go to the Hive service.
 
--  Click the Configuration tab.
+2. Click the Configuration tab.
 
--  Select Scope > Hive (Service-Wide).
+3. Select Scope > Hive (Service-Wide).
 
--  Select Category > Main.
+4. Select Category > Main.
 
--  Locate the Sentry Service property and select Sentry.
+5. Locate the Sentry Service property and select Sentry.
 
--  Click Save Changes to commit the changes.
+6. Click **Save Changes** to commit the changes.
 
--  Restart the Hive service.
+7. Restart the Hive service.
 
 |image2|
 
 Administrative Privilege
--------------------------
+------------------------
 
-Once sentryAdmin is group is part of Sentry Admin list ,it will be able
-to create policies in Sentry but it sentryAdmin will not be allowed to
-read/write any table. We need to grant privileges to sentryAdmin group.
+Once the sentryAdmin group is part of Sentry Admin list, it will be able
+to create policies in Sentry but sentryAdmin will not be allowed to
+read/write any tables. To do that, privileges must be granted to the sentryAdmin group.
 
     CREATE ROLE admin_role
     GRANT ALL ON SERVER server1 TO ROLE admin_role;
@@ -160,19 +158,18 @@ read/write any table. We need to grant privileges to sentryAdmin group.
 Enabled HDFS ACL
 ----------------
 
--  Go to the Cloudera Manager Admin Console and navigate to the HDFS
+1. Go to the Cloudera Manager Admin Console and navigate to the HDFS
    service.
 
--  Click the Configuration tab.
+2. Click the Configuration tab.
 
--  Select Scope > HDFS-1 (Service-Wide).
+3. Select Scope > HDFS-1 (Service-Wide).
 
--  Select Category > Security.
+4. Select Category > Security.
 
--  Locate the Enable Access Control Lists property and select its
-   checkbox to enable HDFS ACLs.
+5. Locate the Enable Access Control Lists property and select its checkbox to enable HDFS ACLs.
 
--  Click Save Changes to commit the changes.
+6. Click **Save Changes** to commit the changes.
 
 |image3|
 
