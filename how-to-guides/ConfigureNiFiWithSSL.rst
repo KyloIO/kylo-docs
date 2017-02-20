@@ -3,11 +3,11 @@ NiFi and SSL
 
 This link provides additional instruction for enabling SSL for NiFi:
 
-    `*https://docs.hortonworks.com/HDPDocuments/HDF2/HDF-2.0.0/bk_ambari-installation/content/ch_enabling-ssl-for-nifi.html* <https://docs.hortonworks.com/HDPDocuments/HDF2/HDF-2.0.0/bk_ambari-installation/content/ch_enabling-ssl-for-nifi.html>`__
+    `https://docs.hortonworks.com/HDPDocuments/HDF2/HDF-2.0.0/bk_ambari-installation/content/ch_enabling-ssl-for-nifi.html <https://docs.hortonworks.com/HDPDocuments/HDF2/HDF-2.0.0/bk_ambari-installation/content/ch_enabling-ssl-for-nifi.html>`__
 
 .. rubric:: Creating a Self-signed Cert
 
-1. Download the NiFi toolkit from `*https://nifi.apache.org/download.html* <https://nifi.apache.org/download.html>`__
+1. Download the NiFi toolkit from `https://nifi.apache.org/download.html* <https://nifi.apache.org/download.html>`__
 
 2. Unzip it to a directory.
 
