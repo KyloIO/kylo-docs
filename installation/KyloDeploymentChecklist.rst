@@ -42,7 +42,7 @@ Linux User/Group Creation
 There are three Linux user accounts that need to be created before
 installing the Kylo stack. If an external user management tool is used,
 these user accounts need to be created ahead of time. If not, there are
-instructions in the :doc: `../installation/KyloManualDeploymentGuide` (see Step 2: Create Linux Users and Groups) on how to create the users and
+instructions in the :doc:`../installation/KyloManualDeploymentGuide` (see Step 2: Create Linux Users and Groups) on how to create the users and
 groups.
 
 -  kylo
