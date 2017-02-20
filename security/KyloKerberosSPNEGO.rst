@@ -27,8 +27,8 @@ Once activated, the following properties are required to configure Kerberos SPNE
 | security.auth.kylo.login.password    | `(kylo-ui/application.properties only)`  Specifies the password of the above username retrieving the authenticating user’s groups - should be encrypted        |                                  |
 +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+
 
-.. note:: Other authentication profile(s) must be activated in the `kylo-services/application.properties` (such as
-``auth-simple``) to allow the user/password specified in the ``security.auth.kylo.login.*`` properties above to be authenticated.
+.. note:: Other authentication profile(s) must be activated in the `kylo-services/application.properties`, such as
+``auth-simple``, to allow the user/password specified in the ``security.auth.kylo.login.*`` properties above to be authenticated.
 
 Kerberos
 ~~~~~~~~
