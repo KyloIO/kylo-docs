@@ -11,7 +11,7 @@ This document is intended for advanced NiFi users who wish to run a NiFi cluster
 Prerequisite
 ============
 
-You will need to have set up a Kylo sandbox according to the `Wizard Driven Deployment Guide <KyloSetupWizardDeploymentGuide.html>`__.
+You will need to have set up a Kylo sandbox according to the :doc:`../installation/KyloSetupWizardDeploymentGuide.html>`__.
 
 Install a Second NiFi Node
 ==========================
