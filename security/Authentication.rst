@@ -226,12 +226,12 @@ so upon successful authentication any groups to which the user belongs
 must be loaded and associated with the current authenticated request
 being processed. JAAS LoginModules have two responsibilities:
 
-   #. To authenticate a login attempt
-   #. To optionally associate principals (user and group identifiers) with the securiity conext of the request
+   #. Authenticate a login attempt
+   #. Optionally, associate principals (user and group identifiers) with the securiity conext of the request
 
 A number of authentication profiles described above support loading of user groups at login time.
 For `auth-kylo` this is done automatically, for others (`auth-ldap`, 'auth-file`, etc.) this must be configured.
-If more than one group-loading profiles are configured then the result is additive.  For example, if your configuraton
+If more than one group-loading profile is configured, the result is additive. For example, if your configuration
 activates the profiles `auth-kylo` and `auth-LDAP`, and the LDAP properties enable groups, then any groups associated
 with the user in both LDAP and the Kylo user store will be combined and associated with the user's security
 context.
@@ -247,18 +247,18 @@ modules into the authentication process.
 Creating a Custom Authentication Plugin
 '''''''''''''''''''''''''''''''''''''''
 
-The first step is to create Kylo plugin containing a
+The first step is to create a Kylo plugin containing a
 `LoginModule <http://docs.oracle.com/javase/7/docs/technotes/guides/security/jaas/JAASLMDevGuide.html>`__
 that performs whatever authentication is required and then adds any
 username/group principals upon successful authentication. This module
-will be added to whatever other LoginModules that may be associated
+will be added to whatever other LoginModules may be associated
 with the target application (Kylo UI and/or Services.)
 
 The service-auth framework provides an API to make it easy to integrate
 a new LoginModule into the authentication of the Kylo UI or services
 REST API. The easiest way to integrate your custom LoginModule is to
 create a Spring configuration class, which will be bundled into your
-plugin jar along with your custom LoginModule, that uses the framework-provided
+plugin jar along with your custom LoginModule. That then uses the framework-provided
 LoginConfigurationBuilder to incorporate your LoginModule into the
 authentication sequence. The following is an example of a configuration
 class that adds a new module to the authentication sequence of both the
