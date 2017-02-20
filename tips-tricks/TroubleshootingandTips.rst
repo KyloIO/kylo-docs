@@ -667,3 +667,93 @@ creation, you can set the SerDe and properties:
 Notice the double escape required!
 
 .. |image1| image:: ../media/kylo-troubleshooting/2_executesparkjob.png
+
+Configuration on a Node with Samll Root Filesystem
+========================================================================
+
+Problem
+-------
+
+The node that Kylo will run on has a small root filesystem. There are other mounts that contain larger space but in particular, the following directories contain 30GB or less.
+
+- **/opt** which is used for libraries, executables, configs, etc
+
+- **/var** which is used for logs, storage, etc
+
+- **/tmp** which is used for processing data
+
+For kylo, these directories get filled up very quickly and causes all processes on the edge node to freeze. 
+
+
+Solution
+--------
+
+In general, the solution is to move all the large files onto the larger data mount. For this solution, the /data directory is considered to be the largest and most ideal location to contain kylo artifacts (logs, storage, etc).
+
+To alleviate the disk space issues, these steps were taken to move items to the /data directory
+
+**Relocate MySQL**
+
+The default location of mysql is /var/lib/mysql. MySQL will fill up the root partition with the default configuration so the storage volumes for MySQL must be migrated to /data/mysql.
+
+1. Stop mysql: **service mysql stop**
+
+2. Copy data over to new location: **rsync -av /var/lib/mysql /data/**
+
+3. Backup the existing data: **mv /var/lib/mysql /var/lib/mysql.bak**
+
+4. Back up the existing my.cnf: **cp /etc/my.cnf /etc/my.cnf.bak**
+
+5. Update mysql config with new location with the values below: **vi /etc/my.cnf**
+   
+   a. Under [mysqld], update
+   
+   b. datadir = /data/mysql
+
+6. Start mysql: **service mysql start**
+
+7. Back up old mysql directory: **tar -zcvf mysql_bak.tar.gz mysql.bak**
+
+**Change properties to point to /data**
+
+#. Kylo
+
+   #. Update /opt/kylo-services/log4j.properties
+
+      #. log4j.appender.file.File=/data/log/kylo-services/kylo-services.log
+   
+   #. Update /opt/kylo-services/log4j-spark.properties
+
+      #. log4j.appender.file.File=/data/log/kylo-services/kylo-spark-shell.log
+
+   #. Update /opt/kylo-ui/log4j.properties
+
+      #. log4j.appender.file.File=/data/log/kylo-ui/kylo-ui.log
+
+2. Nifi
+
+   #. Update /opt/nifi/nifi.properties
+
+      #. nifi.flow.configuration.file=/data/opt/nifi/data/conf/flow.xml.gz
+
+      #. nifi.flow.configuration.archive.dir=/data/opt/nifi/data/conf/archive/
+
+      #. nifi.authorizer.configuration.file=/data/opt/nifi/data/conf/authorizers.xml
+
+      #. nifi.login.identity.provider.configuration.file=/data/opt/nifi/data/conf/login-identity-providers.xml
+
+      #. nifi.templates.directory=/data/opt/nifi/data/conf/templates
+
+      #. nifi.flowfile.repository.directory=/data/opt/nifi/data/flowfile_repository
+
+      #. nifi.content.repository.directory.default=/data/opt/nifi/data/content_repository
+
+      #. nifi.provenance.repository.directory.default=/data/opt/nifi/data/provenance_repository
+
+3. Elasticsearch
+   
+   #. Update /opt/elasticsearch/elasticsearch.yml
+
+      #. path.data: /data/elasticsearch
+
+      #. path.logs: /data/log/elasticsearch
