@@ -72,7 +72,7 @@ The following is optional:
 Cluster Host Names, User Names, and Ports
 -----------------------------------------
 
-Collect the following information to speed up configuration of Kylo
+Collect the following information to speed up configuration of Kylo:
 
 -  Hive Hostname/IP Address:
 
