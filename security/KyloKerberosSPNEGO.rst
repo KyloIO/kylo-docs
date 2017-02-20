@@ -43,9 +43,9 @@ above.
 Verifying Access
 ~~~~~~~~~~~~~~~~
 
-Once Kylo is configured for Kerberos SPNEGO you can use ``curl`` to verify
-access. See the ``curl`` `—negotiate` option documentation to see the library
-requirements to support SPNEGO, and use the `-V` option to verify whether
+Once Kylo is configured for Kerberos SPNEGO, you can use ``curl`` to verify
+access. See the ``curl`` `—negotiate` option documentation (https://curl.haxx.se/docs/manual.html) to see the library
+requirements to support SPNEGO. Use the `-V` option to verify whether
 these requirements are met.
 
 In these examples we will be accessing Kylo using URLs in the form:
