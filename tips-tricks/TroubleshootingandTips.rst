@@ -669,7 +669,7 @@ Notice the double escape required!
 .. |image1| image:: ../media/kylo-troubleshooting/2_executesparkjob.png
 
 Configuration on a Node with Small Root Filesystem
-========================================================================
+=======
 
 Problem
 -------
@@ -704,7 +704,7 @@ The default location of MySQL is /var/lib/mysql. MySQL will fill up the root par
 4. Backup the existing my.cnf: **cp /etc/my.cnf /etc/my.cnf.bak**
 
 5. Update MySQL config with new location with the values below: **vi /etc/my.cnf**
-   
+
    a. Under [mysqld], set datadir = /data/mysql
 
 6. Start MySQL: **service mysql start**
@@ -718,7 +718,7 @@ The default location of MySQL is /var/lib/mysql. MySQL will fill up the root par
    #. Update /opt/kylo-services/log4j.properties
 
       #. log4j.appender.file.File=/data/log/kylo-services/kylo-services.log
-   
+
    #. Update /opt/kylo-services/log4j-spark.properties
 
       #. log4j.appender.file.File=/data/log/kylo-services/kylo-spark-shell.log
@@ -754,3 +754,36 @@ The default location of MySQL is /var/lib/mysql. MySQL will fill up the root par
       #. path.data: /data/elasticsearch
 
       #. path.logs: /data/log/elasticsearch
+
+GetTableData vs ImportSqoop Processor
+========================================================================
+
+Problem
+-------
+
+You need to load data from a structured datastore.
+
+Solution
+--------
+
+There are two major NiFi processors provided by Kylo for importing data into Hadoop: GetTableData and ImportSqoop.
+
+a. **GetTableData** leverages JDBC to pull data from the source into the flowfile within NiFi. This content will then need to be pushed to HDFS (via a PutHDFS processor).
+
+b. **ImportSqoop** executes a Sqoop job to pull the content from the source and place it directly to HDFS. For details on how this is done, please refer to `Apache Sqoop <http://sqoop.apache.org/>`_.
+
+In general, it is recommended to use the ImportSqoop processor due to performance. Using the GetTableData processors uses the edge node (where NiFi is running) as a middle-man. The ImportSqoop processor runs a MapReduce job that can be tuned to load the data efficiently. For example, a single mapper will be sufficient if you are loading a reference table but a table with billions of rows would benefit from multiple mappers.
+
+The GetTableData processor should be used when the data being pulled is small. Other use cases are when certain pre-processing steps are required that benefit from being on the edge node. For instance, if the edge node resides behind a firewall and PII (personal identifiable information) fields need to be masked before being pushed to a more open HDFS environment.
+
+Kylo's Data Ingest template comes with out-of-the-box support for the GetTableData processor. To use the ImportSqoop processor instead, the following changes should to be made to the Data Ingest template and the standard-ingest reusable template:
+
+#. Replace the GetTableData processor with the ImportSqoop processor
+
+#. Remove the PutHDFS processor from the flow
+
+#. Update the "Create Feed Partition" processor to point to the target location of the ImportSqoop processor
+
+#. Create a new archive processor which will archive data from HDFS. One option is use the Hadoop streaming tool to take the files residing in the target location of the ImportSqoop processor and compress then store the data to the archive directory. For details on this, please refer to `Hadoop Streaming <http://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html>`_.
+
+It is important to note that any other templates that output to standard-ingest would need to be updated because the changes above assumes data resides in HDFS. In general, adding a PutHDFS processor would be sufficient.
