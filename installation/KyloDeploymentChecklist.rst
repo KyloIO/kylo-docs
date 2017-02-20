@@ -98,7 +98,7 @@ Kerberos Principals (if using Kerberos)
 ----------------------------------------
 
 Note the following Kerberos principals after the step of creating the
-Keytabs
+Keytabs:
 
 -  Kerberos Principal for "kylo":
 
