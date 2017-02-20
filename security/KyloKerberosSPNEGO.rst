@@ -7,13 +7,13 @@ Configuration
 Kylo
 ~~~~
 
-Kerberos SPNEGO is activate in Kylo by adding the profile
+Kerberos SPNEGO is activated in Kylo by adding the profile
 ``auth-krb-spnego`` to the list of active profiles in the UI and services
 properties files.
 
 Currently, if SPNEGO is activated, then the ``auth-kylo`` profile must be
-used as well and all Kerberos-authenticated users must be present in the Kylo user store.
-Once activated the following properties are required to configure Kerberos SPNEGO:
+used as well, and all Kerberos-authenticated users must be present in the Kylo user store.
+Once activated, the following properties are required to configure Kerberos SPNEGO:
 
 +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+
 | **Property**                         | **Description**                                                                                                                                                | **Example**                      |
@@ -27,7 +27,7 @@ Once activated the following properties are required to configure Kerberos SPNEG
 | security.auth.kylo.login.password    | `(kylo-ui/application.properties only)`  Specifies the password of the above username retrieving the authenticating user’s groups - should be encrypted        |                                  |
 +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+
 
-Note that other authentication profile(s) are required to be activated in the `kylo-services/application.properties` (such as
+.. note:: Other authentication profile(s) must be activated in the `kylo-services/application.properties` (such as
 ``auth-simple``) to allow the user/password specified in the ``security.auth.kylo.login.*`` properties above to be authenticated.
 
 Kerberos
