@@ -9,7 +9,7 @@ deployment.
 Edge Node Resource Requirements
 -------------------------------
 
--  Kylo and Apache NiFi can be installed on a single edge node, however it is recommended they run on separate edge nodes.
+-  Kylo and Apache NiFi can be installed on a single edge node, however it is recommended that they run on separate edge nodes.
 
 -  Minimum production recommendation is 4 cores CPU, 16 GB RAM.
 
@@ -39,7 +39,7 @@ Dependencies
 Linux User/Group Creation
 -------------------------
 
-There are three Linux users accounts that need to be created before
+There are three Linux user accounts that need to be created before
 installing the Kylo stack. If an external user management tool is used,
 these user accounts need to be created ahead of time. If not, there are
 instructions in the deployment guide on how to create the users and
