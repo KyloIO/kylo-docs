@@ -56,7 +56,7 @@ This link provides additional instruction for enabling SSL for NiFi:
 
 ..
 
-    This will generate 1 client cert and password file along with a
+    This will generate one client cert and password file along with a
     server keystore and trust store:
 
     |image2|
@@ -84,7 +84,7 @@ This link provides additional instruction for enabling SSL for NiFi:
    1. Open the /opt/nifi/data/ssl/localhost/nifi.properties file.
 
    2. Copy the properties, starting with the #Site to Site properties
-      through the last NiFi security property (see below).  Note that
+      through the last NiFi security property (see below). Note that
       the **bolded lines** shown in the example in step 3 indicate
       fields that must be updated.
 
@@ -141,7 +141,8 @@ This link provides additional instruction for enabling SSL for NiFi:
 
 ..
 
-    Example Screenshot of file
+    Here is a sample screenshot of file:
+    
     |image4|
 
     For reference:  This will create a record in the /opt/nifi/current/conf/users.xml.  Should you need to regenerate your SSL file with a different CN, you will need to modify the
