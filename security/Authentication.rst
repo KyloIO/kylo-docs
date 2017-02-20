@@ -30,9 +30,7 @@ configuration `application.properties` files.  By default, whenever any of these
 are added to the configuration it is equivalent to adding their associated
 LoginModules to the overall JAAS configuration using the "required" control flag.
 
-Note that more than one profile may be activated at one time.  If multiple profiles are used
-then authentication in Kylo will only occur if all of the login requirements
-of each of the profiles are satisfied.
+.. note:: More than one profile may be activated at one time.  If multiple profiles are used, authentication in Kylo will only occur if all of the login requirements of each of the profiles are satisfied.
 
 The table below lists all of the profiles currently supported by Kylo out-of-the-box.  When any
 of these profiles are activated certain properties are
