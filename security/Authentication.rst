@@ -63,11 +63,10 @@ expected to be present in the `application.properties` files.
 
 `auth-kylo`
 '''''''''''
-When this profile is active a LoginModule will be added to the configuration
-which validates whether authenticating user is present in the Kylo user store.
-Note that this profile is typically used in conjunction with
-other profiles (such as auth-ldap) as this configuration does
-not perform any password validation.
+When this profile is active, a LoginModule will be added to the configuration
+that validates whether the authenticating user is present in the Kylo user store.
+
+.. note:: This profile is typically used in conjunction with other profiles (such as auth-ldap) as this configuration does not perform any password validation.
 
 +-----------------------------------+----------+--------------+------------------------------------------------------------------------------------------------------------------------+
 | Properties                        | Required | Example      | Description                                                                                                            |
