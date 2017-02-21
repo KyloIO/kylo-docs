@@ -3,10 +3,10 @@ Kylo UI and SSL
 ===============
 
 Overview
---------
+========
 
 This guide provides details on what configuration changes are required to enable Kylo UI to use SSL.
-Broadly the changes will be two-fold:
+Broadly, the changes will be two-fold:
 
     1. Changes to Kylo UI
     2. Changes to Nifi
@@ -22,7 +22,7 @@ Lets assume you are in a development mode and you want to try out Kylo UI on SSL
 self-signed certificate which is stored in a keystore. Make note of kylo-ui.jks path, we will refer
 to it in following section when updating Kylo UI properties.
 
-If you are in production you would have your certificate issued by a trusted certificate authority.
+If you are in production, you would have your certificate issued by a trusted certificate authority.
 You can then import it to your keystore.
 
 .. code-block:: shell
