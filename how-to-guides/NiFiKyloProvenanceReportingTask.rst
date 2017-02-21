@@ -6,14 +6,14 @@ NiFi & Kylo Reporting Task
 Introduction
 ------------
 
-Kylo communicates with NiFi via a NiFi reporting task.  As flow files run through NiFi each processor creates provenance events that track metadata and status information of a running flow.
+Kylo communicates with NiFi via a NiFi reporting task.  As flow files run through NiFi, each processor creates provenance events that track metadata and status information of a running flow.
 A NiFi reporting task is used to query for these provenance events and send them to Kylo to display job and step executions in Kylo's operations manager.
 
 Processing Provenance Events
 ----------------------------
 
-The Kylo reporting task relies on Kylo to provide feed information which it uses to augment the provenance event giving the NiFi event feed context.  It does this through a cache called the "NiFi Flow Cache" which is maintained by the Kylo Feed manager and kept in sync with the NiFi reporting task.
-As feeds are created and updated this cache is updated and synchronized back to the NiFi reporting task upon processing provenance events.  The cache is exposed through a REST API, which is used by the reporting task.
+The Kylo reporting task relies on Kylo to provide feed information, which it uses to augment the provenance event giving the NiFi event feed context.  It does this through a cache called the "NiFi Flow Cache", which is maintained by the Kylo Feed manager and kept in sync with the NiFi reporting task.
+As feeds are created and updated, this cache is updated and synchronized back to the NiFi reporting task upon processing provenance events.  The cache is exposed through a REST API, which is used by the reporting task.
 
 |image5|
 
@@ -24,8 +24,7 @@ The NiFi Flow Cache REST API
 
 The above REST endpoints allow you to manage the cache.  Kylo and the reporting task will automatically keep the cache in sync.  If needed you can use these REST endpoints to manage, view, and reset the cache.
 
-**Note** : If for some reason the reporting task is reporting Kylo as "not available" you can try to reset the cache to fix the problem using the "reset-cache" endpoint.
-
+.. note:: If for some reason the reporting task is reporting Kylo as "not available", you can try to reset the cache to fix the problem using the "reset-cache" endpoint.
 
 Reporting Task Creation
 -----------------------
