@@ -28,7 +28,7 @@ The above REST endpoints allow you to manage the cache.  Kylo and the reporting 
 
 Reporting Task Creation
 -----------------------
-When Kylo starts up it will attempt to auto create the controller service and reporting task in NiFi that is needed to communicate with Kylo.  If this process doesn't work or if you want more control you can manually create it following the steps below.
+When Kylo starts up, it will attempt to auto create the controller service and reporting task in NiFi that is needed to communicate with Kylo.  If this process doesn't work, or if you want more control, you can manually create it following the steps below.
 
 Manual Setup
 ~~~~~~~~~~~~
