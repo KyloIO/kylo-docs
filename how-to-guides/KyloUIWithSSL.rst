@@ -19,7 +19,7 @@ Broadly, the changes will be two-fold:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Lets assume you are in a development mode and you want to try out Kylo UI on SSL. You will need a
-self-signed certificate which is stored in a keystore. Make note of kylo-ui.jks path, we will refer
+self-signed certificate which is stored in a keystore. Make note of the kylo-ui.jks path, we will refer
 to it in following section when updating Kylo UI properties.
 
 If you are in production, you would have your certificate issued by a trusted certificate authority.
