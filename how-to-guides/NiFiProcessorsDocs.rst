@@ -1,3 +1,4 @@
+====================
 NiFi Processor Guide
 ====================
 
@@ -54,8 +55,7 @@ This would have to be copied over into Sqoop’s /lib directory, which may be in
 The driver class can then be referred to in the property **Source Driver** in **StandardSqoopConnectionService** controller service
 configuration. For example: **com.mysql.jdbc.Driver.**
 
-**Tip**: Avoid providing the driver class name in the controller service configuration.
-Sqoop will try to infer the best connector and driver for the transfer on the basis of the **Source Connection String** property configured for **StandardSqoopConnectionService** controller service.
+.. tip:: Avoid providing the driver class name in the controller service configuration. Sqoop will try to infer the best connector and driver for the transfer on the basis of the **Source Connection String** property configured for **StandardSqoopConnectionService** controller service.
 
 Passwords
 ~~~~~~~~~
