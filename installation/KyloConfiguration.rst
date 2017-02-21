@@ -13,7 +13,7 @@ Requirements
 
 You must have Kylo installed.
 
-Step 1: Add the data nucleus Jars
+Step 1: Add the Data Nucleus Jars
 =================================
 
 .. note:: This step is required only for HDP and is not required on Cloudera.
