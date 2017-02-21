@@ -55,6 +55,7 @@ The documentation for the site is organized into a few sections:
     :maxdepth: 1
     :caption: How to guides
 
+    Kylo UI & SSL <how-to-guides/KyloUIWithSSL>
     NiFi Cluster <how-to-guides/SetupaNiFiClusterinaKyloSandbox>
     NiFi & SSL <how-to-guides/ConfigureNiFiWithSSL>
     NiFi & HDFS Encryption <how-to-guides/ConfigNififorHDFSEncryption>
