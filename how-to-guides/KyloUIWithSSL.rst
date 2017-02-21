@@ -48,7 +48,7 @@ You can then import it to your keystore.
 1.2 Kylo UI Application Properties
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Add following properties to /opt/kylo/kylo-ui/conf/application.properties. Change port to your liking and
+Add following properties to /opt/kylo/kylo-ui/conf/application.properties. Change the port to your liking and
 update path to keystore 'kylo-ui.jks' we generated in previous section.
 
 .. code-block:: shell
