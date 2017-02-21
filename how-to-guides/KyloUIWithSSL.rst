@@ -65,10 +65,9 @@ update path to keystore 'kylo-ui.jks' we generated in previous section.
 1.3 Restart Kylo UI
 ~~~~~~~~~~~~~~~~~~~
 
-You can now restart Kylo UI and browse to https://localhost:8444/ops-mgr/index.html .
-Note protocol an port number have changed from default configuration and now are HTTPS and 8444 respectively.
-Since we are using a self-signed certificate expect browsers to complain about inadequate security, but
-that's ok for development purposes.
+You can now restart Kylo UI and browse to https://localhost:8444/ops-mgr/index.html.
+The note protocol and port number have changed from default configuration and now are HTTPS and 8444 respectively.
+Since we are using a self-signed certificate, expect browsers to complain about inadequate security. That is okay for development purposes.
 
 .. code-block:: shell
 
@@ -83,11 +82,11 @@ that's ok for development purposes.
 2.1 Import Kylo UI's Certificate into a Truststore
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can either import Kylo UI's certificate 'localhost.crt' we generated at step `1.1 Create Self-Signed Certificate in a Keystore`_
-into a new truststore or, if you are in a hurry, simply re-use Kylo UI's keystore as Nifi's truststore.
+You can either import Kylo UI's certificate 'localhost.crt', generated in step `1.1 Create Self-Signed Certificate in a Keystore`_,
+into a new truststore; or, if you are in a hurry, simply re-use Kylo UI's keystore as Nifi's truststore.
 
-Lets create a new truststore and import the cert to keep things clean. Make sure 'nifi' user has access to this truststore, e.g.
-keep the truststore in /opt/nifi/data/ssl directory which belongs to 'nifi' user.
+Create a new truststore and import the cert to keep things clean. Make sure 'nifi' user has access to this truststore, e.g.
+keep the truststore in /opt/nifi/data/ssl directory, which belongs to 'nifi' user.
 
 .. code-block:: shell
 
@@ -104,8 +103,8 @@ keep the truststore in /opt/nifi/data/ssl directory which belongs to 'nifi' user
 2.2 Setup StandardSSLContextService in Nifi
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-There are two places where you need to add StandardSSLContextService in Nifi. One on root level next to all other controller services
-and one in controller services next to Kylo Reporting Task. See :doc:`NiFiKyloProvenanceReportingTask` on what Reporting Task is.
+There are two places where you need to add StandardSSLContextService in Nifi. One is on the root level next to all other controller services,
+and the other is in controller services next to Kylo Reporting Task. See :doc:`NiFiKyloProvenanceReportingTask` on what Reporting Task is.
 
 Set following properties on SSL Context Service:
 
@@ -119,10 +118,10 @@ Set following properties on SSL Context Service:
 2.3 Update MetadataProviderSelectorService
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Just like StandardSSLContextService you will need to update two instances of MetadataProviderSelectorService, one at root level and
+Just like StandardSSLContextService, you will need to update two instances of MetadataProviderSelectorService: one at root level and
 one next to Kylo Reporting Task.
 
-Set following properties on MetadataProviderSelectorService, making sure host and port correspond to where Kylo UI is running:
+Set the following properties on MetadataProviderSelectorService, making sure host and port correspond to where Kylo UI is running:
 
 :REST Client URL: https://localhost:8444/proxy/metadata
 :SSL Context Service: StandardSSLContextService
