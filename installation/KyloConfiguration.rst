@@ -1,8 +1,9 @@
+===============================
 Yarn Cluster Mode Configuration
 ===============================
 
 Overview
---------
+========
 
 In order for the yarn cluster mode to work to validate the Spark processor, the JSON policy file has to be passed to the cluster. In addition the hive-site.xml file needs to be passed. This should work for
 both HDP and Cloudera clusters.
@@ -15,9 +16,7 @@ You must have Kylo installed.
 Step 1: Add the data nucleus Jars
 =================================
 
-+-----------+---------------------------------------------------------------------+
-| **NOTE:** | This step is required only for HDP and is not required on Cloudera. |
-+-----------+---------------------------------------------------------------------+
+.. note:: This step is required only for HDP and is not required on Cloudera.
 
 If using Hive in your Spark processors, provide hive jar dependencies
 and hive-site.xml so that Spark can connect to the right Hive metastore.
@@ -29,7 +28,7 @@ To do this, add the following jars into the “Extra Jars” parameter: 
 
 ..
 
-Step 2: Add the hive-site.xml file
+Step 2: Add the hive-site.xml File
 ==================================
 
 Specify "hive-site.xml". It should be located in the following location:
