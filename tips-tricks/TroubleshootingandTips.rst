@@ -669,7 +669,7 @@ Notice the double escape required!
 .. |image1| image:: ../media/kylo-troubleshooting/2_executesparkjob.png
 
 Configuration on a Node with Small Root Filesystem
-=======
+==================================================
 
 Problem
 -------
@@ -756,7 +756,7 @@ The default location of MySQL is /var/lib/mysql. MySQL will fill up the root par
       #. path.logs: /data/log/elasticsearch
 
 GetTableData vs ImportSqoop Processor
-========================================================================
+=====================================
 
 Problem
 -------
