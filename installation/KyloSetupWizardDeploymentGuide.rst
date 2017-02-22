@@ -62,9 +62,9 @@ the users and groups:
 
 .. code-block:: shell
 
-    $ useradd -r -m -s /bin/bash nifi
-    $ useradd -r -m -s /bin/bash kylo
-    $ useradd -r -m -s /bin/bash activemq
+    useradd -r -m -s /bin/bash nifi
+    useradd -r -m -s /bin/bash kylo
+    useradd -r -m -s /bin/bash activemq
 
 
 Validate that the above commands created a group by looking at
@@ -72,15 +72,15 @@ Validate that the above commands created a group by looking at
 
 .. code-block:: shell
 
-    $ cat /etc/group
+    cat /etc/group
 
 If the groups are missing then run the following:
 
 .. code-block:: shell
 
-    $ groupadd kylo
-    $ groupadd nifi
-    $ groupadd activemq
+    groupadd kylo
+    groupadd nifi
+    groupadd activemq
 
 
 Step 3: Run the Kylo RPM Install
@@ -88,7 +88,7 @@ Step 3: Run the Kylo RPM Install
 
 .. code-block:: shell
 
-    $ rpm -ivh kylo-<version>.noarch.rpm
+    rpm -ivh kylo-<version>.noarch.rpm
 
 ..
 
@@ -110,7 +110,7 @@ b. Run the offline install:
 
 .. code-block:: shell
 
-    "/opt/kylo/setup/generate-offline-install.sh"
+    /opt/kylo/setup/generate-offline-install.sh
 
 ..
 
@@ -122,7 +122,7 @@ d. Run the Kylo TAR install:
 
 .. code-block:: shell
 
-    "tar -xvf kylo-install.tar"
+    tar -xvf kylo-install.tar
 
 ..
 
@@ -142,13 +142,13 @@ a. From the /opt/kylo/setup directory
 
 .. code-block:: shell
 
-    $ /opt/kylo/setup/setup-wizard.sh
+    /opt/kylo/setup/setup-wizard.sh
 
 b. Offline mode from another directory (using TAR file)
 
 .. code-block:: shell
 
-    $ <PathToSetupFolder>/setup/setup-wizard.sh -o
+    <PathToSetupFolder>/setup/setup-wizard.sh -o
 
 +------------+------------------------+
 | **Note**   | Both -o and -O work.   |
@@ -179,23 +179,23 @@ to the group defined in hdfs-site.xml. For example:
 
 .. code-block:: shell
 
-    $ usermod -a -G hdfs nifi
-    $ usermod -a -G hdfs kylo
+    usermod -a -G hdfs nifi
+    usermod -a -G hdfs kylo
 
 **Cloudera**
 
 .. code-block:: shell
 
-    $ groupadd supergroup
+    groupadd supergroup
     # Add nifi and hdfs to that group:
-    $ usermod -a -G supergroup nifi
-    $ usermod -a -G supergroup hdfs
+    usermod -a -G supergroup nifi
+    usermod -a -G supergroup hdfs
 
 **Optional:** If you want to perform actions as a root user in a development environment run the below command:
 
 .. code-block:: shell
 
-    $ usermod -a -G supergroup root
+    usermod -a -G supergroup root
 
 Step 7: Additional Cluster Configuration
 ----------------------------------------
@@ -207,10 +207,10 @@ edge node, add the users/groups to the name nodes on a cluster.
 
 .. code-block:: shell
 
-    $ useradd kylo
-    $ useradd nifi
-    $ usermod -G hdfs nifi
-    $ usermod -G hdfs kylo
+    useradd kylo
+    useradd nifi
+    usermod -G hdfs nifi
+    usermod -G hdfs kylo
 
 **Cloudera**
 
@@ -225,8 +225,8 @@ For example:
 
 .. code-block:: shell
 
-    $ mkdir -p /var/dropzone
-    $ chown nifi /var/dropzone
+    mkdir -p /var/dropzone
+    chown nifi /var/dropzone
 
 +------------+-------------------------------------------------------------------------------------+
 | **Note**   | Files should be copied into the dropzone such that user nifi can read and remove.   |
@@ -245,7 +245,7 @@ Step 11: Start the Three Kylo Services
 
 .. code-block:: shell
 
-    $ /opt/kylo/start-kylo-apps.sh
+    /opt/kylo/start-kylo-apps.sh
 
 At this point, all services should be running. Note that services are
 started automatically on boot.
@@ -261,7 +261,7 @@ for Cloudera.
 
    a. Update the 3 MySQL password values to "cloudera":
 
-.. code-block:: shell
+.. code-block:: properties
 
         spring.datasource.password=cloudera
         metadata.datasource.password=cloudera
@@ -272,7 +272,7 @@ for Cloudera.
 
     b. Update the Hive username:
 
-.. code-block:: shell
+.. code-block:: properties
 
         hive.datasource.username=hive
 
@@ -280,7 +280,7 @@ for Cloudera.
 
     c. Update the Hive Metastore URL:
 
-.. code-block:: shell
+.. code-block:: properties
 
         hive.metastore.datasource.url=jdbc:mysql://localhost:3306/metastore
 
@@ -288,7 +288,7 @@ for Cloudera.
 
     d. Update the following parameters:
 
-.. code-block:: shell
+.. code-block:: properties
 
         config.hive.schema=metastore
         nifi.executesparkjob.sparkhome=/usr/lib/spark
