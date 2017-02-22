@@ -668,7 +668,7 @@ Notice the double escape required!
 
 .. |image1| image:: ../media/kylo-troubleshooting/2_executesparkjob.png
 
-Configuration on a Node with Samll Root Filesystem
+Configuration on a Node with Small Root Filesystem
 ========================================================================
 
 Problem
@@ -682,37 +682,34 @@ The node that Kylo will run on has a small root filesystem. There are other moun
 
 - **/tmp** which is used for processing data
 
-For kylo, these directories get filled up very quickly and causes all processes on the edge node to freeze. 
-
+For Kylo, these directories get filled up very quickly and this causes all processes on the edge node to freeze.
 
 Solution
 --------
 
-In general, the solution is to move all the large files onto the larger data mount. For this solution, the /data directory is considered to be the largest and most ideal location to contain kylo artifacts (logs, storage, etc).
+In general, the solution is to move all the large files onto the larger data mount. For this solution, the /data directory is considered to be the largest and most ideal location to contain Kylo artifacts (logs, storage, etc).
 
 To alleviate the disk space issues, these steps were taken to move items to the /data directory
 
 **Relocate MySQL**
 
-The default location of mysql is /var/lib/mysql. MySQL will fill up the root partition with the default configuration so the storage volumes for MySQL must be migrated to /data/mysql.
+The default location of MySQL is /var/lib/mysql. MySQL will fill up the root partition with the default configuration so the storage volumes for MySQL must be migrated to /data/mysql.
 
-1. Stop mysql: **service mysql stop**
+1. Stop MySQL: **service mysql stop**
 
 2. Copy data over to new location: **rsync -av /var/lib/mysql /data/**
 
 3. Backup the existing data: **mv /var/lib/mysql /var/lib/mysql.bak**
 
-4. Back up the existing my.cnf: **cp /etc/my.cnf /etc/my.cnf.bak**
+4. Backup the existing my.cnf: **cp /etc/my.cnf /etc/my.cnf.bak**
 
-5. Update mysql config with new location with the values below: **vi /etc/my.cnf**
+5. Update MySQL config with new location with the values below: **vi /etc/my.cnf**
    
-   a. Under [mysqld], update
-   
-   b. datadir = /data/mysql
+   a. Under [mysqld], set datadir = /data/mysql
 
-6. Start mysql: **service mysql start**
+6. Start MySQL: **service mysql start**
 
-7. Back up old mysql directory: **tar -zcvf mysql_bak.tar.gz mysql.bak**
+7. Back up old MySQL directory: **tar -zcvf mysql_bak.tar.gz mysql.bak**
 
 **Change properties to point to /data**
 
@@ -751,7 +748,7 @@ The default location of mysql is /var/lib/mysql. MySQL will fill up the root par
       #. nifi.provenance.repository.directory.default=/data/opt/nifi/data/provenance_repository
 
 3. Elasticsearch
-   
+
    #. Update /opt/elasticsearch/elasticsearch.yml
 
       #. path.data: /data/elasticsearch
