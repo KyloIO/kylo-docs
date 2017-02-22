@@ -6,11 +6,9 @@ Overview
 
 Kylo supports a pluggable authentication architecture that allows
 customers to integrate their existing infrastructure when authenticating
-a user.  The pluggability is built around `JAAS
-<http://docs.oracle.com/javase/7/docs/technotes/guides/security/jaas/JAASRefGuide.html>`__,
-which delegates authentication to one or more configured `LoginModules
-<http://docs.oracle.com/javase/7/docs/technotes/guides/security/jaas/JAASRefGuide.html#LoginModule>`__
-that all collaborate in an authentication attempt.  Kylo
+a user.  The pluggability is built around |jaas_link|; 
+which delegtes authentication to one or more configured |loginmodule_link| that all collaborate in 
+an authentication attempt.  Kylo
 supplies LoginModule implementations for the most common authentication
 scenarios, though customers will be able to provide their own modules to
 replace or augment the modules provided by Kylo.
@@ -98,12 +96,12 @@ format of this file is:
    user1=groupA,groupB
    user2=groupA,groupC
    ...
-
-The use of the `groups.properties` file is optional when used in conjunction with other
-authentication profiles.  For instance, it would be redundant to have a groups
-file when `auth-file` is used along with `auth-kylo`, as the latter profile would load any user
-assigned groups on successful login. It could be confusing to manage groups in two different
-sources.
+   
+Note that use of the `groups.properties` file is optional when used in conjuction with other
+authentication profiles.  For instance, it would be redundant (but not invalid) to have a groups
+file when `auth-file` is used with `auth-kylo`, as the latter profile will load any user 
+assigned groups from the Kylo store as well as those defined in the group file.  It would likely
+be confusing to have to manage groups from two different sources.
 
 .. note:: The `auth-file` profile should generally not be used in a production environment because it currently stores user passwords in the clear.  It is primarily used only in development and testing.
 
@@ -120,89 +118,46 @@ sources.
 This profile configures a LoginModule that authenticates the username and
 password against an LDAP server.
 
-+-------------------------------------------------+----------+----------------------------------------------+-----------------+
-| Property                                        | Required | Example                                      | Description     |
-+=================================================+==========+==============================================+=================+
-| security.auth.ldap.server.uri                   | Yes      | ``ldap://localhost:52389/dc=example,dc=com`` | The URI to the  |
-|                                                 |          |                                              | LDAP server and |
-|                                                 |          |                                              | root context    |
-+-------------------------------------------------+----------+----------------------------------------------+-----------------+
-| security.auth.ldap.authenticator.userDnPatterns | Yes      | ``uid={0},ou=people``                        | The DN filter   |
-|                                                 |          |                                              | patterns, minus |
-|                                                 |          |                                              | the root        |
-|                                                 |          |                                              | context         |
-|                                                 |          |                                              | portion, that   |
-|                                                 |          |                                              | identifies the  |
-|                                                 |          |                                              | entry for the   |
-|                                                 |          |                                              | user. The       |
-|                                                 |          |                                              | username is     |
-|                                                 |          |                                              | substituted for |
-|                                                 |          |                                              | the ``{0}``     |
-|                                                 |          |                                              | tag. If more    |
-|                                                 |          |                                              | than one        |
-|                                                 |          |                                              | pattern is      |
-|                                                 |          |                                              | supplied they   |
-|                                                 |          |                                              | should be       |
-|                                                 |          |                                              | separated by "  |
-+-------------------------------------------------+----------+----------------------------------------------+-----------------+
-| security.auth.ldap.user.enableGroups            | No       | ``true``                                     | Activates user  |
-|                                                 |          |                                              | group loading;  |
-|                                                 |          |                                              | default:        |
-|                                                 |          |                                              | ``false``       |
-+-------------------------------------------------+----------+----------------------------------------------+-----------------+
-| security.auth.ldap.user.groupsBase              | No       | ``ou=groups``                                | The filter      |
-|                                                 |          |                                              | pattern that    |
-|                                                 |          |                                              | identifies      |
-|                                                 |          |                                              | group entries   |
-+-------------------------------------------------+----------+----------------------------------------------+-----------------+
-| security.auth.ldap.user.groupNameAttr           | No       | ``ou``                                       | The attribute   |
-|                                                 |          |                                              | of the group    |
-|                                                 |          |                                              | entry           |
-|                                                 |          |                                              | containing the  |
-|                                                 |          |                                              | group name      |
-+-------------------------------------------------+----------+----------------------------------------------+-----------------+
-| security.auth.ldap.server.authDn                | No       | ``uid=admin,ou=people,dc=example,dc=com``    | The LDAP        |
-|                                                 |          |                                              | account with    |
-|                                                 |          |                                              | the privileges  |
-|                                                 |          |                                              | necessary to    |
-|                                                 |          |                                              | access user or  |
-|                                                 |          |                                              | group entries;  |
-|                                                 |          |                                              | usually only    |
-|                                                 |          |                                              | needed (if at   |
-|                                                 |          |                                              | all) when group |
-|                                                 |          |                                              | loading is      |
-|                                                 |          |                                              | activated       |
-+-------------------------------------------------+----------+----------------------------------------------+-----------------+
-| security.auth.ldap.server.password              | No       |                                              | The password    |
-|                                                 |          |                                              | for the account |
-|                                                 |          |                                              | with the        |
-|                                                 |          |                                              | privileges      |
-|                                                 |          |                                              | necessary to    |
-|                                                 |          |                                              | access user or  |
-|                                                 |          |                                              | group entries   |
-+-------------------------------------------------+----------+----------------------------------------------+-----------------+
++-------------------------------------------------+----------+----------------------------------------------+----------------------------------------------------+
+| Property                                        | Required | Example                                      | Description                                        |
++=================================================+==========+==============================================+====================================================+
+| security.auth.ldap.server.uri                   | Yes      | ``ldap://localhost:52389/dc=example,dc=com`` | The URI to the LDAP server and root context        |
++-------------------------------------------------+----------+----------------------------------------------+----------------------------------------------------+
+| security.auth.ldap.authenticator.userDnPatterns | Yes      | ``uid={0},ou=people``                        | The DN filter patterns, minus the root             |
+|                                                 |          |                                              | context portion, that identifies the entry for the |
+|                                                 |          |                                              | user. The username is substitued forthe ``{0}``    |
+|                                                 |          |                                              | tag. If more than one pattern is supplied they     |
+|                                                 |          |                                              | should be separated by vertical bars               |
++-------------------------------------------------+----------+----------------------------------------------+----------------------------------------------------+
+| security.auth.ldap.user.enableGroups            | No       | ``true``                                     | Activates user group loading;  default: ``false``  |
++-------------------------------------------------+----------+----------------------------------------------+----------------------------------------------------+
+| security.auth.ldap.user.groupsBase              | No       | ``ou=groups``                                | The filter pattern that identifies group entries   |
++-------------------------------------------------+----------+----------------------------------------------+----------------------------------------------------+
+| security.auth.ldap.user.groupNameAttr           | No       | ``ou``                                       | The attribute of the group entry containing the    |
+|                                                 |          |                                              | group name                                         |
++-------------------------------------------------+----------+----------------------------------------------+----------------------------------------------------+
+| security.auth.ldap.server.authDn                | No       | ``uid=admin,ou=people,dc=example,dc=com``    | The LDAP account with the privileges necessary to  |
+|                                                 |          |                                              | access user or group entries; usually only         |
+|                                                 |          |                                              | needed (if at all) when group loading is activated |
++-------------------------------------------------+----------+----------------------------------------------+----------------------------------------------------+
+| security.auth.ldap.server.password              | No       |                                              | The password for the account with the privileges   |
+|                                                 |          |                                              | necessary to access user or group entries          |
++-------------------------------------------------+----------+----------------------------------------------+----------------------------------------------------+
 
 `auth-ad`
 '''''''''
 This profile configures a LoginModule that authenticates the username and
 password against an Active Directory server.
 
-+------------------------------------+----------+-------------------------+-----------------+
-| Property                           | Required | Example Value           | Description     |
-+====================================+==========+=========================+=================+
-| security.auth.ad.server.uri        | Yes      | ``ldap://example.com/`` | The URI to the  |
-|                                    |          |                         | AD server       |
-|                                    |          |                         |                 |
-+------------------------------------+----------+-------------------------+-----------------+
-| security.auth.ad.server.domain     | Yes      | ``test.example.com``    | The AD domain   |
-|                                    |          |                         | of the users to |
-|                                    |          |                         | authenticate    |
-+------------------------------------+----------+-------------------------+-----------------+
-| security.auth.ad.user.enableGroups | No       | ``true``                | Activates user  |
-|                                    |          |                         | group loading;  |
-|                                    |          |                         | default:        |
-|                                    |          |                         | ``false``       |
-+------------------------------------+----------+-------------------------+-----------------+
++------------------------------------+----------+-------------------------+--------------------------------------------------+
+| Property                           | Required | Example Value           | Description                                      |
++====================================+==========+=========================+==================================================+
+| security.auth.ad.server.uri        | Yes      | ``ldap://example.com/`` | The URI to the AD server                         |
++------------------------------------+----------+-------------------------+--------------------------------------------------+
+| security.auth.ad.server.domain     | Yes      | ``test.example.com``    | The AD domain of the users to authenticate       |
++------------------------------------+----------+-------------------------+--------------------------------------------------+
+| security.auth.ad.user.enableGroups | No       | ``true``                | Activates user group loading; default: ``false`` |
++------------------------------------+----------+-------------------------+--------------------------------------------------+
 
 `auth-simple`
 '''''''''''''
@@ -247,8 +202,7 @@ modules into the authentication process.
 Creating a Custom Authentication Plugin
 '''''''''''''''''''''''''''''''''''''''
 
-The first step is to create a Kylo plugin containing a
-`LoginModule <http://docs.oracle.com/javase/7/docs/technotes/guides/security/jaas/JAASLMDevGuide.html>`__
+The first step is to create Kylo plugin containing a |loginmodule_dev_link|
 that performs whatever authentication is required and then adds any
 username/group principals upon successful authentication. This module
 will be added to whatever other LoginModules may be associated
@@ -292,3 +246,16 @@ module class, and a ``plugin/plugin-context.xml`` file to bootstrap
 your plugin configuration. Dropping this jar into the plugin directories of
 the UI and Services would allow your custom LoginModule to participate in their
 login process.
+
+
+.. |jaas_link| raw:: html
+
+   <a href="http://docs.oracle.com/javase/7/docs/technotes/guides/security/jaas/JAASRefGuide.html" target="_blank">JAAS</a>
+
+.. |loginmodule_link| raw:: html
+
+   <a href="http://docs.oracle.com/javase/7/docs/technotes/guides/security/jaas/JAASRefGuide.html#LoginModule" target="_blank">LoginModules</a>
+
+.. |loginmodule_dev_link| raw:: html
+
+   <a href="http://docs.oracle.com/javase/7/docs/technotes/guides/security/jaas/JAASLMDevGuide.html" target="_blank">LoginModule</a>

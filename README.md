@@ -23,7 +23,7 @@ http://docutils.sourceforge.net/docs/user/rst/quickstart.html
 
  $ sudo pip install sphinx-autobuild
  
- $ pip install sphinx_rtd_theme
+ $ sudo pip install sphinx_rtd_theme
 
 Download Pandoc
 

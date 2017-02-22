@@ -3,13 +3,13 @@
 Enable Ranger Authorization
 ===========================
 
-Pre-requisite
-=============
+Prerequisite
+============
 
 Java
 ====
 
-All client node should have java installed on it.
+Java must be installed on all client nodes.
 
 .. code-block:: shell
 
@@ -29,10 +29,10 @@ Kylo
 This documentation assumes that you have Kylo installed and running on a
 cluster.
 
-Optional: Delete/Disable HDFS/HIVE Global Policy.
-=================================================
+Optional: Delete/Disable HDFS/HIVE Global Policy
+================================================
 
-If you are using HDP sandbox then remove all HDFS/HIVE global policy.
+If you are using HDP sandbox, remove all HDFS/HIVE global policy.
 
 Disable the HDFS Policy.
 
@@ -42,8 +42,8 @@ Disable the HIVE policy.
 
 |image2|
 
-Create NiFi Super User Policy in Hive
-=====================================
+Create a NiFi Super User Policy in Hive
+=======================================
 
 1. Login to Ranger UI.
 
@@ -51,7 +51,7 @@ Create NiFi Super User Policy in Hive
 
 3. Click on Add Policy.
 
-4. Create policy as shown in image below.
+4. Create a policy as shown in image below.
 
     Policy Name : ranger_superuser_policy
     Select user : nifi
@@ -60,16 +60,16 @@ Create NiFi Super User Policy in Hive
 |image3|
 
 
-Create hive user policy in HDFS repository.
-===========================================
+Create a Hive User Policy in the HDFS Repository
+================================================
 
-1. Login to Ranger UI
+1. Login to Ranger UI.
 
 2. Select HDFS Repository.
 
 3. Click on Add Policy.
 
-4. Create policy as shown in the image below.
+4. Create a policy as shown in the image below.
 
 .. code-block:: shell
 

@@ -1,19 +1,15 @@
+
+============
 NiFi and SSL
-=====================================
+============
 
 This link provides additional instruction for enabling SSL for NiFi:
 
-    `*https://docs.hortonworks.com/HDPDocuments/HDF2/HDF-2.0.0/bk_ambari-installation/content/ch_enabling-ssl-for-nifi.html* <https://docs.hortonworks.com/HDPDocuments/HDF2/HDF-2.0.0/bk_ambari-installation/content/ch_enabling-ssl-for-nifi.html>`__
+    `https://docs.hortonworks.com/HDPDocuments/HDF2/HDF-2.0.0/bk_ambari-installation/content/ch_enabling-ssl-for-nifi.html <https://docs.hortonworks.com/HDPDocuments/HDF2/HDF-2.0.0/bk_ambari-installation/content/ch_enabling-ssl-for-nifi.html>`__
 
 .. rubric:: Creating a Self-signed Cert
 
-1. Download the NiFi toolkit.
-
-.. code-block:: shell
-
-   `*https://nifi.apache.org/download.html* <https://nifi.apache.org/download.html>`__
-
-..
+1. Download the NiFi toolkit from `https://nifi.apache.org/download.html <https://nifi.apache.org/download.html>`__
 
 2. Unzip it to a directory.
 
@@ -62,7 +58,7 @@ This link provides additional instruction for enabling SSL for NiFi:
 
 ..
 
-    This will generate 1 client cert and password file along with a
+    This will generate one client cert and password file along with a
     server keystore and trust store:
 
     |image2|
@@ -87,10 +83,10 @@ This link provides additional instruction for enabling SSL for NiFi:
 
 8. Merge the generated properties (/opt/nifi/data/ssl/localhost) with the the NiFi configuration properties (/opt/nifi/current/conf/nifi.properties).
 
-   1. Open the /opt/nifi/data/ssl/localhost/nifi.properties file.
+   a. Open the /opt/nifi/data/ssl/localhost/nifi.properties file.
 
-   2. Copy the properties, starting with the #Site to Site properties
-      through the last NiFi security property (see below).  Note that
+   b. Copy the properties, starting with the #Site to Site properties
+      through the last NiFi security property (see below). Note that
       the **bolded lines** shown in the example in step 3 indicate
       fields that must be updated.
 
@@ -147,7 +143,8 @@ This link provides additional instruction for enabling SSL for NiFi:
 
 ..
 
-    Example Screenshot of file
+    Here is a sample screenshot of file:
+
     |image4|
 
     For reference:  This will create a record in the /opt/nifi/current/conf/users.xml.  Should you need to regenerate your SSL file with a different CN, you will need to modify the
@@ -206,7 +203,7 @@ This link provides additional instruction for enabling SSL for NiFi:
 
 Open the port defined in the NiFi.properties above: 9443.
 
-The first Time you connect to NiFi (https://localhost:9443/nifi) you
+The first time you connect to NiFi (https://localhost:9443/nifi) you
 will be instructed to verify the certificate.  This will only happen
 once.
 

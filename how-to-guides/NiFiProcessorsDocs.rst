@@ -1,3 +1,4 @@
+====================
 NiFi Processor Guide
 ====================
 
@@ -54,8 +55,7 @@ This would have to be copied over into Sqoop’s /lib directory, which may be in
 The driver class can then be referred to in the property **Source Driver** in **StandardSqoopConnectionService** controller service
 configuration. For example: **com.mysql.jdbc.Driver.**
 
-**Tip**: Avoid providing the driver class name in the controller service configuration.
-Sqoop will try to infer the best connector and driver for the transfer on the basis of the **Source Connection String** property configured for **StandardSqoopConnectionService** controller service.
+.. tip:: Avoid providing the driver class name in the controller service configuration. Sqoop will try to infer the best connector and driver for the transfer on the basis of the **Source Connection String** property configured for **StandardSqoopConnectionService** controller service.
 
 Passwords
 ~~~~~~~~~
@@ -85,7 +85,7 @@ encrypted password:
 
 ..
 
-The above utility will output a base64 encoded encrypted password which can be entered directly in the controller service configuration
+The above utility will output a base64 encoded encrypted password, which can be entered directly in the controller service configuration
 via the **SourcePassword** and **Source Password Passphrase** properties (mode 2).
 
 The above utility will also output a file on disk that contains the encrypted password. This can be used with mode 3 as described below:
@@ -117,8 +117,8 @@ Obtaining the Dependent Feed Execution Context
 |image16|
 
 To get dependent feed execution context data, specify the keys that you
-are looking for.   This is done through the "Matching Execution Context
-Keys" property . The dependent feed execution context will only be
+are looking for. This is done through the "Matching Execution Context
+Keys" property. The dependent feed execution context will only be
 populated the specified matching keys.
 
 For example:
@@ -136,7 +136,7 @@ For example:
 ..
 
     Feed_B depends on Feed A and has a Trigger Feed that has "Matching
-    Execution Context Keys" set to "property"’
+    Execution Context Keys" set to "property".
 
     It will then get the ExecutionContext for Feed A populated with 2
     properties:
@@ -249,7 +249,7 @@ The screenshot shown here is an example of a flow in which the inspection of the
 The EvaluateJSONPath processor is used to extract JSON content from the flow file.
 
 Refer to the Data Confidence Invalid Records flow for an example:
-`*data_confidence_invalid_records.zip* <https://github.com/KyloIO/kylo/blob/master/samples/templates/nifi-1.0/data_confidence_invalid_records.zip>`__
+`https://github.com/KyloIO/kylo/blob/master/samples/templates/nifi-1.0/data_confidence_invalid_records.zip`__
 
 
 

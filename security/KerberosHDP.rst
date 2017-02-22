@@ -3,9 +3,7 @@
 Kerberos Installation Example - HDP 2.4
 =======================================
 
-+-------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Important   | This document should only be used for DEV/Sandbox purposes. It is useful to help quickly Kerberize your Hortonwroks sandbox so that you can test Kerberos features.   |
-+-------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+.. important:: This document should only be used for DEV/Sandbox installation purposes. It is useful to help quickly Kerberize your Hortonworks sandbox so that you can test Kerberos features.
 
 
 Prerequisite
@@ -14,7 +12,7 @@ Prerequisite
 Java
 ====
 
-All client nodes should have java installed on it.
+Java must be installed on all client nodes.
 
 .. code-block:: shell
 
@@ -111,7 +109,7 @@ utilities.
 
 ..
 
-3. Change the [realms] as below to sandbox.hortonworks.com . Update KDC and Admin Server Information.
+3. Change the [realms], as below, to sandbox.hortonworks.com. Update KDC and Admin Server Information.
 
 .. code-block: shell
 
@@ -165,7 +163,7 @@ utilities.
 
 ..
 
-6. Create the Kerberos Database. Use the utility kdb5_util to create the Kerberos database. While asking for password , enter password as thinkbig.
+6. Create the Kerberos Database. Use the utility kdb5_util to create the Kerberos database. Enter the password: thinkbig.
 
 .. code-block:: shell
 
@@ -182,7 +180,7 @@ utilities.
 
 ..
 
-8. When installing and managing your own MIT KDC, it is very important to set up the KDC server to auto-start on boot.
+8. When installing and managing your own MIT KDC, it is important to set up the KDC server to auto-start on boot.
 
 .. code-block:: shell
 
@@ -191,7 +189,7 @@ utilities.
 
 ..
 
-9. Create a KDC admin by creating an admin principal. While asking for password, enter password as thinkbig.
+9. Create a KDC admin by creating an admin principal. Enter the password: thinkbig.
 
 .. code-block:: shell
 
@@ -207,7 +205,7 @@ utilities.
 
 ..
 
-11. Ensure that the KDC ACL file includes an entry so to allow the admin principal to administer the KDC for your specific realm. The file should have an entry:
+11. Ensure that the KDC ACL file includes an entry that allows the admin principal to administer the KDC for your specific realm. The file should have an entry:
 
 .. code-block:: shell
 
@@ -215,7 +213,7 @@ utilities.
 
 ..
 
-12. After editing and saving the kadm5.acl file, you must restart the kadmin process.
+12. After editing and saving the kadm5.acl file, restart the kadmin process.
 
 .. code-block:: shell
 
@@ -223,7 +221,7 @@ utilities.
 
 ..
 
-13. Create a user in Linux by typing the adduser command shown below. We will use this user to test whether the Kerberos authentication is working or not. We will first run the command hadoop fs –ls / but switching to this user. And we will run the same command again when we enable Kerberos.
+13. Create a user in Linux by typing the adduser command as shown below. We will use this user to test whether the Kerberos authentication is working or not. We will first run the command hadoop fs –ls / but switching to this user. And we will run the same command again when we enable Kerberos.
 
 .. code-block:: shell
 
@@ -236,33 +234,32 @@ utilities.
 Install Kerberos on an HDP Cluster
 ==================================
 
-1. Open Ambari and go to admin tab and select Kerberos.
+1. Open Ambari and then go to admin tab and select Kerberos.
 
     |image1|
 
-2. Click on enable Kerberos. Then following screen will appear check all the things as appear. Click next.
+2. Click on enable Kerberos. Then following screen will display. Tick the checkboxes as shown in this screenshot, then click Next.
 
     |image2|
 
-3. Put sandbox.hortonworks.com in the KDC tab and click to test the KDC connection. Then in Kadmin again put sandbox.hortonworks.com as host and admin principal as `*admin/admin@sandbox.hortonworks.com* <mailto:admin/admin@sandbox.hortonworks.com>`__, and give the password as exactly created in step 7.
+3. Put sandbox.hortonworks.com in the KDC tab and click to test the KDC connection. Then, in Kadmin, put sandbox.hortonworks.com as host and admin principal as `*admin/admin@sandbox.hortonworks.com* <mailto:admin/admin@sandbox.hortonworks.com>`__, and enter the password created in step 7.
 
-    Leave the advanced Kerberos-env and advanced krb5-conf as it is. And click **Next**.
+   Leave the advanced Kerberos-env and advanced krb5-conf as it is. And click **Next**.
 
     |image3|
 
-Download the .csv file and save it.
+4. Download the .csv file and save it.
 
 |image4|
 
-Then do next till end. Finally click on complete.
+5. Click Next through the end of the process, until finally you can click **Complete**.
 
 |image5|
 
 `HDP 2.4 Sandbox Kerberos Setup
 Example <http://kylo-docs-test.readthedocs.io/en/latest/KerberosInstallationExample-Cloudera.html>`__
 
-Make sure all services started properly. Kerberos is successfully
-installed on the cluster.
+Make sure all services started properly. Kerberos is successfully installed on the cluster.
 
 KeyTab Generation
 =================

@@ -88,9 +88,10 @@ Edit the “Query Hive Table Schema” processor and make two changes:
       t."TBL_TYPE",
         c."COLUMN_NAME", c."TYPE_NAME"
         FROM "COLUMNS_V2" c
-        JOIN "TBLS" t ON c."CD_ID"=t."TBL_ID"
+        JOIN "SDS" s on s."CD_ID" = c."CD_ID"
+        JOIN "TBLS" t ON s."SD_ID" =t."SD_ID"
         JOIN "DBS" d on d."DB_ID" = t."DB_ID"
-        where d."NAME" = '${category}'and t."TBL_NAME" like '${feed}';
+        where d."NAME" = '${category}' and t."TBL_NAME" like '${feed}';
 
 ..
 
