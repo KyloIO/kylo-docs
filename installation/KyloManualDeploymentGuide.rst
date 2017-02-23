@@ -298,7 +298,7 @@ This indicates that ActiveMQ isn’t properly using Java as it is set in the sys
 
 1. Edit /etc/default/activemq and set JAVA_HOME at the bottom.
 
-.. code-block:: shell
+.. code-block:: properties
 
     JAVA_HOME=<location_of_java_home>
 
