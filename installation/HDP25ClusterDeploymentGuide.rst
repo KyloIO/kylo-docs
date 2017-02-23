@@ -651,7 +651,7 @@ Install the Kylo Application on the Kylo Edge Node
 
 11. Login to the Kylo UI. 
 
-.. code-block:: console
+.. code-block:: html
 
       http://<KYLO_EDGE_HOSTNAME>:8400  
 
