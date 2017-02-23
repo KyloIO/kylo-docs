@@ -382,18 +382,17 @@ Application Properties
 The *application.properties* file in kylo-services specifies most of
 the standard configuration in pipeline.
 
-+----------+-------------------------------------------------------------------------------+
-|**NOTE:** | Any change to the application properties will require an application restart. |
-+----------+-------------------------------------------------------------------------------+
+
+.. note:: Any change to the application properties will require an application restart.
+
 
 Below is a sample properties file with Spring Datasource properties for spring batch and the default data source:
 
 
-+----------+-------------------------------------------------------------------+
-|**NOTE:** | Cloudera default password for root access to mysql is "cloudera". |
-+----------+-------------------------------------------------------------------+
+.. note:: Cloudera default password for root access to mysql is "cloudera".
 
-.. code-block:: shell
+
+.. code-block:: properties
 
     spring.datasource.url=jdbc:mysql://localhost:3306/kylo
     spring.datasource.username=root
@@ -512,7 +511,7 @@ Kylo stores its metadata in the database configured in
 /opt/kylo/kylo-services/conf/application.properties in the
 following lines:
 
-.. code-block:: shell
+.. code-block:: properties
 
     metadata.datasource.driverClassName=com.mysql.jdbc.Driver
     metadata.datasource.url=jdbc:mysql://localhost:3306/kylo
@@ -536,7 +535,7 @@ metadata and data in certain directories, and those directories can be
 backed up as seen fit. For example, in the nifi.properties file,
 changing
 
-.. code-block:: shell
+.. code-block:: properties
 
     nifi.flow.configuration.file=/opt/nifi/data/conf/flow.xml.gz
 
@@ -607,7 +606,7 @@ KYLO_SERVICES_OPTS environment variable. This may be necessary if
 the application is experiencing OutOfMemory errors. These would appear
 in the log files.
 
-.. code-block:: shell
+.. code-block:: properties
 
     export KYLO_SERVICES_OPTS="-Xmx2g"
 
@@ -643,7 +642,7 @@ Example Service Configuration
 
 The below is the service configuration monitoring 4 services:
 
-.. code-block:: shell
+.. code-block:: properties
 
     ambari.services.status=HDFS,HIVE,MAPREDUCE2,SQOOP
 
