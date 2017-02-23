@@ -6,8 +6,8 @@ Overview
 
 Kylo supports a pluggable authentication architecture that allows
 customers to integrate their existing infrastructure when authenticating
-a user.  The pluggability is built around |jaas_link|; 
-which delegtes authentication to one or more configured |loginmodule_link| that all collaborate in 
+a user.  The pluggability is built around |jaas_link|;
+which delegtes authentication to one or more configured |loginmodule_link| that all collaborate in
 an authentication attempt.  Kylo
 supplies LoginModule implementations for the most common authentication
 scenarios, though customers will be able to provide their own modules to
@@ -81,25 +81,27 @@ files on the file system.  For validating the credentials it looks by default,
 unless configured otherwise, for a file called `users.properties` on the classpath containing
 a mapping of usernames top passwords in the form:
 
-::
+.. code-block:: properties
 
    user1=pw1
    user2=pw2
-   ...
+
+..
 
 If authentication is successful it will then look for a `groups.properties` file on
 the classpath to load the groups that have been assigned to the authenticated user.  The
 format of this file is:
 
-::
+.. code-block:: properties
 
    user1=groupA,groupB
    user2=groupA,groupC
-   ...
-   
+
+..
+
 Note that use of the `groups.properties` file is optional when used in conjuction with other
 authentication profiles.  For instance, it would be redundant (but not invalid) to have a groups
-file when `auth-file` is used with `auth-kylo`, as the latter profile will load any user 
+file when `auth-file` is used with `auth-kylo`, as the latter profile will load any user
 assigned groups from the Kylo store as well as those defined in the group file.  It would likely
 be confusing to have to manage groups from two different sources.
 
@@ -239,6 +241,8 @@ Kylo UI and Services; each with different configuration options:
                     .build();
         }
     }
+
+..
 
 As with any Kylo plugin, to deploy this configuration you would create a
 jar file containing the above configuration class, your custom login
