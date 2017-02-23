@@ -130,8 +130,7 @@ Install and Configure the Hortonworks Sandbox
 
 Follow the guide below to install and configure the Hortonworks sandbox:
 
-    `*Configure Hortonworks
-    Sandbox* <http://kylo.readthedocs.io/en/latest/HortonworksSandboxConfiguration.html>`__
+    :doc:`../installation/HortonworksSandboxConfiguration`
 
 
 Install the Kylo Applications
@@ -140,8 +139,7 @@ Install the Kylo Applications
 To install the Kylo apps, NiFi, ActiveMQ, and Elasticsearch in the
 VM you can use the deployment wizard instructions found here:
 
-    `*Wizard Driven Deployment
-    Guide* <http://kylo.readthedocs.io/en/latest/KyloSetupWizardDeploymentGuide.html>`__
+    :doc:`../installation/KyloSetupWizardDeploymentGuide`
 
 Instead of downloading the RPM file copy the RPM file from your project folder after running a Maven build.
 
