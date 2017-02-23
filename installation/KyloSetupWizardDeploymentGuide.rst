@@ -106,7 +106,7 @@ b. Run the offline install:
 
 .. code-block:: shell
 
-    /opt/kylo/setup/generate-offline-install.sh
+    $ /opt/kylo/setup/generate-offline-install.sh
 
 ..
 
