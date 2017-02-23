@@ -555,6 +555,10 @@ Install the Kylo Application on the Kylo Edge Node
     hive.metastore.datasource.username=kylo
     hive.metastore.datasource.password=password   
 
+..
+
+.. code-block:: properties
+
     modeshape.datasource.url=jdbc:mysql://<MYSQL_HOSTNAME>:3306/kylo?noAccessToProcedureBodies=true
     modeshape.datasource.username=kylo
     modeshape.datasource.password=password   
