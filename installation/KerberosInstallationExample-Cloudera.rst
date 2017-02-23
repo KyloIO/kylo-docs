@@ -113,14 +113,20 @@ On a cluster, go to the master node for installation of Kerberos utilities.
 
 3. Change the [realms] as below to "quickstart.cloudera" . Udapte KDC and Admin Server Information.
 
+
+   **[logging]**
+
 .. code-block:: properties
 
-    [logging]
       default = FILE:/var/log/krb5libs.log
       kdc = FILE:/var/log/krb5kdc.log
       admin_server = FILE:/var/log/kadmind.log
 
-    [libdefaults]
+..
+   **[libdefaults]**
+
+.. code-block:: properties
+
       default_realm = quickstart.cloudera
       dns_lookup_realm = false
       dns_lookup_kdc = false
@@ -128,7 +134,12 @@ On a cluster, go to the master node for installation of Kerberos utilities.
       renew_lifetime = 7d
       forwardable = true
 
-    [realms]
+..
+
+   **[realms]**
+
+.. code-block:: properties
+
       quickstart.cloudera = {
       kdc = quickstart.cloudera
       admin_server = quickstart.cloudera
