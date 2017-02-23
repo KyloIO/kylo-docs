@@ -111,7 +111,7 @@ utilities.
 
 3. Change the [realms], as below, to sandbox.hortonworks.com. Update KDC and Admin Server Information.
 
-.. code-block: shell
+.. code-block: properties
 
     [logging]
       default = FILE:/var/log/krb5libs.log
@@ -136,7 +136,7 @@ utilities.
 
 4. Update /var/kerberos/krb5kdc/kdc.conf. Change the [realms] as sandbox.hortonworks.com.
 
-.. code-block:: shell
+.. code-block:: properties
 
     [kdcdefaults]
       kdc_ports = 88
