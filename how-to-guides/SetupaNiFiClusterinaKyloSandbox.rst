@@ -81,7 +81,7 @@ Each node in the NiFi cluster will need to be configured to connect to the clust
 
 1.	Edit the /opt/nifi/current/conf/nifi.properties file:
 
-.. code-block:: shell
+.. code-block:: properties
 
     nifi.cluster.is.node=true
     nifi.cluster.node.address=localhost
@@ -92,7 +92,7 @@ Each node in the NiFi cluster will need to be configured to connect to the clust
 
 2.	Edit the /opt/nifi-2/current/conf/nifi.properties file:
 
-.. code-block:: shell
+.. code-block:: properties
 
     nifi.web.http.port=8077
     nifi.cluster.is.node=true
