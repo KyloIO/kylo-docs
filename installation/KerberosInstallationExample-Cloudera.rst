@@ -112,7 +112,7 @@ On a cluster, go to the master node for installation of Kerberos utilities.
 
 ..
 
-3. Change the [realms] as below to CLOUDERA . Udapte KDC and Admin Server Information.
+3. Change the [realms] as below to "quickstart.cloudera" . Udapte KDC and Admin Server Information.
 
 .. code-block:: shell
 
@@ -122,7 +122,7 @@ On a cluster, go to the master node for installation of Kerberos utilities.
       admin_server = FILE:/var/log/kadmind.log
 
     [libdefaults]
-      default_realm = CLOUDERA
+      default_realm = quickstart.cloudera
       dns_lookup_realm = false
       dns_lookup_kdc = false
       ticket_lifetime = 24h
@@ -130,14 +130,14 @@ On a cluster, go to the master node for installation of Kerberos utilities.
       forwardable = true
 
     [realms]
-      CLOUDERA = {
+      quickstart.cloudera = {
       kdc = quickstart.cloudera
       admin_server = quickstart.cloudera
       }
 
 ..
 
-4. Update /var/kerberos/krb5kdc/kdc.conf. Change the [realms] as CLOUDERA.
+4. Update /var/kerberos/krb5kdc/kdc.conf. Change the [realms] as "quickstart.cloudera".
 
 .. code-block:: shell
 
@@ -146,7 +146,7 @@ On a cluster, go to the master node for installation of Kerberos utilities.
       kdc_tcp_ports = 88
 
     [realms]
-      CLOUDERA = {
+      quickstart.cloudera = {
         #master_key_type = aes256-cts
         acl_file = /var/kerberos/krb5kdc/kadm5.acl
         dict_file = /usr/share/dict/words
@@ -158,11 +158,11 @@ On a cluster, go to the master node for installation of Kerberos utilities.
 
 ..
 
-5. Update /var/kerberos/krb5kdc/kadm5.acl and replace EXAMPLE.COM with CLOUDERA.
+5. Update /var/kerberos/krb5kdc/kadm5.acl and replace EXAMPLE.COM with "quickstart.cloudera".
 
 .. code-block:: shell
 
-    */admin@CLOUDERA*
+    */admin@quickstart.cloudera*
 
 ..
 
@@ -214,7 +214,7 @@ On a cluster, go to the master node for installation of Kerberos utilities.
 
 .. code-block:: shell
 
-    */CLOUDERA*
+    */quickstart.cloudera*
 
 ..
 
@@ -256,7 +256,7 @@ Install Kerberos on Cloudera Cluster
 .. code-block:: shell
 
     KDC Server Host: quickstart.cloudera
-    Kerberos Security Realm: CLOUDERA
+    Kerberos Security Realm: quickstart.cloudera
     Kerberos Encryption Types: aes256-cts-hmac-sha1-96
 
 ..
@@ -271,7 +271,7 @@ Install Kerberos on Cloudera Cluster
 
 .. code-block:: shell
 
-    Username : admin/admin@CLOUDERA
+    Username : admin/admin@quickstart.cloudera
     Password : thinkbig
 
 ..
@@ -294,8 +294,8 @@ KeyTab Generation
 .. code-block:: shell
 
     kadmin.local
-    addprinc -randkey nifi@CLOUDERA
-    xst -norandkey -k /etc/security/nifi.headless.keytab nifi@CLOUDERA
+    addprinc -randkey nifi@quickstart.cloudera
+    xst -norandkey -k /etc/security/nifi.headless.keytab nifi@quickstart.cloudera
     exit
 
     chown nifi:hadoop /etc/security/keytabs/nifi.headless.keytab
