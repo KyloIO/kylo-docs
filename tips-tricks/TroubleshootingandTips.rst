@@ -126,7 +126,7 @@ There are two possible solutions:
     select(json_tuple(data, "clock", "hexid", "ident", "squawk", "alt", "speed", "airGround", "lat", "lon", "heading"))
     select(c0.as("clock"), c1.as("hexid"), c2.as("ident"), c3.as("squawk"), c4.as("alt"), c5.as("speed"), c6.as("airGround"), c7.as("lat"), c8.as("lon"), c9.as("heading"))
 
-Indexing categories and feeds
+Indexing Categories and Feeds
 =============================
 
 Problem
@@ -238,7 +238,7 @@ forum threads explain how to set the correct property:
 3. On the Hive command line you can set the following property to allow
    quotes:
 
-.. code-block:: none
+.. code-block:: properties
 
    set hive.optimize.ppd = false;
 
@@ -258,7 +258,7 @@ Solution
 Increase memory to NiFi by editing
 /opt/nifi/current/conf/boostrap.conf and setting the following line:
 
-.. code-block:: shell
+.. code-block:: properties
 
    java.arg.3=-Xmx3g
 
@@ -292,7 +292,7 @@ requires a reusable flow. The `YES` value will cause the reusable flow to
 be imported along with the template. The `NO` value will cause the
 reusable flow to be ignored and the template to be imported as normal.
 
-.. code-block:: shell
+.. code-block:: properties
 
   curl -F file=@<path-to-template-xml-or-zip> -F overwrite=false -F createReusableFlow=false -F importConnectingReusableFlow=NOT_SET -u <kylo-user>:<kylo-password> http://<kylo-host>:8400/proxy/v1/feedmgr/admin/import-template
 
@@ -305,7 +305,7 @@ error will be returned. The `importConnectingReusableFlow` parameter
 functions the same as the corresponding parameter for importing a
 template.
 
-.. code-block:: shell
+.. code-block:: properties
 
       curl -F file=@<path-to-feed-zip> -F overwrite=false -F importConnectingReusableFlow=NOT_SET -u <kylo-user>:<kylo-password> http://<kylo-host>:8400/proxy/v1/feedmgr/admin/import-feed
 
@@ -381,7 +381,7 @@ Configure YARN to handle additional concurrent jobs:
 1. Increase the maximum percent with the following parameter
    (see: https://hadoop.apache.org/docs/r0.23.11/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html):
 
-.. code-block:: shell
+.. code-block:: properties
 
     yarn.scheduler.capacity.maximum-am-resource-percent=0.8
 
@@ -393,8 +393,7 @@ Configure YARN to handle additional concurrent jobs:
 
     service nifi restart
 
-Note: In Ambari, find this under Yarn | Configs (advanced) |
-Scheduler.
+.. note:: In Ambari, find this under Yarn | Configs (advanced) | Scheduler.
 
 Spark SQL fails on empty ORC and Parquet tables
 ================================================
@@ -405,7 +404,7 @@ Problem
 Your spark job fails when running in HDP 2.4 or 2.5 while interacting
 with an empty ORC table. A likely error that you will see is:
 
-.. code-block:: none
+.. code-block:: properties
 
     ExecuteSparkJob[id=1fb1b9a0-e7b5-4d85-87d2-90d7103557f6] java.util.NoSuchElementException: next on empty iterator
 
@@ -704,7 +703,7 @@ The default location of MySQL is /var/lib/mysql. MySQL will fill up the root par
 4. Backup the existing my.cnf: **cp /etc/my.cnf /etc/my.cnf.bak**
 
 5. Update MySQL config with new location with the values below: **vi /etc/my.cnf**
-   
+
    a. Under [mysqld], set datadir = /data/mysql
 
 6. Start MySQL: **service mysql start**
@@ -718,7 +717,7 @@ The default location of MySQL is /var/lib/mysql. MySQL will fill up the root par
    #. Update /opt/kylo-services/log4j.properties
 
       #. log4j.appender.file.File=/data/log/kylo-services/kylo-services.log
-   
+
    #. Update /opt/kylo-services/log4j-spark.properties
 
       #. log4j.appender.file.File=/data/log/kylo-services/kylo-spark-shell.log
