@@ -11,9 +11,7 @@ script. This is convenient for local sandboxes (HDP/Cloudera) and single node
 development boxes. The WGET command is used to download binaries so
 internet access is required.
 
-+------------+-------------------------------------------------------------------------------------+
-| **Note**   | The setup wizard is designed for easy installation of all components on one node.   |
-+------------+-------------------------------------------------------------------------------------+
+.. note:: The setup wizard is designed for easy installation of all components on one node.
 
 Installation Locations
 ----------------------
@@ -41,9 +39,8 @@ Step 1: Download the RPM
 
 Download the RPM and place it on the host Linux machine that you want to install Kylo services on.
 
-+-------------+------------------------------------------------------------------------+
-| **Note:**   | To use wget instead, right-click the download link and copy the url.   |
-+-------------+------------------------------------------------------------------------+
+.. note:: To use wget instead, right-click the download link and copy the url.
+
 
 **Download the Latest RPM**
 
@@ -92,9 +89,8 @@ Step 3: Run the Kylo RPM Install
 
 ..
 
-+------------+-------------------------------------------------------------------+
-| **Note**   | The RPM is hard coded at this time to install to /opt/kylo.       |
-+------------+-------------------------------------------------------------------+
+.. note:: The RPM is hard coded at this time to install to /opt/kylo.
+
 
 Step 4: Optional - Generate TAR file for Offline Mode
 -----------------------------------------------------
@@ -133,10 +129,8 @@ folder.
 Step 5: Run the Setup Wizard
 ----------------------------
 
-+------------+----------------------------------------------------------------------------------------------+
-| **Note**   | If installing in an HDP or Cloudera sandbox, choose option #2 on the Java step to download   |
-|            | and install Java in the /opt/java/current directory.                                         |
-+------------+----------------------------------------------------------------------------------------------+
+
+.. note:: If installing in an HDP or Cloudera sandbox, choose option #2 on the Java step to download and install Java in the /opt/java/current directory.
 
 a. From the /opt/kylo/setup directory
 
@@ -150,9 +144,9 @@ b. Offline mode from another directory (using TAR file)
 
     <PathToSetupFolder>/setup/setup-wizard.sh -o
 
-+------------+------------------------+
-| **Note**   | Both -o and -O work.   |
-+------------+------------------------+
+
+.. note:: Both -o and -O work.
+
 
     Follow the directions to install the following:
 
@@ -228,9 +222,9 @@ For example:
     mkdir -p /var/dropzone
     chown nifi /var/dropzone
 
-+------------+-------------------------------------------------------------------------------------+
-| **Note**   | Files should be copied into the dropzone such that user nifi can read and remove.   |
-+------------+-------------------------------------------------------------------------------------+
+
+.. note:: Files should be copied into the dropzone such that user nifi can read and remove.
+
 
 Step 9: Cloudera Configuration (Cloudera Only)
 ----------------------------------------------
