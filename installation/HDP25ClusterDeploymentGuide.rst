@@ -616,9 +616,13 @@ Install the Kylo Application on the Kylo Edge Node
 
    c. Edit the properties file.
 
-.. code-block:: console
+.. code-block:: shell
 
       vi /opt/kylo/kylo-services/conf/authorization.ranger.properties
+
+..
+
+.. code-block:: properties
 
       ranger.hostName=<RANGER_HOST_NAME>
       ranger.port=6080
