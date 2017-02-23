@@ -151,7 +151,7 @@ Trigger Feed JSON Payload
 The FlowFile content of the Trigger feed includes a JSON string of the
 following structure:
 
-.. code-block:: json
+.. code-block:: javascript
 
   {
      "feedName": "string",
@@ -170,7 +170,7 @@ following structure:
 
 JSON structure with a field description:
 
-.. code-block:: shell
+.. code-block:: javascript
 
   {
      "feedName":"<THE NAME OF THIS FEED>",
@@ -205,7 +205,7 @@ JSON structure with a field description:
 
 Example JSON for a Feed:
 
-.. code-block:: shell
+.. code-block:: javascript
 
   {
      "feedName":"companies.check_test",
