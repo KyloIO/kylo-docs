@@ -388,9 +388,7 @@ the standard configuration in pipeline.
 
 Below is a sample properties file with Spring Datasource properties for spring batch and the default data source:
 
-
 .. note:: Cloudera default password for root access to mysql is "cloudera".
-
 
 .. code-block:: properties
 
