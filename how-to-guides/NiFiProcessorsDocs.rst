@@ -170,7 +170,7 @@ following structure:
 
 JSON structure with  field description:
 
-.. code-block:: shell
+.. code-block:: json
 
   {
      "feedName":"<THE NAME OF THIS FEED>",
@@ -205,7 +205,7 @@ JSON structure with  field description:
 
 Example JSON for a Feed:
 
-.. code-block:: shell
+.. code-block:: json
 
   {
      "feedName":"companies.check_test",
