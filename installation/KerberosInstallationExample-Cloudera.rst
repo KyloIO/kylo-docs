@@ -3,9 +3,8 @@
 Kerberos Installation Example - Cloudera
 ========================================
 
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Important   | This document should only be used for DEV/Sandbox purposes. It is useful to help quickly Kerberize your Cloudera sandbox so that you can test Kerberos features.   |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+.. important:: This document should only be used for DEV/Sandbox purposes. It is useful to help quickly Kerberize your Cloudera sandbox so that you can test Kerberos features.
+
 
 Prerequisite
 ============
@@ -114,7 +113,7 @@ On a cluster, go to the master node for installation of Kerberos utilities.
 
 3. Change the [realms] as below to "quickstart.cloudera" . Udapte KDC and Admin Server Information.
 
-.. code-block:: shell
+.. code-block:: properties
 
     [logging]
       default = FILE:/var/log/krb5libs.log
@@ -139,7 +138,7 @@ On a cluster, go to the master node for installation of Kerberos utilities.
 
 4. Update /var/kerberos/krb5kdc/kdc.conf. Change the [realms] as "quickstart.cloudera".
 
-.. code-block:: shell
+.. code-block:: properties
 
     [kdcdefaults]
       kdc_ports = 88
@@ -183,9 +182,9 @@ On a cluster, go to the master node for installation of Kerberos utilities.
 
 ..
 
-+-------------+-----------------------------------------------------------------------------------------------------------------------+
-| **NOTE:**   | When installing and managing your own MIT KDC, it is very important to set up the KDC server to auto start on boot.   |
-+-------------+-----------------------------------------------------------------------------------------------------------------------+
+
+.. note:: When installing and managing your own MIT KDC, it is very important to set up the KDC server to auto start on boot.
+
 
 .. code-block:: shell
 
@@ -269,7 +268,7 @@ Install Kerberos on Cloudera Cluster
 
 6. Enter username and password for of KDC admin user.
 
-.. code-block:: shell
+.. code-block:: properties
 
     Username : admin/admin@quickstart.cloudera
     Password : thinkbig
