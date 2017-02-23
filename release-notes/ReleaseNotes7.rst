@@ -74,11 +74,11 @@ Build or download the rpm.
 
    **Migration Procedure**
 
-    a. Uninstall Kylo 0.6 (Refer to deployment guide and release notes for details).
-    b. Install Kylo 0.7 (Refer to deployment guide and release notes for details).
+   a. Uninstall Kylo 0.6 (Refer to deployment guide and release notes for details).
+   b. Install Kylo 0.7 (Refer to deployment guide and release notes for details).
 
-       Do not yet start Kylo services.
-    c. Log into MySQL instance used by Kylo, and list the schemas:
+      Do not yet start Kylo services.
+   c. Log into MySQL instance used by Kylo, and list the schemas:
 
 .. code-block:: shell
 
@@ -86,12 +86,12 @@ Build or download the rpm.
 
 ..
 
-    d. Verify that:
+   d. Verify that:
 
        i.  thinkbig schema exists
        ii. kylo schema does not exist
 
-    e. Navigate to Kylo’s setup directory for MySQL.
+   e. Navigate to Kylo’s setup directory for MySQL.
 
 .. code-block:: shell
 
@@ -99,16 +99,16 @@ Build or download the rpm.
 
 ..
 
-    f. Execute the migration script. It takes 3 parameters. For no password, provide the 3rd parameter as ''../migrate-schema-thinkbig-to-kylo-mysql.sh <host> <user> <password>
+   f. Execute the migration script. It takes 3 parameters. For no password, provide the 3rd parameter as ''../migrate-schema-thinkbig-to-kylo-mysql.sh <host> <user> <password>
 
       - Step 1 of migration: kylo schema is set up.
       - Step 2 of migration: thinkbig schema is migrated to kylo schema.
 
-    g. Start Kylo services. Verify that Kylo starts and runs successfully. At this point, there are two schemas in MySQL: kylo and thinkbig.
+   g. Start Kylo services. Verify that Kylo starts and runs successfully. At this point, there are two schemas in MySQL: kylo and thinkbig.
 
-       Once Kylo is running normally and migration is verified, the thinkbig schema can be dropped.
+      Once Kylo is running normally and migration is verified, the thinkbig schema can be dropped.
 
-    h. Navigate to Kylo’s setup directory for MySQL.
+   h. Navigate to Kylo’s setup directory for MySQL.
 
 .. code-block:: shell
 
@@ -116,9 +116,9 @@ Build or download the rpm.
 
 ..
 
-    i. Execute the script to drop thinkbig schema. It takes 3 parameters. For no password, provide the 3rd parameter as ''../drop-schema-thinkbig-mysql.sh <host> <user> <password>
+   i. Execute the script to drop thinkbig schema. It takes 3 parameters. For no password, provide the 3rd parameter as ''../drop-schema-thinkbig-mysql.sh <host> <user> <password>
 
-    k. Verify that only kylo schema now exists in MySQL.
+   j. Verify that only kylo schema now exists in MySQL.
 
 .. code-block:: shell
 
