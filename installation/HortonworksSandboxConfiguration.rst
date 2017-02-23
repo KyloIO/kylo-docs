@@ -35,9 +35,12 @@ project artifacts to the sandbox for testing.
 
 ..
 
--  Folder Path = <pathToProjectFolder>
+.. code-block:: properties
 
+-  Folder Path = <pathToProjectFolder>
 -  Folder Name = kylo
+
+..
 
 Choose Auto-mount so that it remembers next time you start the VM.
 
