@@ -164,9 +164,9 @@ There may be good arguments to perform data processing through the edge
 node, in this case a single edge node may be insufficient and require a
 small NiFi cluster along the edge.
 
-+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|**NOTE:** | The advantage of external Hive tables is the ability to simply mount an HDFS file (external partition). This means data can be moved to HDFS, and then surfaced in a table through a simple DDL (ADD PARTITION). |
-+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+.. note:: The advantage of external Hive tables is the ability to simply mount an HDFS file (external partition). This means data can be moved to HDFS, and then surfaced in a table through a simple DDL (ADD PARTITION).
+
 
 
 Generalize Templates
@@ -387,9 +387,8 @@ It is recommended to do initial testing in NiFi. Once the flow has been
 tested and debugged within NiFi, then register the template with Kylo in
 the development environment, where one can test feed creation.
 
-+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|**NOTE:** | Controller Services that contain service, cluster, and database connection information should be setup by the Developer using their personal login information. In production, an Administrator manages these controller services, and they typically operate as an application account with elevated permissions. |
-+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+.. note:: Controller Services that contain service, cluster, and database connection information should be setup by the Developer using their personal login information. In production, an Administrator manages these controller services, and they typically operate as an application account with elevated permissions.
+
 
 Template Export/Import
 ~~~~~~~~~~~~~~~~~~~~~~
