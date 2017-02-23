@@ -39,7 +39,7 @@ For use with Kylo UI, configure values for the two properties (**nifi.service.<c
 
 ..
 
-Please note that the **DB Connection password** section will have the name of the key derived from the controller service name in NiFi. In the above snippet, the controller service name is called **sqoop-mysql-connection**.
+.. note:: The **DB Connection password** section will have the name of the key derived from the controller service name in NiFi. In the above snippet, the controller service name is called **sqoop-mysql-connection**.
 
 Drivers
 ~~~~~~~
@@ -99,8 +99,6 @@ the **StandardSqoopConnectionService** controller service configuration.
 
 During the processor execution, password will be decrypted for modes 2 and 3, and used for connecting to the source system.
 
-
-
 TriggerFeed
 -----------
 
@@ -126,7 +124,7 @@ For example:
     Feed_A runs and has the following attributes in the flow-file as it
     runs:
 
-.. code-block:: shell
+.. code-block:: properties
 
      -property.name = "first name"
      -property.age=23
@@ -153,7 +151,7 @@ Trigger Feed JSON Payload
 The FlowFile content of the Trigger feed includes a JSON string of the
 following structure:
 
-.. code-block:: shell
+.. code-block:: json
 
   {
      "feedName": "string",
