@@ -68,7 +68,7 @@ Build or download the rpm.
 
 ..
 
-6. Migrate the "thinkbig" database schema to "kylo"
+6. Migrate the "thinkbig" database schema to "kylo".
 
    Kylo versions 0.6 and below use the thinkbig schema in MySQL. Starting from version 0.7, Kylo uses the kylo schema. This guide is intended for installations that are already on Kylo 0.6, and want to upgrade to Kylo 0.7. It outlines the procedure for migrating the current thinkbig schema to kylo schema, so that Kylo 0.7 can work.
 
@@ -79,12 +79,16 @@ Build or download the rpm.
         Do not yet start Kylo services.
     c. Log into MySQL instance used by Kylo, and list the schemas:
 
+.. code-block:: shell
+
         mysql> show databases
+
+..
 
     d. Verify that:
 
-       - thinkbig schema exists
-       - kylo schema does not exist
+       -- thinkbig schema exists
+       -- kylo schema does not exist
 
     e. Navigate to Kylo’s setup directory for MySQL.
 
