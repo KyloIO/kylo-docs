@@ -529,7 +529,7 @@ Install the Kylo Application on the Kylo Edge Node
 
 7. Edit the kylo-services configuration file. 
 
-.. code-block:: console
+.. code-block:: properties
 
     [root /]# vi /opt/kylo/kylo-services/conf/application.properties   
 
