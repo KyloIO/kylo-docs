@@ -147,6 +147,7 @@ b. Offline mode from another directory (using TAR file)
 
 .. note:: Both -o and -O work.
 
+..
 
     Follow the directions to install the following:
 
