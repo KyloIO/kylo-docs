@@ -5,11 +5,7 @@ NiFi and SSL
 
 This link provides additional instruction for enabling SSL for NiFi:
 
-.. code-block:: html
-
-    `https://docs.hortonworks.com/HDPDocuments/HDF2/HDF-2.0.0/bk_ambari-installation/content/ch_enabling-ssl-for-nifi.html <https://docs.hortonworks.com/HDPDocuments/HDF2/HDF-2.0.0/bk_ambari-installation/content/ch_enabling-ssl-for-nifi.html>`__
-
-..
+   |hdp_link|
 
 .. rubric:: Creating a Self-signed Cert
 
@@ -231,7 +227,9 @@ once.
 
    |image15|
 
+.. |hdp_link| raw:: html
 
+    <a href="https://docs.hortonworks.com/HDPDocuments/HDF2/HDF-2.0.0/bk_ambari-installation/content/ch_enabling-ssl-for-nifi.html" target="_blank">https://docs.hortonworks.com/HDPDocuments/HDF2/HDF-2.0.0/bk_ambari-installation/content/ch_enabling-ssl-for-nifi.html</a>
 
 .. |image1| image:: ../media/kylo-config/KC1.png
    :width: 4.87500in
