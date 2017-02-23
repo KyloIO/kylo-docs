@@ -256,8 +256,7 @@ Install Kerberos on an HDP Cluster
 
 |image5|
 
-`HDP 2.4 Sandbox Kerberos Setup
-Example <http://kylo-docs-test.readthedocs.io/en/latest/KerberosInstallationExample-Cloudera.html>`__
+    :doc:`../installation/KerberosInstallationExample-Cloudera`
 
 Make sure all services started properly. Kerberos is successfully installed on the cluster.
 
