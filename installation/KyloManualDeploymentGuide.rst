@@ -76,14 +76,14 @@ Step 1: Setup Directory
 Kylo is most often installed on one edge node. If you are deploying
 everything to one node, the setup directory would typically be:
 
-.. code-block:: shell
+.. code-block:: properties
 
     SETUP_DIR=/opt/kylo/setup
 
 Sometimes administrators install NiFi on a second edge node to communicate with a Hortonworks or Cloudera cluster. In this case, copy
 the setup folder to nodes that do not have the Kylo applications installed. In that case, use this SETUP_DIR command:
 
-.. code-block:: shell
+.. code-block:: properties
 
     SETUP_DIR=/tmp/kylo-install
 
