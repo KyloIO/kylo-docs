@@ -35,7 +35,7 @@ This link provides additional instruction for enabling SSL for NiFi:
 
    1. Add this line to the start of the script:   
 
-.. code-block:: shell
+.. code-block:: properties
 
          export JAVA_HOME=/opt/java/current
 
