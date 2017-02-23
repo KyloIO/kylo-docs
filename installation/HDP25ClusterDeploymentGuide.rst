@@ -529,9 +529,13 @@ Install the Kylo Application on the Kylo Edge Node
 
 7. Edit the kylo-services configuration file. 
 
-.. code-block:: properties
+.. code-block:: console
 
     [root /]# vi /opt/kylo/kylo-services/conf/application.properties   
+
+..
+
+.. code-block:: properties
 
     spring.datasource.url=jdbc:mysql://<MYSQL_HOSTNAME>:3306/kylo?noAccessToProcedureBodies=true
     spring.datasource.username=kylo
