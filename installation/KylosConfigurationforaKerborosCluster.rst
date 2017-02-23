@@ -104,7 +104,7 @@ Configuration Steps
 
 ..
 
-.. code-block:: properties
+.. code-block:: shell
 
     # This property is for the hive thrift connection used by
     kylo-services
