@@ -36,6 +36,6 @@ Configuration Guides
     InstallationConfigurationGuide
     KerberosInstallationExample-Cloudera
     KyloConfiguration
-    KylosConfigurationforaKerberosCluster
+    KylosConfigurationforaKerborosCluster
     NiFiConfigurationforaKerberosCluster
-    Postgres\_Hive\_Metadata\_Configuration
+    Postgres_Hive_Metadata_Configuration

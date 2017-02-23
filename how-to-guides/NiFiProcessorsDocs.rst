@@ -247,9 +247,11 @@ The screenshot shown here is an example of a flow in which the inspection of the
 The EvaluateJSONPath processor is used to extract JSON content from the flow file.
 
 Refer to the Data Confidence Invalid Records flow for an example:
-`https://github.com/KyloIO/kylo/blob/master/samples/templates/nifi-1.0/data_confidence_invalid_records.zip`__
+|data_confidence_invalid_records_link|
 
+.. |data_confidence_invalid_records_link| raw:: html
 
+   <a href="https://github.com/KyloIO/kylo/blob/master/samples/templates/nifi-1.0/data_confidence_invalid_records.zip" target="_blank">https://github.com/KyloIO/kylo/blob/master/samples/templates/nifi-1.0/data_confidence_invalid_records.zip</a>
 
 .. |image16| image:: ../media/kylo-config/KC16.png
    :width: 5.33825in

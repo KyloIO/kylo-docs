@@ -29,44 +29,44 @@ Build or download the rpm.
 
 1. Shut down NiFi:
 
-.. code-block:: shell
+ .. code-block:: shell
 
     service nifi stop
 
-..
+ ..
 
 2. Run:
 
-.. code-block:: shell
+ .. code-block:: shell
 
     useradd -r -m -s /bin/bash kylo
 
-..
+ ..
 
 3. Run:
 
-.. code-block:: shell
+ .. code-block:: shell
 
     usermod -a -G hdfs kylo
 
-..
+ ..
 
 4. Run:
 
-.. code-block:: shell
+ .. code-block:: shell
 
    /opt/thinkbig/remove-kylo-datalake-accelerator.sh to uninstall
    the RPM
 
-..
+ ..
 
 5. Install the new RPM:
 
-.. code-block:: shell
+ .. code-block:: shell
 
      rpm –ivh <RPM_FILE>
 
-..
+ ..
 
 6. Migrate the "thinkbig" database schema to "kylo".
 
@@ -74,147 +74,152 @@ Build or download the rpm.
 
    **Migration Procedure**
 
-   a. Uninstall Kylo 0.6 (Refer to deployment guide and release notes for details).
-   b. Install Kylo 0.7 (Refer to deployment guide and release notes for details).
+   6a. Uninstall Kylo 0.6 (Refer to deployment guide and release notes for details).
 
-      Do not yet start Kylo services.
-   c. Log into MySQL instance used by Kylo, and list the schemas:
+   6b. Install Kylo 0.7 (Refer to deployment guide and release notes for details).
 
-.. code-block:: shell
+          Do not yet start Kylo services.
 
-        mysql> show databases
+   6c. Log into MySQL instance used by Kylo, and list the schemas:
 
-..
+        .. code-block:: shell
 
-   d. Verify that:
+            mysql> show databases
+        ..
 
-       i.  thinkbig schema exists
-       ii. kylo schema does not exist
+   6d. Verify that:
 
-   e. Navigate to Kylo’s setup directory for MySQL.
+        -  thinkbig schema exists
+        - kylo schema does not exist
 
-.. code-block:: shell
+   6e. Navigate to Kylo’s setup directory for MySQL.
 
-      cd /opt/kylo/setup/sql/mysql
+       .. code-block:: shell
 
-..
+          cd /opt/kylo/setup/sql/mysql
 
-   f. Execute the migration script. It takes 3 parameters. For no password, provide the 3rd parameter as ''../migrate-schema-thinkbig-to-kylo-mysql.sh <host> <user> <password>
+       ..
 
-      - Step 1 of migration: kylo schema is set up.
-      - Step 2 of migration: thinkbig schema is migrated to kylo schema.
+   6f. Execute the migration script. It takes 3 parameters. For no password, provide the 3rd parameter as ''../migrate-schema-thinkbig-to-kylo-mysql.sh <host> <user> <password>
 
-   g. Start Kylo services. Verify that Kylo starts and runs successfully. At this point, there are two schemas in MySQL: kylo and thinkbig.
+       - Step 1 of migration: kylo schema is set up.
+       - Step 2 of migration: thinkbig schema is migrated to kylo schema.
+
+   6g. Start Kylo services. Verify that Kylo starts and runs successfully. At this point, there are two schemas in MySQL: kylo and thinkbig.
 
       Once Kylo is running normally and migration is verified, the thinkbig schema can be dropped.
 
-   h. Navigate to Kylo’s setup directory for MySQL.
+   6h. Navigate to Kylo’s setup directory for MySQL.
 
-.. code-block:: shell
+        .. code-block:: shell
 
-        cd /opt/kylo/setup/sql/mysql
+            cd /opt/kylo/setup/sql/mysql
+        ..
 
-..
+   6i. Execute the script to drop thinkbig schema. It takes 3 parameters. For no password, provide the 3rd parameter as:
 
-   i. Execute the script to drop thinkbig schema. It takes 3 parameters. For no password, provide the 3rd parameter as ''../drop-schema-thinkbig-mysql.sh <host> <user> <password>
+        .. code-block:: shell
 
-   j. Verify that only kylo schema now exists in MySQL.
+          ../drop-schema-thinkbig-mysql.sh <host> <user> <password>
 
-.. code-block:: shell
+        ..
 
-        mysql> show databases
+   6j. Verify that only kylo schema now exists in MySQL.
 
-..
+        .. code-block:: shell
+
+          mysql> show databases
+        ..
 
        This completes the migration procedure.
 
 7. Update the database:  
 
-.. code-block:: shell
+ .. code-block:: shell
 
     /opt/kylo/setup/sql/mysql/kylo/0.7.0/update.sh localhost root <password or blank>
 
-..
+ ..
 
 8. Run:
 
-.. code-block:: shell
+ .. code-block:: shell
 
     /opt/kylo/setup/nifi/update-nars-jars.sh
 
-..
+ ..
 
 9. Edit:
 
-.. code-block:: shell
+ .. code-block:: shell
 
     /opt/nifi/current/conf/bootstrap.conf
 
-..
+ ..
 
     Change "java.arg.15=Dthinkbig.nifi.configPath=/opt/nifi/ext-config" **to** "java.arg.15=Dkylo.nifi.configPath=/opt/nifi/ext-config".
 
 10. Run:
 
-.. code-block:: shell
+ .. code-block:: shell
 
     mv /opt/thinkbig/bkup-config /opt/kylo
     chown -R kylo:kylo bkup-config
 
-..
+ ..
 
 11.  Run: 
 
-.. code-block:: shell
+ .. code-block:: shell
 
     mv /opt/thinkbig/encrypt.key /opt/kylo
 
-..
+ ..
 
      If prompted for overwrite, answer 'yes'.
 
 12.  Run: 
 
-.. code-block:: shell
+ .. code-block:: shell
 
     chown kylo:kylo /opt/kylo/encrypt.key
 
-..
+ ..
 
 13.  Copy the mariadb driver to access MySQL database.
 
 14.  Run:
 
-.. code-block:: shell
+ .. code-block:: shell
 
       > cp /opt/kylo/kylo-services/lib/mariadb-java-client-*.jar /opt/nifi/mysql 
       > chown nifi:users  /opt/nifi/mysql/mariadb-java-client-*.jar
 
-..
+ ..
 
 15.  Start NiFi (wait to start):
 
-.. code-block:: shell
+ .. code-block:: shell
 
      service nifi start
 
-..
+ ..
 
 16.  In the standard-ingest template, update the"Validate and Split Records" processor and change the ApplicationJAR value to:  
 
-.. code-block:: shell
+ .. code-block:: shell
 
      /opt/nifi/current/lib/app/kylo-spark-validate-cleanse-jar-with-dependencies.jar
 
-..
+ ..
 
 17.  In the standard-ingest template update the"Profile Data" processor and change the ApplicationJAR value to: 
 
-.. code-block:: shell
+ .. code-block:: shell
 
      /opt/nifi/current/lib/app/kylo-spark-job-profiler-jar-with-dependencies.jar
 
-..
+ ..
 
 18.  For the MySQL controller service (type: DBCPConnectionPool), update the properties to use the mariadb driver:
 
@@ -223,11 +228,11 @@ Build or download the rpm.
 
 19. For the JMSConnectionFactoryProvider controller service, set the *MQ Client Libraries path* property value to:
 
-.. code-block:: shell
+ .. code-block:: shell
 
      /opt/kylo/kylo-services/lib
 
-..
+ ..
 
 20. For the StandardSqoopConnectionService, copy the value of *Source
     Driver* to *Source Driver (Avoid providing value)* then delete
@@ -235,13 +240,13 @@ Build or download the rpm.
 
 21. Update, with your custom configuration, the configuration files at:
 
-.. code-block:: shell
+ .. code-block:: shell
 
     /opt/kylo/kylo-ui/conf/, /opt/kylo/kylo-services/conf/
 
     /opt/kylo/kylo-spark shell/conf/
 
-..
+ ..
 
     A backup of the previous version's configuration is available from /opt/kylo/bkup-config/.
 
@@ -253,11 +258,11 @@ Build or download the rpm.
 
 23. If using NiFi v0.7 or earlier, modify:
 
-.. code-block:: shell
+ .. code-block:: shell
 
       /opt/kylo/kylo-services/conf/application.properties
 
-..
+ ..
 
     Change spring.profiles.active from **nifi-v1** to **nifi-v0**.
 
@@ -267,11 +272,11 @@ Build or download the rpm.
 
     After re-importing data_ingest.zip in a later step, any new feeds created will use the /tmp/kylo-nifi folder. The below command will allow existing flows to continue using the /tmp/kylo folder.
 
-.. code-block:: shell
+ .. code-block:: shell
 
       > chmod 777 /tmp/kylo
 
-..
+ ..
 
 25. Start kylo apps:
 
@@ -287,8 +292,8 @@ Build or download the rpm.
 
 28. Run:
 
-.. code-block:: shell
+ .. code-block:: shell
 
     > rm /opt/nifi/mysql/mysql-connector-java-*.jar
 
-..
+ ..
