@@ -64,10 +64,10 @@ point and start clean.
 
 2. Add the following:
 
-.. code-block:: shell
+.. code-block:: properties
 
     #!/bin/bash
-    docker run --name cloudera \
+    docker run --name cloudera =
       --hostname=quickstart.cloudera \
       --privileged=true -t -d \
       -p 8888:8888 \
@@ -221,7 +221,7 @@ Step 5: Install Kylo in the Docker Container
       changes, described in the Appendix section of the wizard deployment
       guide for Cloudera:
 
-.. code-block:: shell
+.. code-block:: properties
 
       ###Ambari Services Check
       #ambariRestClientConfig.username=admin
