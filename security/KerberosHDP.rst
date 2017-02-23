@@ -136,13 +136,19 @@ utilities.
 
 4. Update /var/kerberos/krb5kdc/kdc.conf. Change the [realms] as sandbox.hortonworks.com.
 
+   **[kdcdefaults]**
+
 .. code-block:: properties
 
-    [kdcdefaults]
       kdc_ports = 88
       kdc_tcp_ports = 88
 
-    [realms]
+..
+
+   **[realms]**
+
+.. code-block:: properties
+
       sandbox.hortonworks.com = {
       #master_key_type = aes256-cts
       acl_file = /var/kerberos/krb5kdc/kadm5.acl
