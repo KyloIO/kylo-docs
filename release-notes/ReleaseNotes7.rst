@@ -74,9 +74,10 @@ Build or download the rpm.
 
    **Migration Procedure**
 
-    a.  Uninstall Kylo 0.6 (Refer to deployment guide and release notes for details).
-    b.  Install Kylo 0.7 (Refer to deployment guide and release notes for details).
-        Do not yet start Kylo services.
+    a. Uninstall Kylo 0.6 (Refer to deployment guide and release notes for details).
+    b. Install Kylo 0.7 (Refer to deployment guide and release notes for details).
+
+       Do not yet start Kylo services.
     c. Log into MySQL instance used by Kylo, and list the schemas:
 
 .. code-block:: shell
@@ -87,8 +88,8 @@ Build or download the rpm.
 
     d. Verify that:
 
-       -- thinkbig schema exists
-       -- kylo schema does not exist
+       i.  thinkbig schema exists
+       ii. kylo schema does not exist
 
     e. Navigate to Kylo’s setup directory for MySQL.
 
@@ -105,7 +106,7 @@ Build or download the rpm.
 
     g. Start Kylo services. Verify that Kylo starts and runs successfully. At this point, there are two schemas in MySQL: kylo and thinkbig.
 
-      Once Kylo is running normally and migration is verified, the thinkbig schema can be dropped.
+       Once Kylo is running normally and migration is verified, the thinkbig schema can be dropped.
 
     h. Navigate to Kylo’s setup directory for MySQL.
 
