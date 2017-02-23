@@ -102,9 +102,7 @@ Import the Project into your IDE
 
 Import the project into your favorite IDE as a Maven project.
 
-+------------+----------------------------------------+
-| **Note**   | Configure the project to use Java 8.   |
-+------------+----------------------------------------+
+.. note:: Configure the project to use Java 8.
 
 Perform a Maven Build
 ---------------------
@@ -118,11 +116,8 @@ everything is setup correctly.
 
 ..
 
-+--------+----------------------------------------------------------------+
-|**TIP:**| For faster Maven builds you can run in offline mode by typing: |
-+--------+----------------------------------------------------------------+
 
-.. code-block:: shell
+.. tip:: For faster Maven builds you can run in offline mode by typing:
 
     "mvn clean install -o"
 
