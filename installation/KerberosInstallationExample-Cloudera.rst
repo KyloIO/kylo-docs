@@ -149,13 +149,19 @@ On a cluster, go to the master node for installation of Kerberos utilities.
 
 4. Update /var/kerberos/krb5kdc/kdc.conf. Change the [realms] as "quickstart.cloudera".
 
+   **[kdcdefaults]**
+
 .. code-block:: properties
 
-    [kdcdefaults]
       kdc_ports = 88
       kdc_tcp_ports = 88
 
-    [realms]
+..
+
+   **[realms]**
+
+.. code-block:: properties
+
       quickstart.cloudera = {
         #master_key_type = aes256-cts
         acl_file = /var/kerberos/krb5kdc/kadm5.acl
