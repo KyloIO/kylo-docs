@@ -25,7 +25,7 @@ to in the following section when updating Kylo UI properties.
 If you are in production, you would have your certificate issued by a trusted certificate authority.
 You can then import it to your keystore.
 
-.. code-block:: properties
+.. code-block:: shell
 
     mkdir /opt/kylo/ssl
 
