@@ -30,9 +30,9 @@ Configuration Steps
 
 1. Create a Headless Keytab File for the Hive and Kylo User.
 
-+-------------+--------------------------------------------------------------------------------------+
-| **Note:**   | Perform the following as root. Replace "sandbox.hortonworks.com" with your domain.   |
-+-------------+--------------------------------------------------------------------------------------+
+
+.. note:: Perform the following as root. Replace "sandbox.hortonworks.com" with your domain.
+
 
     [root]# kadmin.local
 
@@ -92,15 +92,19 @@ Configuration Steps
 
 3. Modify the kylo-services configuration.
 
-+------------+-------------------------------------------------------+
-| **TIP**:   | Replace "sandbox.hortonworks.com" with your domain.   |
-+------------+-------------------------------------------------------+
+.. tip:: Replace "sandbox.hortonworks.com" with your domain.
 
     To add Kerberos support to kylo-services you must enable the
     feature and update hive connection URL to support Kerberos.
 
+.. code-block:: shell
+
     [root]# vi
     /opt/kylo/kylo-services/conf/application.properties
+
+..
+
+.. code-block:: properties
 
     # This property is for the hive thrift connection used by
     kylo-services
@@ -131,6 +135,8 @@ Configuration Steps
     nifi.all_processors.kerberos_keytab=/etc/security/keytabs/nifi.headless.keytab
 
     nifi.all_processors.hadoop_configuration_resources=/etc/hadoop/conf/core-site.xml,/etc/hadoop/conf/hdfs-site.xml
+
+..
 
 4. Restart the kylo-services and kylo-spark-shell.
 
