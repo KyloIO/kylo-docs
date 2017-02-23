@@ -589,7 +589,12 @@ Install the Kylo Application on the Kylo Edge Node
     nifi.all_processors.kerberos_keytab=/etc/security/keytabs/nifi.service.keytab
     nifi.all_processors.hadoop_configuration_resources=/etc/hadoop/conf/core-site.xml,/etc/hadoop/conf/hdfs-site.xml   
 
-    Set the JMS server hostname for the Kylo hosted JMS server
+..
+
+    Set the JMS server hostname for the Kylo hosted JMS server:
+
+.. code-block:: properties
+
     config.elasticsearch.jms.url=tcp://<KYLO_EDGE_HOST>:61616  
 
 ..
