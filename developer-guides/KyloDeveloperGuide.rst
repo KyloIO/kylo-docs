@@ -161,9 +161,9 @@ Instead of downloading the RPM file copy the RPM file from your project folder a
 Follow the rest of the deployment wizard steps to install the rest of
 the tools in the VM.
 
-+------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Important!**   | You only need to install Elasticsearch, NiFi, and ActiveMQ once. During development you will frequently uninstall the Kylo RPM and re-install it for testing.   |
-+------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+.. important!:: You only need to install Elasticsearch, NiFi, and ActiveMQ once. During development you will frequently uninstall the Kylo RPM and re-install it for testing.
+
 
 You now have a distribution of the stack running in your Hortonworks
 sandbox.
