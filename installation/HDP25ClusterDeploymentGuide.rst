@@ -192,7 +192,7 @@ Prepare the Kylo Edge Node
 
 ..
 
-.. note:: If the Hive database is installed in a separate MySQL instance then you will need to create the "kylo" non privileged user in that database before running the grants.
+.. note:: If the Hive database is installed in a separate MySQL instance, you will need to create the "kylo" non privileged user in that database before running the grants.
 
 5. Make sure the Spark client and Hive client is installed.
 
