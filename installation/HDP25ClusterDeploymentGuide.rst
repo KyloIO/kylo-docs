@@ -15,15 +15,11 @@ access the Ranger REST API.
 There are two ways you can configure hive to manage users on the
 cluster.
 
-  1. You can configure it to run hive jobs as the end user, but all HDFS access is done as the hive user.
+  1. You can configure it to run Hive jobs as the end user, but all HDFS access is done as the hive user.
 
-  2. Run hive jobs and HDFS commands as the end user:
+  2. Run Hive jobs and HDFS commands as the end user.
 
-.. code-block:: html
-
-    *http://hortonworks.com/blog/best-practices-for-hive-authorization-using-apache-ranger-in-hdp-2-2/*
-
-..
+.. note:: For detailed information on Hive authorizations refer to http://hortonworks.com/blog/best-practices-for-hive-authorization-using-apache-ranger-in-hdp-2-2/.
 
 This document will configure option #2 to show how you can configure Kylo to grant appropriate access to both hive and HDFS for the end user.
 
