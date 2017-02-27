@@ -33,7 +33,7 @@ For this document, we will configure a CoreOS AMI which is optimized for running
 
 1. Choose an AMI for the region in which you will configure the EC2 instance.
 
-    https://coreos.com/os/docs/latest/booting-on-ec2.html
+.. note:: For detailed procedures for configuring the EC2 instance, visit Running CoreOS Container Linux on EC2 at https://coreos.com/os/docs/latest/booting-on-ec2.html.
 
 2. Create the EC2 instance. You might want to add more disk space than the default 8GB.
 
