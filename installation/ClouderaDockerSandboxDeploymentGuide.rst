@@ -31,9 +31,7 @@ Step 1: Create an EC2 instance
 
 For this document, we will configure a CoreOS AMI which is optimized for running Docker images.
 
-1. Choose an AMI for the region you will configure the EC2 instance in.
-
-.. code-block:: html
+1. Choose an AMI for the region in which you will configure the EC2 instance.
 
     https://coreos.com/os/docs/latest/booting-on-ec2.html
 
