@@ -70,11 +70,11 @@ For modes (2) and (3), which allow encrypted passwords to be used, details are p
 
 Encrypt the password by providing the:
 
-a. password to encrypt
+a. Password to encrypt
 
-b. passphrase
+b. Passphrase
 
-c. location to write encrypted file to
+c. Location to write encrypted file to
 
 The following command can be used to generate the
 encrypted password:
