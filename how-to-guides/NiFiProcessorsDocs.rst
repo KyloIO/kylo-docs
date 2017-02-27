@@ -153,19 +153,19 @@ following structure:
 
 .. code-block:: javascript
 
-{
-   "feedName":"string",
-   "feedId":"string",
-   "dependentFeedNames":[
-      "string"
-   ],
-   "feedJobExecutionContexts":{
+  {
+    "feedName":"string",
+    "feedId":"string",
+    "dependentFeedNames":[
+        "string"
+        ],
+        "feedJobExecutionContexts":{
 
-   },
-   "latestFeedJobExecutionContext":{
+        },
+        "latestFeedJobExecutionContext":{
 
+        }
    }
-}
 
 ..
 
