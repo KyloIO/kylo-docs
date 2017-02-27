@@ -223,11 +223,9 @@ once.
 
    |image14|
 
-5. NiFi under ssl.  Notice the User name matches the one supplied via the Certificate that we created:  "CN=kylo, OU=NIFI"
+5. NiFi under SSL.  Notice the User name matches the one supplied via the Certificate that we created:  "CN=kylo, OU=NIFI"
 
    |image15|
-
-.. |hdp_link| raw:: html
 
     <a href="https://docs.hortonworks.com/HDPDocuments/HDF2/HDF-2.0.0/bk_ambari-installation/content/ch_enabling-ssl-for-nifi.html" target="_blank">https://docs.hortonworks.com/HDPDocuments/HDF2/HDF-2.0.0/bk_ambari-installation/content/ch_enabling-ssl-for-nifi.html</a>
 
