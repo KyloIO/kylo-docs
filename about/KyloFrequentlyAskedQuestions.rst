@@ -23,7 +23,7 @@ major beneficiary of the open-source Hadoop ecosystem and elected to open-source
 What does Kylo mean?
 ~~~~~~~~~~~~~~~~~~~~~
 
-Kylo is a play on the greek word meaning "flow".
+Kylo is a play on the Greek word meaning "flow".
 
 
 What software license is Kylo provided under?
