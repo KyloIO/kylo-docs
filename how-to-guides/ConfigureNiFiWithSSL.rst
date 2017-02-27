@@ -223,7 +223,7 @@ once.
 
    |image14|
 
-5. NiFi under SSL.  Notice the User name matches the one supplied via the Certificate that we created:  "CN=kylo, OU=NIFI"
+5. NiFi under SSL.  Notice the User name matches the one supplied via the certificate that we created:  "CN=kylo, OU=NIFI".
 
    |image15|
 
