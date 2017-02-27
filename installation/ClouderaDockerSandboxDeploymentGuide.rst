@@ -56,7 +56,7 @@ point and start clean.
 
 .. code-block:: shell
 
-    vi startCloudera.sh
+    $ vi startCloudera.sh
 
 ..
 
