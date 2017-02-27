@@ -161,7 +161,7 @@ Some core features:
 
 -  Portability - can run on sql and nosql databases
 
-    See: \ `*http://modeshape.jboss.org/* <http://modeshape.jboss.org/>`__
+    See: `*http://modeshape.jboss.org/* <http://modeshape.jboss.org/>`__
 
 How extensible is Kylo metadata model?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -399,5 +399,3 @@ Yes, Kylo allows a user to select tables from RDBMS sources and easily configure
 Sqoop via NiFi to avoid IO through the edge node.
 
 Kylo's RDBMS ingest support requires configuring a type-specific JDBC driver. It has been tested with data sources such as Teradata, SQL Server, Oracle, Postgres, and MySQL.
-
-
