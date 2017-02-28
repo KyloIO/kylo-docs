@@ -3,6 +3,9 @@
 Kerberos
 ========
 
+Configurations and Install Examples
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 .. toctree::
     :maxdepth: 1
 
