@@ -4,7 +4,7 @@ Kerberos
 ========
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     How to Configure Kerberos for NiFi Templates <installation/NiFiConfigurationforaKerberosCluster>
     How to configure Kerberos for Kylo <installation/KyloConfigurationforaKerberosCluster>
