@@ -147,7 +147,7 @@ utilities.
 
    **[realms]**
 
-.. code-block:: properties
+.. code-block:: shell
 
       sandbox.hortonworks.com = {
       #master_key_type = aes256-cts
