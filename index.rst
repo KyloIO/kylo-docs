@@ -47,7 +47,6 @@ The documentation for the site is organized into a few sections:
     Access Control <security/AccessControl>
     Ranger <security/EnableRangerAuthorizationGuide>
     Sentry <security/EnableSentryAuthorizationGuide>
-    Kerberos <security/KerberosInstallationExampleHDP2.4>
     Kerberos SPNEGO <security/KyloKerberosSPNEGO>
 
 .. _how_to_guides:
