@@ -3,6 +3,12 @@
 Kerberos
 ========
 
+.. toctree::
+    :maxdepth: 1
+
+    ReleaseNotes7
+
+    
 Configurations and Install Examples
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
