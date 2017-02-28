@@ -390,6 +390,8 @@ Below is a sample properties file with Spring Datasource properties for spring b
 
 .. note:: Cloudera default password for root access to mysql is "cloudera".
 
+..
+
 .. code-block:: properties
 
     spring.datasource.url=jdbc:mysql://localhost:3306/kylo
