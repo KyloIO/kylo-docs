@@ -7,7 +7,7 @@ The Kylo applications contain features that leverage the thrift server
 connection to communicate with the cluster. In order for them to work in
 a Kerberos cluster, some configuration is required. Some examples are:
 
--  Profiling Statistics
+-  Profiling statistics
 
 -  Tables page
 
