@@ -33,6 +33,9 @@ Configuration Steps
 
 .. note:: Perform the following as root. Replace "sandbox.hortonworks.com" with your domain.
 
+..
+
+.. code-block:: shell
 
     [root]# kadmin.local
 
@@ -58,6 +61,8 @@ Configuration Steps
 
     [root]# chmod 440
     /etc/security/keytabs/hive-kylo.headless.keytab
+
+..
 
 1. Validate that the Keytabs Work.
 
