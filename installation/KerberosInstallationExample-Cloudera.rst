@@ -138,7 +138,7 @@ On a cluster, go to the master node for installation of Kerberos utilities.
 
    **[realms]**
 
-.. code-block:: properties
+.. code-block:: shell
 
       quickstart.cloudera = {
       kdc = quickstart.cloudera
@@ -160,7 +160,7 @@ On a cluster, go to the master node for installation of Kerberos utilities.
 
    **[realms]**
 
-.. code-block:: properties
+.. code-block:: shell
 
       quickstart.cloudera = {
         #master_key_type = aes256-cts
