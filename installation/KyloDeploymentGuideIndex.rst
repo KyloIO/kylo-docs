@@ -23,7 +23,6 @@ Install Guides
     KyloManualDeploymentGuide
     ClouderaDockerSandboxDeploymentGuide
     KyloTARFileInstallation
-    Kerberos
     HDP25ClusterDeploymentGuide
 
 
@@ -33,6 +32,7 @@ Configuration Guides
 .. toctree::
     :maxdepth: 1
 
+    Kerberos
     HortonworksSandboxConfiguration
     InstallationConfigurationGuide
     KerberosInstallationExample-Cloudera
