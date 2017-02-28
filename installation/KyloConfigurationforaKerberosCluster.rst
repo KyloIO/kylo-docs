@@ -16,7 +16,7 @@ a Kerberos cluster, some configuration is required. Some examples are:
 Prerequisites
 =============
 
-Below are the list of prerequisites to enable Kerberos for Kylo data
+Below are the list of prerequisites for enabling Kerberos for the Kylo data
 lake platform.
 
 1. Running Hadoop cluster
