@@ -483,6 +483,8 @@ In some cases you may want to leverage separate instances of NiFi or Hortonworks
 
 4.  Copy the kylo-*.nar files to the <NIFI_HOME>/kylo/lib directory.
 
+..
+
 5.  Create a directory called "app" in the <NIFI_HOME>/kylo/lib directory.
 
 .. code-block:: shell
@@ -492,6 +494,8 @@ In some cases you may want to leverage separate instances of NiFi or Hortonworks
 ..
 
 6.  Copy the kylo-spark-*.jar files to the <NIFI_HOME>/kylo/lib/app directory.
+
+..
 
 7.  Create symbolic links for all of the .NARs and .JARs. Below is an example of how to create it for one NAR file and one JAR file. At the time of this writing there are eight NAR files and three spark JAR files.
 
