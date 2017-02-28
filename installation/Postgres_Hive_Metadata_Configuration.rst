@@ -13,7 +13,7 @@ make some modifications to support Hive.
 Kylo Services Configuration
 ===========================
 
-For Kylo to connect to a Postgres databases for the hive metadata you
+For Kylo to connect to a Postgres databases for the Hive metadata you
 need to change the following section of the kylo-services
 application.properties file.
 
@@ -32,7 +32,7 @@ Elasticsearch NiFi Template Changes
 ===================================
 
 The index_schema_service template is used to query out feed metadata
-from the hive tables, which is then stored in elasticsearch so it can be
+from the Hive tables, which is then stored in elasticsearch so it can be
 searched for in Kylo. The following steps need to be taken to the
 template to support Postgres:
 
