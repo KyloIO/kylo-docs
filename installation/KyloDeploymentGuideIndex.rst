@@ -23,6 +23,7 @@ Install Guides
     KyloManualDeploymentGuide
     ClouderaDockerSandboxDeploymentGuide
     KyloTARFileInstallation
+    Kerberos
     HDP25ClusterDeploymentGuide
 
 
