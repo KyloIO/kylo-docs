@@ -94,8 +94,8 @@ Configuration Steps
 
 .. tip:: Replace "sandbox.hortonworks.com" with your domain.
 
-    To add Kerberos support to kylo-services you must enable the
-    feature and update hive connection URL to support Kerberos.
+    To add Kerberos support to kylo-services, you must enable the
+    feature and update the Hive connection URL to support Kerberos.
 
 .. code-block:: shell
 
@@ -146,5 +146,5 @@ Configuration Steps
 
 Kylo is now configured for a Kerberos cluster. You can test that it is
 configured correctly by looking at profile statistics (if applicable):
-go to the Tables page and drill down into a hive table, and go to the
+go to the Tables page and drill down into a Hive table, and go to the
 Wrangler feature and test that it works.
