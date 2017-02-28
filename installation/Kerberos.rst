@@ -6,7 +6,6 @@ Kerberos
 .. _kerberos_toc:
 .. toctree::
     :maxdepth: 1
-    :caption: Kerberos
 
     How to Configure Kerberos for NiFi Templates <installation/NiFiConfigurationforaKerberosCluster>
     How to configure Kerberos for Kylo <installation/KyloConfigurationforaKerberosCluster>
