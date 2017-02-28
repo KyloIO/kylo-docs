@@ -360,7 +360,7 @@ ActiveMQ, and NiFi.
 
 ..
 
-In addition there is a script for cleaning up the hive schema and HDFS
+In addition there is a script for cleaning up the Hive schema and HDFS
 folders that are related to a specific "category" that is defined in the
 UI.
 
