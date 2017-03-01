@@ -301,4 +301,4 @@ Starting up an Existing EC2 instance and Cloudera Docker Container
 
 .. |Running_CoreOS_Container_Linux_on_EC2_Link| raw:: html
 
-    <a ref=https://coreos.com/os/docs/latest/booting-on-ec2.html" "_blank"><Running_CoreOS_Container_Linux_on_EC2</a>
+    <a href=https://coreos.com/os/docs/latest/booting-on-ec2.html" "_blank"><Running_CoreOS_Container_Linux_on_EC2</a>
