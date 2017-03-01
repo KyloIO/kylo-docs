@@ -549,7 +549,7 @@ repository, and data in the provenance repository in /opt/nifi/data. For
 more information about these configurations, the NiFi system
 administrator’s guide is the authority.
 
-|image2|
+|NiFiDoc_link|
 
 Startup and Shutdown
 ====================
