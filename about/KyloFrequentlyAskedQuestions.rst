@@ -17,7 +17,7 @@ What are Kylo's origins?
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 Kylo was developed by `Think Big`_ (a Teradata company) and it is in use at a dozen major corporations globally.  Think Big provides big data and
-analytics consulting to the world's largest organizations, working across every industry. Think Big has over 7 years experience with 150 successful big data projects.  Think Big has been a
+analytics consulting to the world's largest organizations, working across every industry in performing 150 successful big data projects over the last seven years.  Think Big has been a
 major beneficiary of the open-source Hadoop ecosystem and elected to open-source Kylo in order to contribute back to the community and improve value.
 
 What does Kylo mean?
