@@ -20,7 +20,7 @@ Apache NiFi Terminology
 Processor
 ~~~~~~~~~
 
-    Refer to the NiFi terminology document at `*https://nifi.apache.org/docs/nifi-docs/html/user-guide.html#terminology* <https://nifi.apache.org/docs/nifi-docs/html/user-guide.html#terminology>`__.
+Refer to the NiFi |terminology_Link| document for NiFi-specific terminology.
 
 -  A processor has properties that are configured. The values for these
    properties can be hard-coded, or they can be made dynamic by using
