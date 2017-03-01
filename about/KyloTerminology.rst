@@ -219,8 +219,6 @@ A service that Kylo has been configured to monitor
    services, such as HDFS and Kafka, that Kylo will monitor using either
    Ambari’s API or Cloudera’s REST client.
 
-.. terminology_Link:: raw html
+.. |terminology_Link| raw:: html
 
-   <a href="https://nifi.apache.org/docs/nifi-docs/html/user-guide.html#terminology" target="_blank">terminology</a>
-
-   
+    <a href="https://nifi.apache.org/docs/nifi-docs/html/user-guide.html#terminology" target="_blank">terminology</a>
