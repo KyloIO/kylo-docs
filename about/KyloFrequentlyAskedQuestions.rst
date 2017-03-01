@@ -16,7 +16,7 @@ Kylo integrates best practices around metadata capture, security, and data quali
 What are Kylo's origins?
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Kylo was developed by `think_big_link` (a Teradata company) and it is in use at a dozen major corporations globally.  Think Big provides big data and
+Kylo was developed by |think_big_link| (a Teradata company) and it is in use at a dozen major corporations globally.  Think Big provides big data and
 analytics consulting to the world's largest organizations, working across every industry in performing 150 successful big data projects over the last seven years.  Think Big has been a
 major beneficiary of the open-source Hadoop ecosystem and elected to open-source Kylo in order to contribute back to the community and improve value.
 
