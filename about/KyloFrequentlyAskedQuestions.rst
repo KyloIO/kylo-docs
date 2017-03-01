@@ -68,7 +68,7 @@ includes hands-on training that ensures your business is prepared to assume oper
 
 Is enterprise training available for Kylo?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Yes, |Think_Big_Link| (a Teradata company) offers |Academy_Link| <https://www.thinkbiganalytics.com/apache-nifi-kylo-introduction/>`_ training on Kylo, Hadoop, and Spark.
+Yes, |Think_Big_Link| (a Teradata company) offers |Academy_Link| training on Kylo, Hadoop, and Spark.
 
 
 Are commercial managed services available for Kylo?
