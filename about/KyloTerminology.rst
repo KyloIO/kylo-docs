@@ -85,7 +85,7 @@ A logically grouped sequence of connected processors and NiFi components
 Controller Service
 ~~~~~~~~~~~~~~~~~~
 
-Refer to the NiFi terminology document at `*https://nifi.apache.org/docs/nifi-docs/html/user-guide.html#terminology* <https://nifi.apache.org/docs/nifi-docs/html/user-guide.html#terminology>`__.
+Refer to the NiFi |terminology_Link| document for NiFi-specific terminology.
 
 -  An example is the Hive Thrift Service of type ThriftConnectionPool,
    which is a controller service that lets the ExecuteHQL and
@@ -105,7 +105,7 @@ processors, controllers and all library dependencies
 Template
 ~~~~~~~~
 
-Refer to the NiFi terminology document at `*https://nifi.apache.org/docs/nifi-docs/html/user-guide.html#terminology* <https://nifi.apache.org/docs/nifi-docs/html/user-guide.html#terminology>`__.
+Refer to the NiFi |terminology_Link| document for NiFi-specific terminology.
 
 -  A template is a flow that has been saved for reuse. You can use a
    template to model a common pattern, and then create useful flows out
