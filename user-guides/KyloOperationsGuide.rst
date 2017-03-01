@@ -975,7 +975,7 @@ Kylo:
    :height: 3.01020in
 .. |nifisag_link| raw:: html
 
-    <a href="https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html" target="_blank" <https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html</a>
+    <a href="https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html" target="_blank">https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html</a>
 
 .. |hdp_link| raw:: html
 
