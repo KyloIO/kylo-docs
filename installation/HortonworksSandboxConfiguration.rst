@@ -35,7 +35,7 @@ project artifacts to the sandbox for testing.
 
 ..
 
-.. code-block:: properties
+.. code-block:: shell
 
 -  Folder Path = <pathToProjectFolder>
 -  Folder Name = kylo
