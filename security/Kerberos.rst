@@ -12,9 +12,11 @@ Below are instructions for how to configure both Kylo and NiFi to support integr
     :maxdepth: 1
 
     **Kylo and NiFi Kerberos Configuration:**
+
     How to Configure Kerberos for NiFi Templates <../installation/NiFiConfigurationforaKerberosCluster>
     How to Configure Kerberos for Kylo <../installation/KyloConfigurationforaKerberosCluster>
 
     **Examples of how to enable Kerberos for a sandbox:**
+    
     Kerberos Sandbox Installation Example - HDP 2.4 <../installation/KerberosInstallationExampleHDP2.4>
     Kerberos Sandbox Installation Example – Cloudera 5.6 <../installation/KerberosInstallationExample-Cloudera>
