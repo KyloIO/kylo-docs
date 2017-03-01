@@ -549,7 +549,7 @@ repository, and data in the provenance repository in /opt/nifi/data. For
 more information about these configurations, the NiFi system
 administrator’s guide is the authority.
 
-.. |nifisag|
+  |nifisag_link|
 
   |hdp_link|
 
@@ -973,7 +973,7 @@ Kylo:
 .. |image45| image:: ../media/operations-guide/image45.jpg
    :width: 6.41353in
    :height: 3.01020in
-.. |nifisag| raw:: html
+.. |nifisag_link| raw:: html
 
     <a href="https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html" target="_blank" <https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html</a>
 
