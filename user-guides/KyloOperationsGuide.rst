@@ -551,7 +551,6 @@ administrator’s guide is the authority.
 
   |nifisag_link|
 
-  |hdp_link|
 
 Startup and Shutdown
 ====================
@@ -976,7 +975,3 @@ Kylo:
 .. |nifisag_link| raw:: html
 
     <a href="https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html" target="_blank">https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html</a>
-
-.. |hdp_link| raw:: html
-
-    <a href="https://docs.hortonworks.com/HDPDocuments/HDF2/HDF-2.0.0/bk_ambari-installation/content/ch_enabling-ssl-for-nifi.html" target="_blank">https://docs.hortonworks.com/HDPDocuments/HDF2/HDF-2.0.0/bk_ambari-installation/content/ch_enabling-ssl-for-nifi.html</a>
