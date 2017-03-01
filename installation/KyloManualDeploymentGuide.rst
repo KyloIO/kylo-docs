@@ -315,7 +315,8 @@ This indicates that ActiveMQ isn’t properly using Java as it is set in the sys
 
 RPM installation isn’t supported on SUSE. To work around this issue, we created a custom init.d service script and wrote up a manual procedure to install Elasticsearch on a single node.
 
-Reference: `https://www.elastic.co/support/matrix <https://www.elastic.co/support/matrix>`__
+    |Install_Elasticsearch_Link|
+
 
 We have created a service script to make it easy to start and stop Elasticsearch, as well as leverage chkconfig to automatically start Elasticsearch when booting up the machine. Below are the instructions on how we installed Elasticsearch on a SUSE box.
 
@@ -681,3 +682,7 @@ At this point all services should be running. Verify by running:
 
     $ /opt/kylo/status-kylo-apps.sh
 ..
+
+.. |Install_Elasticsearch_Link| raw:: html
+
+    <a href="https://www.elastic.co/support/matrix" target="_blank">Install_Elasticsearch</a>
