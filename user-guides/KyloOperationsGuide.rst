@@ -549,7 +549,7 @@ repository, and data in the provenance repository in /opt/nifi/data. For
 more information about these configurations, the NiFi system
 administrator’s guide is the authority.
 
-    |NiFiDocs_link|
+|NiFiDocs_link|
 
 Startup and Shutdown
 =====================
@@ -973,4 +973,4 @@ Kylo:
    :height: 3.01020in
 .. |NiFiDocs_link| raw:: html
 
-      <a href="https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html* <https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html</a>
+      <a href="https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html" <https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html</a>
