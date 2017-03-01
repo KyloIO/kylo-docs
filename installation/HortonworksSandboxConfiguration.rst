@@ -33,10 +33,6 @@ project artifacts to the sandbox for testing.
 
     VBox GUI > Settings > Shared Folders > Add
 
-..
-
-.. code-block:: properties
-
     Folder Path = <pathToProjectFolder>
     Folder Name = kylo
 
