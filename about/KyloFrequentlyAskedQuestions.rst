@@ -16,7 +16,7 @@ Kylo integrates best practices around metadata capture, security, and data quali
 What are Kylo's origins?
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Kylo was developed by `Think Big`_ (a Teradata company) and it is in use at a dozen major corporations globally.  Think Big provides big data and
+Kylo was developed by |Think_Big_Link| (a Teradata company) and it is in use at a dozen major corporations globally.  Think Big provides big data and
 analytics consulting to the world's largest organizations, working across every industry in performing 150 successful big data projects over the last seven years.  Think Big has been a
 major beneficiary of the open-source Hadoop ecosystem and elected to open-source Kylo in order to contribute back to the community and improve value.
 
@@ -29,7 +29,7 @@ Kylo is a play on the Greek word meaning "flow".
 What software license is Kylo provided under?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-`Think Big <https://www.thinkbiganalytics.com>`_ (a Teradata company) has released Kylo under the Apache 2.0 license.
+|Think_Big_Link| (a Teradata company) has released Kylo under the Apache 2.0 license.
 
 Who uses Kylo?
 ~~~~~~~~~~~~~~~~~~
@@ -57,23 +57,23 @@ Enterprise Support
 Is enterprise support available for Kylo?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Yes, `Think Big (a Teradata company) <https://www.thinkbiganalytics.com>`_ offers support subscription at the standard and enterprise level. Please visit the Think Big Analytics
+Yes, |Think_Big_Link| (a Teradata company) offers support subscription at the standard and enterprise level. Please visit the Think Big Analytics
 `website <https://www.thinkbiganalytics.com>`_ for more information.
 
 Are professional services and consulting available for Kylo?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-`Think Big (a Teradata company) <https://www.thinkbiganalytics.com>`_ provides global consulting services with expertise implementing Kylo-based solutions. It is certainly possible to install and
+|Think_Big_Link| (a Teradata company) provides global consulting services with expertise implementing Kylo-based solutions. It is certainly possible to install and
 learn Kylo using internal resources. Think Big's Data Lake Foundation offering provides a quick start to installing and delivering on your first set of data lake use cases.  Think Big's service
 includes hands-on training that ensures your business is prepared to assume operations.
 
 Is enterprise training available for Kylo?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Yes, `Think Big (a Teradata company) <https://www.thinkbiganalytics.com>`_ offers `Academy <https://www.thinkbiganalytics.com/apache-nifi-kylo-introduction/>`_ training on Kylo, Hadoop, and Spark.
+Yes, |Think_Big_Link| (a Teradata company) offers `Academy <https://www.thinkbiganalytics.com/apache-nifi-kylo-introduction/>`_ training on Kylo, Hadoop, and Spark.
 
 
 Are commercial managed services available for Kylo?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Yes, `Think Big (a Teradata company) <https://www.thinkbiganalytics.com>`_ can provide managed operations for your Hadoop cluster including Kylo whether it is hosted on-premise or in the cloud. The
+Yes, |Think_Big_Link| (a Teradata company) can provide managed operations for your Hadoop cluster including Kylo whether it is hosted on-premise or in the cloud. The
 managed services team are trained specifically on Kylo and operations experience on major Hadoop distributions.
 
 
@@ -400,6 +400,6 @@ Sqoop via NiFi to avoid IO through the edge node.
 
 Kylo's RDBMS ingest support requires configuring a type-specific JDBC driver. It has been tested with data sources such as Teradata, SQL Server, Oracle, Postgres, and MySQL.
 
-.. `Think Big` raw:: html
+.. |Think_Big_Link| raw:: html
 
-    <a href="https://www.thinkbiganalytics.com" target="_blank">https://www.thinkbiganalytics.com</a>
+    <a href="https://www.thinkbiganalytics.com" target="_blank">Think Big</a>
