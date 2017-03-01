@@ -402,4 +402,4 @@ Kylo's RDBMS ingest support requires configuring a type-specific JDBC driver. It
 
 .. `think_big_link` raw:: html
 
-    <a href="https://www.thinkbiganalytics.com" target="_blank">https://www.thinkbiganalytics.com</a>
+    <a href="https://www.thinkbiganalytics.com" target="_blank">Think Big</a>
