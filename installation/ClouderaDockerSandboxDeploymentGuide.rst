@@ -33,7 +33,7 @@ For this document, we will configure a CoreOS AMI which is optimized for running
 
 1. Choose an AMI for the region in which you will configure the EC2 instance.
 
-.. note:: For detailed procedures for configuring the EC2 instance, visit |Running_CoreOS_Container_Linux_on_EC2_Link| on the CoreOS website.
+.. note:: For detailed procedures for |configuring_the_EC2_Link| instance, visit Running CoreOS Container Linux on EC2 on the CoreOS website.
 
 2. Create the EC2 instance. You might want to add more disk space than the default 8GB.
 
@@ -299,6 +299,6 @@ Starting up an Existing EC2 instance and Cloudera Docker Container
 
 6. Login to Cloudera Manager and start all services.
 
-.. |Running_CoreOS_Container_Linux_on_EC2_Link| raw:: html
+.. |configuring_the_EC2_Link| raw:: html
 
-    <a href="https://coreos.com/os/docs/latest/booting-on-ec2.html" target="_blank"><Running_CoreOS_Container_Linux_on_EC2_Link</a>
+    <a href="https://coreos.com/os/docs/latest/booting-on-ec2.html" target="_blank"><configuring_the_EC2_Link</a>
