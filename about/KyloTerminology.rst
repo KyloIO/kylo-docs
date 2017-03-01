@@ -12,9 +12,7 @@ Apache NiFi.
 
 Additional Resources:
 
--  NiFi has documentation on its terminology
-   at `*https://nifi.apache.org/docs/nifi-docs/html/user-guide.html#terminology* <https://nifi.apache.org/docs/nifi-docs/html/user-guide.html#terminology>`__.
-   However, some of the terms will be outlined here in the context of Kylo.
+-  NiFi has documentation on its |terminology_Link| on their website. However, some of the terms will be outlined here in the context of Kylo.
 
 Apache NiFi Terminology
 -----------------------
@@ -220,3 +218,9 @@ A service that Kylo has been configured to monitor
 -  Services in Kylo are not NiFi controller services. They are simply
    services, such as HDFS and Kafka, that Kylo will monitor using either
    Ambari’s API or Cloudera’s REST client.
+
+.. terminology_Link:: raw html
+
+   <a href="https://nifi.apache.org/docs/nifi-docs/html/user-guide.html#terminology" target="_blank">terminology</a>
+
+   
