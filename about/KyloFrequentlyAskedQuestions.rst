@@ -400,6 +400,6 @@ Sqoop via NiFi to avoid IO through the edge node.
 
 Kylo's RDBMS ingest support requires configuring a type-specific JDBC driver. It has been tested with data sources such as Teradata, SQL Server, Oracle, Postgres, and MySQL.
 
-.. |Think Big_| raw:: html
+.. `Think Big_` raw:: html
 
     <a href="https://www.thinkbiganalytics.com" target="_blank">https://www.thinkbiganalytics.com</a>
