@@ -878,4 +878,5 @@ Create Data Ingest Feed Test
 ..
 
 .. |Hive_authorizations_Link| raw:: html
+
     <a href="http://hortonworks.com/blog/best-practices-for-Hive-authorization-using-apache-ranger-in-hdp-2-2/" target="_blank">Hive_authorizations</a>
