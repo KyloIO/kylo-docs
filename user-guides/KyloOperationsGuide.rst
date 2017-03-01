@@ -551,8 +551,9 @@ administrator’s guide is the authority.
 
   |NiFiDoc_link|
 
-.. rubric:: Startup and Shutdown
-
+====================
+Startup and Shutdown
+====================
 
 Kylo service automatically starts on system boot.
 
