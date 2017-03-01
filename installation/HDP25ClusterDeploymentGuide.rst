@@ -19,7 +19,7 @@ cluster.
 
   2. Run Hive jobs and HDFS commands as the end user.
 
-.. note:: For detailed information on |Hive_authorizations_Link| refer to Best Practices for Hive Authorization Using Apache Ranger in HDP 2.2 on the Hortonworks website.
+.. note:: For detailed information on |Hive authorizations_Link| refer to Best Practices for Hive Authorization Using Apache Ranger in HDP 2.2 on the Hortonworks website.
 
 This document will configure option #2 to show how you can configure Kylo to grant appropriate access to both Hive and HDFS for the end user.
 
@@ -877,6 +877,6 @@ Create Data Ingest Feed Test
 
 ..
 
-.. |Hive_authorizations_Link| raw:: html
+.. |Hive authorizations_Link| raw:: html
 
-    <a href="http://hortonworks.com/blog/best-practices-for-Hive-authorization-using-apache-ranger-in-hdp-2-2/" target="_blank">Hive_authorizations</a>
+    <a href="http://hortonworks.com/blog/best-practices-for-Hive-authorization-using-apache-ranger-in-hdp-2-2/" target="_blank">Hive authorizations</a>
