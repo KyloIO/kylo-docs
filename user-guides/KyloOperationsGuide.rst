@@ -549,10 +549,10 @@ repository, and data in the provenance repository in /opt/nifi/data. For
 more information about these configurations, the NiFi system
 administrator’s guide is the authority.
 
-|NiFiDocs_link|
+  |NiFiDoc_link|
 
-Startup and Shutdown
-=====================
+.. rubric:: Startup and Shutdown
+
 
 Kylo service automatically starts on system boot.
 
@@ -973,4 +973,4 @@ Kylo:
    :height: 3.01020in
 .. |NiFiDocs_link| raw:: html
 
-      <a href="https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html" <https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html</a>
+      <a href="https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html" target="_blank" <https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html</a>
