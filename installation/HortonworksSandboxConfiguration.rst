@@ -19,7 +19,7 @@ to change the CPU and and RAM settings:
 
 -  RAM - 10GB
 
-http://hortonworks.com/products/sandbox/
+|Hortonworks_Sandbox_Link|
 
 Add Virtual Box Shared Folder
 =============================
@@ -99,3 +99,7 @@ Startup the Sandbox
 ..
 
 After setting the password the Ambari server will be started.
+
+.. |Hortonworks_Sandbox_Link| raw:: html
+
+    <a href="http://hortonworks.com/products/sandbox/" target="_blank">Hortonworks_Sandbox</a>
