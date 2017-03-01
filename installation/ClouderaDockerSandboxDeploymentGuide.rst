@@ -301,4 +301,4 @@ Starting up an Existing EC2 instance and Cloudera Docker Container
 
 .. |configuring_the_EC2_Link| raw:: html
 
-    <a href="https://coreos.com/os/docs/latest/booting-on-ec2.html" target="_blank">configuring_the_EC2_Link</a>
+    <a href="https://coreos.com/os/docs/latest/booting-on-ec2.html" target="_blank">configuring_the_EC2</a>
