@@ -971,6 +971,6 @@ Kylo:
 .. |image45| image:: ../media/operations-guide/image45.jpg
    :width: 6.41353in
    :height: 3.01020in
-.. |NiFiDocs_link| raw:: html
+.. |NiFiDoc_link| raw:: html
 
       <a href="https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html" target="_blank" <https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html</a>
