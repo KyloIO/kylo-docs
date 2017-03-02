@@ -10,8 +10,8 @@ Kylo is a feature-rich Data Lake platform built on Apache Hadoop and Spark.  Kyl
 preparation, and data discovery.
 
 Kylo's web application layer offers features oriented to business users, including data analysts, data stewards, data scientists, and IT operations personnel.
-Kylo integrates best practices around metadata capture, security, and data quality. Furthermore Kylo provides a flexible data processing framework
-(leveraging Apache NiFi) that allows Information Technology to build batch or streaming pipeline templates, then enable self-service features without compromising governance requirements.
+Kylo integrates best practices around metadata capture, security, and data quality. Furthermore, Kylo provides a flexible data processing framework
+(leveraging Apache NiFi) for building batch or streaming pipeline templates, and for enabling self-service features without compromising governance requirements.
 
 What are Kylo's origins?
 ~~~~~~~~~~~~~~~~~~~~~~~~
