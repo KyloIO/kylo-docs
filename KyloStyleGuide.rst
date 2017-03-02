@@ -134,19 +134,19 @@ changes the output, as shown in the following examples:
 .. |image0| image:: media/StyleGuideImages/Titles.png
    :width: 2.75000in
    :height: 0.73913in
-.. |image1| image:: media/StyleGuideImages/Titles RTD.png
+.. |image1| image:: media/StyleGuideImages/TitlesRTD.png
    :width: 4.50000in
    :height: 0.74010in
 .. |image2| image:: media/StyleGuideImages/Heading1.png
    :width: 2.75000in
    :height: 0.49438in
-.. |image3| image:: media/StyleGuideImages/Heading1 RTD.png
+.. |image3| image:: media/StyleGuideImages/Heading1RTD.png
    :width: 4.50000in
    :height: 0.64628in
 .. |image4| image:: media/StyleGuideImages/Heading2.png
    :width: 2.75000in
    :height: 0.71765in
-.. |image5| image:: media/StyleGuideImages/Heading2 RTD.png
+.. |image5| image:: media/StyleGuideImages/Heading2RTD.png
    :width: 4.25000in
    :height: 0.80625in
 .. |image6| image:: media/StyleGuideImages/Heading3.png
@@ -158,13 +158,13 @@ changes the output, as shown in the following examples:
 .. |image8| image:: media/StyleGuideImages/DocRef.png
    :width: 5.81944in
    :height: 0.43056in
-.. |image9| image:: media/StyleGuideImages/DocRef RTD.png
+.. |image9| image:: media/StyleGuideImages/DocRefRTD.png
    :width: 6.00000in
    :height: 0.73472in
 .. |image10| image:: media/StyleGuideImages/ExternalRef.png
    :width: 2.04167in
    :height: 0.40278in
-.. |image11| image:: media/StyleGuideImages/ExternalRef RTD.png
+.. |image11| image:: media/StyleGuideImages/ExternalRefRTD.png
    :width: 6.00000in
    :height: 0.62083in
 .. |image12| image:: media/StyleGuideImages/externalrefspec.png
@@ -173,24 +173,24 @@ changes the output, as shown in the following examples:
 .. |image13| image:: media/StyleGuideImages/Bulleted.png
    :width: 6.00000in
    :height: 2.19514in
-.. |image14| image:: media/StyleGuideImages/Bulleted RTD.png
+.. |image14| image:: media/StyleGuideImages/BulletedRTD.png
    :width: 6.00000in
    :height: 1.56806in
 .. |image15| image:: media/StyleGuideImages/Note.png
    :width: 6.00000in
    :height: 0.42569in
-.. |image16| image:: media/StyleGuideImages/Note RTD.png
+.. |image16| image:: media/StyleGuideImages/NoteRTD.png
    :width: 6.00000in
    :height: 0.82708in
-.. |image17| image:: media/StyleGuideImages/Error RTD.png
+.. |image17| image:: media/StyleGuideImages/ErrorRTD.png
    :width: 6.00000in
    :height: 0.81528in
-.. |image18| image:: media/StyleGuideImages/Important RTD.png
+.. |image18| image:: media/StyleGuideImages/ImportantRTD.png
    :width: 6.00000in
    :height: 1.05833in
-.. |image19| image:: media/StyleGuideImages/Tip RTD.png
+.. |image19| image:: media/StyleGuideImages/TipRTD.png
    :width: 6.00000in
    :height: 1.00556in
-.. |image20| image:: media/StyleGuideImages/Warning RTD.png
+.. |image20| image:: media/StyleGuideImages/WarningRTD.png
    :width: 6.00000in
    :height: 1.04722in
