@@ -161,7 +161,7 @@ Some core features:
 
 -  Portability - can run on sql and nosql databases
 
-    See: `*http://modeshape.jboss.org/* <http://modeshape.jboss.org/>`__
+    See: |Modeshape_Link|
 
 How extensible is Kylo metadata model?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -407,3 +407,7 @@ Kylo's RDBMS ingest support requires configuring a type-specific JDBC driver. It
 .. |Academy_Link| raw:: html
 
     <a href="https://www.thinkbiganalytics.com/apache-nifi-kylo-introduction.html" target="_blank">Academy</a>
+
+.. |Modeshape| raw:: html
+
+    <a href="http://modeshape.jboss.org" target="blank">Modeshape</a>
