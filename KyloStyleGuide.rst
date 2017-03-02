@@ -3,8 +3,6 @@ Kylo rST Style Guide
 ====================
 
 
-
-
 Titles
 ======
 
@@ -131,6 +129,23 @@ changes the output, as shown in the following examples:
 
 |image20|
 
+Code-Block
+==========
+
+Various code-block directives produce different results, highlighting words in ways appropriate to how the code-block is assigned (e.g., shell, properties, javascript, html)
+
+Here is a code-block for standard coding, and the way it displays on the Kylo RTD site:
+
+|image21|
+
+|image22|
+
+And here is code-block for displaying code properties:
+
+|image23|
+
+|image24|
+
 .. |image0| image:: media/StyleGuideImages/Titles.png
    :width: 2.75000in
    :height: 0.73913in
@@ -194,3 +209,15 @@ changes the output, as shown in the following examples:
 .. |image20| image:: media/StyleGuideImages/WarningRTD.png
    :width: 6.00000in
    :height: 1.04722in
+.. |image21| image:: media/StyleGuideImages/Code_shell.png
+      :width: 6.00000in
+      :height: 1.04722in
+.. |image22| image:: media/StyleGuideImages/shell.png
+         :width: 6.00000in
+         :height: 1.04722in
+.. |image23| image:: media/StyleGuideImages/Code_properties.png
+            :width: 6.00000in
+            :height: 1.04722in
+.. |image24| image:: media/StyleGuideImages/properties.png
+               :width: 6.00000in
+               :height: 1.04722in
