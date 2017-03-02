@@ -408,6 +408,6 @@ Kylo's RDBMS ingest support requires configuring a type-specific JDBC driver. It
 
     <a href="https://www.thinkbiganalytics.com/apache-nifi-kylo-introduction.html" target="_blank">Academy</a>
 
-.. |Modeshape| raw:: html
+.. |Modeshape_Link| raw:: html
 
     <a href="http://modeshape.jboss.org" target="blank">Modeshape</a>
