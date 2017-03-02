@@ -412,6 +412,6 @@ Kylo's RDBMS ingest support requires configuring a type-specific JDBC driver. It
 
     <a href="http://modeshape.jboss.org" target="blank">Modeshape</a>
 
-.. |Think_Big_Analytics_Link|
+.. |Think_Big_Analytics_Link| raw:: html
 
    <a href="<https://www.thinkbiganalytics.com>" target="blank">Think Big Analytics</a>
