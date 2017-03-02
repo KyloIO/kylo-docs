@@ -155,19 +155,19 @@ changes the output, as shown in the following examples:
 .. |image7| image:: media/StyleGuideImages/Heading4.png
    :width: 3.12500in
    :height: 0.78348in
-.. |image8| image:: media/StyleGuideImages/DocRef.png
+.. |image8| image:: media/StyleGuideImages/Docref.png
    :width: 5.81944in
    :height: 0.43056in
-.. |image9| image:: media/StyleGuideImages/DocRefRTD.png
+.. |image9| image:: media/StyleGuideImages/DocrefRTD.png
    :width: 6.00000in
    :height: 0.73472in
-.. |image10| image:: media/StyleGuideImages/ExternalRef.png
+.. |image10| image:: media/StyleGuideImages/Externalref.png
    :width: 2.04167in
    :height: 0.40278in
-.. |image11| image:: media/StyleGuideImages/ExternalRefRTD.png
+.. |image11| image:: media/StyleGuideImages/ExternalrefRTD.png
    :width: 6.00000in
    :height: 0.62083in
-.. |image12| image:: media/StyleGuideImages/externalrefspec.png
+.. |image12| image:: media/StyleGuideImages/Externalrefspec.png
    :width: 6.00000in
    :height: 0.88056in
 .. |image13| image:: media/StyleGuideImages/Bulleted.png
