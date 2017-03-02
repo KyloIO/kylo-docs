@@ -218,6 +218,6 @@ And here is code-block for displaying code properties:
 .. |image23| image:: media/StyleGuideImages/Code_properties.png
             :width: 6.00000in
             :height: 1.04722in
-.. |image24| image:: media/StyleGuideImages/properties.png
+.. |image24| image:: media/StyleGuideImages/propertiesshell.png
                :width: 6.00000in
                :height: 1.04722in
