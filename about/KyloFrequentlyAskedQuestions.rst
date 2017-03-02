@@ -414,4 +414,4 @@ Kylo's RDBMS ingest support requires configuring a type-specific JDBC driver. It
 
 .. |Think_Big_Analytics_Link| raw:: html
 
-   <a href="<https://www.thinkbiganalytics.com" target="_blank">Think Big Analytics</a>
+   <a href="https://www.thinkbiganalytics.com" target="_blank">Think Big Analytics</a>
