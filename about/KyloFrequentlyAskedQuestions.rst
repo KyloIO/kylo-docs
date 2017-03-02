@@ -57,8 +57,8 @@ Enterprise Support
 Is enterprise support available for Kylo?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Yes, |Think_Big_Link| (a Teradata company) offers support subscription at the standard and enterprise level. Please visit the Think Big Analytics
-`website <https://www.thinkbiganalytics.com>`_ for more information.
+Yes, |Think_Big_Link| (a Teradata company) offers support subscription at the standard and enterprise level. Please visit the |Think_Big_Analytics_Link|
+website for more information.
 
 Are professional services and consulting available for Kylo?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -411,3 +411,7 @@ Kylo's RDBMS ingest support requires configuring a type-specific JDBC driver. It
 .. |Modeshape_Link| raw:: html
 
     <a href="http://modeshape.jboss.org" target="blank">Modeshape</a>
+
+.. |Think_Big_Analytics_Link|
+
+   <a href="<https://www.thinkbiganalytics.com>" target="blank">Think Big Analytics</a>
