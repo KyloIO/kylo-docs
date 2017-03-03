@@ -41,9 +41,9 @@ with legal departments of these companies to release names in upcoming press rel
 What skills are required for a Kylo-based Data Lake implementation?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Many organizations have found implementing big data solutions on the Hadoop stack is a complex endeavor.  Big data technologies are heavily oriented to software engineering and system
-administrators. Organizations with deep engineering capabilities still struggle to staff teams with big data implementation experience.  This leads to multi-year implementation efforts that
-unfortunately can lead to data swamps and fail to produce business value.   Furthermore, the business-user is often overlooked in features available for in-house data lake solutions.
+Many organizations have found implementing big data solutions on the Hadoop stack to be a complex endeavor.  Big data technologies are heavily oriented to software engineering and system
+administrators, and even organizations with deep engineering capabilities struggle to staff teams with big data implementation experience.  This leads to multi-year implementation efforts that
+unfortunately can lead to data swamps and fail to produce business value. Furthermore, the business-user is often overlooked in features available for in-house data lake solutions.
 
 Kylo attempts to change all this by providing out-of-the-box features and patterns critical to enterprise-class Data Lake.  Kylo provides IT a framework for delivering
 powerful pipelines as templates and enable user self-service to create feeds from these data processing patterns.  Kylo provides essential Operations capabilities around monitoring feeds,
