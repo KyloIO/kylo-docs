@@ -6,7 +6,7 @@ About Kylo
 
 What is Kylo?
 ~~~~~~~~~~~~~
-Kylo is a feature-rich Data Lake platform built on Apache Hadoop and Spark.  Kylo provides a turn-key, business-friendly Data Lake solution enabling self-service data ingest, data
+Kylo is a feature-rich data lake platform built on Apache Hadoop and Spark.  Kylo provides a turn-key, business-friendly data lake solution enabling self-service data ingest, data
 preparation, and data discovery.
 
 Kylo's web application layer offers features oriented to business users, including data analysts, data stewards, data scientists, and IT operations personnel.
@@ -45,7 +45,7 @@ Many organizations have found implementing big data solutions on the Hadoop stac
 administrators, and even organizations with deep engineering capabilities struggle to staff teams with big data implementation experience.  This leads to multi-year implementation efforts that
 unfortunately can lead to data swamps and fail to produce business value. Furthermore, the business-user is often overlooked in features available for in-house data lake solutions.
 
-Kylo attempts to change all this by providing out-of-the-box features and patterns critical to enterprise-class Data Lake.  Kylo provides IT a framework for delivering
+Kylo attempts to change all this by providing out-of-the-box features and patterns critical to enterprise-class data lake.  Kylo provides IT a framework for delivering
 powerful pipelines as templates and enable user self-service to create feeds from these data processing patterns.  Kylo provides essential Operations capabilities around monitoring feeds,
 troubleshooting, and measuring service levels.  Designed for extensibility,  software engineers will find Kylo's APIs and plug-in architecture flexible and easy to use.
 
@@ -234,7 +234,7 @@ Is Kylo's operations dashboard similar to Cloudera Manager and Apache Ambari?
 Kylo's dashboard is feed-health centric. Health of a feed is determined by job completion status, service level agreement violations, and rules that measure data quality.
 Kylo provides the ability to monitor feed performance and troubleshoot issues with feed job failures.
 
-Kylo monitors services in the cluster and external dependencies to provide a holistic view of services your Data Lake depends on.  Kylo provides a simple plugin for adding
+Kylo monitors services in the cluster and external dependencies to provide a holistic view of services your data lake depends on.  Kylo provides a simple plugin for adding
 enterprise services to monitor.  Kylo includes plugins for pulling service status from Ambari and Cloudera Navigator. This is useful for correlating service issues with feed health problems.
 
 Is Kylo's metadata server similar to Cloudera Navigator, Apache Atlas?
@@ -268,10 +268,10 @@ visual data transformations using Spark as an engine.
 What is Kylo's value-add over plain Apache NiFi?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-NiFi acts as Kylo's pipeline orchestration engine, but NiFi itself does not provide all the tooling required for a Data Lake solution. Some of Kylo's distinct benefits over vanilla NiFi and Hadoop:
+NiFi acts as Kylo's pipeline orchestration engine, but NiFi itself does not provide all the tooling required for a data lake solution. Some of Kylo's distinct benefits over vanilla NiFi and Hadoop:
 
 -  Write-once, use many times. NiFi is a powerful IT tool for designing
-   pipelines but most Data Lake feeds utilize just a small number of
+   pipelines but most data lake feeds utilize just a small number of
    unique flows or “patterns". Kylo allows IT the flexibility to
    design then register a NiFi template as a data processing model for feeds. This enables
    non-technical business users to configure dozens, or even hundreds of
@@ -287,17 +287,17 @@ NiFi acts as Kylo's pipeline orchestration engine, but NiFi itself does not prov
    services, Service Level Agreements, data quality metrics reporting,
    and alerts.
 
--  Web modules offer key Data Lake features such as metadata search,
+-  Web modules offer key data lake features such as metadata search,
    data discovery, data wrangling, data browse, and event-based feed
    execution (to chain together flows).
 
 -  Rich metadata model with integrated governance and best practices
 
--  Kylo adds a set of Data Lake specific NiFi extensions around Data Profile,
+-  Kylo adds a set of data lake specific NiFi extensions around Data Profile,
    Data Cleanse, Data Validate, Merge/Dedupe, High-water. In addition, general Spark and Hive
    processors not yet available with vanilla NiFi
 
--  Pre-built  templates that implement Data Lake best practices: Data Ingest, ILM, and Data Processing
+-  Pre-built  templates that implement data lake best practices: Data Ingest, ILM, and Data Processing
 
 Scheduler
 ---------
