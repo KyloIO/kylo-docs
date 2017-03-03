@@ -112,7 +112,7 @@ There are two possible solutions:
       the file, i.e., tabs or commas which might cause it to get split.
 
    c. Once ingested, create a data transform feed to wrangle the data
-      using the transform functions.
+      using the transform functionsHi.
 
    d. Here's an example of converting the weird ADSB format into JSON
       then converting into fields:
@@ -430,19 +430,19 @@ To fix the issue, you can take these steps:
 
 See: https://community.hortonworks.com/questions/44637/spark-sql-fails-on-empty-orc-table-hdp-242.html
 
-High Performance NiFi setup
+High Performance NiFi Setup
 ===========================
 
 Problem
 -------
 
 The NiFi team published an article on how to extract the most
-performance from Apache NiFi
+performance from Apache NiFi.
 
 Solution
 --------
 
-See https://community.hortonworks.com/articles/7882/hdfnifi-best-practices-for-setting-up-a-high-perfo.html
+See |How to Setup a High Performance NiFi_Link|
 
 RPM install fails with 'cpio: read' error
 =========================================
@@ -753,3 +753,7 @@ The default location of MySQL is /var/lib/mysql. MySQL will fill up the root par
       #. path.data: /data/elasticsearch
 
       #. path.logs: /data/log/elasticsearch
+
+.. |How to Setup a High Performance NiFi| raw:: html
+
+   <a href="https://community.hortonworks.com/articles/7882/hdfnifi-best-practices-for-setting-up-a-high-perfo.html" target="blank">How to Setup a High Performance NiFi</a>
