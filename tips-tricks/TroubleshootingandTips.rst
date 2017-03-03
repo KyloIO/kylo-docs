@@ -106,13 +106,13 @@ There are two possible solutions:
    manipulate the fields into columns:
 
    a. Create an ingest field, manually define the schema as a single
-      field of type string. You can just call that field "data"
+      field of type string. You can just call that field "data".
 
    b. Make sure the format specification doesn't conflict with data in
-      the file, i.e. tabs or commas which might cause it to get split
+      the file, i.e., tabs or commas which might cause it to get split.
 
    c. Once ingested, create a data transform feed to wrangle the data
-      using the transform functions
+      using the transform functions.
 
    d. Here's an example of converting the weird ADSB format into JSON
       then converting into fields:
