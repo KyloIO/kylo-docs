@@ -754,6 +754,6 @@ The default location of MySQL is /var/lib/mysql. MySQL will fill up the root par
 
       #. path.logs: /data/log/elasticsearch
 
-.. |How to Setup a High Performance NiFi| raw:: html
+.. |How to Setup a High Performance NiFi_Link| raw:: html
 
    <a href="https://community.hortonworks.com/articles/7882/hdfnifi-best-practices-for-setting-up-a-high-perfo.html" target="blank">How to Setup a High Performance NiFi</a>
