@@ -45,9 +45,9 @@ Many organizations have found implementing big data solutions on the Hadoop stac
 administrators, and even organizations with deep engineering capabilities struggle to staff teams with big data implementation experience.  This leads to multi-year implementation efforts that
 unfortunately can lead to data swamps and fail to produce business value. Furthermore, the business-user is often overlooked in features available for in-house data lake solutions.
 
-Kylo attempts to change all this by providing out-of-the-box features and patterns critical to enterprise-class data lake.  Kylo provides IT a framework for delivering
-powerful pipelines as templates and enable user self-service to create feeds from these data processing patterns.  Kylo provides essential Operations capabilities around monitoring feeds,
-troubleshooting, and measuring service levels.  Designed for extensibility,  software engineers will find Kylo's APIs and plug-in architecture flexible and easy to use.
+Kylo attempts to change all this by providing out-of-the-box features and patterns critical to an enterprise-class data lake.  Kylo provides an IT framework for delivering
+powerful pipelines as templates and enabling user self-service to create feeds from these data processing patterns.  Kylo provides essential Operations capabilities around monitoring feeds,
+troubleshooting, and measuring service levels.  Designed for extensibility, software engineers will find Kylo's APIs and plug-in architecture flexible and easy to use.
 
 
 
