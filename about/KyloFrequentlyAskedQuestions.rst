@@ -346,7 +346,7 @@ What authentication methods are available?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Kylo uses Spring Security. Using pluggable login-modules, it can integrate with Active Directory, Kerberos, LDAP,
-or most any authentication provider. See :doc: `../developer-guides/KyloDeveloperGuide`.
+or most any authentication provider. See :doc:`../developer-guides/KyloDeveloperGuide`.
 
 What security features does Kylo support?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
