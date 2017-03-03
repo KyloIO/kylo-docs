@@ -146,6 +146,12 @@ And here is code-block for displaying code properties:
 
 |image24|
 
+And here is code-block for displaying inline code, as shown below:
+
+|image25|
+
+|image26|
+
 .. |image0| image:: media/StyleGuideImages/Titles.png
    :width: 2.75000in
    :height: 0.73913in
@@ -210,14 +216,20 @@ And here is code-block for displaying code properties:
    :width: 6.00000in
    :height: 1.04722in
 .. |image21| image:: media/StyleGuideImages/Code_shell.png
-      :width: 6.00000in
-      :height: 1.04722in
+   :width: 6.00000in
+   :height: 1.04722in
 .. |image22| image:: media/StyleGuideImages/shell.png
-         :width: 6.00000in
-         :height: 1.04722in
+   :width: 6.00000in
+   :height: 1.04722in
 .. |image23| image:: media/StyleGuideImages/Code_properties.png
-            :width: 6.00000in
-            :height: 1.04722in
+   :width: 6.00000in
+   :height: 1.04722in
 .. |image24| image:: media/StyleGuideImages/propertiesshell.png
-               :width: 6.00000in
-               :height: 1.04722in
+   :width: 6.00000in
+   :height: 1.04722in
+.. |image25| image:: media/StyleGuideImages/inlinecode.png
+   :width: 6.00000in
+   :height: 1.04722in
+.. |image26| image:: media/StyleGuideImages/inlinecodeRTD.png
+   :width: 6.00000in
+   :height: 1.04722in
