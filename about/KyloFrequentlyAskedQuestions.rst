@@ -330,7 +330,7 @@ Does Kylo support chaining feeds? One data feed consumed by another data feed?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Kylo supports event-based triggering of feeds based on preconditions or rules. One can define rules in the UI that determine when to run a
-feed such as “run when data has been processed by feed a and feed b and
+feed, such as “run when data has been processed by feed a and feed b and
 wait up to an hour before running anyway”. We support simple rules up to
 very complicated rules requiring use of our API.
 
@@ -340,13 +340,13 @@ Security
 Does Kylo support roles?
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Kylo supports the definition of roles (or groups) and the specific permissions a user with that role can perform down to the function level.
+Kylo supports the definition of roles (or groups), and the specific permissions a user with that role can perform, down to the function level.
 
 What authentication methods are available?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Kylo uses Spring Security. Using pluggable login-modules. It can integrate with Active Directory, Kerberos, LDAP,
-or most any authentication provider. See developer documentation.
+Kylo uses Spring Security. Using pluggable login-modules, it can integrate with Active Directory, Kerberos, LDAP,
+or most any authentication provider. See :doc: `../developer-guides/KyloDeveloperGuide`.
 
 What security features does Kylo support?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
