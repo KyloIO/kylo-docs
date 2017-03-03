@@ -206,8 +206,8 @@ Pipeline templates developed with Apache NiFi and registered with Kylo can be de
 and then imported into Kylo in a UAT and production environment after testing. Once the NiFi template is registered with Kylo, a business
 user can configure new feeds through Kylo's step-guided user interface.
 
-Existing Kylo feeds can be exported from one environment into a zip file which contains a combination of the underlying template and metadata. The
-package can then be imported in the production NiFi environment by an administrator.
+Existing Kylo feeds can be exported from one environment into a zip file that contains a combination of the underlying template and metadata. The
+package can then be imported to the production NiFi environment by an administrator.
 
 Does deployment of new templates or feeds require restart?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -217,7 +217,7 @@ No restart is required to deploy new pipeline templates or feeds.
 Can new feeds be created in automated fashion instead of manually through the UI?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Yes via Kylo's REST API. See Swagger documentation (above).
+Yes, via Kylo's REST API. See the section on Swagger documentation (above).
 
 Tool Comparisons
 ----------------
@@ -226,7 +226,7 @@ Is Kylo similar to any commercial products?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Kylo has similar capabilities to Podium and Zaloni Bedrock. Kylo is an open-source option. One differentiator is Kylo's extensibility. Kylo provides a plug-in architecture with a variety of
-extensions available to developers and use of NiFi templates provides incredible flexibility for batch and streaming use cases.
+extensions available to developers, and the use of NiFi templates provides incredible flexibility for batch and streaming use cases.
 
 Is Kylo's operations dashboard similar to Cloudera Manager and Apache Ambari?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -242,12 +242,12 @@ Is Kylo's metadata server similar to Cloudera Navigator, Apache Atlas?
 
 In some ways. Kylo is not trying to compete with these and could certainly
 imagine integration with these tools. Kylo includes its own extensible
-metadata server. Navigator is a governance tool that comes as part the
+metadata server. Navigator is a governance tool that comes as part of the
 Cloudera Enterprise license. Among other features, it provides data
 lineage of your Hive SQL queries. We think this is useful but only
 provides part of the picture. Kylo's metadata framework is really the foundation of
 an entire data lake solution. It captures both business
-and operational metadata. It tracks lineage at the feed-level. Kylo provides IT Operations with a useful dashboard, ability to
+and operational metadata. It tracks lineage at the feed-level. Kylo provides IT Operations with a useful dashboard, providing the ability to
 track/enforce Service Level Agreements, and performance metrics.  Kylo's REST APIs can be used to do metadata exchange with tools like Atlas and Navigator.
 
 How does Kylo compare to traditional ETL tools like Talend, Informatica, Data Stage?
