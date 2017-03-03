@@ -180,7 +180,7 @@ Business metadata fields can be defined by the user and will appear in the UI du
 What does the REST API look like?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Please access the REST documentation through a running Kylo instance  http://kylo-host:8400/api-docs/index.html
+Please access the REST documentation through a running Kylo instance: **http://kylo-host:8400/api-docs/index.html**
 
 Does the Kylo application provide a visual lineage?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
