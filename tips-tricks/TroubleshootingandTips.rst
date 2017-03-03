@@ -549,8 +549,7 @@ file:
 
 .. 
 
-Additional information is available from the Apache Spark project:
-https://spark.apache.org/docs/latest/hadoop-provided.html
+Additional information is available from the |Apache Spark project_Link|.
 
 Dealing with XML files
 ======================
@@ -668,7 +667,7 @@ Notice the double escape required!
 .. |image1| image:: ../media/kylo-troubleshooting/2_executesparkjob.png
 
 Configuration on a Node with Small Root Filesystem
-========================================================================
+==================================================
 
 Problem
 -------
@@ -761,3 +760,7 @@ The default location of MySQL is /var/lib/mysql. MySQL will fill up the root par
 .. |Spark SQL Fails on Empty ORC Table HDP 242_Link| raw:: html
 
    <a href="https://community.hortonworks.com/questions/44637/spark-sql-fails-on-empty-orc-table-hdp-242.html" target="blank">Spark SQL Fails on Empty ORC Table HDP 242</a>
+
+.. |Apache Spark project_Link| raw:: html
+
+   <a href="https://spark.apache.org/docs/latest/hadoop-provided.html" target="blank">Apache Spark project</a>
