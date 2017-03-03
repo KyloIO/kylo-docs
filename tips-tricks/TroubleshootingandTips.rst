@@ -428,7 +428,7 @@ To fix the issue, you can take these steps:
     spark.sql.hive.convertMetastoreOrc false
     spark.sql.hive.convertMetastoreParquet false
 
-See: https://community.hortonworks.com/questions/44637/spark-sql-fails-on-empty-orc-table-hdp-242.html
+See |Spark SQL Fails on Empty ORC Table HDP 242_Link|
 
 High Performance NiFi Setup
 ===========================
@@ -757,3 +757,7 @@ The default location of MySQL is /var/lib/mysql. MySQL will fill up the root par
 .. |How to Setup a High Performance NiFi_Link| raw:: html
 
    <a href="https://community.hortonworks.com/articles/7882/hdfnifi-best-practices-for-setting-up-a-high-perfo.html" target="blank">How to Setup a High Performance NiFi</a>
+
+.. |Spark SQL Fails on Empty ORC Table HDP 242_Link| raw:: html
+
+   <a href="https://community.hortonworks.com/questions/44637/spark-sql-fails-on-empty-orc-table-hdp-242.html" target="blank">Spark SQL Fails on Empty ORC Table HDP 242</a>
