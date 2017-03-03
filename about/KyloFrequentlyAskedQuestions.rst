@@ -73,8 +73,8 @@ Yes, |Think_Big_Link| (a Teradata company) offers |Academy_Link| training on Kyl
 
 Are commercial managed services available for Kylo?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Yes, |Think_Big_Link| (a Teradata company) can provide managed operations for your Hadoop cluster including Kylo whether it is hosted on-premise or in the cloud. The
-managed services team are trained specifically on Kylo and operations experience on major Hadoop distributions.
+Yes, |Think_Big_Link| (a Teradata company) can provide managed operations for your Hadoop cluster, including Kylo, whether it is hosted on-premise or in the cloud. The
+managed services team is trained specifically on Kylo and they have operations experience with major Hadoop distributions.
 
 
 Architecture
