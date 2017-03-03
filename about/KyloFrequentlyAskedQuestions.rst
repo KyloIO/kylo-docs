@@ -6,7 +6,7 @@ About Kylo
 
 What is Kylo?
 ~~~~~~~~~~~~~
-Kylo is a feature-rich data lake platform built on Apache Hadoop and Spark.  Kylo provides a turn-key, business-friendly data lake solution enabling self-service data ingest, data
+Kylo is a feature-rich data lake platform built on Apache Hadoop and Spark.  Kylo provides a turn-key, business-friendly data lake solution, enabling self-service data ingest, data
 preparation, and data discovery.
 
 Kylo's web application layer offers features oriented to business users, including data analysts, data stewards, data scientists, and IT operations personnel.
