@@ -192,7 +192,7 @@ What type of process metadata do we capture?
 
 Kylo captures job and step level information on the status of the process,
 with some information on the number of records loaded, how long it took,
-when it was started and finished, and errors or warnings generated. We
+when it was started and finished, and what errors or warnings may have been generated. We
 capture operational metadata at each step, which can include record
 counts, dependent upon the type of step.
 
