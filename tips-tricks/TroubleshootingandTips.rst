@@ -648,8 +648,6 @@ creation, you can set the SerDe and properties:
 
 3. See the Apache wiki |CSV+Serde for Configuring CSV Options_Link|.
 
-https://cwiki.apache.org/confluence/display/Hive/CSV+Serde 
-
 4. Place text as follows in the field:
 
 .. code-block:: none
@@ -769,5 +767,3 @@ The default location of MySQL is /var/lib/mysql. MySQL will fill up the root par
 .. |CSV+Serde for Configuring CSV Options_Link| raw:: html
 
    <a href="https://cwiki.apache.org/confluence/display/Hive/CSV+Serde" target="blank">CSV+Serde for Configuring CSV Options</a>
-
-   
