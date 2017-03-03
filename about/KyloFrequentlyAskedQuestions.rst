@@ -62,9 +62,9 @@ website for more information.
 
 Are professional services and consulting available for Kylo?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-|Think_Big_Link| (a Teradata company) provides global consulting services with expertise implementing Kylo-based solutions. It is certainly possible to install and
-learn Kylo using internal resources. Think Big's Data Lake Foundation offering provides a quick start to installing and delivering on your first set of data lake use cases.  Think Big's service
-includes hands-on training that ensures your business is prepared to assume operations.
+|Think_Big_Link| (a Teradata company) provides global consulting services with expertise in implementing Kylo-based solutions. It is certainly possible to install and
+learn Kylo using internal resources. Think Big's Data Lake Foundation provides a quick start to installing and delivering on your first set of data lake use cases.  Think Big's service
+includes hands-on training to ensure that your business is prepared to assume operations.
 
 Is enterprise training available for Kylo?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
