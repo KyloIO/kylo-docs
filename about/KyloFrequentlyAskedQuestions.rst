@@ -351,8 +351,8 @@ or most any authentication provider. See :doc:`../developer-guides/KyloDeveloper
 What security features does Kylo support?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Kylo provides plugins that integrate with Apache Ranger or Apache Sentry depending on the distribution you are running. These can be used to configure feed-based security and impersonating users
-properly to enforce user permissions.  Kylo fully supports Kerberized clusters and built-in features such as HDFS encryption.
+Kylo provides plugins that integrate with Apache Ranger or Apache Sentry, depending on the distribution that you are running. These can be used to configure feed-based security and impersonating users
+properly to enforce user permissions.  Kylo fully supports Kerberized clusters and built-in features, such as HDFS encryption.
 
 
 Data Ingest
@@ -361,10 +361,10 @@ Data Ingest
 What is Kylo's standard batch ingest workflow?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Kylo includes a sample pipeline template that implements many best practices around data ingest mostly utilizing Spark.  Kylo makes it very simple for a business user to configure ingest of new source
+Kylo includes a sample pipeline template that implements many best practices around data ingest, mostly utilizing Spark.  Kylo makes it very simple for a business user to configure ingest of new source
 files and RDMBS tables into Hive.  Data can be read from a filesystem attached to the edge node, or directly using Kylo's sqoop processor into Hadoop.  Original data is archived into a distinct
 location.
-Small files are optionally merged and headers stripped if needed.  Data is cleansed, standardized, and validated based on user-defined policies.  Invalid records are binned into a
+Small files are optionally merged and headers stripped, if needed.  Data is cleansed, standardized, and validated based on user-defined policies.  Invalid records are binned into a
 separate table for later inspection. Valid records are inserted into a final Hive table with options such as (append, snapshot, merge with dedupe, upsert, etc). Target format can differ from the
 raw source, contain custom partitions, and group-based security. Finally each batch of valid data is automatically profiled.
 
@@ -376,7 +376,7 @@ Yes, either types of pipelines can configured with Kylo.  Kylo tracks performanc
 Which raw formats does Kylo support?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Kylo has a pluggable architecture for adding support for new types.  Currently Kylo supports delimited-text formats (csv, tab, pipe, etc) and all Hadoop formats such as ORC, Parquet, RCFile, AVRO,
+Kylo has a pluggable architecture for adding support for new types.  Currently Kylo supports delimited-text formats (for example: csv, tab, pipe) and all Hadoop formats, such as ORC, Parquet, RCFile, AVRO,
 and JSON.
 
 
