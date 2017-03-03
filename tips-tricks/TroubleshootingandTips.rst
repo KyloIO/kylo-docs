@@ -646,8 +646,9 @@ creation, you can set the SerDe and properties:
 2. When at the schema tab look for the field (near bottom) specify the
    source format.
 
-3. See https://cwiki.apache.org/confluence/display/Hive/CSV+Serde for
-   configuring CSV options.
+3. See the Apache wiki |CSV+Serde for Configuring CSV Options_Link|.
+
+https://cwiki.apache.org/confluence/display/Hive/CSV+Serde 
 
 4. Place text as follows in the field:
 
@@ -764,3 +765,9 @@ The default location of MySQL is /var/lib/mysql. MySQL will fill up the root par
 .. |Apache Spark project_Link| raw:: html
 
    <a href="https://spark.apache.org/docs/latest/hadoop-provided.html" target="blank">Apache Spark project</a>
+
+.. |CSV+Serde for Configuring CSV Options_Link| raw:: html
+
+   <a href="https://cwiki.apache.org/confluence/display/Hive/CSV+Serde" target="blank">CSV+Serde for Configuring CSV Options</a>
+
+   
