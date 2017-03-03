@@ -268,12 +268,12 @@ visual data transformations using Spark as an engine.
 What is Kylo's value-add over plain Apache NiFi?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-NiFi acts as Kylo's pipeline orchestration engine, but NiFi itself does not provide all the tooling required for a data lake solution. Some of Kylo's distinct benefits over vanilla NiFi and Hadoop:
+NiFi acts as Kylo's pipeline orchestration engine, but NiFi itself does not provide all of the tooling required for a data lake solution. Some of Kylo's distinct benefits over vanilla NiFi and Hadoop:
 
 -  Write-once, use many times. NiFi is a powerful IT tool for designing
-   pipelines but most data lake feeds utilize just a small number of
+   pipelines, but most data lake feeds utilize just a small number of
    unique flows or “patterns". Kylo allows IT the flexibility to
-   design then register a NiFi template as a data processing model for feeds. This enables
+   design and register a NiFi template as a data processing model for feeds. This enables
    non-technical business users to configure dozens, or even hundreds of
    new feeds through Kylo's simple, guided stepper-UI. In other words, our
    UI allows users to setup feeds without having to code them in
@@ -291,13 +291,13 @@ NiFi acts as Kylo's pipeline orchestration engine, but NiFi itself does not prov
    data discovery, data wrangling, data browse, and event-based feed
    execution (to chain together flows).
 
--  Rich metadata model with integrated governance and best practices
+-  Rich metadata model with integrated governance and best practices.
 
 -  Kylo adds a set of data lake specific NiFi extensions around Data Profile,
    Data Cleanse, Data Validate, Merge/Dedupe, High-water. In addition, general Spark and Hive
-   processors not yet available with vanilla NiFi
+   processors not yet available with vanilla NiFi.
 
--  Pre-built  templates that implement data lake best practices: Data Ingest, ILM, and Data Processing
+-  Pre-built  templates that implement data lake best practices: Data Ingest, ILM, and Data Processing.
 
 Scheduler
 ---------
@@ -317,8 +317,8 @@ Kylo supports cron-based scheduling, but also timer-based, or event-based using 
 What’s the difference between “timer” and “cron” schedule strategies?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Timer is fixed interval, “every 5 min or 10 seconds”. Cron can be
-configured to do that as well but can handle more complex cases like
+Timer is fixed interval, “every 5 minutes or 10 seconds”. Cron can be
+configured to do that as well, but can handle more complex cases like
 “every tues at 8AM and 4PM”.
 
 Does Kylo support 3rd party schedulers
