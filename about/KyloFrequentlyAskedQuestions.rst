@@ -255,14 +255,14 @@ How does Kylo compare to traditional ETL tools like Talend, Informatica, Data St
 
 Kylo uses Apache NiFi to orchestrate pipelines.  NiFi can connect to many different sources and perform lightweight transformations on the edge using 180+ built-in processors.  Generally workload
 is delegated to the cluster where the bulk of processing power is available.  Kylo's NiFi processor extensions can effectively invoke Spark, Sqoop, Hive, and even invoke traditional ETL
-tools, e.g. wrap 3rd party ETL jobs.
+tools (for example: wrap 3rd party ETL jobs).
 
 Many ETL (extract-transform-load) tools are focused on SQL transformations using their own proprietary technology. Data warehouse style transformations tend to be focused on issues such as loading
-normalized relational schemas such as a star or snowflake.  Hadoop data patterns tend to follow ELT (extract and load raw data, then transform). In Hadoop source data is often stored in raw form, or  flat denormalized
-structures. Powerful transformation techniques are available via Hadoop technologies include Kylo leveraging Spark.  We don’t often see the need for expensive and complicated ETL technologies for
+normalized relational schemas such as a star or snowflake.  Hadoop data patterns tend to follow ELT (extract and load raw data, then transform). In Hadoop, source data is often stored in raw form, or  flat denormalized
+structures. Powerful transformation techniques are available via Hadoop technologies, including Kylo's leveraging of Spark.  We don’t often see the need for expensive and complicated ETL technologies for
 Hadoop.
 
-Kylo provides a user interface for an end-user to configure new data feeds including schema,security,validation, and cleansing. Kylo provides the ability to wrangle and prepare
+Kylo provides a user interface for an end-user to configure new data feeds including schema, security, validation, and cleansing. Kylo provides the ability to wrangle and prepare
 visual data transformations using Spark as an engine.
 
 What is Kylo's value-add over plain Apache NiFi?
