@@ -204,7 +204,7 @@ What's the pipeline development process using Kylo? 
 
 Pipeline templates developed with Apache NiFi and registered with Kylo can be developed and tested in a sandbox environment, exported from Kylo,
 and then imported into Kylo in a UAT and production environment after testing. Once the NiFi template is registered with Kylo, a business
-user can configure new feeds through Kylo's step guided user interface.
+user can configure new feeds through Kylo's step-guided user interface.
 
 Existing Kylo feeds can be exported from one environment into a zip file which contains a combination of the underlying template and metadata. The
 package can then be imported in the production NiFi environment by an administrator.
