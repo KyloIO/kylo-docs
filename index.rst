@@ -63,6 +63,7 @@ The documentation for the site is organized into a few sections:
     Feed Lineage <how-to-guides/FeedLineage>
     how-to-guides/SentryInstallationGuide
     SUSE Configuration <how-to-guides/SuseConfigurationChanges>
+    Configuration Properties <how-to-guides/ConfigurationProperties>
 
 .. _developer_guides:
 .. toctree::
