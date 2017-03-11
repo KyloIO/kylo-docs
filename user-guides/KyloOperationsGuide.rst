@@ -434,8 +434,7 @@ Below is a sample properties file with Spring Datasource properties for spring b
     #
     server.port=8420
     #
-    # General configuration - Note: Supported configurations include
-    STANDALONE, BUFFER_NODE_ONLY, BUFFER_NODE, EDGE_NODE
+    # General configuration - Note: Supported configurations include STANDALONE, BUFFER_NODE_ONLY, BUFFER_NODE, EDGE_NODE
     #
     application.mode=STANDALONE
     #
@@ -478,10 +477,8 @@ Below is a sample properties file with Spring Datasource properties for spring b
     elasticsearch.port=9300
     elasticsearch.clustername=demo-cluster
     ## used to map Nifi Controller Service connections to the User Interface
-    ## naming convention for the property is
-    nifi.service.NIFI_CONTROLLER_SERVICE_NAME.NIFI_PROPERTY_NAME
-    ##anything prefixed with nifi.service will be used by the UI. Replace
-    Spaces with underscores and make it lowercase.
+    ## naming convention for the property is nifi.service.NIFI_CONTROLLER_SERVICE_NAME.NIFI_PROPERTY_NAME
+    ##anything prefixed with nifi.service will be used by the UI. Replace Spaces with underscores and make it lowercase.
     nifi.service.mysql.password=
     nifi.service.example_mysql_connection_pool.password=
     jms.activemq.broker.url:tcp://localhost:61616
@@ -489,9 +486,7 @@ Below is a sample properties file with Spring Datasource properties for spring b
     ## nifi Property override with static defaults
     ##Static property override supports 2 usecases
     # 1) store properties in the file starting with the prefix defined in the "PropertyExpressionResolver class" default = config.
-    # 2) store properties in the file starting with
-    "nifi.<PROCESSORTYPE>.<PROPERTY_KEY> where PROCESSORTYPE and
-    PROPERTY_KEY are all lowercase and the spaces are substituted with underscore
+    # 2) store properties in the file starting with "nifi.<PROCESSORTYPE>.<PROPERTY_KEY> where PROCESSORTYPE and PROPERTY_KEY are all lowercase and the spaces are substituted with underscore
     ##Below are Ambari configuration options for Hive Metastore and Spark location
     config.hive.schema=hive
     nifi.executesparkjob.sparkhome=/usr/hdp/current/spark-client

@@ -136,7 +136,7 @@ Step 2: Configure Kerberos for Kylo Applications
 Additional configuration is required for allowing some features in the
 Kylo applications to work with a Kerberos cluster.
 
-:doc:`../installation/KylosConfigurationforaKerborosCluster`
+:doc:`../installation/KyloConfigurationforaKerberosCluster`
 
 SUSE Configuration
 ------------------
