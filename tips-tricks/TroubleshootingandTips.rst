@@ -767,3 +767,24 @@ The default location of MySQL is /var/lib/mysql. MySQL will fill up the root par
 .. |CSV+Serde for Configuring CSV Options_Link| raw:: html
 
    <a href="https://cwiki.apache.org/confluence/display/Hive/CSV+Serde" target="blank">CSV+Serde for Configuring CSV Options</a>
+
+Using machine learning functions
+================================
+
+Problem
+-------
+
+You need to use a machine learning function in a data transformation feed.
+
+Solution
+--------
+
+Kylo provides many functions from the Spark ML package. Below is an example of using linear regression to estimate the number of tickets bought based on the price paid. The :code:`run()` function
+performs both the fit and transform operations of the linear regression. It requires a DataFrame as a parameter which is used for the fit operation, in the case below it uses :code:`limit(10)`.
+
+.. code-block:: js
+    :linenos:
+
+    vectorAssembler(["pricepaid"], "features")
+    qtysold.cast("double").as("label")
+    LinearRegression().setMaxIter(10).setRegParam(0.01).run(limit(10))
