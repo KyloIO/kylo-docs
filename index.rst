@@ -9,8 +9,6 @@ Welcome to the Kylo Project
 
 |image1| Kylo website: |kylo_io_link|
 
-The documentation provided here will guide you through the process of unlocking the power of Kylo to create, configure and monitor data pipelines so that you may leverage that data to drive key insights for your organization.
-
 The documentation for the site is organized into a few sections:
 
 * :ref:`about_toc`
@@ -47,7 +45,7 @@ The documentation for the site is organized into a few sections:
     Access Control <security/AccessControl>
     Ranger <security/EnableRangerAuthorizationGuide>
     Sentry <security/EnableSentryAuthorizationGuide>
-    Kerberos <security/KerberosHDP>
+    Kerberos <security/Kerberos>
     Kerberos SPNEGO <security/KyloKerberosSPNEGO>
 
 .. _how_to_guides:
@@ -65,6 +63,7 @@ The documentation for the site is organized into a few sections:
     Feed Lineage <how-to-guides/FeedLineage>
     how-to-guides/SentryInstallationGuide
     SUSE Configuration <how-to-guides/SuseConfigurationChanges>
+    Configuration Properties <how-to-guides/ConfigurationProperties>
 
 .. _developer_guides:
 .. toctree::

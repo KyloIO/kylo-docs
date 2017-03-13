@@ -26,8 +26,4 @@ file:
 
 Additional information is available from the Apache Spark project:
 
-.. code-block:: shell
-
     https://spark.apache.org/docs/latest/hadoop-provided.html
-
-..

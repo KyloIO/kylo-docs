@@ -5,7 +5,7 @@ NiFi and SSL
 
 This link provides additional instruction for enabling SSL for NiFi:
 
-    `https://docs.hortonworks.com/HDPDocuments/HDF2/HDF-2.0.0/bk_ambari-installation/content/ch_enabling-ssl-for-nifi.html <https://docs.hortonworks.com/HDPDocuments/HDF2/HDF-2.0.0/bk_ambari-installation/content/ch_enabling-ssl-for-nifi.html>`__
+  |hdp_link|
 
 .. rubric:: Creating a Self-signed Cert
 
@@ -31,7 +31,7 @@ This link provides additional instruction for enabling SSL for NiFi:
 
    1. Add this line to the start of the script:   
 
-.. code-block:: shell
+.. code-block:: properties
 
          export JAVA_HOME=/opt/java/current
 
@@ -92,7 +92,7 @@ This link provides additional instruction for enabling SSL for NiFi:
 
       Below is an example.  Do not copy this text directly, as your keystore/truststore passwords will be different!
 
-.. code-block:: shell
+.. code-block:: properties
 
     # Site to Site properties
     nifi.remote.input.host=localhost
@@ -136,7 +136,7 @@ This link provides additional instruction for enabling SSL for NiFi:
    admin identity.  This entry needs to match the phrase you used to
    generate the certificates in step 6.
 
-.. code-block:: shell
+.. code-block:: properties
 
       <property name="Initial Admin Identity">CN=kylo,
       OU=NIFI</property>
@@ -152,7 +152,7 @@ This link provides additional instruction for enabling SSL for NiFi:
 
 10. Set the following parameters in application.properties for the NiFi connection. Change the Bolded lines to reflect your correct passwords.
 
-.. code-block:: shell
+.. code-block:: properties
 
     nifi.rest.host=localhost
     nifi.rest.https=true
@@ -223,11 +223,13 @@ once.
 
    |image14|
 
-5. NiFi under ssl.  Notice the User name matches the one supplied via the Certificate that we created:  "CN=kylo, OU=NIFI"
+5. NiFi under SSL.  Notice the User name matches the one supplied via the certificate that we created:  "CN=kylo, OU=NIFI".
 
    |image15|
 
+   Refer to the Hortonworks documentation on Enabling SSL for NiFi:
 
+      |hdp_link|
 
 .. |image1| image:: ../media/kylo-config/KC1.png
    :width: 4.87500in
@@ -274,3 +276,6 @@ once.
 .. |image15| image:: ../media/kylo-config/KC15.png
    :width: 5.92426in
    :height: 1.91146in
+.. |hdp_link| raw:: html
+
+    <a href="https://docs.hortonworks.com/HDPDocuments/HDF2/HDF-2.0.0/bk_ambari-installation/content/ch_enabling-ssl-for-nifi.html" target="_blank">https://docs.hortonworks.com/HDPDocuments/HDF2/HDF-2.0.0/bk_ambari-installation/content/ch_enabling-ssl-for-nifi.html</a>

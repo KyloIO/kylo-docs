@@ -106,13 +106,13 @@ There are two possible solutions:
    manipulate the fields into columns:
 
    a. Create an ingest field, manually define the schema as a single
-      field of type string. You can just call that field "data"
+      field of type string. You can just call that field "data".
 
    b. Make sure the format specification doesn't conflict with data in
-      the file, i.e. tabs or commas which might cause it to get split
+      the file, i.e., tabs or commas which might cause it to get split.
 
    c. Once ingested, create a data transform feed to wrangle the data
-      using the transform functions
+      using the transform functionsHi.
 
    d. Here's an example of converting the weird ADSB format into JSON
       then converting into fields:
@@ -126,7 +126,7 @@ There are two possible solutions:
     select(json_tuple(data, "clock", "hexid", "ident", "squawk", "alt", "speed", "airGround", "lat", "lon", "heading"))
     select(c0.as("clock"), c1.as("hexid"), c2.as("ident"), c3.as("squawk"), c4.as("alt"), c5.as("speed"), c6.as("airGround"), c7.as("lat"), c8.as("lon"), c9.as("heading"))
 
-Indexing categories and feeds
+Indexing Categories and Feeds
 =============================
 
 Problem
@@ -238,7 +238,7 @@ forum threads explain how to set the correct property:
 3. On the Hive command line you can set the following property to allow
    quotes:
 
-.. code-block:: none
+.. code-block:: properties
 
    set hive.optimize.ppd = false;
 
@@ -258,7 +258,7 @@ Solution
 Increase memory to NiFi by editing
 /opt/nifi/current/conf/boostrap.conf and setting the following line:
 
-.. code-block:: shell
+.. code-block:: properties
 
    java.arg.3=-Xmx3g
 
@@ -292,7 +292,7 @@ requires a reusable flow. The `YES` value will cause the reusable flow to
 be imported along with the template. The `NO` value will cause the
 reusable flow to be ignored and the template to be imported as normal.
 
-.. code-block:: shell
+.. code-block:: properties
 
   curl -F file=@<path-to-template-xml-or-zip> -F overwrite=false -F createReusableFlow=false -F importConnectingReusableFlow=NOT_SET -u <kylo-user>:<kylo-password> http://<kylo-host>:8400/proxy/v1/feedmgr/admin/import-template
 
@@ -305,7 +305,7 @@ error will be returned. The `importConnectingReusableFlow` parameter
 functions the same as the corresponding parameter for importing a
 template.
 
-.. code-block:: shell
+.. code-block:: properties
 
       curl -F file=@<path-to-feed-zip> -F overwrite=false -F importConnectingReusableFlow=NOT_SET -u <kylo-user>:<kylo-password> http://<kylo-host>:8400/proxy/v1/feedmgr/admin/import-feed
 
@@ -381,7 +381,7 @@ Configure YARN to handle additional concurrent jobs:
 1. Increase the maximum percent with the following parameter
    (see: https://hadoop.apache.org/docs/r0.23.11/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html):
 
-.. code-block:: shell
+.. code-block:: properties
 
     yarn.scheduler.capacity.maximum-am-resource-percent=0.8
 
@@ -393,8 +393,7 @@ Configure YARN to handle additional concurrent jobs:
 
     service nifi restart
 
-Note: In Ambari, find this under Yarn | Configs (advanced) |
-Scheduler.
+.. note:: In Ambari, find this under Yarn | Configs (advanced) | Scheduler.
 
 Spark SQL fails on empty ORC and Parquet tables
 ================================================
@@ -405,7 +404,7 @@ Problem
 Your spark job fails when running in HDP 2.4 or 2.5 while interacting
 with an empty ORC table. A likely error that you will see is:
 
-.. code-block:: none
+.. code-block:: properties
 
     ExecuteSparkJob[id=1fb1b9a0-e7b5-4d85-87d2-90d7103557f6] java.util.NoSuchElementException: next on empty iterator
 
@@ -429,21 +428,21 @@ To fix the issue, you can take these steps:
     spark.sql.hive.convertMetastoreOrc false
     spark.sql.hive.convertMetastoreParquet false
 
-See: https://community.hortonworks.com/questions/44637/spark-sql-fails-on-empty-orc-table-hdp-242.html
+See |Spark SQL Fails on Empty ORC Table HDP 242_Link|
 
-High Performance NiFi setup
+High Performance NiFi Setup
 ===========================
 
 Problem
 -------
 
 The NiFi team published an article on how to extract the most
-performance from Apache NiFi
+performance from Apache NiFi.
 
 Solution
 --------
 
-See https://community.hortonworks.com/articles/7882/hdfnifi-best-practices-for-setting-up-a-high-perfo.html
+See |How to Setup a High Performance NiFi_Link|
 
 RPM install fails with 'cpio: read' error
 =========================================
@@ -550,8 +549,7 @@ file:
 
 .. 
 
-Additional information is available from the Apache Spark project:
-https://spark.apache.org/docs/latest/hadoop-provided.html
+Additional information is available from the |Apache Spark project_Link|.
 
 Dealing with XML files
 ======================
@@ -648,8 +646,7 @@ creation, you can set the SerDe and properties:
 2. When at the schema tab look for the field (near bottom) specify the
    source format.
 
-3. See https://cwiki.apache.org/confluence/display/Hive/CSV+Serde for
-   configuring CSV options.
+3. See the Apache wiki |CSV+Serde for Configuring CSV Options_Link|.
 
 4. Place text as follows in the field:
 
@@ -787,3 +784,40 @@ Kylo's Data Ingest template comes with out-of-the-box support for the GetTableDa
 #. Create a new archive processor which will archive data from HDFS. One option is use the Hadoop streaming tool to take the files residing in the target location of the ImportSqoop processor and compress then store the data to the archive directory. For details on this, please refer to `Hadoop Streaming <http://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html>`_.
 
 It is important to note that any other templates that output to standard-ingest would need to be updated because the changes above assumes data resides in HDFS. In general, adding a PutHDFS processor would be sufficient.
+
+.. |How to Setup a High Performance NiFi_Link| raw:: html
+
+   <a href="https://community.hortonworks.com/articles/7882/hdfnifi-best-practices-for-setting-up-a-high-perfo.html" target="blank">How to Setup a High Performance NiFi</a>
+
+.. |Spark SQL Fails on Empty ORC Table HDP 242_Link| raw:: html
+
+   <a href="https://community.hortonworks.com/questions/44637/spark-sql-fails-on-empty-orc-table-hdp-242.html" target="blank">Spark SQL Fails on Empty ORC Table HDP 242</a>
+
+.. |Apache Spark project_Link| raw:: html
+
+   <a href="https://spark.apache.org/docs/latest/hadoop-provided.html" target="blank">Apache Spark project</a>
+
+.. |CSV+Serde for Configuring CSV Options_Link| raw:: html
+
+   <a href="https://cwiki.apache.org/confluence/display/Hive/CSV+Serde" target="blank">CSV+Serde for Configuring CSV Options</a>
+
+Using machine learning functions
+================================
+
+Problem
+-------
+
+You need to use a machine learning function in a data transformation feed.
+
+Solution
+--------
+
+Kylo provides many functions from the Spark ML package. Below is an example of using linear regression to estimate the number of tickets bought based on the price paid. The :code:`run()` function
+performs both the fit and transform operations of the linear regression. It requires a DataFrame as a parameter which is used for the fit operation, in the case below it uses :code:`limit(10)`.
+
+.. code-block:: js
+    :linenos:
+
+    vectorAssembler(["pricepaid"], "features")
+    qtysold.cast("double").as("label")
+    LinearRegression().setMaxIter(10).setRegParam(0.01).run(limit(10))

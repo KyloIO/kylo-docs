@@ -19,7 +19,7 @@ to change the CPU and and RAM settings:
 
 -  RAM - 10GB
 
-http://hortonworks.com/products/sandbox/
+|Hortonworks Sandbox_Link|
 
 Add Virtual Box Shared Folder
 =============================
@@ -35,9 +35,12 @@ project artifacts to the sandbox for testing.
 
 ..
 
--  Folder Path = <pathToProjectFolder>
+.. code-block:: properties
 
--  Folder Name = kylo
+    Folder Path = <pathToProjectFolder>
+    Folder Name = kylo
+
+..
 
 Choose Auto-mount so that it remembers next time you start the VM.
 
@@ -96,3 +99,7 @@ Startup the Sandbox
 ..
 
 After setting the password the Ambari server will be started.
+
+.. |Hortonworks Sandbox_Link| raw:: html
+
+    <a href="http://hortonworks.com/products/sandbox/" target="_blank">Hortonworks Sandbox</a>

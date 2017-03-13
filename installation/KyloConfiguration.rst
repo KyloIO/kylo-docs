@@ -18,7 +18,7 @@ Step 1: Add the Data Nucleus Jars
 
 .. note:: This step is required only for HDP and is not required on Cloudera.
 
-If using Hive in your Spark processors, provide hive jar dependencies
+If using Hive in your Spark processors, provide Hive jar dependencies
 and hive-site.xml so that Spark can connect to the right Hive metastore.
 To do this, add the following jars into the “Extra Jars” parameter: 
 

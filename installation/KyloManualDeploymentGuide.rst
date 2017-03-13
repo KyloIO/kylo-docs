@@ -76,14 +76,14 @@ Step 1: Setup Directory
 Kylo is most often installed on one edge node. If you are deploying
 everything to one node, the setup directory would typically be:
 
-.. code-block:: shell
+.. code-block:: properties
 
     SETUP_DIR=/opt/kylo/setup
 
 Sometimes administrators install NiFi on a second edge node to communicate with a Hortonworks or Cloudera cluster. In this case, copy
 the setup folder to nodes that do not have the Kylo applications installed. In that case, use this SETUP_DIR command:
 
-.. code-block:: shell
+.. code-block:: properties
 
     SETUP_DIR=/tmp/kylo-install
 
@@ -298,7 +298,7 @@ This indicates that ActiveMQ isn’t properly using Java as it is set in the sys
 
 1. Edit /etc/default/activemq and set JAVA_HOME at the bottom.
 
-.. code-block:: shell
+.. code-block:: properties
 
     JAVA_HOME=<location_of_java_home>
 
@@ -315,7 +315,8 @@ This indicates that ActiveMQ isn’t properly using Java as it is set in the sys
 
 RPM installation isn’t supported on SUSE. To work around this issue, we created a custom init.d service script and wrote up a manual procedure to install Elasticsearch on a single node.
 
-Reference: `https://www.elastic.co/support/matrix <https://www.elastic.co/support/matrix>`__
+    |Install_Elasticsearch_Link|
+
 
 We have created a service script to make it easy to start and stop Elasticsearch, as well as leverage chkconfig to automatically start Elasticsearch when booting up the machine. Below are the instructions on how we installed Elasticsearch on a SUSE box.
 
@@ -481,7 +482,9 @@ In some cases you may want to leverage separate instances of NiFi or Hortonworks
 
 ..
 
-4.  Copy the kylo-*.nar files to the <NIFI_HOME>/kylo/lib directory.
+4.  Copy the kylo-\*.nar files to the <NIFI_HOME>/kylo/lib directory.
+
+..
 
 5.  Create a directory called "app" in the <NIFI_HOME>/kylo/lib directory.
 
@@ -491,7 +494,9 @@ In some cases you may want to leverage separate instances of NiFi or Hortonworks
 
 ..
 
-6.  Copy the kylo-spark-*.jar files to the <NIFI_HOME>/kylo/lib/app directory.
+6.  Copy the kylo-spark-\*.jar files to the <NIFI_HOME>/kylo/lib/app directory.
+
+..
 
 7.  Create symbolic links for all of the .NARs and .JARs. Below is an example of how to create it for one NAR file and one JAR file. At the time of this writing there are eight NAR files and three spark JAR files.
 
@@ -677,3 +682,7 @@ At this point all services should be running. Verify by running:
 
     $ /opt/kylo/status-kylo-apps.sh
 ..
+
+.. |Install_Elasticsearch_Link| raw:: html
+
+    <a href="https://www.elastic.co/support/matrix" target="_blank">Install_Elasticsearch</a>
