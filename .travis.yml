@@ -1,0 +1,11 @@
+language: python
+python:
+- "2.7"
+
+# Use container-based
+dist: trusty
+sudo: false
+
+# Build HTML docs
+install: pip install sphinx sphinx-autobuild sphinx_rtd_theme
+script: make html
