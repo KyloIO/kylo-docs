@@ -16,11 +16,15 @@ Highlights
     - Race condition on startup of Kylo and Modeshape service
  - For a complete list of resolved issues see here: :doc:`ReleaseNotes7.1.resolvedIssues`
 
+RPM
+---
+
+|rpm_link|
 
 Upgrade Instructions from v0.7.0
 --------------------------------
 
-Build or download the RPM. *Link coming soon.*
+Build or download the RPM: |rpm_link|
 
 1. Uninstall the RPM, run:
 
@@ -53,3 +57,9 @@ Build or download the RPM. *Link coming soon.*
     /opt/kylo/start-kylo-apps.sh
 
 ..
+
+
+.. |rpm_link| raw:: html
+
+   <a href="http://bit.ly/2mlqhZr" target="_blank">http://bit.ly/2mlqhZr</a>
+
