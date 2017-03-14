@@ -73,6 +73,8 @@ This table shows the ports to add.
 | MySQL                   | 3306        | 3306         |                                                                                                      |
 +-------------------------+-------------+--------------+------------------------------------------------------------------------------------------------------+
 
+.. note:: The current HDP 2.5 sandbox for VirtualBox now uses Docker container, which means configuring port-forwarding in the VirtualBox UI is not enough anymore. You should do some extra steps described in: |port-forwarding-link|
+
 Startup the Sandbox
 ===================
 
@@ -103,3 +105,7 @@ After setting the password the Ambari server will be started.
 .. |Hortonworks Sandbox_Link| raw:: html
 
     <a href="http://hortonworks.com/products/sandbox/" target="_blank">Hortonworks Sandbox</a>
+
+.. |port-forwarding-link| raw:: html
+
+   <a href="https://community.hortonworks.com/articles/65914/how-to-add-ports-to-the-hdp-25-virtualbox-sandbox.html" target="_blank">How to add ports to the HDP 2.5 VirtualBox Sandbox</a>
