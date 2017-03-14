@@ -30,7 +30,7 @@ Build or download the RPM: |rpm_link|
 
 .. code-block:: shell
 
-    /opt/kylo/remove-kylo-datalake-accelerator.sh
+    /opt/kylo/remove-kylo.sh
 
 ..
 
