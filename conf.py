@@ -47,7 +47,7 @@ master_doc = 'index'
 # General information about the project.
 project = u'Kylo'
 copyright = u'2017, Kylo'
-author = u'Think Big a Teradata Company'
+author = u'Think Big, a Teradata Company'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -130,7 +130,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'Kylo.tex', u'Kylo Documentation',
-     u'Think Big a Teradata Company', 'manual'),
+     u'Think Big, a Teradata Company', 'manual'),
 ]
 
 
