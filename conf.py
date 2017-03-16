@@ -130,7 +130,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'Kylo.tex', u'Kylo Documentation',
-     u'Jeremy Merrifield', 'manual'),
+     u'Think Big a Teradata Company', 'manual'),
 ]
 
 
