@@ -123,6 +123,10 @@ Can Kylo be used in the cloud?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Absolutely. Kylo is used in production on AWS utilizing EC2, S3, SQS, and other AWS features for at least one major Fortune 100 company. Kylo has also been used with Azure.
 
+Does Kylo support high-availability (HA) features?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+v0.8.1 (mid-May 2017) will include support for Kylo clustering via a load-balancer. In addition, current data processing will not be impacted if Kylo becomes unavailable or during upgrades.
+
 Metadata
 --------
 
@@ -354,6 +358,11 @@ What security features does Kylo support?
 Kylo provides plugins that integrate with Apache Ranger or Apache Sentry depending on the distribution you are running. These can be used to configure feed-based security and impersonating users
 properly to enforce user permissions.  Kylo fully supports Kerberized clusters and built-in features such as HDFS encryption.
 
+Is Kylo PCI compliant?
+~~~~~~~~~~~~~~~~~~~~~~
+
+Kylo can be configured to use TLSv1.2 for all network communication it uses internally or externally. We are testing running NiFi repositories on encrypted disk with a client. v0.8 will
+include some improvements required for full PCI compliance.
 
 Data Ingest
 --------------
@@ -383,7 +392,7 @@ and JSON.
 Which target formats for Hive does Kylo support?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Kylo supports text-file, Parquet and ORC (default) with optional block compression, AVRO, and RCFile.
+Kylo supports text-file, Parquet and ORC (default) with optional block compression, AVRO, text, and RCFile.
 
 
 How does “incremental” loading strategy of a data feed work?
