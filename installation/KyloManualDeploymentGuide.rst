@@ -165,7 +165,7 @@ Step 3: Install Kylo Services
 
 .. note:: To use wget instead, right-click the download link and copy the url.
 
-    `Download the latest Kylo RPM <http://bit.ly/2l5p1tK>`__
+    `Download the latest Kylo RPM <http://bit.ly/2mlqhZr>`__
 
 
 2. Run the Kylo RPM install.
@@ -482,7 +482,7 @@ In some cases you may want to leverage separate instances of NiFi or Hortonworks
 
 ..
 
-4.  Copy the kylo-*.nar files to the <NIFI_HOME>/kylo/lib directory.
+4.  Copy the kylo-\*.nar files to the <NIFI_HOME>/kylo/lib directory.
 
 ..
 
@@ -494,7 +494,7 @@ In some cases you may want to leverage separate instances of NiFi or Hortonworks
 
 ..
 
-6.  Copy the kylo-spark-*.jar files to the <NIFI_HOME>/kylo/lib/app directory.
+6.  Copy the kylo-spark-\*.jar files to the <NIFI_HOME>/kylo/lib/app directory.
 
 ..
 

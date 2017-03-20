@@ -6,7 +6,7 @@ About Kylo
 
 What is Kylo?
 ~~~~~~~~~~~~~
-Kylo is a feature-rich data lake platform built on Apache Hadoop and Spark.  Kylo provides a turn-key, business-friendly data lake solution enabling self-service data ingest, data
+Kylo is a feature-rich data lake platform built on Apache Hadoop and Spark.  Kylo provides a turn-key, business-friendly, data lake solution enabling self-service data ingest, data
 preparation, and data discovery.
 
 Kylo's web application layer offers features oriented to business users, including data analysts, data stewards, data scientists, and IT operations personnel.
@@ -184,7 +184,7 @@ Business metadata fields can be defined by the user and will appear in the UI du
 What does the REST API look like?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Please access the REST documentation through a running Kylo instance  http://kylo-host:8400/api-docs/index.html
+Please access the REST documentation through a running Kylo instance: **http://kylo-host:8400/api-docs/index.html**
 
 Does the Kylo application provide a visual lineage?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -196,7 +196,7 @@ What type of process metadata do we capture?
 
 Kylo captures job and step level information on the status of the process,
 with some information on the number of records loaded, how long it took,
-when it was started and finished, and errors or warnings generated. We
+when it was started and finished, and what errors or warnings may have been generated. We
 capture operational metadata at each step, which can include record
 counts, dependent upon the type of step.
 
@@ -208,10 +208,10 @@ What's the pipeline development process using Kylo? 
 
 Pipeline templates developed with Apache NiFi and registered with Kylo can be developed and tested in a sandbox environment, exported from Kylo,
 and then imported into Kylo in a UAT and production environment after testing. Once the NiFi template is registered with Kylo, a business
-user can configure new feeds through Kylo's step guided user interface.
+user can configure new feeds through Kylo's step-guided user interface.
 
-Existing Kylo feeds can be exported from one environment into a zip file which contains a combination of the underlying template and metadata. The
-package can then be imported in the production NiFi environment by an administrator.
+Existing Kylo feeds can be exported from one environment into a zip file that contains a combination of the underlying template and metadata. The
+package can then be imported to the production NiFi environment by an administrator.
 
 Does deployment of new templates or feeds require restart?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -221,7 +221,7 @@ No restart is required to deploy new pipeline templates or feeds.
 Can new feeds be created in automated fashion instead of manually through the UI?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Yes via Kylo's REST API. See Swagger documentation (above).
+Yes, via Kylo's REST API. See the section on Swagger documentation (above).
 
 Tool Comparisons
 ----------------
@@ -230,7 +230,7 @@ Is Kylo similar to any commercial products?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Kylo has similar capabilities to Podium and Zaloni Bedrock. Kylo is an open-source option. One differentiator is Kylo's extensibility. Kylo provides a plug-in architecture with a variety of
-extensions available to developers and use of NiFi templates provides incredible flexibility for batch and streaming use cases.
+extensions available to developers, and the use of NiFi templates provides incredible flexibility for batch and streaming use cases.
 
 Is Kylo's operations dashboard similar to Cloudera Manager and Apache Ambari?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -246,12 +246,12 @@ Is Kylo's metadata server similar to Cloudera Navigator, Apache Atlas?
 
 In some ways. Kylo is not trying to compete with these and could certainly
 imagine integration with these tools. Kylo includes its own extensible
-metadata server. Navigator is a governance tool that comes as part the
+metadata server. Navigator is a governance tool that comes as part of the
 Cloudera Enterprise license. Among other features, it provides data
 lineage of your Hive SQL queries. We think this is useful but only
 provides part of the picture. Kylo's metadata framework is really the foundation of
 an entire data lake solution. It captures both business
-and operational metadata. It tracks lineage at the feed-level. Kylo provides IT Operations with a useful dashboard, ability to
+and operational metadata. It tracks lineage at the feed-level. Kylo provides IT Operations with a useful dashboard, providing the ability to
 track/enforce Service Level Agreements, and performance metrics.  Kylo's REST APIs can be used to do metadata exchange with tools like Atlas and Navigator.
 
 How does Kylo compare to traditional ETL tools like Talend, Informatica, Data Stage?
@@ -259,25 +259,25 @@ How does Kylo compare to traditional ETL tools like Talend, Informatica, Data St
 
 Kylo uses Apache NiFi to orchestrate pipelines.  NiFi can connect to many different sources and perform lightweight transformations on the edge using 180+ built-in processors.  Generally workload
 is delegated to the cluster where the bulk of processing power is available.  Kylo's NiFi processor extensions can effectively invoke Spark, Sqoop, Hive, and even invoke traditional ETL
-tools, e.g. wrap 3rd party ETL jobs.
+tools (for example: wrap 3rd party ETL jobs).
 
 Many ETL (extract-transform-load) tools are focused on SQL transformations using their own proprietary technology. Data warehouse style transformations tend to be focused on issues such as loading
-normalized relational schemas such as a star or snowflake.  Hadoop data patterns tend to follow ELT (extract and load raw data, then transform). In Hadoop source data is often stored in raw form, or  flat denormalized
-structures. Powerful transformation techniques are available via Hadoop technologies include Kylo leveraging Spark.  We don’t often see the need for expensive and complicated ETL technologies for
+normalized relational schemas such as a star or snowflake.  Hadoop data patterns tend to follow ELT (extract and load raw data, then transform). In Hadoop, source data is often stored in raw form, or  flat denormalized
+structures. Powerful transformation techniques are available via Hadoop technologies, including Kylo's leveraging of Spark.  We don’t often see the need for expensive and complicated ETL technologies for
 Hadoop.
 
-Kylo provides a user interface for an end-user to configure new data feeds including schema,security,validation, and cleansing. Kylo provides the ability to wrangle and prepare
+Kylo provides a user interface for an end-user to configure new data feeds including schema, security, validation, and cleansing. Kylo provides the ability to wrangle and prepare
 visual data transformations using Spark as an engine.
 
 What is Kylo's value-add over plain Apache NiFi?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-NiFi acts as Kylo's pipeline orchestration engine, but NiFi itself does not provide all the tooling required for a data lake solution. Some of Kylo's distinct benefits over vanilla NiFi and Hadoop:
+NiFi acts as Kylo's pipeline orchestration engine, but NiFi itself does not provide all of the tooling required for a data lake solution. Some of Kylo's distinct benefits over vanilla NiFi and Hadoop:
 
 -  Write-once, use many times. NiFi is a powerful IT tool for designing
-   pipelines but most data lake feeds utilize just a small number of
+   pipelines, but most data lake feeds utilize just a small number of
    unique flows or “patterns". Kylo allows IT the flexibility to
-   design then register a NiFi template as a data processing model for feeds. This enables
+   design and register a NiFi template as a data processing model for feeds. This enables
    non-technical business users to configure dozens, or even hundreds of
    new feeds through Kylo's simple, guided stepper-UI. In other words, our
    UI allows users to setup feeds without having to code them in
@@ -295,13 +295,13 @@ NiFi acts as Kylo's pipeline orchestration engine, but NiFi itself does not prov
    data discovery, data wrangling, data browse, and event-based feed
    execution (to chain together flows).
 
--  Rich metadata model with integrated governance and best practices
+-  Rich metadata model with integrated governance and best practices.
 
 -  Kylo adds a set of data lake specific NiFi extensions around Data Profile,
    Data Cleanse, Data Validate, Merge/Dedupe, High-water. In addition, general Spark and Hive
-   processors not yet available with vanilla NiFi
+   processors not yet available with vanilla NiFi.
 
--  Pre-built  templates that implement data lake best practices: Data Ingest, ILM, and Data Processing
+-  Pre-built  templates that implement data lake best practices: Data Ingest, ILM, and Data Processing.
 
 Scheduler
 ---------
@@ -321,8 +321,8 @@ Kylo supports cron-based scheduling, but also timer-based, or event-based using 
 What’s the difference between “timer” and “cron” schedule strategies?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Timer is fixed interval, “every 5 min or 10 seconds”. Cron can be
-configured to do that as well but can handle more complex cases like
+Timer is fixed interval, “every 5 minutes or 10 seconds”. Cron can be
+configured to do that as well, but can handle more complex cases like
 “every tues at 8AM and 4PM”.
 
 Does Kylo support 3rd party schedulers
@@ -334,7 +334,7 @@ Does Kylo support chaining feeds? One data feed consumed by another data feed?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Kylo supports event-based triggering of feeds based on preconditions or rules. One can define rules in the UI that determine when to run a
-feed such as “run when data has been processed by feed a and feed b and
+feed, such as “run when data has been processed by feed a and feed b and
 wait up to an hour before running anyway”. We support simple rules up to
 very complicated rules requiring use of our API.
 
@@ -344,19 +344,19 @@ Security
 Does Kylo support roles?
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Kylo supports the definition of roles (or groups) and the specific permissions a user with that role can perform down to the function level.
+Kylo supports the definition of roles (or groups), and the specific permissions a user with that role can perform, down to the function level.
 
 What authentication methods are available?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Kylo uses Spring Security. Using pluggable login-modules. It can integrate with Active Directory, Kerberos, LDAP,
-or most any authentication provider. See developer documentation.
+Kylo uses Spring Security. Using pluggable login-modules, it can integrate with Active Directory, Kerberos, LDAP,
+or most any authentication provider. See :doc:`../developer-guides/KyloDeveloperGuide`.
 
 What security features does Kylo support?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Kylo provides plugins that integrate with Apache Ranger or Apache Sentry depending on the distribution you are running. These can be used to configure feed-based security and impersonating users
-properly to enforce user permissions.  Kylo fully supports Kerberized clusters and built-in features such as HDFS encryption.
+Kylo provides plugins that integrate with Apache Ranger or Apache Sentry, depending on the distribution that you are running. These can be used to configure feed-based security and impersonating users
+properly to enforce user permissions.  Kylo fully supports Kerberized clusters and built-in features, such as HDFS encryption.
 
 Is Kylo PCI compliant?
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -370,10 +370,10 @@ Data Ingest
 What is Kylo's standard batch ingest workflow?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Kylo includes a sample pipeline template that implements many best practices around data ingest mostly utilizing Spark.  Kylo makes it very simple for a business user to configure ingest of new source
+Kylo includes a sample pipeline template that implements many best practices around data ingest, mostly utilizing Spark.  Kylo makes it very simple for a business user to configure ingest of new source
 files and RDMBS tables into Hive.  Data can be read from a filesystem attached to the edge node, or directly using Kylo's sqoop processor into Hadoop.  Original data is archived into a distinct
 location.
-Small files are optionally merged and headers stripped if needed.  Data is cleansed, standardized, and validated based on user-defined policies.  Invalid records are binned into a
+Small files are optionally merged and headers stripped, if needed.  Data is cleansed, standardized, and validated based on user-defined policies.  Invalid records are binned into a
 separate table for later inspection. Valid records are inserted into a final Hive table with options such as (append, snapshot, merge with dedupe, upsert, etc). Target format can differ from the
 raw source, contain custom partitions, and group-based security. Finally each batch of valid data is automatically profiled.
 
@@ -385,7 +385,7 @@ Yes, either types of pipelines can configured with Kylo.  Kylo tracks performanc
 Which raw formats does Kylo support?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Kylo has a pluggable architecture for adding support for new types.  Currently Kylo supports delimited-text formats (csv, tab, pipe, etc) and all Hadoop formats such as ORC, Parquet, RCFile, AVRO,
+Kylo has a pluggable architecture for adding support for new types.  Currently Kylo supports delimited-text formats (for example: csv, tab, pipe) and all Hadoop formats, such as ORC, Parquet, RCFile, AVRO,
 and JSON.
 
 

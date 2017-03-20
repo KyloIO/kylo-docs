@@ -6,8 +6,8 @@ Overview
 
 Kylo supports a pluggable authentication architecture that allows
 customers to integrate their existing infrastructure when authenticating
-a user.  The pluggability is built around |jaas_link|;
-which delegtes authentication to one or more configured |loginmodule_link| that all collaborate in
+a user.  The pluggability is built around |jaas_link|,
+which delegates authentication to one or more configured |loginmodule_link| that all collaborate in
 an authentication attempt.  Kylo
 supplies LoginModule implementations for the most common authentication
 scenarios, though customers will be able to provide their own modules to
