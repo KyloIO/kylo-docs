@@ -530,7 +530,7 @@ In some cases you may want to leverage separate instances of NiFi or Hortonworks
 
 .. note:: Right now the plugin is hard coded to use the /opt/nifi/ext-config directory to load the properties file.
 
-Configure the ext-config Folder
+Configure the ext-config folder
 -------------------------------
 
 1. Create the folder.
@@ -547,6 +547,35 @@ Configure the ext-config Folder
 .. code-block:: shell
 
                   $ chown -R nifi:users /opt/nifi
+
+..
+
+11.  Create an activemq folder to provide JARs required for the JMS processors.
+
+Configure the activemq folder
+-----------------------------
+
+1. Create the folder.
+
+.. code-block:: shell
+
+                $ mkdir /opt/nifi/activemq
+
+..
+
+2. Copy the /opt/kylo/setup/nifi/activemq/\*.jar files to the /opt/nifi/activemq folder.
+
+.. code-block:: shell
+
+                $ cp /opt/kylo/setup/nifi/activemq/*.jar /opt/nifi/activemq
+
+..
+
+3. Change the ownership of the folder to the same owner that nifi runs under. For example, if nifi runs as the "nifi" user:
+
+.. code-block:: shell
+
+                  $ chown -R nifi:users /opt/nifi/activemq
 
 ..
 
