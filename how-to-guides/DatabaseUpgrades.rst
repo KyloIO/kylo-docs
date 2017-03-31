@@ -33,11 +33,16 @@ By default Kylo is set up to automatically upgrade its database. To manually upg
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Set ``liquibase.enabled`` to ``false`` in ``/opt/kylo/kylo-services/conf/application.properties`` if you don't
-want to automatically upgrade Kylo database:
+want to automatically upgrade Kylo database. Also make sure your database connection properties are correct:
 
 .. code-block:: properties
 
     liquibase.enabled=false
+
+    spring.datasource.url=
+    spring.datasource.username=
+    spring.datasource.password=
+    spring.datasource.driverClassName=
 
 ..
 
@@ -45,10 +50,14 @@ want to automatically upgrade Kylo database:
 2.2 Generate upgrade SQL script
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Update ``/opt/kylo/setup/sql/generate-update-script.sh`` with your database properties such as
-database driver, connection URL, username and password.
 Make sure that required database driver is on classpath in ``/opt/kylo/kylo-services/lib`` directory and
-execute ``/opt/kylo/setup/sql/generate-update-script.sh``.
+run ``/opt/kylo/setup/sql/generate-update-script.sh``.
+
+.. code-block:: shell
+
+    /opt/kylo/setup/sql/generate-update-script.sh
+
+..
 
 This will generate database update SQL in your current directory called ``kylo-db-update-script.sql``.
 This SQL script will contain all required SQL statements to update your database to next Kylo version.

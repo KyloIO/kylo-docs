@@ -70,15 +70,20 @@ Build or download the rpm.
 
  If you opt for automatic upgrades there is nothing else you need to do, otherwise:
 
- Edit ``/opt/kylo/kylo-services/conf/application.properties`` and change from ``liquibase.enabled=true`` to ``liquibase.enabled=false``
+ Edit ``/opt/kylo/kylo-services/conf/application.properties`` and change from ``liquibase.enabled=true`` to ``liquibase.enabled=false`` and
+ also make sure your database connection properties are correct:
 
  .. code-block:: properties
 
     liquibase.enabled=false
 
+    spring.datasource.url=
+    spring.datasource.username=
+    spring.datasource.password=
+    spring.datasource.driverClassName=
+
  ..
 
- Edit ``/opt/kylo/setup/sql/generate-update-sql.sh`` with your database connection properties.
  Run ``/opt/kylo/setup/sql/generate-update-sql.sh``
 
  .. code-block:: shell
