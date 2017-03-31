@@ -116,14 +116,12 @@ everything is setup correctly.
 
 ..
 
+.. note:: If you receive an OutOfMemoryError try increasing the Java heap space:
+    ``$ export MAVEN_OPTS="-Xms2g -Xmx4g"``
 
-.. tip:: For faster Maven builds you can run in offline mode by typing:
-
-    "mvn clean install -o"
-
+.. tip:: For faster Maven builds you can run in offline mode and skip unit testing:
+    ``$ mvn clean install -o -DskipTests``
 ..
-
-Add "-DskipTests" to skip unit testing for faster builds.
 
 Install and Configure the Hortonworks Sandbox
 ---------------------------------------------

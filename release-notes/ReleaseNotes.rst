@@ -8,7 +8,8 @@ Latest
 .. toctree::
     :maxdepth: 1
 
-    ReleaseNotes7
+    ReleaseNotes7.1
+
 
 
 Previous Releases
@@ -17,6 +18,7 @@ Previous Releases
 .. toctree::
     :maxdepth: 1
 
+    ReleaseNotes7
     ReleaseNotes6.2
     ReleaseNotes6.1
     ReleaseNotes6

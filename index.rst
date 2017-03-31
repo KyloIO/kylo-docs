@@ -116,4 +116,4 @@ The documentation for the site is organized into a few sections:
 
 .. |kylo_io_link| raw:: html
 
-   <a href="http://kylo.io" target="_blank">http://kylo.io</a>
+   <a href="https://kylo.io" target="_blank">https://kylo.io</a>

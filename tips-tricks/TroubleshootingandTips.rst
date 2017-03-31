@@ -752,6 +752,39 @@ The default location of MySQL is /var/lib/mysql. MySQL will fill up the root par
 
       #. path.logs: /data/log/elasticsearch
 
+GetTableData vs ImportSqoop Processor
+=====================================
+
+Problem
+-------
+
+You need to load data from a structured datastore.
+
+Solution
+--------
+
+There are two major NiFi processors provided by Kylo for importing data into Hadoop: GetTableData and ImportSqoop.
+
+a. **GetTableData** leverages JDBC to pull data from the source into the flowfile within NiFi. This content will then need to be pushed to HDFS (via a PutHDFS processor).
+
+b. **ImportSqoop** executes a Sqoop job to pull the content from the source and place it directly to HDFS. For details on how this is done, please refer to `Apache Sqoop <http://sqoop.apache.org/>`_.
+
+In general, it is recommended to use the ImportSqoop processor due to performance. Using the GetTableData processors uses the edge node (where NiFi is running) as a middle-man. The ImportSqoop processor runs a MapReduce job that can be tuned to load the data efficiently. For example, a single mapper will be sufficient if you are loading a reference table but a table with billions of rows would benefit from multiple mappers.
+
+The GetTableData processor should be used when the data being pulled is small. Other use cases are when certain pre-processing steps are required that benefit from being on the edge node. For instance, if the edge node resides behind a firewall and PII (personal identifiable information) fields need to be masked before being pushed to a more open HDFS environment.
+
+Kylo's Data Ingest template comes with out-of-the-box support for the GetTableData processor. To use the ImportSqoop processor instead, the following changes should to be made to the Data Ingest template and the standard-ingest reusable template:
+
+#. Replace the GetTableData processor with the ImportSqoop processor
+
+#. Remove the PutHDFS processor from the flow
+
+#. Update the "Create Feed Partition" processor to point to the target location of the ImportSqoop processor
+
+#. Create a new archive processor which will archive data from HDFS. One option is use the Hadoop streaming tool to take the files residing in the target location of the ImportSqoop processor and compress then store the data to the archive directory. For details on this, please refer to `Hadoop Streaming <http://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html>`_.
+
+It is important to note that any other templates that output to standard-ingest would need to be updated because the changes above assumes data resides in HDFS. In general, adding a PutHDFS processor would be sufficient.
+
 .. |How to Setup a High Performance NiFi_Link| raw:: html
 
    <a href="https://community.hortonworks.com/articles/7882/hdfnifi-best-practices-for-setting-up-a-high-perfo.html" target="blank">How to Setup a High Performance NiFi</a>
@@ -767,3 +800,24 @@ The default location of MySQL is /var/lib/mysql. MySQL will fill up the root par
 .. |CSV+Serde for Configuring CSV Options_Link| raw:: html
 
    <a href="https://cwiki.apache.org/confluence/display/Hive/CSV+Serde" target="blank">CSV+Serde for Configuring CSV Options</a>
+
+Using machine learning functions
+================================
+
+Problem
+-------
+
+You need to use a machine learning function in a data transformation feed.
+
+Solution
+--------
+
+Kylo provides many functions from the Spark ML package. Below is an example of using linear regression to estimate the number of tickets bought based on the price paid. The :code:`run()` function
+performs both the fit and transform operations of the linear regression. It requires a DataFrame as a parameter which is used for the fit operation, in the case below it uses :code:`limit(10)`.
+
+.. code-block:: js
+    :linenos:
+
+    vectorAssembler(["pricepaid"], "features")
+    qtysold.cast("double").as("label")
+    LinearRegression().setMaxIter(10).setRegParam(0.01).run(limit(10))
