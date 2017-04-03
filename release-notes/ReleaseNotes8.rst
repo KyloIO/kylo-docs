@@ -9,11 +9,6 @@ Highlights
 -  Support for PostgreSQL as Kylo database
 
 
-RPM
----
-
-http://bit.ly/?????
-
 Upgrade Instructions from v0.7.1
 --------------------------------
 
