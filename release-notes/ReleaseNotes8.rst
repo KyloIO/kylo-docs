@@ -8,6 +8,10 @@ Highlights
 
 -  Support for PostgreSQL as Kylo database
 
+-  Join Hive and JDBC tables in Data Transformation feeds by creating a new Data Source.
+
+-  Data Transformation feeds can now use standardization and validation functions, and be merged, profiled, and indexed.
+
 
 Upgrade Instructions from v0.7.1
 --------------------------------
@@ -90,3 +94,10 @@ Build or download the rpm.
  This will generate ``kylo-db-update-script.sql`` in current directory.
  Now run ``kylo-db-update-script.sql`` on your database.
 
+7. Add your database driver jars to kylo-spark-shell if you'll be using JDBC tables in your Data Transformation feeds. Edit ``/opt/kylo/kylo-services/bin/run-kylo-spark-shell.sh``:
+
+.. code-block:: shell
+
+    KYLO_DRIVER_CLASS_PATH=/opt/kylo/kylo-services/conf:/opt/nifi/mysql/*
+
+8. If you import the new Data Transformation template, be sure to re-initialize your existing Data Transformation feeds if you update them.
