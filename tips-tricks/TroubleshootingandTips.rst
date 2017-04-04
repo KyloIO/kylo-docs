@@ -821,3 +821,47 @@ performs both the fit and transform operations of the linear regression. It requ
     vectorAssembler(["pricepaid"], "features")
     qtysold.cast("double").as("label")
     LinearRegression().setMaxIter(10).setRegParam(0.01).run(limit(10))
+
+
+Sqoop requires JDK on Kylo sandbox
+==================================
+
+Problem
+-------
+
+This issue is known to exist for Kylo sandbox version 0.7.1. The file name for the sandbox is kylo-hdp-sandbox-0.7.1.ova. Sqoop job throws an error "Sqoop requires a JDK that can compile Java code."
+
+
+Solution
+--------
+Sqoop requires a JDK to compile Java code. The steps to install a JDK and fix this error are listed below:
+
+1. Install Open JDK 7.
+
+.. code-block:: none
+
+    root@sandbox ~# yum install java-1.7.0-openjdk-devel
+
+2. Verify JDK version.
+
+.. code-block:: none
+
+    root@sandbox ~# javac -version
+    javac 1.7.0_131
+
+3. Verify actual location.
+
+.. code-block:: none
+
+    root@sandbox ~# ls -l /usr/lib/jvm/java-1.7.0-openjdk-1.7.0.131-2.6.9.0.el7_3.x86_64/bin/javac
+    -rwxr-xr-x 1 root root 7368 Feb 13 17:16 /usr/lib/jvm/java-1.7.0-openjdk-1.7.0.131-2.6.9.0.el7_3.x86_64/bin/javac
+
+4. Update /etc/hadoop/conf/hadoop-env.sh.
+(Find existing entry and update it)
+
+.. code-block:: none
+
+    root@sandbox ~# vi /etc/hadoop/conf/hadoop-env.sh
+    export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.131-2.6.9.0.el7_3.x86_64/
+
+5. Re-run Sqoop flow.
