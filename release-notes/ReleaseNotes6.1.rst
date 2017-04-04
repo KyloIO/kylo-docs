@@ -47,7 +47,7 @@ Build or download the RPM:
 
 .. code-block:: shell
 
-     rpm –ivh <RPM\_FILE>
+     rpm –ivh <RPM_FILE>
 
 ..
 

@@ -51,7 +51,7 @@ You can then import it to your keystore.
 Add following properties to /opt/kylo/kylo-ui/conf/application.properties. Change the port to your liking and
 update path to keystore 'kylo-ui.jks' we generated in previous section.
 
-.. code-block:: shell
+.. code-block:: properties
 
     server.ssl.enabled=true
     server.port=8444

@@ -111,7 +111,7 @@ utilities.
 
 3. Change the [realms], as below, to sandbox.hortonworks.com. Update KDC and Admin Server Information.
 
-.. code-block: shell
+.. code-block: properties
 
     [logging]
       default = FILE:/var/log/krb5libs.log
@@ -136,13 +136,19 @@ utilities.
 
 4. Update /var/kerberos/krb5kdc/kdc.conf. Change the [realms] as sandbox.hortonworks.com.
 
-.. code-block:: shell
+   **[kdcdefaults]**
 
-    [kdcdefaults]
+.. code-block:: properties
+
       kdc_ports = 88
       kdc_tcp_ports = 88
 
-    [realms]
+..
+
+   **[realms]**
+
+.. code-block:: shell
+
       sandbox.hortonworks.com = {
       #master_key_type = aes256-cts
       acl_file = /var/kerberos/krb5kdc/kadm5.acl
@@ -256,8 +262,7 @@ Install Kerberos on an HDP Cluster
 
 |image5|
 
-`HDP 2.4 Sandbox Kerberos Setup
-Example <http://kylo-docs-test.readthedocs.io/en/latest/KerberosInstallationExample-Cloudera.html>`__
+    :doc:`../installation/KerberosInstallationExample-Cloudera`
 
 Make sure all services started properly. Kerberos is successfully installed on the cluster.
 

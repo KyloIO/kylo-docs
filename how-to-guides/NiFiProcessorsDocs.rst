@@ -39,7 +39,7 @@ For use with Kylo UI, configure values for the two properties (**nifi.service.<c
 
 ..
 
-Please note that the **DB Connection password** section will have the name of the key derived from the controller service name in NiFi. In the above snippet, the controller service name is called **sqoop-mysql-connection**.
+.. note:: The **DB Connection password** section will have the name of the key derived from the controller service name in NiFi. In the above snippet, the controller service name is called **sqoop-mysql-connection**.
 
 Drivers
 ~~~~~~~
@@ -70,11 +70,11 @@ For modes (2) and (3), which allow encrypted passwords to be used, details are p
 
 Encrypt the password by providing the:
 
-a. password to encrypt
+a. Password to encrypt
 
-b. passphrase
+b. Passphrase
 
-c. location to write encrypted file to
+c. Location to write encrypted file to
 
 The following command can be used to generate the
 encrypted password:
@@ -98,8 +98,6 @@ Provide the file location and passphrase via the **Source Password File** and 
 the **StandardSqoopConnectionService** controller service configuration.
 
 During the processor execution, password will be decrypted for modes 2 and 3, and used for connecting to the source system.
-
-
 
 TriggerFeed
 -----------
@@ -126,7 +124,7 @@ For example:
     Feed_A runs and has the following attributes in the flow-file as it
     runs:
 
-.. code-block:: shell
+.. code-block:: properties
 
      -property.name = "first name"
      -property.age=23
@@ -153,26 +151,27 @@ Trigger Feed JSON Payload
 The FlowFile content of the Trigger feed includes a JSON string of the
 following structure:
 
-.. code-block:: shell
+.. code-block:: javascript
 
   {
-     "feedName": "string",
-     "feedId": "string",
-     "dependentFeedNames": [
-     "string"
-   ],
+    "feedName":"string",
+    "feedId":"string",
+    "dependentFeedNames":[
+        "string"
+        ],
+        "feedJobExecutionContexts":{
 
-  "feedJobExecutionContexts": {},
+        },
+        "latestFeedJobExecutionContext":{
 
-  "latestFeedJobExecutionContext": {}
-
-  }
+        }
+   }
 
 ..
 
-JSON structure with  field description:
+JSON structure with a field description:
 
-.. code-block:: shell
+.. code-block:: javascript
 
   {
      "feedName":"<THE NAME OF THIS FEED>",
@@ -207,7 +206,7 @@ JSON structure with  field description:
 
 Example JSON for a Feed:
 
-.. code-block:: shell
+.. code-block:: javascript
 
   {
      "feedName":"companies.check_test",
@@ -249,9 +248,11 @@ The screenshot shown here is an example of a flow in which the inspection of the
 The EvaluateJSONPath processor is used to extract JSON content from the flow file.
 
 Refer to the Data Confidence Invalid Records flow for an example:
-`https://github.com/KyloIO/kylo/blob/master/samples/templates/nifi-1.0/data_confidence_invalid_records.zip`__
+|data_confidence_invalid_records_link|
 
+.. |data_confidence_invalid_records_link| raw:: html
 
+   <a href="https://github.com/KyloIO/kylo/blob/master/samples/templates/nifi-1.0/data_confidence_invalid_records.zip" target="_blank">https://github.com/KyloIO/kylo/blob/master/samples/templates/nifi-1.0/data_confidence_invalid_records.zip</a>
 
 .. |image16| image:: ../media/kylo-config/KC16.png
    :width: 5.33825in

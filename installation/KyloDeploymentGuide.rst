@@ -136,7 +136,7 @@ Step 2: Configure Kerberos for Kylo Applications
 Additional configuration is required for allowing some features in the
 Kylo applications to work with a Kerberos cluster.
 
-:doc:`../installation/KylosConfigurationforaKerborosCluster`
+:doc:`../installation/KyloConfigurationforaKerberosCluster`
 
 SUSE Configuration
 ------------------
@@ -360,7 +360,7 @@ ActiveMQ, and NiFi.
 
 ..
 
-In addition there is a script for cleaning up the hive schema and HDFS
+In addition there is a script for cleaning up the Hive schema and HDFS
 folders that are related to a specific "category" that is defined in the
 UI.
 

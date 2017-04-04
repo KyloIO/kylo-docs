@@ -102,9 +102,7 @@ Import the Project into your IDE
 
 Import the project into your favorite IDE as a Maven project.
 
-+------------+----------------------------------------+
-| **Note**   | Configure the project to use Java 8.   |
-+------------+----------------------------------------+
+.. note:: Configure the project to use Java 8.
 
 Perform a Maven Build
 ---------------------
@@ -118,25 +116,19 @@ everything is setup correctly.
 
 ..
 
-+--------+----------------------------------------------------------------+
-|**TIP:**| For faster Maven builds you can run in offline mode by typing: |
-+--------+----------------------------------------------------------------+
+.. note:: If you receive an OutOfMemoryError try increasing the Java heap space:
+    ``$ export MAVEN_OPTS="-Xms2g -Xmx4g"``
 
-.. code-block:: shell
-
-    "mvn clean install -o"
-
+.. tip:: For faster Maven builds you can run in offline mode and skip unit testing:
+    ``$ mvn clean install -o -DskipTests``
 ..
-
-Add "-DskipTests" to skip unit testing for faster builds.
 
 Install and Configure the Hortonworks Sandbox
 ---------------------------------------------
 
 Follow the guide below to install and configure the Hortonworks sandbox:
 
-    `*Configure Hortonworks
-    Sandbox* <http://kylo.readthedocs.io/en/latest/HortonworksSandboxConfiguration.html>`__
+    :doc:`../installation/HortonworksSandboxConfiguration`
 
 
 Install the Kylo Applications
@@ -145,8 +137,7 @@ Install the Kylo Applications
 To install the Kylo apps, NiFi, ActiveMQ, and Elasticsearch in the
 VM you can use the deployment wizard instructions found here:
 
-    `*Wizard Driven Deployment
-    Guide* <http://kylo.readthedocs.io/en/latest/KyloSetupWizardDeploymentGuide.html>`__
+    :doc:`../installation/KyloSetupWizardDeploymentGuide`
 
 Instead of downloading the RPM file copy the RPM file from your project folder after running a Maven build.
 
@@ -161,9 +152,9 @@ Instead of downloading the RPM file copy the RPM file from your project folder a
 Follow the rest of the deployment wizard steps to install the rest of
 the tools in the VM.
 
-+------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Important!**   | You only need to install Elasticsearch, NiFi, and ActiveMQ once. During development you will frequently uninstall the Kylo RPM and re-install it for testing.   |
-+------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+.. important!:: You only need to install Elasticsearch, NiFi, and ActiveMQ once. During development you will frequently uninstall the Kylo RPM and re-install it for testing.
+
 
 You now have a distribution of the stack running in your Hortonworks
 sandbox.

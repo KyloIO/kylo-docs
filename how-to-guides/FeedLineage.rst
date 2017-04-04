@@ -70,7 +70,7 @@ Registration via REST
 If you need to update or add new datasource definitions there is a
 REST endpoint that allows you to post the new definition data.
 
-@TODO screenshot of swagger endpoints
+|image2|
 
 To list the metadata store of defined datasources you can use this REST
 call
@@ -175,3 +175,6 @@ persist it for the next time you will want to update this JSON file.
 .. |image1| image:: ../media/feed-lineage/2-feed-lineage-datasources.png
    :width: 6.50000in
    :height: 4.11458in
+.. |image2| image:: ../media/feed-lineage/feed_lineage_datasource_rest_endpoints.png
+   :width: 753px
+   :height: 64px

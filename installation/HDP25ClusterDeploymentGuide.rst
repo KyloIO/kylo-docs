@@ -12,20 +12,16 @@ privileges will be provided to the "nifi" or "kylo" user. The only
 usage for an administrative account will be for kylo-services to
 access the Ranger REST API.
 
-There are two ways you can configure hive to manage users on the
+There are two ways you can configure Hive to manage users on the
 cluster.
 
-  1. You can configure it to run hive jobs as the end user, but all HDFS access is done as the hive user.
+  1. You can configure it to run Hive jobs as the end user, but all HDFS access is done as the Hive user.
 
-  2. Run hive jobs and HDFS commands as the end user:
+  2. Run Hive jobs and HDFS commands as the end user.
 
-.. code-block:: html
+.. note:: For detailed information on |Hive authorizations_Link| refer to Best Practices for Hive Authorization Using Apache Ranger in HDP 2.2 on the Hortonworks website.
 
-    *http://hortonworks.com/blog/best-practices-for-hive-authorization-using-apache-ranger-in-hdp-2-2/*
-
-..
-
-This document will configure option #2 to show how you can configure Kylo to grant appropriate access to both hive and HDFS for the end user.
+This document will configure option #2 to show how you can configure Kylo to grant appropriate access to both Hive and HDFS for the end user.
 
 Cluster Topography
 ==================
@@ -103,7 +99,7 @@ Before installing the Kylo stack, prepare the cluster by doing the following:
 
    f. Assign the "kylo" user to the "Cluster User" role.
 
-5. If your spark job fails when running in HDP 2.4.2 while interacting with an empty ORC table, you will get this error message:
+5. If your Spark job fails when running in HDP 2.4.2 while interacting with an empty ORC table, you will get this error message:
 
 .. error:: "ExecuteSparkJob[id=1fb1b9a0-e7b5-4d85-87d2-90d7103557f6] java.util.NoSuchElementException: next on empty iterator "
 
@@ -121,7 +117,7 @@ Before installing the Kylo stack, prepare the cluster by doing the following:
 
    b. Go to the Spark config section.
 
-   c. Go to "custom spark defaults".
+   c. Go to "custom Spark defaults".
 
    d. Add the property "spark.sql.hive.convertMetastoreOrc" and set to "false".
 
@@ -196,9 +192,9 @@ Prepare the Kylo Edge Node
 
 ..
 
-.. note:: If the hive database is installed in a separate MySQL instance then you will need to create the "kylo" non privileged user in that database before running the grants.
+.. note:: If the Hive database is installed in a separate MySQL instance, you will need to create the "kylo" non privileged user in that database before running the grants.
 
-5. Make sure the spark client and hive client is installed.
+5. Make sure the Spark client and Hive client is installed.
 
 6. Create the "kylo" user on edge node. 
 
@@ -225,7 +221,7 @@ Prepare the Kylo Edge Node
 
    This is required due to the fact that we are installing Kylo without privileged access. We will create Ranger policies ahead of time to all Kylo access to the Hive Schema and HDFS folders.  
 
-9. Create "kylo" home folder in HDFS. This is required for hive queries to work in HDP.
+9. Create "kylo" home folder in HDFS. This is required for Hive queries to work in HDP.
 
 .. code-block:: console
 
@@ -263,7 +259,7 @@ Prepare the NiFi Edge Node
 
 ..
 
-3. Make sure the spark client and hive client is installed.
+3. Make sure the Spark client and Hive client is installed.
 
 4. Create the "nifi" user on edge node, master nodes, and data nodes. 
 
@@ -279,7 +275,7 @@ Prepare the NiFi Edge Node
 
 6. Create the "nifi" home folders in HDFS. 
 
-   This is required for hive queries to work in HDP.   
+   This is required for Hive queries to work in HDP.   
 
 .. code-block:: console
 
@@ -312,11 +308,11 @@ Create the Keytabs for "nifi" and "kylo" Users
 
 ..
 
-2. Note the hive principal name for the thrift connection later. 
+2. Note the Hive principal name for the thrift connection later. 
 
 .. code-block:: console
 
-        # Write down the principal name for hive for the KDC node
+        # Write down the principal name for Hive for the KDC node
         kadmin.local: listprincs   
         kadmin.local: exit  
 
@@ -533,6 +529,10 @@ Install the Kylo Application on the Kylo Edge Node
 
     [root /]# vi /opt/kylo/kylo-services/conf/application.properties   
 
+..
+
+.. code-block:: properties
+
     spring.datasource.url=jdbc:mysql://<MYSQL_HOSTNAME>:3306/kylo?noAccessToProcedureBodies=true
     spring.datasource.username=kylo
     spring.datasource.password=password   
@@ -550,6 +550,10 @@ Install the Kylo Application on the Kylo Edge Node
     hive.metastore.datasource.url=jdbc:mysql://<MYSQL_HOSTNAME>:3306/hive
     hive.metastore.datasource.username=kylo
     hive.metastore.datasource.password=password   
+
+..
+
+.. code-block:: properties
 
     modeshape.datasource.url=jdbc:mysql://<MYSQL_HOSTNAME>:3306/kylo?noAccessToProcedureBodies=true
     modeshape.datasource.username=kylo
@@ -581,7 +585,12 @@ Install the Kylo Application on the Kylo Edge Node
     nifi.all_processors.kerberos_keytab=/etc/security/keytabs/nifi.service.keytab
     nifi.all_processors.hadoop_configuration_resources=/etc/hadoop/conf/core-site.xml,/etc/hadoop/conf/hdfs-site.xml   
 
-    Set the JMS server hostname for the Kylo hosted JMS server
+..
+
+    Set the JMS server hostname for the Kylo hosted JMS server:
+
+.. code-block:: properties
+
     config.elasticsearch.jms.url=tcp://<KYLO_EDGE_HOST>:61616  
 
 ..
@@ -603,9 +612,13 @@ Install the Kylo Application on the Kylo Edge Node
 
    c. Edit the properties file.
 
-.. code-block:: console
+.. code-block:: shell
 
       vi /opt/kylo/kylo-services/conf/authorization.ranger.properties
+
+..
+
+.. code-block:: properties
 
       ranger.hostName=<RANGER_HOST_NAME>
       ranger.port=6080
@@ -634,7 +647,7 @@ Install the Kylo Application on the Kylo Edge Node
 
 11. Login to the Kylo UI. 
 
-.. code-block:: console
+.. code-block:: html
 
       http://<KYLO_EDGE_HOSTNAME>:8400  
 
@@ -716,7 +729,7 @@ Create Ranger Policies
 
 4. Create the Hive Kylo policy.
 
-   Grant hive access to "kylo" user for hive tables, profile, and wrangler.
+   Grant Hive access to "kylo" user for Hive tables, profile, and wrangler.
 
 
 .. note:: Kylo supports user impersonation (add doc and reference it).
@@ -825,7 +838,7 @@ Import Kylo Templates
 
    a. Go to the templates page and import the data ingest template.
 
-   b. Manually update the spark validate processor.
+   b. Manually update the Spark validate processor.
 
       Add this variable to the ${table_field_policy_json_file}. It should look like this:
 
@@ -863,3 +876,7 @@ Create Data Ingest Feed Test
     cp -p <PATH_TO_FILE>/userdata1.csv /var/dropzone/
 
 ..
+
+.. |Hive authorizations_Link| raw:: html
+
+    <a href="http://hortonworks.com/blog/best-practices-for-Hive-authorization-using-apache-ranger-in-hdp-2-2/" target="_blank">Hive authorizations</a>

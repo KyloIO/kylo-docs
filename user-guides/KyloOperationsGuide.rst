@@ -382,18 +382,17 @@ Application Properties
 The *application.properties* file in kylo-services specifies most of
 the standard configuration in pipeline.
 
-+----------+-------------------------------------------------------------------------------+
-|**NOTE:** | Any change to the application properties will require an application restart. |
-+----------+-------------------------------------------------------------------------------+
+
+.. note:: Any change to the application properties will require an application restart.
+
 
 Below is a sample properties file with Spring Datasource properties for spring batch and the default data source:
 
+.. note:: Cloudera default password for root access to mysql is "cloudera".
 
-+----------+-------------------------------------------------------------------+
-|**NOTE:** | Cloudera default password for root access to mysql is "cloudera". |
-+----------+-------------------------------------------------------------------+
+..
 
-.. code-block:: shell
+.. code-block:: properties
 
     spring.datasource.url=jdbc:mysql://localhost:3306/kylo
     spring.datasource.username=root
@@ -435,8 +434,7 @@ Below is a sample properties file with Spring Datasource properties for spring b
     #
     server.port=8420
     #
-    # General configuration - Note: Supported configurations include
-    STANDALONE, BUFFER_NODE_ONLY, BUFFER_NODE, EDGE_NODE
+    # General configuration - Note: Supported configurations include STANDALONE, BUFFER_NODE_ONLY, BUFFER_NODE, EDGE_NODE
     #
     application.mode=STANDALONE
     #
@@ -479,10 +477,8 @@ Below is a sample properties file with Spring Datasource properties for spring b
     elasticsearch.port=9300
     elasticsearch.clustername=demo-cluster
     ## used to map Nifi Controller Service connections to the User Interface
-    ## naming convention for the property is
-    nifi.service.NIFI_CONTROLLER_SERVICE_NAME.NIFI_PROPERTY_NAME
-    ##anything prefixed with nifi.service will be used by the UI. Replace
-    Spaces with underscores and make it lowercase.
+    ## naming convention for the property is nifi.service.NIFI_CONTROLLER_SERVICE_NAME.NIFI_PROPERTY_NAME
+    ##anything prefixed with nifi.service will be used by the UI. Replace Spaces with underscores and make it lowercase.
     nifi.service.mysql.password=
     nifi.service.example_mysql_connection_pool.password=
     jms.activemq.broker.url:tcp://localhost:61616
@@ -490,9 +486,7 @@ Below is a sample properties file with Spring Datasource properties for spring b
     ## nifi Property override with static defaults
     ##Static property override supports 2 usecases
     # 1) store properties in the file starting with the prefix defined in the "PropertyExpressionResolver class" default = config.
-    # 2) store properties in the file starting with
-    "nifi.<PROCESSORTYPE>.<PROPERTY_KEY> where PROCESSORTYPE and
-    PROPERTY_KEY are all lowercase and the spaces are substituted with underscore
+    # 2) store properties in the file starting with "nifi.<PROCESSORTYPE>.<PROPERTY_KEY> where PROCESSORTYPE and PROPERTY_KEY are all lowercase and the spaces are substituted with underscore
     ##Below are Ambari configuration options for Hive Metastore and Spark location
     config.hive.schema=hive
     nifi.executesparkjob.sparkhome=/usr/hdp/current/spark-client
@@ -512,7 +506,7 @@ Kylo stores its metadata in the database configured in
 /opt/kylo/kylo-services/conf/application.properties in the
 following lines:
 
-.. code-block:: shell
+.. code-block:: properties
 
     metadata.datasource.driverClassName=com.mysql.jdbc.Driver
     metadata.datasource.url=jdbc:mysql://localhost:3306/kylo
@@ -536,7 +530,7 @@ metadata and data in certain directories, and those directories can be
 backed up as seen fit. For example, in the nifi.properties file,
 changing
 
-.. code-block:: shell
+.. code-block:: properties
 
     nifi.flow.configuration.file=/opt/nifi/data/conf/flow.xml.gz
 
@@ -550,10 +544,11 @@ repository, and data in the provenance repository in /opt/nifi/data. For
 more information about these configurations, the NiFi system
 administrator’s guide is the authority.
 
-    `*https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html* <https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html>`__
+  |nifisag_link|
+
 
 Startup and Shutdown
-=====================
+====================
 
 Kylo service automatically starts on system boot.
 
@@ -607,7 +602,7 @@ KYLO_SERVICES_OPTS environment variable. This may be necessary if
 the application is experiencing OutOfMemory errors. These would appear
 in the log files.
 
-.. code-block:: shell
+.. code-block:: properties
 
     export KYLO_SERVICES_OPTS="-Xmx2g"
 
@@ -643,7 +638,7 @@ Example Service Configuration
 
 The below is the service configuration monitoring 4 services:
 
-.. code-block:: shell
+.. code-block:: properties
 
     ambari.services.status=HDFS,HIVE,MAPREDUCE2,SQOOP
 
@@ -972,3 +967,6 @@ Kylo:
 .. |image45| image:: ../media/operations-guide/image45.jpg
    :width: 6.41353in
    :height: 3.01020in
+.. |nifisag_link| raw:: html
+
+    <a href="https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html" target="_blank">https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html</a>

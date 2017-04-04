@@ -31,11 +31,9 @@ Step 1: Create an EC2 instance
 
 For this document, we will configure a CoreOS AMI which is optimized for running Docker images.
 
-1. Choose an AMI for the region you will configure the EC2 instance in.
+1. Choose an AMI for the region in which you will configure the EC2 instance.
 
-.. code-block:: html
-
-    https://coreos.com/os/docs/latest/booting-on-ec2.html
+.. note:: For detailed procedures for |configuring_the_EC2_Link| instance, visit Running CoreOS Container Linux on EC2 on the CoreOS website.
 
 2. Create the EC2 instance. You might want to add more disk space than the default 8GB.
 
@@ -58,16 +56,16 @@ point and start clean.
 
 .. code-block:: shell
 
-    vi startCloudera.sh
+    $ vi startCloudera.sh
 
 ..
 
 2. Add the following:
 
-.. code-block:: shell
+.. code-block:: properties
 
     #!/bin/bash
-    docker run --name cloudera \
+    docker run --name cloudera =
       --hostname=quickstart.cloudera \
       --privileged=true -t -d \
       -p 8888:8888 \
@@ -221,7 +219,7 @@ Step 5: Install Kylo in the Docker Container
       changes, described in the Appendix section of the wizard deployment
       guide for Cloudera:
 
-.. code-block:: shell
+.. code-block:: properties
 
       ###Ambari Services Check
       #ambariRestClientConfig.username=admin
@@ -300,3 +298,7 @@ Starting up an Existing EC2 instance and Cloudera Docker Container
     $ /home/cloudera/cloudera-manager --express
 
 6. Login to Cloudera Manager and start all services.
+
+.. |configuring_the_EC2_Link| raw:: html
+
+    <a href="https://coreos.com/os/docs/latest/booting-on-ec2.html" target="_blank">configuring_the_EC2</a>

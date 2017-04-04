@@ -7,7 +7,7 @@ The Kylo applications contain features that leverage the thrift server
 connection to communicate with the cluster. In order for them to work in
 a Kerberos cluster, some configuration is required. Some examples are:
 
--  Profiling Statistics
+-  Profiling statistics
 
 -  Tables page
 
@@ -16,7 +16,7 @@ a Kerberos cluster, some configuration is required. Some examples are:
 Prerequisites
 =============
 
-Below are the list of prerequisites to enable Kerberos for Kylo data
+Below are the list of prerequisites for enabling Kerberos for the Kylo data
 lake platform.
 
 1. Running Hadoop cluster
@@ -30,9 +30,12 @@ Configuration Steps
 
 1. Create a Headless Keytab File for the Hive and Kylo User.
 
-+-------------+--------------------------------------------------------------------------------------+
-| **Note:**   | Perform the following as root. Replace "sandbox.hortonworks.com" with your domain.   |
-+-------------+--------------------------------------------------------------------------------------+
+
+.. note:: Perform the following as root. Replace "sandbox.hortonworks.com" with your domain.
+
+..
+
+.. code-block:: shell
 
     [root]# kadmin.local
 
@@ -58,6 +61,8 @@ Configuration Steps
 
     [root]# chmod 440
     /etc/security/keytabs/hive-kylo.headless.keytab
+
+..
 
 1. Validate that the Keytabs Work.
 
@@ -92,15 +97,19 @@ Configuration Steps
 
 3. Modify the kylo-services configuration.
 
-+------------+-------------------------------------------------------+
-| **TIP**:   | Replace "sandbox.hortonworks.com" with your domain.   |
-+------------+-------------------------------------------------------+
+.. tip:: Replace "sandbox.hortonworks.com" with your domain.
 
-    To add Kerberos support to kylo-services you must enable the
-    feature and update hive connection URL to support Kerberos.
+    To add Kerberos support to kylo-services, you must enable the
+    feature and update the Hive connection URL to support Kerberos.
+
+.. code-block:: shell
 
     [root]# vi
     /opt/kylo/kylo-services/conf/application.properties
+
+..
+
+.. code-block:: shell
 
     # This property is for the hive thrift connection used by
     kylo-services
@@ -132,6 +141,8 @@ Configuration Steps
 
     nifi.all_processors.hadoop_configuration_resources=/etc/hadoop/conf/core-site.xml,/etc/hadoop/conf/hdfs-site.xml
 
+..
+
 4. Restart the kylo-services and kylo-spark-shell.
 
     [root]# service kylo-services restart
@@ -140,5 +151,5 @@ Configuration Steps
 
 Kylo is now configured for a Kerberos cluster. You can test that it is
 configured correctly by looking at profile statistics (if applicable):
-go to the Tables page and drill down into a hive table, and go to the
+go to the Tables page and drill down into a Hive table, and go to the
 Wrangler feature and test that it works.
