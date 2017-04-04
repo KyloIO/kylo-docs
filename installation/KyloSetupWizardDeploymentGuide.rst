@@ -112,6 +112,10 @@ b. Run the offline install:
 
     /opt/kylo/setup/generate-offline-install.sh
 
++------------+-------------------------------------------------------------------------------------------------------+
+| **Note**   | If installing the Debian packages make sure to change the Elasticsearch download from RPM to DEB      |
++------------+-------------------------------------------------------------------------------------------------------+
+
 ..
 
 c. Copy the /opt/kylo/setup/kylo-install.tar file to the node

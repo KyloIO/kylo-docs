@@ -107,6 +107,11 @@ downloaded application binaries.
     $ /opt/kylo/setup/generate-offline-install.sh
 ..
 
++------------+-------------------------------------------------------------------------------------------------------+
+| **Note**   | If installing the Debian packages make sure to change the Elasticsearch download from RPM to DEB      |
++------------+-------------------------------------------------------------------------------------------------------+
+
+
 3. Copy the /opt/kylo/setup/kylo-install.tar file to the node you install the RPM on. This can be copied to a temp directory. It doesn’t have to be put in the /opt/kylo/setup folder.
 
 4. Run the command to tar up the setup folder.
@@ -219,6 +224,7 @@ b. Offline Mode
           Example:  /tmp/kylo-install/setup/elasticsearch/install-elasticsearch.sh -o /tmp/kylo-install/setup
 
 ..
+
 
 **Option 2**: Use an existing Elasticsearch.
 To leverage an existing Elasticsearch instance, you must update all feed templates that you created with the correct Elasticsearch URL.You can do this by going to the "Additional Properties" tab for that feed. If you added any reusable flow templates you will need to modify the Elasticsearch processors in NiFI.
