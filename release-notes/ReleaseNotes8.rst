@@ -26,32 +26,15 @@ Build or download the rpm.
 
  ..
 
-2. Run:
+2. Uninstall Kylo:
 
  .. code-block:: shell
 
-    useradd -r -m -s /bin/bash kylo
+   /opt/kylo/remove-kylo.sh
 
  ..
 
-3. Run:
-
- .. code-block:: shell
-
-    usermod -a -G hdfs kylo
-
- ..
-
-4. Run:
-
- .. code-block:: shell
-
-   /opt/thinkbig/remove-kylo-datalake-accelerator.sh to uninstall
-   the RPM
-
- ..
-
-5. Install the new RPM:
+3. Install the new RPM:
 
  .. code-block:: shell
 
@@ -59,7 +42,7 @@ Build or download the rpm.
 
  ..
 
-6. Upgrade "kylo" database.
+4. Upgrade Kylo database:
 
  .. code-block:: shell
 
@@ -94,10 +77,10 @@ Build or download the rpm.
  This will generate ``kylo-db-update-script.sql`` in current directory.
  Now run ``kylo-db-update-script.sql`` on your database.
 
-7. Add your database driver jars to kylo-spark-shell if you'll be using JDBC tables in your Data Transformation feeds. Edit ``/opt/kylo/kylo-services/bin/run-kylo-spark-shell.sh``:
+5. Add your database driver jars to kylo-spark-shell if you'll be using JDBC tables in your Data Transformation feeds. Edit ``/opt/kylo/kylo-services/bin/run-kylo-spark-shell.sh``:
 
 .. code-block:: shell
 
     KYLO_DRIVER_CLASS_PATH=/opt/kylo/kylo-services/conf:/opt/nifi/mysql/*
 
-8. If you import the new Data Transformation template, be sure to re-initialize your existing Data Transformation feeds if you update them.
+6. If you import the new Data Transformation template, be sure to re-initialize your existing Data Transformation feeds if you update them.
