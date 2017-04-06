@@ -33,9 +33,9 @@ See the Dependencies section in the deployment checklist: :doc:`../installation/
 +-----------------------+-------------------------------------------------------------+----------------+
 | **Platform**          | **URL**                                                     | **Version**    |
 +-----------------------+-------------------------------------------------------------+----------------+
-| Hortonworks Sandbox   | http://hortonworks.com/products/hortonworks-sandbox/        | HDP 2.3,2.4,2.5|
+| Hortonworks Sandbox   | https://hortonworks.com/products/sandbox/                   | HDP 2.3,2.4,2.5|
 +-----------------------+-------------------------------------------------------------+----------------+
-| Cloudera Sandobx      | http://www.cloudera.com/downloads/quickstart_vms/5-7.html   | 5.7            |
+| Cloudera Sandbox      | https://www.cloudera.com/downloads/quickstart_vms/5-8.html  | 5.8            |
 +-----------------------+-------------------------------------------------------------+----------------+
 
 Prerequisites
