@@ -333,8 +333,8 @@ Create the Keytabs for "nifi" and "kylo" Users
 .. code-block:: console
 
         [root opt]# mv /tmp/kylo.service.keytab /etc/security/keytabs/
-        [root keytabs]# chown kylo:kylo/etc/security/keytabs/kylo.service.keytab
-        [root opt]# chmod 400/etc/security/keytabs/kylo.service.keytab  
+        [root keytabs]# chown kylo:kylo /etc/security/keytabs/kylo.service.keytab
+        [root opt]# chmod 400 /etc/security/keytabs/kylo.service.keytab  
 
 ..
 
@@ -405,7 +405,7 @@ Install NiFi on the NiFi Edge Node
 
 1. SCP the kylo-install.tar tar file to /tmp (if running in offline mode).
 
-2.  Run the setup wizard (example uses offline mode) [root tmp]# cd /tmp.
+2.  Run the setup wizard (example uses offline mode) [root tmp]# cd /tmp
 
 .. code-block:: console
 
@@ -482,7 +482,7 @@ Install the Kylo Application on the Kylo Edge Node
 
 .. code-block:: console
 
-    [root tmp]# cd /tmp.
+    [root tmp]# cd /tmp
     [root tmp]# mkdir tba-install
     [root tmp]# mv kylo-install.tar tba-install/
     [root tmp]# cd tba-install/
@@ -507,6 +507,8 @@ Install the Kylo Application on the Kylo Edge Node
 
     $ vi /etc/elasticsearch/elasticsearch.yml
     network.host: localhost,<KYLO_EDGE_HOST>  
+
+    $ service elasticsearch restart
 
 ..
 
@@ -603,7 +605,7 @@ Install the Kylo Application on the Kylo Edge Node
 
 .. code-block:: console
 
-      [root plugin]# mv /tmp/kylo-hadoop-authorization-ranger-<VERSION>.jar /opt/kylo/kylo-services/plugi
+      [root plugin]# mv /tmp/kylo-hadoop-authorization-ranger-<VERSION>.jar /opt/kylo/kylo-services/plugin
       [root plugin]# chown kylo:kylo /opt/kylo/kylo-services/plugin/kylo-hadoop-authorization-ranger-<VERSION>.jar
       [root plugin]# touch /opt/kylo/kylo-services/conf/authorization.ranger.properties
       [root plugin]# chown kylo:kylo /opt/kylo/kylo-services/conf/authorization.ranger.properties  
@@ -836,9 +838,14 @@ Import Kylo Templates
 
 5. Import the data ingest template.
 
-   a. Go to the templates page and import the data ingest template.
+   a. Locate the data_ingest.zip file. You will need the file locally to upload it. You can find it in one of two places:
 
-   b. Manually update the Spark validate processor.
+        1) <kylo_project>/samples/templates/nifi-1.0/
+        2) /opt/kylo/setup/data/templates/nifi-1.0
+
+   b. Go to the templates page and import the data ingest template.
+
+   c. Manually update the Spark validate processor.
 
       Add this variable to the ${table_field_policy_json_file}. It should look like this:
 
@@ -848,7 +855,7 @@ Import Kylo Templates
 
 ..
 
-   c. Edit the "Upload to HDFS" and remove "Remote Owner" and "Remote Group" (since we aren’t using superuser).
+   d. Edit the "Upload to HDFS" and remove "Remote Owner" and "Remote Group" (since we aren’t using superuser).
 
 6. Update NiFi processors for Kylo template versions prior to 0.5.0.
 
