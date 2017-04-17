@@ -64,7 +64,7 @@ The documentation for the site is organized into a few sections:
     how-to-guides/SentryInstallationGuide
     SUSE Configuration <how-to-guides/SuseConfigurationChanges>
     Configuration Properties <how-to-guides/ConfigurationProperties>
-    Setting validator persistence level <how-to-guides/ValidatorPersistenceLevel>
+    Validator Tuning <how-to-guides/ValidatorTuning>
 
 .. _developer_guides:
 .. toctree::
