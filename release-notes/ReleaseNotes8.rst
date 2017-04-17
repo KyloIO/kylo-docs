@@ -83,7 +83,7 @@ Build or download the rpm.
 
         ..
 
-5. Backup the Kylo database.  Run the following code against your kylp database to export the 'kylo' schema to a file.  Replace the  PASSWORD with the correct login to your kylo database.
+5. Backup the Kylo database.  Run the following code against your kylo database to export the 'kylo' schema to a file.  Replace the  PASSWORD with the correct login to your kylo database.
 
   .. code-block:: shell
 
@@ -116,7 +116,7 @@ Build or download the rpm.
 
    .. code-block:: shell
 
-      /opt/thinkbig/setup/nifi/update-nars-jars.sh
+      /opt/kylo/setup/nifi/update-nars-jars.sh
    ..
 
 9. Update the NiFi Templates.
