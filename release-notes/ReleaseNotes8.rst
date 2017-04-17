@@ -12,9 +12,24 @@ Highlights
 
 -  Data Transformation feeds can now use standardization and validation functions, and be merged, profiled, and indexed.
 
+- The Feed/Template import provides visual feedback and progress
+
+- Kylo will now encrypt 'sensitive' properties and enforce 'required' properties.
+
 
 Upgrade Instructions from v0.7.1
 --------------------------------
+
+application.properties changes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ - 2 new properties were added
+
+      .. code-block:: properties
+
+         liquibase.enabled=true
+         liquibase.change-log=classpath:com/thinkbiganalytics/db/master.xml
+      ..
 
 Build or download the rpm.
 
@@ -42,7 +57,42 @@ Build or download the rpm.
 
  ..
 
-4. Upgrade Kylo database:
+4. Copy the application.properties file from the 0.7.1 install.  If you have customized the application.properties file you will want to copy the 0.7.1 version and add in the two new properties that were added for this release.
+
+     4.1 Find the /bkup-config/TIMESTAMP/kylo-services/application.properties file
+
+        - Kylo will backup the application.properties file to the following location, */opt/kylo/bkup-config/YYYY_MM_DD_HH_MM_millis/kylo-services/application.properties*, replacing the "YYYY_MM_DD_HH_MM_millis" with a valid time:
+
+     4.2 Copy the backup file over to the /opt/kylo/kylo-services/conf folder
+
+        .. code-block:: shell
+
+          ### move the application.properties shipped with the .rpm to a backup file
+          mv /opt/kylo/kylo-services/application.properties application.properties.0_8_0_template
+          ### copy the backup properties  (Replace the YYYY_MM_DD_HH_MM_millis  with the valid timestamp)
+          cp /opt/kylo/bkup-config/YYYY_MM_DD_HH_MM_millis/kylo-services/application.properties /opt/kylo/kylo-services/conf
+
+        ..
+
+     4.3  Add in the 2 new properties to the /opt/kylo/kylo-services/conf/application.properties file
+
+        .. code-block:: properties
+
+         liquibase.enabled=true
+         liquibase.change-log=classpath:com/thinkbiganalytics/db/master.xml
+
+        ..
+
+5. Backup the Kylo database.  Run the following code against your kylp database to export the 'kylo' schema to a file.  Replace the  PASSWORD with the correct login to your kylo database.
+
+  .. code-block:: shell
+
+     mysqldump -u root -pPASSWORD --databases kylo >kylo-0_7_1_backup.sql
+
+  ..
+
+6. Upgrade Kylo database:
+
 
  .. code-block:: shell
 
@@ -50,37 +100,41 @@ Build or download the rpm.
 
  ..
 
- If you opt for automatic upgrades there is nothing else you need to do, otherwise:
+7. Additional Database updates.  Kylo now uses liquibase to perform database updates.  Two modes are supported.
 
- Edit ``/opt/kylo/kylo-services/conf/application.properties`` and change from ``liquibase.enabled=true`` to ``liquibase.enabled=false`` and
- also make sure your database connection properties are correct:
+ - Automatic updates
 
- .. code-block:: properties
+     By default Kylo is set up to automatically upgrade its database on Kylo services startup. As such,
+     there isn't anything specific an end user has to do. When Kylo services startup the kylo database will be automatically upgraded to latest version if required.
 
-    liquibase.enabled=false
+ - Manual updates
 
-    spring.datasource.url=
-    spring.datasource.username=
-    spring.datasource.password=
-    spring.datasource.driverClassName=
+     Sometimes, however you may choose to disable liquibase and manually apply the upgrade scripts.  By disabling liquibase you are in control of how the scripts are applied.  This is needed if the kylo database user doesnt have priviledges to make schema changes to the kylo database.
+     Please follow this :doc:`../how-to-guides/DatabaseUpgrades` on how to manually apply the additional database updates.
 
- ..
+8. Update the NiFi nars.  Run the following shell script to copy over the new NiFi nars/jars to get new changes to NiFi processors and services.
 
- Run ``/opt/kylo/setup/sql/generate-update-sql.sh``
+   .. code-block:: shell
 
- .. code-block:: shell
+      /opt/thinkbig/setup/nifi/update-nars-jars.sh
+   ..
 
-    /opt/kylo/setup/sql/generate-update-sql.sh
+9. Update the NiFi Templates.
 
- ..
+ - The Data Transformation template now allows you to apply standardization and validation rules to the feed.  To take advantage of this you will need to import the new template.  The new data transformation template can be found:
 
- This will generate ``kylo-db-update-script.sql`` in current directory.
- Now run ``kylo-db-update-script.sql`` on your database.
+  If you import the new Data Transformation template, be sure to re-initialize your existing Data Transformation feeds if you update them.
 
-5. Add your database driver jars to kylo-spark-shell if you'll be using JDBC tables in your Data Transformation feeds. Edit ``/opt/kylo/kylo-services/bin/run-kylo-spark-shell.sh``:
 
-.. code-block:: shell
+Optional Data Transformation Enhancement Changes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    KYLO_DRIVER_CLASS_PATH=/opt/kylo/kylo-services/conf:/opt/nifi/mysql/*
+New to this release is the ability for the data wrangler to connect to various JDBC datasources, allowing you to join Hive tables with for example, MySQL or Teradata.  To take advantage of this you will need to add your database driver jars to kylo-spark-shell.sh script:
 
-6. If you import the new Data Transformation template, be sure to re-initialize your existing Data Transformation feeds if you update them.
+ -  Edit ``/opt/kylo/kylo-services/bin/run-kylo-spark-shell.sh`` and update the *KYLO_DRIVER_CLASS_PATH* variable with your driver locations.  Below is an example of setting the drivers for mysql and teradata :
+
+    .. code-block:: shell
+
+        KYLO_DRIVER_CLASS_PATH=/opt/kylo/kylo-services/conf:/opt/nifi/mysql/*:/var/drivers/teradata/*
+
+    ..
