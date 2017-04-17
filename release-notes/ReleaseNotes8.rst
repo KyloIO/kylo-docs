@@ -131,10 +131,18 @@ Optional Data Transformation Enhancement Changes
 
 New to this release is the ability for the data wrangler to connect to various JDBC datasources, allowing you to join Hive tables with for example, MySQL or Teradata.  To take advantage of this you will need to add your database driver jars to kylo-spark-shell.sh script:
 
- -  Edit ``/opt/kylo/kylo-services/bin/run-kylo-spark-shell.sh`` and update the *KYLO_DRIVER_CLASS_PATH* variable with your driver locations.  Below is an example of setting the drivers for mysql and teradata :
+ -  Edit ``/opt/kylo/kylo-services/bin/run-kylo-spark-shell.sh`` and update the *KYLO_DRIVER_CLASS_PATH* variable with your driver locations.
 
     .. code-block:: shell
 
-        KYLO_DRIVER_CLASS_PATH=/opt/kylo/kylo-services/conf:/opt/nifi/mysql/*:/var/drivers/teradata/*
+        KYLO_DRIVER_CLASS_PATH=/opt/kylo/kylo-services/conf:/opt/nifi/mysql/*
+
+    ..
+
+    Additional driver locations can be added separating each location with a colon
+
+    .. code-block:: shell
+
+        KYLO_DRIVER_CLASS_PATH=/opt/kylo/kylo-services/conf:/opt/nifi/mysql/*:/path/to/my/teradata/driver/*
 
     ..
