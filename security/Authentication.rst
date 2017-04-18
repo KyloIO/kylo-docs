@@ -107,13 +107,23 @@ be confusing to have to manage groups from two different sources.
 
 .. note:: The `auth-file` profile should generally not be used in a production environment because it currently stores user passwords in the clear.  It is primarily used only in development and testing.
 
-+---------------------------------+----------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
-| Properties                      | Required | Example               | Description                                                                                                        |
-+=================================+==========+=======================+====================================================================================================================+
-| security.auth.file.users:users  | No       | ``users.properties``  | The value is either a name of a resource found on the classpath or, if prepended by `file:///`, a direct file path |
-+---------------------------------+----------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
-| security.auth.file.users:groups | No       | ``groups.properties`` | The same as security.auth.file.users but for the groups file                                                       |
-+---------------------------------+----------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
++---------------------------+----------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
+| Properties                | Required | Example               | Description                                                                                                        |
++===========================+==========+=======================+====================================================================================================================+
+| security.auth.file.users  | No       | ``users.properties``  | The value is either a name of a resource found on the classpath or, if prepended by `file:///`, a direct file path |
++---------------------------+----------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
+| security.auth.file.groups | No       | ``groups.properties`` | The same as security.auth.file.users but for the groups file                                                       |
++---------------------------+----------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
+
+If `auth-file` is active and no users file property is specified in the configuration then these implicit username/password properties will be assumed:
+
+.. code-block:: properties
+
+   dladmin=thinkbig
+   analyst=analyst
+   designer=designer
+   operator=operator
+..
 
 `auth-ldap`
 '''''''''''
@@ -224,18 +234,18 @@ Kylo UI and Services; each with different configuration options:
 
     @Configuration
     public class MyCustomAuthConfig {
-        @Bean(name = "uiMyLoginConfiguration")
-        public LoginConfiguration uiLoginConfiguration(LoginConfigurationBuilder builder) {
+        @Bean
+        public LoginConfiguration myLoginConfiguration(LoginConfigurationBuilder builder) {
             return builder
                     .loginModule(JaasAuthConfig.JAAS_UI)
                         .moduleClass(MyCustomLoginModule.class)
-                        .controlFlag("REQUIRED")
-                        .option("myCustomOptionKey", "customValue1")
+                        .controlFlag("required")
+                        .option("customOption", "customValue1")
                         .add()
                     .loginModule(JaasAuthConfig.JAAS_SERVICES)
                         .moduleClass(MyCustomLoginModule.class)
-                        .controlFlag("REQUIRED")
-                        .option("myCustomOption", "customValue2")
+                        .controlFlag("required")
+                        .option("customOption", "customValue2")
                         .option("anotherOption", "anotherValue")
                         .add()
                     .build();
