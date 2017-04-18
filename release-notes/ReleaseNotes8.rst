@@ -20,17 +20,6 @@ Highlights
 Upgrade Instructions from v0.7.1
 --------------------------------
 
-application.properties changes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
- - 2 new properties were added
-
-      .. code-block:: properties
-
-         liquibase.enabled=true
-         liquibase.change-log=classpath:com/thinkbiganalytics/db/master.xml
-      ..
-
 Build or download the rpm.
 
 1. Shut down NiFi:
@@ -83,7 +72,18 @@ Build or download the rpm.
 
         ..
 
-5. Backup the Kylo database.  Run the following code against your kylo database to export the 'kylo' schema to a file.  Replace the  PASSWORD with the correct login to your kylo database.
+     4.4 Ensure the property ``security.jwt.key`` in both kylo-services and kylo-ui application.properties file match.  They property below needs to match in both of these files:
+
+         - */opt/kylo/kylo-ui/conf/application.properties*
+         - */opt/kylo/kylo-services/conf/application.properties*.
+
+       .. code-block:: properties
+
+         security.jwt.key=
+
+       ..
+
+5. Backup the Kylo database.  Run the following code against your kylp database to export the 'kylo' schema to a file.  Replace the  PASSWORD with the correct login to your kylo database.
 
   .. code-block:: shell
 
