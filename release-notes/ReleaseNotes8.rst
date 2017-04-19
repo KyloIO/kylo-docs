@@ -8,7 +8,7 @@ Highlights
 
 -  Support for PostgreSQL as Kylo database
 
--  Join Hive and JDBC tables in Data Transformation feeds by creating a new Data Source.
+-  Join Hive and JDBC tables in Data Transformation feeds by creating a new Data Source. (Spark 1.x only)
 
 -  Data Transformation feeds can now use standardization and validation functions, and be merged, profiled, and indexed.
 
@@ -46,7 +46,7 @@ Build or download the rpm.
 
  ..
 
-4. Copy the application.properties file from the 0.7.1 install.  If you have customized the application.properties file you will want to copy the 0.7.1 version and add in the two new properties that were added for this release.
+4. Copy the application.properties file from the 0.7.1 install.  If you have customized the application.properties file you will want to copy the 0.7.1 version and add the new properties that were added for this release.
 
      4.1 Find the /bkup-config/TIMESTAMP/kylo-services/application.properties file
 
@@ -82,6 +82,14 @@ Build or download the rpm.
          security.jwt.key=
 
        ..
+
+     4.5 If using Spark 2 then add the following property to the /opt/kylo/kylo-services/conf/application.properties file
+
+        .. code-block:: properties
+
+          config.spark.version=2
+
+        ..
 
 5. Backup the Kylo database.  Run the following code against your kylp database to export the 'kylo' schema to a file.  Replace the  PASSWORD with the correct login to your kylo database.
 
@@ -129,21 +137,21 @@ Build or download the rpm.
 Data Transformation Enhancement Changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-New to this release is the ability for the data wrangler to connect to various JDBC datasources, allowing you to join Hive tables with for example, MySQL or Teradata.  To take advantage of this you will need to add your database driver jars to kylo-spark-shell.sh script:
+New to this release is the ability for the data wrangler to connect to various JDBC data sources, allowing you to join Hive tables with, for example, MySQL or Teradata. The JDBC drivers are automatically read from /opt/nifi/mysql/ when Kylo is starting up. When Kylo Spark Shell is run in yarn-client mode then these jars need to be added manually to the run-kylo-spark-shell.sh script:
 
- -  Edit ``/opt/kylo/kylo-services/bin/run-kylo-spark-shell.sh`` and update the *KYLO_DRIVER_CLASS_PATH* variable with your driver locations.
+ -  Edit ``/opt/kylo/kylo-services/bin/run-kylo-spark-shell.sh`` and append --jars to the ``spark-submit`` command-line:
 
     .. code-block:: shell
 
-        KYLO_DRIVER_CLASS_PATH=/opt/kylo/kylo-services/conf:/opt/nifi/mysql/*
+        spark-submit --jars /opt/nifi/mysql/mariadb-java-client-1.5.7.jar ...
 
     ..
 
-    Additional driver locations can be added separating each location with a colon
+    Additional driver locations can be added separating each location with a comma
 
     .. code-block:: shell
 
-        KYLO_DRIVER_CLASS_PATH=/opt/kylo/kylo-services/conf:/opt/nifi/mysql/*:/path/to/my/teradata/driver/*
+        spark-submit --jars /opt/nifi/mysql/mariadb-java-client-1.5.7.jar,/opt/nifi/teradata/terajdbc4.jar ...
 
     ..
 
