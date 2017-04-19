@@ -126,8 +126,8 @@ Build or download the rpm.
   If you import the new Data Transformation template, be sure to re-initialize your existing Data Transformation feeds if you update them.
 
 
-Optional Data Transformation Enhancement Changes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Data Transformation Enhancement Changes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 New to this release is the ability for the data wrangler to connect to various JDBC datasources, allowing you to join Hive tables with for example, MySQL or Teradata.  To take advantage of this you will need to add your database driver jars to kylo-spark-shell.sh script:
 
@@ -146,3 +146,33 @@ New to this release is the ability for the data wrangler to connect to various J
         KYLO_DRIVER_CLASS_PATH=/opt/kylo/kylo-services/conf:/opt/nifi/mysql/*:/path/to/my/teradata/driver/*
 
     ..
+
+
+Ambari Service Monitor Changes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Ambari Service Monitor is now a Kylo plugin jar.  In order for Kylo to report status on Ambari services you will need to do the following:
+
+1. Modify/Ensure the connection properties are setup.  The ambari connection parameters need to be moved out of the main kylo-services application.properties to a new file called ``ambari.properties``
+
+   - Create a new file ``/opt/kylo/kylo-services/conf/ambari.properties``.  Ensure the owner of the file is *kylo*
+   - Add and configure the following properties in that file:
+
+        .. code-block:: properties
+
+            ambariRestClientConfig.host=127.0.0.1
+            ambariRestClientConfig.port=8080
+            ambariRestClientConfig.username=admin
+            ambariRestClientConfig.password=admin
+            ambari.services.status=HDFS,HIVE,MAPREDUCE2,SQOOP
+
+        ..
+
+2. Copy the ``/opt/kylo/setup/plugins/kylo-service-monitor-ambari-0.8.0.jar`` to ``/opt/kylo/kylo-services/plugin``
+
+   .. code-block:: shell
+
+    cp /opt/kylo/setup/plugins/kylo-service-monitor-ambari-0.8.0.jar /opt/kylo/kylo-services/plugin/
+
+   ..
+
