@@ -22,7 +22,7 @@ Highlights
 Upgrade Instructions from v0.7.1
 --------------------------------
 
-Build or `download the RPM <http://bit.ly/2o5ZcyF>`__
+Build or `download the RPM <http://bit.ly/2oVaQJE>`__
 
 1. Shut down NiFi:
 
