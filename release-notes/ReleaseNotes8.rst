@@ -1,16 +1,18 @@
-Release 0.8.0 (Mid Apr, 2017)
+Release 0.8.0 (Apr, 19 2017)
 =============================
 
 Highlights
 ----------
 
--  Automatic and manual database upgrades. See :doc:`../how-to-guides/DatabaseUpgrades`
+- 90+ issues resolved
 
--  Support for PostgreSQL as Kylo database
+- Automatic and manual database upgrades. See :doc:`../how-to-guides/DatabaseUpgrades`
 
--  Join Hive and JDBC tables in Data Transformation feeds by creating a new Data Source. (Spark 1.x only)
+- Support for PostgreSQL as Kylo metadata store
 
--  Data Transformation feeds can now use standardization and validation functions, and be merged, profiled, and indexed.
+- Join Hive and any JDBC tables in Data Transformation feeds by creating a new Data Source. (Spark 1.x only)
+
+- Wrangler can now use standardization and validation functions, and be merged, profiled, and indexed.
 
 - The Feed/Template import provides visual feedback and progress
 
@@ -20,7 +22,7 @@ Highlights
 Upgrade Instructions from v0.7.1
 --------------------------------
 
-Build or download the rpm.
+Build or <a href="http://bit.ly/2o5ZcyF" target="_blank">download the RPM</a>
 
 1. Shut down NiFi:
 
