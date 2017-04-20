@@ -10,7 +10,7 @@ Highlights
 
 - Support for PostgreSQL as Kylo metadata store
 
-- Join Hive and any JDBC tables in Data Transformation feeds by creating a new Data Source. (Spark 1.x only)
+- Join Hive and any JDBC tables in Data Transformation feeds by creating a new Data Source.
 
 - Wrangler can now use standardization and validation functions, and be merged, profiled, and indexed.
 
