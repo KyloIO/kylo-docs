@@ -865,3 +865,16 @@ Sqoop requires a JDK to compile Java code. The steps to install a JDK and fix th
     export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.131-2.6.9.0.el7_3.x86_64/
 
 5. Re-run Sqoop flow.
+
+
+Validator is unable to process policy JSON file
+===============================================
+
+Problem
+-------
+Validator throws an error while trying to process the policy JSON file. This issue may be caused due to manual editing of the file in an editor and pasting the result back in NiFi.
+
+
+Solution
+--------
+Ensure that the policy file is correctly formatted. External editors can sometimes put in invalid characters. One way to do this verification is at: `JSON Pretty Print <http://jsonprettyprint.com/>`_. Paste in the policy file in the text box and click 'Pretty Print JSON'. If the JSON is valid, it will be shown in a more readable format. Otherwise, a ``null`` will be output.
