@@ -37,9 +37,6 @@ This link provides additional instruction for enabling SSL for NiFi:
 
 ..
 
-      Example screenshot:
-
-      |image1|
 
 5.  Make an SSL directory under /opt/nifi/data as the nifi owner:
 
@@ -61,16 +58,27 @@ This link provides additional instruction for enabling SSL for NiFi:
     This will generate one client cert and password file along with a
     server keystore and trust store:
 
-    |image2|
+.. code-block:: shell
 
-    The client cert is the p.12 (PKCS12) file along with its respective
-    password. This will be needed later when you add the client cert to
-    the browser/computer.
+    -rwxr-xr-x 1 nifi root 1675 Apr 26 21:28 nifi-key.key
+    -rwxr-xr-x 1 nifi root 1200 Apr 26 21:28 nifi-cert.pem
+    -rwxr-xr-x 1 nifi root   43 Apr 26 21:28 CN=kylo_OU=NIFI.password
+    -rwxr-xr-x 1 nifi root 3434 Apr 26 21:28 CN=kylo_OU=NIFI.p12
+    drwxr-xr-x 2 nifi root 4096 Apr 26 21:46 localhost
+..
+
+    .. note:: The client cert is the p.12 (PKCS12) file along with its respective password. This will be needed later when you add the client cert to the browser/computer.
 
     The directory 'localhost' is for the server side keystore and
     truststore .jks files.
 
-    |image3|
+.. code-block:: shell
+
+    -rwxr-xr-x 1 nifi root 3053 Apr 26 21:28 keystore.jks
+    -rwxr-xr-x 1 nifi root  911 Apr 26 21:28 truststore.jks
+    -rwxr-xr-x 1 nifi root 8921 Apr 26 21:28 nifi.properties
+..
+
 
 7. Change permissions on files.
 
@@ -86,11 +94,9 @@ This link provides additional instruction for enabling SSL for NiFi:
    a. Open the /opt/nifi/data/ssl/localhost/nifi.properties file.
 
    b. Copy the properties, starting with the #Site to Site properties
-      through the last NiFi security property (see below). Note that
-      the **bolded lines** shown in the example in step 3 indicate
-      fields that must be updated.
+      through the last NiFi security property (see below).
 
-      Below is an example.  Do not copy this text directly, as your keystore/truststore passwords will be different!
+    .. note:: Below is an example. Do not copy this text directly, as your keystore/truststore passwords will be different!
 
 .. code-block:: properties
 
@@ -105,8 +111,8 @@ This link provides additional instruction for enabling SSL for NiFi:
     nifi.web.war.directory=./lib
     nifi.web.http.host=
     nifi.web.http.port=
-    **nifi.web.https.host=**
-    **nifi.web.https.port=9443**
+    nifi.web.https.host=
+    nifi.web.https.port=9443
     nifi.web.jetty.working.directory=./work/jetty
     nifi.web.jetty.threads=200
 
@@ -117,11 +123,11 @@ This link provides additional instruction for enabling SSL for NiFi:
     nifi.sensitive.props.provider=BC
     nifi.sensitive.props.additional.keys=
 
-    **nifi.security.keystore=/opt/nifi/data/ssl/localhost/keystore.jks**
+    nifi.security.keystore=/opt/nifi/data/ssl/localhost/keystore.jks
     nifi.security.keystoreType=jks
     nifi.security.keystorePasswd=fCrusEdGOKdik7P5UORRegQOILoZTBQ+9kyhf8D+PUU
     nifi.security.keyPasswd=fCrusEdGOKdik7P5UORRegQOILoZTBQ+9kyhf8D+PUU
-    **nifi.security.truststore=/opt/nifi/data/ssl/localhost/truststore.jks**
+    nifi.security.truststore=/opt/nifi/data/ssl/localhost/truststore.jks
     nifi.security.truststoreType=jks
     nifi.security.truststorePasswd=DHJS0+HIaUMRkhrbqlK/ys5j7iL/ef9mnGJIDRlFokA
     nifi.security.needClientAuth=
@@ -138,14 +144,30 @@ This link provides additional instruction for enabling SSL for NiFi:
 
 .. code-block:: properties
 
-      <property name="Initial Admin Identity">CN=kylo,
-      OU=NIFI</property>
+      <property name="Initial Admin Identity">CN=kylo,OU=NIFI</property>
 
 ..
 
-    Here is a sample screenshot of file:
+    Here is an example:
 
-    |image4|
+.. code-block:: properties
+
+    <authorizer>
+        <identifier>file-provider</identifier>
+        <class>org.apache.nifi.authorization.FileAuthorizer</class>
+        <property name="Authorizations File">./conf/authorizations.xml</property>
+        <property name="Users File">./conf/users.xml</property>
+        <property name="Initial Admin Identity"></property>
+        <property name="Legacy Authorized Users File"></property>
+
+        <!-- Provide the identity (typically a DN) of each node when clustered, see above description of Node Identity.
+        <property name="Node Identity 1"></property>
+        <property name="Node Identity 2"></property>
+        -->
+       <property name="Initial Admin Identity">CN=kylo,OU=NIFI</property>
+    </authorizer>
+
+..
 
     For reference:  This will create a record in the /opt/nifi/current/conf/users.xml.  Should you need to regenerate your SSL file with a different CN, you will need to modify the
     users.xml file for that entry.
@@ -176,28 +198,28 @@ This link provides additional instruction for enabling SSL for NiFi:
 
 2. Open Keychain Access.
 
-3. Create a new keychain with a name.  The client cert is copied into this new keychain, which in the example here is named "nifi-cet". If you add it directly to the System, the browser will ask you for the login/pass every time NiFi does a request.
+3. Create a new keychain with a name.  The client cert is copied into this new keychain, which in the example here is named "nifi-cert". If you add it directly to the System, the browser will ask you for the login/pass every time NiFi does a request.
 
    a. In the left pane, right-click "Keychains" and select "New Keychain".
 
-      |image5|
+      |image1|
 
    b. Give it the name "nifi-cert" and a password.
 
 +------------+------------+
-| |image6|   | |image7|   |
+| |image2|   | |image3|   |
 +------------+------------+
 
 4. Once the keychain is created, click on it and select File -> import
    Items, and then find the .p12 file that you copied over in step 1.
 
 +------------+------------+
-| |image8|   | |image9|   |
+| |image4|   | |image5|   |
 +------------+------------+
 
    Once complete you should have something that looks like this:
 
-   |image10|
+   |image6|
 
 .. rubric:: Accessing NiFi under SSL
 
@@ -209,23 +231,23 @@ once.
 
 1. Click **OK** at the dialog prompt.
 
-   |image11|
+   |image7|
 
 2. Enter the Password that you supplied for the keychain.  This is the password that you created for the keychain in "Importing the Client Cert on the Mac" Step 3b.
 
-   |image12|
+   |image8|
 
 3. Click Always Verify.
 
-   |image13|
+   |image9|
 
 4. Click AdvancKyloConfiguration.rsted and then Click Proceed.  It will show up as "not private" because it is a self-signed cert.
 
-   |image14|
+   |image10|
 
 5. NiFi under SSL.  Notice the User name matches the one supplied via the certificate that we created:  "CN=kylo, OU=NIFI".
 
-   |image15|
+   |image11|
 
    Refer to the Hortonworks documentation on Enabling SSL for NiFi:
 
