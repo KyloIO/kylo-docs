@@ -51,7 +51,10 @@ This link provides additional instruction for enabling SSL for NiFi:
 
 .. code-block:: shell
 
-      cd /opt/nifi/data/ssl /opt/nifi/nifi-toolkit-1.0.0/bin/tls-toolkit.sh standalone -n 'localhost' -C 'CN=kylo, OU=NIFI' -o .
+      cd /opt/nifi/data/ssl
+      /opt/nifi/nifi-toolkit-1.0.0/bin/tls-toolkit.sh standalone -n 'localhost' -C 'CN=kylo, OU=NIFI' -o .
+
+    .. note:: Use the hostname of the NiFi node if running Kylo and NiFi on different servers to prevent certificate issues
 
 ..
 
@@ -93,8 +96,7 @@ This link provides additional instruction for enabling SSL for NiFi:
 
    a. Open the /opt/nifi/data/ssl/localhost/nifi.properties file.
 
-   b. Copy the properties, starting with the #Site to Site properties
-      through the last NiFi security property (see below).
+   b. Compare and update the below properties
 
     .. note:: Below is an example. Do not copy this text directly, as your keystore/truststore passwords will be different!
 
@@ -111,7 +113,7 @@ This link provides additional instruction for enabling SSL for NiFi:
     nifi.web.war.directory=./lib
     nifi.web.http.host=
     nifi.web.http.port=
-    nifi.web.https.host=
+    nifi.web.https.host=0.0.0.0
     nifi.web.https.port=9443
     nifi.web.jetty.working.directory=./work/jetty
     nifi.web.jetty.threads=200
@@ -172,7 +174,7 @@ This link provides additional instruction for enabling SSL for NiFi:
     For reference:  This will create a record in the /opt/nifi/current/conf/users.xml.  Should you need to regenerate your SSL file with a different CN, you will need to modify the
     users.xml file for that entry.
 
-10. Set the following parameters in application.properties for the NiFi connection. Change the Bolded lines to reflect your correct passwords.
+10. Set the following parameters in the kylo-services "application.properties" file for the NiFi connection.
 
 .. code-block:: properties
 
@@ -183,11 +185,11 @@ This link provides additional instruction for enabling SSL for NiFi:
     nifi.rest.useConnectionPooling=false
     nifi.rest.truststorePath=/opt/nifi/data/ssl/localhost/truststore.jks
     ##the truststore password below needs to match that found in the nifi.properties file (nifi.security.truststorePasswd)
-    **nifi.rest.truststorePassword=UsqLPVksIe/taZbfpVIsYElF8qFLhXbeVGRgB0pLjKE**
+    nifi.rest.truststorePassword=UsqLPVksIe/taZbfpVIsYElF8qFLhXbeVGRgB0pLjKE
     nifi.rest.truststoreType=JKS
     nifi.rest.keystorePath=/opt/nifi/data/ssl/CN=kylo_OU=NIFI.p12
     ###value found in the .password file /opt/nifi/data/ssl/CN=kylo_OU=NIFI.password
-    **nifi.rest.keystorePassword=mw5ePri**
+    nifi.rest.keystorePassword=mw5ePri
     nifi.rest.keystoreType=PKCS12
 
 ..
