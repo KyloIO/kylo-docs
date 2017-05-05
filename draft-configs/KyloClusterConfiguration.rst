@@ -22,7 +22,7 @@ ModeShape Configuration
 
    ..
 
-   Make sure the name of the jgroups-config.xml file is in the /kylo-services/conf folder.  Refer sample files for setting up a jgroups configuration at /opt/kylo/samples/config/kylo-cluster.
+   Make sure the name of the jgroups-config.xml file is in the `/kylo-services/conf` folder.  Refer sample files for setting up a jgroups configuration at `/opt/kylo/setup/config/kylo-cluster`.
    Note if working in Amazon you need to refer to the "s3" jgroups configuration as it needs to use an S3Ping to have the nodes communicate with each other.
 
 Kylo Configuration
@@ -30,7 +30,7 @@ Kylo Configuration
 
 We also have another jgroups configuration setup for Kylo nodes.  We cannot use the ModeShape cluster configuration since that is internal to ModeShape.
 
-1. Create a similar jgroup-config.xml file and add it to the /kylo-services/conf file.  Refer sample files for setting up a jgroups configuration at /opt/kylo/samples/config/kylo-cluster.
+1. Create a similar jgroup-config.xml file and add it to the `/kylo-services/conf` file.  Refer sample files for setting up a jgroups configuration at `/opt/kylo/setup/config/kylo-cluster`.
 Ensure the ports are different between this xml file and the ModeShape xml file
 
 2. Add a property to the kylo-services/conf/application.properties to reference this file
@@ -62,6 +62,18 @@ Ensure the ports are different between this xml file and the ModeShape xml file
         2017-05-04 06:17:06 INFO  pool-5-thread-1:NifiFlowCacheClusterManager:205 - on connected 1 members exist.  [Kylo - MUSSR186054-918-31345]
   ..
 
+Quartz Scheduler Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+When running in clustered mode you need to configure the Quartz SLA scheduler to be backed by the database and run it in clustered mode.
+Do the following:
+
+1. Download and extract the Quartz distribution to a machine. http://d2zwv9pap9ylyd.cloudfront.net/quartz-2.2.3-distribution.tar.gz  You just need this to get the database scripts.
+
+2. Run the Quartz database scripts for your database found in the `docs/dbTables`
+
+3. Create a `quartz.properties` file and put it in the `/opt/kylo/kylo-services/conf` folder.  Refer to a sample file `/opt/kylo/setup/kylo-cluster/quartz-cluster-example.properties`
+
+   a. Do not specify datasource connection information in this file.  The system will use the default `spring.datasource` property information found in the `application.properties` for the database connection
 
 Troubleshooting
 ~~~~~~~~~~~~~~~
