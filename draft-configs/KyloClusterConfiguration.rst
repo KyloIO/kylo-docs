@@ -75,6 +75,24 @@ Do the following:
 
    a. Do not specify datasource connection information in this file.  The system will use the default `spring.datasource` property information found in the `application.properties` for the database connection
 
+
+Service Monitoring
+~~~~~~~~~~~~~~~~~~
+You can monitor the health of the kylo cluster by adding the `kylo-service-monitor-kylo-cluster.jar` to the `/opt/kylo/kylo-services/plugins` folder.
+
+1. Copy the file in the `/opt/kylo/setup/plugins/kylo-service-monitor-kylo-cluster-VERSION.jar` to the /opt/kylo/kylo-services/plugins` folder
+
+2. Add a new property to the application.properties to indicate the expected number of nodes you are running in your cluster.  Below is an example expecting 2 nodes in the cluster
+
+ .. code-block:: properties
+
+  kylo.cluster.nodeCount=2
+
+ ..
+
+3. Now a new Service Monitor will appear in the Kylo Dashboard and show you cluster health status
+
+
 Troubleshooting
 ~~~~~~~~~~~~~~~
 
