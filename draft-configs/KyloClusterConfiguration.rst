@@ -90,14 +90,18 @@ You can monitor the health of the kylo cluster by adding the `kylo-service-monit
 
  ..
 
-3. Now a new Service Monitor will appear in the Kylo Dashboard and show you cluster health status
+3. Now a new *Kylo Cluster* service will appear in the Kylo dashboard and show you cluster health status
+
+|image0|
+
+|image1|
 
 
 Troubleshooting
 ~~~~~~~~~~~~~~~
 
- If you are having issues identifying if the clustering is working you can modify the log4j.properties and have it show cluster events.  This is especially useful for modeshape.
-Note: by doing this logs will be very verbose, so its recommended this is only done for initial setup/debugging
+-  If you are having issues identifying if the clustering is working you can modify the log4j.properties and have it show cluster events.  This is especially useful for modeshape.
+   Note: by doing this logs will be very verbose, so its recommended this is only done for initial setup/debugging
 
   .. code-block:: properties
 
@@ -105,3 +109,42 @@ Note: by doing this logs will be very verbose, so its recommended this is only d
     log4j.logger.org.jgroups=DEBUG
 
   ..
+
+
+- If you get a `Network is unreachable` error, below, you may need to do the following:
+
+   - Network unreachable error
+
+        .. code-block:: text
+
+            SEVERE: JGRP000200: failed sending discovery request
+            java.io.IOException: Network is unreachable
+                at java.net.PlainDatagramSocketImpl.send(Native Method)
+                at java.net.DatagramSocket.send(DatagramSocket.java:693)
+                at org.jgroups.protocols.MPING.sendMcastDiscoveryRequest(MPING.java:295)
+                at org.jgroups.protocols.PING.sendDiscoveryRequest(PING.java:62)
+                at org.jgroups.protocols.PING.findMembers(PING.java:32)
+                at org.jgroups.protocols.Discovery.findMembers(Discovery.java:244)
+        ..
+
+   - Modify the  `/opt/kylo/kylo-services/bin/run-kylo-services.sh`
+
+   - Add -Djava.net.preferIPv4Stack=true
+
+        .. code-block:: shell
+
+          java $KYLO_SERVICES_OPTS -Djava.net.preferIPv4Stack=true -cp /opt/kylo/kylo-services/conf ....
+
+        ..
+
+
+
+
+
+.. |image0| image:: ../media/kylo-config/kylo-cluster1.png
+   :width: 944px
+   :height: 423px
+
+.. |image1| image:: ../media/kylo-config/kylo-cluster2.png
+   :width: 1577px
+   :height: 373px
