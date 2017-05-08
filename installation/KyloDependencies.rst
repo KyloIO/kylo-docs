@@ -30,7 +30,6 @@ Below is a list of some of the major components Kylo uses along with the version
 | OS             | Linux           | Various                                  | Tested with RHEL and CentOS 6.x, 7.x, SUSE v11                                                                                                                                                                                                                                                  |
 +----------------+-----------------+------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
 Service Accounts
 ------------------
 Required new linux service accounts are listed below. Within enterprises there
