@@ -42,34 +42,63 @@ Here is how you would refer to ``config.props.max-file-size`` in Kylo template:
 |image1|
 
 
+Setting NiFi Processor Properties
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There is a special property naming convention available for Nifi Processors and Services in ``application.properties`` too.
 
-For Processor properties two notations are available:
+For Processor properties four notations are available:
 
     1. ``nifi.<processor_type>.<property_key>``
     2. ``nifi.all_processors.<property_key>``
-
-where ``<processor_type>`` and ``<property_key>`` should be all lowercase with spaces replaced by underscores.
-Here is an example of how to set 'Spark Home' and 'Driver Memory' properties on all 'Execute Spark Job' Processors:
-
-.. code-block:: properties
-
-    nifi.executesparkjob.sparkhome=/usr/hdp/current/spark-client
-    nifi.executesparkjob.driver_memory=1024m
-
-..
-
-Here is an example of how to set Kerberos configuration for all processors which support it:
-
-.. code-block:: properties
-
-    nifi.all_processors.kerberos_principal=nifi
-    nifi.all_processors.kerberos_keytab=/etc/security/keytabs/nifi.headless.keytab
-
-..
+    3. ``nifi.<processor_type>[<processor_name>].<property_key>``  (Available in Kylo 0.8.1)
+    4. ``$nifi{nifi.property}`` will inject the NiFi property expression into the value. (Available in Kylo 0.8.1)
 
 
+where ``<processor_type>``, ``<property_key>``, ``<processor_name>`` should be all lowercase with spaces replaced by underscores.  The ``<processor_name>`` is the display name of the processor set in NiFi.
+Starting in Kylo 0.8.1 you can inject a property that has NiFi Expression Language as the value.  Since Spring and NiFi EL use the same notation (``${property}``) Kylo will detect any
+nifi expression in the property value if it start with ``$nifi{property}``
+
+ - Setting properties matching the NiFi Processor Type.  Here is an example of how to set 'Spark Home' and 'Driver Memory' properties on all 'Execute Spark Job' Processors:
+
+    .. code-block:: properties
+
+        nifi.executesparkjob.sparkhome=/usr/hdp/current/spark-client
+        nifi.executesparkjob.driver_memory=1024m
+
+    ..
+
+ - Setting properties for a named NiFi Processor (starting in Kylo 0.8.1). Here is an example setting the property for just the ExecuteSparkJob processor named "Validate and Split Records":
+
+    .. code-block:: properties
+
+        nifi.executesparkjob[validate_and_split_records].number_of_executors=3
+        nifi.executesparkjob[validate_and_split_records].driver_memory=1024m
+
+    ..
+
+ - Setting a property with NiFi expression language as a value (starting in Kylo 0.8.1).  Here is an example of injecting a value which refers to a NiFi expression
+
+    .. code-block:: properties
+
+       nifi.updateattributes[my_processor].my_property=/path/to/$nifi{my.nifi.expression.property}
+
+    ..
+
+    The "my property" on the UpdateAttribute processor named "My Processor" will get resolved to ``/path/to/${my.nifi.expression.property}`` in NiFi.
+
+
+ - Setting all properties matching the property key.  Here is an example of how to set Kerberos configuration for all processors which support it:
+
+    .. code-block:: properties
+
+        nifi.all_processors.kerberos_principal=nifi
+        nifi.all_processors.kerberos_keytab=/etc/security/keytabs/nifi.headless.keytab
+
+    ..
+
+Setting Controller Service Properties
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 For Services use following notation: ``nifi.service.<service_name>.<property_name>``.
 Anything prefixed with ``nifi.service`` will be used by the UI. Replace spaces in Service and Property names with underscores
 and make it lowercase. Here is an example of how to set 'Database User' and 'Password' properties for MySql Service:
