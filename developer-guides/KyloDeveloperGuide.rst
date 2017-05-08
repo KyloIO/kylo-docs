@@ -162,7 +162,7 @@ sandbox.
 Running in the IDE
 ------------------
 
-You can run kylo-ui and thinbig-services in the IDE. If you plan to
+You can run kylo-ui and thinkbig-services in the IDE. If you plan to
 run the apps in the IDE, you should shut down the services in your
 sandbox so you aren’t running two instances at the same time.
 

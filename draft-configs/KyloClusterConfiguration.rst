@@ -1,9 +1,9 @@
 Clustering Kylo
 ===============
 
-Kylo Custering is available starting in v0.8.1
+Kylo Clustering is now available starting with version v0.8.1.
 
-Kylo uses jgroups, http://jgroups.org/index.html, for cluster configuration.  This is chosen because Kylo's metadata engine, Modeshape(http://modeshape.jboss.org/) uses jgroups internally for its cluster management.
+Kylo uses jgroups, http://jgroups.org/index.html, for cluster configuration.  This is chosen because Kylo's metadata engine, Modeshape (http://modeshape.jboss.org/) uses jgroups internally for its cluster management.
 
 Two jgroups configuration files are needed to be setup (One for ModeShape and one for Kylo)
 

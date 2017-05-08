@@ -6,10 +6,10 @@ Overview
 
 Kylo supports a pluggable authentication architecture that allows
 customers to integrate their existing infrastructure when authenticating
-a user.  The pluggability is built around |jaas_link|,
-which delegates authentication to one or more configured |loginmodule_link| that all collaborate in
-an authentication attempt.  Kylo
-supplies LoginModule implementations for the most common authentication
+a user.  The pluggability is built around |jaas_link|, which delegates authentication
+to one or more configured |loginmodule_link| that all collaborate in an authentication attempt. 
+
+Kylo supplies LoginModule implementations for the most common authentication
 scenarios, though customers will be able to provide their own modules to
 replace or augment the modules provided by Kylo.
 
@@ -99,7 +99,7 @@ format of this file is:
 
 ..
 
-Note that use of the `groups.properties` file is optional when used in conjuction with other
+Note that use of the `groups.properties` file is optional when used in conjunction with other
 authentication profiles.  For instance, it would be redundant (but not invalid) to have a groups
 file when `auth-file` is used with `auth-kylo`, as the latter profile will load any user
 assigned groups from the Kylo store as well as those defined in the group file.  It would likely
@@ -194,7 +194,7 @@ must be loaded and associated with the current authenticated request
 being processed. JAAS LoginModules have two responsibilities:
 
    #. Authenticate a login attempt
-   #. Optionally, associate principals (user and group identifiers) with the securiity conext of the request
+   #. Optionally, associate principals (user and group identifiers) with the security context of the request
 
 A number of authentication profiles described above support loading of user groups at login time.
 For `auth-kylo` this is done automatically, for others (`auth-ldap`, 'auth-file`, etc.) this must be configured.
