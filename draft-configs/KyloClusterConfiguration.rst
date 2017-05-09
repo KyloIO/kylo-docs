@@ -13,8 +13,8 @@ ModeShape Configuration
 1. Update the metadata-repository.json file and add the "clustering" section
 
    .. code-block:: json
-
-    "clustering": {
+   
+     "clustering": {
         "clusterName":"kylo-modeshape-cluster",
         "configuration":"modeshape-jgroups-config.xml",
         "locking":"db"
