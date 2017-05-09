@@ -152,7 +152,7 @@ This link provides additional instruction for enabling SSL for NiFi:
 
     Here is an example:
 
-.. code-block:: properties
+.. code-block:: xml
 
     <authorizer>
         <identifier>file-provider</identifier>
