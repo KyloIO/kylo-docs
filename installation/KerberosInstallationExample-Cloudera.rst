@@ -111,7 +111,7 @@ On a cluster, go to the master node for installation of Kerberos utilities.
 
 ..
 
-3. Change the [realms] as below to "quickstart.cloudera" . Udapte KDC and Admin Server Information.
+3. Change the [realms] as below to "quickstart.cloudera" . Update KDC and Admin Server Information.
 
 
    **[logging]**

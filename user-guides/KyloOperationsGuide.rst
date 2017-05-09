@@ -357,7 +357,7 @@ dependencies for Kylo:
 
 -  ActiveMQ
 
--  Elasticsearch (optional, but required for full featureset)
+-  Elasticsearch (optional, but required for full feature set)
 
 Installation
 =============

@@ -490,7 +490,7 @@ Security Vulnerabilities
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 Designers and Administrators should be aware of introducing a backdoor
-for malicious users,or even for developers.  Although NiFi components
+for malicious users, or even for developers.  Although NiFi components
 are extremely powerful, be aware of SQL Injection or exposing the
 ability for a user to paste script.
 

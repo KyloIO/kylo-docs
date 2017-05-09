@@ -54,7 +54,7 @@ Step 2: Create a Controller Service for Postgres Connection
 You will need to create an additional database controller services to
 connect to the second database.
 
-Contoller Service Properties:
+Controller Service Properties:
 
 .. code-block:: shell
 
@@ -77,7 +77,7 @@ Edit the “Query Hive Table Schema” processor and make two changes:
 
 1. Disable the “Query Hive Table Metadata” processor.
 
-2. Change the Database Connection Pooling Service to the Postges Hive
+2. Change the Database Connection Pooling Service to the Postgres Hive
    controller service created above.
 
 3. Update the “SQL select Query” to be a Postgres query.

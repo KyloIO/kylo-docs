@@ -6,7 +6,7 @@ SUSE Configuration Changes
 Overview
 ========
 
-The deployment guide currently addresses installation in a Redhat based
+The deployment guide currently addresses installation in a Red Hat Enterprise Linux (RHEL or variant, CentOS, Fedora) based
 environment. There are a couple of issues installing Elasticsearch and
 ActiveMQ on SUSE. Below are some instructions on how to install these
 two on SUSE.

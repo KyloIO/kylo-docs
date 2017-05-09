@@ -1,5 +1,5 @@
 # Getting Started With Kylo Documentation
-Kylo documents are stored in a seperate project and are published to ReadTheDocs
+Kylo documents are stored in a separate project and are published to ReadTheDocs
 
 Below is the link to the test site
 
@@ -22,7 +22,7 @@ http://docutils.sourceforge.net/docs/user/rst/quickstart.html
  $ sudo pip install sphinx
 
  $ sudo pip install sphinx-autobuild
- 
+
  $ sudo pip install sphinx_rtd_theme
 
 Download Pandoc
