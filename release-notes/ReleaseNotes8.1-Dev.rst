@@ -3,7 +3,8 @@ Release 0.8.1-DEV
 
 Highlights
 ----------
-- update me
+- Entity Access Control.  You can assign users and groups access to feeds, categories, and templates.
+- Kylo High Availability.  Kylo can now be clustered.  Refer to  :doc:`../installation/KyloClusterConfiguration` for more information.
 
 
 Upgrade Instructions from v0.8.0
