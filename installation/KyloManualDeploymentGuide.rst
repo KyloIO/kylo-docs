@@ -136,31 +136,19 @@ script it as part of the RPM install.
 
 .. code-block:: shell
 
-    $ useradd -r -m -s /bin/bash nifi
-
-    $ useradd -r -m -s /bin/bash kylo
-
-    $ useradd -r -m -s /bin/bash activemq
+    useradd -U -r -m -s /bin/bash nifi && useradd -U -r -m -s /bin/bash kylo && useradd -U -r -m -s /bin/bash activemq
 ..
 
-Confirm that the above commands created groups as intended by looking at
-/etc/group. Some operating systems may not create
-them by default.
+The following command can be used to confirm if the user and group creation was successful. There should be six lines output:
 
 .. code-block:: shell
-
-    $ cat /etc/group
+  grep 'nifi\|kylo\|activemq' /etc/group /etc/passwd
 ..
 
 If the groups are missing, then run the following:
 
 .. code-block:: shell
-
-    $ groupadd kylo
-
-    $ groupadd nifi
-
-    $ groupadd activemq
+   groupadd -f kylo && groupadd -f nifi && groupadd -f activemq
 ..
 
 Step 3: Install Kylo Services
