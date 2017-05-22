@@ -625,7 +625,10 @@ Install the Kylo Application on the Kylo Edge Node
       ranger.hostName=<RANGER_HOST_NAME>
       ranger.port=6080
       ranger.userName=admin
-      ranger.password=admin  
+      ranger.password=admin
+      hdfs.repository.name=Sandbox_hadoop
+      hive.repository.name=Sandbox_hive
+
 
 ..
 
