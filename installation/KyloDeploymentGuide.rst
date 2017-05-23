@@ -161,7 +161,7 @@ get its encrypted form using the curl command like this:
 
 .. code-block:: shell
 
-    $ curl localhost:8420/encrypt –d mypassword
+    $ curl -u dladmin:thinkbig -H "Content-Type: text/plain; charset=UTF-8" localhost:8400/proxy/v1/feedmgr/util/encrypt –d mypassword
     29fcf1534a84700c68f5c79520ecf8911379c8b5ef4427a696d845cc809b4af0
 
 ..
