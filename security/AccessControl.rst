@@ -121,13 +121,13 @@ to groups are organized as follows:
 
          - **Administer Groups** - Allows the ability to create, edit and delete groups
 
-      - **Access Operational Information** - Allows access to operational information like active feeds, execution history, job and feed stats, health status, etc.
+   - **Access Operational Information** - Allows access to operational information like active feeds, execution history, job and feed stats, health status, etc.
 
-         - **Administer Operations** - Allows administration of operations, such as creating/updating alerts, restart/stop/abandon/fail jobs, start/pause scheduler, etc.
+       - **Administer Operations** - Allows administration of operations, such as creating/updating alerts, restart/stop/abandon/fail jobs, start/pause scheduler, etc.
 
-      - **Access Encryption Services** - Allows the ability to encrypt and decrypt values
+   - **Access Encryption Services** - Allows the ability to encrypt and decrypt values
 
-The above actions hierarchical in that being permitted a lower level action (such as Edit Feeds) implies being granted the higher-level actions (Access Feeds & Access Feed Support).
+The above actions are hierarchical, in that being permitted a lower level action (such as Edit Feeds) implies being granted the higher-level actions (Access Feeds & Access Feed Support).
 
 .. note:: Although permissions to perform the above actions are currently granted to groups, a future Kylo version may switch to a role-based mechanism similar to the entity-level access control (see below.)
 
@@ -147,31 +147,145 @@ The actions that may be permitted for a particular type of entity are defined be
 Template
 ~~~~~~~~
 
-   - **Access Template** - Allows the ability to view the template and see basic summary information about it
+   - **Access Template** - Allows the ability to view the template and see basic summary information about it.
    
-      - **Edit Template** - Allows editing the full details about the template
+      - **Edit Template** - Allows editing the full details about the template.
       
-      - **Delete** - Allows deleting the template
+      - **Delete** - Allows deleting the template.
       
-      - **Export** - Allows exporting the template
+      - **Export** - Allows exporting the template.
       
-      - **Create Template** - Allows creating feeds under this template
+      - **Create Feed** - Allows creating feeds under this template.
       
-      - **Change Permissions** - Allows editing of the permissions that grant access to the template
+      - **Change Permissions** - Allows editing of the permissions that grant access to the template.
 
 Category
 ~~~~~~~~
 
+   - **Access Category** - Allows the ability to view the category and see basic summary information about it.
+
+      - **Edit Summary** - Allows editing of the summary information about the category.
+
+      - **Access Details** - Allows viewing the full details about the category.
+
+         - **Edit Details** - Allows editing of the details about the category.
+
+         - **Delete** - Allows deleting the category.
+
+      - **Export** - Allows exporting the category.
+
+      - **Create Feed** - Allows creating feeds under this category.
+
+      - **Change Permissions** - Allows editing of the permissions that grant access to the category.
+
 Feed
 ~~~~
+
+   - **Access Feed** - Allows the ability to view the feed and see basic summary information about it.
+
+      - **Edit Summary** - Allows editing of the summary information about the feed.
+
+      - **Access Details** - Allows viewing the full details about the feed.
+
+         - **Edit Details** - Allows editing of the details about the feed.
+
+         - **Delete** - Allows deleting the feed.
+
+         - **Enable/Disable** - Allows enabling and disabling the feed.
+
+         - **Export** - Allows exporting the feed.
+
+      - **Access Operations** - Allows the ability to see the operational history of the feed.
+
+      - **Change Permissions** - Allows editing of the permissions that grant access to the feed.
 
 Data Source
 ~~~~~~~~~~~
 
+   - **Access Datasource** - Allows the ability to see basic summary information and to use the data source in data transformations.
+
+      - **Edit Summary** - Allows editing of the summary information about the data source.
+
+      - **Access Details** - Allows viewing the full details about the data source.
+
+         - **Edit Details** - Allows editing of the details about the data source.
+
+         - **Delete** - Allows deleting the data source.
+
+      - **Change Permissions** - Allows editing of the permissions that grant access to the data source.
+
+.. tip:: Entity-level authorization is not available for accessing Hive tables via **Tables** page. If this access is to be restricted, user impersonation should be configured.
 
 
+Roles and Permissions
+---------------------
 
-Why To Levels of Access Control?
---------------------------------
+Template
+~~~~~~~~
+
+  ========================================================================  ======================================== ===================================
+   Action To Perform                                                        Roles That Can Perform The Action        Functional Permissions Required
+  ========================================================================  ======================================== ===================================
+    View template and its summary                                           Editor, Admin, Read-Only
+    Edit template and its details                                           Editor, Admin
+    Delete template                                                         Editor, Admin
+    Export template                                                         Editor, Admin
+    Create feeds from template                                              Editor, Admin
+    Grant permissions on template to users/groups                           Admin
+
+  ========================================================================  ======================================== ===================================
+
+
+Category
+~~~~~~~~
+
+  ========================================================================  ======================================== ===================================
+   Action To Perform                                                        Roles That Can Perform The Action        Functional Permissions Required
+  ========================================================================  ======================================== ===================================
+    View category and its summary                                           Editor, Admin, Feed Creator, Read-Only
+    Edit category summary                                                   Editor, Admin
+    View category and its details                                           Editor, Admin, Feed Creator
+    Edit category details                                                   Editor, Admin
+    Delete category                                                         Editor, Admin
+    Export category                                                         Editor, Admin
+    Create feeds under category                                             Editor, Admin, Feed Creator
+    Grant permissions on category to users/groups                           Admin
+  ========================================================================  ======================================== ===================================
+
+Feed
+~~~~
+
+  ========================================================================  ======================================== ===================================
+   Action To Perform                                                        Roles That Can Perform The Action        Functional Permissions Required
+  ========================================================================  ======================================== ===================================
+    View feed and its summary                                               Editor, Admin, Read-Only
+    Edit feed summary                                                       Editor, Admin
+    View feed and its details                                               Editor, Admin, Read-Only
+    Edit feed details                                                       Editor, Admin
+    Delete feed                                                             Editor, Admin
+    Enable feed                                                             Editor, Admin
+    Disable feed                                                            Editor, Admin
+    Export feed                                                             Editor, Admin
+    View operational history of feed                                        Editor, Admin, Read-Only
+    Grant permissions on feed to users/groups                               Admin
+  ========================================================================  ======================================== ===================================
+
+Data Source
+~~~~~~~~~~~
+
+  ========================================================================  ======================================== ===================================
+   Action To Perform                                                        Roles That Can Perform The Action        Functional Permissions Required
+  ========================================================================  ======================================== ===================================
+    View data source summary and use in data transformations                Editor, Admin, Read-Only
+    Edit data source summary                                                Editor, Admin
+    View data source and its details                                        Editor, Admin
+    Edit data source details                                                Editor, Admin
+    Delete data source                                                      Editor, Admin
+    Grant permissions on data source to users/groups                        Admin
+  ========================================================================  ======================================== ===================================
+
+
+Why Two Levels of Access Control?
+---------------------------------
 
 
