@@ -8,6 +8,15 @@ Highlights
 - Mix and match Standardizers and Validators. You now have more control over how data fields are standardized and validated.
 
 
+Upgrade Instructions from v0.7.1
+--------------------------------
+- If upgrading directly from v0.7.1, run the database update to enable Liquibase.
+
+.. code-block:: shell
+
+    /opt/kylo/setup/sql/mysql/kylo/0.8.0/update.sh <db-hostname> <db-user> <db-password>
+..
+
 Upgrade Instructions from v0.8.0
 --------------------------------
 - update me
