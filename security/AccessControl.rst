@@ -18,8 +18,8 @@ that a user or group may perform, whether to invoke a function or access
 data, are organized into a hierarchy, and privileges may be granted at
 any level in that hierarchy.
 
-Authorization in Kylo is divided into two layers: service-level (fuctional) permissions and entity-level permissions.
-A permission in Kylo is granting to a user or group right to perform some action, such as see the description of a template, 
+Authorization in Kylo is divided into two layers: service-level (Kylo-wide) permissions and entity-level permissions.
+A permission in Kylo is the granting to a user or group the right to perform some action, such as see the description of a template, 
 create and edit a category, enable/disable a feed, etc.  Access to these functions can often be controlled at both 
 the service-level and entity-level.
 
@@ -56,7 +56,7 @@ will have to successfully authenticate a request before access will be granted.
 Service-Level Authorization
 ---------------------------
 
-Service-level access control what functions are permitted kylo-wide.  Access is controlled
+Service-level access controla what functions are permitted kylo-wide.  Access is controlled
 by granting permissions to groups to perform a set of actions.  A logged in user would
 then be authorized to perform any actions permitted to the groups to which the user is a member.
 
@@ -152,11 +152,11 @@ Roles
 
 Entity-level access control differs from service-level access control in that permissions are not granted to individual groups, rather they are granted to one or more **roles**.  
 A role is a named, pre-configured set of granted permissions that may be applied to a group or individual user for a particular entity instance.
-Roles are defined and associated with each kind of entity, and may be granted permission to perform any of the actions defined for that entity type.  
-The actual members of a role are associated at the entity-level, though, and grant permissions to perform actions on that entity only.
+Roles are defined and associated with each kind of entity and may be granted permission to perform any of the actions defined for that entity type.  
+The actual members (users or groups) of a role are associated at the entity-level, though, and grant permissions to perform actions on that entity only.
 
 For instance, there might be the roles *Editor*, *Admin*, and *Read-Only* defined that grant varying sets of permissions for feeds.  
-Adding a user, or any group that user belongs to, as a member of the *Editors* of a specific feed will permit that user to make changes to it.  
+Adding a user, or any group that user belongs to, as a member of the *Editors* role of a specific feed will permit that user to make changes to it.  
 A particular user might be a member of the *Editor* role for one feed, an *Admin* member of another feed, but only a *Read-Only* member of a third feed.
 
 ~~~~~~~~~~~~~
@@ -204,18 +204,18 @@ Kylo comes with a set of default roles for each kind of entity as described belo
 Why Two Levels of Access Control?
 ---------------------------------
 
-Kylo support two levels acces control because not all installations requires the fine-grained control of entity-level authorization.
+Kylo support two levels acces control because not all installations require the fine-grained control of entity-level authorization.
 Service-level authorization is generally easier to manage if your security requirements are not very selective or stringent.  If 
 you only need the ability to restrict some Kylo actions to certain select groups of users then service-level might be sufficient.
 
-If your installation deals with sensitive information, and you need to be very selective of what users and groups can see and 
-interact with certain data, then you should use entity-level authorization to provide tight control.
+If your installation deals with sensitive information, and you need to be very selective of what data certain users and groups can see and 
+manipulate, then you should use entity-level authorization to provide tight controls over that data.
 
 Having two security schemes can pose management challenges as there is a bit of an overlap between the service-level and entity-level
 permissions, and both levels of access control must be satisfied for a user's action to be successful.  If you choose to use entity-level
-control then it may be helpful to open up the service-level access a bit more where the entity and service permissions are redundant.  To help
+control then it may be helpful to loosen up the service-level access a bit more where the entity and service permissions are redundant.  To help
 determine what permissions are needed to perform common Kylo activities, the next section describes both kinds of access requirements
-depending upon what actions are attempted.
+depending upon what actions are attempted in Kylo.
 
 Roles and Permissions Required for Common Activities
 ----------------------------------------------------
