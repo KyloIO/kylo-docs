@@ -38,10 +38,10 @@ to run in *yarn-cluster* mode.
    b. For Hortonworks, this file is at
       /usr/hdp/current/spark-client/conf/hive-site.xml.
 
-3. The “Validate and Split Records” processor from standard-ingest
-   requires access to the json policy file. Add
+3. The "Validate and Split Records" and "Profile Data" processors from
+   standard-ingest require access to the json policy file. Add
    “${table_field_policy_json_file}” to the “Extra Files”
-   property to make this file available.
+   properties to make this file available.
 
     |image1|
 
