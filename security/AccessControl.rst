@@ -137,84 +137,65 @@ Entity-Level Authorization
 Entity-level authorization is an additional, optional form of access control that applies to individual entities: templates, feeds, categories, etc.  Entity-level access control is similar to service-level 
 in that it involves granting permissions to perform a hierarchical set of actions.  These actions, though, would apply only to an individual entity.  
 
-This level of access control differs from the service-level access control 
-in that permissions are not granted to individual groups, rather they are granted to one or more roles defined for a given type of entity, and users and groups are added as members of these roles in relation to 
-an entity instance.  For instance, and "Editor" role is defined for feeds that is granted the rights to view and modify a feed details, to enable and disable the feeds, and export a feeds to a file.  A user who is
-added as a member of the Editor role of a particular feed would be able to perform all of those action on that feed.
 
-The actions that may be permitted for a particular type of entity are defined below.
+Roles
+~~~~~
 
-Template
-~~~~~~~~
+Entity-level access control differs from service-level access control in that permissions are not granted to individual groups, rather they are granted to one or more **roles**.  
+A role is a named, pre-configured set of granted permissions that may be applied to a group or individual user for a particular entity instance.
+Roles are defined and associated with each kind of entity, and may be granted permission to perform any of the actions defined for that entity type.  
+The actual members of a role are associated at the entity-level, though, and grant permissions to perform actions on that entity only.
 
-   - **Access Template** - Allows the ability to view the template and see basic summary information about it.
-   
-      - **Edit Template** - Allows editing the full details about the template.
-      
-      - **Delete** - Allows deleting the template.
-      
-      - **Export** - Allows exporting the template.
-      
-      - **Create Feed** - Allows creating feeds under this template.
-      
-      - **Change Permissions** - Allows editing of the permissions that grant access to the template.
+For instance, there might be the roles *Editor*, *Admin*, and *Read-Only* defined that grant varying sets of permissions for feeds.  
+Adding a user, or any group that user belongs to, as a member of the *Editors* of a specific feed will permit that user to make changes to it.  
+A particular user might be a member of the *Editor* role for one feed, an *Admin* member of another feed, but only a *Read-Only* member of a third feed.
 
-Category
-~~~~~~~~
+~~~~~~~~~~~~~
+Default Roles
+~~~~~~~~~~~~~
 
-   - **Access Category** - Allows the ability to view the category and see basic summary information about it.
+Kylo comes with a set of default roles for each kind of entity as described below.
 
-      - **Edit Summary** - Allows editing of the summary information about the category.
+.. note:: As of Kylo verion 0.8.1, entity roles and their granted permissions are fixed.  Future versions of Kylo will allow for creation and management of custom roles and assigned permissions.
 
-      - **Access Details** - Allows viewing the full details about the category.
 
-         - **Edit Details** - Allows editing of the details about the category.
+==========  ===
+ Template Roles               
+===============
+ Editor     Allows a user to edit and export a template
+ Admin      All capabilities defined in the 'Editor' role along with the ability to change the permissions
+ Read-Only  Allows a user to view, but not modify, the template
+==========  ===
 
-         - **Delete** - Allows deleting the category.
+=============  ===
+ Category Roles               
+==================
+ Editor        Allows a user to edit, export, delete, and create feeds using this category
+ Admin         All capabilities defined in the 'Editor' role along with the ability to change the permissions
+ Read-Only     Allows a user to view the category
+ Feed Creator  Allows a user to create a new feed using this category
+=============  ===
 
-      - **Export** - Allows exporting the category.
+==========  ===
+ Feed Roles               
+===============
+ Editor     Allows a user to edit, enable/disable, delete, export, and access job operations of the feed
+ Admin      All capabilities defined in the 'Editor' role along with the ability to change the permissions
+ Read-Only  Allows a user to view the feed and access job operations
+==========  ===
 
-      - **Create Feed** - Allows creating feeds under this category.
+==========  ===
+ Template Roles               
+===============
+ Editor     Allows a user to edit and delete the datasource
+ Admin      All capabilities defined in the 'Editor' role along with the ability to change the permissions
+ Read-Only  Allows a user to view the datasource
+==========  ===
 
-      - **Change Permissions** - Allows editing of the permissions that grant access to the category.
 
-Feed
-~~~~
+Why Two Levels of Access Control?
+---------------------------------
 
-   - **Access Feed** - Allows the ability to view the feed and see basic summary information about it.
-
-      - **Edit Summary** - Allows editing of the summary information about the feed.
-
-      - **Access Details** - Allows viewing the full details about the feed.
-
-         - **Edit Details** - Allows editing of the details about the feed.
-
-         - **Delete** - Allows deleting the feed.
-
-         - **Enable/Disable** - Allows enabling and disabling the feed.
-
-         - **Export** - Allows exporting the feed.
-
-      - **Access Operations** - Allows the ability to see the operational history of the feed.
-
-      - **Change Permissions** - Allows editing of the permissions that grant access to the feed.
-
-Data Source
-~~~~~~~~~~~
-
-   - **Access Datasource** - Allows the ability to see basic summary information and to use the data source in data transformations.
-
-      - **Edit Summary** - Allows editing of the summary information about the data source.
-
-      - **Access Details** - Allows viewing the full details about the data source.
-
-         - **Edit Details** - Allows editing of the details about the data source.
-
-         - **Delete** - Allows deleting the data source.
-
-      - **Change Permissions** - Allows editing of the permissions that grant access to the data source.
-
-.. tip:: Entity-level authorization is not available for accessing Hive tables via **Tables** page. If this access is to be restricted, user impersonation should be configured.
 
 
 Roles and Permissions
@@ -283,9 +264,5 @@ Data Source
     Delete data source                                                      Editor, Admin
     Grant permissions on data source to users/groups                        Admin
   ========================================================================  ======================================== ===================================
-
-
-Why Two Levels of Access Control?
----------------------------------
 
 
