@@ -1,5 +1,5 @@
-Release 0.8.1-DEV
-=================
+Release 0.8.1 (May 24, 2017)
+============================
 
 Highlights
 ----------
@@ -25,7 +25,7 @@ Upgrade Instructions from v0.7.1
 Upgrade Instructions from v0.8.0
 --------------------------------
 
-Build or download the RPM <<Link coming soon>>
+Build or download the RPM <<link coming soon>>
 
 1. Uninstall Kylo:
 
