@@ -170,7 +170,7 @@ Kylo comes with a set of default roles for each kind of entity as described belo
 =============  ===
  Category Roles               
 ==================
- Editor        Allows a user to edit, export, delete, and create feeds using this category
+ Editor        Allows a user to edit and delete feeds using this category
  Admin         All capabilities defined in the 'Editor' role along with the ability to change the permissions
  Read-Only     Allows a user to view the category
  Feed Creator  Allows a user to create a new feed using this category
@@ -185,7 +185,7 @@ Kylo comes with a set of default roles for each kind of entity as described belo
 ==========  ===
 
 ==========  ===
- Template Roles               
+ Data Source Roles
 ===============
  Editor     Allows a user to edit and delete the datasource
  Admin      All capabilities defined in the 'Editor' role along with the ability to change the permissions
@@ -201,68 +201,72 @@ Why Two Levels of Access Control?
 Roles and Permissions
 ---------------------
 
+
 Template
 ~~~~~~~~
 
-  ========================================================================  ======================================== ===================================
+  ========================================================================  ======================================== ===========================================================================================
    Action To Perform                                                        Roles That Can Perform The Action        Functional Permissions Required
-  ========================================================================  ======================================== ===================================
-    View template and its summary                                           Editor, Admin, Read-Only
-    Edit template and its details                                           Editor, Admin
-    Delete template                                                         Editor, Admin
-    Export template                                                         Editor, Admin
-    Create feeds from template                                              Editor, Admin
-    Grant permissions on template to users/groups                           Admin
-
-  ========================================================================  ======================================== ===================================
+  ========================================================================  ======================================== ===========================================================================================
+    View template and its summary                                           Editor, Admin, Read-Only                 Feeds Support, Access Templates
+    Edit template and its details                                           Editor, Admin                            Feeds Support, Access Templates, Edit Templates
+    Delete template                                                         Editor, Admin                            Feeds Support, Access Templates, Edit Templates
+    Export template                                                         Editor, Admin                            Feeds Support, Access Templates, Export Templates
+    Create feeds from template                                              Editor, Admin                            Feeds Support, Access Templates, Edit Templates
+    Grant permissions on template to users/groups                           Admin                                    Feeds Support, Access Templates, Edit Templates
+    Import template (new)                                                   N/A                                      Feeds Support, Access Templates, Import Templates
+    Import template (existing)                                              Editor, Admin                            Feeds Support, Access Templates, Import Templates, Edit Templates
+    Enable template                                                         N/A                                      Feeds Support, Access Templates, Admin Templates
+    Disable template                                                        N/A                                      Feeds Support, Access Templates, Admin Templates
+  ========================================================================  ======================================== ===========================================================================================
 
 
 Category
 ~~~~~~~~
 
-  ========================================================================  ======================================== ===================================
+  ========================================================================  ======================================== ===========================================================================================
    Action To Perform                                                        Roles That Can Perform The Action        Functional Permissions Required
-  ========================================================================  ======================================== ===================================
-    View category and its summary                                           Editor, Admin, Feed Creator, Read-Only
-    Edit category summary                                                   Editor, Admin
-    View category and its details                                           Editor, Admin, Feed Creator
-    Edit category details                                                   Editor, Admin
-    Delete category                                                         Editor, Admin
-    Export category                                                         Editor, Admin
-    Create feeds under category                                             Editor, Admin, Feed Creator
-    Grant permissions on category to users/groups                           Admin
-  ========================================================================  ======================================== ===================================
+  ========================================================================  ======================================== ===========================================================================================
+    View category and its summary                                           Editor, Admin, Feed Creator, Read-Only   Feeds Support, Access Categories
+    Edit category summary                                                   Editor, Admin                            Feeds Support, Access Categories, Edit Categories
+    View category and its details                                           Editor, Admin, Feed Creator              Feeds Support, Access Categories
+    Edit category details                                                   Editor, Admin                            Feeds Support, Access Categories, Edit Categories, Admin Categories
+    Delete category                                                         Editor, Admin                            Feeds Support, Access Categories, Edit Categories
+    Create feeds under category                                             Feed Creator                             Feeds Support, Access Categories, Edit Categories
+    Grant permissions on category to users/groups                           Admin                                    Feeds Support, Access Categories, Edit Categories
+  ========================================================================  ======================================== ===========================================================================================
 
 Feed
 ~~~~
 
-  ========================================================================  ======================================== ===================================
+  ========================================================================  ======================================== ===========================================================================================
    Action To Perform                                                        Roles That Can Perform The Action        Functional Permissions Required
-  ========================================================================  ======================================== ===================================
-    View feed and its summary                                               Editor, Admin, Read-Only
-    Edit feed summary                                                       Editor, Admin
-    View feed and its details                                               Editor, Admin, Read-Only
-    Edit feed details                                                       Editor, Admin
-    Delete feed                                                             Editor, Admin
-    Enable feed                                                             Editor, Admin
-    Disable feed                                                            Editor, Admin
-    Export feed                                                             Editor, Admin
-    View operational history of feed                                        Editor, Admin, Read-Only
-    Grant permissions on feed to users/groups                               Admin
-  ========================================================================  ======================================== ===================================
+  ========================================================================  ======================================== ===========================================================================================
+    View feed and its details                                               Editor, Admin, Read-Only                 Feeds Support, Access Feeds
+    Edit feed summary                                                       Editor, Admin                            Feeds Support, Access Feeds, Edit Feeds
+    Edit feed details                                                       Editor, Admin                            Feeds Support, Access Feeds, Edit Feeds, Admin Feeds
+    Delete feed                                                             Editor, Admin                            Feeds Support, Access Feeds, Edit Feeds, Admin Feeds
+    Enable feed                                                             Editor, Admin                            Feeds Support, Access Feeds, Edit Feeds
+    Disable feed                                                            Editor, Admin                            Feeds Support, Access Feeds, Edit Feeds
+    Export feed                                                             Editor, Admin                            Feeds Support, Access Feeds, Export Feeds
+    Import feed (new)                                                       N/A                                      Feeds Support, Access Feeds, Import Feeds
+    Import feed (existing)                                                  Editor, Admin                            Feeds Support, Access Feeds, Import Feeds
+    View operational history of feed                                        Editor, Admin, Read-Only                 Feeds Support, Access Feeds
+    Grant permissions on feed to users/groups                               Admin                                    Feeds Support, Access Feeds, Edit Feeds
+  ========================================================================  ======================================== ===========================================================================================
 
 Data Source
 ~~~~~~~~~~~
 
-  ========================================================================  ======================================== ===================================
+  ========================================================================  ======================================== ===========================================================================================
    Action To Perform                                                        Roles That Can Perform The Action        Functional Permissions Required
-  ========================================================================  ======================================== ===================================
-    View data source summary and use in data transformations                Editor, Admin, Read-Only
-    Edit data source summary                                                Editor, Admin
-    View data source and its details                                        Editor, Admin
-    Edit data source details                                                Editor, Admin
-    Delete data source                                                      Editor, Admin
-    Grant permissions on data source to users/groups                        Admin
-  ========================================================================  ======================================== ===================================
+  ========================================================================  ======================================== ===========================================================================================
+    View data source summary and use in data transformations                Editor, Admin, Read-Only                 Feeds Support, Access Data Sources
+    Edit data source summary                                                Editor, Admin                            Feeds Support, Access Data Sources, Edit Data Sources
+    View data source and its details                                        Editor, Admin                            Feeds Support, Access Data Sources, Admin Data Sources
+    Edit data source details                                                Editor, Admin                            Feeds Support, Access Data Sources, Edit Data Sources
+    Delete data source                                                      Editor, Admin                            Feeds Support, Access Data Sources, Edit Data Sources
+    Grant permissions on data source to users/groups                        Admin                                    Feeds Support, Access Data Sources, Edit Data Sources
+  ========================================================================  ======================================== ===========================================================================================
 
 
