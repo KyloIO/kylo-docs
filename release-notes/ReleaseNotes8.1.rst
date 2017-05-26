@@ -13,6 +13,14 @@ Highlights
 
 - The wrangler has been improved with a faster transformation grid and now shows column level profile statistics as you transform your data.
 
+
+Download Links
+--------------
+
+ - RPM : `<http://bit.ly/2r4P47A>`__
+
+ - Debian : `<http://bit.ly/2rYObgz>`__
+
 Upgrade Instructions from v0.7.1
 --------------------------------
 - If upgrading directly from v0.7.1, run the database update to enable Liquibase.
@@ -25,7 +33,7 @@ Upgrade Instructions from v0.7.1
 Upgrade Instructions from v0.8.0
 --------------------------------
 
-Build or download the RPM <<link coming soon>>
+Build or `download the RPM <http://bit.ly/2r4P47A>`__
 
 1. Uninstall Kylo:
 
