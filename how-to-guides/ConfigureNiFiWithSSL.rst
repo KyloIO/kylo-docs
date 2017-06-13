@@ -159,14 +159,13 @@ This link provides additional instruction for enabling SSL for NiFi:
         <class>org.apache.nifi.authorization.FileAuthorizer</class>
         <property name="Authorizations File">./conf/authorizations.xml</property>
         <property name="Users File">./conf/users.xml</property>
-        <property name="Initial Admin Identity"></property>
+        <property name="Initial Admin Identity">CN=kylo, OU=NIFI</property>
         <property name="Legacy Authorized Users File"></property>
 
         <!-- Provide the identity (typically a DN) of each node when clustered, see above description of Node Identity.
         <property name="Node Identity 1"></property>
         <property name="Node Identity 2"></property>
         -->
-       <property name="Initial Admin Identity">CN=kylo,OU=NIFI</property>
     </authorizer>
 
 ..
