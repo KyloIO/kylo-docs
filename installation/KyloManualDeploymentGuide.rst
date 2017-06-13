@@ -127,40 +127,44 @@ downloaded application binaries.
 Step 2: Create Linux Users and Groups
 =====================================
 
-Creation of users and groups is done manually because many organizations
-have their own user and group management system. Therefore we cannot
-script it as part of the RPM install.
+Creation of users and groups is done manually because many organizations have their own user and group management system. Therefore we cannot script it as part of the RPM install.
 
+.. note:: Each of these should be run on the node on which the software will be installed. If a machine will run nifi, kylo and activemq, all users/groups should be created. If running individual services, only the appropriate user/group for that service should be created, not all of them. 
 
-.. note:: Each of these should be run on the node on which the software will be installed.
+To create all the users and groups on a single machine, run the following command:
 
 .. code-block:: shell
-
-    $ useradd -r -m -s /bin/bash nifi
-
-    $ useradd -r -m -s /bin/bash kylo
-
-    $ useradd -r -m -s /bin/bash activemq
+    useradd -U -r -m -s /bin/bash nifi && useradd -U -r -m -s /bin/bash kylo && useradd -U -r -m -s /bin/bash activemq
 ..
 
-Confirm that the above commands created groups as intended by looking at
-/etc/group. Some operating systems may not create
-them by default.
+To create individual users, run the following commands on the appropriate machines:
 
 .. code-block:: shell
-
-    $ cat /etc/group
+  useradd -U -r -m -s /bin/bash nifi
+  useradd -U -r -m -s /bin/bash kylo
+  useradd -U -r -m -s /bin/bash activemq
 ..
 
-If the groups are missing, then run the following:
+The following command can be used to confirm if the user and group creation was successful:
 
 .. code-block:: shell
+  grep 'nifi\|kylo\|activemq' /etc/group /etc/passwd
+..
 
-    $ groupadd kylo
+This command should give two results per user, one for the user in /etc/passwd and one in /etc/group. For example, if you added all the users to an individual machine, there should be six lines of output. If you just added an individual user, there will be two lines of output.
 
-    $ groupadd nifi
+If the groups are missing, they can be added individually:
 
-    $ groupadd activemq
+.. code-block:: shell
+   groupadd -f kylo
+   groupadd -f nifi
+   groupadd -f activemq
+..
+
+If all groups are missing, they can be all added with the following command:
+
+.. code-block:: shell
+  groupadd -f kylo && groupadd -f nifi && groupadd -f activemq
 ..
 
 Step 3: Install Kylo Services
