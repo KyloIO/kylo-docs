@@ -125,7 +125,7 @@ Absolutely. Kylo is used in production on AWS utilizing EC2, S3, SQS, and other 
 
 Does Kylo support high-availability (HA) features?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-v0.8.1 (mid-May 2017) will include support for Kylo clustering via a load-balancer. In addition, current data processing will not be impacted if Kylo becomes unavailable or during upgrades.
+Yes, Kylo clustering is possible via a load-balancer. In addition, current data processing running under NiFi will not be impacted if Kylo becomes unavailable or during upgrades.
 
 Metadata
 --------
