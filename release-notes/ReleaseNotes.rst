@@ -32,3 +32,12 @@ Previous Releases
     ReleaseNotes3.1
     ReleaseNotes3
     ReleaseNotes2
+
+
+In Development
+~~~~~~~~~~~~~~
+
+.. toctree::
+    :maxdepth: 1
+
+    ReleaseNotes8.2
