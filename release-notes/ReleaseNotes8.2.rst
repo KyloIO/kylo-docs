@@ -5,12 +5,10 @@ Highlights
 ----------
 - Redesigned Provenance Event Capturing and new Kylo Streaming User Interface
 
-Provenance Event Changes
-------------------------
- 1. Provenance Event Repository changes
-
-    - Kylo no longer uses the NiFi Reporting Task to capture Provenance Events.  Instead it uses a modified ProvenanceRepository.
-    Edit the nifi.properties file  (``/opt/nifi/current/conf/nifi.properties``) and change the ``nifi.provenance.repository.implementation`` property as below:
+Upgrade Instructions
+--------------------
+1. Kylo no longer uses the NiFi Reporting Task to capture Provenance Events.  Instead it uses a modified ProvenanceRepository.  In Nifi stop the Kylp Reporting Task and Delete it and its associated Controller Service.
+2. Stop NiFi.  Edit the nifi.properties file  (``/opt/nifi/current/conf/nifi.properties``) and change the ``nifi.provenance.repository.implementation`` property as below:
 
      .. code-block:: shell
 
