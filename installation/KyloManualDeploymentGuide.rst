@@ -134,20 +134,25 @@ Creation of users and groups is done manually because many organizations have th
 To create all the users and groups on a single machine, run the following command:
 
 .. code-block:: shell
+
     useradd -U -r -m -s /bin/bash nifi && useradd -U -r -m -s /bin/bash kylo && useradd -U -r -m -s /bin/bash activemq
+
 ..
 
 To create individual users, run the following commands on the appropriate machines:
 
 .. code-block:: shell
+
   useradd -U -r -m -s /bin/bash nifi
   useradd -U -r -m -s /bin/bash kylo
   useradd -U -r -m -s /bin/bash activemq
+
 ..
 
 The following command can be used to confirm if the user and group creation was successful:
 
 .. code-block:: shell
+
   grep 'nifi\|kylo\|activemq' /etc/group /etc/passwd
 ..
 
@@ -156,6 +161,7 @@ This command should give two results per user, one for the user in /etc/passwd a
 If the groups are missing, they can be added individually:
 
 .. code-block:: shell
+
    groupadd -f kylo
    groupadd -f nifi
    groupadd -f activemq
@@ -164,6 +170,7 @@ If the groups are missing, they can be added individually:
 If all groups are missing, they can be all added with the following command:
 
 .. code-block:: shell
+
   groupadd -f kylo && groupadd -f nifi && groupadd -f activemq
 ..
 
