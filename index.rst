@@ -60,6 +60,7 @@ The documentation for the site is organized into a few sections:
     NiFi & Kylo Provenance <how-to-guides/NiFiKyloProvenance>
     NiFi & Kylo Reporting Task (deprecated) <how-to-guides/NiFiKyloProvenanceReportingTask>
     how-to-guides/NiFiProcessorsDocs
+    how-to-guides/S3DataIngestTemplate
     S3 & Data Wrangler <how-to-guides/AccessingS3fromtheDataWrangler>
     Feed Lineage <how-to-guides/FeedLineage>
     how-to-guides/SentryInstallationGuide
