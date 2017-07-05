@@ -1,7 +1,9 @@
 
-==========================
-NiFi & Kylo Reporting Task
-==========================
+=======================================
+NiFi & Kylo Reporting Task (deprecated)
+=======================================
+
+.. warning:: NOTE this is only for Kylo 0.8.1 and below. For Kylo 0.8.2 or above please refer to this document: :doc:`NiFiKyloProvenance`
 
 Introduction
 ------------
