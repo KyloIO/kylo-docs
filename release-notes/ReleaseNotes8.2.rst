@@ -4,8 +4,7 @@ Release 0.8.2 (TBD)
 Highlights
 ----------
 - Redesigned Provenance Event Capturing and new Kylo Streaming User Interface
-- Ability to customize the user interface for the feed stepper
-- Ability to customize the user interface and customize the rendering of the feed details and the processors and properties (https://github.com/Teradata/kylo/tree/master/samples/plugins/example-ui-get-file-processor-template)
+- Ability to customize the user interface for the feed stepper and NiFi processor templates (https://github.com/Teradata/kylo/tree/master/samples/plugins/example-ui-get-file-processor-template)
 
 Upgrade Instructions
 --------------------
