@@ -71,3 +71,18 @@ the system.
     log4j.appender.sparkShellLog.layout=org.apache.log4j.PatternLayout
     log4j.appender.sparkShellLog.Threshold=INFO
     log4j.appender.sparkShellLog.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p %t:%c{1}:%L - %m%n
+
+5. Configure Hadoop to allow Kylo to proxy users.
+
+.. code-block:: shell
+
+    $ vim /etc/hadoop/conf/core-site.xml
+
+    <property>
+      <name>hadoop.proxyuser.kylo.groups</name>
+      <value>*</value>
+    </property>
+    <property>
+      <name>hadoop.proxyuser.kylo.hosts</name>
+      <value>*</value>
+    </property>
