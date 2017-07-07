@@ -39,3 +39,5 @@ Configuration Guides
     KyloConfigurationforaKerberosCluster
     NiFiConfigurationforaKerberosCluster
     Postgres_Hive_Metadata_Configuration
+    KyloSparkProperties
+    KyloUserImpersonation

@@ -81,19 +81,17 @@ Configuration Steps
 
     [root]# klist
 
-2. Modify the kylo-spark-shell configuration.
+2. Modify the kylo-spark-shell configuration. If the `spark.shell.server` properties are set in `spark.properties` then the `run-kylo-spark-shell.sh` script will also need to be modified.
 
     [root]# vi /opt/kylo/kylo-services/conf/spark.properties
 
-    kerberos.kylo.kerberosEnabled=true
+    kerberos.spark.kerberosEnabled = true
+    kerberos.spark.keytabLocation = /etc/security/keytabs/kylo.headless.keytab
+    kerberos.spark.kerberosPrincipal = kylo@sandbox.hortonworks.com
 
-    [root]# vi
-    /opt/kylo/kylo-services/bin/run-kylo-spark-shell.sh
+    [root]# vi /opt/kylo/kylo-services/bin/run-kylo-spark-shell.sh
 
-    #!/bin/bash
-
-    spark-submit --principal 'kylo@sandbox.hortonworks.com' --keytab
-    /etc/security/keytabs/kylo.headless.keytab ...
+    spark-submit --principal 'kylo@sandbox.hortonworks.com' --keytab /etc/security/keytabs/kylo.headless.keytab ...
 
 3. Modify the kylo-services configuration.
 
