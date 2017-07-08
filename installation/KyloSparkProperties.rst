@@ -154,6 +154,21 @@ Example :code:`spark.properties` configuration:
    spark.shell.proxyUser = true
    spark.shell.sparkArgs = --driver-java-options -Djavax.security.auth.useSubjectCredsOnly=false
 
+Hadoop must be configured to allow the kylo user to proxy users:
+
+.. code-block:: shell
+
+    $ vim /etc/hadoop/conf/core-site.xml
+
+    <property>
+      <name>hadoop.proxyuser.kylo.groups</name>
+      <value>*</value>
+    </property>
+    <property>
+      <name>hadoop.proxyuser.kylo.hosts</name>
+      <value>*</value>
+    </property>
+
 Kerberos
 --------
 
