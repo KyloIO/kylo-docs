@@ -8,10 +8,13 @@ Highlights
 
 Upgrade Instructions
 --------------------
-1. Kylo no longer uses the NiFi Reporting Task to capture Provenance Events.  Instead it uses a modified ProvenanceRepository.
-   -  In Nifi stop the Kylp Reporting Task and Delete it and its associated Controller Service.
-   -  Stop Nifi
-    - Follow the guide :doc:`../how-to-guides/NiFiKyloProvenance` to setup the KyloProvenanceRepository
+1. Remove the NiFi reporting task.  Kylo no longer uses the NiFi reporting task to capture provenance events.  Instead it uses a modified ProvenanceRepository.
+
+   a. In NiFi stop and delete the Kylo Reporting Task and its associated Controller Service.
+
+   b. Stop NiFi
+
+   c. Follow the guide :doc:`../how-to-guides/NiFiKyloProvenance` to setup the KyloProvenanceRepository
 
 2. Copy the application.properties file from the 0.8.1 install.  If you have customized the application.properties file you will want to copy the 0.8.1 version and add the new properties that were added for this release.
 
