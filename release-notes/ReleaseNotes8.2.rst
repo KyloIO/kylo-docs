@@ -46,7 +46,7 @@ Upgrade Instructions
                 ##retry every xx seconds
                 jms.redeliveryDelay=5000
                 ##Sets the maximum delivery delay that will be applied if the useExponentialBackOff option is set (use value -1 for no max)
-                jms.maximumRedeliveryDelay=600000L
+                jms.maximumRedeliveryDelay=600000
                 ##The back-off multiplier.
                 jms.backOffMultiplier=5
                 ##Should exponential back-off be used, i.e., to exponentially increase the timeout.
