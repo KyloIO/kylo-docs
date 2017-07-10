@@ -74,3 +74,59 @@ Upgrade Instructions
               spring.profiles.include=native,nifi-v1,auth-kylo,auth-file
 
             ..
+
+3. **Update configuration for using Elasticsearch as the search engine**
+
+    1. **Provide cluster properties**
+
+        1. Update cluster properties in ``/opt/kylo/kylo-services/conf/elasticsearch.properties`` if different from the defaults provided below.
+
+        .. code-block:: shell
+
+            search.host=localhost
+            search.clusterName=demo-cluster
+            search.restPort=9200
+            search.transportPort=9300
+
+        ..
+
+        Kylo services must be restarted if the above file has been changed to pick up the new values.
+
+        .. code-block:: shell
+
+            service kylo-services restart
+
+        ..
+
+    2. **Steps to import updated Index Schema Service feed**
+
+        1. Feed Manager -> Feeds -> + orange button -> Import from file -> Choose file
+
+        2. Pick the ``index_schema_service_elasticsearch.feed.zip`` file available at ``/opt/kylo/setup/data/feeds/nifi-1.0``
+
+        3. Leave *Change the Category* field blank (It defaults to *System*)
+
+        4. Click *Yes* for these two options (1) *Overwrite Feed* (2) *Replace Feed Template*
+
+        5. (optional) Click *Yes* for option (3) *Disable Feed upon import* only if you wish to keep the indexing feed disabled upon import (You can explicitly enable it later if required)
+
+        6. Click *Import Feed*.
+
+        7. Verify that the feed imports successfully.
+
+
+    3. **Steps to import updated Index Text Service feed**
+
+        1. Feed Manager -> Feeds -> + orange button -> Import from file -> Choose file
+
+        2. Pick the ``index_text_service_elasticsearch.feed.zip`` file available at ``/opt/kylo/setup/data/feeds/nifi-1.0``
+
+        3. Leave *Change the Category* field blank (It defaults to *System*)
+
+        4. Click *Yes* for these two options (1) *Overwrite Feed* (2) *Replace Feed Template*
+
+        5. (optional) Click *Yes* for option (3) *Disable Feed upon import* only if you wish to keep the indexing feed disabled upon import (You can explicitly enable it later if required)
+
+        6. Click *Import Feed*.
+
+        7. Verify that the feed imports successfully.
