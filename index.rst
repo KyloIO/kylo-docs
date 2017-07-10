@@ -74,6 +74,7 @@ The documentation for the site is organized into a few sections:
 
     Developer Guide <developer-guides/KyloDeveloperGuide>
     Contributing <developer-guides/ContributingtoKylo>
+    Plugin APIs <developer-guides/PluginApiIndex>
     REST API <developer-guides/KyloRestApi>
 
 .. _user_guides:
