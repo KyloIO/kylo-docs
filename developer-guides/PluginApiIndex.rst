@@ -8,8 +8,8 @@ Kylo UI
 .. toctree::
     :maxdepth: 1
 
-    FeedWizardPlugin
-    Processor Template <https://github.com/Teradata/kylo/blob/master/ui/ui-api/src/main/java/com/thinkbiganalytics/ui/api/template/ProcessorTemplate.java>
+    Feed Stepper <https://github.com/Teradata/kylo/tree/master/samples/plugins/example-ui-feed-stepper-plugin>
+    Processor Template <https://github.com/Teradata/kylo/tree/master/samples/plugins/example-ui-get-file-processor-template>
 
 Kylo Services
 ~~~~~~~~~~~~~
