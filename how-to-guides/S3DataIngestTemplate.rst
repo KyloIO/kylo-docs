@@ -12,7 +12,7 @@ You would like to ingest data from a S3 data source into Hive tables backed by S
 Introduction
 ============
 
-The Data Ingest S3 template is a variation of the standard Data Ingest template within Kylo.  The standard template utilizes HDFS backed hive tables, accepts inputs from local files, and is designed to run on a Cloudera or Hortonworks sandbox.  By contrast, the Data Ingest S3 template utilizes S3 backed hive tables, accepts inputs from an S3 bucket, is designed for use on an AWS Stack utilizing EC2, EMR, and RDS. Additionally, in 0.8 the template has been modified to so that data on s3 is not brought into the Nifi node. In order to accommodate these changes, the ExecuteHQLStatement processor has been updated and a new processor, CreateElasticsearchBackedHiveTable, has been created.
+The Data Ingest S3 template is a variation of the standard Data Ingest template within Kylo.  The standard template utilizes HDFS backed hive tables, accepts inputs from local files, and is designed to run on a Cloudera or Hortonworks sandbox.  By contrast, the Data Ingest S3 template utilizes S3 backed hive tables, accepts inputs from an S3 bucket and is designed for use on an AWS stack utilizing EC2 and EMR. Additionally the template has improved performance in that data on s3 is not brought into the Nifi node.i  In order to accommodate these changes, the ExecuteHQLStatement processor has been updated and a new processor, CreateElasticsearchBackedHiveTable, has been created.
 
 1. S3 Data Ingest Template Overview
 ===================================
