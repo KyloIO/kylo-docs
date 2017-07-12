@@ -4,7 +4,7 @@ Release 0.8.2 (TBD)
 Highlights
 ----------
 - Redesigned Provenance Event Capturing and new Kylo Streaming User Interface
-- Ability to customize the user interface for the feed stepper and NiFi processor templates (https://github.com/Teradata/kylo/tree/master/samples/plugins/example-ui-get-file-processor-template)
+- Ability to customize the user interface.  More details can be found here: :doc:`../developer-guides/PluginApiIndex`
 - NiFi 1.3.0 support
 - Support SOLR or Elastic Search along with a redesigned Search page
 - Automatic indexing of Feeds,Categories,tags into SOLR or Elastic Search
