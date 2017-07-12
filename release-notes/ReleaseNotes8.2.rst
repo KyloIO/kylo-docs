@@ -21,6 +21,7 @@ Upgrade Instructions
 
    1.3. Follow the guide :doc:`../how-to-guides/NiFiKyloProvenance` to setup the KyloPersistentProvenanceRepository
 
+
 2. Copy the application.properties file from the 0.8.1 install.  If you have customized the application.properties file you will want to copy the 0.8.1 version and add the new properties that were added for this release.
 
      2.1 Find the /bkup-config/TIMESTAMP/kylo-services/application.properties file
@@ -174,16 +175,30 @@ Upgrade Instructions
 
         7. Verify that the feed imports successfully.
 
-7. If upgrading to NiFi 1.2 or 1.3 you need to re-import the templates
+7. Re-import the templates.
+
+    - Re-import Data Ingest template (data_ingest.zip)
+
+    - Re-import Data Transformation template (data_transformation.zip)
+
+    - Re-import Data Confidence template (data_confidence_invalid_records.zip)
+
+8. NiFi 1.2/1.3 breaking change.
 
    - NiFi introduced a change to their UpdateAttributes processor that prevents empty strings from being set to the dynamic properties unless the state is saved.
-     Any feeds you have from a previous NiFi version that have empty strings in the UpdateAttributes processors will be broken and need fixed.
+
+   - The templates (in step 7 above) already have this change made.  Any feeds you have from a previous NiFi version that have empty strings in the UpdateAttributes processors will be broken and need fixed.  You can fix them by importing the new templates and then saving the feed, or you will neeed to manually fix the feed/template.
+     If you need to manually fix feed flows in NiFi do the following:
+
+       1. Modify the UpdateAttributes processors and change the "Store State" property to be "Store state locally"
+
+       2. Change the "Stateful Variables Initial Value" and check the box "Set empty string"
+
+       3. Go to the Settings for the processor and Auto terminate the "set state fail" route.
 
        |image0|
 
-   - Re-import Data Ingest template (data_ingest.zip).
-   - Re-import Data Transformation template (data_transformation.zip).
-   - Re-import Data Confidence template (data_confidence_invalid_records.zip).
+
 
 
 
