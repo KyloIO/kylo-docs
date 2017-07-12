@@ -1,110 +1,179 @@
 
-=====================
-TAR File Installation
-=====================
+==================================
+TAR File Installation and Upgrade
+==================================
 
 Introduction
 ============
 
-At this time, an RPM file is the only artifact built into Kylo. An RPM
-installation is meant to be an opinionated way of installing an
+An RPM installation is meant to be an opinionated way of installing an
 application, and it reduces the number of steps required to complete the
-installation. That said, some clients have strict requirements as to where
+installation. However, many organizations have strict requirements as to where
 they need to install Kylo, and the user that Kylo must be run under. These
-instructions will guide you through an alternative way to install Kylo, if
-that is required in your case.
+instructions will guide you through an alternative way to install Kylo.
 
 Determine Service Account and Kylo Install Location
 ---------------------------------------------------
 
 Let’s assume, for this example, that Kylo will run under an account name
-"kylo_user", and it will be installed in /opt/apps/.
+"ad_kylo", and it will be installed in /apps/.
 
-Step 1: Install the RPM and copy the /opt/kylo folder to a temporary location.
+Step 1: Create the Kylo, NiFi, and ActiveMQ User
 ------------------------------------------------------------------------------
 
 .. code-block:: shell
 
-    cp -R /opt/kylo /opt/tb-test
+    $ sudo useradd -r -m -s /bin/bash ad_nifi
+    $ sudo useradd -r -m -s /bin/bash ad_kylo
+    $ sudo useradd -r -m -s /bin/bash ad_activemq
+
 
 ..
 
-Step 2: Copy init.d scripts to the same temporary location.
+Step 2: Untar Kylo in the /apps folder
 -----------------------------------------------------------
 
 .. code-block:: shell
 
-    cp /etc/init.d/kylo-services /opt/tb-test
-    cp /etc/init.d/kylo-spark-shell /opt/tb-test
-    cp /etc/init.d/kylo-ui /opt/tb-test
+    $ sudo mkdir /apps/kylo
+    $ sudo tar -xvf /tmp/kylo-0.8.2-dependencies.tar.gz -C /apps/kylo
 
 ..
 
-Your temp location should look like this:
+
+Step 3: Run the post install script
+-----------------------------------------
+
+This script will set the user permissions, create the init.d scripts and create the log directories in /var/log
+
 
 .. code-block:: shell
 
-    [root@sandbox tb-test]# ls -l /opt/tb-test
-    drwxr-xr-x 8 root root 4096 2016-10-27 20:13 kylo
-    -rwxr-xr-x 1 root root 1561 2016-10-27 20:20 kylo-services
-    -rwxr-xr-x 1 root root 1281 2016-10-27 20:21 kylo-spark-shell
-    -rwxr-xr-x 1 root root 1447 2016-10-27 20:21 kylo-ui
+    $ sudo /apps/kylo/setup/install/post-install.sh /apps/kylo ad_kylo users
 
 ..
 
-Step 3 (Optional): Tar up the folder and copy it to the edge node if you aren’t already on it.
-----------------------------------------------------------------------------------------------
+Step 4: Run the setup wizard
+------------------------------
 
-Step 4: Install the files.
---------------------------
+Run the setup wizard to install NiFi, ActiveMQ and Elasticsearch
 
-1. Copy the Kylo folder to /opt/apps.
-
-2. Copy the 3 init.d scripts to /etc/init.d.
-
-Step 5: Create Log Folders
---------------------------
 
 .. code-block:: shell
 
-    [root@sandbox tb-test]# mkdir /var/log/kylo-services
-    [root@sandbox tb-test]# chown kylo_user:kylo_user
-    /var/log/kylo-services
-    [root@sandbox tb-test]# mkdir /var/log/kylo-ui
-    [root@sandbox tb-test]# chown kylo_user:kylo_user
-    /var/log/kylo-ui
-    [root@sandbox tb-test]# mkdir /var/log/kylo-spark-shell
-    [root@sandbox tb-test]# chown kylo_user:kylo_user
-    /var/log/kylo-spark-shell/
+    $ sudo /apps/kylo/setup/setup-wizard.sh
 
 ..
 
-Step 6: Modify the user in the init.d scripts.
+[root@sandbox dropzone]# usermod -a -G hdfs ad_nifi
+[root@sandbox dropzone]# usermod -a -G hdfs ad_kylo
+
+nifi.service.mysql.database_driver_location(s)=file:///apps/nifi/mysql/mariadb-java-client-1.5.7.jar
+nifi.service.kylo_hive_metastore_service.database_driver_location(s)=file:///apps/nifi/mysql/mariadb-java-client-1.5.7.jar
+nifi.service.jmsconnectionfactoryprovider.mq_client_libraries_path_(i.e.,_/usr/jms/lib)=/apps/nifi/activemq
+nifi.service.hive_thrift_service.database_user=ad_nifi
+
+applicationjar=/opt/nifi/current/lib/app/kylo-spark-validate-cleanse-jar-with-dependencies.jar
+
+Step 8: Start up Kylo and nifi and test.
 ----------------------------------------------
 
-Set this line to be the correct user:
-
 .. code-block:: shell
 
-    RUN_AS_USER=kylo_user
+    $ sudo kylo-service start
+    $ sudo service nifi start
 
 ..
 
-Also change any reference of /opt/kylo to /opt/apps/kylo.
 
-Step 7: Modify the bin scripts for the 3 kylo apps.
----------------------------------------------------
+TAR file upgrade
+================
 
-Modify the following files and change /opt/kylo references to
-/opt/kylo/apps:
+Below are instructions on how to upgrade using a TAR file
+
+Step 1: Backup and Delete the Kylo folder
+------------------------------------------------------------------------------
 
 .. code-block:: shell
 
-    /opt/apps/kylo/kylo-ui/bin/run-kylo-ui.sh
-    /opt/apps/kylo/kylo-services/bin/run-kylo-services.sh
-    /opt/apps/kylo/kylo-spark-shell/bin/run-kylo-spark-shell.sh
+    $ sudo kylo-service stop
+    $ sudo cp -R /apps/kylo/ /apps/kylo-0.8.1-bk
+    $ sudo rm -rf /apps/kylo
+    $ sudo chkconfig --del kylo-ui
+    $ sudo chkconfig --del kylo-spark-shell
+    $ sudo chkconfig --del kylo-services
+    $ sudo rm -rf /etc/init.d/kylo-ui
+    $ sudo rm -rf /etc/init.d/kylo-services
+    $ sudo rm -rf /etc/init.d/kylo-spark-shell
+    $ sudo rm -rf /var/log/kylo-*
+
 
 ..
 
-Step 8: Start up Kylo and test.
--------------------------------
+Step 2: Stop NiFi
+------------------------------------------------------------------------------
+
+Step 3: Untar the new file
+------------------------------------------------------------------------------
+
+.. code-block:: shell
+
+    $ sudo mkdir /apps/kylo
+    $ sudo tar -xvf /tmp/kylo-0.8.2-dependencies.tar.gz -C /apps/kylo
+
+..
+
+Step 4: Run the post install script
+------------------------------------------------------------------------------
+
+.. code-block:: shell
+
+    $ sudo /apps/kylo/setup/install/post-install.sh /apps/kylo ad_kylo users
+
+..
+
+Step 5: Update the NiFi JARS and NARS
+------------------------------------------------------------------------------
+
+.. code-block:: shell
+
+    $ sudo rm -rf /apps/nifi/data/lib/*.nar
+    $ sudo rm -rf /apps/nifi/data/lib/app/*.jar
+
+    $ sudo /apps/kylo/setup/nifi/update-nars-jars.sh /apps/nifi /apps/kylo/setup ad_nifi users
+
+..
+
+
+Step 6: Start NiFi
+------------------------------------------------------------------------------
+
+
+Step 7: Copy custom configuration files to the new installation
+------------------------------------------------------------------------------
+
+For example:
+
+.. code-block:: shell
+
+    $ sudo cp /apps/kylo-0.8.1-bk/kylo-services/bin/run-kylo-spark-shell.sh /apps/kylo/kylo-services/bin
+    $ sudo cp /apps/kylo-0.8.1-bk/kylo-services/conf/spark.properties /apps/kylo/kylo-services/conf
+    $ sudo cp /apps/kylo-0.8.1-bk/kylo-services/conf/application.properties /apps/kylo/kylo-services/conf
+    $ sudo cp /apps/kylo-0.8.1-bk/kylo-ui/conf/application.properties /apps/kylo/kylo-ui/conf
+    $ sudo cp /apps/kylo-0.8.1-bk/encrypt.key /apps/kylo/
+    $ sudo cp /apps/kylo-0.8.1-bk/kylo-services/lib/postgresql-42.0.0.jar /apps/kylo/kylo-services/lib/
+
+    $ sudo cp /apps/kylo-0.8.1-bk/kylo-services/conf/ambari.properties /apps/kylo/kylo-services/conf/
+    $ sudo cp /apps/kylo/setup/plugins/kylo-service-monitor-ambari-0.8.1.1-SNAPSHOT.jar /apps/kylo/kylo-services/plugin/
+    $ sudo chown ad_kylo:ad_kylo /apps/kylo/kylo-services/plugin/kylo-service-monitor-ambari-0.8.1.1-SNAPSHOT.jar
+
+..
+
+Step 8: Start Kylo
+------------------------------------------------------------------------------
+
+.. code-block:: shell
+
+    $ sudo kylo-service start
+
+..
