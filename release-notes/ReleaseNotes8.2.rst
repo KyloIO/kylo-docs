@@ -6,7 +6,6 @@ Highlights
 - Redesigned Provenance Event Capturing and new Kylo Streaming User Interface
 - Ability to customize the user interface.  More details can be found here: :doc:`../developer-guides/PluginApiIndex`
 - NiFi 1.3.0 support
-- Redesigned and navigable search results.
 - Enhanced global search (Support for Elasticsearch or Solr, auto-indexing of feed and category metadata, navigable results)
 - SPENGO highlight... TBD
 - Wrangler user impersonation highlight TBD
