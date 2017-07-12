@@ -5,6 +5,11 @@ Highlights
 ----------
 - Redesigned Provenance Event Capturing and new Kylo Streaming User Interface
 - Ability to customize the user interface for the feed stepper and NiFi processor templates (https://github.com/Teradata/kylo/tree/master/samples/plugins/example-ui-get-file-processor-template)
+- NiFi 1.3.0 support
+- Support SOLR or Elastic Search along with a redesigned Search page
+- Automatic indexing of Feeds,Categories,tags into SOLR or Elastic Search
+- SPENGO highlight... TBD
+- Wrangler user impersonation highlight TBD
 
 Upgrade Instructions
 --------------------
@@ -75,7 +80,45 @@ Upgrade Instructions
 
             ..
 
-3. **Update configuration for using Elasticsearch as the search engine**
+     2.4 Ensure the property ``security.jwt.key`` in both kylo-services and kylo-ui application.properties file match.  They property below needs to match in both of these files:
+
+         - */opt/kylo/kylo-ui/conf/application.properties*
+         - */opt/kylo/kylo-services/conf/application.properties*.
+
+       .. code-block:: properties
+
+         security.jwt.key=
+
+       ..
+
+3. Backup the Kylo database.  Run the following code against your kylp database to export the 'kylo' schema to a file.  Replace the  PASSWORD with the correct login to your kylo database.
+
+  .. code-block:: shell
+
+     mysqldump -u root -pPASSWORD --databases kylo >kylo-0_8_1_backup.sql
+
+  ..
+
+4. Database updates.  Kylo uses liquibase to perform database updates.  Two modes are supported.
+
+ - Automatic updates
+
+     By default Kylo is set up to automatically upgrade its database on Kylo services startup. As such,
+     there isn't anything specific an end user has to do. When Kylo services startup the kylo database will be automatically upgraded to latest version if required.
+     This is configured via an application.properties setting
+
+     .. code-block:: properties
+
+         liquibase.enabled=true
+     ..
+
+ - Manual updates
+
+     Sometimes, however you may choose to disable liquibase and manually apply the upgrade scripts.  By disabling liquibase you are in control of how the scripts are applied.  This is needed if the kylo database user doesnt have priviledges to make schema changes to the kylo database.
+     Please follow this :doc:`../how-to-guides/DatabaseUpgrades` on how to manually apply the additional database updates.
+
+
+5. **Update configuration for using Elasticsearch as the search engine**
 
     1. **Provide cluster properties**
 
@@ -130,3 +173,21 @@ Upgrade Instructions
         6. Click *Import Feed*.
 
         7. Verify that the feed imports successfully.
+
+7. If upgrading to NiFi 1.2 or 1.3 you need to re-import the templates
+
+   - NiFi introduced a change to their UpdateAttributes processor that prevents empty strings from being set to the dynamic properties unless the state is saved.
+     Any feeds you have from a previous NiFi version that have empty strings in the UpdateAttributes processors will be broken and need fixed.
+
+       |image0|
+
+   - Re-import Data Ingest template (data_ingest.zip).
+   - Re-import Data Transformation template (data_transformation.zip).
+   - Re-import Data Confidence template (data_confidence_invalid_records.zip).
+
+
+
+.. |image0| image:: ../media/Config_NiFi/NiFi-1.3.0_updateattributes_change.png
+   :width: 2461px
+   :height: 1173px
+
