@@ -67,6 +67,7 @@ The documentation for the site is organized into a few sections:
     SUSE Configuration <how-to-guides/SuseConfigurationChanges>
     Configuration Properties <how-to-guides/ConfigurationProperties>
     Validator Tuning <how-to-guides/ValidatorTuning>
+    Kylo & Global Search <how-to-guides/ConfigureKyloForGlobalSearch>
 
 .. _developer_guides:
 .. toctree::

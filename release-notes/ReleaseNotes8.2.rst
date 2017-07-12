@@ -6,8 +6,8 @@ Highlights
 - Redesigned Provenance Event Capturing and new Kylo Streaming User Interface
 - Ability to customize the user interface.  More details can be found here: :doc:`../developer-guides/PluginApiIndex`
 - NiFi 1.3.0 support
-- Support SOLR or Elastic Search along with a redesigned Search page
-- Automatic indexing of Feeds,Categories,tags into SOLR or Elastic Search
+- Redesigned and navigable search results.
+- Enhanced global search (Support for Elasticsearch or Solr, auto-indexing of feed and category metadata, navigable results)
 - SPENGO highlight... TBD
 - Wrangler user impersonation highlight TBD
 - Official TAR file installation support. This allows installation in different folder locations and to be ran as different linux users/groups
@@ -94,7 +94,7 @@ Upgrade Instructions
 
        ..
 
-3. Backup the Kylo database.  Run the following code against your kylp database to export the 'kylo' schema to a file.  Replace the  PASSWORD with the correct login to your kylo database.
+3. Backup the Kylo database.  Run the following code against your kylo database to export the 'kylo' schema to a file.  Replace the  PASSWORD with the correct login to your kylo database.
 
   .. code-block:: shell
 
@@ -159,6 +159,8 @@ Upgrade Instructions
         6. Click *Import Feed*.
 
         7. Verify that the feed imports successfully.
+
+        8. If your Hive metastore is in a schema named something other than ``hive``, edit the feed and set ``hive.schema`` to the schema name. This configuration value may be available with the key ``config.hive.schema`` in ``/opt/kylo/kylo-services/conf/application.properties``
 
 
     3. **Steps to import updated Index Text Service feed**
