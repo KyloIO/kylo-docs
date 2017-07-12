@@ -239,12 +239,13 @@ See the appendix section below "Cloudera Configuration File Changes".
 Step 10: Edit the Properties Files
 ----------------------------------
 
-Step 11: Start the Three Kylo Services
+Step 11: Start the Three Kylo Services and NiFi
 --------------------------------------
 
 .. code-block:: shell
 
     $ /opt/kylo/start-kylo-apps.sh
+    $ service nifi start
 
 At this point, all services should be running. Note that services are
 started automatically on boot.
