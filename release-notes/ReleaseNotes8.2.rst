@@ -10,6 +10,7 @@ Highlights
 - Automatic indexing of Feeds,Categories,tags into SOLR or Elastic Search
 - SPENGO highlight... TBD
 - Wrangler user impersonation highlight TBD
+- Official TAR file installation support. This allows installation in different folder locations and to be ran as different linux users/groups
 
 Upgrade Instructions
 --------------------
