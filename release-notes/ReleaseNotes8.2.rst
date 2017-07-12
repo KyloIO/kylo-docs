@@ -8,7 +8,7 @@ Highlights
 - NiFi 1.3.0 support
 - Enhanced global search (Support for Elasticsearch or Solr, auto-indexing of feed and category metadata, navigable results)
 - SPENGO highlight... TBD
-- Wrangler user impersonation highlight TBD
+- Data Wrangler can now use the Spark yarn-cluster master and supports :doc:`user impersonation <../installation/KyloUserImpersonation>`. There are a few different run modes depending on which :doc:`configuration properties <../installation/KyloSparkProperties>` are specified.
 - Official TAR file installation support. This allows installation in different folder locations and to be ran as different linux users/groups
 - Includes a new S3 data ingest template, which features the ability to process data without bringing the data into the edge node.  See: :doc:`../how-to-guides/S3DataIngestTemplate`
 
