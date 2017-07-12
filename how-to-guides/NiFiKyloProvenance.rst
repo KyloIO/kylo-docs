@@ -31,6 +31,7 @@ Setup
 
 3. Configure the KyloPersistentProvenanceEventRepository properties:  The Provenance Repository uses properties found in the ``/opt/nifi/ext-config/config.properties`` file.
     *Note:* this location is configurable via the System Property ``kylo.nifi.configPath`` passed into NiFi when it launches.  Below are the defaults which are automatically set if the file/properties are not found.
+
     *Note:* the config.properties marked with ## *Supports dynamic update* below can be updated without restarting NiFi.  Every 30 seconds a check is made to see if the config.properties file has been updated.
 
       .. code-block:: shell
