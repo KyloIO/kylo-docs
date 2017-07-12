@@ -97,7 +97,7 @@ downloaded application binaries.
 
 .. code-block:: shell
 
-    $ rpm -ivh kylo-<version>.noarch.rpm.rpm
+    $ rpm -ivh kylo-<version>.noarch.rpm
 ..
 
 2. Run the script, which will download all application binaries and put them in their respective directory in the setup folder.
@@ -196,13 +196,19 @@ Step 3: Install Kylo Services
 Step 4: Run the database scripts
 ================================
 
-The database scripts will create one schema called "kylo" and
-install to that schema. Run the following script:
+For database scripts you may either choose to let liquibase automatically install the scripts for you or you can generate and run the SQL scripts yourself.
+
+1. Liquibase - Create the "kylo" database in MySQL
 
 .. code-block:: shell
 
-    $ <SETUP_DIR>/sql/mysql/setup-mysql.sh [db_host_or_ip] [db_user] [db_password]
+    MariaDB [(none)]> create database kylo;
 ..
+
+
+2. To generate SQL scripts manually
+please refer to section #2 in the :doc:`../how-to-guides/DatabaseUpgrades` document to see how to generate the scripts
+
 
 .. note:: If db_user does not have password, the *db_password* can be provided as ''. (For example, if using HDP 2.4 sandbox)
 
@@ -222,7 +228,7 @@ a. Online Mode
 
 .. code-block:: shell
 
-        $ <SETUP_DIR>/elasticsearch/install-elasticsearch.sh
+        $ <SETUP_DIR>/elasticsearch/install-elasticsearch.sh <KYLO_SETUP_FOLDER>
 
 ..
 
@@ -230,9 +236,9 @@ b. Offline Mode
 
 .. code-block:: shell
 
-        $ <OFFLINE_SETUP_DIR>/elasticsearch/install-elasticsearch.sh -o <OFFLINE_SETUP_DIR>
+        $ <OFFLINE_SETUP_DIR>/elasticsearch/install-elasticsearch.sh <OFFLINE_SETUP_DIR> -o
 
-          Example:  /tmp/kylo-install/setup/elasticsearch/install-elasticsearch.sh -o /tmp/kylo-install/setup
+          Example:  /tmp/kylo-install/setup/elasticsearch/install-elasticsearch.sh /tmp/kylo-install/setup -o
 
 ..
 
@@ -256,7 +262,7 @@ a. Online Mode
 
 .. code-block:: shell
 
-        $ <SETUP_DIR>/activemq/install-activemq.sh
+        $ <SETUP_DIR>/activemq/install-activemq.sh <INSTALLATION_FOLDER> <LINUX_USER> <LINUX_GROUP>
 
 ..
 
@@ -264,9 +270,9 @@ b. Offline Mode
 
 .. code-block:: shell
 
-        $ <OFFLINE_SETUP_DIR>/activemq/install-activemq.sh -o <OFFLINE_SETUP_DIR>
+        $ <OFFLINE_SETUP_DIR>/activemq/install-activemq.sh <INSTALLATION_FOLDER> <LINUX_USER> <LINUX_GROUP> <OFFLINE_SETUP_DIR> -o
 
-       Example: /tmp/kylo-install/setup/activemq/install-activemq.sh -o /tmp/kylo-install/setup
+       Example: /tmp/kylo-install/setup/activemq/install-activemq.sh /opt/activemq activemq activemq /tmp/kylo-install/setup -o
 
 ..
 
@@ -407,9 +413,9 @@ To test this you can look at each file referenced in the scripts for kylo-ui and
 
 .. code-block:: shell
 
-         $ <OFFLINE_SETUP_DIR>/java/install-java8.sh -o <OFFLINE_SETUP_DIR>
+         $ <OFFLINE_SETUP_DIR>/java/install-java8.sh  <KYLO_HOME_DIR> <OFFLINE_SETUP_DIR> -o
 
-         Example: /tmp/kylo-install/setup/java/install-java8.sh -o /tmp/kylo-install/setup
+         Example: /tmp/kylo-install/setup/java/install-java8.sh  /opt/kylo /tmp/kylo-install/setup -o
 
 ..
 
@@ -420,8 +426,8 @@ If you already have Java 8 installed, and want to reference that installation, t
 .. code-block:: shell
 
         For kylo-ui and kylo-services
-        $ /opt/kylo/setup/java/remove-default-kylo-java-home.sh
-        $ /opt/kylo/setup/java/change-kylo-java-home.sh <PATH_TO_JAVA_HOME>
+        $ /opt/kylo/setup/java/remove-default-kylo-java-home.sh <KYLO_HOME>
+        $ /opt/kylo/setup/java/change-kylo-java-home.sh <JAVA_HOME> <KYLO_HOME>
 
 Step 8: Install Java Cryptographic Extension
 ============================================
@@ -453,7 +459,7 @@ a. Install NiFi in either online or offline mode:
 
 .. code-block:: shell
 
-          $ <SETUP_DIR>/nifi/install-nifi.sh
+          $ <SETUP_DIR>/nifi/install-nifi.sh <NIFI_BASE_FOLDER> <NIFI_LINUX_USER> <NIFI_LINUX_GROUP>
 
 ..
 
@@ -461,7 +467,7 @@ a. Install NiFi in either online or offline mode:
 
 .. code-block:: shell
 
-          $ <OFFLINE_SETUP_DIR>/nifi/install-nifi.sh -o <OFFLINE_SETUP_DIR>
+          $ <OFFLINE_SETUP_DIR>/nifi/install-nifi.sh  <NIFI_BASE_FOLDER> <NIFI_LINUX_USER> <NIFI_LINUX_GROUP> <OFFLINE_SETUP_DIR> -o
 
 ..
 
@@ -469,7 +475,7 @@ b. Update JAVA_HOME (default is /opt/java/current).
 
 .. code-block:: shell
 
-          $ <SETUP_DIR>/java/change-nifi-java-home.sh <path to JAVA_HOME>
+          $ <SETUP_DIR>/java/change-nifi-java-home.sh <JAVA_HOME> <NIFI_BASE_FOLDER>/current
 
 ..
 
@@ -477,7 +483,7 @@ c. Install Kylo specific components.
 
 .. code-block:: shell
 
-          $ <SETUP_DIR>/nifi/install-kylo-components.sh
+          $ <SETUP_DIR>/nifi/install-kylo-components.sh <NIFI_BASE_FOLDER> <KYLO_HOME> <NIFI_LINUX_USER> <NIFI_LINUX_GROUP>
 
 ..
 
