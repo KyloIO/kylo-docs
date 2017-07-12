@@ -153,8 +153,8 @@ Download the required JARS for Hive to write table data to ElasticSearch. Using 
 
 .. code-block:: shell
 
-aws s3 ls s3://hive-bucket/jars/elasticsearch-hadoop-5.4.0.jar
-aws s3 ls s3://hive-bucket/jars/commons-httpclient-3.1.jar
+  aws s3 ls s3://hive-bucket/jars/elasticsearch-hadoop-5.4.0.jar
+  aws s3 ls s3://hive-bucket/jars/commons-httpclient-3.1.jar
 
 ..
 
@@ -185,7 +185,7 @@ In the core-site.xml where your data is to be processed make sure that your fs.s
 
 ..
 
-.. warn::
+.. warning::
 
   There are times when AWS SDK will consult the 's3' properties for the keys, regardless of the protocol you use.  To work around the problem define s3 properties in addition to your protocol properties.
 
