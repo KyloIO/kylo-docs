@@ -11,6 +11,7 @@ Highlights
 - SPENGO highlight... TBD
 - Wrangler user impersonation highlight TBD
 - Official TAR file installation support. This allows installation in different folder locations and to be ran as different linux users/groups
+- Includes a new S3 data ingest template, which features the ability to process data without bringing the data into the edge node.  See: :doc:`../how-to-guides/S3DataIngestTemplate`
 
 Upgrade Instructions
 --------------------
