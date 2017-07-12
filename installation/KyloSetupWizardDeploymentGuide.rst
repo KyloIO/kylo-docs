@@ -240,7 +240,7 @@ Step 10: Edit the Properties Files
 ----------------------------------
 
 Step 11: Start the Three Kylo Services and NiFi
---------------------------------------
+------------------------------------------------
 
 .. code-block:: shell
 
