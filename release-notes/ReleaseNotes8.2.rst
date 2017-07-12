@@ -1,5 +1,5 @@
 Release 0.8.2 (July 12, 2017)
-===================
+=============================
 
 Highlights
 ----------
@@ -14,7 +14,7 @@ Highlights
 - Wrangler supports :doc:`user impersonation <../installation/KyloUserImpersonation>`. There are a few different run modes depending on which :doc:`configuration properties <../installation/KyloSparkProperties>` are specified.
 - TAR file installation support. This allows installation in different folder locations and to be ran as different linux users/groups
 - Example S3 data ingest template. Ability to process data without bringing the data into the edge node.  See: :doc:`../how-to-guides/S3DataIngestTemplate`
-- SPNEGO. LDAP and Kerberos single sign-on
+- SPNEGO bug fixes and improvements with Active Directory integration
 
 Download Links
 --------------

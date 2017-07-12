@@ -34,30 +34,27 @@ The table below lists all of the profiles currently supported by Kylo out-of-the
 of these profiles are activated certain properties are
 expected to be present in the `application.properties` files.
 
-+------------------+----------------+------------------------------------+
-| Login Method     | Spring Profile | Description                        |
-+==================+================+====================================+
-| Kylo User        | `auth-kylo`    | Authenticates users against the    |
-|                  |                | Kylo user/group store              |
-+------------------+----------------+------------------------------------+
-| LDAP             | `auth-ldap`    | Authenticates users stored in LDAP |
-+------------------+----------------+------------------------------------+
-| Active Directory | `auth-ad`      | Authenticates users stored         |
-|                  |                | in Active Directory                |
-+------------------+----------------+------------------------------------+
-| Users file       | `auth-file`    | Authenticates users in a file      |
-|                  |                | users.properies (typically used in |
-|                  |                | development only)                  |
-+------------------+----------------+------------------------------------+
-| Simple           | `auth-simple`  | Allows only                        |
-|                  |                | one admin                          |
-|                  |                | user defined                       |
-|                  |                | in the                             |
-|                  |                | configuration                      |
-|                  |                | properties                         |
-|                  |                | (development                       |
-|                  |                | only)                              |
-+------------------+----------------+------------------------------------+
++--------------------+----------------+----------------------------------------------+
+| Login Method       | Spring Profile | Description                                  |
++====================+================+==============================================+
+| Kylo User          | `auth-kylo`    | Authenticates users against the              |
+|                    |                | Kylo user/group store                        |
++--------------------+----------------+----------------------------------------------+
+| LDAP               | `auth-ldap`    | Authenticates users stored in LDAP           |
++--------------------+----------------+----------------------------------------------+
+| Active Directory   | `auth-ad`      | Authenticates users stored                   |
+|                    |                | in Active Directory                          |
++--------------------+----------------+----------------------------------------------+
+| Users file         | `auth-file`    | Authenticates users in a file                |
+|                    |                | users.properies (typically used in           |
+|                    |                | development only)                            |
++--------------------+----------------+----------------------------------------------+
+| Simple             | `auth-simple`  | Allows only one admin user defined in the    |
+|                    |                | configuration properties (development only)  |
++--------------------+----------------+----------------------------------------------+
+| Cached credentials | `auth-cache`   | Short-cicuit, temporary authentication after |
+|                    |                | previous user authentication by other means  |
++--------------------+----------------+----------------------------------------------+
 
 `auth-kylo`
 '''''''''''
@@ -159,17 +156,25 @@ password against an LDAP server.
 `auth-ad`
 '''''''''
 This profile configures a LoginModule that authenticates the username and
-password against an Active Directory server.
+password against an Active Directory server.  If the properties ``security.auth.ad.server.serviceUser`` and ``security.auth.ad.server.servicePassword``
+are set then those credentials will be used to autheticate with the AD server and only the username will be validated to exist in AD;
+loading the user's groups load (when configured) if the user is present.
 
-+------------------------------------+----------+-------------------------+--------------------------------------------------+
-| Property                           | Required | Example Value           | Description                                      |
-+====================================+==========+=========================+==================================================+
-| security.auth.ad.server.uri        | Yes      | ``ldap://example.com/`` | The URI to the AD server                         |
-+------------------------------------+----------+-------------------------+--------------------------------------------------+
-| security.auth.ad.server.domain     | Yes      | ``test.example.com``    | The AD domain of the users to authenticate       |
-+------------------------------------+----------+-------------------------+--------------------------------------------------+
-| security.auth.ad.user.enableGroups | No       | ``true``                | Activates user group loading; default: ``false`` |
-+------------------------------------+----------+-------------------------+--------------------------------------------------+
++-----------------------------------------+----------+-------------------------+---------------------------------------------------------------------+
+| Property                                | Required | Example Value           | Description                                                         |
++=========================================+==========+=========================+=====================================================================+
+| security.auth.ad.server.uri             | Yes      | ``ldap://example.com/`` | The URI to the AD server                                            |
++-----------------------------------------+----------+-------------------------+---------------------------------------------------------------------+
+| security.auth.ad.server.domain          | Yes      | ``test.example.com``    | The AD domain of the users to authenticate                          |
++-----------------------------------------+----------+-------------------------+---------------------------------------------------------------------+
+| security.auth.ad.server.serviceUser     | No       | ``admin``               | A service account used to authenticate with AD rather than          |
+|                                         |          |                         | the user logging in (typically used with auth-spnego)               |
++-----------------------------------------+----------+-------------------------+---------------------------------------------------------------------+
+| security.auth.ad.server.servicePassword | No       |                         | A service account password used to authenticate with AD rather than |
+|                                         |          |                         | that of the user logging in (typically used with auth-spnego)       |
++-----------------------------------------+----------+-------------------------+---------------------------------------------------------------------+
+| security.auth.ad.user.enableGroups      | No       | ``true``                | Activates user group loading; default: ``false``                    |
++-----------------------------------------+----------+-------------------------+---------------------------------------------------------------------+
 
 `auth-simple`
 '''''''''''''
@@ -184,6 +189,22 @@ the only one able to login to Kylo.  Obviously, this profile should only be used
 +--------------------------------+----------+---------------+-----------------------------------+
 | authenticationService.password | Yes      | ``thinkbig``  | The password of the administrator |
 +--------------------------------+----------+---------------+-----------------------------------+
+
+`auth-cache`
+''''''''''''
+Kylo's REST API is stateless and every request must be authenticated.  In cases where the REST API is 
+heavily used and/or the primary means of authetication is expensive, this profile can be used to reduce
+the amount of times the primary authentication mechanism is consulted.  This is achieved by inserting
+a LoginModule a the head of the login sequence, flagged as `Sufficient <http://docs.oracle.com/javase/7/docs/api/javax/security/auth/login/Configuration.html>`_, 
+that reports a login success if the user credential for the current request is present in its cache.  
+Another LoginModule, flagged as `Optional <http://docs.oracle.com/javase/7/docs/api/javax/security/auth/login/Configuration.html>`_, 
+is inserted at the end of the sequence to add the credential to the cache whenever a successful login is committed.
+
++--------------------------+----------+------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Property                 | Required | Example Value                            | Description                                                                                                                                                            |
++==========================+==========+==========================================+========================================================================================================================================================================+
+| security.auth.cache.spec | No       | ``expireAfterWrite=30s,maximumSize=512`` | The cache `specification <https://google.github.io/guava/releases/19.0/api/docs/com/google/common/cache/CacheBuilderSpec.html>`_ (entry expire time, cache size, etc.) |
++--------------------------+----------+------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 User Group Handling
 ~~~~~~~~~~~~~~~~~~~
