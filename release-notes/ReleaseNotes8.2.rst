@@ -5,12 +5,12 @@ Highlights
 ----------
 - 109 issues resolved
 - NiFi 1.3.0 support
-- Global search. Auto-indexing of feed, category, tags, and UI enhancements
-- Added ability to use Solr vs ElasticSearch (ES default)
-- Streaming visualization improvements. Improved Ops UI for monitoring streaming feeds.
-- Provenance event capturing performance. Fixed lag that could occur for high throughput streaming feeds.
-- Pluggable UI.  Ability to dynamically add new user interface components.  See: :doc:`../developer-guides/PluginApiIndex`
-- Wrangler can use Spark yarn-cluster master 
+- Global search enhancements. Auto-indexing of feed, category, tags, and improved UI. 
+- Ability to use Solr vs ElasticSearch (ES default)
+- Streaming visualization improvements. New Ops UI for monitoring streaming feeds.
+- Provenance event performance tune-up. Fixed lag that could occur for high throughput streaming feeds.
+- Pluggable UI.  Ability to add dynamic new user interface components.  See: :doc:`../developer-guides/PluginApiIndex`
+- Wrangler support for Spark yarn-cluster mode
 - Wrangler supports :doc:`user impersonation <../installation/KyloUserImpersonation>`. There are a few different run modes depending on which :doc:`configuration properties <../installation/KyloSparkProperties>` are specified.
 - TAR file installation support. This allows installation in different folder locations and to be ran as different linux users/groups
 - Example S3 data ingest template. Ability to process data without bringing the data into the edge node.  See: :doc:`../how-to-guides/S3DataIngestTemplate`
