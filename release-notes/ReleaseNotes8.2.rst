@@ -1,16 +1,20 @@
-Release 0.8.2 (TBD)
+Release 0.8.2 (July 12, 2017)
 ===================
 
 Highlights
 ----------
-- Redesigned Provenance Event Capturing and new Kylo Streaming User Interface
-- Ability to customize the user interface.  More details can be found here: :doc:`../developer-guides/PluginApiIndex`
+- 109 issues resolved
 - NiFi 1.3.0 support
-- Enhanced global search (Support for Elasticsearch or Solr, auto-indexing of feed and category metadata, navigable results)
-- SPENGO highlight... TBD
-- Data Wrangler can now use the Spark yarn-cluster master and supports :doc:`user impersonation <../installation/KyloUserImpersonation>`. There are a few different run modes depending on which :doc:`configuration properties <../installation/KyloSparkProperties>` are specified.
-- Official TAR file installation support. This allows installation in different folder locations and to be ran as different linux users/groups
-- Includes a new S3 data ingest template, which features the ability to process data without bringing the data into the edge node.  See: :doc:`../how-to-guides/S3DataIngestTemplate`
+- Global search. Auto-indexing of feed, category, tags, and UI enhancements
+- Added ability to use Solr vs ElasticSearch (ES default)
+- Streaming visualization improvements. Improved Ops UI for monitoring streaming feeds.
+- Provenance event capturing performance. Fixed lag that could occur for high throughput streaming feeds.
+- Pluggable UI.  Ability to dynamically add new user interface components.  See: :doc:`../developer-guides/PluginApiIndex`
+- Wrangler can use Spark yarn-cluster master 
+- Wrangler supports :doc:`user impersonation <../installation/KyloUserImpersonation>`. There are a few different run modes depending on which :doc:`configuration properties <../installation/KyloSparkProperties>` are specified.
+- TAR file installation support. This allows installation in different folder locations and to be ran as different linux users/groups
+- Example S3 data ingest template. Ability to process data without bringing the data into the edge node.  See: :doc:`../how-to-guides/S3DataIngestTemplate`
+- SPNEGO. LDAP and Kerberos single sign-on 
 
 Upgrade Instructions
 --------------------
