@@ -151,7 +151,7 @@ This processor replaces the RemoveHDFSFolder processor in standard ingest.  It i
 
 Download the required JARS for Hive to write table data to ElasticSearch. Using the links below find the jars need and place them in a folder within your hive bucket (or other S3 bucket).  Make them public. In the end you should have jars available in S3 and the following commands should produce a good result:
 
-.. code-block: shell
+.. code-block:: shell
 
 aws s3 ls s3://hive-bucket/jars/elasticsearch-hadoop-5.4.0.jar
 aws s3 ls s3://hive-bucket/jars/commons-httpclient-3.1.jar
