@@ -14,26 +14,54 @@ Highlights
 - Wrangler supports :doc:`user impersonation <../installation/KyloUserImpersonation>`. There are a few different run modes depending on which :doc:`configuration properties <../installation/KyloSparkProperties>` are specified.
 - TAR file installation support. This allows installation in different folder locations and to be ran as different linux users/groups
 - Example S3 data ingest template. Ability to process data without bringing the data into the edge node.  See: :doc:`../how-to-guides/S3DataIngestTemplate`
-- SPNEGO. LDAP and Kerberos single sign-on 
+- SPNEGO. LDAP and Kerberos single sign-on
 
-Upgrade Instructions
---------------------
-1. Update NiFi to use the new KyloPersistentProvenanceRepository.   Kylo no longer uses the NiFi reporting task to capture provenance events.  Instead it uses a modified ProvenanceRepository.
+Download Links
+--------------
 
-   1.1. In NiFi stop and delete the Kylo Reporting Task and its associated Controller Service.
+ - RPM : `<http://bit.ly/2uT8bTo>`__
 
-   1.2. Stop NiFi
+ - Debian : `<http://bit.ly/2uSTvUv>`__
 
-   1.3. Follow the guide :doc:`../how-to-guides/NiFiKyloProvenance` to setup the KyloPersistentProvenanceRepository
+ - TAR : `<http://bit.ly/2ug8ZUz>`__
+
+Upgrade Instructions from v0.8.1
+--------------------------------
+
+Build or `download the RPM <http://bit.ly/2uT8bTo>`__
+
+1. Uninstall Kylo:
+
+ .. code-block:: shell
+
+   /opt/kylo/remove-kylo.sh
+
+ ..
+
+2. Install the new RPM:
+
+ .. code-block:: shell
+
+     rpm –ivh <RPM_FILE>
+
+ ..
+
+3. Update NiFi to use the new KyloPersistentProvenanceRepository.   Kylo no longer uses the NiFi reporting task to capture provenance events.  Instead it uses a modified ProvenanceRepository.
+
+   3.1. In NiFi stop and delete the Kylo Reporting Task and its associated Controller Service.
+
+   3.2. Stop NiFi
+
+   3.3. Follow the guide :doc:`../how-to-guides/NiFiKyloProvenance` to setup the KyloPersistentProvenanceRepository
 
 
-2. Copy the application.properties file from the 0.8.1 install.  If you have customized the application.properties file you will want to copy the 0.8.1 version and add the new properties that were added for this release.
+4. Copy the application.properties file from the 0.8.1 install.  If you have customized the application.properties file you will want to copy the 0.8.1 version and add the new properties that were added for this release.
 
-     2.1 Find the /bkup-config/TIMESTAMP/kylo-services/application.properties file
+     4.1 Find the /bkup-config/TIMESTAMP/kylo-services/application.properties file
 
         - Kylo will backup the application.properties file to the following location, */opt/kylo/bkup-config/YYYY_MM_DD_HH_MM_millis/kylo-services/application.properties*, replacing the "YYYY_MM_DD_HH_MM_millis" with a valid time:
 
-     2.2 Copy the backup file over to the /opt/kylo/kylo-services/conf folder
+     4.2 Copy the backup file over to the /opt/kylo/kylo-services/conf folder
 
         .. code-block:: shell
 
@@ -44,7 +72,7 @@ Upgrade Instructions
 
         ..
 
-     2.3 Add in the new properties to the /opt/kylo/kylo-services/application.properties file
+     4.3 Add in the new properties to the /opt/kylo/kylo-services/application.properties file
 
          - ActiveMQ properties: Redelivery processing properties are now available for configuration.  If Kylo receives provenance events and they have errors are are unable to attach NiFi feed information (i.e. if NiFi goes down and Kylo doesnt have the feed information in its cache) then the JMS message will be returned for redelivery based upon the following parameters.  Refer to the ActiveMQ documentation, http://activemq.apache.org/redelivery-policy.html, for assigning these values:
 
@@ -86,7 +114,7 @@ Upgrade Instructions
 
             ..
 
-     2.4 Ensure the property ``security.jwt.key`` in both kylo-services and kylo-ui application.properties file match.  They property below needs to match in both of these files:
+     4.4 Ensure the property ``security.jwt.key`` in both kylo-services and kylo-ui application.properties file match.  They property below needs to match in both of these files:
 
          - */opt/kylo/kylo-ui/conf/application.properties*
          - */opt/kylo/kylo-services/conf/application.properties*.
@@ -97,7 +125,7 @@ Upgrade Instructions
 
        ..
 
-3. Backup the Kylo database.  Run the following code against your kylo database to export the 'kylo' schema to a file.  Replace the  PASSWORD with the correct login to your kylo database.
+5. Backup the Kylo database.  Run the following code against your kylo database to export the 'kylo' schema to a file.  Replace the  PASSWORD with the correct login to your kylo database.
 
   .. code-block:: shell
 
@@ -105,7 +133,7 @@ Upgrade Instructions
 
   ..
 
-4. Database updates.  Kylo uses liquibase to perform database updates.  Two modes are supported.
+6. Database updates.  Kylo uses liquibase to perform database updates.  Two modes are supported.
 
  - Automatic updates
 
@@ -124,7 +152,7 @@ Upgrade Instructions
      Please follow this :doc:`../how-to-guides/DatabaseUpgrades` on how to manually apply the additional database updates.
 
 
-5. **Update configuration for using Elasticsearch as the search engine**
+7. **Update configuration for using Elasticsearch as the search engine**
 
     1. **Provide cluster properties**
 
@@ -182,7 +210,7 @@ Upgrade Instructions
 
         7. Verify that the feed imports successfully.
 
-7. Re-import the templates.
+8. Re-import the templates.
 
     - Re-import Data Ingest template (data_ingest.zip)
 
@@ -190,7 +218,7 @@ Upgrade Instructions
 
     - Re-import Data Confidence template (data_confidence_invalid_records.zip)
 
-8. NiFi 1.2/1.3 breaking change.
+9. NiFi 1.2/1.3 breaking change.
 
    - NiFi introduced a change to their UpdateAttributes processor that prevents empty strings from being set to the dynamic properties unless the state is saved.
 

@@ -181,7 +181,7 @@ Step 3: Install Kylo Services
 
 .. note:: To use wget instead, right-click the download link and copy the url.
 
-    `Download the latest Kylo RPM <http://bit.ly/2r4P47A>`__
+    `Download the latest Kylo RPM <http://bit.ly/2uT8bTo>`__
 
 
 2. Run the Kylo RPM install.

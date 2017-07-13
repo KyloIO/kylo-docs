@@ -46,7 +46,7 @@ Download the RPM and place it on the host Linux machine that you want to install
 
 .. code-block:: html
 
-    http://bit.ly/2r4P47A
+    http://bit.ly/2uT8bTo
 ..
 
 Step 2: Create the Linux Users/Groups
