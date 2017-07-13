@@ -6,7 +6,7 @@ Highlights
 - 109 issues resolved
 - NiFi 1.3.0 support
 - Global search enhancements. Auto-indexing of feed, category, tags, and improved UI. 
-- Ability to use Solr vs ElasticSearch (ES default)
+- Ability to use :doc:`Solr vs ElasticSearch <../how-to-guides/ConfigureKyloForGlobalSearch>` (ES default)
 - Streaming visualization improvements. New Ops UI for monitoring streaming feeds.
 - Provenance event performance tune-up. Fixed lag that could occur for high throughput streaming feeds.
 - Pluggable UI.  Ability to add dynamic new user interface components.  See: :doc:`../developer-guides/PluginApiIndex`
