@@ -376,3 +376,8 @@ Appendix: Postgres Integration
 ==============================
 
 :doc:`../installation/Postgres_Hive_Metadata_Configuration`
+
+Appendix: Clustering Kylo
+==============================
+
+:doc:`../installation/KyloClusterConfiguration`

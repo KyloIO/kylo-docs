@@ -41,3 +41,4 @@ Configuration Guides
     Postgres_Hive_Metadata_Configuration
     KyloSparkProperties
     KyloUserImpersonation
+    KyloClusterConfiguration
