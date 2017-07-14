@@ -4,44 +4,78 @@ Kylo Kerberos SPNEGO
 Configuration
 -------------
 
-Kylo
-~~~~
+auth-krb-spnego
+~~~~~~~~~~~~~~~
 
 Kerberos SPNEGO is activated in Kylo by adding the profile
 ``auth-krb-spnego`` to the list of active profiles in the UI and services
 properties files.
 
-Currently, if SPNEGO is activated, then the ``auth-kylo`` profile must be
-used as well, and all Kerberos-authenticated users must be present in the Kylo user store.
-Once activated, the following properties are required to configure Kerberos SPNEGO:
+Currently, if SPNEGO is activated, then either the ``auth-kylo`` or ``auth-ad`` profile must be
+used as well.  This is because requests reaching Kylo when SPNEGO is used will already be authenticated
+but the groups associated with the requesting user must still be associated during Kylo authentication.
+Both the configurations activated by ``auth-kylo`` and ``auth-ad`` are SPNEGO-aware and allow serice
+accounts properties to be set for use in looking up the groups of user from the Kylo user store or
+Active Directory.
 
-+--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+
-| **Property**                         | **Description**                                                                                                                                                | **Example**                      |
-+======================================+=====================================================================================================================+==========================================+=================+================+
-| security.auth.krb.service-principal  | Names the service principal used to access Kylo                                                                                                                | HTTP/kylo.domain.com@EXAMPLE.COM |
-+--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+
-| security.auth.krb.keytab             | Specifies path to the keytab file containing the service principal                                                                                             | /opt/kylo/kylo.keytab            |
-+--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+
-| security.auth.kylo.login.username    | `(kylo-ui/application.properties only)`  Specifies a username with the rights to retrieve all of the Kylo groups of which the authenticating user is a member  |                                  |
-+--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+
-| security.auth.kylo.login.password    | `(kylo-ui/application.properties only)`  Specifies the password of the above username retrieving the authenticating user’s groups - should be encrypted        |                                  |
-+--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+
+Once SPNEGO is configured in `kylo-services` the services' REST API will begin to accept 
+SPNEGO ``Authorization: Negotiate`` headers for authentication.  The REST API will continue to accept 
+HTTP BASIC authentication requests as well.
 
-.. note:: Other authentication profile(s) must be activated in the `kylo-services/application.properties`, such as ``auth-simple``, to allow the user/password specified in the ``security.auth.kylo.login.*`` properties above to be authenticated.
+When ``auth-krb-spnego`` is activated, the following properties are required to configure Kerberos SPNEGO:
 
-Kerberos
-~~~~~~~~
++-------------------------------------+--------------------------------------------------------------------+----------------------------------+
+| **Property**                        | **Description**                                                    | **Example**                      |
++=====================================+====================================================================+==================================+
+| security.auth.krb.service-principal | Names the service principal used to access Kylo                    | HTTP/kylo.domain.com@EXAMPLE.COM |
++-------------------------------------+--------------------------------------------------------------------+----------------------------------+
+| security.auth.krb.keytab            | Specifies path to the keytab file containing the service principal | /opt/kylo/kylo.keytab            |
++-------------------------------------+--------------------------------------------------------------------+----------------------------------+
+
+auth-kylo
+~~~~~~~~~
+
+If the ``auth-kylo`` profile is activated with SPNEGO then the `kylo-ui/conf/appplication.properties` file must contain the credential properties specified 
+in the table below to allow access to the Kylo user store via the kylo-services' REST API using BASIC auth.  The authentication configuration 
+for `kylo-services` can be anything that accepts the credentials specified in these properties.  
+
++-----------------------------------+---------------------------------------------------------------------------------------------------------------------------+
+| **Property**                      | **Description**                                                                                                           |
++===================================+===========================================================================================================================+
+| security.auth.kylo.login.username | Specifies a Kylo username with the rights to retrieve all of the Kylo groups of which the authenticating user is a member |
++-----------------------------------+---------------------------------------------------------------------------------------------------------------------------+
+| security.auth.kylo.login.password | Specifies the password of the above username retrieving the authenticating user’s groups                                  |
++-----------------------------------+---------------------------------------------------------------------------------------------------------------------------+
+
+auth-ad
+~~~~~~~
+
+If the ``auth-ad`` profile is activated with SPNEGO then the properties in the table below must be set in `kylo-ui/conf/appplication.properties` and `kylo-services/conf/appplication.properties`
+(if the profile is used in `kylo-services`).  
+
++-----------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| **Property**                            | **Description**                                                                                                       |
++=========================================+=======================================================================================================================+
+| security.auth.ad.user.enableGroups      | This should be set to ``true`` as group loading would be the only purpose of activating `auth-ad` with SPNEGO         |
++-----------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| security.auth.ad.server.serviceUser     | Specifies a username in AD with the rights to retrieve all of the groups of which the authenticating user is a member |
++-----------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| security.auth.ad.server.servicePassword | Specifies the password of the above AD username retrieving the authenticating user’s groups                           |
++-----------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+
+Kerberos Configuration
+~~~~~~~~~~~~~~~~~~~~~~
 
 In addition to having a principal for every user present in your
 Kerberos KDC, you will also need to have a service principal of the form
-HTTP/<Kylo host domain name>/@<YOUR REALM> registered. This
+``HTTP/<Kylo host domain name>/@<YOUR REALM>`` registered. This
 service principal should be exported into a keytab file and placed on
-file system of the host running Kylo (typically /opt/kylo/kylo.keytab).
-These values would then be used in the Kylo configuration as specified
+file system of the host running Kylo (typically `/opt/kylo/kylo.keytab`).
+These values would then be used in the Kylo configuration properties as specified
 above.
 
 Verifying Access
-~~~~~~~~~~~~~~~~
+----------------
 
 Once Kylo is configured for Kerberos SPNEGO, you can use ``curl`` to verify
 access. See the ``curl`` `—negotiate` option documentation (https://curl.haxx.se/docs/manual.html) to see the library
