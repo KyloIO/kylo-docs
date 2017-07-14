@@ -2,8 +2,8 @@
 Release Notes
 =============
 
-Latest
-~~~~~~
+Latest Stable Release
+~~~~~~~~~~~~~~~~~~~~~
 
 .. toctree::
     :maxdepth: 1
