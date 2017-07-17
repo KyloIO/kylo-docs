@@ -35,7 +35,7 @@ Configuration Guides
     HortonworksSandboxConfiguration
     InstallationConfigurationGuide
     KerberosInstallationExample-Cloudera
-    KyloConfiguration
+    YarnClusterConfiguration
     KyloConfigurationforaKerberosCluster
     NiFiConfigurationforaKerberosCluster
     Postgres_Hive_Metadata_Configuration

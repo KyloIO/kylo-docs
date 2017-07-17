@@ -2,12 +2,33 @@
 Kylo Templates Guide
 ======================
 
+Templates facilitate the creation of data flows. They can be:
+
+- normal (1 template for the whole flow)
+
+- reusable (1 reusable template and 1 flow template)
+
+More on `reusable flows here <../tips-tricks/KyloBestPractices.html#use-reusable-flows>`_
+
+Importing reusable templates
+=============================
+1. Import template from file
+2. Select file and complete the wizard
+
+Import flow template
+=============================
+1. Import template from Nifi environment (as we want to customize it)
+2. Enable/Customize the available fields (steps 2 - 4)
+3. Under `Connection Options` (step 5) - connect the output ports from the flow template to the input ports from reusable template
+4. Customize the `Feed Lineage Datasources`
+
+Available templates
+=======================
+
 Kylo provides some ready to be used templates in the `Kylo repository <https://github.com/Teradata/kylo/tree/master/samples/templates>`_
 
-.. contents:: Table of contents
-
 Data Ingest
-====================
+-------------------
 
 Data Ingest template is used to import data from with various formats (CSV, JSON, AVRO, Parquet, ORC) into Hive tables.
 
@@ -34,7 +55,7 @@ Example:
 ..
 
 Data Transformation
-====================
+--------------------
 
 Data Transformation is used to transform/wrangle data with various operations from Spark ML.
 

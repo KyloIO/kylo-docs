@@ -110,7 +110,7 @@ The documentation for the site is organized into a few sections:
     installation/HDP25ClusterDeploymentGuide
     installation/HortonworksSandboxConfiguration
     installation/KerberosInstallationExample-Cloudera
-    installation/KyloConfiguration
+    installation/YarnClusterConfiguration
     installation/KyloDependencies
     installation/KyloManualDeploymentGuide
     installation/KyloSetupWizardDeploymentGuide
