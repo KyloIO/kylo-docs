@@ -151,8 +151,14 @@ Build or `download the RPM <http://bit.ly/2uT8bTo>`__
      Sometimes, however you may choose to disable liquibase and manually apply the upgrade scripts.  By disabling liquibase you are in control of how the scripts are applied.  This is needed if the kylo database user doesnt have priviledges to make schema changes to the kylo database.
      Please follow this :doc:`../how-to-guides/DatabaseUpgrades` on how to manually apply the additional database updates.
 
+7. Update the NiFi nars.  Run the following shell script to copy over the new NiFi nars/jars to get new changes to NiFi processors and services.
 
-7. **Update configuration for using Elasticsearch as the search engine**
+   .. code-block:: shell
+
+      /opt/kylo/setup/nifi/update-nars-jars.sh
+   ..
+
+8. **Update configuration for using Elasticsearch as the search engine**
 
     1. **Provide cluster properties**
 
@@ -210,7 +216,7 @@ Build or `download the RPM <http://bit.ly/2uT8bTo>`__
 
         7. Verify that the feed imports successfully.
 
-8. Re-import the templates.
+9. Re-import the templates.
 
     - Re-import Data Ingest template (data_ingest.zip)
 
@@ -218,7 +224,7 @@ Build or `download the RPM <http://bit.ly/2uT8bTo>`__
 
     - Re-import Data Confidence template (data_confidence_invalid_records.zip)
 
-9. NiFi 1.2/1.3 breaking change.
+10. NiFi 1.2/1.3 breaking change.
 
    - NiFi introduced a change to their UpdateAttributes processor that prevents empty strings from being set to the dynamic properties unless the state is saved.
 
