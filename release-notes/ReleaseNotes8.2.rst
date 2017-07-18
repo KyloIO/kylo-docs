@@ -155,7 +155,9 @@ Build or `download the RPM <http://bit.ly/2uT8bTo>`__
 
    .. code-block:: shell
 
-      /opt/kylo/setup/nifi/update-nars-jars.sh
+      /opt/kylo/setup/nifi/update-nars-jars.sh <NIFI_HOME> <KYLO_SETUP_FOLDER> <NIFI_LINUX_USER> <NIFI_LINUX_GROUP>
+
+      Example:  /opt/kylo/setup/nifi/update-nars-jars.sh /opt/nifi /opt/kylo/setup nifi users
    ..
 
 8. **Update configuration for using Elasticsearch as the search engine**
