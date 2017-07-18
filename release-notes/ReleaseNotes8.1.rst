@@ -119,7 +119,14 @@ Build or `download the RPM <http://bit.ly/2r4P47A>`__
      Sometimes, however you may choose to disable liquibase and manually apply the upgrade scripts.  By disabling liquibase you are in control of how the scripts are applied.  This is needed if the kylo database user doesnt have priviledges to make schema changes to the kylo database.
      Please follow this :doc:`../how-to-guides/DatabaseUpgrades` on how to manually apply the additional database updates.
 
-7. Re-import Data Ingest template (data_ingest.zip).
+7. Update the NiFi nars.  Run the following shell script to copy over the new NiFi nars/jars to get new changes to NiFi processors and services.
+
+   .. code-block:: shell
+
+      /opt/kylo/setup/nifi/update-nars-jars.sh
+   ..
+
+8. Re-import Data Ingest template (data_ingest.zip).
 
  - Kylo now allows converting data ingested from a database into AVRO format, and then running it further through the flow.
  - To enable this, re-import the data_ingest.zip file (Templates -> + icon -> Import from a file -> Choose file -> Check yes to 'overwrite' feed template -> Check yes to 'Replace the reusable template' -> Import template)
