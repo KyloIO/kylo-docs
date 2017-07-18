@@ -8,19 +8,66 @@ Templates facilitate the creation of data flows. They can be:
 
 - reusable (1 reusable template and 1 flow template)
 
-More on `reusable flows here <../tips-tricks/KyloBestPractices.html#use-reusable-flows>`_
+.. important::
+   More on `reusable flows here <../tips-tricks/KyloBestPractices.html#use-reusable-flows>`_
 
-Importing reusable templates
-=============================
+
+Setup templates
+======================
+
+Import Kylo template
+---------------------
+
 1. Import template from file
-2. Select file and complete the wizard
+
+2. Select file
+
+3. Select overwrite + replace the reusable template option
+
+4. Register the template
+
+.. note::
+   The following sections apply only if you didn't import yet a template in Kylo, or are lacking a Kylo template archive.
+
+Import reusable template
+-------------------------
+
+1. Import template from file.
+
+.. warning::
+   You can't import the reusable template from NiFi environment, as it has input/output ports which need to be connected.
+
+2. Select file and select overwrite + replace the reusable template option
+
+3. Register the template
 
 Import flow template
-=============================
-1. Import template from Nifi environment (as we want to customize it)
+-------------------------
+
+1. Import template from NiFi environment (as we want to customize it)
+
 2. Enable/Customize the available fields (steps 2 - 4)
+
 3. Under `Connection Options` (step 5) - connect the output ports from the flow template to the input ports from reusable template
+
 4. Customize the `Feed Lineage Datasources`
+
+5. Register the template
+
+Update template
+===================
+
+1. Remember the template name <template_name> from NiFi
+
+2. Create a new flow from the template <template_name>
+
+3. Modify your flow for <template_name>
+
+4. Delete <template_name> in NiFi template registry
+
+5. Save flow with name <template_name>
+
+6. In Kylo (if exists), from the Template menu, go through the edit wizard (click on the template name), so that it's reinitialized properly
 
 Available templates
 =======================
