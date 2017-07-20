@@ -114,6 +114,15 @@ Build or `download the RPM <http://bit.ly/2uT8bTo>`__
 
             ..
 
+         - Global search support
+            Elasticsearch is the default search provider. Add ``search-es`` to spring profiles:
+
+            .. code-block:: shell
+
+              spring.profiles.include=<all your existing profiles>,search-es
+
+            ..
+
      4.4 Ensure the property ``security.jwt.key`` in both kylo-services and kylo-ui application.properties file match.  They property below needs to match in both of these files:
 
          - */opt/kylo/kylo-ui/conf/application.properties*
