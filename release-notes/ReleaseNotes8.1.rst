@@ -7,7 +7,7 @@ Highlights
 
 - You can now assign users and groups access to feeds, categories, and templates giving you fine grain control of what users can see and do.  Refer to the :doc:`../security/AccessControl` for more information.
 
-- Kylo can now be clustered for high availability.  Refer to  :doc:`../installation/KyloClusterConfiguration` for more information.
+- Kylo can now be clustered for high availability.  Refer to  :doc:`../how-to-guides/KyloClusterConfiguration` for more information.
 
 - You now mix and match the order of standardizers and validators giving you more control over the processing of your data.
 

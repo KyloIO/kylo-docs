@@ -55,6 +55,7 @@ The documentation for the site is organized into a few sections:
 
     Kylo UI & SSL <how-to-guides/KyloUIWithSSL>
     NiFi Cluster <how-to-guides/SetupaNiFiClusterinaKyloSandbox>
+    Kylo Cluster <how-to-guides/KyloClusterConfiguration>
     NiFi & SSL <how-to-guides/ConfigureNiFiWithSSL>
     NiFi & HDFS Encryption <how-to-guides/ConfigNififorHDFSEncryption>
     NiFi & Kylo Provenance <how-to-guides/NiFiKyloProvenance>

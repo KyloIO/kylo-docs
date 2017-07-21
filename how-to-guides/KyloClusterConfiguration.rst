@@ -12,7 +12,7 @@ ModeShape Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~
 1. Update the metadata-repository.json file and add the "clustering" section
 
-   .. code-block:: json
+   .. code-block:: javascript
    
      "clustering": {
         "clusterName":"kylo-modeshape-cluster",
@@ -138,7 +138,44 @@ Troubleshooting
         ..
 
 
+- Running the Multicast test program
 
+   - Run the following to test 2 node communication.  The below was taken from http://www.jgroups.org/manual/html/ch02.html#ItDoesntWork
+
+   1. Stop kylo-services on both nodes
+
+   2. On 1 node run the code below to act as a receiver.  Replace the ``bind_addr`` and ``port`` arguments with your specific values
+
+      .. code-block:: shell
+
+         java -Djava.net.preferIP4Stack=true  -cp  /opt/kylo/kylo-services/conf:/opt/kylo/kylo-services/lib/*:/opt/kylo/kylo-services/plugin/* org.jgroups.tests.McastReceiverTest -bind_addr 127.0.0.1 -port 7900
+      ..
+
+   3.  On another node run the code below to act as a sender. Replace the ``bind_addr`` and ``port`` arguments to match the values above
+
+       .. code-block:: shell
+
+          java -Djava.net.preferIP4Stack=true -cp  /opt/kylo/kylo-services/conf:/opt/kylo/kylo-services/lib/*:/opt/kylo/kylo-services/plugin/* org.jgroups.tests.McastSenderTest -bind_addr 127.0.0.1 -port 7900
+       ..
+
+      As a Sender you will get a prompt.  Type in some string and then verify its received on the other node.
+
+      Sender:
+
+       .. code-block:: shell
+
+         org.jgroups.tests.McastSenderTest -bind_addr 127.0.0.1 -port 7900
+         Socket #1=0.0.0.0/0.0.0.0:7900, ttl=32, bind interface=/127.0.0.1
+         > this is a test message
+
+       ..
+
+      Receiver:
+
+       .. code-block:: shell
+
+         this is a test message [sender=127.0.0.1:7900]
+       ..
 
 
 .. |image0| image:: ../media/kylo-config/kylo-cluster1.png
