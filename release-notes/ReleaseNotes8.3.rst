@@ -4,10 +4,7 @@ Release 0.8.3 (Aug, 2017)
 Highlights
 ----------
 
-- Pluggable JMS implementation with out-of-the-box support for
-    - ActiveMQ
-    - Amazon SQS
-- ...
+- Pluggable JMS implementation with out-of-the-box support for ActiveMQ and Amazon SQS. Refer to :doc:`../how-to-guides/JmsProviders` for details
 
 Download Links
 --------------
@@ -21,7 +18,7 @@ Download Links
 Upgrade Instructions from v0.8.2
 --------------------------------
 
-Build or `download the RPM <http://bit.ly/2uT8bTo>`__
+
 
 1. Uninstall Kylo:
 
