@@ -94,7 +94,6 @@ The documentation for the site is organized into a few sections:
 
     tips-tricks/TroubleshootingandTips
     tips-tricks/KyloBestPractices
-    tips-tricks/HowtoGuides
 
 
 .. |image1| image:: media/common/kylo-logo-orange.png
