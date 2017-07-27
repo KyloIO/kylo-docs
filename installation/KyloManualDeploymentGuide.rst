@@ -181,7 +181,7 @@ Step 3: Install Kylo Services
 
 .. note:: To use wget instead, right-click the download link and copy the url.
 
-    `Download the latest Kylo RPM <http://bit.ly/2uT8bTo>`__
+    `Download the latest Kylo RPM <http://bit.ly/2uT8bTo>`_
 
 
 2. Run the Kylo RPM install.
@@ -705,7 +705,8 @@ Perform the following step on the node on which NiFI is installed:
 Complete this step for Cloudera installations ONLY
 --------------------------------------------------
 
-<Fill me in after testing Cloudera-specific configuration file changes>
+Please check the `Cloudera specific changes <../installation/KyloSetupWizardDeploymentGuide-Cloudera.html>`_
+
 
 Step 12: (Optional) Edit the Properties Files
 =============================================
