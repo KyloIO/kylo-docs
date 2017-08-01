@@ -18,8 +18,6 @@ Download Links
 Upgrade Instructions from v0.8.2
 --------------------------------
 
-
-
 1. Uninstall Kylo:
 
  .. code-block:: shell
@@ -78,3 +76,41 @@ Upgrade Instructions from v0.8.2
    6.2. Add following line to enable ActiveMQ ``spring.profiles.active=jms-activemq``
 
    Please follow this :doc:`../how-to-guides/JmsProviders` on how to switch active JMS Provider.
+
+..
+
+7. Migrate Hive schema indexing to Kylo. The indexing of Hive schemas is now handled internally by Kylo instead of using a special feed.
+
+   7.1. Remove the Register Index processor from the ``standard_ingest`` and ``data_transformation`` reusable templates
+
+   7.2. Delete the Index Schema Service feed
+
+   7.3. The following steps must be completed for Solr:
+
+        7.3.1. Create the collection in Solr
+
+              .. code-block:: shell
+
+                 bin/solr create -c kylo-datasources -s 1 -rf 1
+
+        7.3.2. Navigate to Solr's |SolrAdminLink|
+
+        7.3.3. Select the ``kylo-datasources`` collection from the drop down in the left nav area
+
+    	7.3.2. Click *Schema* on bottom left of nav area
+
+    	7.3.3. Click *Add Field* on top of right nav pane
+
+    	        - name: *kylo_collection*
+
+    	        - type: *string*
+
+                - default value: *kylo-datasources*
+
+                - index: *no*
+
+                - store: *yes*
+
+.. |SolrAdminLink| raw:: html
+
+   <a href="http://localhost:8983/solr" target="_blank">Admin UI</a>

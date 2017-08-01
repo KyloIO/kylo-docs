@@ -66,26 +66,7 @@ Steps to configure Kylo with Elasticsearch engine are below:
 
     ..
 
-5. Steps to import updated Index Schema Service feed
-
-    1. Feed Manager -> Feeds -> + orange button -> Import from file -> Choose file
-
-    2. Pick the ``index_schema_service_elasticsearch.feed.zip`` file available at ``/opt/kylo/setup/data/feeds/nifi-1.0``
-
-    3. Leave *Change the Category* field blank (It defaults to *System*)
-
-    4. Click *Yes* for these two options (1) *Overwrite Feed* (2) *Replace Feed Template*
-
-    5. (optional) Click *Yes* for option (3) *Disable Feed upon import* only if you wish to keep the indexing feed disabled upon import (You can explicitly enable it later if required)
-
-    6. Click *Import Feed*.
-
-    7. Verify that the feed imports successfully.
-
-    8. If your Hive metastore is in a schema named something other than ``hive``, edit the feed and set ``hive.schema`` to the schema name (if not already properly set). This configuration value may be available with the key ``config.hive.schema`` in ``/opt/kylo/kylo-services/conf/application.properties``. For Cloudera CDH, Hive metastore is generally named ``metastore``.
-
-
-6. Steps to import updated Index Text Service feed
+5. Steps to import updated Index Text Service feed
 
     1. Feed Manager -> Feeds -> + orange button -> Import from file -> Choose file
 
@@ -169,7 +150,7 @@ Steps to configure Kylo with Solr are below:
 
     .. code-block:: shell
 
-        bin/solr create -c kylo-schema-metadata -s 1 -rf 1
+        bin/solr create -c kylo-datasources -s 1 -rf 1
         bin/solr create -c kylo-data -s 1 -rf 1
 
     ..
@@ -182,9 +163,9 @@ Steps to configure Kylo with Solr are below:
     **Navigate to Admin UI**
         - http://localhost:8983/solr
 
-    **Configure collection for schema**
+    **Configure collection for datasources**
 
-        1. Select ``kylo-schema-metadata`` collection from the drop down on left nav area
+        1. Select ``kylo-datasources`` collection from the drop down on left nav area
 
     	2. Click *Schema* on bottom left of nav area
 
@@ -194,7 +175,7 @@ Steps to configure Kylo with Solr are below:
 
     	        - type: *string*
 
-                - default value: *kylo-schema-metadata*
+                - default value: *kylo-datasources*
 
                 - index: *no*
 
@@ -227,26 +208,7 @@ Steps to configure Kylo with Solr are below:
 
     ..
 
-8. Steps to import updated Index Schema Service feed
-
-    1. Feed Manager -> Feeds -> + orange button -> Import from file -> Choose file
-
-    2. Pick the ``index_schema_service_solr.feed.zip`` file available at ``/opt/kylo/setup/data/feeds/nifi-1.0``
-
-    3. Leave *Change the Category* field blank (It defaults to *System*)
-
-    4. Click *Yes* for these two options (1) *Overwrite Feed* (2) *Replace Feed Template*
-
-    5. (optional) Click *Yes* for option (3) *Disable Feed upon import* only if you wish to keep the indexing feed disabled upon import (You can explicitly enable it later if required)
-
-    6. Click *Import Feed*.
-
-    7. Verify that the feed imports successfully.
-
-    8. If your Hive metastore is in a schema named something other than ``hive``, edit the feed and set ``hive.schema`` to the schema name (if not already properly set). This configuration value may be available with the key ``config.hive.schema`` in ``/opt/kylo/kylo-services/conf/application.properties``. For CDH, Hive metastore is generally named ``metastore``.
-
-
-9. Steps to import updated Index Text Service feed
+8. Steps to import updated Index Text Service feed
 
     1. Feed Manager -> Feeds -> + orange button -> Import from file -> Choose file
 
@@ -263,7 +225,7 @@ Steps to configure Kylo with Solr are below:
     7. Verify that the feed imports successfully.
 
 
-10. Ensure that the box running Kylo can connect to the box running Solr (if they are on separate machines). If required, open up these ports:
+9. Ensure that the box running Kylo can connect to the box running Solr (if they are on separate machines). If required, open up these ports:
 
     - 8983
     - 9983

@@ -757,34 +757,7 @@ Create Ranger Policies
 Import Kylo Templates
 =====================
 
-1. Import Index Schema Template (For Elasticsearch).
-
-   a. Locate the index_schema_service.zip file. You will need the file locally to upload it. You can find it in one of two places:
-
-        1) <kylo_project>/samples/feeds/nifi-1.0/
-        2) /opt/kylo/setup/data/feeds/nifi-1.0
-
-   b. Go to the the Feeds page in Kylo.
-
-   c. Click on the plus icon to add a feed.
-
-   d. Select "Import from a file".
-
-   e. Choose the index_schema_service.zip file.
-
-   f. Click "Import Feed".
-
-2. Update the Index Schema processors.
-
-   a. Login to NiFi.
-
-   b. Go to the system → index_schema_service process group
-
-        1) Edit the "Receive Schema Index Request" processor and set the URL value to <KYLO_EDGE_HOSTNAME>.
-        2) In addition to the URL field you might have to edit the jms-subscription property file as instructed above.
-        3) Edit the "Index Metadata Elasticsearch" processor and set the HostName value to <KYLO_EDGE_HOSTNAME>.
-
-3. Import Index Text Template (For Elasticsearch).
+1. Import Index Text Template (For Elasticsearch).
 
    a. Locate the index_text_service.zip file. You will need the file locally to upload it. You can find it in one of two places:
 
@@ -801,7 +774,7 @@ Import Kylo Templates
 
    f. Click "Import Feed".
 
-4. Update the Index Text processors.
+2. Update the Index Text processors.
 
    a. Login to NiFi.
 
@@ -839,7 +812,7 @@ Import Kylo Templates
 
    c. Restart NiFi.
 
-5. Import the data ingest template.
+3. Import the data ingest template.
 
    a. Locate the data_ingest.zip file. You will need the file locally to upload it. You can find it in one of two places:
 
@@ -860,7 +833,7 @@ Import Kylo Templates
 
    d. Edit the "Upload to HDFS" and remove "Remote Owner" and "Remote Group" (since we aren’t using superuser).
 
-6. Update NiFi processors for Kylo template versions prior to 0.5.0.
+4. Update NiFi processors for Kylo template versions prior to 0.5.0.
 
    We need to update a few settings in the elasticsearch and standard ingest template. This is not required with 0.5.0 or greater since they will be set during import.  
 
@@ -872,7 +845,7 @@ Import Kylo Templates
 
       2) Edit the "Update Index" processor and set teh URL to the <KYLO_EDGE_HOSTNAME>.
 
-8. Import the transform feed (Optional).
+5. Import the transform feed (Optional).
 
 Create Data Ingest Feed Test
 ============================
