@@ -238,3 +238,15 @@ Eclipse Configuration
     option
 
 .. note:: Consult the Spring Boot documentation for  `Running Your Application <http://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-running-your-application.html>`__ for additional ways to run with spring boot.
+
+
+Angular Material Notes
+----------------------
+
+Kylo UI is developed with help of `Angular Material <https://material.angularjs.org/latest/>`__. There are a few notes worth mentioning about its use:
+
+1. Do not use ``layout-row`` and ``layout-wrap`` with percents. It `has been broken on Safari for a while now <https://github.com/angular/material/issues/10516>`__ with current plan to be fixed only in Angular 4.x.
+
+2. Do not refer to Angular model in plain HTML ``style`` element, it is broken on IE. Instead use Angular ``ng-style`` element which works on all browsers like so ``ng-style="{'fill':controller.fillColor}"``
+
+3. Do not use ``flex`` element where you don't have to. Browsers will usually flex elements correctly. This is to minimise the occurrence of ``flex`` being required by Safari while breaking layout on IE.
