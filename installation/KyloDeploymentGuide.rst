@@ -145,8 +145,8 @@ If you are installing Kylo on SUSE, please read the following document to work a
 
 :doc:`../how-to-guides/SuseConfigurationChanges`
 
-Encrypting Configuration Property Values
-----------------------------------------
+Encrypting Configuration Property Values with Kylo
+--------------------------------------------------
 
 By default, a new Kylo installation does not have any of its
 configuration properties encrypted. Once you have started Kylo for the
@@ -180,6 +180,67 @@ guaranteed to work with the encryption settings of the server where that
 configuration value is being used. Once you have replaced all properties
 you wish to have encrypted in the properties files, you can restart the Kylo
 services to use them.
+
+Encrypting Configuration Property Values with Spring CLI
+--------------------------------------------------------
+
+1. Install the Spring CLI client Mac example. In this example we will use Home Brew to install it on a Mac:
+
+- Install JCE: http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html
+
+- Install Homebrew: http://brew.sh/
+
+- Install Spring Boot CLI:
+
+.. code-block:: shell
+
+    $ brew tap pivotal/tap
+    $ brew install springboot
+    $ spring install org.springframework.cloud:spring-cloud-cli:1.0.0.BUILD-SNAPSHOT
+
+..
+
+
+2. Install the Spring CLI client Linux example:
+
+.. code-block:: shell
+
+    $ wget http://repo.spring.io/release/org/springframework/boot/spring-boot-cli/1.5.3.RELEASE/spring-boot-cli-1.5.3.RELEASE-bin.tar.gz
+    $ sudo mkdir /apps/spring-boot
+    $ sudo tar -xvf /tmp/spring-boot-cli-1.5.3.RELEASE-bin.tar.gz -C /apps/spring-boot/
+
+    $ sudo vi  /etc/profile
+    export SPRING_HOME=/apps/spring-boot/spring-1.5.3.RELEASE
+    export JAVA_HOME=/usr/lib/jvm/jre-1.8.0
+    export PATH=$SPRING_HOME/bin:$JAVA_HOME/bin:$PATH
+
+
+    $ source /etc/profile
+
+    $ sudo chown -R centos:centos /apps/spring-boot/
+    $ spring install org.springframework.cloud:spring-cloud-cli:1.3.1.RELEASE
+
+..
+
+
+3. Copy the /apps/kylo/encrypt.key file to the computer with the Spring CLI client (if different)
+4. Encrypt the values. Note: Make sure to use single quotes around the password. If not special characters like $ will cause issues:
+
+.. code-block:: shell
+
+    $ spring encrypt 'Pretend$Password' --key ./encrypt.key
+    dda0202d65ac03d250b1bc77afcf1097954wee08fc118b0f804a66xx286f61ae
+
+..
+
+5. Decrypt values
+
+.. code-block:: shell
+
+    $ spring decrypt dda0202d65ac03d250b1bc77afcf1097954wee08fc118b0f804a66xx286f61ae --key encrypt.key
+
+..
+
 
 Optimizing Performance
 ======================
