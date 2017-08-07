@@ -239,14 +239,68 @@ Eclipse Configuration
 
 .. note:: Consult the Spring Boot documentation for  `Running Your Application <http://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-running-your-application.html>`__ for additional ways to run with spring boot.
 
+Web Development
+---------------
+
+Most of the Kylo UI depends on |AngularJsLink| and |AngularJsMaterialLink| but a few parts have been upgraded to |Angular2Link| and |CovalentLink|. New plugins should be written in Typescript and use Angular 2 for future compatibility.
+
+NPM should be used to configure and start your web development environment:
+
+1. Install NPM in your development environment:
+
+    * apt-get install npm (Debian / Ubuntu)
+    * brew install npm (Mac)
+
+2. Install the development packages:
+
+.. code-block:: shell
+
+    $ cd kylo/ui/ui-app
+    $ npm install
+
+3. Start Kylo and the development server:
+
+.. code-block:: shell
+
+    $ service kylo-services start
+    $ service kylo-ui start
+    $ npm run start
+
+4. A new browser window will open showing the Kylo UI. Any changes you make will automatically refresh the page with the new changes.
+
+Optionally, you can configure IntelliJ to build Typescript files instead of using NPM:
+
+1. Install the JavaScript Support plugin.
+
+2. Open Preferences and navigate to Languages & Frameworks > TypeScript.
+
+3. Edit the TypeScript version and navigate to the node_modules/typescript/lib/ directory.
+
+4. Check the box to Enable TypeScript Compiler then click OK.
 
 Angular Material Notes
 ----------------------
 
-Kylo UI is developed with help of `Angular Material <https://material.angularjs.org/latest/>`__. There are a few notes worth mentioning about its use:
+There are a few notes worth mentioning about using AngularJS Material:
 
 1. Do not use ``layout-row`` and ``layout-wrap`` with percents. It `has been broken on Safari for a while now <https://github.com/angular/material/issues/10516>`__ with current plan to be fixed only in Angular 4.x.
 
 2. Do not refer to Angular model in plain HTML ``style`` element, it is broken on IE. Instead use Angular ``ng-style`` element which works on all browsers like so ``ng-style="{'fill':controller.fillColor}"``
 
 3. Do not use ``flex`` element where you don't have to. Browsers will usually flex elements correctly. This is to minimise the occurrence of ``flex`` being required by Safari while breaking layout on IE.
+
+.. |AngularJsLink| raw:: html
+
+    <a href="https://code.angularjs.org/1.6.2/docs/guide" target="_blank">AngularJS</a>
+
+.. |AngularJsMaterialLink| raw:: html
+
+    <a href="https://material.angularjs.org/1.1.3/" target="_blank">AngularJS Material</a>
+
+.. |Angular2Link| raw:: html
+
+    <a href="https://angular.io/docs" target="_blank">Angular 2</a>
+
+.. |CovalentLink| raw:: html
+
+    <a href="https://teradata.github.io/covalent/" target="_blank">Covalent</a>
