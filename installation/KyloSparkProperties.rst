@@ -57,64 +57,75 @@ Once the process has started it will call back to kylo-services and register its
 
 The `auth-spark` Spring profile must be enabled for the Spark client to start.
 
-+-----------------------------+----------+-------------+------------------------------------------------------------------------+
-| **Property**                | **Type** | **Default** | **Description**                                                        |
-+=============================+==========+=============+========================================================================+
-| spark.shell.appResource     | String   |             | Path to the kylo-spark-shell-client jar file. This |br|                |
-|                             |          |             | is only needed if Kylo is unable to determine |br|                     |
-|                             |          |             | the location automatically. The default location |br|                  |
-|                             |          |             | for Spark 1.x is :code:`/opt/kylo/kylo-services/lib/` |br|             |
-|                             |          |             | :code:`app/kylo-spark-shell-client-v1-*.jar`. There is a |br|          |
-|                             |          |             | v2 jar for Spark 2.x.                                                  |
-+-----------------------------+----------+-------------+------------------------------------------------------------------------+
-| spark.shell.deployMode      | String   |             | Whether to launch a kylo-spark-shell process |br|                      |
-|                             |          |             | locally (:code:`client`) or on one of the worker |br|                  |
-|                             |          |             | machines inside the cluster (:code:`cluster`). Set to |br|             |
-|                             |          |             | :code:`cluster` when enabling user impersonation.                      |
-+-----------------------------+----------+-------------+------------------------------------------------------------------------+
-| spark.shell.files           | String   |             | Additional files to be submitted with the Spark |br|                   |
-|                             |          |             | application. Multiple files should be separated |br|                   |
-|                             |          |             | with a comma.                                                          |
-+-----------------------------+----------+-------------+------------------------------------------------------------------------+
-| spark.shell.javaHome        | String   |             | The :code:`JAVA_HOME` for launching the Spark |br|                     |
-|                             |          |             | application.                                                           |
-+-----------------------------+----------+-------------+------------------------------------------------------------------------+
-| spark.shell.idleTimeout     | Number   | 900         | Indicates the amount of time in seconds to |br|                        |
-|                             |          |             | wait for a user request before terminating a |br|                      |
-|                             |          |             | kylo-spark-shell process. Any user request |br|                        |
-|                             |          |             | sent to the process will reset this timeout. This |br|                 |
-|                             |          |             | is only used in :code:`yarn-cluster` mode.                             |
-+-----------------------------+----------+-------------+------------------------------------------------------------------------+
-| spark.shell.jars            | String   |             | Additional jars to be submitted with the Spark |br|                    |
-|                             |          |             | application. Multiple jars should be separated |br|                    |
-|                             |          |             | with a comma.                                                          |
-+-----------------------------+----------+-------------+------------------------------------------------------------------------+
-| spark.shell.master          | String   |             | Where to run Spark executors locally (:code:`local`) |br|              |
-|                             |          |             | or inside a YARN cluster (:code:`yarn`). Set to :code:`yarn` |br|      |
-|                             |          |             | when enabling user impersonation.                                      |
-+-----------------------------+----------+-------------+------------------------------------------------------------------------+
-| spark.shell.portMin         | Number   | 45000       | Minimum port number that a kylo-spark-shell |br|                       |
-|                             |          |             | process may listen on.                                                 |
-+-----------------------------+----------+-------------+------------------------------------------------------------------------+
-| spark.shell.portMax         | Number   | 45999       | Maximum port number that a kylo-spark-shell |br|                       |
-|                             |          |             | process may listen on.                                                 |
-+-----------------------------+----------+-------------+------------------------------------------------------------------------+
-| spark.shell.propertiesFile  | String   |             | A custom properties file with Spark |br|                               |
-|                             |          |             | configuration for the application.                                     |
-+-----------------------------+----------+-------------+------------------------------------------------------------------------+
-| spark.shell.registrationUrl | String   |             | Kylo Services URL for registering the Spark |br|                       |
-|                             |          |             | application once it has started. This defaults to |br|                 |
-|                             |          |             | :code:`http://<server-address>:8400/proxy/v1/spark/` |br|              |
-|                             |          |             | :code:`shell/register`                                                 |
-+-----------------------------+----------+-------------+------------------------------------------------------------------------+
-| spark.shell.sparkArgs       | String   |             | Additional arguments to include in the Spark |br|                      |
-|                             |          |             | invocation.                                                            |
-+-----------------------------+----------+-------------+------------------------------------------------------------------------+
-| spark.shell.sparkHome       | String   |             | A custom Spark installation location for the |br|                      |
-|                             |          |             | application.                                                           |
-+-----------------------------+----------+-------------+------------------------------------------------------------------------+
-| spark.shell.verbose         | Boolean  | false       | Enables verbose reporting for Spark Submit.                            |
-+-----------------------------+----------+-------------+------------------------------------------------------------------------+
++------------------------------------------+----------+-------------+------------------------------------------------------------------------+
+| **Property**                             | **Type** | **Default** | **Description**                                                        |
++==========================================+==========+=============+========================================================================+
+| spark.shell.appResource                  | String   |             | Path to the kylo-spark-shell-client jar file. |br|                     |
+|                                          |          |             | This is only needed if Kylo is unable to |br|                          |
+|                                          |          |             | determine the location automatically. The |br|                         |
+|                                          |          |             | default location for Spark 1.x is :code:`/opt/` |br|                   |
+|                                          |          |             | :code:`kylo/kylo-services/lib/app/kylo-spark-` |br|                    |
+|                                          |          |             | :code:`shell-client-v1-*.jar`. There is a v2 jar for |br|              |
+|                                          |          |             | Spark 2.x.                                                             |
++------------------------------------------+----------+-------------+------------------------------------------------------------------------+
+| spark.shell.deployMode                   | String   |             | Whether to launch a kylo-spark-shell |br|                              |
+|                                          |          |             | process locally (:code:`client`) or on one of the |br|                 |
+|                                          |          |             | worker machines inside the cluster |br|                                |
+|                                          |          |             | (:code:`cluster`). Set to :code:`cluster` when enabling |br|           |
+|                                          |          |             | user impersonation.                                                    |
++------------------------------------------+----------+-------------+------------------------------------------------------------------------+
+| spark.shell.files                        | String   |             | Additional files to be submitted with the |br|                         |
+|                                          |          |             | Spark application. Multiple files should be |br|                       |
+|                                          |          |             | separated with a comma.                                                |
++------------------------------------------+----------+-------------+------------------------------------------------------------------------+
+| spark.shell.javaHome                     | String   |             | The :code:`JAVA_HOME` for launching the Spark |br|                     |
+|                                          |          |             | application.                                                           |
++------------------------------------------+----------+-------------+------------------------------------------------------------------------+
+| spark.shell.idleTimeout                  | Number   | 900         | Indicates the amount of time in seconds |br|                           |
+|                                          |          |             | to wait for a user request before |br|                                 |
+|                                          |          |             | terminating a kylo-spark-shell process. |br|                           |
+|                                          |          |             | Any user request sent to the process will |br|                         |
+|                                          |          |             | reset this timeout. This is only used in |br|                          |
+|                                          |          |             | :code:`yarn-cluster` mode.                                             |
++------------------------------------------+----------+-------------+------------------------------------------------------------------------+
+| spark.shell.jars                         | String   |             | Additional jars to be submitted with the |br|                          |
+|                                          |          |             | Spark application. Multiple jars should be |br|                        |
+|                                          |          |             | separated with a comma.                                                |
++------------------------------------------+----------+-------------+------------------------------------------------------------------------+
+| spark.shell.master                       | String   |             | Where to run Spark executors locally |br|                              |
+|                                          |          |             | (:code:`local`) or inside a YARN cluster (:code:`yarn`). |br|          |
+|                                          |          |             | Set to :code:`yarn` when enabling user |br|                            |
+|                                          |          |             | impersonation.                                                         |
++------------------------------------------+----------+-------------+------------------------------------------------------------------------+
+| spark.shell.portMin                      | Number   | 45000       | Minimum port number that a |br|                                        |
+|                                          |          |             | kylo-spark-shell process may listen on.                                |
++------------------------------------------+----------+-------------+------------------------------------------------------------------------+
+| spark.shell.portMax                      | Number   | 45999       | Maximum port number that a  |br|                                       |
+|                                          |          |             | kylo-spark-shell process may listen on.                                |
++------------------------------------------+----------+-------------+------------------------------------------------------------------------+
+| spark.shell.propertiesFile               | String   |             | A custom properties file with Spark |br|                               |
+|                                          |          |             | configuration for the application.                                     |
++------------------------------------------+----------+-------------+------------------------------------------------------------------------+
+| spark.shell |br|                         | String   |             | Password to keystore when |br|                                         |
+| .registrationKeystorePassword            |          |             | registrationUrl uses SSL.                                              |
++------------------------------------------+----------+-------------+------------------------------------------------------------------------+
+| spark.shell |br|                         | String   |             | Path to keystore when registrationUrl |br|                             |
+| .registrationKeystorePath                |          |             | uses SSL.                                                              |
++------------------------------------------+----------+-------------+------------------------------------------------------------------------+
+| spark.shell.registrationUrl              | String   |             | Kylo Services URL for registering the |br|                             |
+|                                          |          |             | Spark application once it has started. This |br|                       |
+|                                          |          |             | defaults to :code:`http://<server-address>:8400/` |br|                 |
+|                                          |          |             | :code:`proxy/v1/spark/shell/register`                                  |
++------------------------------------------+----------+-------------+------------------------------------------------------------------------+
+| spark.shell.sparkArgs                    | String   |             | Additional arguments to include in the |br|                            |
+|                                          |          |             | Spark invocation.                                                      |
++------------------------------------------+----------+-------------+------------------------------------------------------------------------+
+| spark.shell.sparkHome                    | String   |             | A custom Spark installation location for |br|                          |
+|                                          |          |             | the application.                                                       |
++------------------------------------------+----------+-------------+------------------------------------------------------------------------+
+| spark.shell.verbose                      | Boolean  | false       | Enables verbose reporting for Spark |br|                               |
+|                                          |          |             | Submit.                                                                |
++------------------------------------------+----------+-------------+------------------------------------------------------------------------+
 
 The default property values should work on most systems. An error will be logged if Kylo is unable to determine the correct value from the environment. Example :code:`spark.properties` configuration:
 
