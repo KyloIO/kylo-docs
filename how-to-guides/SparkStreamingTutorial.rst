@@ -1,26 +1,31 @@
-======================================================
-Spark Streaming, Kafka, and Twitter Sentiment Tutorial
-======================================================
-
+=========================================================
+Twitter Sentiment with Kafka and Spark Streaming Tutorial
+=========================================================
 
 About
 ~~~~~
 
-This tutorial will introduce a design pattern for performing streaming analytics with Kylo.  
+This tutorial will enable Kylo to perform near real-time sentiment analysis for tweets. Our Kylo template will enable user self-service to configure new feeds for sentiment analysis. The user will simply enter the list of twitter keywords to analyze (e.g. famous list of music artists).  Tweets will be classified as positive, negative, or neutral based on analysis of the text. The tweet and sentiment results will be written to Hive. We will be able to monitor the streaming process in the Kylo Ops Manager module and explore the results.  
+
+How it Works
+~~~~~~~~~~~~
+
+Once the user configures the new feed in Kylo, a pipeline will be generated in Apache NiFi.  Tweet text will be extracted and published to a Kafka topic. A Spark streaming job will consume the message tweet from Kafka, performs sentiment analysis using an embedded machine learning model and API provided by the `Stanford NLP project
+<https://stanfordnlp.github.io/CoreNLP>`_. The Spark streaming job then inserts result into Hive and publishes a Kafka message to a Kafka response topic.  
+
+In order to track processing though Spark, Kylo will pass the NiFi flowfile ID as the Kafka message key.  Kylo passes the FlowFile ID to Spark and Spark will return the message key on a separate Kafka response topic.  The latter utilizes the new Notify and Wait processors in NiFi 1.3.0+ which we will introduce with this tutorial. 
 
 
-The ImportSqoop processor allows loading data from a relational system
-into HDFS. This document discusses the setup required to use this
-processor.
-
-Pre-requisites
+Prerequisites
 ~~~~~~~~~~~~~~~~
 
-.. |create-twitter-application_link| raw:: html
+The Kylo sandbox contains everything needed to run this tutorial but you will need to create a Twitter account and application in order to connect to Twitter. You will specifically need the access and secret tokens and keys for your Twitter application.
 
-   1. Download the <a href="https://kylo.io/quickstart.html">latest Kylo sandbox</a>
-   2. <a href="http://docs.inboundnow.com/guide/create-twitter-application/" target="_blank">Create a twitter application</a> to use the Twitter processor to access tweets in NiFi
+1. Download the latest `Kylo sandbox
+<https://kylo.io/quickstart.html>`_.
 
+2. Create a `twitter application
+<http://docs.inboundnow.com/guide/create-twitter-application/>`_.  
 
 
 Starter template
@@ -89,87 +94,88 @@ c. Location to write encrypted file to
 The following command can be used to generate the
 encrypted password:
 
+
 .. code-block:: shell
 
-#!/bin/bash
+  #!/bin/bash
 
-#extract script file then shift remaining args will be pased to scala script
-arg_count="$#"
-command=$1
-app_name=$2
-scala_file=$3
-shift 3
-arguments=$@
+  #extract script file then shift remaining args will be pased to scala script
+  arg_count="$#"
+  command=$1
+  app_name=$2
+  scala_file=$3
+  shift 3
+  arguments=$@
 
-export SPARK_MAJOR_VERSION=2
-spark_regex=".*SparkSubmit.*\s$app_name.*"
+  export SPARK_MAJOR_VERSION=2
+  spark_regex=".*SparkSubmit.*\s$app_name.*"
 
-start() {
-    if [ "$arg_count" -lt 10 ]; then
-       echo "Illegal parameters. Usage ./stream-submit-kafka.sh start sentiment-app path/to/script.scala {window secs} {hive table} {twitter keywords,comma-delim} {kafka read topic} {kafka write topic} {broker} {zookeeper} {kafka group}
-       echo "Example: ./stream-submit-kafka.sh start sentiment-app /opt/spark-receiver/sentiment-job-kafka.scala 15 sentiment_17 @ArianaGrande,@justinbieber,@MileyCyrus topicC topicB sandbox.kylo.io:6667 sandbox.kylo.io:2181 groupA
-       exit 1
-    fi
-   echo "Starting process $app_name with $arguments"
-   if pgrep -f "$spark_regex" > /dev/null
-   then
-       echo "$app_name already running"
-   else
-       nohup spark-shell --name "$app_name" --master local[2] --deploy-mode client \
-        --queue default \
-        --driver-memory 4G --executor-memory 4G \
-        -i <(echo 'val args = "'$arguments'".split("\\s+")' ; cat $scala_file) &> $app_name.out &
-   fi
-}
+  start() {
+      if [ "$arg_count" -lt 10 ]; then
+         echo "Illegal parameters. Usage ./stream-submit-kafka.sh start sentiment-app path/to/script.scala {window secs} {hive table} {twitter keywords,comma-delim} {kafka read topic} {kafka write topic} {broker} {zookeeper} {kafka group}
+         echo "Example: ./stream-submit-kafka.sh start sentiment-app /opt/spark-receiver/sentiment-job-kafka.scala 15 sentiment_17 @ArianaGrande,@justinbieber,@MileyCyrus topicC topicB sandbox.kylo.io:6667 sandbox.kylo.io:2181 groupA
+         exit 1
+      fi
+     echo "Starting process $app_name with $arguments"
+     if pgrep -f "$spark_regex" > /dev/null
+     then
+         echo "$app_name already running"
+     else
+         nohup spark-shell --name "$app_name" --master local[2] --deploy-mode client \
+          --queue default \
+          --driver-memory 4G --executor-memory 4G \
+          -i <(echo 'val args = "'$arguments'".split("\\s+")' ; cat $scala_file) &> $app_name.out &
+     fi
+  }
 
-stop() {
-    if [ "$arg_count" -lt 2 ]; then
-       echo "Illegal parameters. Usage ./stream-submit.sh kill appName"
-       exit 1
-    fi
-    if pgrep -f "$spark_regex" > /dev/null
-    then
-       echo "Killing $app_name"
-       pkill -f "$spark_regex"
-    else
-       echo "$app_name not running"
-   fi
-}
+  stop() {
+      if [ "$arg_count" -lt 2 ]; then
+         echo "Illegal parameters. Usage ./stream-submit.sh kill appName"
+         exit 1
+      fi
+      if pgrep -f "$spark_regex" > /dev/null
+      then
+         echo "Killing $app_name"
+         pkill -f "$spark_regex"
+      else
+         echo "$app_name not running"
+     fi
+  }
 
-status() {
-    if [ "$arg_count" -lt 2 ]; then
-       echo "Illegal parameters. Usage ./stream-submit.sh status appName"
-       exit 1
-    fi
+  status() {
+      if [ "$arg_count" -lt 2 ]; then
+         echo "Illegal parameters. Usage ./stream-submit.sh status appName"
+         exit 1
+      fi
 
-   if pgrep -f "$spark_regex" > /dev/null
-        then echo "$app_name running"
-        else echo "$app_name not running"
-   fi
-}
-  
-case "$command" in
-    status)
-        status
-    ;;
-    start)
-        start
-    ;;
-    stop)
-        stop
-    ;;
-    restart)
-       echo "Restarting $app_name"
-       stop
-       sleep 2
-       start
-       echo "$app_name started"
-    ;;
-     *)
-       echo $"Usage: $0 {start|stop|restart|status|"
-       exit 1
-esac
-exit 0
+     if pgrep -f "$spark_regex" > /dev/null
+          then echo "$app_name running"
+          else echo "$app_name not running"
+     fi
+  }
+    
+  case "$command" in
+      status)
+          status
+      ;;
+      start)
+          start
+      ;;
+      stop)
+          stop
+      ;;
+      restart)
+         echo "Restarting $app_name"
+         stop
+         sleep 2
+         start
+         echo "$app_name started"
+      ;;
+       *)
+         echo $"Usage: $0 {start|stop|restart|status|"
+         exit 1
+  esac
+  exit 0
 
 ..
 
@@ -342,9 +348,9 @@ Refer to the Data Confidence Invalid Records flow for an example:
 
    <a href="https://github.com/KyloIO/kylo/blob/master/samples/templates/nifi-1.0/data_confidence_invalid_records.zip" target="_blank">https://github.com/KyloIO/kylo/blob/master/samples/templates/nifi-1.0/data_confidence_invalid_records.zip</a>
 
-.. |image16| image:: ../media/kylo-config/KC16.png
-   :width: 5.33825in
-   :height: 3.07839in
-.. |image17| image:: ../media/kylo-config/KC17.png
-   :width: 6.59028in
-   :height: 0.76042in
+.. |image16| image:: ../media/tutorial/SparkStreaming_NiFI_Design.png
+   :width: 531px
+   :height: 393px
+.. |image17| image:: ../media/tutorial/SparkStreaming_NiFi_Flow_Simplified.png
+   :width: 1201px
+   :height: 308px
