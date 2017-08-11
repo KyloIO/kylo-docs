@@ -77,9 +77,9 @@ Upgrade Instructions from v0.8.2
 
 7. Update NiFi to use default ActiveMQ JMS provider. Kylo now supports two JMS providers out-of-the-box: ActiveMQ and Amazon SQS. A particular provider is selected by active Spring profile in ``/opt/nifi/ext-config/config.properties``.
 
-   6.1. Edit ``/opt/nifi/ext-config/config.properties``
+   7.1. Edit ``/opt/nifi/ext-config/config.properties``
 
-   6.2. Add following line to enable ActiveMQ ``spring.profiles.active=jms-activemq``
+   7.2. Add following line to enable ActiveMQ ``spring.profiles.active=jms-activemq``
 
    Please follow this :doc:`../how-to-guides/JmsProviders` on how to switch active JMS Provider.
 
@@ -87,25 +87,25 @@ Upgrade Instructions from v0.8.2
 
 8. Migrate Hive schema indexing to Kylo. The indexing of Hive schemas is now handled internally by Kylo instead of using a special feed.
 
-   7.1. Remove the Register Index processor from the ``standard_ingest`` and ``data_transformation`` reusable templates
+   8.1. Remove the Register Index processor from the ``standard_ingest`` and ``data_transformation`` reusable templates
 
-   7.2. Delete the Index Schema Service feed
+   8.2. Delete the Index Schema Service feed
 
-   7.3. The following steps must be completed for Solr:
+   8.3. The following steps must be completed for Solr:
 
-        7.3.1. Create the collection in Solr
+        8.3.1. Create the collection in Solr
 
               .. code-block:: shell
 
                  bin/solr create -c kylo-datasources -s 1 -rf 1
 
-        7.3.2. Navigate to Solr's |SolrAdminLink|
+        8.3.2. Navigate to Solr's |SolrAdminLink|
 
-        7.3.3. Select the ``kylo-datasources`` collection from the drop down in the left nav area
+        8.3.3. Select the ``kylo-datasources`` collection from the drop down in the left nav area
 
-    	7.3.2. Click *Schema* on bottom left of nav area
+    	8.3.2. Click *Schema* on bottom left of nav area
 
-    	7.3.3. Click *Add Field* on top of right nav pane
+    	8.3.3. Click *Add Field* on top of right nav pane
 
     	        - name: *kylo_collection*
 
