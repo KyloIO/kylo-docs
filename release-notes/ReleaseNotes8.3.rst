@@ -5,6 +5,7 @@ Highlights
 ----------
 
 - Pluggable JMS implementation with out-of-the-box support for ActiveMQ and Amazon SQS. Refer to :doc:`../how-to-guides/JmsProviders` for details
+- Option to use REST client for :doc:`Elasticsearch <../how-to-guides/ConfigureKyloForGlobalSearch>`
 
 Download Links
 --------------

@@ -77,7 +77,7 @@ Designers determine how users are able to configure feeds based on templates.
 Designers
 --------------------
 
-Guidance for designers who design pipeline templates and enable self-service.
+Guidance for designers who design new pipeline templates and enable self-service.
 
 NiFi Template Design
 ~~~~~~~~~~~~~~~~~~~~
@@ -86,7 +86,7 @@ The Designer is responsible for developing Apache NiFi templates, which
 provide the processing model for feeds in Kylo. Once a template has been
 registered with the Kylo framework through the administrative template
 UI, Kylo allows end-users to create and configure feeds (based on that
-model) through a user-friendly, guided wizard. The use of templates
+template model) through a user-friendly, guided wizard. The use of templates
 embodies the principle of “write-once, use-many”.
 
 The Designer determines which parameters are settable by an end-user in
@@ -108,11 +108,25 @@ A good reference model is Kylo’s standard ingest template. This can
 serve as a model for best practices and can be adapted to an
 organization’s individual requirements.
 
-Use Reusable Flows
-~~~~~~~~~~~~~~~~~~
+Template re-use
+~~~~~~~~~~~~~~~
 
-When possible, consider using re-usable flows.  A reusable flow is a
-template that creates just a single instance of a flow.  A single
+Templates should be designed for maximum re-use and flexibility. Kylo's standard ingest serves as
+an example of this. There are two types of templates Kylo uses this to promote this objective:
+
+- Feed Template. Kylo generates a clone of this template as a unique running instance per feed. This means for every feed, there is a copy of the pipeline as defined by the template. Kylo uses the template to make the clone and injects any metadata configured in the feed (e.g. data source selections, schema configuration, etc). The feed template should be composed of the set of initial datasource connectors, an UpdateAttribute processor where Kylo can inject common metadata configured by the wizard, and an output port connected to a re-usable flow (below).  The feed-based template should include minimal logic.  The bulk of logic should be contained in the re-usable flow.
+
+- Reusable-flow Template. This template is used to create a single running instance of the flow that can supports multiple connected feeds through a NiFi input port.  The core logic for your pipelines should be centralized into re-usable flows. This allows one to update the pipeline for many feeds in just one place.
+
+Again, both types of templates are exemplified in Kylo's standard ingest template included with Kylo. More about reusable flows is discussed below.
+
+Reusable Flows
+~~~~~~~~~~~~~~
+
+When possible, consider using re-usable flows for the majority of pipeline
+workflow and logic.  A reusable flow is a
+special template that creates just a single instance of a flow shared
+by other feed flows through a NiFi process port.  A single
 instance simplifies administration and future updates. All feeds
 utilizing a reusable flow will inherit changes automatically.
 
@@ -128,6 +142,26 @@ When a Designer registers the re-usable template and the feed instance
 template, the Designer is prompted to wire together the input and
 output. Kylo will take care of auto-wiring these each time a new feed is
 created.
+
+Please see Kylo's standard ingest templates for an example of this in action.
+
+Streaming Templates
+~~~~~~~~~~~~~~~~~~~
+
+Kylo can support batch and streaming feeds.   In a batch feed, each dataset is
+processed and tracked as a job from start to finish. The entire job fails if the
+dataset is not processed successfully.
+
+Streaming feeds typically involve continuous data processing of very frequent,
+discrete packets of data. Data can be flowing through different portions of the
+pipeline. Tracking each record in a streaming feed as a job would add significant
+overhead and could be meaningless.  Imagine consuming millions of JMS messages and
+viewing each records journey through the pipeline as a job. This would be impractical.
+Instead, Kylo treats a streaming feed as a constant running job, gathering aggregate
+statistics such as success and failure rates, throughput, etc.
+
+A template can be registered as a streaming template by checking the ‘Streaming template”
+checkbox on the last step of the template registration wizard.
 
 Error Handling
 ~~~~~~~~~~~~~~
@@ -217,20 +251,36 @@ paths.
 
 A proper deletion routine should delete all the Hadoop artifacts created
 by a feed. Delete allows a user to test a feed and easily delete it if
-needed.
+needed.  The cleanup-up flow is described below.
+
+Clean-up
+~~~~~~~~
+When creating a template, ensure you have the appropriate clean-up activity associated. If
+using the standard ingest, you can also use the standard clean-up to remove HDFS, Hive tables
+and the feed itself. This is triggered when the delete feed option is clicked on the Kylo UI.
+
+Clean up flows should be configured to start with a TriggerCleanup trigger processor and
+the attribute variables set to specify that feed. When you register the template in Kylo,
+be sure to set the attributes for the Trigger Cleanup processor to take the metadata systemNames
+ of the feed.
+
+For each client, think about what a clean-up best practice will be when you design the template
+as this may be different per client.
+
+Clean-ups could also be triggered through a JMS message using the publish and consumeJMS processors. In t
+this way you could start a clean-up activity on the completion of a feed for instance
+
 
 Lineage Tracking
 ~~~~~~~~~~~~~~~~
 
-Kylo framework only automatically maintains lineage at the “feed-level”
+Kylo automatically maintains lineage at the “feed-level”
 and by any sources and sinks identified by the template designer when
 registering the template.
 
-A Designer may utilize additional capabilities of Kylo’s metadata
-server by issuing REST calls from a NiFi flow. This can be done one time
-at registration, or for each feed instance. For example, the Designer
-may wish to track detailed lineage between a series of transforms and
-data sources. See Metadata Server REST API documentation.
+Kylo relies on the designer specifying the roles of processors as sources or sinks
+when registering the flow. The default or stereotype role of processors can be
+defined by a system administrator conf/datasource-definitions.json.
 
 Idempotence
 ~~~~~~~~~~~
@@ -254,6 +304,14 @@ environment specific properties file. Kylo provides an expression syntax
 for a Designer to utilize these properties when registering the
 template.  An Administrator typically maintains the environment-specific
 settings.
+
+Application properties override template attribute settings and can be very useful
+for setting environment specific settings and also to set specific controller related
+settings. Application properties can be set encrypted and should be when setting sensitive information.
+
+Note: You should NOT add your processor attributes to application properties unless they
+are ENVIRONMENT specific. It is an anti-pattern to try to bring all attributes out into
+“configuration property files”.
 
 
 Data Confidence
@@ -389,6 +447,12 @@ the development environment, where one can test feed creation.
 
 .. note:: Controller Services that contain service, cluster, and database connection information should be setup by the Developer using their personal login information. In production, an Administrator manages these controller services, and they typically operate as an application account with elevated permissions.
 
+Automated Deployment
+~~~~~~~~~~~~~~~~~~~~
+Building an automated deployment scripts is the best practice approach to
+deploying feeds and templates and this should be delivered along with your
+other deployment scripts. Importing of templates and feeds can be carried
+out via the REST API of Kylo.
 
 Template Export/Import
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -411,6 +475,16 @@ Version Control
 
 It is recommended to manage exported templates and feeds through an SCM
 tool such as git, subversion, or CVS.
+
+General Deployment Guidelines
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Regardless of whether deploying manually or using automated scripts,
+ensure the following:
+
+- Deploy any reusable templates first
+- Configure controller services (in NiFi) on the first time a template is imported or if any new controllers are introduced
+- Smoke test your pipeline
 
 
 Users
