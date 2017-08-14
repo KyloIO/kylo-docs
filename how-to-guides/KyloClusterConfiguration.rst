@@ -137,6 +137,9 @@ Troubleshooting
 
         ..
 
+- Multicast
+
+    - Enabling multicast is done via the `<MPING .. />` xml node in the jgroups-configuration xml file.  Multicast may not work in your environment.  If you have issues you can remove the `<MPING ../>` node and ensure your host names are configured propertly in the `<TCPPING ../>` node.  Refer to the jgroups documentation around MPING for more information:  http://jgroups.org/manual-3.x/html/protlist.html#d0e4760
 
 - Running the Multicast test program
 
