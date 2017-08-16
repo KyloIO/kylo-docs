@@ -69,6 +69,7 @@ The documentation for the site is organized into a few sections:
     Configuration Properties <how-to-guides/ConfigurationProperties>
     Validator Tuning <how-to-guides/ValidatorTuning>
     Kylo & Global Search <how-to-guides/ConfigureKyloForGlobalSearch>
+    Service Monitor Plugins <how-to-guides/ServiceMonitorPlugins>
 
 .. _developer_guides:
 .. toctree::
