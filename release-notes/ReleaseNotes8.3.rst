@@ -15,7 +15,7 @@ Highlights
 - Ability to query/filter Service Level Assessments against the Service Level Agreements
 - IE & Safari browser support
 - Elastic Search 5 support
-- New Angular UI Module pluggability.  Ability to create entirely new user interface modules and plug them into the UI navigation.
+- New angular UI module plugin support.  Ability to create entirely new user interface modules and plug them into the UI navigation.
 
 Download Links
 --------------
