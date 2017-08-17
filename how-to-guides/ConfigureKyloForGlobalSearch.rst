@@ -4,16 +4,104 @@ Configure Kylo & Global Search
 
 Kylo supports Global search via a plugin-based design. Three plugins are provided out of the box:
 
-1) Elasticsearch (native client) (default)
+1) Elasticsearch (rest client) [default]
 
-2) Elasticsearch (rest client)
+2) Elasticsearch (native client)
 
 3) Solr
+
+Elasticsearch 5 support
+=======================
+Elasticsearch 5 is supported when using NiFi 1.3 (or later) and rest client. Kylo has been tested with version 5.5.1. Please refer to the rest client configuration for additional details.
+
+Elasticsearch (rest client) [default]
+=====================================
+
+Steps to configure Kylo with Elasticsearch engine (using rest client) are below. Both Elasticsearch versions 2 and 5 are supported via this plugin.
+
+1. Include ``search-esr`` profile in existing list of profiles in ``/opt/kylo/kylo-services/conf/application.properties``
+
+
+    .. code-block:: shell
+
+      spring.profiles.include=native,nifi-v1,auth-kylo,auth-file,search-esr
+
+    ..
+
+2. Ensure that the plugin is available in ``/opt/kylo/kylo-services/plugin``. This comes out-of-the-box at this location by default. It should have ownership as ``kylo:users`` and permissions ``755``.
+
+
+    .. code-block:: shell
+
+        kylo-search-elasticsearch-rest-0.8.3.jar
+    ..
+
+    .. note:: There should be only one search plugin in the /opt/kylo/kylo-services/plugin directory. If there is another search plugin (for example, kylo-search-elasticsearch-0.8.3.jar), move it to /opt/kylo/setup/plugins/ for later use.
+
+
+    Reference commands to get the plugin, and change ownership and permissions:
+
+    .. code-block:: shell
+
+        mv /opt/kylo/kylo-services/plugin/kylo-search-*-0.8.3.jar /opt/kylo/setup/plugins/
+        cp /opt/kylo/setup/plugins/kylo-search-elasticsearch-rest-0.8.3.jar /opt/kylo/kylo-services/plugin/
+        cd /opt/kylo/kylo-services/plugin/
+        chown kylo:users kylo-search-elasticsearch-rest-0.8.3.jar
+        chmod 755 kylo-search-elasticsearch-rest-0.8.3.jar
+    ..
+
+3. Provide elasticsearch properties
+
+    Update cluster properties in ``/opt/kylo/kylo-services/conf/elasticsearch-rest.properties`` if different from the defaults provided below.
+
+    .. code-block:: shell
+
+      search.rest.host=localhost
+      search.rest.port=9200
+
+    ..
+
+4. Create Kylo Indexes
+
+    Execute a script to create kylo indexes. If these already exist, Elasticsearch will report an ``index_already_exists_exception``. It is safe to ignore this and continue.
+    Change the host and port if necessary.
+
+    .. code-block:: shell
+
+        /opt/kylo/bin/create-kylo-indexes-esv5.sh localhost 9200 1 1
+    ..
+
+4. Restart Kylo Services
+
+    .. code-block:: shell
+
+        service kylo-services restart
+
+    ..
+
+5. Steps to import updated Index Text Service feed
+
+    1. Feed Manager -> Feeds -> + orange button -> Import from file -> Choose file
+
+    2a. **[Elasticsearch version 2]** Pick the ``index_text_service_elasticsearch.feed.zip`` file available at ``/opt/kylo/setup/data/feeds/nifi-1.0``
+
+    2b. **[Elasticsearch version 5] [This requires NiFi 1.3 or later]** Pick the ``index_text_service_v2.feed.zip`` file available at ``/opt/kylo/setup/data/feeds/nifi-1.3``
+
+    3. Leave *Change the Category* field blank (It defaults to *System*)
+
+    4. Click *Yes* for these two options (1) *Overwrite Feed* (2) *Replace Feed Template*
+
+    5. (optional) Click *Yes* for option (3) *Disable Feed upon import* only if you wish to keep the indexing feed disabled upon import (You can explicitly enable it later if required)
+
+    6. Click *Import Feed*.
+
+    7. Verify that the feed imports successfully.
+
 
 Elasticsearch (native client)
 =============================
 
-Steps to configure Kylo with Elasticsearch engine (using native client) are below:
+Steps to configure Kylo with Elasticsearch engine (using native client) are below. Only Elasticsearch version 2 is supported via this plugin.
 
 1. Include ``search-es`` profile in existing list of profiles in ``/opt/kylo/kylo-services/conf/application.properties``
 
@@ -24,25 +112,26 @@ Steps to configure Kylo with Elasticsearch engine (using native client) are belo
 
     ..
 
-2. Ensure that the plugin is available in ``/opt/kylo/kylo-services/plugin``. This comes out-of-the-box at this location by default. It should have ownership as ``kylo:users`` and permissions ``755``.
+2. Ensure that the plugin is available in ``/opt/kylo/kylo-services/plugin``. The plugin comes out-of-the-box at another location ``/opt/kylo/setup/plugins``. It should have ownership as ``kylo:users`` and permissions ``755``.
 
 
     .. code-block:: shell
 
-        kylo-search-elasticsearch-0.8.2.jar
+        kylo-search-elasticsearch-0.8.3.jar
     ..
 
-    .. note:: There should be only one search plugin in the above plugin directory. If there is another search plugin (for example, kylo-search-solr-0.8.2.jar), move it to /opt/kylo/setup/plugins/ for later use.
+    .. note:: There should be only one search plugin in the above plugin directory. If there is another search plugin (for example, kylo-search-solr-0.8.3.jar), move it to /opt/kylo/setup/plugins/ for later use.
 
 
     Reference commands to get the plugin, and change ownership and permissions:
 
     .. code-block:: shell
 
-        cp <location-where-you-saved-the-default-plugin-jar-named kylo-search-elasticsearch-0.8.2.jar> /opt/kylo/kylo-services/plugin/
+        mv /opt/kylo/kylo-services/plugin/kylo-search-*-0.8.3.jar /opt/kylo/setup/plugins/
+        cp /opt/kylo/setup/plugins/kylo-search-elasticsearch-0.8.3.jar /opt/kylo/kylo-services/plugin/
         cd /opt/kylo/kylo-services/plugin/
-        chown kylo:users kylo-search-elasticsearch-0.8.2.jar
-        chmod 755 kylo-search-elasticsearch-0.8.2.jar
+        chown kylo:users kylo-search-elasticsearch-0.8.3.jar
+        chmod 755 kylo-search-elasticsearch-0.8.3.jar
     ..
 
 
@@ -59,77 +148,6 @@ Steps to configure Kylo with Elasticsearch engine (using native client) are belo
 
     ..
 
-
-4. Restart Kylo Services
-
-    .. code-block:: shell
-
-        service kylo-services restart
-
-    ..
-
-5. Steps to import updated Index Text Service feed
-
-    1. Feed Manager -> Feeds -> + orange button -> Import from file -> Choose file
-
-    2. Pick the ``index_text_service_elasticsearch.feed.zip`` file available at ``/opt/kylo/setup/data/feeds/nifi-1.0``
-
-    3. Leave *Change the Category* field blank (It defaults to *System*)
-
-    4. Click *Yes* for these two options (1) *Overwrite Feed* (2) *Replace Feed Template*
-
-    5. (optional) Click *Yes* for option (3) *Disable Feed upon import* only if you wish to keep the indexing feed disabled upon import (You can explicitly enable it later if required)
-
-    6. Click *Import Feed*.
-
-    7. Verify that the feed imports successfully.
-
-
-Elasticsearch (rest client)
-===========================
-
-Steps to configure Kylo with Elasticsearch engine (using rest client) are below:
-
-1. Include ``search-esr`` profile in existing list of profiles in ``/opt/kylo/kylo-services/conf/application.properties``
-
-
-    .. code-block:: shell
-
-      spring.profiles.include=native,nifi-v1,auth-kylo,auth-file,search-esr
-
-    ..
-
-2. Ensure that the plugin is available in ``/opt/kylo/kylo-services/plugin``. The plugin comes out-of-the-box at another location ``/opt/kylo/setup/plugins``. It should have ownership as ``kylo:users`` and permissions ``755``.
-
-    .. code-block:: shell
-
-        kylo-search-elasticsearch-rest-0.8.2.jar
-    ..
-
-    .. note:: There should be only one search plugin in the /opt/kylo/kylo-services/plugin directory. If there is another search plugin (for example, kylo-search-elasticsearch-0.8.2.jar), move it to /opt/kylo/setup/plugins/ for later use.
-
-
-    Reference commands to get the plugin, and change ownership and permissions:
-
-    .. code-block:: shell
-
-        mv /opt/kylo/kylo-services/plugin/kylo-search-*-0.8.2.jar /opt/kylo/setup/plugins/
-        cp /opt/kylo/setup/plugins/kylo-search-elasticsearch-rest-0.8.2.jar /opt/kylo/kylo-services/plugin/
-        cd /opt/kylo/kylo-services/plugin/
-        chown kylo:users kylo-search-elasticsearch-rest-0.8.2.jar
-        chmod 755 kylo-search-elasticsearch-rest-0.8.2.jar
-    ..
-
-3. Provide elasticsearch properties
-
-    Update cluster properties in ``/opt/kylo/kylo-services/conf/elasticsearch-rest.properties`` if different from the defaults provided below.
-
-    .. code-block:: shell
-
-      search.rest.host=localhost
-      search.rest.port=9200
-
-    ..
 
 4. Restart Kylo Services
 
@@ -177,21 +195,21 @@ Steps to configure Kylo with Solr are below:
 
     .. code-block:: shell
 
-        kylo-search-solr-0.8.2.jar
+        kylo-search-solr-0.8.3.jar
     ..
 
-    .. note:: There should be only one search plugin in the /opt/kylo/kylo-services/plugin directory. If there is another search plugin (for example, kylo-search-elasticsearch-0.8.2.jar), move it to /opt/kylo/setup/plugins/ for later use.
+    .. note:: There should be only one search plugin in the /opt/kylo/kylo-services/plugin directory. If there is another search plugin (for example, kylo-search-elasticsearch-0.8.3.jar), move it to /opt/kylo/setup/plugins/ for later use.
 
 
     Reference commands to get the plugin, and change ownership and permissions:
 
     .. code-block:: shell
 
-        mv /opt/kylo/kylo-services/plugin/kylo-search-elasticsearch-0.8.2.jar /opt/kylo/setup/plugins/
-        cp /opt/kylo/setup/plugins/kylo-search-solr-0.8.2.jar /opt/kylo/kylo-services/plugin/
+        mv /opt/kylo/kylo-services/plugin/kylo-search-*-0.8.3.jar /opt/kylo/setup/plugins/
+        cp /opt/kylo/setup/plugins/kylo-search-solr-0.8.3.jar /opt/kylo/kylo-services/plugin/
         cd /opt/kylo/kylo-services/plugin/
-        chown kylo:users kylo-search-solr-0.8.2.jar
-        chmod 755 kylo-search-solr-0.8.2.jar
+        chown kylo:users kylo-search-solr-0.8.3.jar
+        chmod 755 kylo-search-solr-0.8.3.jar
     ..
 
 3. Create a folder on the box where Kylo is running to store indexes for Kylo metadata. Ensure that Kylo can write to this folder.
@@ -214,7 +232,7 @@ Steps to configure Kylo with Solr are below:
         search.host=localhost
         search.port=8983
         search.indexStorageDirectory=/tmp/kylosolr
-
+        search.zooKeeperPort=9983
     ..
 
 5. Create collections in Solr that Kylo will use.
