@@ -90,27 +90,39 @@ Upgrade Instructions from v0.8.2
 
 ..
 
-7. Migrate Hive schema indexing to Kylo. The indexing of Hive schemas is now handled internally by Kylo instead of using a special feed.
+7. Modify Elasticsearch rest client configuration (if required) in ``/opt/kylo/kylo-services/conf/elasticsearch-rest.properties``
 
-   7.1. Remove the Register Index processor from the ``standard_ingest`` and ``data_transformation`` reusable templates
+    7.1 Verify ``search-esr`` profile in existing list of profiles in ``/opt/kylo/kylo-services/conf/application.properties``
 
-   7.2. Delete the Index Schema Service feed
+    .. code-block:: shell
 
-   7.3. The following steps must be completed for Solr:
+      spring.profiles.include=<other-profiles-as-required>,search-esr
 
-        7.3.1. Create the collection in Solr
+    ..
+
+    7.2 If using Elasticsearch 5, perform the steps as laid out in :doc:`this document <../how-to-guides/ConfigureKyloForGlobalSearch>` under Rest Client section.
+
+8. Migrate Hive schema indexing to Kylo. The indexing of Hive schemas is now handled internally by Kylo instead of using a special feed.
+
+   8.1. Remove the Register Index processor from the ``standard_ingest`` and ``data_transformation`` reusable templates
+
+   8.2. Delete the Index Schema Service feed
+
+   8.3. The following steps must be completed for Solr:
+
+        8.3.1. Create the collection in Solr
 
               .. code-block:: shell
 
                  bin/solr create -c kylo-datasources -s 1 -rf 1
 
-        7.3.2. Navigate to Solr's |SolrAdminLink|
+        8.3.2. Navigate to Solr's |SolrAdminLink|
 
-        7.3.3. Select the ``kylo-datasources`` collection from the drop down in the left nav area
+        8.3.3. Select the ``kylo-datasources`` collection from the drop down in the left nav area
 
-    	7.3.2. Click *Schema* on bottom left of nav area
+    	8.3.2. Click *Schema* on bottom left of nav area
 
-    	7.3.3. Click *Add Field* on top of right nav pane
+    	8.3.3. Click *Add Field* on top of right nav pane
 
     	        - name: *kylo_collection*
 
