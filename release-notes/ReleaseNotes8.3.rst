@@ -7,6 +7,15 @@ Highlights
 - Pluggable JMS implementation with out-of-the-box support for ActiveMQ and Amazon SQS. Refer to :doc:`../how-to-guides/JmsProviders` for details
 - Option to use REST client for :doc:`Elasticsearch <../how-to-guides/ConfigureKyloForGlobalSearch>`
 - Cloudera Services Monitor as Kylo plugin. Refer to :doc:`../how-to-guides/ServiceMonitorPlugins` for details
+- Define business domain types to columns and auto apply them to fields.
+- Ability to assign a business domain type to a field (separate from the actual data types. (i.e. detect and mark fields that are of credit card’s and auto apply the masking standardizer)
+- Columns can now be tagged.
+- Ability to modify column descriptions and see them in the data wrangler
+- Alerts improvement. User Interface enhancements and additional alerts capabilities.  The Alerts page has been improved and the alerts on the dashboard are now in sync with the alerts page and adhere to entity access controls
+- Ability to query/filter Service Level Assessments against the Service Level Agreements
+- IE & Safari browser support
+- Elastic Search 5 support
+- New Angular UI Module pluggability.  Ability to create entirely new user interface modules and plug them into the UI navigation.
 
 Download Links
 --------------
