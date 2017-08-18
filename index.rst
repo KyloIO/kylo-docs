@@ -70,6 +70,7 @@ The documentation for the site is organized into a few sections:
     Validator Tuning <how-to-guides/ValidatorTuning>
     Kylo & Global Search <how-to-guides/ConfigureKyloForGlobalSearch>
     Service Monitor Plugins <how-to-guides/ServiceMonitorPlugins>
+    JMS Providers <how-to-guides/JmsProviders>
 
 .. _developer_guides:
 .. toctree::
