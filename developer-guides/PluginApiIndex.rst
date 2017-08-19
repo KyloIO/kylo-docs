@@ -24,3 +24,4 @@ Kylo Services
     Search <https://github.com/Teradata/kylo/tree/master/core/search/search-api/src/main/java/com/thinkbiganalytics/search/api>
     Service Monitor <https://github.com/Teradata/kylo/tree/master/core/service-monitor/service-monitor-api/src/main/java/com/thinkbiganalytics/servicemonitor/check>
     SLAs <https://github.com/Teradata/kylo/tree/master/core/sla>
+    Custom Module - Create custom code using Kylo libraries, create REST endpoints for availability in custom angular ui modules <https://github.com/Teradata/kylo/tree/master/samples/plugins/example-module>
