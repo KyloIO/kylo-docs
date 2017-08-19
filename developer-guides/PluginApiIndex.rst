@@ -10,6 +10,7 @@ Kylo UI
 
     Feed Stepper <https://github.com/Teradata/kylo/tree/master/samples/plugins/example-ui-feed-stepper-plugin>
     Processor Template <https://github.com/Teradata/kylo/tree/master/samples/plugins/example-ui-get-file-processor-template>
+    Angular UI Module <https://github.com/Teradata/kylo/tree/master/samples/plugins/example-module/example-module-ui>
 
 Kylo Services
 ~~~~~~~~~~~~~
