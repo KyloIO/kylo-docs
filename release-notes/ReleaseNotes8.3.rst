@@ -15,7 +15,7 @@ Highlights
 - Ability to query/filter Service Level Assessments against the Service Level Agreements
 - IE & Safari browser support
 - :doc:`Elasticsearch 5 <../how-to-guides/ConfigureKyloForGlobalSearch>` support
-- New angular UI module plugin support.  Ability to create entirely new user interface modules and plug them into the UI navigation.
+- New angular UI module plugin support.  Ability to create entirely new user interface modules and plug them into the UI navigation. Refer to |KyloModuleLink|
 
 Download Links
 --------------
@@ -138,3 +138,6 @@ Upgrade Instructions from v0.8.2
 
    <a href="http://localhost:8983/solr" target="_blank">Admin UI</a>
 
+.. |KyloModuleLink| raw:: html
+
+   <a href="https://github.com/Teradata/kylo/tree/master/samples/plugins/example-module" target="_blank">Custom Kylo Module</a>
