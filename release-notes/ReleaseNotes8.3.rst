@@ -29,7 +29,15 @@ Download Links
 Upgrade Instructions from v0.8.2
 --------------------------------
 
-1. Uninstall Kylo:
+1. Stop NiFi:
+
+ .. code-block:: shell
+
+   service nifi stop
+
+ ..
+
+2. Uninstall Kylo:
 
  .. code-block:: shell
 
@@ -37,7 +45,7 @@ Upgrade Instructions from v0.8.2
 
  ..
 
-2. Install the new RPM:
+3. Install the new RPM:
 
  .. code-block:: shell
 
@@ -45,7 +53,7 @@ Upgrade Instructions from v0.8.2
 
  ..
 
-3. Update the NiFi nars.  Run the following shell script to copy over the new NiFi nars/jars to get new changes to NiFi processors and services.
+4. Update the NiFi nars.  Run the following shell script to copy over the new NiFi nars/jars to get new changes to NiFi processors and services.
 
    .. code-block:: shell
 
@@ -54,7 +62,7 @@ Upgrade Instructions from v0.8.2
       Example:  /opt/kylo/setup/nifi/update-nars-jars.sh /opt/nifi /opt/kylo/setup nifi users
    ..
 
-4. Backup the Kylo database.  Run the following code against your kylo database to export the 'kylo' schema to a file.  Replace the  PASSWORD with the correct login to your kylo database.
+5. Backup the Kylo database.  Run the following code against your kylo database to export the 'kylo' schema to a file.  Replace the  PASSWORD with the correct login to your kylo database.
 
   .. code-block:: shell
 
@@ -62,7 +70,7 @@ Upgrade Instructions from v0.8.2
 
   ..
 
-5. Database updates.  Kylo uses liquibase to perform database updates.  Two modes are supported.
+6. Database updates.  Kylo uses liquibase to perform database updates.  Two modes are supported.
 
  - Automatic updates
 
@@ -80,7 +88,7 @@ Upgrade Instructions from v0.8.2
      Sometimes, however you may choose to disable liquibase and manually apply the upgrade scripts.  By disabling liquibase you are in control of how the scripts are applied.  This is needed if the kylo database user doesnt have priviledges to make schema changes to the kylo database.
      Please follow this :doc:`../how-to-guides/DatabaseUpgrades` on how to manually apply the additional database updates.
 
-6. Update NiFi to use default ActiveMQ JMS provider. Kylo now supports two JMS providers out-of-the-box: ActiveMQ and Amazon SQS. A particular provider is selected by active Spring profile in ``/opt/nifi/ext-config/config.properties``.
+7. Update NiFi to use default ActiveMQ JMS provider. Kylo now supports two JMS providers out-of-the-box: ActiveMQ and Amazon SQS. A particular provider is selected by active Spring profile in ``/opt/nifi/ext-config/config.properties``.
 
    6.1. Edit ``/opt/nifi/ext-config/config.properties``
 
@@ -90,7 +98,7 @@ Upgrade Instructions from v0.8.2
 
 ..
 
-7. Modify Elasticsearch rest client configuration (if required) in ``/opt/kylo/kylo-services/conf/elasticsearch-rest.properties``
+8. Modify Elasticsearch rest client configuration (if required) in ``/opt/kylo/kylo-services/conf/elasticsearch-rest.properties``
 
     7.1 Verify ``search-esr`` profile in existing list of profiles in ``/opt/kylo/kylo-services/conf/application.properties``
 
@@ -102,7 +110,7 @@ Upgrade Instructions from v0.8.2
 
     7.2 If using Elasticsearch 5, perform the steps as laid out in :doc:`this document <../how-to-guides/ConfigureKyloForGlobalSearch>` under Rest Client section.
 
-8. Migrate Hive schema indexing to Kylo. The indexing of Hive schemas is now handled internally by Kylo instead of using a special feed.
+9. Migrate Hive schema indexing to Kylo. The indexing of Hive schemas is now handled internally by Kylo instead of using a special feed.
 
    8.1. Remove the Register Index processor from the ``standard_ingest`` and ``data_transformation`` reusable templates
 
@@ -133,6 +141,14 @@ Upgrade Instructions from v0.8.2
                 - index: *no*
 
                 - store: *yes*
+
+9. Start NiFi:
+
+ .. code-block:: shell
+
+   service nifi start
+
+ ..
 
 .. |SolrAdminLink| raw:: html
 
