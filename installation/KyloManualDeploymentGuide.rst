@@ -553,6 +553,12 @@ In some cases you may want to leverage separate instances of NiFi or Hortonworks
 
 .. note:: Right now the plugin is hard coded to use the /opt/nifi/ext-config directory to load the properties file.
 
+11.  Add additional System Property to NiFi boostrap.conf for the kylo ext-config location.
+           
+           1. Add the next java.arg.XX in <NIFI_HOME>/conf/bootstrap.conf set to: -Dkylo.nifi.configPath=<NIFI_INSTALL>/ext-config
+              
+              Example: java.arg.15=-Dkylo.nifi.configPath=/opt/nifi/ext-config
+
 Configure the ext-config folder
 -------------------------------
 
