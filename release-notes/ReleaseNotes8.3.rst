@@ -7,15 +7,16 @@ Highlights
 - Pluggable JMS implementation with out-of-the-box support for ActiveMQ and Amazon SQS. Refer to :doc:`../how-to-guides/JmsProviders` for details
 - Pluggable REST client for :doc:`Elasticsearch <../how-to-guides/ConfigureKyloForGlobalSearch>`. This is now used by default in lieu of transport client.
 - Cloudera Services Monitor as Kylo plugin. Refer to :doc:`../how-to-guides/ServiceMonitorPlugins` for details
-- Define business domain types to columns and auto apply them to fields.
-- Ability to assign a business domain type to a field (separate from the actual data types. (i.e. detect and mark fields that are of credit card’s and auto apply the masking standardizer)
-- Columns can now be tagged.
-- Ability to modify column descriptions and see them in the data wrangler
+- Business domain types for columns. Define rules to auto-apply domain types during feed creation or manually select the domain type to apply predefined standardization and validation rules.
+- Column-level tagging. Apply tags to columns and search column tags using Global Search.
+- Schema changes for column descriptions. The Hive schema is updated when modifying the column description of a feed. The column description is also available on the Visual Query page when hovering over a column name.
 - Alerts improvement. User Interface enhancements and additional alerts capabilities.  The Alerts page has been improved and the alerts on the dashboard are now in sync with the alerts page and adhere to entity access controls
 - Ability to query/filter Service Level Assessments against the Service Level Agreements
 - IE & Safari browser support
 - :doc:`Elasticsearch 5 <../how-to-guides/ConfigureKyloForGlobalSearch>` support
 - New angular UI module plugin support.  Ability to create entirely new user interface modules and plug them into the UI navigation. Refer to |KyloModuleLink|
+- Spark Jobserver processors for NiFi. Reuse a SparkContext between multiple Spark jobs for increased performance. Requires an existing |SparkJobserverLink|.
+- Pluggable Spark functions. Custom Spark functions can be added to the Visual Query page by providing a json file with the function definitions. Refer to :doc:`Writing Spark Function Definitions <../developer-guides/SparkFunctionDefinitions>`.
 
 Download Links
 --------------
@@ -157,3 +158,7 @@ Upgrade Instructions from v0.8.2
 .. |KyloModuleLink| raw:: html
 
    <a href="https://github.com/Teradata/kylo/tree/master/samples/plugins/example-module" target="_blank">Custom Kylo Module</a>
+
+.. |SparkJobserverLink| raw:: html
+
+   <a href="https://github.com/spark-jobserver/spark-jobserver" target="_blank">Spark Jobserver</a>
