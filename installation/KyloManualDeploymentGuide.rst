@@ -537,9 +537,12 @@ In some cases you may want to leverage separate instances of NiFi or Hortonworks
 .. code-block:: shell
 
            nifi.web.http.port=8079
+           nifi.provenance.repository.implementation=com.thinkbiganalytics.nifi.provenance.repo.KyloPersistentProvenanceEventRepository
 ..
 
 .. note:: If you decide to leave the port number set to the current value, you must update the "nifi.rest.port" property in the kylo-services application.properties file.
+
+.. note:: See :doc:`../how-to-guides/NiFiKyloProvenance` for more information on provenance. 
 
 9.  There is a controller service that requires a MySQL database connection. You will need to copy the driver jar to a location on the NiFi node. The pre-defined templates have the default location set to /opt/nifi/mysql.
 
