@@ -181,7 +181,7 @@ Step 3: Install Kylo Services
 
 .. note:: To use wget instead, right-click the download link and copy the url.
 
-    `Download the latest Kylo RPM <http://bit.ly/2uT8bTo>`__
+    `Download the latest Kylo RPM <http://bit.ly/2uT8bTo>`_
 
 
 2. Run the Kylo RPM install.
@@ -537,9 +537,12 @@ In some cases you may want to leverage separate instances of NiFi or Hortonworks
 .. code-block:: shell
 
            nifi.web.http.port=8079
+           nifi.provenance.repository.implementation=com.thinkbiganalytics.nifi.provenance.repo.KyloPersistentProvenanceEventRepository
 ..
 
 .. note:: If you decide to leave the port number set to the current value, you must update the "nifi.rest.port" property in the kylo-services application.properties file.
+
+.. note:: See :doc:`../how-to-guides/NiFiKyloProvenance` for more information on provenance. 
 
 9.  There is a controller service that requires a MySQL database connection. You will need to copy the driver jar to a location on the NiFi node. The pre-defined templates have the default location set to /opt/nifi/mysql.
 
@@ -552,6 +555,12 @@ In some cases you may want to leverage separate instances of NiFi or Hortonworks
 10.  Create an ext-config folder to provide JMS information and location of cache to store running feed flowfile data if NiFi goes down.
 
 .. note:: Right now the plugin is hard coded to use the /opt/nifi/ext-config directory to load the properties file.
+
+11.  Add additional System Property to NiFi boostrap.conf for the kylo ext-config location.
+           
+           1. Add the next java.arg.XX in <NIFI_HOME>/conf/bootstrap.conf set to: -Dkylo.nifi.configPath=<NIFI_INSTALL>/ext-config
+              
+              Example: java.arg.15=-Dkylo.nifi.configPath=/opt/nifi/ext-config
 
 Configure the ext-config folder
 -------------------------------
@@ -705,7 +714,8 @@ Perform the following step on the node on which NiFI is installed:
 Complete this step for Cloudera installations ONLY
 --------------------------------------------------
 
-<Fill me in after testing Cloudera-specific configuration file changes>
+Please check the `Cloudera specific changes <../installation/KyloSetupWizardDeploymentGuide-Cloudera.html>`_
+
 
 Step 12: (Optional) Edit the Properties Files
 =============================================

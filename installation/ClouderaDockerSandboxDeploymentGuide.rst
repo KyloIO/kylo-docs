@@ -52,7 +52,7 @@ Create a shell script to startup the Docker container. This makes it
 easier to create a new container if you decided to delete it at some
 point and start clean.
 
-1. Start Cloudera:
+1. Create Cloudera docker script:
 
 .. code-block:: shell
 
@@ -83,7 +83,7 @@ point and start clean.
 
 .. code-block:: shell
 
-    $ chmod 744 startCloudera.sh
+    $ chmod 755 startCloudera.sh
 
 4. Start the Container:
 
@@ -121,146 +121,15 @@ Step 3: Login to the Cloudera Container and Start Cloudera Manager
 
 4. Start all services in Cloudera Manager.
 
-5. After it’s started exit the container to go back to the CoreOS host.
-
-Step 4: Build a Cloudera Distribution of Kylo and Copy it to the Docker Container
----------------------------------------------------------------------------------
-
-1. Modify the pom.xml file for the kylo-services-app module. Change:
-
-.. code-block:: shell
-
-   <dependency>  <groupId>com.thinkbiganalytics.datalake</groupId>  <artifactId>kylo-service-monitor-ambari</artifactId>  <version>0.3.0-SNAPSHOT</version>  </dependency/>
-
-        To
-
-   <dependency>  <groupId>com.thinkbiganalytics.datalake</groupId>  <artifactId>kylo-service-monitor-cloudera</artifactId>  <version>0.3.0-SNAPSHOT</version>  </dependency/>
-
-..
-
-2. From the kylo root folder, run:
-
-.. code-block:: shell
-
-    $ mvn clean install -o -DskipTests
-
-3. Copy the new RPM file to the CoreOS box.
-
-.. code-block:: shell
-
-    $ scp -i ~/.ssh/<EC2_PRIVATE_KEY>
-    <DLA_HOME>/install/target/rpm/tkylo/RPMS/noarch/kylo
-    core@<EC2_IP_ADDRESS>:/home/core
-
-4. From the CoreOS host, copy the RPM file to the Docker container.
-
-.. code-block:: shell
-
-    $ docker cp
-    /home/core/kylo-<VERSION>.noarch.rpm
-    cloudera:/tmp
-
-Step 5: Install Kylo in the Docker Container
+Step 4: Install Kylo in the Docker Container
 --------------------------------------------
 
-1. Login to the Cloudera Docker container.
+1. Follow the Setup Wizard guide
 
-.. code-block:: shell
+:doc:`../installation/KyloSetupWizardDeploymentGuide`
+   
 
-    $ docker exec -it cloudera bash
-
-    $ cd /tmp
-
-2. Create Linux Users and Groups.
-
-   Creation of users and groups is done manually because many organizations have their own user and group management system. Therefore we cannot script it as part of the RPM install.
-
-.. code-block:: shell
-
-    $ useradd -r -m -s /bin/bash nifi
-    $ useradd -r -m -s /bin/bash kylo
-    $ useradd -r -m -s /bin/bash activemq
-
-..
-
-   Validate the above commands created a group as well by looking at /etc/group. Some operating systems may not create them by default.
-
-.. code-block:: shell
-
-    $ cat /etc/group
-
-..
-
-    If the groups are missing then run the following:
-
-.. code-block:: shell
-
-    $ groupadd kylo
-    $ groupadd nifi
-    $ groupadd activemq
-
-3. Follow the instructions in the Deployment Wizard guide to install the RPM and other components.
-
-.. note:: There is an issue installing the database script so say No to the wizard step asking to install the database script. We will do that manually. I will update this section when it's fixed.
-
-4. Follow these steps, that are not in the wizard deployment guide but are required to run Kylo in this environment:
-
-   a. Run the database scripts:
-
-.. code-block:: shell
-
-      $ /opt/kylo/setup/sql/mysql/setup-mysql.sh root cloudera
-
-..
-
-   b. Edit /opt/kylo/kylo-services/conf/application.properties:
-
-      Make the following changes in addition to the Cloudera specific
-      changes, described in the Appendix section of the wizard deployment
-      guide for Cloudera:
-
-.. code-block:: properties
-
-      ###Ambari Services Check
-      #ambariRestClientConfig.username=admin
-      #ambariRestClientConfig.password=admin
-      #ambariRestClientConfig.serverUrl=http://127.0.0.1:8080/api/v1
-      #ambari.services.status=HDFS,HIVE,MAPREDUCE2,SQOOP
-      ###Cloudera Services Check
-      clouderaRestClientConfig.username=cloudera
-      clouderaRestClientConfig.password=cloudera
-      clouderaRestClientConfig.serverUrl=127.0.0.1
-      cloudera.services.status=HDFS/[DATANODE,NAMENODE],HIVE/[HIVEMETASTORE,HIVESERVER2],YARN
-      ##HDFS/[DATANODE,NAMENODE,SECONDARYNAMENODE],HIVE/[HIVEMETASTORE,HIVESERVER2],YARN,SQOOP
-
-..
-
-   c. Add the "kylo" user to the supergroup:
-
-.. code-block:: shell
-
-      $ usermod -a -G supergroup kylo
-
-..
-
-   d. Run the following commands to address an issue with the Cloudera Sandbox and fix permissions.
-
-.. code-block:: shell
-
-      $ su - hdfs 
-      $ hdfs dfs -chmod 775 /
-
-..
-
-5. Start up the Kylo Apps:
-
-.. code-block:: shell
-
-    $ /opt/kylo/start-kylo-apps.sh
-
-..
-
-6. Try logging into <EC2_HOST>:8400 and <EC2_HOST>:8079.
+2. Login to Kylo at <EC2_HOST>:8400, and NiFi at <EC2_HOST>:8079.
 
 Shutting down the container when not in use
 ===========================================

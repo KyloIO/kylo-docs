@@ -37,17 +37,9 @@ The steps below require root access.
 Step 1: Download the RPM
 ------------------------
 
-Download the RPM and place it on the host Linux machine that you want to install Kylo services on.
+`Download the latest Kylo RPM <http://bit.ly/2uT8bTo>`_ , and place it on the host Linux machine that you want to install Kylo services on.
 
 .. note:: To use wget instead, right-click the download link and copy the url.
-
-
-**Download the Latest RPM**
-
-.. code-block:: html
-
-    http://bit.ly/2uT8bTo
-..
 
 Step 2: Create the Linux Users/Groups
 -------------------------------------
@@ -59,9 +51,13 @@ the users and groups:
 
 .. code-block:: shell
 
-    $ useradd -r -m -s /bin/bash nifi
     $ useradd -r -m -s /bin/bash kylo
+    $ useradd -r -m -s /bin/bash nifi
     $ useradd -r -m -s /bin/bash activemq
+
+    or
+    $ useradd -r -m -s /bin/bash kylo && useradd -r -m -s /bin/bash nifi && useradd -r -m -s /bin/bash activemq
+    
 
 
 Validate that the above commands created a group by looking at
@@ -89,7 +85,7 @@ Step 3: Run the Kylo RPM Install
 
 ..
 
-.. note:: The RPM is hard coded at this time to install to /opt/kylo.
+.. note:: The RPM is hard coded at this time to install kylo to /opt/kylo.
 
 
 Step 4: Optional - Generate TAR file for Offline Mode
@@ -148,10 +144,9 @@ b. Offline mode from another directory (using TAR file)
 
     $ <PathToSetupFolder>/setup/setup-wizard.sh -o
 
+..
 
 .. note:: Both -o and -O work.
-
-..
 
     Follow the directions to install the following:
 
@@ -189,12 +184,15 @@ to the group defined in hdfs-site.xml. For example:
     # Add nifi and hdfs to that group:
     $ usermod -a -G supergroup nifi
     $ usermod -a -G supergroup hdfs
+..
 
 **Optional:** If you want to perform actions as a root user in a development environment run the below command:
 
 .. code-block:: shell
 
     $ usermod -a -G supergroup root
+
+..
 
 Step 7: Additional Cluster Configuration
 ----------------------------------------
@@ -208,8 +206,9 @@ edge node, add the users/groups to the name nodes on a cluster.
 
     $ useradd kylo
     $ useradd nifi
-    $ usermod -G hdfs nifi
     $ usermod -G hdfs kylo
+    $ usermod -G hdfs nifi
+
 
 **Cloudera**
 
@@ -217,8 +216,15 @@ edge node, add the users/groups to the name nodes on a cluster.
 
     TBD (need to test this out)
 
-Step 8: Create a Dropzone Folder
---------------------------------
+..
+
+Step 8: Optional - Cloudera specific changes
+--------------------------------------------------
+
+Please check the `Cloudera specific changes <../installation/KyloSetupWizardDeploymentGuide-Cloudera.html>`_
+
+Step 9: Create a Dropzone Folder
+---------------------------------
 
 For example:
 
@@ -227,70 +233,19 @@ For example:
     $ mkdir -p /var/dropzone
     $ chown nifi /var/dropzone
 
+..
 
 .. note:: Files should be copied into the dropzone such that user nifi can read and remove.
 
-
-Step 9: Cloudera Configuration (Cloudera Only)
-----------------------------------------------
-
-See the appendix section below "Cloudera Configuration File Changes".
-
-Step 10: Edit the Properties Files
-----------------------------------
-
-Step 11: Start the Three Kylo Services and NiFi
+Step 10: Start the three Kylo Services and NiFi
 ------------------------------------------------
 
 .. code-block:: shell
 
-    $ /opt/kylo/start-kylo-apps.sh
+    $ /opt/kylo/kylo-service start
     $ service nifi start
+
+..
 
 At this point, all services should be running. Note that services are
 started automatically on boot.
-
-Appendix: Cloudera Configuration File Changes
-=============================================
-
-The configuration is setup to work out of the box with the Hortonworks
-sandbox. There are a few differences that require configuration changes
-for Cloudera.
-
-1. /opt/kylo/kylo-services/conf/application.properties
-
-   a. Update the 3 MySQL password values to "cloudera":
-
-.. code-block:: properties
-
-        spring.datasource.password=cloudera
-        metadata.datasource.password=cloudera
-        hive.metastore.datasource.password=cloudera
-        modeshape.datasource.password=cloudera
-
-..
-
-    b. Update the Hive username:
-
-.. code-block:: properties
-
-        hive.datasource.username=hive
-
-..
-
-    c. Update the Hive Metastore URL:
-
-.. code-block:: properties
-
-        hive.metastore.datasource.url=jdbc:mysql://localhost:3306/metastore
-
-..
-
-    d. Update the following parameters:
-
-.. code-block:: properties
-
-        config.hive.schema=metastore
-        nifi.executesparkjob.sparkhome=/usr/lib/spark
-
-..

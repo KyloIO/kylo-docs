@@ -62,9 +62,9 @@ The documentation for the site is organized into a few sections:
     NiFi & HDFS Encryption <how-to-guides/ConfigNififorHDFSEncryption>
     NiFi & Kylo Provenance <how-to-guides/NiFiKyloProvenance>
     NiFi & Kylo Reporting Task (deprecated) <how-to-guides/NiFiKyloProvenanceReportingTask>
-    how-to-guides/NiFiProcessorsDocs
-    how-to-guides/S3DataIngestTemplate
-    S3 & Data Wrangler <how-to-guides/AccessingS3fromtheDataWrangler>
+    Nifi Processors <how-to-guides/NiFiProcessorsDocs>
+    Kylo Templates <how-to-guides/KyloTemplatesDocs>
+    Kylo Datasources <how-to-guides/KyloDatasources>
     Feed Lineage <how-to-guides/FeedLineage>
     how-to-guides/SentryInstallationGuide
     SUSE Configuration <how-to-guides/SuseConfigurationChanges>
@@ -115,8 +115,8 @@ The documentation for the site is organized into a few sections:
     installation/HDP25ClusterDeploymentGuide
     installation/HortonworksSandboxConfiguration
     installation/KerberosInstallationExample-Cloudera
-    installation/KyloConfiguration
-    installation/Dependencies
+    installation/YarnClusterConfiguration
+    installation/KyloDependencies
     installation/KyloManualDeploymentGuide
     installation/KyloSetupWizardDeploymentGuide
     installation/KyloTARFileInstallation
