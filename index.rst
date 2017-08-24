@@ -34,7 +34,9 @@ The documentation for the site is organized into a few sections:
     :maxdepth: 1
     :caption: Installation
 
-    installation/KyloDeploymentGuideIndex
+    installation/Overview
+    installation/Dependencies
+    installation/DeploymentChecklist
 
 .. _security_toc:
 .. toctree::
@@ -108,13 +110,13 @@ The documentation for the site is organized into a few sections:
 
 ..  files that are not part of the toctree:
     how-to-guides/KyloIconsAndColors
-    installation/KyloDependencies
+    installation/Dependencies
     installation/ClouderaDockerSandboxDeploymentGuide
     installation/HDP25ClusterDeploymentGuide
     installation/HortonworksSandboxConfiguration
     installation/KerberosInstallationExample-Cloudera
     installation/KyloConfiguration
-    installation/KyloDependencies
+    installation/Dependencies
     installation/KyloManualDeploymentGuide
     installation/KyloSetupWizardDeploymentGuide
     installation/KyloTARFileInstallation

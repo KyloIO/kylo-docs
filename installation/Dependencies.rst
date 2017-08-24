@@ -1,9 +1,33 @@
 
-Dependencies
+Review Dependencies
 ============
+This page can be used as a guide to prepare you environment for installation.
 
-Component Versions
-------------------
+Supported Operating Systems
+---------------------------
+
++----------------------+--------------+
+| **Operating System** | **Versions** |
++======================+==============+
+| RHEL,CentOs          | 6.x, 7.x     |
++----------------------+--------------+
+| SUSE                 | v11          |
++----------------------+--------------+
+| Ubuntu               | 16.x,17.x    |
++----------------------+--------------+
+
+Edge Node Hardware Requirements
+-------------------------------
+Although the hardware requirements depend on the volume of data that will be processed here are some general recommendations:
+
+-  Minimum production recommendation is 4 cores CPU, 16 GB RAM.
+
+-  Preferred production recommendation is 8 cores CPU, 32 GB RAM.
+
+.. Note:: Kylo and Apache NiFi can be installed on a single edge node, however it is recommended that they run on separate edge nodes.
+
+Kylo Stack Dependencies
+------------------------
 Below is a list of some of the major components Kylo uses along with the version that Kylo currently supports:
 
 +----------------+-----------------+------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -13,24 +37,35 @@ Below is a list of some of the major components Kylo uses along with the version
 +----------------+-----------------+------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Persistence    | Postgres        | 9.x                                      | Not fully supported yet. Kylo Operations Manager piece should work in Postgres; however we haven't fully tested it with Feed Manager.   (See below on the Persistence Note)                                                                                                                     |
 +----------------+-----------------+------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Persistence    | Modeshape       | 5.0                                      | Jboss Modeshape Java Content Repository (JCR 2.0)                                                                                                                                                                                                                                               |
-+----------------+-----------------+------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | JMS            | ActiveMq        | 5.x  (tested with  **5.13.3**)           | Used to send messages between different modules and to send Provenance from NiFi to Kylo                                                                                                                                                                                                        |
 +----------------+-----------------+------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | NiFi           | NiFi            | 1.0,(HDF 2.0)                            | Either HDF or open source NiFi work.                                                                                                                                                                                                                                                            |
 +----------------+-----------------+------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Spark          | Spark           | 1.5.x, 1.6.x, 2.x                        | NiFi and Kylo have routines that leverage Spark.                                                                                                                                                                                                                                                |
+| Spark          | Spark Client    | 1.5.x, 1.6.x, 2.x                        | NiFi and Kylo have routines that leverage Spark.                                                                                                                                                                                                                                                |
 +----------------+-----------------+------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| UI             | Tomcat          | 8.0.32                                   | Tomcat is the default engine for Spring Boot.  If needed Spring Boot allows you to change to a different server (i.e. Jetty) but this hasn't been tested.                                                                                                                                       |
+| Hive           | Hive            | 1.2.x+                                   | Required if using Hive and the standard ingest template                                                                                                                                                                                                                                         |
++----------------+-----------------+------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Hadoop         | HDFS            | 2.7.x+                                     | Required if using Hive and the standard ingest template                                                                                                                                                                                                                                       |
 +----------------+-----------------+------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Java           | Java            | Java 8_92+                               | The Kylo install will setup its own Java Home so it doesn't affect any other Java versions running on the machine.                                                                                                                                                                              |
 +----------------+-----------------+------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Search         | Elasticsearch   | 2.3.x                                    | For index and search of Hive metadata and indexing feed data when selected as part of creating a feed                                                                                                                                                                                           |
+| Search         | Elasticsearch   | 2.3.x, 5.x                               | For index and search of Hive metadata and indexing feed data when selected as part of creating a feed                                                                                                                                                                                           |
 +----------------+-----------------+------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Search         | Solr            | 6.5.1 (SolrCloud mode)                   | For index and search of Hive metadata and indexing feed data when selected as part of creating a feed                                                                                                                                                                                           |
 +----------------+-----------------+------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| OS             | Linux           | Various                                  | Tested with RHEL and CentOS 6.x, 7.x, SUSE v11                                                                                                                                                                                                                                                  |
-+----------------+-----------------+------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Linux Tools
+-----------
+Below are tools required to be installed on the Linux box before installing the Kylo components
+
++-----------------------------------------------------------------------------------+
+|   **Tool**                                                                        |
++===================================================================================+
+| Curl (for downloading installation files)                                         |
++-----------------------------------------------------------------------------------+
+| RPM or dpkg(for install)                                                          |
++-----------------------------------------------------------------------------------+
+
 
 Service Accounts
 ------------------
@@ -44,33 +79,74 @@ and Kylo metastore databases (mysql or postgres) are IO intensive.
 +---------------------+------------------------------------------------------------+-------------------------+--------------------------------+--------------------------------------------------+------------------------------------------------------------+-----------+
 | **Service**         | **Purpose**                                                | **Local Linux Users**   | **Local Linux Groups**         | **Keytab file**                                  | **upn**                                                    | **spn**   |
 +=====================+============================================================+=========================+================================+==================================================+============================================================+===========+
-| kylo-services       | Kylo Coordinator                                           | kylo                    | kylo, hdfs or supergroup       | /etc/security/keytabs/kylo.headless.keytab       | `*kylo@EXAMPLE.COM* <mailto:kylo@EXAMPLE.COM>`__           |           |
+| kylo-services       | Kylo API Server                                            | kylo                    | kylo, hdfs or supergroup       | /etc/security/keytabs/kylo.service.keytab        | `*kylo@EXAMPLE.COM* <mailto:kylo@EXAMPLE.COM>`__           |           |
 +---------------------+------------------------------------------------------------+-------------------------+--------------------------------+--------------------------------------------------+------------------------------------------------------------+-----------+
 | kylo-ui             | Provides Kylo feed and operations user interface           | kylo                    | kylo, hdfs or supergroup       |                                                  |                                                            |           |
 +---------------------+------------------------------------------------------------+-------------------------+--------------------------------+--------------------------------------------------+------------------------------------------------------------+-----------+
-| nifi                | Orchestrate data flows                                     | nifi                    | nifi, hdfs or supergroup       | /etc/security/keytabs/nifi.headless.keytab       | `*nifi@EXAMPLE.COM* <mailto:nifi@EXAMPLE.COM>`__           |           |
+| nifi                | Orchestrate data flows                                     | nifi                    | nifi, hdfs or supergroup       | /etc/security/keytabs/nifi.service.keytab        | `*nifi@EXAMPLE.COM* <mailto:nifi@EXAMPLE.COM>`__           |           |
 +---------------------+------------------------------------------------------------+-------------------------+--------------------------------+--------------------------------------------------+------------------------------------------------------------+-----------+
 | activemq            | Broker messages between components                         | activemq                | activemq                       |                                                  |                                                            |           |
 +---------------------+------------------------------------------------------------+-------------------------+--------------------------------+--------------------------------------------------+------------------------------------------------------------+-----------+
-| elastic             | Manages searchable index                                   | elastic                 | elastic                        |                                                  |                                                            |           |
+| elasticsearch       | Manages searchable index                                   | elasticsearch           | elasticsearch                  |                                                  |                                                            |           |
 +---------------------+------------------------------------------------------------+-------------------------+--------------------------------+--------------------------------------------------+------------------------------------------------------------+-----------+
 | mysql or postgres   | Metastore for Kylo feed manager and operational metadata   | mysql or postgres       | mysql or postgres              |                                                  |                                                            |           |
 +---------------------+------------------------------------------------------------+-------------------------+--------------------------------+--------------------------------------------------+------------------------------------------------------------+-----------+
 
- 
-Persistence Usage
------------------
+.. note:: You have the flexibility to change the installation locations and service accounts when using the TAR installation method
 
-Kylo captures and stores three types of metadata: 
 
-   1. Setup/Configuration metadata.  This data is captured in the Kylo Feed Manager which describes how Feeds, Categories, Templates, etc are structured.
+Network Ports
+--------------
+Kylo relies heavily on integration with other services. Below is a list of network ports that are required for the standard ingest to work
 
-      a. This is stored using Java Content Repository (JCR 2.) using Modeshape as the JCR implementation and persisted to MySQL.
+Required
 
-   2. Operational/Transactional metadata.  This data is captured by the system when it processes data, feeds, slas, etc.
++-----------+-----------------------+--------------------+
+| **Port**  | **From Service**      | **To Service**     |
++===========+=======================+====================+
+| 8400      | Browser/NiFi          | kylo-ui            |
++-----------+-----------------------+--------------------+
+| 8079      | Browser/kylo-services | NiFi               |
++-----------+-----------------------+--------------------+
+| 61616     | kylo-services/NiFi    | ActiveMQ           |
++-----------+-----------------------+--------------------+
+| 3306      | kylo-services/NiFi    | MySQL              |
++-----------+-----------------------+--------------------+
+| 9200      | kylo-services/NiFi    | Elasticsearch      |
++-----------+-----------------------+--------------------+
+| 9300      | kylo-services/NiFi    | Elasticsearch 2.x  |
++-----------+-----------------------+--------------------+
+| 8983      | kylo-services/NiFi    | SOLR               |
++-----------+-----------------------+--------------------+
+| 9983      | kylo-services/NiFi    | SOLR               |
++-----------+-----------------------+--------------------+
+| 10000     | kylo-services/NiFi    |   HiveServer2      |
++-----------+-----------------------+--------------------+
+| ALL       | kylo-spark-shell      |   Yarn, data nodes |
++-----------+-----------------------+--------------------+
 
-      a. This is stored in MySQL.
+Optional
 
-   3. Searchable data index. This data is captured by the data flows where 'Index' field check box is marked.
++-----------+-----------------------+----------------+
+| **Port**  | **From Service**      | **To Service** |
++===========+=======================+================+
+| 8420      | REST Client           | kylo-services  |
++-----------+-----------------------+----------------+
+| 8161      | Browser               | ActiveMQ Admin |
++-----------+-----------------------+----------------+
 
-      a. This is stored in Elasticsearch.
+Default HDFS Locations (for standard ingest)
+---------------------------------------------
+The below locations are configurable. If you plan on using the default locations they will be create here.
+
++----------------------+---------------------------------------------+
+| **HDFS Location**     | **Description**                            |
++======================+=============================================+
+| /archive             | Archive original files                      |
++----------------------+---------------------------------------------+
+| /etl                 | Feed processing file location               |
++----------------------+---------------------------------------------+
+| /model.db            | Hive feed, invalid, valid, profile location |
++----------------------+---------------------------------------------+
+| /app/warehouse       | Hive feed table final location              |
++----------------------+---------------------------------------------+

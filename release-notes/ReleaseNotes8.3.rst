@@ -16,6 +16,7 @@ Highlights
 - IE & Safari browser support
 - :doc:`Elasticsearch 5 <../how-to-guides/ConfigureKyloForGlobalSearch>` support
 - New angular UI module plugin support.  Ability to create entirely new user interface modules and plug them into the UI navigation. Refer to |KyloModuleLink|
+-
 
 Download Links
 --------------

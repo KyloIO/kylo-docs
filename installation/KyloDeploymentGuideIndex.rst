@@ -9,8 +9,8 @@ Master
     :maxdepth: 1
 
     KyloDeploymentGuide
-    KyloDeploymentChecklist
-    KyloDependencies
+    deploymentChecklist
+    Dependencies
 
 
 Install Guides

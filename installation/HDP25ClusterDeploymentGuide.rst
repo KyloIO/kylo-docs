@@ -64,7 +64,7 @@ Prepare a Checklist
 
 Leverage the deployment checklist to take note of information you will need to speed up configuration.
 
-:doc:`../installation/KyloDeploymentChecklist`
+:doc:`../installation/DeploymentChecklist`
 
 Prepare the HDP Cluster
 =======================
