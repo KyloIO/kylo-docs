@@ -67,7 +67,7 @@ Upgrade Instructions from v0.8.2
 
   .. code-block:: shell
 
-     mysqldump -u root -pPASSWORD --databases kylo >kylo-0_8_2_backup.sql
+     mysqldump -u root -pPASSWORD --databases kylo > kylo-0_8_2_backup.sql
 
   ..
 
@@ -91,17 +91,19 @@ Upgrade Instructions from v0.8.2
 
 7. Update NiFi to use default ActiveMQ JMS provider. Kylo now supports two JMS providers out-of-the-box: ActiveMQ and Amazon SQS. A particular provider is selected by active Spring profile in ``/opt/nifi/ext-config/config.properties``.
 
-   6.1. Edit ``/opt/nifi/ext-config/config.properties``
+   7.1. Edit ``/opt/nifi/ext-config/config.properties``
 
-   6.2. Add following line to enable ActiveMQ ``spring.profiles.active=jms-activemq``
+   7.2. Add following line to enable ActiveMQ ``spring.profiles.active=jms-activemq``
 
    Please follow this :doc:`../how-to-guides/JmsProviders` on how to switch active JMS Provider.
 
 ..
 
-8. Modify Elasticsearch rest client configuration (if required) in ``/opt/kylo/kylo-services/conf/elasticsearch-rest.properties``
+8.  If using Elasticsearch as the search engine, go through steps 8.1 to 8.3. If using Solr, go to step 9 and also refer to :doc:`Solr plugin section <../how-to-guides/ConfigureKyloForGlobalSearch>`.
 
-    7.1 Verify ``search-esr`` profile in existing list of profiles in ``/opt/kylo/kylo-services/conf/application.properties``
+    8.1. Modify Elasticsearch rest client configuration (if required) in ``/opt/kylo/kylo-services/conf/elasticsearch-rest.properties``
+
+    8.2. Verify ``search-esr`` profile in existing list of profiles in ``/opt/kylo/kylo-services/conf/application.properties``
 
     .. code-block:: shell
 
@@ -109,47 +111,56 @@ Upgrade Instructions from v0.8.2
 
     ..
 
-    7.2 If using Elasticsearch 5, perform the steps as laid out in :doc:`this document <../how-to-guides/ConfigureKyloForGlobalSearch>` under Rest Client section.
+    8.3. If using Elasticsearch 5, perform the steps as laid out in :doc:`this document <../how-to-guides/ConfigureKyloForGlobalSearch>` under Rest Client section.
 
-9. Migrate Hive schema indexing to Kylo. The indexing of Hive schemas is now handled internally by Kylo instead of using a special feed.
+..
 
-   8.1. Remove the Register Index processor from the ``standard_ingest`` and ``data_transformation`` reusable templates
+9. If using Solr as the search engine, go through steps 9.1 to 9.5. Also refer to :doc:`Solr plugin section <../how-to-guides/ConfigureKyloForGlobalSearch>`
 
-   8.2. Delete the Index Schema Service feed
+    9.1. Create the collection in Solr
 
-   8.3. The following steps must be completed for Solr:
+    .. code-block:: shell
 
-        8.3.1. Create the collection in Solr
+        bin/solr create -c kylo-datasources -s 1 -rf 1
 
-              .. code-block:: shell
+    ..
 
-                 bin/solr create -c kylo-datasources -s 1 -rf 1
+    9.2. Navigate to Solr's |SolrAdminLink|
 
-        8.3.2. Navigate to Solr's |SolrAdminLink|
+    9.3. Select the ``kylo-datasources`` collection from the drop down in the left nav area
 
-        8.3.3. Select the ``kylo-datasources`` collection from the drop down in the left nav area
+    9.4. Click *Schema* on bottom left of nav area
 
-    	8.3.2. Click *Schema* on bottom left of nav area
+    9.5. Click *Add Field* on top of right nav pane
 
-    	8.3.3. Click *Add Field* on top of right nav pane
+        - name: *kylo_collection*
 
-    	        - name: *kylo_collection*
+        - type: *string*
 
-    	        - type: *string*
+        - default value: *kylo-datasources*
 
-                - default value: *kylo-datasources*
+        - index: *no*
 
-                - index: *no*
+        - store: *yes*
 
-                - store: *yes*
 
-9. Start NiFi:
+..
+
+10. Start NiFi:
 
  .. code-block:: shell
 
    service nifi start
 
  ..
+
+
+11. Migrate Hive schema indexing to Kylo. The indexing of Hive schemas is now handled internally by Kylo instead of using a special feed.
+
+   11.1. Remove the Register Index processor from the ``standard_ingest`` and ``data_transformation`` reusable templates
+
+   11.2. Delete the Index Schema Service feed
+
 
 .. |SolrAdminLink| raw:: html
 
