@@ -71,9 +71,9 @@ Upgrade Instructions from v0.8.2
 
         ..
 
-4.3 Add in the new properties to the /opt/kylo/kylo-services/application.properties file
+     4.3 Add in the new properties to the /opt/kylo/kylo-services/application.properties file
 
-         - The following properties allow Kylo to inspect the database schema when creating database feeds
+        - The following properties allow Kylo to inspect the database schema when creating database feeds
 
             .. code-block:: properties
 
@@ -83,7 +83,7 @@ Upgrade Instructions from v0.8.2
 
             ..
 
-         - Flow Aggregation Stats
+        - Flow Aggregation Stats
 
             .. code-block:: properties
 
@@ -96,7 +96,7 @@ Upgrade Instructions from v0.8.2
 
             ..
 
-         - New NiFi version 1.1 profile
+        - New NiFi version 1.1 profile
 
            Previous versions of Kylo were compatible with Nifi v110 when using the nifiv1.0 profile.  If you are using NiFi v1.1 in your environment then going forward you should use the nifi-1.1 profile.
 
@@ -106,6 +106,16 @@ Upgrade Instructions from v0.8.2
 
            ..
 
+     4.4 Ensure the property ``security.jwt.key`` in both kylo-services and kylo-ui application.properties file match.  They property below needs to match in both of these files:
+
+        - */opt/kylo/kylo-ui/conf/application.properties*
+        - */opt/kylo/kylo-services/conf/application.properties*
+
+          .. code-block:: properties
+
+            security.jwt.key=
+
+          ..
 
 5. Update the NiFi nars.  Run the following shell script to copy over the new NiFi nars/jars to get new changes to NiFi processors and services.
 
