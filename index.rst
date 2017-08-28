@@ -71,6 +71,8 @@ The documentation for the site is organized into a few sections:
     Kylo & Global Search <how-to-guides/ConfigureKyloForGlobalSearch>
     Service Monitor Plugins <how-to-guides/ServiceMonitorPlugins>
     JMS Providers <how-to-guides/JmsProviders>
+    how-to-guides/S3DataIngestTemplate
+    S3 & Data Wrangler <how-to-guides/AccessingS3fromtheDataWrangler>
 
 .. _developer_guides:
 .. toctree::
