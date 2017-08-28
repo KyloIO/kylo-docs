@@ -162,9 +162,16 @@ Upgrade Instructions from v0.8.2
 
 ..
 
-9.  If using Elasticsearch as the search engine, go through steps 8.1 to 8.3. If using Solr, go to step 9 and also refer to :doc:`Solr plugin section <../how-to-guides/ConfigureKyloForGlobalSearch>`.
+9.  If using Elasticsearch as the search engine, go through steps 9.1 to 9.5. If using Solr, go to step 10 and also refer to :doc:`Solr plugin section <../how-to-guides/ConfigureKyloForGlobalSearch>`.
 
-    9.1. Modify Elasticsearch rest client configuration (if required) in ``/opt/kylo/kylo-services/conf/elasticsearch-rest.properties``
+    9.1. Modify Elasticsearch rest client configuration (if required) in ``/opt/kylo/kylo-services/conf/elasticsearch-rest.properties``. The defaults are provided below.
+
+    .. code-block:: shell
+
+      search.rest.host=localhost
+      search.rest.port=9200
+
+    ..
 
     9.2. Verify ``search-esr`` profile in existing list of profiles in ``/opt/kylo/kylo-services/conf/application.properties``
 
@@ -174,11 +181,28 @@ Upgrade Instructions from v0.8.2
 
     ..
 
-    9.3. If using Elasticsearch 5, perform the steps as laid out in :doc:`this document <../how-to-guides/ConfigureKyloForGlobalSearch>` under Rest Client section.
+    9.3 Create Kylo Indexes
+
+    Execute a script to create kylo indexes. If these already exist, Elasticsearch will report an ``index_already_exists_exception``. It is safe to ignore this and continue.
+    Change the host and port if necessary.
+
+    .. code-block:: shell
+
+        /opt/kylo/bin/create-kylo-indexes-es.sh localhost 9200 1 1
+    ..
+
+    9.4 Import updated Index Text Service feed. This step will be available once Kylo services are started and Kylo is up and running.
+
+        9.4.1. **[Elasticsearch version 2]** Import the feed ``index_text_service_elasticsearch.feed.zip`` file available at ``/opt/kylo/setup/data/feeds/nifi-1.0``
+
+        9.4.2. **[Elasticsearch version 5] [This requires NiFi 1.3 or later]** Import the feed ``index_text_service_v2.feed.zip`` file available at ``/opt/kylo/setup/data/feeds/nifi-1.3``
+
+
+    9.5. For additional details, refer to :doc:`this document <../how-to-guides/ConfigureKyloForGlobalSearch>` under Rest Client section.
 
 ..
 
-10. If using Solr as the search engine, go through steps 9.1 to 9.5. Also refer to :doc:`Solr plugin section <../how-to-guides/ConfigureKyloForGlobalSearch>`
+10. If using Solr as the search engine, go through steps 10.1 to 10.5. Also refer to :doc:`Solr plugin section <../how-to-guides/ConfigureKyloForGlobalSearch>`
 
     10.1. Create the collection in Solr
 

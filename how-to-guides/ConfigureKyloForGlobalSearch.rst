@@ -68,7 +68,7 @@ Steps to configure Kylo with Elasticsearch engine (using rest client) are below.
 
     .. code-block:: shell
 
-        /opt/kylo/bin/create-kylo-indexes-esv5.sh localhost 9200 1 1
+        /opt/kylo/bin/create-kylo-indexes-es.sh localhost 9200 1 1
     ..
 
 4. Restart Kylo Services
