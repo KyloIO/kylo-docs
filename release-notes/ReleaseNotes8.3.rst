@@ -71,7 +71,7 @@ Upgrade Instructions from v0.8.2
 
         ..
 
-     4.3 Add in the new properties to the /opt/kylo/kylo-services/application.properties file
+     4.3 Add in the new properties to the /opt/kylo/kylo-services/conf/application.properties file
 
         - The following properties allow Kylo to inspect the database schema when creating database feeds
 
