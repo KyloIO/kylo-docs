@@ -106,6 +106,17 @@ Upgrade Instructions from v0.8.2
 
            ..
 
+        - New configuration for JMS
+
+           Previous versions of Kylo did not have a profile based method of configured the queue services.  With new SQS support, the profile must be stated explicitly.  See section 8 for more info.
+
+           .. code-block:: properties
+
+             spring.profiles.include=<other-profiles-as-required>,jms-activemq
+
+           ..
+
+
      4.4 Ensure the property ``security.jwt.key`` in both kylo-services and kylo-ui application.properties file match.  They property below needs to match in both of these files:
 
         - */opt/kylo/kylo-ui/conf/application.properties*
