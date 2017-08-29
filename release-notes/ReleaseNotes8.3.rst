@@ -156,7 +156,12 @@ Upgrade Instructions from v0.8.2
 
    8.1. Edit ``/opt/nifi/ext-config/config.properties``
 
-   8.2. Add following line to enable ActiveMQ ``spring.profiles.active=jms-activemq``
+   8.2. Add following line to enable ActiveMQ 
+
+     .. code-block:: properties
+
+         spring.profiles.active=jms-activemq
+     ..
 
    Please follow this :doc:`../how-to-guides/JmsProviders` on how to switch active JMS Provider.
 
@@ -166,7 +171,7 @@ Upgrade Instructions from v0.8.2
 
     9.1. Modify Elasticsearch rest client configuration (if required) in ``/opt/kylo/kylo-services/conf/elasticsearch-rest.properties``. The defaults are provided below.
 
-    .. code-block:: shell
+    .. code-block:: properties
 
       search.rest.host=localhost
       search.rest.port=9200
