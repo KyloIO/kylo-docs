@@ -197,7 +197,7 @@ Upgrade Instructions from v0.8.2
 
     ..
 
-    9.3 Create Kylo Indexes
+    9.3. Create Kylo Indexes
 
     Execute a script to create kylo indexes. If these already exist, Elasticsearch will report an ``index_already_exists_exception``. It is safe to ignore this and continue.
     Change the host and port if necessary.
@@ -207,7 +207,7 @@ Upgrade Instructions from v0.8.2
         /opt/kylo/bin/create-kylo-indexes-es.sh localhost 9200 1 1
     ..
 
-    9.4 Import updated Index Text Service feed. This step will be available once Kylo services are started and Kylo is up and running.
+    9.4. Import updated Index Text Service feed. This step should be done once Kylo services are started and Kylo is up and running.
 
         9.4.1. **[Elasticsearch version 2]** Import the feed ``index_text_service_elasticsearch.feed.zip`` file available at ``/opt/kylo/setup/data/feeds/nifi-1.0``
 
@@ -264,6 +264,12 @@ Upgrade Instructions from v0.8.2
    12.1. Remove the Register Index processor from the ``standard_ingest`` and ``data_transformation`` reusable templates
 
    12.2. Delete the Index Schema Service feed
+
+..
+
+13. Import updated Index Text Service feed as mentioned in earlier step 9.4. At this point, Kylo should be up and running and hence 9.4 can be completed.
+
+..
 
 .. |SolrAdminLink| raw:: html
 
