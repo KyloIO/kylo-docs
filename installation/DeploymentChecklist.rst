@@ -13,6 +13,8 @@ for more details in each section
     - [ ] Review library dependencies to ensure HDFS/Hive/Spark is current enough
     - [ ] Obtain approvals for Linux service users (If not, you must install using TAR method)
     - [ ] Obtain approvals for network ports
+    - [ ] Determine if I want to leverage liquibase to automatically install database scripts and upgrades for Kylo
+    - [ ] Request or generate SSL certificates if required
 
 - Hardware/OS Provisioning
     - [ ] Provision Edge Nodes

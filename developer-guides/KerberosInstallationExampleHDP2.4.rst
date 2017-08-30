@@ -103,7 +103,7 @@ utilities.
 
 2. Using a text editor, open the KDC server configuration file, located by default here:
 
-.. code-block: shell
+.. code-block:: shell
 
     vi /etc/krb5.conf
 
@@ -111,7 +111,7 @@ utilities.
 
 3. Change the [realms], as below, to sandbox.hortonworks.com. Update KDC and Admin Server Information.
 
-.. code-block: properties
+.. code-block:: properties
 
     [logging]
       default = FILE:/var/log/krb5libs.log
@@ -184,6 +184,12 @@ utilities.
     /etc/rc.d/init.d/krb5kdc start
     /etc/rc.d/init.d/kadmin start
 
+    or
+
+    systemctl start krb5kdc.service
+    systemctl start kadmin.service
+
+
 ..
 
 8. When installing and managing your own MIT KDC, it is important to set up the KDC server to auto-start on boot.
@@ -193,6 +199,11 @@ utilities.
     chkconfig krb5kdc on
     chkconfig kadmin on
 
+    or
+
+    systemctl enable krb5kdc.service
+    systemctl enable kadmin.service
+
 ..
 
 9. Create a KDC admin by creating an admin principal. Enter the password: thinkbig.
@@ -200,6 +211,7 @@ utilities.
 .. code-block:: shell
 
     kadmin.local -q "addprinc admin/admin"
+
 
 ..
 
@@ -215,7 +227,7 @@ utilities.
 
 .. code-block:: shell
 
-    */sandbox.hortonworks.com *
+    */admin@sandbox.hortonworks.com *
 
 ..
 
@@ -224,6 +236,12 @@ utilities.
 .. code-block:: shell
 
     /etc/rc.d/init.d/kadmin restart
+    /etc/rc.d/init.d/krb5kdc restart
+
+    or
+
+    systemctl restart kadmin.service
+    systemctl restart krb5kdc.service
 
 ..
 
@@ -262,36 +280,10 @@ Install Kerberos on an HDP Cluster
 
 |image5|
 
-    :doc:`../installation/KerberosInstallationExample-Cloudera`
+    :doc:`../developer-guides/KerberosInstallationExample-Cloudera`
 
 Make sure all services started properly. Kerberos is successfully installed on the cluster.
 
-KeyTab Generation
-=================
-
-Create a keytab file for NiFi user.
-
-.. code-block:: shell
-
-    kadmin.local
-    addprinc -randkey nifi@sandbox.hortonworks.com
-    xst -norandkey -k /etc/security/keytabs/nifi.headless.keytab
-    nifi@sandbox.hortonworks.co
-    exit
-
-    chown nifi:hadoop /etc/security/keytabs/nifi.headless.keytab
-    chmod 440 /etc/security/keytabs/nifi.headless.keytab
-
-..
-
-[Optional] You can initialize your keytab file using this command:
-
-.. code-block:: shell
-
-  kinit -kt /etc/security/keytabs/nifi.headless.keytab nifi
-
-  >>>>>>> Update
-  KerberosInstallation.adoc:docs/latest/security/KerberosInstallation.adoc
 
 ..
 

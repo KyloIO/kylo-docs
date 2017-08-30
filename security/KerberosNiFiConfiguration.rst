@@ -1,6 +1,6 @@
 
 =========================================
-NiFi Configuration for a Kerberos Cluster
+Enable Kerberos for NiFi
 =========================================
 
 Prerequisites

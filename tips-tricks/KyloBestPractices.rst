@@ -262,7 +262,7 @@ and the feed itself. This is triggered when the delete feed option is clicked on
 Clean up flows should be configured to start with a TriggerCleanup trigger processor and
 the attribute variables set to specify that feed. When you register the template in Kylo,
 be sure to set the attributes for the Trigger Cleanup processor to take the metadata systemNames
- of the feed.
+of the feed.
 
 For each client, think about what a clean-up best practice will be when you design the template
 as this may be different per client.

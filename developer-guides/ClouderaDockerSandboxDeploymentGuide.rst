@@ -126,7 +126,7 @@ Step 4: Install Kylo in the Docker Container
 
 1. Follow the Setup Wizard guide
 
-:doc:`../installation/KyloSetupWizardDeploymentGuide`
+:doc:`../installation/SetupWizardDeploymentGuide`
    
 
 2. Login to Kylo at <EC2_HOST>:8400, and NiFi at <EC2_HOST>:8079.

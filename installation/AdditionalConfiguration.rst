@@ -1,12 +1,33 @@
+=========================
+Additional Configuration
+=========================
+Before starting Kylo you will want to make sure the configuration is correct. Some common cases of when you would want to change the defaults is
 
-==========================================================
-Setup Wizard Configuration Guide for Cloudera
-==========================================================
+    1. Database configuration
+    3. Hive thrift connection configuration
 
-The configuration is setup to work out of the box with the Hortonworks
+Edit the Properties Files
+-------------------------
+There are 3 main properties files for Kylo
+
+.. code-block:: shell
+
+    $ vi /opt/kylo/kylo-services/conf/application.properties
+
+    $ vi /opt/kylo/kylo-services/conf/spark.properties
+
+    $ vi /opt/kylo/kylo-ui/conf/application.properties
+
+..
+
+For more details on the properties please see :doc:`../how-to-guides/ConfigurationProperties`
+
+
+Cloudera Configuration
+------------------------
+The configuration is setup to work out of the box with the Kylo Hortonworks
 sandbox. There are a few differences that require configuration changes
 for Cloudera.
-
 
 1. /opt/kylo/kylo-services/conf/application.properties
 
@@ -53,9 +74,4 @@ for Cloudera.
 ..
 
 
-Templates / System feeds
-========================
 
-1. index_schema_service
-    - Update "Set parameters" processor, set:
-        - hive.schema = {config.hive.schema}

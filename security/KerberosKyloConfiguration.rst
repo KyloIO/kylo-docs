@@ -1,6 +1,6 @@
 
 =========================================
-Configuration for a Kerberos Cluster
+Enable Kerberos for Kylo
 =========================================
 
 The Kylo applications contain features that leverage the thrift server

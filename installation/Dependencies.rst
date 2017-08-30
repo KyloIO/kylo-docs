@@ -1,6 +1,6 @@
 
 Review Dependencies
-============
+====================
 This page can be used as a guide to prepare you environment for installation.
 
 Supported Operating Systems
@@ -15,6 +15,16 @@ Supported Operating Systems
 +----------------------+--------------+
 | Ubuntu               | 16.x,17.x    |
 +----------------------+--------------+
+
+Supported Hadoop Distributions
+------------------------------
++-----------------------+-------------------------------------------------------------+----------------+
+| **Platform**          | **Sandbox URL**                                             | **Version**    |
++-----------------------+-------------------------------------------------------------+----------------+
+| Hortonworks           | https://hortonworks.com/products/sandbox/                   | HDP 2.3+       |
++-----------------------+-------------------------------------------------------------+----------------+
+| Cloudera              | https://www.cloudera.com/downloads/quickstart_vms/5-12.html | 5.8+           |
++-----------------------+-------------------------------------------------------------+----------------+
 
 Edge Node Hardware Requirements
 -------------------------------

@@ -13,6 +13,8 @@ The documentation for the site is organized into a few sections:
 
 * :ref:`about_toc`
 * :ref:`installation_toc`
+* :ref:`installation_examples_toc`
+* :ref:`common_configuration_toc`
 * :ref:`security_toc`
 * :ref:`how_to_guides`
 * :ref:`developer_guides`
@@ -28,6 +30,7 @@ The documentation for the site is organized into a few sections:
     about/KyloFrequentlyAskedQuestions
     about/KyloTerminology
     release-notes/ReleaseNotes
+    about/Downloads
 
 .. _installation_toc:
 .. toctree::
@@ -37,28 +40,65 @@ The documentation for the site is organized into a few sections:
     installation/Overview
     installation/Dependencies
     installation/DeploymentChecklist
+    installation/CreateServiceAccounts
+    installation/PrepareOfflineTar
+    installation/InstallKylo
+    installation/InstallAdditionalKyloComponents
+    installation/EnableKerberos
+    installation/AdditionalConfiguration
+    installation/GrantHdfsPrivileges
+    installation/StartServices
+    installation/ImportTemplates
+    installation/RunSampleFeed
+    installation/ValidateConfiguration
+
+
+.. _installation_examples_toc:
+.. toctree::
+    :maxdepth: 1
+    :caption: Installation Examples
+
+    installation/HDP25ClusterDeploymentGuide
+
+.. _common_configuration_toc:
+.. toctree::
+    :maxdepth: 1
+    :caption: Common Configuration
+
+    common-config/Overview
+    common-config/AdjustMemory
+    common-config/ChangeJavaHome
+    common-config/LogFiles
+    common-config/YarnClusterConfiguration
+    common-config/KyloSparkProperties
+    common-config/Postgres_Hive_Metadata_Configuration
 
 .. _security_toc:
 .. toctree::
     :maxdepth: 1
     :caption: Security
 
-    Authentication <security/Authentication>
-    Access Control <security/AccessControl>
+    Overview <security/Overview>
+    Encrypt Passwords <security/EncryptingConfigurationProperties>
+    Kylo Kerberos <security/KerberosKyloConfiguration>
+    NiFi Kerberos <security/KerberosNiFiConfiguration>
     Ranger <security/EnableRangerAuthorizationGuide>
     Sentry <security/EnableSentryAuthorizationGuide>
-    Kerberos <security/Kerberos>
+    SSL for Kylo <security/KyloUIWithSSL>
+    SSL for NiFi <security/ConfigureNiFiWithSSL>
+    Authentication <security/Authentication>
     Kerberos SPNEGO <security/KyloKerberosSPNEGO>
+    Access Control <security/AccessControl>
+    Hive User Impersonation <security/KyloUserImpersonation.rst>
+
 
 .. _how_to_guides:
 .. toctree::
     :maxdepth: 1
     :caption: How to guides
 
-    Kylo UI & SSL <how-to-guides/KyloUIWithSSL>
     NiFi Cluster <how-to-guides/SetupaNiFiClusterinaKyloSandbox>
     Kylo Cluster <how-to-guides/KyloClusterConfiguration>
-    NiFi & SSL <how-to-guides/ConfigureNiFiWithSSL>
     NiFi & HDFS Encryption <how-to-guides/ConfigNififorHDFSEncryption>
     NiFi & Kylo Provenance <how-to-guides/NiFiKyloProvenance>
     NiFi & Kylo Reporting Task (deprecated) <how-to-guides/NiFiKyloProvenanceReportingTask>
@@ -66,13 +106,17 @@ The documentation for the site is organized into a few sections:
     Kylo Templates <how-to-guides/KyloTemplatesDocs>
     Kylo Datasources <how-to-guides/KyloDatasources>
     Feed Lineage <how-to-guides/FeedLineage>
-    how-to-guides/SentryInstallationGuide
+    S3 & Data Wrangler <how-to-guides/AccessingS3fromtheDataWrangler>
+    S3 Data Ingest Template <how-to-guides/S3DataIngestTemplate.rst>
     SUSE Configuration <how-to-guides/SuseConfigurationChanges>
     Configuration Properties <how-to-guides/ConfigurationProperties>
     Validator Tuning <how-to-guides/ValidatorTuning>
     Kylo & Global Search <how-to-guides/ConfigureKyloForGlobalSearch>
     Service Monitor Plugins <how-to-guides/ServiceMonitorPlugins>
     JMS Providers <how-to-guides/JmsProviders>
+    Database Upgrades <how-to-guides/DatabaseUpgrades>
+    Icons and Colors <how-to-guides/KyloIconsAndColors>
+    Spark Streaming Tutorial <how-to-guides/SparkStreamingTutorial>
 
 .. _developer_guides:
 .. toctree::
@@ -83,6 +127,7 @@ The documentation for the site is organized into a few sections:
     Contributing <developer-guides/ContributingtoKylo>
     Plugin APIs <developer-guides/PluginApiIndex>
     REST API <developer-guides/KyloRestApi>
+    Enable Kerberos HDP <developer-guides/KerberosInstallationExampleHDP2.4>
 
 .. _user_guides:
 .. toctree::
@@ -117,8 +162,8 @@ The documentation for the site is organized into a few sections:
     installation/KerberosInstallationExample-Cloudera
     installation/YarnClusterConfiguration
     installation/KyloDependencies
-    installation/KyloManualDeploymentGuide
-    installation/KyloSetupWizardDeploymentGuide
+    installation/ManualDeploymentGuide
+    installation/SetupWizardDeploymentGuide
     installation/KyloTARFileInstallation
     installation/KylosConfigurationforaKerborosCluster
     installation/NiFiConfigurationforaKerberosCluster

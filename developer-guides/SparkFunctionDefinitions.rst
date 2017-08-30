@@ -60,9 +60,10 @@ The conversion string consists of literal characters that are copied as-is to th
 
 The conversion specifications have the following syntax:
 
-.. code-block::
+.. code-block:: properties
 
     %[flags]conversion
+
 
 **Conversion**
 
