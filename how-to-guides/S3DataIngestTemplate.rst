@@ -136,7 +136,7 @@ If you encounter an error similar to::
   2017-06-21 20:50:42,430 ERROR [Timer-Driven Process Thread-4] c.t.ingest.TableMergeSyncSupport Failed to execute alter table `category_name`.`feed_name_1498078145646` RENAME TO `catgeory_name`.`feed_name` with error
   java.sql.SQLException: Error while processing statement: FAILED: Execution Error, return code 1 from org.apache.hadoop.hive.ql.exec.DDLTask. Unable to alter table. Alter Table operation for <category_name>.<feed_name>_1498078145646 failed to move data due to: 'Renaming s3a://${hiveS3Bucket}/${hive.root.master}/<category_name>/<feed_name>_1498078145646 to s3a://hiveS3Bucket/${hive.metastore.warehouse.dir}/${category_name}.db/<feed_name> failed' See hive log file for details.
 
-Note that hive.root.master is a feed property and that hive.metasote.warehouse.dir is a property from your hive-site.xml.  In versions of Hive prior to 2.2.0 the HDFS location of a managed table, with a LOCATION clause, will be moved and that Hive derives the new location using the hive.metastore.warehouse.dir and the schema_name with a .db suffix.  
+Note that hive.root.master is a feed property and that hive.metastore.warehouse.dir is a property from your hive-site.xml.  In versions of Hive prior to 2.2.0 the HDFS location of a managed table, with a LOCATION clause, will be moved and that Hive derives the new location using the hive.metastore.warehouse.dir and the schema_name with a .db suffix.  
 Be sure that you have set the properties ``mapred.input.dir.recursive=true`` and ``hive.mapred.supports.subdirectories=true`` in your hive-site.xml.
 
 1.3.6 DeleteS3Object

@@ -118,6 +118,7 @@ The documentation for the site is organized into a few sections:
     Icons and Colors <how-to-guides/KyloIconsAndColors>
     Spark Streaming Tutorial <how-to-guides/SparkStreamingTutorial>
 
+
 .. _developer_guides:
 .. toctree::
     :maxdepth: 1
