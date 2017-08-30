@@ -11,7 +11,7 @@ Highlights
 - Provenance event performance tune-up. Fixed lag that could occur for high throughput streaming feeds.
 - Pluggable UI.  Ability to add dynamic new user interface components.  See: :doc:`../developer-guides/PluginApiIndex`
 - Wrangler support for Spark yarn-cluster mode
-- Wrangler supports :doc:`user impersonation <../installation/KyloUserImpersonation>`. There are a few different run modes depending on which :doc:`configuration properties <../installation/KyloSparkProperties>` are specified.
+- Wrangler supports :doc:`user impersonation <../security/KyloUserImpersonation>`. There are a few different run modes depending on which :doc:`configuration properties <../common-config/KyloSparkProperties>` are specified.
 - TAR file installation support. This allows installation in different folder locations and to be ran as different linux users/groups
 - Example S3 data ingest template. Ability to process data without bringing the data into the edge node.  See: :doc:`../how-to-guides/S3DataIngestTemplate`
 - SPNEGO bug fixes and improvements with Active Directory integration

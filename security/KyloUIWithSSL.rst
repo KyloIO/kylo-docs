@@ -104,7 +104,7 @@ keep the truststore in /opt/nifi/data/ssl directory, which belongs to 'nifi' use
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There are two places where you need to add StandardSSLContextService in Nifi. One is on the root level next to all other controller services,
-and the other is in controller services next to Kylo Reporting Task. See :doc:`NiFiKyloProvenanceReportingTask` on what Reporting Task is.
+and the other is in controller services next to Kylo Reporting Task. See :doc:`../how-to-guides/NiFiKyloProvenanceReportingTask` on what Reporting Task is.
 
 Set following properties on SSL Context Service:
 

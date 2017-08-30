@@ -111,7 +111,7 @@ utilities.
 
 3. Change the [realms], as below, to sandbox.hortonworks.com. Update KDC and Admin Server Information.
 
-.. code-block:: properties
+.. code-block:: none
 
     [logging]
       default = FILE:/var/log/krb5libs.log

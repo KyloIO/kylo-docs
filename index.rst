@@ -99,7 +99,6 @@ The documentation for the site is organized into a few sections:
 
     NiFi Cluster <how-to-guides/SetupaNiFiClusterinaKyloSandbox>
     Kylo Cluster <how-to-guides/KyloClusterConfiguration>
-    NiFi & HDFS Encryption <how-to-guides/ConfigNififorHDFSEncryption>
     NiFi & Kylo Provenance <how-to-guides/NiFiKyloProvenance>
     NiFi & Kylo Reporting Task (deprecated) <how-to-guides/NiFiKyloProvenanceReportingTask>
     Nifi Processors <how-to-guides/NiFiProcessorsDocs>
@@ -124,11 +123,17 @@ The documentation for the site is organized into a few sections:
     :maxdepth: 1
     :caption: Developer guides
 
-    Developer Guide <developer-guides/KyloDeveloperGuide>
     Contributing <developer-guides/ContributingtoKylo>
+    Developer Guide <developer-guides/KyloDeveloperGuide>
     Plugin APIs <developer-guides/PluginApiIndex>
     REST API <developer-guides/KyloRestApi>
     Enable Kerberos HDP <developer-guides/KerberosInstallationExampleHDP2.4>
+    Clean Kylo From Box <developer-guides/CleanKyloFromBox>
+    Cloudera Docker Sandbox <developer-guides/ClouderaDockerSandboxDeploymentGuide>
+    Hortonworks Sandbox Config <developer-guides/HortonworksSandboxConfiguration>
+    Kerberos Install Cloudera <developer-guides/KerberosInstallationExample-Cloudera>
+    Kerberos Install HDP <developer-guides/KerberosInstallationExampleHDP2.4>
+    Spark Function Definitions <developer-guides/SparkFunctionDefinitions>
 
 .. _user_guides:
 .. toctree::

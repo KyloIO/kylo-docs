@@ -11,7 +11,7 @@ Kylo has 3 build distributions:
 
   - **RPM** - An easy and opinionated way of installing Kylo on Redhat based systems
   - **DEB** - An easy and opinionated way of installing Kylo on Debian based systems
-  - **TAR File** – Available for those who want to install Kylo in a folder other than /opt/kylo, or want to run Kylo as a different user. See the :doc:`../installation/KyloTARFileInstallation`.
+  - **TAR File** – Available for those who want to install Kylo in a folder other than /opt/kylo, or want to run Kylo as a different user.
 
 Once the binary is installed Kylo can be configured a few different ways:
 

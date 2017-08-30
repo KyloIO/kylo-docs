@@ -24,7 +24,7 @@ provides a test client to make this easy.
 
     Follow the instructions in the test client to validate connectivity in the JVM
 
-    .. code-block:: properties
+    .. code-block:: shell
 
         $ java -jar /opt/kylo-kerberos-test-client-VERSION.jar
 

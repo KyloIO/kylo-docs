@@ -144,7 +144,7 @@ Kylo will start a separate process for each Kylo user in *Multi-User* mode. This
 The `auth-spark` Spring profile must be enabled for the Spark client to start.
 
 In a Kerberized environment Kylo will need to periodically execute `kinit` to ensure there is an active Kerberos ticket. Spark does not support supplying both a keytab and a proxy user on the
-command-line. See :doc:`KyloUserImpersonation` for more information on configuring user impersonation in a Kerberized environment.
+command-line. See :doc:`../security/KyloUserImpersonation` for more information on configuring user impersonation in a Kerberized environment.
 
 The options from `Managed Mode`_ are also supported.
 
