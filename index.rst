@@ -68,9 +68,9 @@ The documentation for the site is organized into a few sections:
     common-config/Overview
     common-config/AdjustMemory
     common-config/ChangeJavaHome
-    common-config/LogFiles
+    Log File Management <common-config/LogFiles>
     common-config/YarnClusterConfiguration
-    common-config/KyloSparkProperties
+    Configure Spark Modes <common-config/KyloSparkProperties>
     common-config/Postgres_Hive_Metadata_Configuration
 
 .. _security_toc:
@@ -80,16 +80,16 @@ The documentation for the site is organized into a few sections:
 
     Overview <security/Overview>
     Encrypt Passwords <security/EncryptingConfigurationProperties>
-    Kylo Kerberos <security/KerberosKyloConfiguration>
-    NiFi Kerberos <security/KerberosNiFiConfiguration>
-    Ranger <security/EnableRangerAuthorizationGuide>
-    Sentry <security/EnableSentryAuthorizationGuide>
-    SSL for Kylo <security/KyloUIWithSSL>
-    SSL for NiFi <security/ConfigureNiFiWithSSL>
-    Authentication <security/Authentication>
-    Kerberos SPNEGO <security/KyloKerberosSPNEGO>
-    Access Control <security/AccessControl>
-    Hive User Impersonation <security/KyloUserImpersonation.rst>
+    Enable Kerberos for Kylo <security/KerberosKyloConfiguration>
+    Enble Kerberos for NiFi <security/KerberosNiFiConfiguration>
+    Configure Ranger <security/EnableRangerAuthorizationGuide>
+    Configure Sentry <security/EnableSentryAuthorizationGuide>
+    Enable SSL for Kylo <security/KyloUIWithSSL>
+    Enable SSL for NiFi <security/ConfigureNiFiWithSSL>
+    Configure Authentication <security/Authentication>
+    Configure Kerberos SPNEGO <security/KyloKerberosSPNEGO>
+    Configure Access Control <security/AccessControl>
+    Enable Hive User Impersonation <security/KyloUserImpersonation.rst>
 
 
 .. _how_to_guides:
@@ -127,7 +127,6 @@ The documentation for the site is organized into a few sections:
     Developer Guide <developer-guides/KyloDeveloperGuide>
     Plugin APIs <developer-guides/PluginApiIndex>
     REST API <developer-guides/KyloRestApi>
-    Enable Kerberos HDP <developer-guides/KerberosInstallationExampleHDP2.4>
     Clean Kylo From Box <developer-guides/CleanKyloFromBox>
     Cloudera Docker Sandbox <developer-guides/ClouderaDockerSandboxDeploymentGuide>
     Hortonworks Sandbox Config <developer-guides/HortonworksSandboxConfiguration>

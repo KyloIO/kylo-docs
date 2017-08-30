@@ -1,6 +1,6 @@
 
 ====================
-Prepare Checklist
+Prepare Install Checklist
 ====================
 
 This checklist will help you prepare for an enterprise deployment and is valuable if you require approvals ahead of time. Please refer to the :doc:`../installation/Dependencies` guide
