@@ -11,6 +11,7 @@ Highlights
 - Column-level tagging. Apply tags to columns and search column tags using Global Search.
 - Schema changes for column descriptions. The Hive schema is updated when modifying the column description of a feed. The column description is also available on the Visual Query page when hovering over a column name.
 - Alerts improvement. User Interface enhancements and additional alerts capabilities.  The Alerts page has been improved and the alerts on the dashboard are now in sync with the alerts page and adhere to entity access controls
+- Category-level feed role memberships. Ability to manage feed access control of all feeds under a category by assigning feed role memberships at the category level
 - Ability to query/filter Service Level Assessments against the Service Level Agreements
 - IE & Safari browser support
 - :doc:`Elasticsearch 5 <../how-to-guides/ConfigureKyloForGlobalSearch>` support

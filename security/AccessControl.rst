@@ -12,20 +12,17 @@ between the Kylo applications and the Hadoop cluster.
 Authorization
 -------------
 
-Authorization within Kylo will use access control lists (ACL) to control
-what actions users may perform and what data they may see.  The actions
-that a user or group may perform, whether to invoke a function or access
-data, are organized into a hierarchy, and privileges may be granted at
-any level in that hierarchy.
-
-Authorization in Kylo is divided into two layers: service-level (Kylo-wide) permissions and entity-level permissions.
+Authorization within Kylo uses access control lists (ACL) to control what users can do and see. 
 A permission in Kylo is the granting to a user or group the right to perform some action, such as see the description of a template, 
-create and edit a category, enable/disable a feed, etc.  Access to these functions can often be controlled at both 
-the service-level and entity-level.
+create and edit a category, enable/disable a feed, etc.  
+These actions are organized into a hierarchies and permission to perform an action may be granted at any level in that hierarchy.
+
+Authorization in Kylo is divided into two layers: service-level (Kylo-wide) permissions and (when enabled) entity-level permissions.
+Access to these functions can often be controlled at both the service-level and entity-level.
 
 Users and Groups can be updated using the Users and Groups pages under the Admin section in Kylo.
 
-.. note:: If groups are enabled for an authentication plugin module, then user groups will be provided by the external provider and may not be updatable from the Users page.
+.. note:: If groups are enabled only by an external authentication source (such as LDAP) via a plugin module then user groups may not be visible in the Users page.
 
 Default Users and Groups
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -200,6 +197,19 @@ Kylo comes with a set of default roles for each kind of entity as described belo
  Admin      All capabilities defined in the 'Editor' role along with the ability to change the permissions
  Read-Only  Allows a user to view the datasource
 ==========  ===
+
+~~~~~~~~~~~~~
+Category-Wide Feed Role Memberships
+~~~~~~~~~~~~~
+
+Kylo supports adding users and groups to feed roles at the category level that apply to all feeds under that category.
+This is useful when you wish to organize your feed access control around feeds grouped by category and apply all feed
+access control changes in one place.  Assigning feed role memberships at the category level does not prevent adding 
+additional memberships on each individual feed however.  The members of the roles of a particular feed are the union
+of all memberships assigned at the individual feed level and at the level of the category containing that feed.
+
+In Kylo feed role memberships are managed by editing them in the category details page just below where the category
+role memberships are managed.
 
 Why Two Levels of Access Control?
 ---------------------------------
