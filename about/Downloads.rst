@@ -3,20 +3,20 @@ Downloads
 ==============
 This page contains links to the commons files you might want to download
 
-Latest Kylo Distribution (0.8.2)
+Latest Kylo Distribution (0.8.3)
 --------------------------------
 
 +-----+------------------------+
 |Type |Link                    |
 +-----+------------------------+
-|RPM  |http://bit.ly/2uT8bTo   |
+|RPM  | http://bit.ly/2xOA8wd  |
 +-----+------------------------+
-|DEB  | http://bit.ly/2uSTvUv  |
+|DEB  | http://bit.ly/2gkYmr1  |
 +-----+------------------------+
-|TAR  | http://bit.ly/2ug8ZUz  |
+|TAR  | http://bit.ly/2wk1kVH  |
 +-----+------------------------+
 
 Plugins
 -------
 Plugins can be downloaded from the maven central repository
-TODO - Add examples
+TODO - Bear with us. We are adding the plugin jars to maven central in the next couple of days (9/1)
