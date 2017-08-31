@@ -17,15 +17,13 @@ Highlights
 - New angular UI module plugin support.  Ability to create entirely new user interface modules and plug them into the UI navigation. Refer to |KyloModuleLink|
 - Spark Jobserver processors for NiFi. Reuse a SparkContext between multiple Spark jobs for increased performance. Requires an existing |SparkJobserverLink|.
 - Pluggable Spark functions. Custom Spark functions can be added to the Visual Query page by providing a json file with the function definitions. Refer to :doc:`Writing Spark Function Definitions <../developer-guides/SparkFunctionDefinitions>`.
+- MS SQL support
+- Maven Central support
 
 Download Links
 --------------
 
- - RPM :
-
- - Debian :
-
- - TAR :
+Visit the :doc:`Downloads <../about/Downloads>` page for links.
 
 Upgrade Instructions from v0.8.2
 --------------------------------
