@@ -100,7 +100,6 @@ The documentation for the site is organized into a few sections:
     NiFi Cluster <how-to-guides/SetupaNiFiClusterinaKyloSandbox>
     Kylo Cluster <how-to-guides/KyloClusterConfiguration>
     NiFi & Kylo Provenance <how-to-guides/NiFiKyloProvenance>
-    NiFi & Kylo Reporting Task (deprecated) <how-to-guides/NiFiKyloProvenanceReportingTask>
     Nifi Processors <how-to-guides/NiFiProcessorsDocs>
     Kylo Templates <how-to-guides/KyloTemplatesDocs>
     Kylo Datasources <how-to-guides/KyloDatasources>
