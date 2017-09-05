@@ -37,63 +37,61 @@ Configuration Steps
 
 .. code-block:: shell
 
-    [root]# kadmin.local
+    [root]$ kadmin.local
 
     kadmin.local: addprinc -randkey "kylo@sandbox.hortonworks.com"
 
-    kadmin.local: xst -norandkey -k
-    /etc/security/keytabs/kylo.headless.keytab
-    kylo@sandbox.hortonworks.com
+    kadmin.local: xst -norandkey -k /etc/security/keytabs/kylo.headless.keytab kylo@sandbox.hortonworks.com
 
-    kadmin.local: xst -norandkey -k
-    /etc/security/keytabs/hive-kylo.headless.keytab
-    hive/sandbox.hortonworks.com@sandbox.hortonworks.com
+    kadmin.local: xst -norandkey -k /etc/security/keytabs/hive-kylo.headless.keytab hive/sandbox.hortonworks.com@sandbox.hortonworks.com
 
     kadmin.local: exit
 
-    [root]# chown kylo:hadoop
-    /etc/security/keytabs/kylo.headless.keytab
+    [root]$ chown kylo:hadoop /etc/security/keytabs/kylo.headless.keytab
 
-    [root]# chmod 440 /etc/security/keytabs/kylo.headless.keytab
+    [root]$ chmod 440 /etc/security/keytabs/kylo.headless.keytab
 
-    [root]# chown kylo:hadoop
-    /etc/security/keytabs/hive-kylo.headless.keytab
+    [root]$ chown kylo:hadoop /etc/security/keytabs/hive-kylo.headless.keytab
 
-    [root]# chmod 440
-    /etc/security/keytabs/hive-kylo.headless.keytab
+    [root]$ chmod 440 /etc/security/keytabs/hive-kylo.headless.keytab
 
 ..
 
-1. Validate that the Keytabs Work.
+2. Validate that the Keytabs Work.
 
-    [root]# su – kylo
+.. code-block:: shell
 
-    [root]# kinit -kt /etc/security/keytabs/kylo.headless.keytab
-    kylo
+    [root]$ su – kylo
 
-    [root]# klist
+    [root]$ kinit -kt /etc/security/keytabs/kylo.headless.keytab kylo
 
-    [root]# su – hive
+    [root]$ klist
 
-    [root]# kinit -kt
-    /etc/security/keytabs/hive-kylo.headless.keytab
-    hive/sandbox.hortonworks.com
+    [root]$ su – hive
 
-    [root]# klist
+    [root]$ kinit -kt /etc/security/keytabs/hive-kylo.headless.keytab hive/sandbox.hortonworks.com
 
-2. Modify the kylo-spark-shell configuration. If the `spark.shell.server` properties are set in `spark.properties` then the `run-kylo-spark-shell.sh` script will also need to be modified.
+    [root]$ klist
 
-    [root]# vi /opt/kylo/kylo-services/conf/spark.properties
+..
+
+3. Modify the kylo-spark-shell configuration. If the `spark.shell.server` properties are set in `spark.properties` then the `run-kylo-spark-shell.sh` script will also need to be modified.
+
+.. code-block:: shell
+
+    [root]$ vi /opt/kylo/kylo-services/conf/spark.properties
 
     kerberos.spark.kerberosEnabled = true
     kerberos.spark.keytabLocation = /etc/security/keytabs/kylo.headless.keytab
     kerberos.spark.kerberosPrincipal = kylo@sandbox.hortonworks.com
 
-    [root]# vi /opt/kylo/kylo-services/bin/run-kylo-spark-shell.sh
+    [root]$ vi /opt/kylo/kylo-services/bin/run-kylo-spark-shell.sh
 
     spark-submit --principal 'kylo@sandbox.hortonworks.com' --keytab /etc/security/keytabs/kylo.headless.keytab ...
 
-3. Modify the kylo-services configuration.
+..
+
+4. Modify the kylo-services configuration.
 
 .. tip:: Replace "sandbox.hortonworks.com" with your domain.
 
@@ -102,50 +100,37 @@ Configuration Steps
 
 .. code-block:: shell
 
-    [root]# vi
-    /opt/kylo/kylo-services/conf/application.properties
+    [root]$ vi  /opt/kylo/kylo-services/conf/application.properties
 
-..
-
-.. code-block:: shell
-
-    # This property is for the hive thrift connection used by
-    kylo-services
-
+    # This property is for the hive thrift connection used by kylo-services
     hive.datasource.url=jdbc:hive2://localhost:10000/default;principal=hive/sandbox.hortonworks.com@sandbox.hortonworks.com
 
-    # This property will default the URL when importing a template using
-    the thrift connection
-
+    # This property will default the URL when importing a template using the thrift connection
     nifi.service.hive_thrift_service.database_connection_url=jdbc:hive2://localhost:10000/default;principal=hive/sandbox.hortonworks.com@sandbox.hortonworks.com
 
-    # Set Kerberos to true for the kylo-services application and set
-    the 3 required properties
+    # Set Kerberos to true for the kylo-services application and set the 3 required properties
 
     kerberos.hive.kerberosEnabled=true
-
     kerberos.hive.hadoopConfigurationResources=/etc/hadoop/conf/core-site.xml,/etc/hadoop/conf/hdfs-site.xml
-
     kerberos.hive.kerberosPrincipal=hive/sandbox.hortonworks.com
-
     kerberos.hive.keytabLocation=/etc/security/keytabs/hive-kylo.headless.keytab
 
-    # uncomment these 3 properties to default all NiFi processors that
-    have these fields. Saves time when importing a template
+    # uncomment these 3 properties to default all NiFi processors that have these fields. Saves time when importing a template
 
     nifi.all_processors.kerberos_principal=nifi
-
     nifi.all_processors.kerberos_keytab=/etc/security/keytabs/nifi.headless.keytab
-
     nifi.all_processors.hadoop_configuration_resources=/etc/hadoop/conf/core-site.xml,/etc/hadoop/conf/hdfs-site.xml
 
 ..
 
-4. Restart the kylo-services and kylo-spark-shell.
+5. Restart the kylo-services and kylo-spark-shell.
 
-    [root]# service kylo-services restart
+.. code-block:: shell
 
-    [root]# service kylo-spark-shell restart
+    [root]$ service kylo-services restart
+    [root]$ service kylo-spark-shell restart
+
+..
 
 Kylo is now configured for a Kerberos cluster. You can test that it is
 configured correctly by looking at profile statistics (if applicable):
