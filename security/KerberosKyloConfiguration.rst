@@ -63,15 +63,15 @@ Configuration Steps
 
     [root]$ su – kylo
 
-    [root]$ kinit -kt /etc/security/keytabs/kylo.headless.keytab kylo
+    [kylo]$ kinit -kt /etc/security/keytabs/kylo.headless.keytab kylo
 
-    [root]$ klist
+    [kylo]$ klist
 
     [root]$ su – hive
 
-    [root]$ kinit -kt /etc/security/keytabs/hive-kylo.headless.keytab hive/sandbox.hortonworks.com
+    [hive]$ kinit -kt /etc/security/keytabs/hive-kylo.headless.keytab hive/sandbox.hortonworks.com
 
-    [root]$ klist
+    [hive]$ klist
 
 ..
 
@@ -132,7 +132,7 @@ Configuration Steps
 
 ..
 
-Kylo is now configured for a Kerberos cluster. You can test that it is
+Kylo is now configured for a Kerberos cluster. You can tesadfadsfadfat that it is
 configured correctly by looking at profile statistics (if applicable):
 go to the Tables page and drill down into a Hive table, and go to the
 Wrangler feature and test that it works.
