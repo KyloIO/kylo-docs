@@ -136,7 +136,14 @@ b. Offline Mode
 
 
 **Option 2**: Use an existing Elasticsearch.
-To leverage an existing Elasticsearch instance, you must update all feed templates that you created with the correct Elasticsearch URL.You can do this by going to the "Additional Properties" tab for that feed. If you added any reusable flow templates you will need to modify the Elasticsearch processors in NiFI.
+    - To leverage an existing Elasticsearch instance, you must update all feed templates that you created with the correct Elasticsearch URL.You can do this by going to the "Additional Properties" tab for that feed. If you added any reusable flow templates you will need to modify the Elasticsearch processors in NiFI.
+
+    - Execute a script to create kylo indexes. If these already exist, Elasticsearch will report an ``index_already_exists_exception``. It is safe to ignore this and continue. Change the host and port if necessary.
+
+    .. code-block:: shell
+
+        /opt/kylo/bin/create-kylo-indexes-es.sh localhost 9200 1 1
+    ..
 
 .. note:: Tip: To test that Elasticsearch is running type "curl localhost:9200". You should see a JSON response.
 
