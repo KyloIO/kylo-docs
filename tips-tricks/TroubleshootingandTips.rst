@@ -798,3 +798,72 @@ Validator throws an error while trying to process the policy JSON file. This iss
 Solution
 --------
 Ensure that the policy file is correctly formatted. External editors can sometimes put in invalid characters. One way to do this verification is at: `JSON Pretty Print <http://jsonprettyprint.com/>`_. Paste in the policy file in the text box and click 'Pretty Print JSON'. If the JSON is valid, it will be shown in a more readable format. Otherwise, a ``null`` will be output.
+
+
+Creating a feed fails due to java.sql.BatchUpdateException
+==========================================================
+
+Problem
+-------
+When using MySQL/MariaDB as the database for Kylo, creating a feed with large number of columns can lead to an exception in the last step (Setting the feed schedule and saving it). Sample exception below:
+
+.. code-block:: none
+
+    java.sql.BatchUpdateException: (conn:330) Could not send query: stream size 1652321 is >= to max_allowed_packet (1048576)
+
+
+Solution
+--------
+Increase the *max_allowed_packet* configuration parameter for the database server.
+
+1. Add this entry to file **/etc/my.cnf** under the **[mysqld]** section.
+
+.. code-block:: none
+
+    [mysqld]
+    max_allowed_packet=16M
+
+2. Restart the database server. Choose command as per your database.
+
+.. code-block:: none
+
+    service mariadb restart
+    service mysql restart
+
+3. Verify the change by executing this in the database client console.
+
+.. code-block:: none
+
+    show variables like 'max_allowed_packet';
+
+4. Save the feed now.
+
+
+When using Solr, indexing schema with large number of fields throws exception
+=============================================================================
+
+Problem
+-------
+When using Solr as the search engine, indexing of the feed schema can throw an exception similar to below. This happens when the feed contains a large number of columns.
+
+.. code-block:: none
+
+    Exception writing document id a1e41cbc-d550-49cc-bc20-49fc981e767e to the index; possible analysis error: Document contains at least one immense term in field="hiveColumns" (whose UTF8 encoding is longer than the max length 32766), all of which were skipped. Please correct the analyzer to not produce such terms.
+
+
+Solution
+--------
+1. Execute this command. Replace **localhost** if necessary.
+
+.. code-block:: none
+
+    curl -X POST -H 'Content-type:application/json' --data-binary '{
+    "replace-field":{
+     "name":"hiveColumns",
+     "type":"text_general" } }' "http://localhost:8983/solr/kylo-datasources/schema?wt=json&indent=true"
+
+2. Restart Solr server.
+
+
+3. Create the feed again.
+
