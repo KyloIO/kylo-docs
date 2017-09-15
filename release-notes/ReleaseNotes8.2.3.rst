@@ -37,7 +37,7 @@ Build or `download the rpm <http://bit.ly/2x7BB3q>`__
 
  ..
 
-3. Copy the application.properties file from the previous install  If you have customized the application.properties file you will want to copy the 0.8.1 version and add the new properties that were added for this release.
+3. Copy the application.properties file from the previous install  If you have customized the application.properties file you will want to copy the 0.8.2 version and add the new properties that were added for this release.
 
      3.1 Find the /bkup-config/TIMESTAMP/kylo-services/application.properties file
 
