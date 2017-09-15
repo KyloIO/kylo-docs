@@ -1,28 +1,25 @@
-Release 0.8.2.2 (September 12, 2017)
+Release 0.8.2.3 (September 15, 2017)
 ====================================
 
 Highlights
 ----------
-- Optimize feed creation in NiFi and improve NiFi usability when there is a large number of feeds
-- Ability to skip NiFi auto alignment when saving feeds
-- Fix bug in operations manager that didn't correctly fail jobs
-- Support for 'failure connection' detection in feeds that contain sub process groups
-- For a complete list of issues resolved visit: :doc:`ReleaseNotes8.2.2.issues`
-
+- This releases further optimizes Kylo and NiFi integration.
+- Fixes KYLO-823, KYLO-1202 setting controller service properties in feed/reusable templates
+- Reduces the verbose logging output (in 0.8.2.2) to debug when creating feeds
 
 Download Links
 --------------
 
- - RPM : `<http://bit.ly/2fhpVSq>`__
+ - RPM : `<http://bit.ly/2x7BB3q>`__
 
- - Debian : `<http://bit.ly/2eUBtKA>`__
+ - Debian : `<http://bit.ly/2wuQgSA>`__
 
- - TAR : `<http://bit.ly/2x0g7FD>`__
+ - TAR : `<http://bit.ly/2h81kiK>`__
 
 Upgrade Instructions from v0.8.2
 --------------------------------
 
-Build or `download the rpm <http://bit.ly/2fhpVSq>`__
+Build or `download the rpm <http://bit.ly/2x7BB3q>`__
 
 1. Uninstall Kylo:
 
@@ -40,7 +37,7 @@ Build or `download the rpm <http://bit.ly/2fhpVSq>`__
 
  ..
 
-3. Copy the application.properties file from the 0.8.1 install.  If you have customized the application.properties file you will want to copy the 0.8.1 version and add the new properties that were added for this release.
+3. Copy the application.properties file from the previous install  If you have customized the application.properties file you will want to copy the 0.8.1 version and add the new properties that were added for this release.
 
      3.1 Find the /bkup-config/TIMESTAMP/kylo-services/application.properties file
 
@@ -57,13 +54,13 @@ Build or `download the rpm <http://bit.ly/2fhpVSq>`__
 
         ..
 
-     3.3 Optional: If you want to skip the auto alignment after saving feeds then add in the new properties to the /opt/kylo/kylo-services/application.properties file
+     3.3 Optional: At startup Kylo inspects NiFi to build a cache of NiFi flow data. It now does this with multiple threads.  By default it uses 10 threads.  You can modify this by setting the following property:
 
          .. code-block:: shell
 
-                ## skip auto alignment after you create a feed.
-                ##You can always manually align your flows in NiFi via a Kylo Rest Endpoint
-                nifi.auto.align=false
+                ## Modify the number of threads used by Kylo at startup to inspect and build the NiFi flow cache.  Default is 10 if not specified
+                nifi.flow.inspector.threads=10
+
          ..
 
      3.4 Ensure the property ``security.jwt.key`` in both kylo-services and kylo-ui application.properties file match.  They property below needs to match in both of these files:
