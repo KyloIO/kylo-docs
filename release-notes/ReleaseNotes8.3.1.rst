@@ -10,6 +10,7 @@ Highlights
 - Fixes KYLO-823, KYLO-1202 setting controller service properties in feed/reusable templates
 - Follow targetURL when logging in
 - Fix Hive impersonation bug
+- Additional metadata indexing to increase Kylo performance
 
 
 Download Links
@@ -93,82 +94,7 @@ Build or download the rpm
       Example:  /opt/kylo/setup/nifi/update-nars-jars.sh /opt/nifi /opt/kylo/setup nifi users
    ..
 
-5. Optional: To increase performance in Kylo you can choose to add indexes to the ``metadata-repository.json`` file.  Add the following json snippet to the ``/opt/kylo/kylo-services/conf/metadata-repository.json``
-
-  5.1 make a directory that kylo has read/write acess to:
-
-       .. code-block:: shell
-
-          mkdir -p /opt/kylo/modeshape/modeshape-local-index/
-
-       ..
-   5.2. Edit the  ``/opt/kylo/kylo-services/conf/metadata-repository.json`` and add in this snippet of JSON.  Please ensure the "directory" in the json is the same that you created above.
-
-          .. code-block:: javascript
-
-                "indexProviders": {
-                    "local": {
-                        "classname": "org.modeshape.jcr.index.local.LocalIndexProvider",
-                        "directory": "/opt/kylo/modeshape/modeshape-local-index/"
-                    }
-                    },
-                    "indexes": {
-                        "feedModificationDate": {
-                            "kind": "value",
-                            "provider": "local",
-                            "nodeType": "tba:feed",
-                            "columns": "jcr:lastModified(DATE)"
-                        },
-                        "feedState": {
-                            "kind": "value",
-                            "provider": "local",
-                            "nodeType": "tba:feedData",
-                            "columns": "tba:state(NAME)"
-                        },
-                        "categoryName": {
-                            "kind": "value",
-                            "provider": "local",
-                            "nodeType": "tba:category",
-                            "columns": "tba:systemName(STRING)"
-                        },
-                        "titleIndex": {
-                            "kind": "value",
-                            "provider": "local",
-                            "nodeType": "mix:title",
-                            "columns": "jcr:title(STRING)"
-                        },
-                        "nodesByName": {
-                            "kind": "value",
-                            "provider": "local",
-                            "synchronous": "true",
-                            "nodeType": "nt:base",
-                            "columns": "jcr:name(NAME)"
-                        },
-                        "nodesByDepth": {
-                            "kind": "value",
-                            "provider": "local",
-                            "synchronous": "true",
-                            "nodeType": "nt:base",
-                            "columns": "mode:depth(LONG)"
-                        },
-                        "nodesByPath": {
-                            "kind": "value",
-                            "provider": "local",
-                            "synchronous": "true",
-                            "nodeType": "nt:base",
-                            "columns": "jcr:path(PATH)"
-                        },
-                        "nodeTypes": {
-                            "kind": "nodeType",
-                            "provider": "local",
-                            "nodeType": "nt:base",
-                            "columns": "jcr:primaryType(STRING)"
-                        }
-                    },
-
-          ..
-
-     *Note*:  After you start you may need to re-index kylo.  You can do this via a REST endpoint after you login to Kylo at the following url:
+5. After you startup you may need to re-index the Kylo metadata.  You can do this via a REST endpoint after you login to Kylo at the following url:
 
        http://localhost:8400/proxy/v1/metadata/debug/jcr-index/reindex
 
