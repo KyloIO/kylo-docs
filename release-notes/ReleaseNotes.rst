@@ -10,8 +10,15 @@ Latest Stable Release
 
     ReleaseNotes8.3
 
-    ReleaseNotes8.2.3
+    ReleaseNotes8.2.4
 
+In Development
+~~~~~~~~~~~~~~
+
+.. toctree::
+    :maxdepth: 1
+
+    ReleaseNotes8.3.1
 
 Previous Releases
 ~~~~~~~~~~~~~~~~~
@@ -19,6 +26,7 @@ Previous Releases
 .. toctree::
     :maxdepth: 1
 
+    ReleaseNotes8.2.3
     ReleaseNotes8.2.2
     ReleaseNotes8.2
     ReleaseNotes8.1
