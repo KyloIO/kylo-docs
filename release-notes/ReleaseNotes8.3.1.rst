@@ -16,12 +16,16 @@ Highlights
 Download Links
 --------------
 
-Coming soon.
+ - RPM : `<http://bit.ly/2xgHsUM>`__
+
+ - Debian : `<http://bit.ly/2hhqKOG>`__
+
+ - TAR : `<http://bit.ly/2xT9ExY>`__
 
 Upgrade Instructions from v0.8.3
 --------------------------------
 
-Build or download the rpm
+Build or `download the RPM <http://bit.ly/2xgHsUM>`__
 
 1. Uninstall Kylo:
 
