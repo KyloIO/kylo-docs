@@ -49,3 +49,12 @@ Upgrade Instructions from v0.8.3
 - If using Elasticsearch 5, update the **Index Text Service** feed. This step should be done once Kylo services are started and Kylo is up and running.
 
     - [Note: This requires NiFi 1.3 or later] Import the feed ``index_text_service_v2.feed.zip`` file available at ``/opt/kylo/setup/data/feeds/nifi-1.3``. Click 'Yes' for these options during feed import (a) Overwrite Feed (b) Replace Feed Template (c) Replace Reusable Template.
+
+- If using Elasticsearch 2, install an additional plugin to support deletes. If required, change the location to where Elasticsearch is installed.
+
+.. code-block:: shell
+
+     sudo /usr/share/elasticsearch/bin/plugin install delete-by-query
+     service elasticsearch restart
+
+..
