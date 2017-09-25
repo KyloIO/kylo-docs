@@ -161,7 +161,7 @@ Download the required JARS for Hive to write table data to ElasticSearch. Using 
 2.2  Launch an EC2 instance using the Sandbox AMI
 -------------------------------------------------
 
-  The S3 template was developed using the 0.8.1 sandbox but relies on code changes to be released in the 0.8.2 release.  Go to AWS Market place and find the 0.8.2 sandbox for your region and launch the instance.  Wait 15 minutes or more for nifi service and kylo services to start.  Now shut down Nifi so we can change cluster configs and will need to refresh the NiFi connections to the cluster. Shut down Kylo so we change the application properties later. 
+  The S3 template was developed using the 0.8.1 sandbox but relies on code changes to be released in the 0.8.3 release.  Go to AWS Market place and find the 0.8.3 sandbox for your region and launch the instance.  Wait 15 minutes or more for nifi service and kylo services to start.  Now shut down Nifi so we can change cluster configs and will need to refresh the NiFi connections to the cluster. Shut down Kylo so we change the application properties later. 
 
 .. code-block:: shell
 
