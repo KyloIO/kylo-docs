@@ -84,7 +84,7 @@ Startup the Sandbox
 
 .. code-block:: shell
 
-    $ ssh root@localhost -p 2222 (password is "hadoop")   
+    $ ssh root@localhost -p 2222 (password is "kylo")   
 
 ..
 
