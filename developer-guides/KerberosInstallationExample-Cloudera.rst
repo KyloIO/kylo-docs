@@ -3,6 +3,8 @@
 Kerberos Installation Example - Cloudera
 ========================================
 
+.. note:: This document was developed by going through these steps in a base CDH Sandbox 5.4, not the newer Kylo sandbox on Cloudera distribution. 
+
 .. important:: This document should only be used for DEV/Sandbox purposes. It is useful to help quickly Kerberize your Cloudera sandbox so that you can test Kerberos features.
 
 
@@ -111,19 +113,14 @@ On a cluster, go to the master node for installation of Kerberos utilities.
 3. Change the [realms] as below to "quickstart.cloudera" . Update KDC and Admin Server Information.
 
 
-   **[logging]**
-
 .. code-block:: properties
 
+   [logging]
       default = FILE:/var/log/krb5libs.log
       kdc = FILE:/var/log/krb5kdc.log
       admin_server = FILE:/var/log/kadmind.log
 
-..
-   **[libdefaults]**
-
-.. code-block:: properties
-
+   [libdefaults]
       default_realm = quickstart.cloudera
       dns_lookup_realm = false
       dns_lookup_kdc = false
@@ -131,34 +128,23 @@ On a cluster, go to the master node for installation of Kerberos utilities.
       renew_lifetime = 7d
       forwardable = true
 
-..
-
-   **[realms]**
-
-.. code-block:: shell
-
+   [realms]
       quickstart.cloudera = {
-      kdc = quickstart.cloudera
-      admin_server = quickstart.cloudera
+        kdc = quickstart.cloudera
+        admin_server = quickstart.cloudera
       }
 
 ..
 
 4. Update /var/kerberos/krb5kdc/kdc.conf. Change the [realms] as "quickstart.cloudera".
 
-   **[kdcdefaults]**
-
 .. code-block:: properties
 
+   [kdcdefaults]
       kdc_ports = 88
       kdc_tcp_ports = 88
 
-..
-
-   **[realms]**
-
-.. code-block:: shell
-
+   [realms]
       quickstart.cloudera = {
         #master_key_type = aes256-cts
         acl_file = /var/kerberos/krb5kdc/kadm5.acl
@@ -175,7 +161,7 @@ On a cluster, go to the master node for installation of Kerberos utilities.
 
 .. code-block:: shell
 
-    */admin@quickstart.cloudera*
+    */admin@quickstart.cloudera  *
 
 ..
 
