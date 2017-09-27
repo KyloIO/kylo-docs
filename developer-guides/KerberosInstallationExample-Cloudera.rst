@@ -16,12 +16,13 @@ All client node should have java installed on it.
 
 .. code-block:: shell
 
-    $ java version "1.7.0_80"
-    $ Java(TM) SE Runtime Environment (build 1.7.0_80-b15)
-    $ Java HotSpot(TM) 64-Bit Server VM (build 24.80-b11, mixed mode)
+    $ java -version
+    version  "1.7.0_80"
+    Java(TM) SE Runtime Environment (build 1.7.0_80-b15)
+    Java HotSpot(TM) 64-Bit Server VM (build 24.80-b11, mixed mode)
 
     $ echo $JAVA_HOME
-    $ /usr/java/jdk1.7.0_80
+    /usr/java/jdk1.7.0_80
 
 ..
 
@@ -30,11 +31,7 @@ Install Java Cryptography Extensions (JCE)
 
 .. code-block:: shell
 
-    sudo wget -nv --no-check-certificate --no-cookies --header "Cookie:
-    oraclelicense=accept-securebackup-cookie"
-    http://download.oracle.com/otn-pub/java/jce/7/UnlimitedJCEPolicyJDK7.zip
-    -O
-    /usr/java/jdk1.7.0_80/jre/lib/security/UnlimitedJCEPolicyJDK7.zip
+    sudo wget -nv --no-check-certificate --no-cookies --header "Cookie:oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jce/7/UnlimitedJCEPolicyJDK7.zip -O /usr/java/jdk1.7.0_80/jre/lib/security/UnlimitedJCEPolicyJDK7.zip
 
     cd /usr/java/jdk1.7.0_80/jre/lib/security
 
