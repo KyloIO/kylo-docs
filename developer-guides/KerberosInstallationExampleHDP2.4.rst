@@ -16,12 +16,13 @@ Java must be installed on all client nodes.
 
 .. code-block:: shell
 
-    $ java version "1.7.0_80"
-    $ Java(TM) SE Runtime Environment (build 1.7.0_80-b15)
-    $ Java HotSpot(TM) 64-Bit Server VM (build 24.80-b11, mixed mode)
+    $ java -version
+    java version "1.7.0_80"
+    Java(TM) SE Runtime Environment (build 1.7.0_80-b15)
+    Java HotSpot(TM) 64-Bit Server VM (build 24.80-b11, mixed mode)
 
     $ echo $JAVA_HOME
-    $ /usr/java/jdk1.7.0_80
+    /usr/java/jdk1.7.0_80
 
 ..
 
@@ -136,27 +137,22 @@ utilities.
 
 4. Update /var/kerberos/krb5kdc/kdc.conf. Change the [realms] as sandbox.hortonworks.com.
 
-   **[kdcdefaults]**
 
 .. code-block:: properties
 
+   [kdcdefaults]
       kdc_ports = 88
       kdc_tcp_ports = 88
 
-..
-
-   **[realms]**
-
-.. code-block:: shell
-
+   [realms]
       sandbox.hortonworks.com = {
-      #master_key_type = aes256-cts
-      acl_file = /var/kerberos/krb5kdc/kadm5.acl
-      dict_file = /usr/share/dict/words
-      admin_keytab = /var/kerberos/krb5kdc/kadm5.keytab
-      supported_enctypes = aes256-cts:normal aes128-cts:normal
-      des3-hmac-sha1:normal arcfour-hmac:normal des-hmac-sha1:normal
-      des-cbc-md5:normal des-cbc-crc:normal
+         #master_key_type = aes256-cts
+         acl_file = /var/kerberos/krb5kdc/kadm5.acl
+         dict_file = /usr/share/dict/words
+         admin_keytab = /var/kerberos/krb5kdc/kadm5.keytab
+         supported_enctypes = aes256-cts:normal aes128-cts:normal
+         des3-hmac-sha1:normal arcfour-hmac:normal des-hmac-sha1:normal
+         des-cbc-md5:normal des-cbc-crc:normal
       }
 
 ..
