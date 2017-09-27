@@ -31,9 +31,7 @@ Install Java Cryptography Extensions (JCE)
 
 .. code-block:: shell
 
-    sudo wget -nv --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie"
-    http://download.oracle.com/otn-pub/java/jce/7/UnlimitedJCEPolicyJDK7.zip
-    -O /usr/java/jdk1.7.0_80/jre/lib/security/UnlimitedJCEPolicyJDK7.zip
+    sudo wget -nv --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jce/7/UnlimitedJCEPolicyJDK7.zip -O /usr/java/jdk1.7.0_80/jre/lib/security/UnlimitedJCEPolicyJDK7.zip
     cd /usr/java/jdk1.7.0_80/jre/lib/security
 
     sudo unzip UnlimitedJCEPolicyJDK7.zip
@@ -247,7 +245,7 @@ utilities.
 
       adduser testUser
       su testUser
-      hadoop fs –ls /
+      hadoop fs -ls /
 
 ..
 
