@@ -239,7 +239,7 @@ utilities.
 
 ..
 
-13. Create a user in Linux by typing the adduser command as shown below. We will use this user to test whether the Kerberos authentication is working or not. We will first run the command hadoop fs –ls / but switching to this user. And we will run the same command again when we enable Kerberos.
+13. Create a user in Linux by typing the adduser command as shown below. We will use this user to test whether the Kerberos authentication is working or not. We will first run the command hadoop fs -ls / but switching to this user. And we will run the same command again when we enable Kerberos.
 
 .. code-block:: shell
 
@@ -275,11 +275,6 @@ Install Kerberos on an HDP Cluster
 |image5|
 
     :doc:`../developer-guides/KerberosInstallationExample-Cloudera`
-
-Make sure all services started properly. Kerberos is successfully installed on the cluster.
-
-
-..
 
 Make sure all services started properly. Kerberos is successfully installed on the cluster.
 
