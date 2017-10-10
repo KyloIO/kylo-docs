@@ -114,7 +114,6 @@ The documentation for the site is organized into a few sections:
     JMS Providers <how-to-guides/JmsProviders>
     Database Upgrades <how-to-guides/DatabaseUpgrades>
     Icons and Colors <how-to-guides/KyloIconsAndColors>
-    Spark Streaming Tutorial <how-to-guides/SparkStreamingTutorial>
 
 
 .. _developer_guides:
