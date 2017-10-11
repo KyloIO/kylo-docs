@@ -1,7 +1,7 @@
 Release 0.8.2.2 (September 12, 2017)
 ====================================
 
-.. note:: A later version of 0.8.2.x exists.  Please visit :doc:`ReleaseNotes8.2.4` for the latest version
+.. note:: A later version of 0.8.2.x exists.  Please visit :doc:`ReleaseNotes8.2.5` for the latest version
 
 Highlights
 ----------
