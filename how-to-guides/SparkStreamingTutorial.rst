@@ -5,94 +5,117 @@ Twitter Sentiment with Kafka and Spark Streaming Tutorial
 About
 ~~~~~
 
-This tutorial will enable Kylo to perform near real-time sentiment analysis for tweets. Our Kylo template will enable user self-service to configure new feeds for sentiment analysis. The user will simply enter the list of twitter keywords to analyze (e.g. famous list of music artists).  Tweets will be classified as positive, negative, or neutral based on analysis of the text. The tweet and sentiment results will be written to Hive. We will be able to monitor the streaming process in the Kylo Ops Manager module and explore the results.  
+This advanced tutorial will enable Kylo to perform near real-time sentiment analysis for tweets. Our Kylo template will enable user self-service to configure new feeds for sentiment analysis. The
+user will simply enter the list of twitter keywords to analyze (e.g. famous list of music artists).  Tweets will be classified as positive, negative, or neutral based on analysis of the text. The tweet and sentiment results will be written to Hive. We will be able to monitor the streaming process in the Kylo Ops Manager module and explore the results.
 
 How it Works
 ~~~~~~~~~~~~
 
-Once the user configures the new feed in Kylo, a pipeline will be generated in Apache NiFi.  Tweet text will be extracted and published to a Kafka topic. A Spark streaming job will consume the message tweet from Kafka, performs sentiment analysis using an embedded machine learning model and API provided by the `Stanford NLP project
-<https://stanfordnlp.github.io/CoreNLP>`_. The Spark streaming job then inserts result into Hive and publishes a Kafka message to a Kafka response topic.  
+Once the user configures the new feed in Kylo, a pipeline will be generated in Apache NiFi.  The tweet text will be extracted and published to a Kafka topic. A Spark streaming job will consume the
+message tweet from Kafka, performs sentiment analysis using an embedded machine learning model and API provided by the `Stanford NLP project
+<https://stanfordnlp.github.io/CoreNLP>`_. The Spark streaming job then inserts result into Hive and publishes a Kafka message to a Kafka response topic monitored by Kylo to complete the flow.
 
 In order to track processing though Spark, Kylo will pass the NiFi flowfile ID as the Kafka message key.  Kylo passes the FlowFile ID to Spark and Spark will return the message key on a separate Kafka response topic.  The latter utilizes the new Notify and Wait processors in NiFi 1.3.0+ which we will introduce with this tutorial. 
 
 
 Prerequisites
-~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
 
 The Kylo sandbox contains everything needed to run this tutorial but you will need to create a Twitter account and application in order to connect to Twitter. You will specifically need the access and secret tokens and keys for your Twitter application.
 
-1. Download the latest `Kylo sandbox
-<https://kylo.io/quickstart.html>`_.
+1. Download the latest `Kylo sandbox <https://kylo.io/quickstart.html>`_. This tutorial requires NiFi 1.3.
 
-2. Create a `twitter application
-<http://docs.inboundnow.com/guide/create-twitter-application/>`_.  
+2. Install/enable Kafka (if needed)
 
+3. Create a `twitter application account
+<http://docs.inboundnow.com/guide/create-twitter-application>`_.  and document your consumer key/secret and access token/secret pairs.
 
-Starter template
-~~~~~~~~~~~~~~~~
+4. Download Stanford `corenlp libraries
+<https://stanfordnlp.github.io/CoreNLP>`_. The specific library files are shown in the Spark configuration section (below). This tutorial used v3.7.0.
 
-A starter template for using the processor is provided at:
+5. Download and build this useful `Twitter Sentiment analysis utility
+<https://github.com/vspiewak/twitter-sentiment-analysis>`_. The specific library files needed are shown in the Spark configuration section (below).
 
-.. code-block:: shell
-
-    samples/templates/nifi-1.0/template-starter-sqoop-import.xml
-
-..
 
 Configuration
 ~~~~~~~~~~~~~
 
-For use with Kylo UI, configure values for the two properties (**nifi.service.<controller service name in NiFi>.password**, **config.sqoop.hdfs.ingest.root**) in the below section in the properties file: **/opt/kylo/kylo-services/conf/application.properties**
+Your Twitter consumer key/secret and access token/secret pairs are needed in order to provision the template with the correct Twitter credentials.  Add the following block to your Kylo application
+.properties file (typically located in /opt/kylo/kylo-services/conf/application.properties). Note that Kylo will automatically injects these properties into the NiFi pipeline when a new feed is
+provisioned:
 
 .. code-block:: shell
 
-    ### Sqoop import
-    # DB Connection password (format: nifi.service.<controller service name in NiFi>.password=<password>
-    #nifi.service.sqoop-mysql-connection.password=hadoop
-    # Base HDFS landing directory
-    #config.sqoop.hdfs.ingest.root=/sqoopimport
+    ### Twitter
+    nifi.gettwitter.consumer_key={REPLACE_WITH_YOUR_TWITTER_CONSUMER_KEY}
+    nifi.gettwitter.consumer_secret={REPLACE_WITH_YOUR_TWITTER_CONSUMER_SECRET}
+    nifi.gettwitter.access_token={REPLACE_WITH_YOUR_TWITTER_ACCESS_TOKEN}
+    nifi.gettwitter.access_secret={REPLACE_WITH_YOUR_TWITTER_ACCESS_SECRET}
 
 ..
 
-.. note:: The **DB Connection password** section will have the name of the key derived from the controller service name in NiFi. In the above snippet, the controller service name is called **sqoop-mysql-connection**.
+Restart Kylo after applying changes to the property file.
 
-Drivers
-~~~~~~~
 
-Sqoop requires the JDBC drivers for the specific database server in order to transfer data. The processor has been tested on MySQL, Oracle, Teradata and SQL Server databases, using Sqoop v1.4.6.
+Spark Configuration
+~~~~~~~~~~~~~~~~~~~
 
-The drivers need to be downloaded, and the .jar files must be copied over to Sqoop’s /lib directory.
+The following JARs need to be available on the Spark2 classpath. There are different ways to achieve this but one way is to simply modify the /etc/spark2/conf/spark-defaults.conf as shown here:
 
-As an example, consider that the MySQL driver is downloaded and available in a file named: **mysql-connector-java.jar.**
+.. code-block:: shell
+    # Add to /etc/spark2/conf/spark-defaults.conf
+    spark.driver.extraClassPath /path/to/lib.jar:/path/to/lib2.jar:/path/to/lib3.jar
+..
 
-This would have to be copied over into Sqoop’s /lib directory, which may be in a location similar to: **/usr/hdp/current/sqoop-client/lib.**
+The extra classpath libraries needed will depend on your specific Hadoop and Kafka installation. The following are required jar files for readability:
 
-The driver class can then be referred to in the property **Source Driver** in **StandardSqoopConnectionService** controller service
-configuration. For example: **com.mysql.jdbc.Driver.**
+.. code-block:: shell
 
-.. tip:: Avoid providing the driver class name in the controller service configuration. Sqoop will try to infer the best connector and driver for the transfer on the basis of the **Source Connection String** property configured for **StandardSqoopConnectionService** controller service.
+    # From local machine
+    kafka-streams-0.10.0.2.5.5.0-157.jar
+    spark-examples_2.11-2.0.2.2.5.5.0-157.jar
+    spark-streaming-kafka-0-10_2.11-2.1.1.jar
+    spark-streaming_2.11-2.0.2.2.5.5.0-157.jar
+    ejml-0.23.jar
 
-Passwords
+    # From github.com/vspiewak/
+    twitter-sentiment-analysis_3.7.0.jar (must be built from source)
+    jsonic-1.2.0.jar (available in lib)
+    langdetect.jar (available in lib)
+
+    # From Stanford NLP
+    stanford-corenlp-3.7.0-models-english.jar
+    stanford-parser-3.7.0.jar
+    stanford-corenlp-3.7.0.jar
+
+..
+
+Twitter Sentiment template
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The feed template for this tutorial is provided in Kylo github. This template will allow you to create a feed to monitor tweets based on keywords and write the sentiment results to a Hive table.
+`Download and import the Twitter Sentiment template <https://github.com/Teradata/kylo/blob/master/samples/templates/nifi-1.0/twitter_sentiment.template.zip>`_. into the Kylo
+templates UI.
+
+..
+
+Kafka response feed
+~~~~~~~~~~~~~~~~~~~
+
+This system feed will monitor a Kafka topic for flowfile ids that have been processed by our Spark job.
+
+`Download the and import the Kafka Notifier feed <https://github.com/Teradata/kylo/blob/master/samples/feeds/nifi-1.3/kafka_notifier_service.feed.zip>`_. into the Kylo
+feeds.
+
+..
+
+Spark Submit
 ~~~~~~~~~
 
-The processor's connection controller service allows three modes of providing the password:
+Create the following shell scripts in /opt/spark-receiver/ and ensure NiFi has execute permissions on the files:
 
-1. Entered as clear text
-2. Entered as encrypted text
-3. Encrypted text in a file on HDFS
 
-For modes (2) and (3), which allow encrypted passwords to be used, details are provided below:
-
-Encrypt the password by providing the:
-
-a. Password to encrypt
-
-b. Passphrase
-
-c. Location to write encrypted file to
-
-The following command can be used to generate the
-encrypted password:
+1. The following shell script will start/stop our streaming application.  It will only start the application if it is not currently running.  Name the file: stream-submit-kafka.sh
 
 
 .. code-block:: shell
@@ -179,178 +202,164 @@ encrypted password:
 
 ..
 
-The above utility will output a base64 encoded encrypted password, which can be entered directly in the controller service configuration
-via the **SourcePassword** and **Source Password Passphrase** properties (mode 2).
+2. The following Scala script is our sentiment analysis Spark job.  Please name the file: sentiment-job-kafka.scala
 
-The above utility will also output a file on disk that contains the encrypted password. This can be used with mode 3 as described below:
+.. code-block:: scala
 
-Say, the file containing encrypted password is named: **/user/home/sec-pwd.enc.**
+    import java.util.HashMap
 
-Put this file in HDFS and secure it by restricting permissions to be only read by **nifi** user.
+    import org.apache.spark.examples.streaming._
+    import kafka.serializer.StringDecoder
 
-Provide the file location and passphrase via the **Source Password File** and **Source Password Passphrase** properties in
-the **StandardSqoopConnectionService** controller service configuration.
+    import org.apache.spark.streaming._
+    import org.apache.spark.streaming.kafka010._
+    import org.apache.spark.SparkConf
 
-During the processor execution, password will be decrypted for modes 2 and 3, and used for connecting to the source system.
+    import org.apache.kafka.clients.consumer.ConsumerRecord
+    import org.apache.kafka.common.serialization._
+    import org.apache.spark.streaming.kafka010._
+    import org.apache.spark.streaming.kafka010.LocationStrategies.PreferConsistent
+    import org.apache.spark.streaming.kafka010.ConsumerStrategies.Subscribe
 
-TriggerFeed
------------
+    import java.util.HashMap
 
-Trigger Feed Overview
-~~~~~~~~~~~~~~~~~~~~~
+    import org.apache.kafka.clients.producer.{KafkaProducer, ProducerConfig, ProducerRecord}
 
-In Kylo, the TriggerFeed Processor allows feeds to be configured
-in such a way that a feed depending upon other feeds is automatically
-triggered when the dependent feed(s) complete successfully.
+    import org.apache.spark.SparkConf
+    import org.apache.spark.streaming._
+    import java.io._
 
-Obtaining the Dependent Feed Execution Context
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    import java.nio.charset.StandardCharsets
+    import scala.collection.mutable.ListBuffer
 
-|image16|
+    import org.apache.spark.rdd.RDD
+    import org.apache.spark.sql.SQLContext
+    import org.apache.spark.storage.StorageLevel
+    import org.apache.spark.streaming.{Seconds, StreamingContext, Time}
+    import com.github.vspiewak.util._
+    import edu.stanford.nlp.sentiment._
+    import java.io.IOException
+    import java.util.Properties
 
-To get dependent feed execution context data, specify the keys that you
-are looking for. This is done through the "Matching Execution Context
-Keys" property. The dependent feed execution context will only be
-populated the specified matching keys.
+         case class TweetRecord(time: Integer, topic: String, sentiment: String, tweet: String)
 
-For example:
+         val durationSecs = args(0).toLong
+         val tableName = args(1)
+         val keywords = args(2)
+         val readerTopic = args(3)
+         val writerTopic = args(4)
+         val brokers = args(5)
+         val zookeeper = args(6)
+         val group = args(7)
+         println("durationSecs: " + durationSecs)
+         println("tableName: " + tableName)
+         println("keywords: " + keywords)
 
-    Feed_A runs and has the following attributes in the flow-file as it
-    runs:
+         val bKeywords = sc.broadcast(keywords.split(","))
 
-.. code-block:: properties
+         val clientParams = Map[String, Object](
+          "bootstrap.servers" -> brokers,
+          "zookeeper.connect" -> zookeeper,
+          "key.deserializer" -> classOf[StringDeserializer],
+          "value.deserializer" -> classOf[StringDeserializer],
+          "group.id" -> group,
+          "auto.offset.reset" -> "latest",
+          "enable.auto.commit" -> (false: java.lang.Boolean)
+         )
 
-     -property.name = "first name"
-     -property.age=23
-     -feedts=1478283486860
-     -another.property= "test"
+        val producerProps =  new java.util.Properties()
 
-..
+        producerProps.put("bootstrap.servers", brokers)
+        producerProps.put("zookeeper.connect", zookeeper)
+        producerProps.put("key.serializer", classOf[StringSerializer])
+        producerProps.put("value.serializer", classOf[StringSerializer])
+        producerProps.put("key.deserializer", classOf[StringDeserializer])
+        producerProps.put("value.deserializer", classOf[StringDeserializer])
 
-    Feed_B depends on Feed A and has a Trigger Feed that has "Matching
-    Execution Context Keys" set to "property".
+        StreamingExamples.setStreamingLogLevels()
 
-    It will then get the ExecutionContext for Feed A populated with 2
-    properties:
+        val producer = new KafkaProducer[String, String](producerProps)
 
-.. code-block:: shell
+        spark.sql("CREATE TABLE IF NOT EXISTS "+tableName+" (`time` int, `topic` string, `sentiment` string, `tweet` string)")
 
-    "Feed_A":{property.name:"first name", property.age:23}
+        // Create direct kafka stream with brokers and topics
+        // Create context with specified batch interval
+        @transient val ssc = new StreamingContext(sc, Seconds(durationSecs))
 
-..
+        val topics = Array(readerTopic)
+        @transient val tweetStream = KafkaUtils.createDirectStream[String, String](
+             ssc,
+             PreferConsistent,
+             Subscribe[String, String](topics, clientParams)
+        )
 
-Trigger Feed JSON Payload
-~~~~~~~~~~~~~~~~~~~~~~~~~
+       @transient val uuids = tweetStream.map(_.key)
 
-The FlowFile content of the Trigger feed includes a JSON string of the
-following structure:
+       @transient val tweetStreamMapped = tweetStream.map { record: org.apache.kafka.clients.consumer.ConsumerRecord[String,String] =>
+                                         val tweet = record.value
+                                         println(tweet)
+                                         // Create record for each match so tweets with multiple matches will be counted multiple times
+                                         val keywords = bKeywords.value
+                                         val matches = keywords.filter { (term) => (tweet.contains(term)) }
+                                         val matchArray =  matches.map { (keyword) => (keyword, tweet) }
+                                         // Convert to listbuffer so we can flatten
+                                         val matchLB = ListBuffer(matchArray: _ *)
+                                         matchLB.toList
+                                    }.
+                                    flatMap(identity).
+                                    map { (tuple) =>
+                                            val topic = tuple._1
+                                            val tweet = tuple._2
+                                            // Clean hashtags, emoji's, hyperlinks, and twitter tags which can confuse the model. Replace @mention with generic word Foo
+                                            val tweet_clean = tweet.replaceAll("(\\b\\w*RT)|[^a-zA-Z0-9\\s\\.\\,\\!,\\@]", "").replaceAll("(http\\S+)","").replaceAll("(@\\w+)","Foo").replaceAll("^(Foo)","")
+                                            try {
+                                                val sentiment = SentimentAnalysisUtils.detectSentiment(tweet_clean).toString.toLowerCase
+                                                (topic, sentiment,tweet)
 
-.. code-block:: javascript
+                                            } catch {
+                                                 case e: IOException => e.printStackTrace(); (tuple._1, "unknown", tweet)
+                                            }
+                                }
 
-  {
-    "feedName":"string",
-    "feedId":"string",
-    "dependentFeedNames":[
-        "string"
-        ],
-        "feedJobExecutionContexts":{
 
-        },
-        "latestFeedJobExecutionContext":{
+        println("Writing results to Hive "+tableName)
+        tweetStreamMapped.foreachRDD { (rdd: RDD[(String, String, String)], time: org.apache.spark.streaming.Time) => rdd.map( t => TweetRecord(( time.milliseconds / 1000).toInt, t._1, t._2, t._3) )
+                                                                                .toDF()
+                                                                                .filter("sentiment is not null")
+                                                                                .write
+                                                                                .insertInto(tableName)
+                              }
+      println("Sending results to Kafka topic:"+writerTopic)
+       uuids.foreachRDD { rdd =>
+         rdd.collect().foreach { key =>
+            producer.send( new ProducerRecord[String, String](writerTopic, key, "done"))
+         }
+       }
 
-        }
-   }
+        ssc.start()
+        ssc.awaitTermination()
 
-..
-
-JSON structure with a field description:
-
-.. code-block:: javascript
-
-  {
-     "feedName":"<THE NAME OF THIS FEED>",
-     "feedId":"<THE UUID OF THIS FEED>",
-     "dependentFeedNames":[<array of the dependent feed names],
-     "feedJobExecutionContexts":{<dependent_feed_name>:[
-  {
-  "jobExecutionId":<Long ops mgr job id>,
-              "startTime":<millis>,
-              "endTime":<millis>,
-              "executionContext":{
-  <key,value> matching any of the keys defined as being "exported" in
-  this trigger feed
-              }
-           }
-        ]
-     },
-     "latestFeedJobExecutionContext":{
-        <dependent_feed_name>:{  
-          "jobExecutionId":<Long ops mgr job id>,
-              "startTime":<millis>,
-              "endTime":<millis>,
-              "executionContext":{
-  <key,value> matching any of the keys defined as being "exported" in
-  this trigger feed
-              }
-  }
-  }
-  }
-
-..
-
-Example JSON for a Feed:
-
-.. code-block:: javascript
-
-  {
-     "feedName":"companies.check_test",
-     "feedId":"b4ed909e-8e46-4bb2-965c-7788beabf20d",
-     "dependentFeedNames":[
-        "companies.company_data"
-     ],
-     "feedJobExecutionContexts":{
-        "companies.company_data":[
-           {
-              "jobExecutionId":21342,
-              "startTime":1478275338000,
-              "endTime":1478275500000,
-              "executionContext":{
-              }
-           }
-        ]
-     },
-     "latestFeedJobExecutionContext":{
-        "companies.company_data":{
-           "jobExecutionId":21342,
-           "startTime":1478275338000,
-           "endTime":1478275500000,
-          "executionContext":{
-          }
-       }
-    }
- }
+        ssc.stop()
 
 ..
 
-Example Flow
-~~~~~~~~~~~~
 
-The screenshot shown here is an example of a flow in which the inspection of the payload triggers dependent feed data.
+Create your feed
+----------------
 
-|image17|
+After importing the template in Kylo, you are ready to create a feed. Create a new feed and select 'Sentiment Analysis'.  Now provide the keywords as comma separated strings. Note that because the
+Twitter account used by the template is a free account, you are limited to filtering on specific keywords.  This template has hardcoded a set of keywords of common twitter accounts: @katyperry,
+@justinbieber,@taylorswift13,@rihanna,@realDonaldTrump. Your feed may include any subset or combination of these.  You can alter the superset of keywords in the template.  If you have a full Twitter
+account, you could use the Firehose endpoint and then perform your filtering in Spark.
 
-The EvaluateJSONPath processor is used to extract JSON content from the flow file.
+Monitor your feed in Kylo
+-------------------------
 
-Refer to the Data Confidence Invalid Records flow for an example:
-|data_confidence_invalid_records_link|
+From the Ops Manager, your feed will appear as a Streaming feed.
 
-.. |data_confidence_invalid_records_link| raw:: html
+|image1|
 
-   <a href="https://github.com/KyloIO/kylo/blob/master/samples/templates/nifi-1.0/data_confidence_invalid_records.zip" target="_blank">https://github.com/KyloIO/kylo/blob/master/samples/templates/nifi-1.0/data_confidence_invalid_records.zip</a>
-
-.. |image16| image:: ../media/tutorial/SparkStreaming_NiFI_Design.png
-   :width: 531px
-   :height: 393px
-.. |image17| image:: ../media/tutorial/SparkStreaming_NiFi_Flow_Simplified.png
-   :width: 1201px
-   :height: 308px
+.. |image1| image:: ../media/spark-twitter-feed/kylo-kafka-spark-twitter-stream.png
+    :scale: 50%
+    :align: middle
+    :alt: Kylo streaming
