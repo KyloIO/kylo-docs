@@ -21,8 +21,6 @@ In order to track processing though Spark, Kylo will pass the NiFi flowfile ID a
 Prerequisites
 ~~~~~~~~~~~~~
 
-The Kylo sandbox contains everything needed to run this tutorial but you will need to create a Twitter account and application in order to connect to Twitter. You will specifically need the access and secret tokens and keys for your Twitter application.
-
 1. Download the latest `Kylo sandbox <https://kylo.io/quickstart.html>`_. This tutorial requires NiFi 1.3.
 
 2. Install/enable Kafka (if needed)
@@ -63,8 +61,10 @@ Spark Configuration
 The following JARs need to be available on the Spark2 classpath. There are different ways to achieve this but one way is to simply modify the /etc/spark2/conf/spark-defaults.conf as shown here:
 
 .. code-block:: shell
+
     # Add to /etc/spark2/conf/spark-defaults.conf
     spark.driver.extraClassPath /path/to/lib.jar:/path/to/lib2.jar:/path/to/lib3.jar
+
 ..
 
 The extra classpath libraries needed will depend on your specific Hadoop and Kafka installation. The following are required jar files for readability:
