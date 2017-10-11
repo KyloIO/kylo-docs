@@ -109,8 +109,8 @@ feeds.
 
 ..
 
-Spark Submit
-~~~~~~~~~
+Scripts
+~~~~~~~
 
 Create the following shell scripts in /opt/spark-receiver/ and ensure NiFi has execute permissions on the files:
 
@@ -345,7 +345,7 @@ Create the following shell scripts in /opt/spark-receiver/ and ensure NiFi has e
 
 
 Create your feed
-----------------
+~~~~~~~~~~~~~~~~
 
 After importing the template in Kylo, you are ready to create a feed. Create a new feed and select 'Sentiment Analysis'.  Now provide the keywords as comma separated strings. Note that because the
 Twitter account used by the template is a free account, you are limited to filtering on specific keywords.  This template has hardcoded a set of keywords of common twitter accounts: @katyperry,
@@ -353,7 +353,7 @@ Twitter account used by the template is a free account, you are limited to filte
 account, you could use the Firehose endpoint and then perform your filtering in Spark.
 
 Monitor your feed in Kylo
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 From the Ops Manager, your feed will appear as a Streaming feed.
 
