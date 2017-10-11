@@ -160,21 +160,23 @@ password against an Active Directory server.  If the properties ``security.auth.
 are set then those credentials will be used to autheticate with the AD server and only the username will be validated to exist in AD;
 loading the user's groups load (when configured) if the user is present.
 
-+-----------------------------------------+----------+-------------------------+---------------------------------------------------------------------+
-| Property                                | Required | Example Value           | Description                                                         |
-+=========================================+==========+=========================+=====================================================================+
-| security.auth.ad.server.uri             | Yes      | ``ldap://example.com/`` | The URI to the AD server                                            |
-+-----------------------------------------+----------+-------------------------+---------------------------------------------------------------------+
-| security.auth.ad.server.domain          | Yes      | ``test.example.com``    | The AD domain of the users to authenticate                          |
-+-----------------------------------------+----------+-------------------------+---------------------------------------------------------------------+
-| security.auth.ad.server.serviceUser     | No       | ``admin``               | A service account used to authenticate with AD rather than          |
-|                                         |          |                         | the user logging in (typically used with auth-spnego)               |
-+-----------------------------------------+----------+-------------------------+---------------------------------------------------------------------+
-| security.auth.ad.server.servicePassword | No       |                         | A service account password used to authenticate with AD rather than |
-|                                         |          |                         | that of the user logging in (typically used with auth-spnego)       |
-+-----------------------------------------+----------+-------------------------+---------------------------------------------------------------------+
-| security.auth.ad.user.enableGroups      | No       | ``true``                | Activates user group loading; default: ``false``                    |
-+-----------------------------------------+----------+-------------------------+---------------------------------------------------------------------+
++-----------------------------------------+----------+-----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+| Property                                | Required | Example Value                                 | Description                                                                                                                  |
++=========================================+==========+===============================================+==============================================================================================================================+
+| security.auth.ad.server.uri             | Yes      | ``ldap://example.com/``                       | The URI to the AD server                                                                                                     |
++-----------------------------------------+----------+-----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+| security.auth.ad.server.domain          | Yes      | ``test.example.com``                          | The AD domain of the users to authenticate                                                                                   |
++-----------------------------------------+----------+-----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+| security.auth.ad.server.searchFilter    | No       | ``(&(objectClass=user)(sAMAccountName={1}))`` | Specifies the filter to use to find AD entries for the login user; default: ``(&(objectClass=user)(userPrincipalName={0}))`` |
++-----------------------------------------+----------+-----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+| security.auth.ad.server.serviceUser     | No       | ``admin``                                     | A service account used to authenticate with AD rather than                                                                   |
+|                                         |          |                                               | the user logging in (typically used with auth-spnego)                                                                        |
++-----------------------------------------+----------+-----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+| security.auth.ad.server.servicePassword | No       |                                               | A service account password used to authenticate with AD rather than                                                          |
+|                                         |          |                                               | that of the user logging in (typically used with auth-spnego)                                                                |
++-----------------------------------------+----------+-----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+| security.auth.ad.user.enableGroups      | No       | ``true``                                      | Activates user group loading; default: ``false``                                                                             |
++-----------------------------------------+----------+-----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
 
 `auth-simple`
 '''''''''''''
