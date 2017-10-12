@@ -38,6 +38,13 @@ A starter template for using the processor is provided at:
     samples/templates/nifi-1.0/template-starter-sqoop-import.xml
 
 ..
+In the kylo sandbox you may find the file at : 
+.. code-block:: shell
+
+    /opt/kylo/setup/data/templates/nifi-1.0/template-starter-sqoop-import.xml
+
+..
+
 
 Configuration
 ~~~~~~~~~~~~~
