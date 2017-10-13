@@ -103,8 +103,7 @@ keep the truststore in /opt/nifi/data/ssl directory, which belongs to 'nifi' use
 2.2 Setup StandardSSLContextService in Nifi
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-There are two places where you need to add StandardSSLContextService in Nifi. One is on the root level next to all other controller services,
-and the other is in controller services next to Kylo Reporting Task. See :doc:`../how-to-guides/NiFiKyloProvenanceReportingTask` on what Reporting Task is.
+Add StandardSSLContextService in Nifi at the root level next to all other controller services.
 
 Set following properties on SSL Context Service:
 
@@ -118,10 +117,8 @@ Set following properties on SSL Context Service:
 2.3 Update MetadataProviderSelectorService
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Just like StandardSSLContextService, you will need to update two instances of MetadataProviderSelectorService: one at root level and
-one next to Kylo Reporting Task.
-
-Set the following properties on MetadataProviderSelectorService, making sure host and port correspond to where Kylo UI is running:
+Update MetadataProviderSelectorService. Set the following properties on MetadataProviderSelectorService, making sure host and port
+correspond to where Kylo UI is running:
 
 :REST Client URL: https://localhost:8444/proxy/metadata
 :SSL Context Service: StandardSSLContextService
@@ -131,8 +128,8 @@ Set the following properties on MetadataProviderSelectorService, making sure hos
 
 
 .. |image1| image:: ../media/kylo-config/ssl/standard-ssl-context-service.png
-   :width: 4.87500in
+:width: 4.87500in
    :height: 1.91667in
 .. |image2| image:: ../media/kylo-config/ssl/metadata-provider-selector-service.png
-   :width: 4.87500in
+:width: 4.87500in
    :height: 1.91667in
