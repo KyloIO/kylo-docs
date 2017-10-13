@@ -128,8 +128,9 @@ correspond to where Kylo UI is running:
 
 
 .. |image1| image:: ../media/kylo-config/ssl/standard-ssl-context-service.png
-:width: 4.87500in
+   :width: 4.87500in
    :height: 1.91667in
+
 .. |image2| image:: ../media/kylo-config/ssl/metadata-provider-selector-service.png
-:width: 4.87500in
+   :width: 4.87500in
    :height: 1.91667in
