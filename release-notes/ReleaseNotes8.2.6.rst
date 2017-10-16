@@ -1,27 +1,21 @@
-Release 0.8.2.3 (September 15, 2017)
-====================================
-
+Release 0.8.2.6 (October 16, 2017)
+==================================
 
 Highlights
 ----------
-- This releases further optimizes Kylo and NiFi integration.
-- Fixes KYLO-823, KYLO-1202 setting controller service properties in feed/reusable templates
-- Reduces the verbose logging output (in 0.8.2.2) to debug when creating feeds
+ - New configuration option added to the `auth-ad` security profile to control user details filtering (addresses Windows 365 issues)
+ - Fixed KYLO-1264 ExecuteHQLStatement does not route to failure
+ - Fixed KYLO-940 ThriftConnectionPool doesn't reconnect on Hive restart
+ - Fixes KYLO-1281 missing Kylo Upgrade Version
 
 
 Download Links
 --------------
 
- - RPM : `<http://bit.ly/2x7BB3q>`__
-
- - Debian : `<http://bit.ly/2wuQgSA>`__
-
- - TAR : `<http://bit.ly/2h81kiK>`__
+Coming soon
 
 Upgrade Instructions from v0.8.2
 --------------------------------
-
-Build or `download the rpm <http://bit.ly/2x7BB3q>`__
 
 1. Uninstall Kylo:
 
@@ -39,7 +33,7 @@ Build or `download the rpm <http://bit.ly/2x7BB3q>`__
 
  ..
 
-3. Copy the application.properties file from the previous install  If you have customized the application.properties file you will want to copy the 0.8.2 version and add the new properties that were added for this release.
+3. Copy the application.properties file from the 0.8.2 install.  If you have customized the application.properties file you will want to copy the 0.8.2 version and add the new properties that were added for this release.
 
      3.1 Find the /bkup-config/TIMESTAMP/kylo-services/application.properties file
 
@@ -56,25 +50,14 @@ Build or `download the rpm <http://bit.ly/2x7BB3q>`__
 
         ..
 
-     3.3 Optional: At startup Kylo inspects NiFi to build a cache of NiFi flow data. It now does this with multiple threads.  By default it uses 10 threads.  You can modify this by setting the following property:
 
-         .. code-block:: shell
+     3.3 If using the ``auth-ad`` profile and having problems with accessing user info in AD (experienced by some Windows 365 deployments), add the following property to the existing AD properties in both kylo-services and kylo-ui application.properties files:
 
-                ## Modify the number of threads used by Kylo at startup to inspect and build the NiFi flow cache.  Default is 10 if not specified
-                nifi.flow.inspector.threads=10
+        .. code-block:: shell
 
-         ..
+           security.auth.ad.server.searchFilter=(&(objectClass=user)(sAMAccountName={1}))
 
-     3.4 Ensure the property ``security.jwt.key`` in both kylo-services and kylo-ui application.properties file match.  They property below needs to match in both of these files:
-
-         - */opt/kylo/kylo-ui/conf/application.properties*
-         - */opt/kylo/kylo-services/conf/application.properties*.
-
-       .. code-block:: properties
-
-         security.jwt.key=
-
-       ..
+        ..
 
 4. Update the NiFi nars.  Run the following shell script to copy over the new NiFi nars/jars to get new changes to NiFi processors and services.
 
