@@ -12,7 +12,11 @@ Highlights
 Download Links
 --------------
 
-Coming soon
+ - RPM : `<http://bit.ly/2xK1Z0k>`__
+
+ - Debian : `<http://bit.ly/2yqtlup>`__
+
+ - TAR : `<http://bit.ly/2yn7y9c>`__
 
 Upgrade Instructions from v0.8.2
 --------------------------------
