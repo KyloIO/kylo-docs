@@ -16,7 +16,7 @@ To run the Kylo project locally the following tools must be installed:
 
 -  RPM (for install)
 
--  Java 1.8 (or greater)
+-  Java 1.8 [Either OracleJDK or OpenJDK] (or greater)
 
 -  Hadoop 2.3+ Sandbox
 
