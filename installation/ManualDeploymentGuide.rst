@@ -37,7 +37,47 @@ the setup folder or offline TAR file to those nodes that do not have the Kylo ap
 
 ..
 
-Step 2: Install Java 8
+Step 2: Create the "dladmin" user
+===========================
+
+Before logging into Kylo for the first time you must create a password for the "dladmin" user. To created the password please do the following:
+
+a. Create a users.properties file and add the username/password
+
+.. code-block:: shell
+
+    $ vi /opt/kylo/users.properties
+        dladmin=myPassword
+
+..
+
+b. Modify the /opt/kylo/kylo-ui/conf/application.properties file
+
+.. code-block:: shell
+
+    $ vi /opt/kylo/kylo-ui/conf/application.properties
+
+        # uncomment this line
+        security.auth.file.users=file:///opt/kylo/users.properties
+
+
+..
+
+c. Modify the /opt/kylo/kylo-services/conf/application.properties file
+
+.. code-block:: shell
+
+    $ vi /opt/kylo/kylo-services/conf/application.properties
+
+        # uncomment this line
+        security.auth.file.users=file:///opt/kylo/users.properties
+
+
+..
+
+
+
+Step 3: Install Java 8
 ======================
 
 .. note:: If you are installing NiFi and the kylo services on two separate nodes, you may need to perform this step on each node.
@@ -90,7 +130,7 @@ If you already have Java 8 installed, and want to reference that installation, t
         $ /opt/kylo/setup/java/change-kylo-java-home.sh <JAVA_HOME> <KYLO_HOME>
 
 
-Step 3: Install Java Cryptographic Extension
+Step 4: Install Java Cryptographic Extension
 ============================================
 
 The Java 8 install script above will automatically download and install the `Java Cryptographic Extension <http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html>`__.
@@ -104,7 +144,7 @@ system, you can install the Java Cryptographic Extension by running the followin
 This script downloads the extension zip file and extracts the replacement jar files into the JRE security directory ($JAVA_HOME/jre/lib/security). It will first make backup copies of the original jars it is replacing.
 
 
-Step 4: Install and Configure Elasticsearch
+Step 5: Install and Configure Elasticsearch
 ===========================================
 
 To get Kylo installed and up and running quickly, a script is provided
@@ -147,7 +187,7 @@ b. Offline Mode
 
 .. note:: Tip: To test that Elasticsearch is running type "curl localhost:9200". You should see a JSON response.
 
-Step 5: Install ActiveMQ
+Step 6: Install ActiveMQ
 ========================
 
 Another script has been provided to stand up a single node ActiveMQ
@@ -208,7 +248,7 @@ Update the below properties so that NiFI and kylo-services can communicate with 
 
 
 
-Step 6: Install NiFi
+Step 7: Install NiFi
 ====================
 
 You can leverage an existing NiFi installation or follow the steps in the setup directory that are used by the wizard.
