@@ -75,6 +75,7 @@ c. Modify the /opt/kylo/kylo-services/conf/application.properties file
 
 ..
 
+Please see :doc:`Configure Access Control <../security/AccessControl>` for information about configuring users and groups
 
 
 Step 3: Install Java 8
