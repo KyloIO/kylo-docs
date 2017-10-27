@@ -69,6 +69,22 @@ Update template
 
 6. In Kylo (if exists), from the Template menu, go through the edit wizard (click on the template name), so that it's reinitialized properly
 
+Indicating Flow Failures
+========================
+
+When Data is sent to Kylo Operations Manager it indicates if the flow file has been successful or has failed.  Failures are indicated two ways
+
+1. When the flow file passes through an 'Auto terminate on failure' relationship.
+   In a processor in NiFi if you check the box 'Auto terminate on failure'  and the flow file passes through this relationships and fails it will send the failure message to Kylo Operations Manager and fail the job/step.
+
+   |auto_terminate_failure_image|
+
+2. If the NiFi connection has the word 'failure' in it and the flow files pass through that connection.  The 'failure' connection name will be automatically applied by NiFi if you have a 'failure' relationship between your two processors. You can right click on a connection and edit it and change the name to include the word 'failure' if you want to always ensure that flow files which travel along that path fail the job in Kylo.
+
+   |failure_connection_image|
+
+Additionally if you manually 'Empty the Queue' in NiFi it will fail those corresponding jobs in Kylo.
+
 Available templates
 =======================
 
@@ -112,3 +128,13 @@ Accesing S3 and other distributed filesystems
 ***********************************************
 
 :doc:`../how-to-guides/AccessingS3fromtheDataWrangler`
+
+
+
+.. |auto_terminate_failure_image| image:: ../media/Config_NiFi/auto_terminate_on_failure.png
+   :width: 401px
+   :height: 181px
+.. |failure_connection_image| image:: ../media/Config_NiFi/failure_connection.png
+   :width: 308px
+   :height: 157px
+
