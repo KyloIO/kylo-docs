@@ -120,10 +120,10 @@ the health of the system:
 | |image7|   | Displays alerts for services and feeds. Click on them for more information.                                                                |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 
-Feed Summary
+Feed Health
 ~~~~~~~~~~~~
 
-The Feed Summary Table provides the state and status of each data feed
+The Feed Health Table provides the state and status of each data feed
 managed by Kylo. The state is either HEALTHY or UNHEALTHY. The status is
 the status of the most recent job of the feed. You can drill into a
 specific feed and see its `*history* <#feed-history-page>`__ by clicking
