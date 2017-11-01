@@ -26,8 +26,7 @@ edit ``/opt/kylo/kylo-services/conf/application.properties`` and select ActiveMQ
 
   ..
 
-In addition to selected profile, ActiveMQ configuration properties should be provided either in ``/opt/kylo/kylo-services/conf/application.properties`` or in
-``/opt/kylo/kylo-services/conf/activemq.properties``. The latter is preferred for separation of concerns, but not required.
+In addition to selected profile, ActiveMQ configuration properties should be provided in ``/opt/kylo/kylo-services/conf/application.properties``.
 Redelivery processing properties are now available for configuration. If Kylo receives provenance events and they have errors or are unable to attach NiFi feed information
 (i.e. if NiFi goes down and Kylo doesnt have the feed information in its cache) then the JMS message will be returned for redelivery based upon the following parameters.
 Refer to the ActiveMQ documentation, http://activemq.apache.org/redelivery-policy.html, for assigning these values
@@ -58,8 +57,7 @@ ActiveMQ profile is selected by default. But you can switch over to Amazon SQS b
 
   ..
 
-In addition to that Amazon SQS specific properties should be provided either in ``/opt/kylo/kylo-services/conf/application.properties`` or in
-``/opt/kylo/kylo-services/conf/amazon-sqs.properties``. The latter is preferred, but not required
+In addition to that Amazon SQS specific properties should be provided in ``/opt/kylo/kylo-services/conf/application.properties``.
 
   .. code-block:: properties
 

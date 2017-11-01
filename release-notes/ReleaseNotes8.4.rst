@@ -58,3 +58,10 @@ Upgrade Instructions from v0.8.3
      service elasticsearch restart
 
 ..
+
+
+4. JMS configuration:
+
+It was previously possible to provide ActiveMQ and AmazonSQS configuration in their respective configuration files called ``activemq.properties`` and ``amazon-sqs.properties``.
+It is no longer possible and these properties should be moved over to standard Kylo configuration file found in ``<KYLO_HOME>/kylo-services/conf/application.properties``.
+
