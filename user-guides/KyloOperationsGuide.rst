@@ -68,9 +68,9 @@ The following terms are used in this document or are relevant to understanding t
 |                    |                                                                                                                                                                                                                                    |
 |                    | A Job has both status and state that indicate its outcome.                                                                                                                                                                         |
 +--------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Feed               | A feed is a pipeline, jobs are run for feeds. The “health” status of a feed (regardless of its running state) can be visualized on the Kylo Overview page.                                                                         |
+| Feed               | A feed is a pipeline, jobs are run for feeds. The “health” status of a feed (regardless of its running state) can be visualized on the Kylo Dashboard page.                                                                        |
 +--------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Check Data Job     | An optional job type employed for independent data quality checks against customer data with results contributing to a “Data Confidence” metric visible on the Overview page.                                                      |
+| Check Data Job     | An optional job type employed for independent data quality checks against customer data with results contributing to a “Data Confidence” metric visible on the Dashboard page.                                                     |
 +--------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Step               | A unit of processing in a job sequence. A job consists of one or more steps. Each step also has both status and state, similar to that of a job. Steps may capture metadata, stored in Postgres and viewable in the application.   |
 +--------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -91,27 +91,27 @@ application.properties.
 
 The following sections describe characteristics of the user interface.
 
-Overview Page
-~~~~~~~~~~~~~
+Dashboard Page
+~~~~~~~~~~~~~~
 
-The Overview tab performs the role of an Operations Dashboard. Content
+The Dashboard tab performs the role of an Operations Dashboard. Content
 in the page automatically refreshes showing real-time health and
 statistics about data feeds and job status.
 
 |image2|
 
-Kylo Overview Page
+Kylo Dashboard Page
 
 Key Performance Indicators
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Overview page has multiple indicators that help you quickly assess
+The Dashboard page has multiple indicators that help you quickly assess
 the health of the system:
 
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 | |image3|   | Provides a health status of external dependencies such as MySQL or Postgres, Hadoop services.                                              |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------+
-| |image4|   | Provides a summary health status of all data feeds. Details of these feeds are shown in a table, Feed Summary, also on the Overview Page   |
+| |image4|   | Provides a summary health status of all data feeds. Details of these feeds are shown in a table, Feed Health, also on the Dashboard Page   |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 | |image5|   | Optional. Displays a confidence metric updated by any Data Quality Check jobs.                                                             |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------+
@@ -120,10 +120,10 @@ the health of the system:
 | |image7|   | Displays alerts for services and feeds. Click on them for more information.                                                                |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 
-Feed Summary
-~~~~~~~~~~~~
+Feed Health
+~~~~~~~~~~~
 
-The Feed Summary Table provides the state and status of each data feed
+The Feed Health Table provides the state and status of each data feed
 managed by Kylo. The state is either HEALTHY or UNHEALTHY. The status is
 the status of the most recent job of the feed. You can drill into a
 specific feed and see its `*history* <#feed-history-page>`__ by clicking
@@ -186,8 +186,8 @@ Feed History Page
 ~~~~~~~~~~~~~~~~~~
 
 Kylo stores history of each time a feed is executed. You can access this
-data by clicking on the specific feed name in the Feed Summary table on
-the Overview page. Initially the Feeds table provides high-level data
+data by clicking on the specific feed name in the Feed Health table on
+the Dashboard page. Initially the Feeds table provides high-level data
 about the feed.
 
 |image11|
@@ -613,14 +613,14 @@ The setting above would set the Java maximum heap size to 2 GB.
 Service Status Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Overview page displays Service Status as a Key Performance
+The Dashboard page displays Service Status as a Key Performance
 Indicator. The list of services is configurable using the following
 instructions:
 
 Viewing Service Details
 +++++++++++++++++++++++
 
-Within Kylo on the Overview tab the “Services” indicator box shows the
+Within Kylo on the Dashboard tab the “Services” indicator box shows the
 services it is currently monitoring. You can get details of this by
 clicking on the Services tab:
 
