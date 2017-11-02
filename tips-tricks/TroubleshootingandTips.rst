@@ -867,3 +867,26 @@ Solution
 
 3. Create the feed again.
 
+Prioritize jobs based on an attribute value
+===========================================
+
+Problem
+-------
+
+You have many feeds in Kylo that all execute at once but there are a few high-priority feeds that should be executed before the others.
+
+Solution
+--------
+
+The connection to a processor can be configured to prioritize flow files using a few different methods:
+
+* **FirstInFirstOutPrioritizer**: Given two FlowFiles, the one that reached the connection first will be processed first.
+* **NewestFlowFileFirstPrioritizer**: Given two FlowFiles, the one that is newest in the dataflow will be processed first.
+* **OldestFlowFileFirstPrioritizer**: Given two FlowFiles, the one that is oldest in the dataflow will be processed first. This is the default scheme that is used if no prioritizers are selected.
+* **PriorityAttributePrioritizer**: Given two FlowFiles that both have a "priority" attribute, the one that has the highest priority value will be processed first. Note that an UpdateAttribute processor should be used to add the "priority" attribute to the FlowFiles before they reach a connection that has this prioritizer set. Values for the "priority" attribute may be alphanumeric, where "a" is a higher priority than "z", and "1" is a higher priority than "9", for example.
+
+See the |PriorizationDoc| for more information.
+
+.. |PriorizationDoc| raw:: html
+
+   <a href="https://nifi.apache.org/docs/nifi-docs/html/user-guide.html#prioritization" target="_blank">NiFi User Guide</a>
