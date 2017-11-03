@@ -106,6 +106,7 @@ The documentation for the site is organized into a few sections:
     Feed Lineage <how-to-guides/FeedLineage>
     S3 & Data Wrangler <how-to-guides/AccessingS3fromtheDataWrangler>
     S3 Data Ingest Template <how-to-guides/S3DataIngestTemplate.rst>
+    Azure Data Ingest Template <how-to-guides/AzureBlobDataIngestTemplate.rst>
     SUSE Configuration <how-to-guides/SuseConfigurationChanges>
     Configuration Properties <how-to-guides/ConfigurationProperties>
     Validator Tuning <how-to-guides/ValidatorTuning>
