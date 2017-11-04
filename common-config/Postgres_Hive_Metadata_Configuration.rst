@@ -13,6 +13,13 @@ make some modifications to support Hive.
 Kylo Services Configuration
 ===========================
 
+Step 1: Ensure the Postgres driver is on the classpath
+------------------------------------------------------
+Ensure the postgres jdbc driver jar file is included in the kylo-services classpath.
+Copy the driver jar file to the ``kylo-services/lib`` folder.
+
+Step 2: Update the application.properties
+-----------------------------------------
 For Kylo to connect to a Postgres databases for the Hive metadata you
 need to change the following section of the kylo-services
 application.properties file.
