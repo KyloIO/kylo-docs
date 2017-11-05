@@ -345,7 +345,7 @@ These properties allow Kylo to interact with NiFi
 NiFi Rest SSL
 ^^^^^^^^^^^^^
 The following properties need to be set if you interact with NiFi under SSL
-Follow the document :doc:`../how-to-guides/ConfigfureNiFiWithSSL.html for more information on setting up NiFi to run under SSL
+Follow the document :doc:`../how-to-guides/ConfigfureNiFiWithSSL` for more information on setting up NiFi to run under SSL
 
 +--------------------------------+---------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Property                       | Default Value | Description                                                                                                                                                                                              |
