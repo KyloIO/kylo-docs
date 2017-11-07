@@ -7,6 +7,9 @@ Highlights
 - A number of SLA improvements including the ability to configure customizable SLA email templates
 - Enhanced Operations streaming statistics which now supports many more viewing options
 - Ability to clone an existing Feed
+- Visual query enhancements. The Transform Data step has been improved with UI enhancements including a context menu when clicking on a row or highlighting text.
+- Preview validation errors. Apply domain types in a Data Transformation feed and preview which rows are invalid.
+- Secure installation. Default usernames and passwords can be customized during installation to ensure a secure environment.
 - ## Bugs fixed
 
 Extensions
@@ -66,3 +69,20 @@ Upgrade Instructions from v0.8.3
 It was previously possible to provide ActiveMQ and AmazonSQS configuration in their respective configuration files called ``activemq.properties`` and ``amazon-sqs.properties``.
 It is no longer possible and these properties should be moved over to standard Kylo configuration file found in ``<KYLO_HOME>/kylo-services/conf/application.properties``.
 
+5. Kylo no longer ships with the default **dladmin** user. You will need to re-add this user only if you're using the default authentication configuration:
+
+   - Uncomment the following line in :code:`/opt/kylo/kylo-services/conf/application.properties`:
+
+.. code-block:: properties
+
+    security.auth.file.users=file:///opt/kylo/users.properties
+
+..
+
+   - Create a file at :code:`users.properties` file that is owned by kylo and replace **dladmin** with a new username and **thinkbig** with a new password:
+
+.. code-block:: shell
+
+    echo "dladmin=thinkbig" > /opt/kylo/users.properties
+    chown kylo:kylo /opt/kylo/users.properties
+    chmod 600 /opt/kylo/users.properties
