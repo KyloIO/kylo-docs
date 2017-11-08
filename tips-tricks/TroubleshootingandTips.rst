@@ -890,3 +890,34 @@ See the |PriorizationDoc| for more information.
 .. |PriorizationDoc| raw:: html
 
    <a href="https://nifi.apache.org/docs/nifi-docs/html/user-guide.html#prioritization" target="_blank">NiFi User Guide</a>
+
+
+EsIndexException in Kylo services logs
+======================================
+
+
+Problem
+-------
+
+Kylo services log contains errors similar to this:
+*org.modeshape.jcr.index.elasticsearch.EsIndexException: java.io.IOException: Not Found*
+
+Solution
+--------
+Pre-create the indexes used by Kylo in Elasticsearch. Execute this script:
+
+.. code-block:: none
+
+    /opt/kylo/bin/create-kylo-indexes-es.sh
+
+The script takes 4 parameters.
+
+.. code-block:: none
+
+    <host> <rest-port> <num-shards> <num-replicas>
+    Examples values:
+     host: localhost
+     rest-port: 9200
+     num-shards: 1
+     num-replicas: 1
+     Note: num-shards and num-replicas can be set to 1 for development environment
