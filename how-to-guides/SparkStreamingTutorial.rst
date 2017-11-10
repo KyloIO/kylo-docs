@@ -104,7 +104,7 @@ Kafka response feed
 
 This system feed will monitor a Kafka topic for flowfile ids that have been processed by our Spark job.
 
-`Download the and import the Kafka Notifier feed <https://github.com/Teradata/kylo/blob/master/samples/feeds/nifi-1.3/kafka_notifier_service.feed.zip>`_. into the Kylo
+`Download and import the Kafka Notifier feed <https://github.com/Teradata/kylo/blob/master/samples/feeds/nifi-1.3/kafka_notifier_service.feed.zip>`_. into the Kylo
 feeds.
 
 ..
