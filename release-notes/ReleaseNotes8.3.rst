@@ -247,7 +247,28 @@ Upgrade Instructions from v0.8.2
 
 ..
 
-11. Start NiFi and Kylo
+11. If Kerberos has been enabled in :code:`spark.properties` then make the below edits and disable the kylo-spark-shell service. The service will be started as needed by kylo-services.
+
+    .. code-block:: properties
+
+        # Changes for kylo-services/conf/spark.properties with Kylo 0.8.3
+        #spark.shell.server.host = localhost
+        #spark.shell.server.port = 8450
+        spark.shell.deployMode = local
+
+    ..
+
+    .. code-block:: shell
+
+        # RedHat: disable kylo-spark-shell service
+        chkconfig kylo-spark-shell off
+
+        # Debian: disable kylo-spark-shell service
+        update-rc.d kylo-spark-shell disable
+
+    ..
+
+12. Start NiFi and Kylo
 
  .. code-block:: shell
 
@@ -258,7 +279,7 @@ Upgrade Instructions from v0.8.2
  ..
 
 
-12. Migrate Hive schema indexing to Kylo. The indexing of Hive schemas is now handled internally by Kylo instead of using a special feed.
+13. Migrate Hive schema indexing to Kylo. The indexing of Hive schemas is now handled internally by Kylo instead of using a special feed.
 
    12.1. Remove the Register Index processor from the ``standard_ingest`` and ``data_transformation`` reusable templates
 
@@ -266,7 +287,7 @@ Upgrade Instructions from v0.8.2
 
 ..
 
-13. Import updated Index Text Service feed as mentioned in earlier step 9.4. At this point, Kylo should be up and running and hence 9.4 can be completed.
+14. Import updated Index Text Service feed as mentioned in earlier step 9.4. At this point, Kylo should be up and running and hence 9.4 can be completed.
 
 ..
 
