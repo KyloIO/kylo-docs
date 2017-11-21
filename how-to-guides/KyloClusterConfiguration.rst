@@ -105,7 +105,7 @@ Starting with Kylo 0.8.4 you can test your cluster configuration in the Kylo app
 
 2. In a new web browser (i.e. Chrome), connect to a specific node in your cluster.  Go to this webpage `http://localhost:8400/index.html#!/admin/cluster` (replace localhost and port with the direct host and port)
 
-    - This page will show you Cluster information and allow you to send/recevie test messages
+    - This page will show you Cluster information and allow you to send/receive test messages
 
 3. In a new web browser (i.e. Firefox), connect to another node in your cluster.  Follow the steps above and connect to a different node/port.
 
