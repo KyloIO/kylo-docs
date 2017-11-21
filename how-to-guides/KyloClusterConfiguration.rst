@@ -97,6 +97,35 @@ You can monitor the health of the kylo cluster by adding the `kylo-service-monit
 |image1|
 
 
+Testing - (as of Kylo 0.8.4)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Starting with Kylo 0.8.4 you can test your cluster configuration in the Kylo application.
+
+1. Start your Kylo Cluster (both services and ui on all your nodes)
+
+2. In a new web browser (i.e. Chrome), connect to a specific node in your cluster.  Go to this webpage `http://localhost:8400/index.html#!/admin/cluster` (replace localhost and port with the direct host and port)
+
+    - This page will show you Cluster information and allow you to send/recevie test messages
+
+3. In a new web browser (i.e. Firefox), connect to another node in your cluster.  Follow the steps above and connect to a different node/port.
+
+4. Send a message from one of the nodes.  You should see the message appear in the other web browser.  See screenshots below.
+
+ The screenshots below are from a 2 node Kylo cluster.
+    - Node 1: `kylo-sandbox-43958`
+    - Node 2: `kylo-sandbox-59542`
+
+ Screenshot from `Node 1: kylo-sandbox-43958`
+|image2|
+
+ Screenshot from `Node 2: kylo-sandbox-59542`
+|image3|
+
+ - If this page correctly shows your cluster members, but fails to send the message or receive it follow the `Troubleshooting` tips below.  Most likely cause of this is the system parameter `-Dava.net.preferIPv4Stack=true` needs to be configured.
+
+ - If the cluster is not configured correctly this page will indicate and provide you with information on troubleshooting.
+
+
 Troubleshooting
 ~~~~~~~~~~~~~~~
 
@@ -188,3 +217,11 @@ Troubleshooting
 .. |image1| image:: ../media/kylo-config/kylo-cluster2.png
    :width: 1577px
    :height: 373px
+
+.. |image2| image:: ../media/kylo-config/kylo-cluster-test1.png
+   :width: 997px
+   :height: 509px
+
+.. |image3| image:: ../media/kylo-config/kylo-cluster-test2.png
+   :width: 959px
+   :height: 411px
