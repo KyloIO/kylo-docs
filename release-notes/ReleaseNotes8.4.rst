@@ -84,7 +84,7 @@ It is no longer possible and these properties should be moved over to standard K
 .. code-block:: shell
 
     echo "dladmin=thinkbig" > /opt/kylo/users.properties
-    chown kylo:kylo /opt/kylo/users.properties
+    chown kylo:users /opt/kylo/users.properties
     chmod 600 /opt/kylo/users.properties
 
 6. Update the NiFi nars.  Run the following shell script to copy over the new NiFi nars/jars to get new changes to NiFi processors and services.
