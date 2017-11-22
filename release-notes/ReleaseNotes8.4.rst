@@ -71,21 +71,40 @@ It is no longer possible and these properties should be moved over to standard K
 
 5. Kylo no longer ships with the default **dladmin** user. You will need to re-add this user only if you're using the default authentication configuration:
 
-   - Uncomment the following line in :code:`/opt/kylo/kylo-services/conf/application.properties`:
+   - Uncomment the following line in :code:`/opt/kylo/kylo-services/conf/application.properties` and `/opt/kylo/kylo-ui/conf/application.properties` :
 
 .. code-block:: properties
 
     security.auth.file.users=file:///opt/kylo/users.properties
+    security.auth.file.groups=file:///opt/kylo/groups.properties
 
 ..
 
-   - Create a file at :code:`users.properties` file that is owned by kylo and replace **dladmin** with a new username and **thinkbig** with a new password:
+   - Create a file called :code:`users.properties` file that is owned by kylo and replace **dladmin** with a new username and **thinkbig** with a new password:
 
 .. code-block:: shell
 
     echo "dladmin=thinkbig" > /opt/kylo/users.properties
     chown kylo:users /opt/kylo/users.properties
     chmod 600 /opt/kylo/users.properties
+
+   - Create a file called :code:`groups.properties` file that is owned by kylo and set the default groups:
+
+.. code-block:: shell
+
+    vi /opt/kylo/users.properties
+
+.. code-block:: properties
+
+    dladmin=admin,user
+    analyst=analyst,user
+    designer=designer,user
+    operator=operations,user
+
+.. code-block:: shell
+
+    chown kylo:users /opt/kylo/groups.properties
+    chmod 600 /opt/kylo/groups.properties
 
 6. Update the NiFi nars.  Run the following shell script to copy over the new NiFi nars/jars to get new changes to NiFi processors and services.
 
