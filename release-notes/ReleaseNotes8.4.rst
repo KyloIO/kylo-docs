@@ -71,7 +71,7 @@ It is no longer possible and these properties should be moved over to standard K
 
 5. Kylo no longer ships with the default **dladmin** user. You will need to re-add this user only if you're using the default authentication configuration:
 
-   - Uncomment the following line in :code:`/opt/kylo/kylo-services/conf/application.properties` and `/opt/kylo/kylo-ui/conf/application.properties` :
+   - Uncomment the following line in :code:`/opt/kylo/kylo-services/conf/application.properties` and :code:`/opt/kylo/kylo-ui/conf/application.properties` :
 
 .. code-block:: properties
 
