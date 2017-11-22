@@ -86,3 +86,21 @@ It is no longer possible and these properties should be moved over to standard K
     echo "dladmin=thinkbig" > /opt/kylo/users.properties
     chown kylo:kylo /opt/kylo/users.properties
     chmod 600 /opt/kylo/users.properties
+
+6. Update the NiFi nars.  Run the following shell script to copy over the new NiFi nars/jars to get new changes to NiFi processors and services.
+
+   .. code-block:: shell
+
+      /opt/kylo/setup/nifi/update-nars-jars.sh <NIFI_HOME> <KYLO_SETUP_FOLDER> <NIFI_LINUX_USER> <NIFI_LINUX_GROUP>
+
+      Example:  /opt/kylo/setup/nifi/update-nars-jars.sh /opt/nifi /opt/kylo/setup nifi users
+
+7. Start NiFi and Kylo
+
+ .. code-block:: shell
+
+   service nifi start
+
+   /opt/kylo/start-kylo-apps.sh
+
+ ..
