@@ -50,26 +50,38 @@ Upgrade Instructions from v0.8.3
 
  ..
 
-- If using Elasticsearch 5, update the **Index Text Service** feed. This step should be done once Kylo services are started and Kylo is up and running.
 
-    - [Note: This requires NiFi 1.3 or later] Import the feed ``index_text_service_v2.feed.zip`` file available at ``/opt/kylo/setup/data/feeds/nifi-1.3``. Click 'Yes' for these options during feed import (a) Overwrite Feed (b) Replace Feed Template (c) Replace Reusable Template.
+4. Global search configuration (only applicable if using Elasticsearch):
 
-- If using Elasticsearch 2, install an additional plugin to support deletes. If required, change the location to where Elasticsearch is installed.
+    4.1. This step to create kylo indexes may already have been performed as part of v0.8.3 installation. If indexes already exist, Elasticsearch will report an ``index_already_exists_exception``. It is safe to ignore this and continue.
 
-.. code-block:: shell
+    Change the host and port if necessary. The last two parameters define *num-shards* and *num-replicas*, and can be kept as 1 for development environment.
 
-     sudo /usr/share/elasticsearch/bin/plugin install delete-by-query
-     service elasticsearch restart
+    .. code-block:: shell
 
-..
+        /opt/kylo/bin/create-kylo-indexes-es.sh localhost 9200 1 1
+    ..
+
+    4.2. If using Elasticsearch v5, update the **Index Text Service** feed. This step should be done once Kylo services are started and Kylo is up and running. [Note: This requires NiFi 1.3 or later]
+
+    Import the feed ``index_text_service_v2.feed.zip`` file available at ``/opt/kylo/setup/data/feeds/nifi-1.3``. Click 'Yes' for these options during feed import (a) Overwrite Feed (b) Replace Feed Template (c) Replace Reusable Template.
+
+    4.3. If using Elasticsearch v2, install an additional plugin to support deletes. If required, change the location to where Elasticsearch is installed.
+
+    .. code-block:: shell
+
+         sudo /usr/share/elasticsearch/bin/plugin install delete-by-query
+         service elasticsearch restart
+
+    ..
 
 
-4. JMS configuration:
+5. JMS configuration:
 
 It was previously possible to provide ActiveMQ and AmazonSQS configuration in their respective configuration files called ``activemq.properties`` and ``amazon-sqs.properties``.
 It is no longer possible and these properties should be moved over to standard Kylo configuration file found in ``<KYLO_HOME>/kylo-services/conf/application.properties``.
 
-5. Kylo no longer ships with the default **dladmin** user. You will need to re-add this user only if you're using the default authentication configuration:
+6. Kylo no longer ships with the default **dladmin** user. You will need to re-add this user only if you're using the default authentication configuration:
 
    - Uncomment the following line in :code:`/opt/kylo/kylo-services/conf/application.properties` and :code:`/opt/kylo/kylo-ui/conf/application.properties` :
 
@@ -106,7 +118,7 @@ It is no longer possible and these properties should be moved over to standard K
     chown kylo:users /opt/kylo/groups.properties
     chmod 600 /opt/kylo/groups.properties
 
-6. Update the NiFi nars.  Run the following shell script to copy over the new NiFi nars/jars to get new changes to NiFi processors and services.
+7. Update the NiFi nars.  Run the following shell script to copy over the new NiFi nars/jars to get new changes to NiFi processors and services.
 
    .. code-block:: shell
 
@@ -114,7 +126,7 @@ It is no longer possible and these properties should be moved over to standard K
 
       Example:  /opt/kylo/setup/nifi/update-nars-jars.sh /opt/nifi /opt/kylo/setup nifi users
 
-7. Start NiFi and Kylo
+8. Start NiFi and Kylo
 
  .. code-block:: shell
 
@@ -123,3 +135,5 @@ It is no longer possible and these properties should be moved over to standard K
    /opt/kylo/start-kylo-apps.sh
 
  ..
+
+    8.1 Once Kylo is up and running, refer back to step 4.2 to update the **Index Text Service** feed if using Elasticsearch v5.
