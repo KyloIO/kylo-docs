@@ -42,6 +42,8 @@ Here is an example of the properties that need to be changed to work on the Kylo
     nifi.service.mysql.password=<REPLACE_ME_WITH_PASSWORD>
     nifi.service.kylo_mysql.database_user=<REPLACE_ME_WITH_USERNAME>
     nifi.service.kylo_mysql.password=<REPLACE_ME_WITH_PASSWORD>
+
+    #Note: The value for this property is the password for the dladmin user.
     nifi.service.kylo_metadata_service.rest_client_password=<REPLACE_ME_WITH_PASSWORD>
 
     modeshape.datasource.username=${spring.datasource.username}
