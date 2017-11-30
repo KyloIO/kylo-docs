@@ -1,4 +1,4 @@
-Release 0.8.4 (November 28, 2017)
+Release 0.8.4 (November 29, 2017)
 =================================
 
 Highlights
