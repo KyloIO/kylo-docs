@@ -2,8 +2,8 @@
 Release Notes
 =============
 
-Current Snapshot Release
-~~~~~~~~~~~~~~~~~~~~~~~~
+Latest Stable Release
+~~~~~~~~~~~~~~~~~~~~~
 
 .. toctree::
     :maxdepth: 1
@@ -11,20 +11,13 @@ Current Snapshot Release
     ReleaseNotes8.4
 
 
-Latest Stable Release
-~~~~~~~~~~~~~~~~~~~~~
-
-.. toctree::
-    :maxdepth: 1
-
-    ReleaseNotes8.3.3
-
 Previous Releases
 ~~~~~~~~~~~~~~~~~
 
 .. toctree::
     :maxdepth: 1
 
+    ReleaseNotes8.3.3
     ReleaseNotes8.3.2
     ReleaseNotes8.3.1
     ReleaseNotes8.3
