@@ -46,6 +46,7 @@ The documentation for the site is organized into a few sections:
     installation/InstallAdditionalKyloComponents
     installation/EnableKerberos
     installation/AdditionalConfiguration
+    installation/KyloApplicationProperties
     installation/GrantHdfsPrivileges
     installation/StartServices
     installation/ImportTemplates

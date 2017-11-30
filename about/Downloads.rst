@@ -9,11 +9,11 @@ Latest Kylo Distribution (0.8.4)
 +-----+------------------------+
 |Type |Link                    |
 +-----+------------------------+
-|RPM  | coming soon            |
+|RPM  | http://bit.ly/2zQRrlY  |
 +-----+------------------------+
-|DEB  | coming soon            |
+|DEB  | http://bit.ly/2BnXIC5  |
 +-----+------------------------+
-|TAR  | coming soon            |
+|TAR  | http://bit.ly/2nhoSIn  |
 +-----+------------------------+
 
 Kylo Distribution (0.8.3.3)
