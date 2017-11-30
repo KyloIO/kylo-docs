@@ -22,7 +22,6 @@ Download Links
 
 Upgrade Instructions from v0.8.3
 --------------------------------
-- **Order of execution of instructions to be updated**
 
 1. Stop NiFi:
 
