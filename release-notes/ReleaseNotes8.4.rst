@@ -43,7 +43,7 @@ Upgrade Instructions from v0.8.3
 
  ..
 
-3. Install the new RPM:
+4. Install the new RPM:
 
  .. code-block:: shell
 
@@ -52,9 +52,9 @@ Upgrade Instructions from v0.8.3
  ..
 
 
-4. Global search configuration (only applicable if using Elasticsearch):
+5. Global search configuration (only applicable if using Elasticsearch):
 
-    4.1. This step to create kylo indexes may already have been performed as part of v0.8.3 installation. If indexes already exist, Elasticsearch will report an ``index_already_exists_exception``. It is safe to ignore this and continue.
+    5.1. This step to create kylo indexes may already have been performed as part of v0.8.3 installation. If indexes already exist, Elasticsearch will report an ``index_already_exists_exception``. It is safe to ignore this and continue.
 
     Change the host and port if necessary. The last two parameters define *num-shards* and *num-replicas*, and can be kept as 1 for development environment.
 
@@ -63,11 +63,11 @@ Upgrade Instructions from v0.8.3
         /opt/kylo/bin/create-kylo-indexes-es.sh localhost 9200 1 1
     ..
 
-    4.2. If using Elasticsearch v5, update the **Index Text Service** feed. This step should be done once Kylo services are started and Kylo is up and running. [Note: This requires NiFi 1.3 or later]
+    5.2. If using Elasticsearch v5, update the **Index Text Service** feed. This step should be done once Kylo services are started and Kylo is up and running. [Note: This requires NiFi 1.3 or later]
 
     Import the feed ``index_text_service_v2.feed.zip`` file available at ``/opt/kylo/setup/data/feeds/nifi-1.3``. Click 'Yes' for these options during feed import (a) Overwrite Feed (b) Replace Feed Template (c) Replace Reusable Template.
 
-    4.3. If using Elasticsearch v2, install an additional plugin to support deletes. If required, change the location to where Elasticsearch is installed.
+    5.3. If using Elasticsearch v2, install an additional plugin to support deletes. If required, change the location to where Elasticsearch is installed.
 
     .. code-block:: shell
 
@@ -77,13 +77,13 @@ Upgrade Instructions from v0.8.3
     ..
 
 
-5. Restore previous application.properties files. If you have customized the the application.properties, copy the backup from the 0.8.3 install.
+6. Restore previous application.properties files. If you have customized the the application.properties, copy the backup from the 0.8.3 install.
 
-     5.1 Find the /bkup-config/TIMESTAMP/kylo-services/application.properties file
+     6.1 Find the /bkup-config/TIMESTAMP/kylo-services/application.properties file
 
         - Kylo will backup the application.properties file to the following location, */opt/kylo/bkup-config/YYYY_MM_DD_HH_MM_millis/kylo-services/application.properties*, replacing the "YYYY_MM_DD_HH_MM_millis" with a valid time:
 
-     5.2 Copy the backup file over to the /opt/kylo/kylo-services/conf folder
+     6.2 Copy the backup file over to the /opt/kylo/kylo-services/conf folder
 
         .. code-block:: shell
 
@@ -94,9 +94,9 @@ Upgrade Instructions from v0.8.3
 
         ..
 
-     5.3 Copy the /bkup-config/TIMESTAMP/kylo-ui/application.properties file to `/opt/kylo/kylo-ui/conf`
+     6.3 Copy the /bkup-config/TIMESTAMP/kylo-ui/application.properties file to `/opt/kylo/kylo-ui/conf`
 
-     5.4 Ensure the property ``security.jwt.key`` in both kylo-services and kylo-ui application.properties file match.  They property below needs to match in both of these files:
+     6.4 Ensure the property ``security.jwt.key`` in both kylo-services and kylo-ui application.properties file match.  They property below needs to match in both of these files:
 
         - */opt/kylo/kylo-ui/conf/application.properties*
         - */opt/kylo/kylo-services/conf/application.properties*
@@ -108,13 +108,13 @@ Upgrade Instructions from v0.8.3
           ..
 
 
-6. JMS configuration:
+7. JMS configuration:
 
 It was previously possible to provide ActiveMQ and AmazonSQS configuration in their respective configuration files called ``activemq.properties`` and ``amazon-sqs.properties``.
 It is no longer possible and these properties should be moved over to standard Kylo configuration file found in ``<KYLO_HOME>/kylo-services/conf/application.properties``.
 
 
-7.  **NOTE:** Kylo no longer ships with the default **dladmin** user. You will need to re-add this user only if you're using the default authentication configuration:
+8.  **NOTE:** Kylo no longer ships with the default **dladmin** user. You will need to re-add this user only if you're using the default authentication configuration:
 
    - Uncomment the following line in :code:`/opt/kylo/kylo-services/conf/application.properties` and :code:`/opt/kylo/kylo-ui/conf/application.properties` :
 
@@ -154,7 +154,7 @@ It is no longer possible and these properties should be moved over to standard K
         chown kylo:users /opt/kylo/groups.properties
         chmod 600 /opt/kylo/groups.properties
 
-7. Update the NiFi nars.  Run the following shell script to copy over the new NiFi nars/jars to get new changes to NiFi processors and services.
+9. Update the NiFi nars.  Run the following shell script to copy over the new NiFi nars/jars to get new changes to NiFi processors and services.
 
    .. code-block:: shell
 
@@ -162,7 +162,7 @@ It is no longer possible and these properties should be moved over to standard K
 
       Example:  /opt/kylo/setup/nifi/update-nars-jars.sh /opt/nifi /opt/kylo/setup nifi users
 
-8. Start NiFi and Kylo
+10. Start NiFi and Kylo
 
  .. code-block:: shell
 
@@ -172,4 +172,4 @@ It is no longer possible and these properties should be moved over to standard K
 
  ..
 
-   8.1 Once Kylo is up and running, refer back to step 4.2 to update the **Index Text Service** feed if using Elasticsearch v5.
+   10.1 Once Kylo is up and running, refer back to step 5.2 to update the **Index Text Service** feed if using Elasticsearch v5.
