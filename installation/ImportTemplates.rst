@@ -9,7 +9,7 @@ The setup folder includes a script to import the templates locally.
 
 .. code-block:: shell
 
-    $ <KYLO_HOME>/setup/install-templates-locally.sh
+    $ <KYLO_HOME>/setup/data/install-templates-locally.sh
 
 Import from the Kylo UI
 ------------------------
