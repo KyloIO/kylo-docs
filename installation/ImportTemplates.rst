@@ -54,8 +54,8 @@ Import from the Kylo UI
 
     .. code-block:: none
 
-        - <kylo_project>/samples/feeds/nifi-1.3/index_text_service_v2.zip
-        - /opt/kylo/setup/data/feeds/nifi-1.3/index_text_service_v2.zip
+        - <kylo_project>/samples/feeds/nifi-1.3/index_text_service_v2.feed.zip
+        - /opt/kylo/setup/data/feeds/nifi-1.3/index_text_service_v2.feed.zip
     ..
 
    b. Go to the the Feeds page in Kylo.
