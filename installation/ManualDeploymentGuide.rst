@@ -222,7 +222,7 @@ b. Offline Mode
 
            1. /opt/nifi/ext-config/config.properties
 
-                 spring.activemq.broker-url
+                 jms.activemq.broker.url
                  (Perform this configuration update after installing NiFi, which is step 9 in this guide)
 
            2. /opt/kylo/kylo-services/conf/application.properties
@@ -286,11 +286,22 @@ b. Update JAVA_HOME (default is /opt/java/current).
 
 c. Install Kylo specific components.
 
+  **Online Mode**
+
 .. code-block:: shell
 
           $ <SETUP_DIR>/nifi/install-kylo-components.sh <NIFI_BASE_FOLDER> <KYLO_HOME> <NIFI_LINUX_USER> <NIFI_LINUX_GROUP>
 
 ..
+
+  **Offline Mode**
+
+.. code-block:: shell
+
+          $ <SETUP_DIR>/nifi/install-kylo-components.sh <NIFI_BASE_FOLDER> <KYLO_HOME> <NIFI_LINUX_USER> <NIFI_LINUX_GROUP> <OFFLINE_SETUP_DIR> -o
+
+..
+
 
 **Option 2**: Leverage an existing NiFi instance
 
