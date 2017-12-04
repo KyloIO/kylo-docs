@@ -12,7 +12,7 @@ To create all the users and groups on a single machine, run the following comman
 
 .. code-block:: shell
 
-    useradd -U -r -m -s /bin/bash nifi && useradd -U -r -m -s /bin/bash kylo && useradd -U -r -m -s /bin/bash activemq
+    useradd -r -m -s /bin/bash nifi && useradd -r -m -s /bin/bash kylo && useradd -r -m -s /bin/bash activemq
 
 ..
 
@@ -23,9 +23,9 @@ users, run the following commands on the appropriate machines:
 
 .. code-block:: shell
 
-  useradd -U -r -m -s /bin/bash nifi
-  useradd -U -r -m -s /bin/bash kylo
-  useradd -U -r -m -s /bin/bash activemq
+  useradd -r -m -s /bin/bash nifi
+  useradd -r -m -s /bin/bash kylo
+  useradd -r -m -s /bin/bash activemq
 
 ..
 
