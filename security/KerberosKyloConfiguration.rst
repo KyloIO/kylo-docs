@@ -132,7 +132,7 @@ Configuration Steps
 
 ..
 
-Kylo is now configured for a Kerberos cluster. You can tesadfadsfadfat that it is
+Kylo is now configured for a Kerberos cluster. You can test that it is
 configured correctly by looking at profile statistics (if applicable):
 go to the Tables page and drill down into a Hive table, and go to the
 Wrangler feature and test that it works.
