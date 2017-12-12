@@ -12,7 +12,7 @@ Highlights
 - Preview validation errors. Apply domain types in a Data Transformation feed and preview which rows are invalid.
 - Secure installation. Default usernames and passwords can be customized during installation to ensure a secure environment.
 - Global search enhancements. Deleting a feed will remove its data from search results. Re-processing same data via a feed will not duplicate search results.
-- 80 Bugs fixed
+- 136 Issues fixed
 
 Download Links
 --------------
