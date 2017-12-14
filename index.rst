@@ -135,6 +135,7 @@ The documentation for the site is organized into a few sections:
     Kerberos Install Cloudera <developer-guides/KerberosInstallationExample-Cloudera>
     Kerberos Install HDP <developer-guides/KerberosInstallationExampleHDP2.4>
     Spark Function Definitions <developer-guides/SparkFunctionDefinitions>
+    Metadata Events <developer-guides/MetadataEvents>
 
 .. _user_guides:
 .. toctree::
