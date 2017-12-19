@@ -1,11 +1,8 @@
-
-
-====================================
-Kylo Services Application Properties
-====================================
+===========================
+Kylo Application Properties
+===========================
 
 Below you can find all the properties used for the kylo-services application
-
 
 Common Configuration Properties
 -------------------------------
@@ -363,7 +360,7 @@ These properties allow Kylo to interact with NiFi
 NiFi Rest SSL
 ^^^^^^^^^^^^^
 The following properties need to be set if you interact with NiFi under SSL
-Follow the document :doc:`../security/ConfigfureNiFiWithSSL` for more information on setting up NiFi to run under SSL
+Follow the document :doc:`../security/ConfigureNiFiWithSSL` for more information on setting up NiFi to run under SSL
 
 +--------------------------------+---------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Property                       | Default Value | Description                                                                                                                                                                                              |
@@ -390,7 +387,7 @@ Follow the document :doc:`../security/ConfigfureNiFiWithSSL` for more informatio
 NiFi Flow/Template Injection
 ----------------------------
 Kylo will inject/populate NiFi Processor and Controller Service properties using Kylo environment properties.
-Refer to this document :doc:`ConfigurationProperties` for details as Kylo has a number of options allowing it to interact and set properties in NiFi.
+Refer to this document :doc:`../how-to-guides/ConfigurationProperties` for details as Kylo has a number of options allowing it to interact and set properties in NiFi.
 Below are the default settings Kylo uses.
 
 +----------------------------------------------------------+---------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -449,8 +446,8 @@ Below are the default settings Kylo uses.
 
 
 
-To be removed
--------------
+Unused properties
+-----------------
 
 +----------------------------------------------------------+-----------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Property                                                 | Default Value   | Description                                                                                                                                                                                    |
