@@ -87,7 +87,7 @@ Upgrade Instructions from v0.8.4
 
     ..
 
-   - Create a file called :code:`groups.properties` file that is owned by kylo and set the default groups:
+   - Create a file called :code:`groups.properties` file that is owned by kylo and set the default groups as below. Replace **dladmin** in line 1 with the username populated in :code:`users.properties` in step above.
 
     .. code-block:: shell
 
