@@ -8,7 +8,7 @@ Highlights
 
 Download Links
 --------------
-- Coming Soon
+- Visit the :doc:`Downloads <../about/Downloads>` page for links.
 
 
 Upgrade Instructions from v0.8.4
