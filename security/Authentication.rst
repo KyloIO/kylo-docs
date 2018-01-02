@@ -34,27 +34,32 @@ The table below lists all of the profiles currently supported by Kylo out-of-the
 of these profiles are activated certain properties are
 expected to be present in the `application.properties` files.
 
-+--------------------+----------------+----------------------------------------------+
-| Login Method       | Spring Profile | Description                                  |
-+====================+================+==============================================+
-| Kylo User          | `auth-kylo`    | Authenticates users against the              |
-|                    |                | Kylo user/group store                        |
-+--------------------+----------------+----------------------------------------------+
-| LDAP               | `auth-ldap`    | Authenticates users stored in LDAP           |
-+--------------------+----------------+----------------------------------------------+
-| Active Directory   | `auth-ad`      | Authenticates users stored                   |
-|                    |                | in Active Directory                          |
-+--------------------+----------------+----------------------------------------------+
-| Users file         | `auth-file`    | Authenticates users in a file                |
-|                    |                | users.properies (typically used in           |
-|                    |                | development only)                            |
-+--------------------+----------------+----------------------------------------------+
-| Simple             | `auth-simple`  | Allows only one admin user defined in the    |
-|                    |                | configuration properties (development only)  |
-+--------------------+----------------+----------------------------------------------+
-| Cached credentials | `auth-cache`   | Short-cicuit, temporary authentication after |
-|                    |                | previous user authentication by other means  |
-+--------------------+----------------+----------------------------------------------+
++--------------------+--------------------+-----------------------------------------------------+
+| Login Method       | Spring Profile     | Description                                         |
++====================+====================+=====================================================+
+| Kylo User          | `auth-kylo`        | Authenticates users against the                     |
+|                    |                    | Kylo user/group store                               |
++--------------------+--------------------+-----------------------------------------------------+
+| LDAP               | `auth-ldap`        | Authenticates users stored in LDAP                  |
++--------------------+--------------------+-----------------------------------------------------+
+| Active Directory   | `auth-ad`          | Authenticates users stored                          |
+|                    |                    | in Active Directory                                 |
++--------------------+--------------------+-----------------------------------------------------+
+| Users file         | `auth-file`        | Authenticates users in a file                       |
+|                    |                    | users.properies (typically used in                  |
+|                    |                    | development only)                                   |
++--------------------+--------------------+-----------------------------------------------------+
+| Simple             | `auth-simple`      | Allows only one admin user defined in the           |
+|                    |                    | configuration properties (development only)         |
++--------------------+--------------------+-----------------------------------------------------+
+| Cached credentials | `auth-cache`       | Short-cicuit, temporary authentication after        |
+|                    |                    | previous user authentication by other means         |
++--------------------+--------------------+-----------------------------------------------------+
+| Kylo User Groups   | `auth-kylo-groups` | Limits user groups of other profiles to only those  |
+|                    |                    | which also exist in Kylo. This is useful when       |
+|                    |                    | user is part of many groups in other profiles which |
+|                    |                    | may cause JTW token size overflow.                  |
++--------------------+--------------------+-----------------------------------------------------+
 
 `auth-kylo`
 '''''''''''
@@ -207,6 +212,24 @@ is inserted at the end of the sequence to add the credential to the cache whenev
 +==========================+==========+==========================================+========================================================================================================================================================================+
 | security.auth.cache.spec | No       | ``expireAfterWrite=30s,maximumSize=512`` | The cache `specification <https://google.github.io/guava/releases/19.0/api/docs/com/google/common/cache/CacheBuilderSpec.html>`_ (entry expire time, cache size, etc.) |
 +--------------------------+----------+------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+`auth-kylo-groups`
+''''''''''''''''''
+This profile will limit user groups to only those which also exist in Kylo. It is expected to be used only in combination with other profiles where user store is external to Kylo, e.g. Active Directory.
+This profile is useful to prevent JWT token size overflow when user is part of many groups in other stores.
+Lets consider following example where a user is part of following groups in Active Directory and following groups exist in Kylo:
+
++------------------+----------------------------------------------+
+| User store       | Groups                                       |
++==================+==============================================+
+| Active Directory | Group A, Group B, Group C, Group D, Group E  |
++------------------+----------------------------------------------+
+| Kylo             | Group B, Group D, Group F                    |
++------------------+----------------------------------------------+
+
+Then having `auth-kylo-groups` profile will limit user groups to: Group B, Group D
+
+
 
 User Group Handling
 ~~~~~~~~~~~~~~~~~~~
