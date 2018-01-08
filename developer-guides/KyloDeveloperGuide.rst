@@ -192,6 +192,30 @@ IntelliJ Configuration
    e. Set the "Main Class" property to
       "com.thinkbiganalytics.server.KyloServerApplication".
 
+   f. Add "dev" to list of Active Profiles.
+
+   g. Add a file named "application-dev.properties" to kylo-service-app at kylo/services/service-app/src/main/resources location. Populate properties to override from the standard "application.properties". Some key properties are:
+
+    .. code-block:: shell
+
+        security.entity.access.controlled=<value>
+        spring.datasource.username=<value>
+        spring.datasource.password=<value>
+
+        hive.datasource.username=<value>
+        hive.metastore.datasource.username=<value>
+        hive.metastore.datasource.password=<value>
+
+        modeshape.datasource.username=${spring.datasource.username}
+        modeshape.datasource.password=${spring.datasource.password}
+
+        nifi.service.kylo_mysql.database_user=<value>
+        nifi.service.kylo_mysql.password=<value>
+
+        nifi.service.kylo_metadata_service.rest_client_password=<value>
+
+        modeshape.index.dir=<value>
+
 3. Create the kylo-ui application run configuration.
 
    a. Open the Run configurations.
