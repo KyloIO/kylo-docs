@@ -6,7 +6,7 @@ Kylo supports Global search via a plugin-based design. Three plugins are provide
 
 1) Elasticsearch (rest client) [default]
 
-2) Elasticsearch (native client)
+2) Elasticsearch (transport client)
 
 3) Solr
 
@@ -16,6 +16,14 @@ Elasticsearch 5 is supported when using NiFi 1.3 (or later) and rest client. Kyl
 
 Elasticsearch (rest client) [default]
 =====================================
+
+Plugin Jar:
+    - Name: ``kylo-search-elasticsearch-rest-<version>.jar``
+    - Default location: ``/opt/kylo/kylo-services/plugin/``
+
+Plugin Property File:
+    - Name: ``elasticsearch-rest.properties``
+    - Default location: ``/opt/kylo/kylo-services/conf/``
 
 Steps to configure Kylo with Elasticsearch engine (using rest client) are below. Both Elasticsearch versions 2 and 5 are supported via this plugin.
 
@@ -33,24 +41,13 @@ Steps to configure Kylo with Elasticsearch engine (using rest client) are below.
 
     .. code-block:: shell
 
-        kylo-search-elasticsearch-rest-0.8.3.jar
+        kylo-search-elasticsearch-rest-<version>.jar
     ..
 
-    .. note:: There should be only one search plugin in the /opt/kylo/kylo-services/plugin directory. If there is another search plugin (for example, kylo-search-elasticsearch-0.8.3.jar), move it to /opt/kylo/setup/plugins/ for later use.
+    .. note:: It is recommended to have only one search plugin in the /opt/kylo/kylo-services/plugin/ directory. If there is another search plugin (for example, kylo-search-elasticsearch-<version>.jar), move it along with its property file to /opt/kylo/setup/plugins/<plugin-name>/ for later use.
 
 
-    Reference commands to get the plugin, and change ownership and permissions:
-
-    .. code-block:: shell
-
-        mv /opt/kylo/kylo-services/plugin/kylo-search-*-0.8.3.jar /opt/kylo/setup/plugins/
-        cp /opt/kylo/setup/plugins/kylo-search-elasticsearch-rest-0.8.3.jar /opt/kylo/kylo-services/plugin/
-        cd /opt/kylo/kylo-services/plugin/
-        chown kylo:users kylo-search-elasticsearch-rest-0.8.3.jar
-        chmod 755 kylo-search-elasticsearch-rest-0.8.3.jar
-    ..
-
-3. Provide elasticsearch properties
+3. Provide elasticsearch-rest properties
 
     Update cluster properties in ``/opt/kylo/kylo-services/conf/elasticsearch-rest.properties`` if different from the defaults provided below.
 
@@ -98,10 +95,18 @@ Steps to configure Kylo with Elasticsearch engine (using rest client) are below.
     7. Verify that the feed imports successfully.
 
 
-Elasticsearch (native client)
-=============================
+Elasticsearch (transport client)
+================================
 
-Steps to configure Kylo with Elasticsearch engine (using native client) are below. Only Elasticsearch version 2 is supported via this plugin.
+Plugin Jar:
+    - Name: ``kylo-search-elasticsearch-<version>.jar``
+    - Default location: ``/opt/kylo/setup/plugins/search-elasticsearch-transport-client/``
+
+Plugin Property File:
+    - Name: ``elasticsearch.properties``
+    - Default location: ``/opt/kylo/setup/plugins/search-elasticsearch-transport-client/``
+
+Steps to configure Kylo with Elasticsearch engine (using transport client) are below. Only Elasticsearch version 2 is supported via this plugin.
 
 1. Include ``search-es`` profile in existing list of profiles in ``/opt/kylo/kylo-services/conf/application.properties``
 
@@ -112,26 +117,29 @@ Steps to configure Kylo with Elasticsearch engine (using native client) are belo
 
     ..
 
-2. Ensure that the plugin is available in ``/opt/kylo/kylo-services/plugin``. The plugin comes out-of-the-box at another location ``/opt/kylo/setup/plugins``. It should have ownership as ``kylo:users`` and permissions ``755``.
+2. Ensure that the plugin is available in ``/opt/kylo/kylo-services/plugin``. The plugin comes out-of-the-box at another location ``/opt/kylo/setup/plugins/search-elasticsearch-transport-client/``. It should have ownership as ``kylo:users`` and permissions ``755``.
 
 
     .. code-block:: shell
 
-        kylo-search-elasticsearch-0.8.3.jar
+        kylo-search-elasticsearch-<version>.jar
     ..
 
-    .. note:: There should be only one search plugin in the above plugin directory. If there is another search plugin (for example, kylo-search-solr-0.8.3.jar), move it to /opt/kylo/setup/plugins/ for later use.
+    .. note:: It is recommended to have only one search plugin in the /opt/kylo/kylo-services/plugin/ directory. If there is another search plugin (for example, kylo-search-solr-<version>.jar), move it along with its property file to to /opt/kylo/setup/plugins/<plugin-name>/ for later use.
 
 
     Reference commands to get the plugin, and change ownership and permissions:
 
     .. code-block:: shell
 
-        mv /opt/kylo/kylo-services/plugin/kylo-search-*-0.8.3.jar /opt/kylo/setup/plugins/
-        cp /opt/kylo/setup/plugins/kylo-search-elasticsearch-0.8.3.jar /opt/kylo/kylo-services/plugin/
+        cp /opt/kylo/setup/plugins/search-elasticsearch-transport-client/kylo-search-elasticsearch-<version>.jar /opt/kylo/kylo-services/plugin/
+        cp /opt/kylo/setup/plugins/search-elasticsearch-transport-client/elasticsearch.properties /opt/kylo/kylo-services/conf/
         cd /opt/kylo/kylo-services/plugin/
-        chown kylo:users kylo-search-elasticsearch-0.8.3.jar
-        chmod 755 kylo-search-elasticsearch-0.8.3.jar
+        chown kylo:users kylo-search-elasticsearch-<version>.jar
+        chmod 755 kylo-search-elasticsearch-<version>.jar
+        cd /opt/kylo/kylo-services/conf/
+        chown kylo:users elasticsearch.properties
+        chmod 755 elasticsearch.properties
     ..
 
 
@@ -177,6 +185,14 @@ Steps to configure Kylo with Elasticsearch engine (using native client) are belo
 Solr
 ====
 
+Plugin Jar:
+    - Name: ``kylo-search-solr-<version>.jar``
+    - Default location: ``/opt/kylo/setup/plugins/search-solr/``
+
+Plugin Property File:
+    - Name: ``solrsearch.properties``
+    - Default location: ``/opt/kylo/setup/plugins/search-solr/``
+
 Kylo is designed  to work with Solr (SolrCloud mode) and tested with v6.5.1. This configuration assumes that you already have a running Solr instance. You can also get it from the `official download page <http://lucene.apache.org/solr/downloads.html>`_.
 
 Steps to configure Kylo with Solr are below:
@@ -190,26 +206,29 @@ Steps to configure Kylo with Solr are below:
 
     ..
 
-2. Ensure that the plugin is available in ``/opt/kylo/kylo-services/plugin``. The plugin comes out-of-the-box at another location ``/opt/kylo/setup/plugins``. It should have ownership as ``kylo:users`` and permissions ``755``.
+2. Ensure that the plugin is available in ``/opt/kylo/kylo-services/plugin``. The plugin comes out-of-the-box at another location ``/opt/kylo/setup/plugins/search-solr/``. It should have ownership as ``kylo:users`` and permissions ``755``.
 
 
     .. code-block:: shell
 
-        kylo-search-solr-0.8.3.jar
+        kylo-search-solr-<version>.jar
     ..
 
-    .. note:: There should be only one search plugin in the /opt/kylo/kylo-services/plugin directory. If there is another search plugin (for example, kylo-search-elasticsearch-0.8.3.jar), move it to /opt/kylo/setup/plugins/ for later use.
+    .. note:: It is recommended to have only one search plugin in the /opt/kylo/kylo-services/plugin/ directory. If there is another search plugin (for example, kylo-search-elasticsearch-<version>.jar), move it along with its property file to /opt/kylo/setup/plugins/<plugin-name>/ for later use.
 
 
     Reference commands to get the plugin, and change ownership and permissions:
 
     .. code-block:: shell
 
-        mv /opt/kylo/kylo-services/plugin/kylo-search-*-0.8.3.jar /opt/kylo/setup/plugins/
-        cp /opt/kylo/setup/plugins/kylo-search-solr-0.8.3.jar /opt/kylo/kylo-services/plugin/
+        cp /opt/kylo/setup/plugins/search-solr/kylo-search-solr-<version>.jar /opt/kylo/kylo-services/plugin/
+        cp /opt/kylo/setup/plugins/search-solr/solrsearch.properties /opt/kylo/kylo-services/conf/
         cd /opt/kylo/kylo-services/plugin/
-        chown kylo:users kylo-search-solr-0.8.3.jar
-        chmod 755 kylo-search-solr-0.8.3.jar
+        chown kylo:users kylo-search-solr-<version>.jar
+        chmod 755 kylo-search-solr-<version>.jar
+        cd /opt/kylo/kylo-services/conf/
+        chown kylo:users solrsearch.properties
+        chmod 755 solrsearch.properties
     ..
 
 3. Create a folder on the box where Kylo is running to store indexes for Kylo metadata. Ensure that Kylo can write to this folder.
