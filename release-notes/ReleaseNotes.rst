@@ -45,11 +45,3 @@ Previous Releases
     ReleaseNotes3.1
     ReleaseNotes3
     ReleaseNotes2
-
-
-Under Development
-~~~~~~~~~~~~~~~~~
-.. toctree::
-    :maxdepth: 1
-
-    ReleaseNotes9.0
