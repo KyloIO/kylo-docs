@@ -15,7 +15,7 @@ Highlights
 - Improved Provenance handling for streaming feeds
 - Security enhancements
 - Entity Access Control for Elasticsearch
-- Ability to reindex historical feed data for Elasticsearch and Solr
+- :doc:`Ability to reindex historical feed data for Elasticsearch and Solr <../how-to-guides/ReindexHistoricalFeedData>`
 - Improved Release Highwatermark so flows wont get stuck
 - Feed Version backend support (UI to follow next sprint)
 - Save Point processor
@@ -121,10 +121,58 @@ Upgrade Instructions from v0.8.4.1
         chown kylo:users /opt/kylo/groups.properties
         chmod 600 /opt/kylo/groups.properties
 
-6. Start Kylo
+6. To enable reindexing of a feed's historical data:
+
+    1. Enable option in ``/opt/kylo/kylo-services/conf/application.properties`` for Kylo services.
+
+        .. code-block:: shell
+
+            search.history.data.reindexing.enabled=true
+        ..
+
+
+    2. If using Solr instead of Elasticsearch as the search engine, add one property to ``/opt/kylo/kylo-services/conf/solrsearch.properties`` file.
+
+        .. code-block:: shell
+
+            config.http.solr.url=http://${search.host}:${search.port}
+
+        ..
+
+7. Start Kylo
 
  .. code-block:: shell
 
    /opt/kylo/start-kylo-apps.sh
 
  ..
+
+8. Once Kylo is up, to enable reindexing of a feed's historical data, complete these remaining steps:
+
+    1. Import the updated Index Text Service feed via these steps:
+
+        1. Feed Manager -> Feeds -> + orange button -> Import from file -> Choose file
+
+        2. Pick the ``index_text_service_v3.feed.zip`` file available at ``/opt/kylo/setup/data/feeds/nifi-1.3/history-reindexing/``
+
+        3. Leave *Change the Category* field blank (It defaults to *System*)
+
+        4. Click *Yes* for these three options (1) *Overwrite Feed* (2) *Replace Feed Template* (3) *Replace Reusable Template*
+
+        5. Click *Import Feed*.
+
+        6. Verify that the feed imports successfully.
+
+    2. Import the History Reindex Text Service feed via these steps:
+
+        1. Feed Manager -> Feeds -> + orange button -> Import from file -> Choose file
+
+        2. Pick the ``history_reindex_text_service_v1.feed.zip`` file available at ``/opt/kylo/setup/data/feeds/nifi-1.3/history-reindexing/``
+
+        3. Leave *Change the Category* field blank (It defaults to *System*)
+
+        4. Click *Yes* for these three options (1) *Overwrite Feed* (2) *Replace Feed Template* (3) *Replace Reusable Template*
+
+        5. Click *Import Feed*.
+
+        6. Verify that the feed imports successfully.
