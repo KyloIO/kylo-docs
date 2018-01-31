@@ -14,7 +14,7 @@ Highlights
 - Ability to Chain Reusable templates together
 - Improved Provenance handling for streaming feeds
 - Security enhancements
-- Entity Access Control for Elasticsearch
+- :doc:`Entity Access Control for Elasticsearch <../how-to-guides/EntityAccessControlForElasticsearch>`
 - :doc:`Ability to reindex historical feed data for Elasticsearch and Solr <../how-to-guides/ReindexHistoricalFeedData>`
 - Improved Release Highwatermark so flows wont get stuck
 - Feed Version backend support (UI to follow next sprint)

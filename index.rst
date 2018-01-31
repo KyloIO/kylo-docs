@@ -119,6 +119,7 @@ The documentation for the site is organized into a few sections:
     Spark Streaming - Twitter Sentiment Analysis <how-to-guides/SparkStreamingTutorial>
     Ambari Service Monitor Plugin <how-to-guides/AmbariServiceMonitor>
     Reindex Historical Feed Data <how-to-guides/ReindexHistoricalFeedData>
+    Entity Access Control for Elasticsearch <how-to-guides/EntityAccessControlForElasticsearch>
 
 
 .. _developer_guides:
