@@ -260,3 +260,86 @@ Refer to the Data Confidence Invalid Records flow for an example:
 .. |image17| image:: ../media/kylo-config/KC17.png
    :width: 6.59028in
    :height: 0.76042in
+   
+High-Water Mark Processors
+--------------------------
+
+The high-water mark processors are used to manage one or more water marks for a feed.  High-water marks support incremental batch processing by storing the highest value of an increasing 
+field in the source records (such as a timestamp or record number) so that subsequent batches can pick up where the previous one left off.
+
+The water mark processors have two roles:
+
+1. To load the current value of a water mark of a feed as a flow file attribute, and to later commit (or rollback on error) the latest value of that attribute as the new water mark value
+2. To bound a section of a flow so that only one flow file at a time is allowed to process data for the latest water mark value
+
+There are two water mark processors: LoadHighWaterMark and ReleaseHighWaterMark.  The section of a NiFi flow where a water mark becomes active is bounded starts when a flow file 
+passes through a LoadHighWaterMark processor and ends when it passes through a ReleaseHighWaterMark.  After a flow file passes through a LoadHighWaterMark processor there must 
+be a ReleaseHighWaterMark present to release that water mark somewhere along every possible subsequent route in the flow.
+
+LoadHighWaterMark Processor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This processor is configured, when a flow files is created by it or passes through it, to load the value of a single high-water mark for the feed and to store 
+that value in a particular attribute in the flow file.  It also marks that water mark as _active_; preventing other flow files from passing through this processor
+until the active water mark is released (committed or rolled back.)
+
+*Properties*
+
++-------------------------------------+---------------+-------------------------------------------------------------------------+
+| Property                            | Default       | Description                                                             |
++=====================================+===============+=========================================================================+
+| High-Water Mark                     | highWaterMark | The unique name of the high-water mark as stored in the feed's metadata |
++-------------------------------------+---------------+-------------------------------------------------------------------------+
+| High-Water Mark Value Property Name | water.mark    |                                                                         |
++-------------------------------------+---------------+-------------------------------------------------------------------------+
+| Active Water Mark Strategy          |               |                                                                         |
++-------------------------------------+---------------+-------------------------------------------------------------------------+
+| Max Yield Count Strategy            |               |                                                                         |
++-------------------------------------+---------------+-------------------------------------------------------------------------+
+| Max Yield Count                     |               |                                                                         |
++-------------------------------------+---------------+-------------------------------------------------------------------------+
+| Initial Value                       |               |                                                                         |
++-------------------------------------+---------------+-------------------------------------------------------------------------+
+|                                     |               |                                                                         |
++-------------------------------------+---------------+-------------------------------------------------------------------------+
+|                                     |               |                                                                         |
++-------------------------------------+---------------+-------------------------------------------------------------------------+
+
++---------------+-------------+
+| Relationship  | Description |
++===============+=============+
+| success       |             |
++---------------+-------------+
+| failure       |             |
++---------------+-------------+
+| activeFailure |             |
++---------------+-------------+
+
+
+ReleaseHighWaterMark Processor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
++-------------------------------------+---------------+-------------------------------------------------------------------------+
+| Property                            | Default       | Description                                                             |
++=====================================+===============+=========================================================================+
+| High-Water Mark                     | highWaterMark | The unique name of the high-water mark as stored in the feed's metadata |
++-------------------------------------+---------------+-------------------------------------------------------------------------+
+| High-Water Mark Value Property Name | water.mark    |                                                                         |
++-------------------------------------+---------------+-------------------------------------------------------------------------+
+|                                     |               |                                                                         |
++-------------------------------------+---------------+-------------------------------------------------------------------------+
+|                                     |               |                                                                         |
++-------------------------------------+---------------+-------------------------------------------------------------------------+
+
++--------------+-------------+
+| Relationship | Description |
++==============+=============+
+| success      |             |
++--------------+-------------+
+| failure      |             |
++--------------+-------------+
+
+
+
+
+ 
