@@ -4,11 +4,14 @@ Reindex Historical Feed Data
 
     .. note:: This feature requires NiFi version 1.3 or above. If using Elasticsearch, version 5 or up is required.
 
-A feed definition can be edited to change the columns that are indexed in a search engine.
+A feed definition can be edited to change the columns that are indexed in a search engine, and available for querying via Kylo's Global Search.
 The change will take effect for future runs of the feed, and the updated list of columns will get indexed going forward.
 
 At time of saving the updated feed definition, Kylo will detect any change in indexing options and prompt for reindexing historical data as per
-the updated indexing options. This provides the feed editor an option to:
+the updated indexing options. **This prompt will only be provided if Kylo is configured to support this functionality.**
+
+This provides the feed editor an option to:
+
     - add missing columns for indexing that can be used for search
     - remove sensitive/non-required columns for indexing that should be not be searchable
 
@@ -22,7 +25,7 @@ To enable this functionality, perform the following steps:
 A. Update Kylo Services properties
 ==================================
 
-1. Enable option in ``/opt/kylo/kylo-services/conf/application.properties`` for Kylo services.
+1. Enable option in ``/opt/kylo/kylo-services/conf/application.properties`` for Kylo services. This is enabled by default when Kylo is installed.
 
     .. code-block:: shell
 
@@ -75,7 +78,7 @@ D. Update Index Text Service Feed
 
     1. Feed Manager -> Feeds -> + orange button -> Import from file -> Choose file
 
-    2. Pick the ``index_text_service_v3.feed.zip`` file available at ``/opt/kylo/setup/data/feeds/nifi-1.3/history-reindexing/``
+    2. Pick the ``index_text_service_hs_v<version_number>.feed.zip`` file available at ``/opt/kylo/setup/data/feeds/nifi-1.3/history-reindexing/``
 
     3. Leave *Change the Category* field blank (It defaults to *System*)
 
@@ -93,7 +96,7 @@ E. Import History Reindex Text Service Feed
 
     1. Feed Manager -> Feeds -> + orange button -> Import from file -> Choose file
 
-    2. Pick the ``history_reindex_text_service_v1.feed.zip`` file available at ``/opt/kylo/setup/data/feeds/nifi-1.3/history-reindexing/``
+    2. Pick the ``history_reindex_text_service_hs_v<version_number>.feed.zip`` file available at ``/opt/kylo/setup/data/feeds/nifi-1.3/history-reindexing/``
 
     3. Leave *Change the Category* field blank (It defaults to *System*)
 
