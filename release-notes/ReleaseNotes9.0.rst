@@ -228,7 +228,7 @@ Highlight Details
 
   - NiFi 1.5.0 support
 
-      - Kylo now works with NiFi 1.5.0  If you have NiFi 1.5.0, use the spring profile `nifi-1.5` in the kylo-servics/conf/application.properties file
+      - Kylo now works with NiFi 1.5.0  If you have NiFi 1.5.0, You should still use the spring profile ``nifi-v1.2`` in the ``kylo-servics/conf/application.properties`` file
 
   - :doc:`Connect Reusable templates together <../how-to-guides/ConnectReusableTemplates>`
 
