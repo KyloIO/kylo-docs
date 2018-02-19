@@ -222,7 +222,7 @@ Highlight Details
 
    - Kylo Localization support
 
-      - Kylo has been redesigned to support different languages.
+      - Kylo's UI is capable of supporting localization.  Contact |Think_Big_Analytics_Contact_Link| for translation options available under Kylo's Enterprise subscription support.
 
 .. _nifi_support:
 
@@ -283,3 +283,7 @@ Highlight Details
    :width: 864px
    :height: 2161px
    :scale: 15%
+
+.. |Think_Big_Analytics_Contact_Link| raw:: html
+
+   <a href="https://www.thinkbiganalytics.com/contact/" target="_blank">Think Big Analytics</a>
