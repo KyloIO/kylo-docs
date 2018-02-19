@@ -11,7 +11,7 @@ Highlights
 - Exporting Visual Query to file or hive table
 - Kylo Localization support (work in progress)
 - NiFi 1.5.0 support
-- Ability to Chain Reusable templates together
+- :doc:`Connect Reusable templates together <../how-to-guides/ConnectReusableTemplates>`
 - Improved Provenance handling for streaming feeds
 - Security enhancements
 - :doc:`Entity Access Control for Elasticsearch <../how-to-guides/EntityAccessControlForElasticsearch>`
