@@ -6,9 +6,9 @@ Release 0.9.0 (February TBD, 2018)
 Highlights
 ----------
 - UI improvements with large data feeds
-- Catalog listing and Hive Autocomplete fixes
-- Wrangler enhancements with Domain Type detection
-- Exporting Visual Query to file or hive table
+- Improved Datasource Browsing
+- Wrangler enhancements with data type conversions and domain type detection
+- Exporting Visual Query to file or Hive table
 - Kylo Localization support (work in progress)
 - NiFi 1.5.0 support
 - :doc:`Connect Reusable templates together <../how-to-guides/ConnectReusableTemplates>`
@@ -17,7 +17,7 @@ Highlights
 - :doc:`Entity Access Control for Elasticsearch <../how-to-guides/EntityAccessControlForElasticsearch>`
 - :doc:`Ability to reindex historical feed data for Elasticsearch and Solr <../how-to-guides/ReindexHistoricalFeedData>`
 - Improved Release Highwatermark so flows wont get stuck
-- Feed Version backend support (UI to follow next sprint)
+- Compare feed versions
 - Save Point processor
 - :doc:`n Issues fixed. <ReleaseNotes9.0.issues>`
 
@@ -176,3 +176,87 @@ Upgrade Instructions from v0.8.4.1
         5. Click *Import Feed*.
 
         6. Verify that the feed imports successfully.
+
+
+
+
+
+Highlight Details
+-----------------
+- UI improvements with large data feeds
+
+   - Kylo's user interface now handles feeds with large column sets during feed creation, editing, and table/profile browsing
+
+    |image0|
+
+- Improved Datasource Browsing
+
+   - The `Tables` link on the left is now called `Catalog`.  You can browse data from Hive as well as other Data Sources you have registered.
+
+     |image1|
+
+- Wrangler enhancements
+
+   - Ability to quickly convert data types to other types
+
+     |image3|
+
+   - Detect domain types by column name as well as data
+
+     |image4|
+
+- Exporting Visual Query to file or Hive table
+
+     |image5|
+
+- Kylo Localization support
+
+  - Kylo has been reengineered to support different languages.
+
+- NiFi 1.5.0 support
+- :doc:`Connect Reusable templates together <../how-to-guides/ConnectReusableTemplates>`
+- Improved Provenance handling for streaming feeds
+
+   - Streaming feed evetns will process much faster in JMS.  Streaming feeds are now derived within NiFi and the events will no longer be sent to  the `thinkbig.feed-manager` batch JMS queue.
+
+- Security enhancements
+- :doc:`Entity Access Control for Elasticsearch <../how-to-guides/EntityAccessControlForElasticsearch>`
+- :doc:`Ability to reindex historical feed data for Elasticsearch and Solr <../how-to-guides/ReindexHistoricalFeedData>`
+- Improved Release Highwatermark so flows wont get stuck
+- Compare feed versions
+
+   - You can now compare the current feed version against other saved versions and see what properties have changed over time.
+
+   |image6|
+
+- Save Point processor
+
+  - A newly added Savepoint NiFi processor and ControllerService allows you to configure flows and retry failures within Kylo Operations Manager.
+
+- :doc:`## Issues fixed. <ReleaseNotes9.0.issues>`
+
+.. |image0| image:: ../media/release-notes/release-0.9.0/large_feeds1.png
+   :width: 1008px
+   :height: 1003px
+   :scale: 15%
+.. |image1| image:: ../media/release-notes/release-0.9.0/catalog_browse.png
+   :width: 2934px
+   :height: 676px
+   :scale: 15%
+.. |image3| image:: ../media/release-notes/release-0.9.0/vq_data_types.png
+   :width: 372px
+   :height: 522px
+   :scale: 15%
+.. |image4| image:: ../media/release-notes/release-0.9.0/domain_types_column_name.png
+   :width: 988px
+   :height: 608px
+   :scale: 15%
+.. |image5| image:: ../media/release-notes/release-0.9.0/visual_query_export.png
+   :width: 1194px
+   :height: 504px
+   :scale: 15%
+
+.. |image6| image:: ../media/release-notes/release-0.9.0/feed_versions.png
+   :width: 864px
+   :height: 2161px
+   :scale: 15%
