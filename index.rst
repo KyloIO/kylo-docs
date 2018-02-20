@@ -103,6 +103,7 @@ The documentation for the site is organized into a few sections:
     NiFi & Kylo Provenance <how-to-guides/NiFiKyloProvenance>
     Nifi Processors <how-to-guides/NiFiProcessorsDocs>
     Kylo Templates <how-to-guides/KyloTemplatesDocs>
+    Connecting Reusable Templates <how-to-guides/ConnectReusableTemplates>
     Kylo Datasources <how-to-guides/KyloDatasources>
     Feed Lineage <how-to-guides/FeedLineage>
     S3 & Data Wrangler <how-to-guides/AccessingS3fromtheDataWrangler>

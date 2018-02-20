@@ -1,5 +1,5 @@
-Connecting Reusable Flows
-=========================
+Connecting Reusable Templates
+=============================
 
 As of Kylo 0.9.0, you can have reusable flows reference other reusable flows.  This allows for you to develop a common flow that is shared among feeds.  For example you may wish to handle all feed failures the same and thus want to route all flows to the same failure template.
 
