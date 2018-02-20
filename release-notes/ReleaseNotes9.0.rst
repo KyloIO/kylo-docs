@@ -14,10 +14,10 @@ Highlights
 - :ref:`Security enhancements <security>`
 - :doc:`Entity Access Control for Elasticsearch <../how-to-guides/EntityAccessControlForElasticsearch>`
 - :doc:`Ability to reindex historical feed data for Elasticsearch and Solr <../how-to-guides/ReindexHistoricalFeedData>`
-- :doc:`New high-water mark policy to automatically cancel unreleased water marks (restores stuck feeds) <../how-to-guides/NiFiProcessorsDocs>`
+- :doc:`New high-water mark policy to automatically cancel unreleased water marks <../how-to-guides/NiFiProcessorsDocs>`
 - Feed Versioning
 - Save Point processor
-- :doc:`n Issues fixed. <ReleaseNotes9.0.issues>`
+- :doc:`Numerous issues fixed. <ReleaseNotes9.0.issues>`
 
 Download Links
 --------------
