@@ -1,7 +1,5 @@
-Release 0.9.0 (February TBD, 2018)
-===================================
-
-**Note: This page is under development. Please wait for the official release and final instructions.**
+Release 0.9.0 (February 19, 2018)
+=================================
 
 Highlights
 ----------

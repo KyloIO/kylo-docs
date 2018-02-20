@@ -3,8 +3,21 @@ Downloads
 =========
 This page contains links to the commons files you might want to download
 
-Latest Kylo Distribution (0.8.4.1)
---------------------------------
+Kylo Distribution (0.9.0)
+-------------------------
+
++-----+------------------------+
+|Type |Link                    |
++-----+------------------------+
+|RPM  | http://bit.ly/2EPLQho  |
++-----+------------------------+
+|DEB  | http://bit.ly/2BH7jXI  |
++-----+------------------------+
+|TAR  | http://bit.ly/2odPjwE  |
++-----+------------------------+
+
+Kylo Distribution (0.8.4.1)
+---------------------------
 
 +-----+------------------------+
 |Type |Link                    |
