@@ -279,65 +279,85 @@ be a ReleaseHighWaterMark present to release that water mark somewhere along eve
 LoadHighWaterMark Processor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This processor is configured, when a flow files is created by it or passes through it, to load the value of a single high-water mark for the feed and to store 
+This processor is used, when a flow files is created by it or passes through it, to load the value of a single high-water mark for the feed and to store 
 that value in a particular attribute in the flow file.  It also marks that water mark as _active_; preventing other flow files from passing through this processor
-until the active water mark is released (committed or rolled back.)
+until the active water mark is released (committed or rolled back.)  It is up other processors in the flow to make use of the water mark value stored in the flow file
+and to update it to some new high-water value as data is successfully processed.
 
-*Properties*
+*Processor Properties:*
 
-+-------------------------------------+---------------+-------------------------------------------------------------------------+
-| Property                            | Default       | Description                                                             |
-+=====================================+===============+=========================================================================+
-| High-Water Mark                     | highWaterMark | The unique name of the high-water mark as stored in the feed's metadata |
-+-------------------------------------+---------------+-------------------------------------------------------------------------+
-| High-Water Mark Value Property Name | water.mark    |                                                                         |
-+-------------------------------------+---------------+-------------------------------------------------------------------------+
-| Active Water Mark Strategy          |               |                                                                         |
-+-------------------------------------+---------------+-------------------------------------------------------------------------+
-| Max Yield Count Strategy            |               |                                                                         |
-+-------------------------------------+---------------+-------------------------------------------------------------------------+
-| Max Yield Count                     |               |                                                                         |
-+-------------------------------------+---------------+-------------------------------------------------------------------------+
-| Initial Value                       |               |                                                                         |
-+-------------------------------------+---------------+-------------------------------------------------------------------------+
-|                                     |               |                                                                         |
-+-------------------------------------+---------------+-------------------------------------------------------------------------+
-|                                     |               |                                                                         |
-+-------------------------------------+---------------+-------------------------------------------------------------------------+
++-------------------------------------+---------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Property                            | Default       | Description                                                                                                                                                        |
++=====================================+===============+====================================================================================================================================================================+
+| High-Water Mark                     | highWaterMark | The unique name of the high-water mark as stored in the feed's metadata                                                                                            |
++-------------------------------------+---------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| High-Water Mark Value Property Name | water.mark    | The name of the flow file attribute to be set to the value of the high-water mark                                                                                  |
++-------------------------------------+---------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Active Water Mark Strategy          |               | The strategy to follow when a flow file arrives and the water mark is still active for a previous flow file:                                                       |
+|                                     |               |                                                                                                                                                                    |
+|                                     |               | - ``Yield`` - returns the flow file to the queue (or removes it if the first processor in the flow) and yields the processor                                       |
+|                                     |               | - ``Penalize`` - penalizes the flow file and returnes it to the queue (performs a yield if the first processor in the flow)                                        |
+|                                     |               | - ``Route`` - routes the flow file immediately to the `activeFailure` relationship                                                                                 |
++-------------------------------------+---------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Max Yield Count                     |               | If set, the maximum number of yields to perform, if ``Yield`` or ``Penalize`` strategy is selected, before the `Max Yield Count Strategy` is followed              |
++-------------------------------------+---------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Max Yield Count Strategy            |               | The strategy to follow when the `Max Yield Count` is reached:                                                                                                      |
+|                                     |               |                                                                                                                                                                    |
+|                                     |               | - ``Route to activeFailure`` - routes the flow file to the `activeFailure` relationship                                                                            |
+|                                     |               | - ``Canel previous`` - cancels any update of the water mark of the previous flow file, activates the water mark for the current flow file, and routes to `success` |
++-------------------------------------+---------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Initial Value                       |               | The initial value of the water mark if it has never been set on the feed                                                                                           |
++-------------------------------------+---------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-+---------------+-------------+
-| Relationship  | Description |
-+===============+=============+
-| success       |             |
-+---------------+-------------+
-| failure       |             |
-+---------------+-------------+
-| activeFailure |             |
-+---------------+-------------+
+*Processor Relationships:*
+
++---------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Relationship  | Description                                                                                                                                                                             |
++===============+=========================================================================================================================================================================================+
+| success       | Flow files are routed here when a high-water mark is activated for for them                                                                                                             |
++---------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| failure       | Flow files are routed here if there is an error occurs attempting to access the high-water mark                                                                                         |
++---------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| activeFailure | Flow files are rounted here when the maximum attempts to activate the high-water mark for them has been reached and the `Max Yield Count Strategy` is set to ``Route to activeFailure`` |
++---------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 ReleaseHighWaterMark Processor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-+-------------------------------------+---------------+-------------------------------------------------------------------------+
-| Property                            | Default       | Description                                                             |
-+=====================================+===============+=========================================================================+
-| High-Water Mark                     | highWaterMark | The unique name of the high-water mark as stored in the feed's metadata |
-+-------------------------------------+---------------+-------------------------------------------------------------------------+
-| High-Water Mark Value Property Name | water.mark    |                                                                         |
-+-------------------------------------+---------------+-------------------------------------------------------------------------+
-|                                     |               |                                                                         |
-+-------------------------------------+---------------+-------------------------------------------------------------------------+
-|                                     |               |                                                                         |
-+-------------------------------------+---------------+-------------------------------------------------------------------------+
+This processor is used to either commit or reject the latest high-water value of a water mark (or the values of all water marks) for a feed, and to release that water mark so that other flow files can activate it and 
+make use of the latest high-water value in their incremental processing.
 
-+--------------+-------------+
-| Relationship | Description |
-+==============+=============+
-| success      |             |
-+--------------+-------------+
-| failure      |             |
-+--------------+-------------+
+Since other flow files are blocked from entering the section of the flow while the current flow file is using the active water mark, it is very important to make sure that ever
+possible path a flow may take after passing through a LoadHighWaterMark processor also passes through a ReleaseHighWaterMark processor.  For the successful path it should pass through a ReleaseHighWaterMark 
+processor in ``Commit`` mode, and any failure paths should pass through ReleaseHighWaterMark processor in ``Reject`` mode.  It is also necessary for some processor in the flow to have updated the water mark 
+property value in the flow file to the latest high-water value reached during data processing.  Whatever that value happens to be is written to the feed's metadata when it is committed by ReleaseHighWaterMark.
+
+*Processor Properties:*
+
++-------------------------------------+---------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Property                            | Default       | Description                                                                                                                                                           |
++=====================================+===============+=======================================================================================================================================================================+
+| High-Water Mark                     | highWaterMark | The unique name of the high-water mark as stored in the feed's metadata that is being released                                                                        |
++-------------------------------------+---------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| High-Water Mark Value Property Name | water.mark    | *(Optional)* The name of the flow file attribute containing the current value of the high-water mark - not needed if the `Release All` flag bellow is set to ``true`` |
++-------------------------------------+---------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Mode                                | ``Commit``    | The mode, either ``Commit`` or ``Reject``, indicating whether the current high-water mark value should be committed (due to successful processing) or rolled back     |
++-------------------------------------+---------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Release All                         | ``true``      | A flag indicating whether all high-water marks in the flow file should be committed/rolled back or just the one named above                                           |
++-------------------------------------+---------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+*Processor Relationships:*
+
++--------------------+----------------------------------------------------------------------------------------------------+
+| Relationship       | Description                                                                                        |
++====================+====================================================================================================+
+| success            | Flow files are routed here when a high-water mark successfully committed or rolled back            |
++--------------------+----------------------------------------------------------------------------------------------------+
+| failure            | Flow files are routed here if an error occurs attempting to commit or rollback the high-water mark |
++--------------------+----------------------------------------------------------------------------------------------------+
+| cancelledWaterMark | Flow files are routed here if their high-water mark activation has been cancelled                  |
++--------------------+----------------------------------------------------------------------------------------------------+
 
 
 
