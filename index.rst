@@ -121,6 +121,7 @@ The documentation for the site is organized into a few sections:
     Ambari Service Monitor Plugin <how-to-guides/AmbariServiceMonitor>
     Reindex Historical Feed Data <how-to-guides/ReindexHistoricalFeedData>
     Entity Access Control for Elasticsearch <how-to-guides/EntityAccessControlForElasticsearch>
+    Service Level Agreements <how-to-guides/ServiceLevelAgreements>
 
 
 .. _developer_guides:
