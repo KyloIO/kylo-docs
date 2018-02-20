@@ -227,6 +227,24 @@ Example :code:`spark.properties` configuration:
    kerberos.spark.kerberosPrincipal = kylo
    kerberos.spark.keytabLocation = /etc/security/keytabs/kylo.headless.keytab
 
+Wrangler Properties
+===================
+
+These properties are used by the Data Transformation feed and the Visual Query page.
+
++----------------------------------+----------+-------------+---------------------------------------------------+
+| **Property**                     | **Type** | **Default** | **Description**                                   |
++==================================+==========+=============+===================================================+
+| spark.shell.datasources.exclude  | String   |             | A comma-separated list of Spark |br|              |
+|                                  |          |             | datasources to exclude when saving a Visual |br|  |
+|                                  |          |             | Query transformation. May either be the |br|      |
+|                                  |          |             | short name or the class name.                     |
++----------------------------------+----------+-------------+---------------------------------------------------+
+| spark.shell.datasources.include  | String   |             | A comma-separated list of Spark |br|              |
+|                                  |          |             | datasource classes to include when saving a |br|  |
+|                                  |          |             | Visual Query transformation.                      |
++----------------------------------+----------+-------------+---------------------------------------------------+
+
 .. |br| raw:: html
 
    <br/>
