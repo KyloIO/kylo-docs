@@ -67,7 +67,7 @@ Upgrade Instructions from v0.8.4.1
 
      4.3 Copy the /bkup-config/TIMESTAMP/kylo-ui/application.properties file to `/opt/kylo/kylo-ui/conf`
 
-     4.4 Ensure the property ``security.jwt.key`` in both kylo-services and kylo-ui application.properties file match.  They property below needs to match in both of these files:
+     4.4 Ensure the property ``security.jwt.key`` in both kylo-services and kylo-ui application.properties file match.  The property below needs to match in both of these files:
 
         - */opt/kylo/kylo-ui/conf/application.properties*
         - */opt/kylo/kylo-services/conf/application.properties*

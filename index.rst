@@ -122,6 +122,7 @@ The documentation for the site is organized into a few sections:
     Reindex Historical Feed Data <how-to-guides/ReindexHistoricalFeedData>
     Entity Access Control for Elasticsearch <how-to-guides/EntityAccessControlForElasticsearch>
     Service Level Agreements <how-to-guides/ServiceLevelAgreements>
+    Configuration Inspector App <how-to-guides/ConfigurationInspectorApp>
 
 
 .. _developer_guides:
