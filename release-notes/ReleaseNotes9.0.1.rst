@@ -124,7 +124,35 @@ Upgrade Instructions from v0.9.0
 
         ..
 
-7. Start Kylo
+7. Update the NiFi nars.
+
+   Stop NiFi
+
+   .. code-block:: shell
+
+      service nifi stop
+
+   ..
+
+   Run the following shell script to copy over the new NiFi nars/jars to get new changes to NiFi processors and services.
+
+   .. code-block:: shell
+
+      /opt/kylo/setup/nifi/update-nars-jars.sh <NIFI_HOME> <KYLO_SETUP_FOLDER> <NIFI_LINUX_USER> <NIFI_LINUX_GROUP>
+
+      Example:  /opt/kylo/setup/nifi/update-nars-jars.sh /opt/nifi /opt/kylo/setup nifi users
+
+   ..
+
+   Start NiFi
+
+   .. code-block:: shell
+
+      service nifi start
+
+   ..
+
+8. Start Kylo
 
  .. code-block:: shell
 
