@@ -106,6 +106,7 @@ The documentation for the site is organized into a few sections:
     Connecting Reusable Templates <how-to-guides/ConnectReusableTemplates>
     Kylo Datasources <how-to-guides/KyloDatasources>
     Feed Lineage <how-to-guides/FeedLineage>
+    Custom Provenance <how-to-guides/CustomProvenanceEvents>
     S3 & Data Wrangler <how-to-guides/AccessingS3fromtheDataWrangler>
     S3 Data Ingest Template <how-to-guides/S3DataIngestTemplate.rst>
     Azure Data Ingest Template <how-to-guides/AzureBlobDataIngestTemplate.rst>
