@@ -32,7 +32,7 @@ Creating a new Event
 
  ..
 
- 2) An example Program might look like the following
+ 2) An example Program might look like the following.  Complete example code can be found `here <https://github.com/Teradata/kylo/blob/master/samples/provenance-samples/spark-provenance-app/src/main/java/com/example/spark/provenance/SparkProvenance.java>`_.
 
   .. code-block:: java
 
@@ -53,7 +53,7 @@ Creating a new Event
           /// do some work
 
           //record the end time and some attributes to be displayed on the step in Operations Manager
-          event.getAttributeMap().put("databases", df.schema().json());
+          event.getAttributeMap().put("databases", df.toJSON().collectAsList().toString());
           event.setEventTime(System.currentTimeMillis());
 
           //add the event to the list
