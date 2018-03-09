@@ -4,17 +4,18 @@ Custom Provenance Events
 You can use Kylo's `Provenance API <https://github.com/Teradata/kylo/tree/master/integrations/provenance>`_ to create custom Provenance Events that result in Jobs/Steps in Kylo Operations Manager.
 
 The API allows you to programmatically create Provenance events.
-Kylo ships with 2 implementations:
+Kylo ships with 3 implementations:
   - `provenance-jms <https://github.com/Teradata/kylo/tree/master/integrations/provenance/provenance-jms>`_ - A JMS implementation
   - `provenance-kafka <https://github.com/Teradata/kylo/tree/master/integrations/provenance/provenance-kafka>`_ - A Kafka implementation
+  - `provenance-rest <https://github.com/Teradata/kylo/tree/master/integrations/provenance/provenance-rest>`_ - A REST implementation
 
 There is also a `sample Spark application <https://github.com/Teradata/kylo/tree/master/samples/provenance-samples/spark-provenance-app>`_ that uses this api
 
 
-Creating a new Event
---------------------
+Example Usage
+-------------
  1) Add the provenance api implementation as a dependency.
-  To create a new Provenance event you need to include the kylo-provenance implemention in your project
+  To create a new Provenance event you need to include one of the kylo-provenance implementation's in your project
 
  .. code-block:: xml
 
@@ -27,6 +28,12 @@ Creating a new Event
     <dependency>
       <groupId>com.thinkbiganalytics.kylo.integrations</groupId>
       <artifactId>kylo-provenance-kafka</artifactId>
+      <version>0.9.1-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.thinkbiganalytics.kylo.integrations</groupId>
+      <artifactId>kylo-provenance-rest</artifactId>
       <version>0.9.1-SNAPSHOT</version>
     </dependency>
 
