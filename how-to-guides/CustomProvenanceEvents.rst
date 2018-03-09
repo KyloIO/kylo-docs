@@ -82,10 +82,10 @@ Spark Kafka Example
 
    ..
 
-3) import the ``Sample Spark App with Provenance`` template
-   this is an example template that will call the ``spark-provenance-app`` in step 1 and write out 2 additional steps/provenance events
+3) Import the `Sample Spark App with Provenance <https://github.com/Teradata/kylo/blob/master/samples/templates/nifi-1.0/sample_spark_app_with_provenance.template.zip>`_ template
+   This is an example template that will call the ``spark-provenance-app`` in step 1 and write out 2 additional steps/provenance events
 
-4) Import the ``kafka_provenance_to_jms`` feed.  kafka_provenance_to_jms.feed.zip
+4) Import the `kafka_provenance_to_jms <https://github.com/Teradata/kylo/blob/master/samples/templates/nifi-1.0/kafka_provenance_to_jms.feed.zip>`_ feed.  kafka_provenance_to_jms.feed.zip
    This is a system wide template that is listening to 2 kafka topics for batch and streaming data and publish the events to JMS.
 
    |image2|
