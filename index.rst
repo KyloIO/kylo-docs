@@ -71,7 +71,7 @@ The documentation for the site is organized into a few sections:
     common-config/ChangeJavaHome
     Log File Management <common-config/LogFiles>
     common-config/YarnClusterConfiguration
-    Configure Spark Modes <common-config/KyloSparkProperties>
+    Configure Spark Shell <common-config/KyloSparkProperties>
     common-config/Postgres_Hive_Metadata_Configuration
 
 .. _security_toc:
