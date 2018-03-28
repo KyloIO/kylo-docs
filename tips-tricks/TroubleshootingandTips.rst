@@ -784,17 +784,26 @@ Sqoop requires a JDK to compile Java code. The steps to install a JDK and fix th
     root@sandbox ~# vi /etc/hadoop/conf/hadoop-env.sh
     export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.131-2.6.9.0.el7_3.x86_64/
 
-5. Re-run Sqoop flow.
+5. Re-run Sqoop flow
+
+Below steps apply for HDP:
 
 6. Now that you have verified that the JDK path is correct per Sqoop, make the change permanent (in Ambari).
-   a. Open the Ambari admin UI
-   b. Select the Sqoop client, on the left side navigation list.
-   c. Click the Configs tab.
-   d. Open the Advanced sqoop-env div below.
-   e. Add the line from Step 4 above to the section, just below the line that reads "Set Hadoop-specific environment...".
-   f. Click Save (on the right)
-   e. Add a comment indicating the nature of the change, when prompted.
-   g. Restart the Sqoop client (top right, Restart button).
+
+   a. Open the *Ambari admin UI*.
+
+   b. Select the *Sqoop client*, on the left side navigation list.
+
+   c. Click the *Configs* tab.
+
+   d. Open the *Advanced sqoop-env* div.
+
+   e. Add the line from Step 4 above to the section, just below the line that reads *Set Hadoop-specific environment...*.
+
+   f. Click *Save* (on the right). Add a comment indicating the nature of the change, when prompted.
+
+   g. Restart the Sqoop client (top right, *Restart button*).
+
    h. Wait for the restart to complete successfully.
 
 7. Re-run the Sqoop flow.  It should work as it did in Step 5. If you restart the cluster or Sqoop, the changes will be retained.
