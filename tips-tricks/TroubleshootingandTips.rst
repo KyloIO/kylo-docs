@@ -786,6 +786,19 @@ Sqoop requires a JDK to compile Java code. The steps to install a JDK and fix th
 
 5. Re-run Sqoop flow.
 
+6. Now that you have verified that the JDK path is correct per Sqoop, make the change permanent (in Ambari).
+   a. Open the Ambari admin UI
+   b. Select the Sqoop client, on the left side navigation list.
+   c. Click the Configs tab.
+   d. Open the Advanced sqoop-env div below.
+   e. Add the line from Step 4 above to the section, just below the line that reads "Set Hadoop-specific environment...".
+   f. Click Save (on the right)
+   e. Add a comment indicating the nature of the change, when prompted.
+   g. Restart the Sqoop client (top right, Restart button).
+   h. Wait for the restart to complete successfully.
+
+7. Re-run the Sqoop flow.  It should work as it did in Step 5. If you restart the cluster or Sqoop, the changes will be retained.
+
 
 Validator is unable to process policy JSON file
 ===============================================
