@@ -784,7 +784,7 @@ Sqoop requires a JDK to compile Java code. The steps to install a JDK and fix th
     root@sandbox ~# vi /etc/hadoop/conf/hadoop-env.sh
     export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.131-2.6.9.0.el7_3.x86_64/
 
-5. Re-run Sqoop flow
+5. Re-run Sqoop flow.
 
 Below steps apply for HDP:
 
