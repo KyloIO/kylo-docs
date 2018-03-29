@@ -8,7 +8,7 @@ Latest Stable Release
 .. toctree::
     :maxdepth: 1
 
-    ReleaseNotes9.0.1
+    ReleaseNotes9.0.2
 
 
 
@@ -18,6 +18,7 @@ Previous Releases
 .. toctree::
     :maxdepth: 1
 
+    ReleaseNotes9.0.1
     ReleaseNotes9.0
     ReleaseNotes8.4.1
     ReleaseNotes8.4
