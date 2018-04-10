@@ -1,6 +1,6 @@
-======================
+====================
 Kylo Templates Guide
-======================
+====================
 
 Templates facilitate the creation of data flows. They can be:
 
@@ -13,10 +13,10 @@ Templates facilitate the creation of data flows. They can be:
 
 
 Setup templates
-======================
+===============
 
 Import Kylo template
----------------------
+--------------------
 
 1. Import template from file
 
@@ -42,7 +42,7 @@ Import reusable template
 3. Register the template
 
 Import flow template
--------------------------
+--------------------
 
 1. Import template from NiFi environment (as we want to customize it)
 
@@ -55,7 +55,7 @@ Import flow template
 5. Register the template
 
 Update template
-===================
+===============
 
 1. Remember the template name <template_name> from NiFi
 
@@ -86,21 +86,21 @@ When Data is sent to Kylo Operations Manager it indicates if the flow file has b
 Additionally if you manually 'Empty the Queue' in NiFi it will fail those corresponding jobs in Kylo.
 
 Available templates
-=======================
+===================
 
 Kylo provides some ready to be used templates in the `Kylo repository <https://github.com/Teradata/kylo/tree/master/samples/templates>`_
 
 Data Ingest
--------------------
+-----------
 
 Data Ingest template is used to import data from with various formats (CSV, JSON, AVRO, Parquet, ORC) into Hive tables.
 
 S3
-*******************
+**
 :doc:`../how-to-guides/S3DataIngestTemplate`
 
 JSON
-*******************
+****
 
 There is a limitation with the JSON file format:
 
@@ -118,14 +118,14 @@ Example:
 ..
 
 Data Transformation
---------------------
+-------------------
 
 Data Transformation is used to transform/wrangle data with various operations from Spark ML.
 
 Several tables can be taken from a data source and be joined, denormalized or transformed together, to result a new data table.
 
 Accesing S3 and other distributed filesystems
-***********************************************
+*********************************************
 
 :doc:`../how-to-guides/AccessingS3fromtheDataWrangler`
 
