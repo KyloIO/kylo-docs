@@ -17,7 +17,7 @@ To create a new Data Source:
 Provide following details for the Data Source
 |image2|
 
-1.  ``Name`` - data source name. This name will be given to Controller Service in Nifi. This name can be used in application.properties to automatically provide the rest of the properties, e.g. ``Password``, `just like you would for other Nifi Controller Services <http://kylo.readthedocs.io/en/latest/how-to-guides/ConfigurationProperties.html#setting-controller-service-properties>`_
+1.  ``Name`` - data source name. This name will be given to Controller Service in Nifi. This name can be used in application.properties to automatically provide the rest of the properties, e.g. ``Password``, `just like you would for other Nifi Controller Services <ConfigurationProperties.html#setting-controller-service-properties>`_
 2.  ``Description`` - any description
 3.  ``Datasource Connection URL`` - JDBC connection string. In this example we used Postgres connection string, you should of course replace this with connection string for your JDBC source
 4.  ``Datasource Driver Class Name`` - JDBC driver classname for the type of your store
@@ -67,7 +67,7 @@ Non-server mode
 
 - add to `spark.shell.sparkArgs` the `--jar /path-to-datasource-jdbc/`
 
-You can find more `information here <http://kylo.readthedocs.io/en/latest/installation/KyloSparkProperties.html>`
+You can find more `information here <../common-config/KyloSparkProperties.html>`_
 
 Configuration examples
 ======================
