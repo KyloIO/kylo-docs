@@ -222,18 +222,31 @@ Wrangler Properties
 
 These properties are used by the Data Transformation feed and the Visual Query page.
 
-+----------------------------------+--------------------------------------------------------------------------+
-| **Property**                     | **Description**                                                          |
-+==================================+==========================================================================+
-| spark.shell.datasources.exclude  | A comma-separated list of Spark datasources to exclude when |br|         |
-|                                  | saving a Visual Query transformation. May either be the short name |br|  |
-|                                  | or the class name. |br|                                                  |
-|                                  | **Type**: String                                                         |
-+----------------------------------+--------------------------------------------------------------------------+
-| spark.shell.datasources.include  | A comma-separated list of Spark datasource classes to include when  |br| |
-|                                  | saving a Visual Query transformation. |br|                               |
-|                                  | **Type**: String                                                         |
-+----------------------------------+--------------------------------------------------------------------------+
++-------------------------------------------+--------------------------------------------------------------+
+| **Property**                              | **Description**                                              |
++===========================================+==============================================================+
+| spark.shell.datasources.exclude           | A comma-separated list of Spark datasources to exclude |br|  |
+|                                           | when saving a Visual Query transformation. May either |br|   |
+|                                           | be the short name or the class name. |br|                    |
+|                                           | **Type**: String                                             |
++-------------------------------------------+--------------------------------------------------------------+
+| spark.shell.datasources.include           | A comma-separated list of Spark datasource classes to |br|   |
+|                                           | include when saving a Visual Query transformation. |br|      |
+|                                           | **Type**: String                                             |
++-------------------------------------------+--------------------------------------------------------------+
+| spark.shell.datasources.exclude.downloads | A comma-separated list used to fine tune the |br|            |
+|                                           | datasources available for download by excluding from |br|    |
+|                                           | the master set of sources specified with the |br|            |
+|                                           | spark.shell.datasources root properties above. |br|          |
+|                                           | Uses short name only. |br|                                   |
+|                                           | **Type**: String                                             |
++-------------------------------------------+--------------------------------------------------------------+
+| spark.shell.datasources.include.tables    | A comma-separated list used to fine tune the |br|            |
+|                                           | datasources available for saving to a table by |br|          |
+|                                           | excluding from the master set of sources specified with |br| |
+|                                           | ithe spark.shell.datasources root properties above. |br|     |
+|                                           | **Type**: String                                             |
++-------------------------------------------+--------------------------------------------------------------+
 
 .. |br| raw:: html
 
