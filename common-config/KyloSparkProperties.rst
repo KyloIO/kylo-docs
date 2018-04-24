@@ -183,6 +183,23 @@ Example :code:`spark.properties` configuration:
    kerberos.spark.kerberosPrincipal = kylo
    kerberos.spark.keytabLocation = /etc/security/keytabs/kylo.headless.keytab
 
+Logging
+-------
+
+Spark application logs are written to the kylo-services.log file by default. This can be customized with the following properties added to /opt/kylo/kylo-services/conf/log4j.properties:
+
+.. code-block:: properties
+
+    log4j.additivity.org.apache.spark.launcher.app.SparkShellApp=false
+    log4j.logger.org.apache.spark.launcher.app.SparkShellApp=INFO, sparkShellLog
+
+    log4j.appender.sparkShellLog=org.apache.log4j.DailyRollingFileAppender
+    log4j.appender.sparkShellLog.File=/var/log/kylo-services/kylo-spark-shell.log
+    log4j.appender.sparkShellLog.append=true
+    log4j.appender.sparkShellLog.layout=org.apache.log4j.PatternLayout
+    log4j.appender.sparkShellLog.Threshold=INFO
+    log4j.appender.sparkShellLog.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p %t:%c{1}:%L - %m%n
+
 Deprecated Properties
 ---------------------
 
