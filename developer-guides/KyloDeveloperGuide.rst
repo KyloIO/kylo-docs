@@ -5,7 +5,7 @@ Developer Getting Started Guide
 
 This guide should help you get your local development environment up and
 running quickly. Development in an IDE is usually done in conjunction
-with a Hortonworks sandbox in order to have a cluster with which to communicate.
+with a Kylo sandbox in order to have a cluster with which to communicate.
 
 Dependencies
 ------------
@@ -18,7 +18,7 @@ To run the Kylo project locally the following tools must be installed:
 
 -  Java 1.8 (or greater)
 
--  Hadoop 2.3+ Sandbox
+-  Kylo 0.9+ Sandbox
 
 -  Virtual Box or other virtual machine manager
 
@@ -123,46 +123,20 @@ everything is setup correctly.
     ``$ mvn clean install -o -DskipTests``
 ..
 
-Install and Configure the Hortonworks Sandbox
----------------------------------------------
+Install and Configure the Kylo Sandbox
+--------------------------------------
 
-Follow the guide below to install and configure the Hortonworks sandbox:
+1. `Download and install Kylo sandbox <https://kylo.io/quickstart.html>`__. Make sure 10GB RAM is assigned to the VM. The sandbox comes bundled with Kylo apps, NiFi, ActiveMQ, Elasticsearch and MySQL.
 
-    :doc:`../developer-guides/HortonworksSandboxConfiguration`
+2. Start the VM from VirtualBox.
 
+3. Go to http://localhost:8400. Congratulations! Kylo is up and running. Login with credentials dladmin/thinkbig.
 
-Install the Kylo Applications
------------------------------
-
-To install the Kylo apps, NiFi, ActiveMQ, and Elasticsearch in the
-VM you can use the deployment wizard instructions found here:
-
-    :doc:`../installation/SetupWizardDeploymentGuide`
-
-Instead of downloading the RPM file copy the RPM file from your project folder after running a Maven build.
-
-.. code-block:: shell
-
-    $ cd /opt
-    $ cp /media/sf_kylo/install/target/rpm/kylo/RPMS/noarch/kylo-<version>.noarch.rpm.
-    $ rpm -ivh kylo-<version>.rpm
-
-..
-
-Follow the rest of the deployment wizard steps to install the rest of
-the tools in the VM.
-
-
-.. important!:: You only need to install Elasticsearch, NiFi, and ActiveMQ once. During development you will frequently uninstall the Kylo RPM and re-install it for testing.
-
-
-You now have a distribution of the stack running in your Hortonworks
-sandbox.
 
 Running in the IDE
 ------------------
 
-You can run kylo-ui and thinkbig-services in the IDE. If you plan to
+You can run kylo-ui and kylo-services in the IDE. If you plan to
 run the apps in the IDE, you should shut down the services in your
 sandbox so you aren’t running two instances at the same time.
 
@@ -170,6 +144,8 @@ sandbox so you aren’t running two instances at the same time.
 
     $ service kylo-services stop
     $ service kylo-ui stop
+    $ service kylo-services status
+    $ service kylo-ui status
 
 The applications are configured using Spring Boot.
 
@@ -229,8 +205,30 @@ IntelliJ Configuration
 
    e. Set the "Main Class" property to
       "com.thinkbiganalytics.KyloUiApplication".
+   
+   f. Add "native,auth-kylo,dev" to list of Active Profiles.
 
-4. Run both applications.
+   g. Add a file named "application-dev.properties" to kylo-ui at kylo/ui/ui-app/src/main/resources location. Add following properties:
+
+    .. code-block:: shell
+
+        security.auth.file.users=file:///opt/kylo/users.properties
+        security.auth.file.groups=file:///opt/kylo/groups.properties
+
+4. Create users.properties in /opt/kylo and add following content:
+   
+    .. code-block:: shell
+
+        dladmin=thinkbig
+        analyst=analyst
+        designer=designer
+        operator=operator
+
+5. Create empty file groups.properties under /opt/kylo. Add permissions to both files created above: chmod 777
+
+6. Go to Maven Projects view in IntelliJ and under Profiles check nifi.version.override and prod.
+
+7. Run both applications.
 
 Eclipse Configuration
 ---------------------
@@ -281,6 +279,8 @@ NPM should be used to configure and start your web development environment:
 
     $ cd kylo/ui/ui-app
     $ npm install
+    $ npm run-script reinstall
+    $ npm run-script build
 
 3. Start Kylo and the development server:
 
