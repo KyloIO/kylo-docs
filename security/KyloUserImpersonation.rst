@@ -1,6 +1,6 @@
-======================================
-Spark User Impersonation Configuration
-======================================
+==============================
+Enable Hive User Impersonation
+==============================
 
 Overview
 ========
@@ -26,19 +26,44 @@ the system.
     $ service kylo-spark-shell stop
     $ chkconfig kylo-spark-shell off
 
-2. Add the auth-spark profile in :code:`application.properties`. This will enable Kylo to create temporary credentials for the spark shell processes to communicate with the kylo-services process.
+..
+
+2. Add the auth-spark profile in :code:`application.properties`. This will enable Kylo to create temporary credentials for the spark shell processes to communicate with the kylo-services process. Also, kylo must be informed to impersonate users when querying hive.  To do so, configure the `hive.userImperonation.*` properties below.
+
+Edit the application.properties file:
 
 .. code-block:: shell
 
     $ vim /opt/kylo/kylo-services/conf/application.properties
 
+..
+
+Add, or ensure, the following properties:
+
+.. code-block:: properties
+
+
     spring.profiles.include = auth-spark, ...
+    
+    hive.userImpersonation.enabled=true
+    hive.userImpersonation.cache.expiry.duration=4
+    hive.userImpersonation.cache.expiry.time-unit=HOURS
+
+..
 
 3. Enable user impersonation in :code:`spark.properties`. It is recommended that the yarn-cluster master be used to ensure that both the Spark driver and executors run under the user's account. Using the local or yarn-client masters are possible but not recommended due the Spark driver running as the kylo user.
 
+Edit the spark.properties file:
+
 .. code-block:: shell
 
-    $ vim /opt/kylo/kylo-services/conf/spark.properties:
+   vim /opt/kylo/kylo-services/conf/spark.properties
+
+..
+
+Add, or ensure, the following properties:
+
+.. code-block:: properties
 
     # Ensure these two properties are commented out
     #spark.shell.server.host
@@ -56,11 +81,21 @@ the system.
     kerberos.spark.kerberosPrincipal = kylo
     kerberos.spark.keytabLocation = /etc/security/keytabs/kylo.headless.keytab
 
+..
+
 4. Redirect logs to :code:`kylo-spark-shell.log`. By default the logs will be written to :code:`kylo-services.log` and include the output of every spark shell process. The below configuration instead redirects this output to the :code:`kylo-spark-shell.log` file.
+
+Edit the log4j.properties file:
 
 .. code-block:: shell
 
     $ vim /opt/kylo/kylo-services/conf/log4j.properties
+
+..
+
+Add the following properties:
+
+.. code-block:: properties
 
     log4j.additivity.org.apache.spark.launcher.app.SparkShellApp=false
     log4j.logger.org.apache.spark.launcher.app.SparkShellApp=INFO, sparkShellLog
@@ -72,11 +107,13 @@ the system.
     log4j.appender.sparkShellLog.Threshold=INFO
     log4j.appender.sparkShellLog.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p %t:%c{1}:%L - %m%n
 
+..
+
 5. Configure Hadoop to allow Kylo to proxy users.
 
-.. code-block:: shell
+Edit via Ambari at (HDFS-> Configs -> Advanced -> Custom core-site), or manually edit the hadoop configuration file /etc/hadoop/conf/core-site.xml
 
-    $ vim /etc/hadoop/conf/core-site.xml
+.. code-block:: xml
 
     <property>
       <name>hadoop.proxyuser.kylo.groups</name>
@@ -86,3 +123,5 @@ the system.
       <name>hadoop.proxyuser.kylo.hosts</name>
       <value>*</value>
     </property>
+
+..
