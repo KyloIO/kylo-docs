@@ -6,6 +6,12 @@ Highlights
 - Various issues fixed - |JIRA_Issues_Link|
 - :ref:`NiFi 1.6.0 support <nifi_support>`
 - :ref:`Spark  Shell default is now managed mode <spark_shell_managed_mode>`
+- :ref:`Manually start a feed, irrespective of its schedule <start_now>`
+- Remote Process Group support
+- Wrangler enhancements and improved user interface
+- Ingest data from Hadoop to Teradata via TDCH
+- New advanced batch and streaming templates
+
 
 Download Links
 --------------
@@ -202,6 +208,12 @@ Highlight Details
 
       - The spark shell process has been removed and managed mode is now the default mode
 
+.. _start_now:
+
+   - Manually start a feed irrespective of its schedule
+
+       |image0|
+
 .. |Think_Big_Analytics_Contact_Link| raw:: html
 
    <a href="https://www.thinkbiganalytics.com/contact/" target="_blank">Think Big Analytics</a>
@@ -209,3 +221,9 @@ Highlight Details
 .. |JIRA_Issues_Link| raw:: html
 
    <a href="https://kylo-io.atlassian.net/issues/?jql=project%20%3D%20KYLO%20AND%20status%20%3D%20Done%20AND%20fixVersion%20%3D%200.9.1%20ORDER%20BY%20summary%20ASC%2C%20lastViewed%20DESC" target="_blank">Jira Issues</a>
+
+
+.. |image0| image:: ../media/release-notes/release-0.9.1/start-now-button.png
+   :width: 1015px
+   :height: 339px
+   :scale: 15%
