@@ -223,6 +223,11 @@ Can new feeds be created in automated fashion instead of manually through the UI
 
 Yes, via Kylo's REST API. See the section on Swagger documentation (above).
 
+Does Kylo leverage automated testing?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Kylo is a large project which can make QA testing challenging. We built a Docker based automated testing infrastructure to
+test Kylo deployment with as many different integration points as possible. This runs multiple times per day in addition to our large number of unit tests
+
 Tool Comparisons
 ----------------
 
