@@ -71,6 +71,9 @@ Upgrade Instructions from v0.9.0
           # Add the new property
           kylo.feed.mgr.hive.target.syncColumnDescriptions=true
 
+          # Add the new property to support the updated templates
+          config.nifi.kylo.applicationJarDirectory=/opt/nifi/current/lib/app
+
         ..
 
      4.4 Copy the /bkup-config/TIMESTAMP/kylo-ui/application.properties file to `/opt/kylo/kylo-ui/conf`
@@ -189,6 +192,17 @@ Upgrade Instructions from v0.9.0
    kylo-service start
 
  ..
+
+10. Re-import Data Ingest template (data_ingest.zip).
+
+ - There was a bug fixed to allow HDF support
+ - To enable this, re-import the data_ingest.zip file (Templates -> + icon -> Import from a file -> Choose file -> Check yes to 'overwrite' feed template -> Check yes to 'Replace the reusable template' -> Import template)
+
+11. Re-import Data Transformation template (data_transformation.zip).
+
+ - There was a bug fixed to allow HDF support, and allow customizing the profile table location
+ - To enable this, re-import the data_transformation.zip file (Templates -> + icon -> Import from a file -> Choose file -> Check yes to 'overwrite' feed template -> Check yes to 'Replace the reusable template' -> Import template)
+
 
 **NOTE:** You will no longer see the kylo-spark-shell service start. The spark shell is now launched by kylo-services (managed mode)
 
