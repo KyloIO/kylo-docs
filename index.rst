@@ -82,7 +82,7 @@ The documentation for the site is organized into a few sections:
     Overview <security/Overview>
     Encrypt Passwords <security/EncryptingConfigurationProperties>
     Enable Kerberos for Kylo <security/KerberosKyloConfiguration>
-    Enble Kerberos for NiFi <security/KerberosNiFiConfiguration>
+    Enable Kerberos for NiFi <security/KerberosNiFiConfiguration>
     Configure Ranger <security/EnableRangerAuthorizationGuide>
     Configure Sentry <security/EnableSentryAuthorizationGuide>
     Enable SSL for Kylo <security/KyloUIWithSSL>
