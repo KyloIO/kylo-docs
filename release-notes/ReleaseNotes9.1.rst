@@ -7,7 +7,7 @@ Highlights
 - :ref:`NiFi 1.6.0 support <nifi_support>`
 - :ref:`Spark  Shell default is now managed mode <spark_shell_managed_mode>`
 - :ref:`Manually start a feed, irrespective of its schedule <start_now>`
-- Remote Process Group support
+- :doc:`Remote Process Group support <../how-to-guides/RemoteProcessGroups>`
 - Wrangler enhancements and improved user interface
 - Ingest data from Hadoop to Teradata via TDCH
 - New advanced batch and streaming templates

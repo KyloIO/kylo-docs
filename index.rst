@@ -104,6 +104,7 @@ The documentation for the site is organized into a few sections:
     Nifi Processors <how-to-guides/NiFiProcessorsDocs>
     Kylo Templates <how-to-guides/KyloTemplatesDocs>
     Connecting Reusable Templates <how-to-guides/ConnectReusableTemplates>
+    Remote Process Groups <how-to-guides/RemoteProcessGroups>
     Kylo Datasources <how-to-guides/KyloDatasources>
     Feed Lineage <how-to-guides/FeedLineage>
     Custom Provenance <how-to-guides/CustomProvenanceEvents>
