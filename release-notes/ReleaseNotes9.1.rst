@@ -9,7 +9,7 @@ Highlights
 - :ref:`Manually start a feed, irrespective of its schedule <start_now>`
 - :doc:`Remote Process Group support <../how-to-guides/RemoteProcessGroups>`
 - Wrangler enhancements and improved user interface
-- Ingest data from Hadoop to Teradata via TDCH
+- :doc:`Ingest data from Hadoop to Teradata via TDCH <../how-to-guides/DataIngestTeradataTDCHTemplate>`
 - New advanced batch and streaming templates
 
 
