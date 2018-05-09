@@ -292,17 +292,6 @@ NPM should be used to configure and start your web development environment:
 
 4. A new browser window will open showing the Kylo UI. Any changes you make will automatically refresh the page with the new changes.
 
-If you will be editing stylesheets then you will need to additionally configure IntelliJ to compile SCSS files:
-
-1. Install the File Watchers plugin and restart IntelliJ.
-
-2. Go to Preferences -> Tools -> File Watchers.
-
-3. Click the + plus sign at the bottom and create a SCSS file watcher.
-
-4. Change the Arguments to: :code:`--output $FileDir$ $FilePath$`
-
-5. Change the Output paths to refresh to: :code:`$FileNameWithoutExtension$.css`
 
 Angular Material Notes
 ----------------------
