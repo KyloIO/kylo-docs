@@ -111,7 +111,7 @@ To use this functionality, please follow these steps. These are documented for H
         - Ensure template is imported without errors.
         - If any errors, fix them and re-import.
 
-6. Verify import of template
+7. Verify import of template
 
     - In Kylo UI:
 
@@ -119,7 +119,7 @@ To use this functionality, please follow these steps. These are documented for H
         - Click **Templates**
         - In the list of **Templates** in the main window, a template with name **Data Ingest - Teradata** should be available.
 
-7. Create a Teradata Ingest Feed
+8. Create a Teradata Ingest Feed
 
     - (optional) Create a new category for Teradata Ingest feeds (Feed Manager -> Categories)
     - Create a new feed
@@ -205,5 +205,5 @@ To use this functionality, please follow these steps. These are documented for H
 
     Click **Create** and ensure feed gets created successfully.
 
-8. When the feed runs, it will ingest the data in Hive, and then export data from the final Hive table to Teradata. The job status can be tracked via Kylo Operations Manager.
+9. When the feed runs, it will ingest the data in Hive, and then export data from the final Hive table to Teradata. The job status can be tracked via Kylo Operations Manager.
 
