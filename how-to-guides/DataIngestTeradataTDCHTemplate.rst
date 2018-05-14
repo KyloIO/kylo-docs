@@ -9,7 +9,7 @@ To use this functionality, please follow these steps. These are documented for H
 
 1. Get TDCH
 
-    - Download TDCH from Teradata's website. Kylo has been tested with version TDCH v1.5.4.
+    - Download TDCH from Teradata's website. Kylo has been tested with TDCH version 1.5.4.
     - Link: https://downloads.teradata.com/download/connectivity/teradata-connector-for-hadoop-command-line-edition
     - Download from this or a more recent section: *Teradata Connector for Hadoop 1.5.4 (Command Line Edition)*
 
@@ -138,55 +138,6 @@ To use this functionality, please follow these steps. These are documented for H
         - Enter **Description** (optional)
     - Tab 2: Feed Details
         - Select **Data Source** and provide its details as prompted on form
-        - **Initialize Teradata Feed Parameters**
-            (The defaults in this section should work for most feeds out of the box. Change the database create options based on expected data volume.)
-
-            - **Target Database**:
-                - Determines target database to load data into
-                - Default value: **Teradata**
-                - If ingest to Teradata is to be skipped for any reason, select *Not Set* from dropdown
-            - **Teradata Database Create Options**
-                - Defines database create parameters if it does not exist. The database will take the name of the feed's category.
-                - Default value: **FROM dbc AS PERMANENT = 60000000, SPOOL = 120000000**
-            - **Teradata Export Batch Size**
-                - Number of rows submitted in a batch, for insert into the DB.
-                - Default value: **10000**
-            - **Teradata Export Force Staging**
-                - Specify whether a staging table will always be used for export
-                - Default value: **false**
-            - **Teradata Export Method**
-                - Purpose: Specifies the export method. Two methods are supported: *batch.insert* and *internal.fastload*
-                - Default value: **batch.insert**
-            - **Teradata Export Number of Mappers**
-                - Specify the number of mappers used by the export job
-                - Default value: **4**
-            - **Teradata Export Query Band**
-                - Set session level query band. Specified by a string in the format: key=value;
-                - Default value: **(blank)**
-            - **Teradata Export Truncate Strings**
-                - If *true*, strings in source data that are larger than target column width will be truncated to match column width. If *false*, such strings will cause job to fail.
-                - Default value: **true**
-            - **Teradata Export Use XViews**
-                - Specifies if Teradata XViews will be used to get system information
-                - Default value: **false**
-            - **Teradata Export Utility**
-                - Specify the export tool
-                - Default value: **TDCH**
-                - If ingest to Teradata is to be skipped for any reason, select *Not Set* from dropdown
-            - **Teradata Merge Strategy**
-                - Specifies how source table is merged into target table
-                - Default value: **SYNC**
-                - Two strategies are supported:
-                    (1) *SYNC*: This will truncate the target table, and populate it with source table data
-                    (2) *APPEND*: This will append source table data to the existing data in target table.
-            - **Teradata Table Create Options**
-                - Define table create options if it does not exist. The table will take the name of the feed.
-                - Default value: **NO PRIMARY INDEX**
-                - Note: It is recommended that the table be created with the above default option. Otherwise, ingests may fail due to constraints.
-            - **Teradata Table Default Column Definition**
-                - Define the type for the columns in the target table, it is not existing and thus gets created by this feed.
-                - Default value: **VARCHAR(5000)**
-                - Note: The type is recommended to be kept as VARCHAR. The size can be increased or decreased based upon expected maximum width of the source data.
     - Tab 3: Table
         - Define the target table schema for Hive.
         - Teradata ingest will first land the data in Hive, and then export it to Teradata DB
@@ -207,3 +158,125 @@ To use this functionality, please follow these steps. These are documented for H
 
 9. When the feed runs, it will ingest the data in Hive, and then export data from the final Hive table to Teradata. The job status can be tracked via Kylo Operations Manager.
 
+
+Advanced configuration
+======================
+
+The template designer can override the default Teradata ingest parameters, and (optionally) allow feed creators to supply their own.
+To do this, perform steps 1 to 7 as listed above. This would ensure the default teradata ingest template is available in Kylo. Then, proceed as below:
+
+7a. Override the default ingest parameters.
+
+    - In Kylo UI:
+
+        - Click in left nav pane: **Admin**
+        - Click **Templates**
+        - Click **Data Ingest - Teradata**
+        - Click **Continue to Step 2** on **Step 1: Select Template** step.
+        - Click **Continue to Step 3** on **Step 2: Input Properties** step.
+        - Click **Initialize Teradata Feed Parameters** menu item in Filter section on right side of page on **Step 3: Additional Properties**. Details below:
+
+Initialize Teradata Feed Parameters
+-----------------------------------
+
+    - **Target Database**:
+        - Determines target database to load data into
+        - Default value: **Teradata**
+        - Currently, only one option is supported.
+        - Tick **Yes** for **Allow user input?** to allow users to provide a value
+            - Render as: **Select**
+            - If ingest to Teradata is to be skipped for any reason, users can select **Not Set** from dropdown during feed creation
+
+    - **Teradata Database Create Options**
+        - Defines database create parameters if it does not exist. The database will take the name of the feed's category.
+        - Default value: **FROM dbc AS PERMANENT = 60000000, SPOOL = 120000000**
+        - Modify the default value if needed.
+        - Tick **Yes** for **Allow user input?** to allow users to provide a value
+            - Render as: **Text**
+
+    - **Teradata Export Batch Size**
+        - Number of rows submitted in a batch, for insert into the DB.
+        - Default value: **10000**
+        - Modify the default value if needed. A positive integer is required.
+        - Tick **Yes** for **Allow user input?** to allow users to provide a value
+            - Render as: **Number**
+
+    - **Teradata Export Force Staging**
+        - Specify whether a staging table will always be used for export
+        - Default value: **false**
+        - Template provides an additional **true** option.
+        - Tick **Yes** for **Allow user input?** to allow users to provide a value
+            - Render as: **Select**
+
+    - **Teradata Export Method**
+        - Purpose: Specifies the export method. Two methods are supported: *batch.insert* and *internal.fastload*
+        - Default value: **batch.insert**
+        - Template provides an additional **internal.fastload** option.
+        - Tick **Yes** for **Allow user input?** to allow users to provide a value
+            - Render as: **Select**
+
+    - **Teradata Export Number of Mappers**
+        - Specify the number of mappers used by the export job
+        - Default value: **4**
+        - Modify the default value if needed. A positive integer is required.
+        - Tick **Yes** for **Allow user input?** to allow users to provide a value
+            - Render as: **Number**
+
+    - **Teradata Export Query Band**
+        - Set session level query band. Specified by a string in the format: key=value;
+        - Default value: **(blank)**
+        - Modify the default value if needed.
+        - Tick **Yes** for **Allow user input?** to allow users to provide a value
+            - Render as: **Text**
+
+    - **Teradata Export Truncate Strings**
+        - If *true*, strings in source data that are larger than target column width will be truncated to match column width. If *false*, such strings will cause job to fail.
+        - Default value: **true**
+        - Template provides an additional **false** option.
+        - Tick **Yes** for **Allow user input?** to allow users to provide a value
+            - Render as: **Select**
+
+    - **Teradata Export Use XViews**
+        - Specifies if Teradata XViews will be used to get system information
+        - Default value: **false**
+        - Template provides an additional **true** option.
+        - Tick **Yes** for **Allow user input?** to allow users to provide a value
+            - Render as: **Select**
+
+    - **Teradata Export Utility**
+        - Specify the export tool
+        - Default value: **TDCH**
+        - Currently, only one option is supported
+        - Tick **Yes** for **Allow user input?** to allow users to provide a value
+            - Render as: **Select**
+            - If ingest to Teradata is to be skipped for any reason, users can select **Not Set** from dropdown during feed creation
+
+    - **Teradata Merge Strategy**
+        - Specifies how source table is merged into target table
+        - Default value: **SYNC**
+        - Two strategies are supported in the template:
+            (1) *SYNC*: This will truncate the target table, and populate it with source table data
+            (2) *APPEND*: This will append source table data to the existing data in target table.
+        - Tick **Yes** for **Allow user input?** to allow users to provide a value
+            - Render as: **Select**
+
+    - **Teradata Table Create Options**
+        - Define table create options if it does not exist. The table will take the name of the feed.
+        - Default value: **NO PRIMARY INDEX**
+        - Modify the  default value if needed.
+            - **Note: It is recommended that the table be created with the above default option. Otherwise, ingests may fail due to constraints.**
+        - Tick **Yes** for **Allow user input?** to allow users to provide a value
+            - Render as: **Text**
+
+    - **Teradata Table Default Column Definition**
+        - Define the type for the columns in the target table, it is not existing and thus gets created by this feed.
+        - Default value: **VARCHAR(5000)**
+        - Modify the  default value if needed.
+            - **Note: The type is recommended to be kept as VARCHAR. The size can be increased or decreased based upon expected maximum width of the source data.**
+        - Tick **Yes** for **Allow user input?** to allow users to provide a value
+            - Render as: **Text**
+
+        - Click **Continue to Step 4** and provide access controls options, if any.
+        - Click **Continue to Step 5** and click **Register**.
+        - Ensure template is registered successfully.
+        - Now continue with step 8 (*Create a Teradata Ingest Feed*) as documented in regular steps.
