@@ -125,6 +125,7 @@ The documentation for the site is organized into a few sections:
     Entity Access Control for Elasticsearch <how-to-guides/EntityAccessControlForElasticsearch>
     Service Level Agreements <how-to-guides/ServiceLevelAgreements>
     Configuration Inspector App <how-to-guides/ConfigurationInspectorApp>
+    Teradata Data Ingest Template <how-to-guides/DataIngestTeradataTDCHTemplate>
 
 
 .. _developer_guides:
