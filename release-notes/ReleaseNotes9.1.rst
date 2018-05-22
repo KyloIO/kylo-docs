@@ -1,5 +1,5 @@
 Release 0.9.1 (FILL ME IN, 2018)
-===============================
+================================
 
 Highlights
 ----------
@@ -8,10 +8,10 @@ Highlights
 - :ref:`Spark  Shell default is now managed mode <spark_shell_managed_mode>`
 - :ref:`Manually start a feed, irrespective of its schedule <start_now>`
 - :doc:`Remote Process Group support <../how-to-guides/RemoteProcessGroups>`
-- Wrangler enhancements and improved user interface
+- :ref:`New wrangler transformation features, profiling, performance, and improved user interface <wrangler_improvements>`
 - :doc:`Ingest data from Hive to Teradata via TDCH <../how-to-guides/DataIngestTeradataTDCHTemplate>`
-- New advanced batch and streaming templates
-
+- :ref:`New advanced ingest templates for batch and streaming sources <advanced_ingest>`
+- :ref:`XML ingest with nested struct and array transformation <xml_ingest>`
 
 Download Links
 --------------
@@ -225,19 +225,26 @@ Upgrade Instructions from v0.9.0
 
  ..
 
-10. Re-import Data Ingest template (data_ingest.zip).
+10. (Optional) Re-import default templates:
 
- - There was a bug fixed to allow HDF support
- - To enable this, re-import the data_ingest.zip file (Templates -> + icon -> Import from a file -> Choose file -> Check yes to 'overwrite' feed template -> Check yes to 'Replace the reusable template' -> Import template)
+ - `Data Ingest <https://github.com/Teradata/kylo/blob/release/0.9.1/samples/templates/nifi-1.0/data_ingest.zip>`_
+ - `Data Transformation <https://github.com/Teradata/kylo/blob/release/0.9.1/samples/templates/nifi-1.0/data_transformation.template.zip>`_
+ - Import via (Admin | Templates -> + icon -> Import from a file -> Choose file -> Check yes to 'overwrite' feed template -> Check yes to 'Replace the reusable template' -> Import template)
 
-11. Re-import Data Transformation template (data_transformation.zip).
+11. (Optional) Import new templates:
 
- - There was a bug fixed to allow HDF support, and allow customizing the profile table location
- - To enable this, re-import the data_transformation.zip file (Templates -> + icon -> Import from a file -> Choose file -> Check yes to 'overwrite' feed template -> Check yes to 'Replace the reusable template' -> Import template)
+ - `XML Ingest <https://github.com/Teradata/kylo/blob/release/0.9.1/samples/templates/nifi-1.0/xml_ingest.template.zip>`_
+ - Import via (Admin | Templates -> + icon -> Import from a file -> Choose file -> Check yes to 'overwrite' feed template -> Check yes to 'Replace the reusable template' -> Import template)
+
+12. (Optional) Import new batch and streaming ingest templates (NiFi 1.5+ required):
+
+ - `Advanced Ingest <https://github.com/Teradata/kylo/blob/release/0.9.1/samples/templates/nifi-1.5/advanced_ingest.template.zip>`_
+ - `Streaming Ingest <https://github.com/Teradata/kylo/blob/release/0.9.1/samples/templates/nifi-1.5/streaming_ingest.template.zip>`_
+ - Import via (Admin | Templates -> + icon -> Import from a file -> Choose file -> Check yes to 'overwrite' feed template -> Check yes to 'Replace the reusable template' -> Import template)
 
 
 **NOTE:** You will no longer see the kylo-spark-shell service start. The spark shell is now launched by kylo-services (managed mode)
-
+TODO: Instructions on spark.properties??
 
 Highlight Details
 -----------------
@@ -253,6 +260,37 @@ Highlight Details
   - Spark Shell Service
 
       - The spark shell process has been removed and managed mode is now the default mode
+
+.. _wrangler_improvements:
+
+  - Wrangler/Visual Query improvements
+
+      - Ability to upload a file from the desktop. In data source list, see upload file option.
+      - New server-side paging provides improved user experience and ability to work with very large datasets
+      - New column analysis (column dropdown) provides categorical and histogram statistics (numeric)
+      - Many new functions available from column dropdown: Explode array, Flatten Struct, Impute Missing, Replace Missing,Crosstab,Array to Cols,One hot encode, index labels, Vectorize,and more.
+      - New context menu options for operating on text selections and values (clear, split, strip, delete, etc)
+
+.. _xml_ingest:
+
+  - XML Ingest
+
+      - New XML Ingest template provides the ability to setup a feed to ingest and transform XML into a tabular layout
+      - Spark XML setup required (see: `spark-xml <https://github.com/databricks/spark-xml>`_)
+
+.. _advanced_ingest:
+
+  - Advanced Batch Ingest template
+
+      - Adds additional datasources Azure Blob, S3, HDFS, REST, SFTP, Filesystem, and RDBMS
+      - Uses new savepoint and retry features to improve restartability and robustness of pipelines
+
+  - Streaming Ingest template
+
+      - Streaming sources such as JMS, Kafka, HTTP Listener, MQTT, RELP, SQS
+      - Streams into HBase with a Hive table access
+      - JSON formats flattened into schema, otherwise stpred as key, clob value
+      - Hive/HBase configuration required (An example of a guide: `spark-xml <https://hortonworks.com/blog/hbase-via-hive-part-1/>`_)
 
 .. _start_now:
 
