@@ -53,7 +53,7 @@ Upgrade Instructions from v0.9.0
         .. code-block:: shell
 
           ### move the application.properties shipped with the .rpm to a backup file
-          mv /opt/kylo/kylo-services/conf/application.properties /opt/kylo/kylo-services/conf/application.properties.0_9_0_template
+          mv /opt/kylo/kylo-services/conf/application.properties /opt/kylo/kylo-services/conf/application.properties.0_9_1_template
           ### copy the backup properties  (Replace the YYYY_MM_DD_HH_MM_millis  with the valid timestamp)
           cp /opt/kylo/bkup-config/YYYY_MM_DD_HH_MM_millis/kylo-services/application.properties /opt/kylo/kylo-services/conf
 
@@ -73,6 +73,38 @@ Upgrade Instructions from v0.9.0
 
           # Add the new property to support the updated templates
           config.nifi.kylo.applicationJarDirectory=/opt/nifi/current/lib/app
+
+          # Add the new property to support new Spark processor
+          nifi.executesparkapps.application_jar=${config.nifi.home}/current/lib/app/kylo-spark-multi-exec-jar-with-dependencies.jar
+
+          # Add new property to support remote process groups in a NiFi non-clustered environment
+          kylo.template.remote-process-groups.enabled=false
+
+          # Add this section to support Teradata ingest via Kylo template (using TDCH)
+          ################################ Teradata Ingest via Kylo Template ################################################
+          # When using data_ingest__teradata.template.zip, set these properties, start Kylo, and import the template
+          # These values are defaults. Modify them as per your environment.
+          #
+          # StandardTdchConnectionService parameters
+          # Ensure that the TDCH and Hive paths are correct
+          nifi.service.standardtdchconnectionservice.jdbc_driver_class=com.teradata.jdbc.TeraDriver
+          nifi.service.standardtdchconnectionservice.jdbc_connection_url=jdbc:teradata://localhost
+          nifi.service.standardtdchconnectionservice.username=dbc
+          nifi.service.standardtdchconnectionservice.password=
+          nifi.service.standardtdchconnectionservice.tdch_jar_path=/usr/lib/tdch/1.5/lib/teradata-connector-1.5.4.jar
+          nifi.service.standardtdchconnectionservice.hive_conf_path=/usr/hdp/current/hive-client/conf
+          nifi.service.standardtdchconnectionservice.hive_lib_path=/usr/hdp/current/hive-client/lib
+
+          # Kylo-Teradata-DBC connection parameters
+          # Ensure that the driver paths are correct
+          nifi.service.kylo-teradata-dbc.database_driver_location(s)=file:///opt/nifi/teradata/terajdbc4.jar,file:///opt/nifi/teradata/tdgssconfig.jar
+
+          # The below parameters will use the values supplied for StandardTdchConnectionService above. Update them if needed (by default, you can leave them as such)
+          nifi.service.kylo-teradata-dbc.database_connection_url=${nifi.service.standardtdchconnectionservice.jdbc_connection_url}
+          nifi.service.kylo-teradata-dbc.database_driver_class_name=${nifi.service.standardtdchconnectionservice.jdbc_driver_class}
+          nifi.service.kylo-teradata-dbc.database_user=${nifi.service.standardtdchconnectionservice.username}
+          nifi.service.kylo-teradata-dbc.password=${nifi.service.standardtdchconnectionservice.password}
+          ###################################################################################################################
 
         ..
 
