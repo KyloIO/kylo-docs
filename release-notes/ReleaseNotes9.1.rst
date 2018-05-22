@@ -290,7 +290,7 @@ Highlight Details
       - Streaming sources such as JMS, Kafka, HTTP Listener, MQTT, RELP, SQS
       - Streams into HBase with a Hive table access
       - JSON formats flattened into schema, otherwise stpred as key, clob value
-      - Hive/HBase configuration required (An example of a guide: `spark-xml <https://hortonworks.com/blog/hbase-via-hive-part-1/>`_)
+      - Hive/HBase configuration required (An example of a guide: `hbase-via-hive <https://hortonworks.com/blog/hbase-via-hive-part-1/>`_)
 
 .. _start_now:
 
