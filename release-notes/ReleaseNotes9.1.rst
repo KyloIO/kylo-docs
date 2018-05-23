@@ -74,9 +74,6 @@ Upgrade Instructions from v0.9.0
           # Add the new property to support the updated templates
           config.nifi.kylo.applicationJarDirectory=/opt/nifi/current/lib/app
 
-          # Add the new property to support new Spark processor
-          nifi.executesparkapps.application_jar=${config.nifi.home}/current/lib/app/kylo-spark-multi-exec-jar-with-dependencies.jar
-
           # Add new property to support remote process groups in a NiFi non-clustered environment
           kylo.template.remote-process-groups.enabled=false
 
@@ -311,3 +308,4 @@ Highlight Details
    :width: 1015px
    :height: 339px
    :scale: 15%
+
