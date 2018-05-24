@@ -63,23 +63,29 @@ https://community.hortonworks.com/articles/16461/nifi-understanding-how-to-use-p
 .. |image1| image:: ../media/remote-process-groups/rpg1.png
    :width: 1021px
    :height: 547px
+   :scale: 30%
 
 .. |image2| image:: ../media/remote-process-groups/rpg2.png
    :width: 1030px
    :height: 893px
+   :scale: 30%
 
 .. |image3| image:: ../media/remote-process-groups/rpg3.png
    :width: 770px
    :height: 581px
+   :scale: 30%
 
 .. |image4| image:: ../media/remote-process-groups/rpg4.png
    :width: 1351px
    :height: 859px
+   :scale: 30%
 
 .. |image5| image:: ../media/remote-process-groups/rpg5.png
    :width: 1351px
    :height: 859px
+   :scale: 30%
 
 .. |image6| image:: ../media/remote-process-groups/rpg6.png
    :width: 1025px
    :height: 398px
+   :scale: 30%
