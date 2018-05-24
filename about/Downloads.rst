@@ -5,7 +5,17 @@ This page contains links to the commons files you might want to download
 
 Kylo Distribution (0.9.1)
 -------------------------
- Links coming soon
++-------------+------------------------+
+|Type         |Link                    |
++-------------+------------------------+
+|RPM          | http://bit.ly/2IDdwJ0  |
++-------------+------------------------+
+|DEB          | http://bit.ly/2s4Lgou  |
++-------------+------------------------+
+|TAR          | http://bit.ly/2LqxXH5  |
++-------------+------------------------+
+|Offline TAR  | http://bit.ly/2IG1dMa  |
++-------------+------------------------+
 
 
 Kylo Distribution (0.9.0.2)
