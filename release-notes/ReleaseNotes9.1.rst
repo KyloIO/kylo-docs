@@ -1,5 +1,5 @@
-Release 0.9.1 (FILL ME IN, 2018)
-================================
+Release 0.9.1 (May 23, 2018)
+============================
 
 Highlights
 ----------
@@ -7,9 +7,9 @@ Highlights
 - :ref:`NiFi 1.6.0 support <nifi_support>`
 - :ref:`Spark  Shell default is now managed mode <spark_shell_managed_mode>`
 - :ref:`Manually start a feed, irrespective of its schedule <start_now>`
-- :doc:`Remote Process Group support <../how-to-guides/RemoteProcessGroups>`
+- :doc:`NiFi Remote Process Group support <../how-to-guides/RemoteProcessGroups>`
 - :ref:`New wrangler transformation features, profiling, performance, and improved user interface <wrangler_improvements>`
-- :doc:`Ingest data from Hive to Teradata via TDCH <../how-to-guides/DataIngestTeradataTDCHTemplate>`
+- :doc:`Hive to Teradata Ingest via TDCH <../how-to-guides/DataIngestTeradataTDCHTemplate>`
 - :ref:`New advanced ingest templates for batch and streaming sources <advanced_ingest>`
 - :ref:`XML ingest with nested struct and array transformation <xml_ingest>`
 
@@ -43,6 +43,7 @@ Upgrade Instructions from v0.9.0
  ..
 
 4. Restore previous application.properties files. If you have customized the the application.properties, copy the backup from the 0.9.0 install.
+
 
      4.1 Find the /bkup-config/TIMESTAMP/kylo-services/application.properties file
 
@@ -105,9 +106,20 @@ Upgrade Instructions from v0.9.0
 
         ..
 
-     4.4 Copy the /bkup-config/TIMESTAMP/kylo-ui/application.properties file to `/opt/kylo/kylo-ui/conf`
+     4.4 Repeat previous copy step for other relevant backup files to the /opt/kylo/kylo-services/conf folder. Some examples of files:
 
-     4.5 Ensure the property ``security.jwt.key`` in both kylo-services and kylo-ui application.properties file match.  They property below needs to match in both of these files:
+        - spark.properties
+        - ambari.properties
+        - elasticsearch-rest.properties
+        - log4j.properties
+        - sla.email.properties
+
+        **NOTE:**  Be careful not to overwrite configuration files used exclusively by Kylo
+
+
+     4.5 Copy the /bkup-config/TIMESTAMP/kylo-ui/application.properties file to `/opt/kylo/kylo-ui/conf`
+
+     4.6 Ensure the property ``security.jwt.key`` in both kylo-services and kylo-ui application.properties file match.  They property below needs to match in both of these files:
 
         - */opt/kylo/kylo-ui/conf/application.properties*
         - */opt/kylo/kylo-services/conf/application.properties*
@@ -119,7 +131,8 @@ Upgrade Instructions from v0.9.0
           ..
 
 
-5.  **NOTE:** Kylo no longer ships with the default **dladmin** user. You will need to re-add this user only if you're using the default authentication configuration:
+5.  **NOTE IF UPGRADING FROM 0.8.3 (or below):** Kylo no longer ships with the default **dladmin** user. You will need to re-add this user only if you're using the default authentication
+configuration:
 
    - Uncomment the following line in :code:`/opt/kylo/kylo-services/conf/application.properties` and :code:`/opt/kylo/kylo-ui/conf/application.properties` :
 
@@ -159,25 +172,8 @@ Upgrade Instructions from v0.9.0
         chown kylo:users /opt/kylo/groups.properties
         chmod 600 /opt/kylo/groups.properties
 
-6. To enable reindexing of a feed's historical data:
 
-    1. Verify option in ``/opt/kylo/kylo-services/conf/application.properties`` for Kylo services. This is **true** by default.
-
-        .. code-block:: shell
-
-            search.history.data.reindexing.enabled=true
-        ..
-
-
-    2. If using Solr instead of Elasticsearch as the search engine, add one property to ``/opt/kylo/kylo-services/conf/solrsearch.properties`` file.
-
-        .. code-block:: shell
-
-            config.http.solr.url=http://${search.host}:${search.port}
-
-        ..
-
-7. Update the NiFi nars.
+6. Update the NiFi nars.
 
    Stop NiFi
 
@@ -241,7 +237,6 @@ Upgrade Instructions from v0.9.0
 
 
 **NOTE:** You will no longer see the kylo-spark-shell service start. The spark shell is now launched by kylo-services (managed mode)
-TODO: Instructions on spark.properties??
 
 Highlight Details
 -----------------
@@ -273,7 +268,6 @@ Highlight Details
   - XML Ingest
 
       - New XML Ingest template provides the ability to setup a feed to ingest and transform XML into a tabular layout
-      - Spark XML setup required (see: `spark-xml <https://github.com/databricks/spark-xml>`_)
 
 .. _advanced_ingest:
 
