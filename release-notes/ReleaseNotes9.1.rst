@@ -21,6 +21,8 @@ Download Links
 Upgrade Instructions from v0.9.0
 ----------------------------------
 
+.. note:: A bug was found that in v0.9.1 that causes upgrades to fail when starting from a version earlier than v0.8.3.  The workaround is to first install and upgrade to v0.9.0 (or any version earlier than v0.9.1) then install v0.9.1.  This bug will be fixed in v0.9.1.1 and v0.9.2.
+
 1. Backup any Kylo plugins
 
   When Kylo is uninstalled it will backup configuration files, but not the `/plugin` jar files.
