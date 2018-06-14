@@ -56,8 +56,8 @@ changes can be considered overall enhancements or merely enhancements
 needed by your particular project. New functionality can be introduced
 either as a plugin or through a pull request.
 
-Plugins
--------
+Plugin
+------
 
 Plugins are the preferred way of adding, swapping, or enhancing
 functionality that is only relevant to specific users. Our components
@@ -68,8 +68,8 @@ class to add your classes to the Spring context.
 A separate git repository should be used for your plugins. You can
 reference Kylo’s API artifacts in Maven.
 
-Pull Requests
--------------
+Pull Request
+------------
 
 Changes that apply to every Kylo user should be submitted as a pull
 request in GitHub. You should do your work in a fork of Kylo and submit
@@ -120,6 +120,8 @@ We adhere to the following guidelines to ensure consistency in our code:
 .. code-block:: java
 
    private static final Logger log = LoggerFactory.getLogger(MyClass.class);
+
+.. _id1:
 
 Pull Requests
 =============
