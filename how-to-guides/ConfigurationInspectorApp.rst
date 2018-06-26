@@ -16,40 +16,22 @@ Here is a screenshot of how it may look like:
 |image0|
 
 
-Pre-requisites
-==============
-
-- Java 8 installed. Kylo installs Java 8 into ``/opt/java`` directory. We will assume this directory for our examples.
-- ``kylo`` user privileges because this application will access Kylo UI and Services ``application.properties`` and their ``lib`` directories
-
-
 Run Application
 ===============
 
-Inspector App is distributed with Kylo and can be found in ``<KYLO_INSTALL_PATH>/lib/install-inspector`` directory. We will assume default ``/opt/kylo/lib/install-inspector`` directory for this example.
-Since this application requires Java 8 and needs to be ran as ``kylo`` user here is how you would run it:
+Inspector App is distributed with Kylo. It is installed as a service and can be found in ``<KYLO_INSTALL_PATH>/kylo-install-inspector`` directory.
+You can start/stop/restart Inspector App service in the following way:
 
 .. code-block:: shell
 
-    sudo su kylo
-    /opt/java/current/bin/java -jar /opt/kylo/lib/install-inspector/kylo-install-inspector-app-<version>.war --inspections.path=/opt/kylo/lib/install-inspector/lib
+    service kylo-install-inspector start
+    service kylo-install-inspector stop
+    service kylo-install-inspector restart
 
 ..
 
-Now that the application is running, open your browser and find it at ``http://localhost:8099``.
-
-
-Custom Logging
-==============
-
-Currently application logs to console. If you prefer to change that provide path to you custom ``logback.xml`` like so:
-
-.. code-block:: shell
-
-    sudo su kylo
-    /opt/java/current/bin/java -jar /opt/kylo/lib/install-inspector/kylo-install-inspector-app-<version>.war  --inspections.path=/opt/kylo/lib/install-inspector/lib --logging.config=<absolute-path-to-custom-logback.xml>
-
-..
+Once the service is running, open your browser and find Inspector App at ``http://localhost:8099``.
+Find the logs in ``/var/log/kylo-install-inspector``.
 
 
 Download Report
@@ -63,7 +45,7 @@ Add Custom Configuration Inspections
 
 - Extend ``Inspection`` or ``AbstractInspection`` class found in ``kylo-install-inspector-api`` module. At minimum you will need to implement three methods where the one which does the work looks like this: ``public InspectionStatus inspect(Configuration configuration)``. Via ``Configuration`` class you get access to Kylo UI and Services properties, e.g. ``Configuration.getServicesProperty(String propertyName)``. You can either directly @Inject Kylo classes into your Inspections or you first create Spring configuration which defines the beans, e.g. see |NifiConnectionInspectionExample| and |NifiConnectionInspectionConfigurationExample| which uses custom Spring configuration to get ``JerseyClient`` which can talk to Nifi.
 - Package your custom Inspections into a ``jar``
-- Add your jar and its dependencies to Inspector App classpath, i.e. drop them into ``/opt/kylo/lib/install-inspector/lib`` directory.
+- Add your jar and its dependencies to Inspector App classpath, i.e. drop them into ``/opt/kylo/kylo-install-inspector/inspections`` directory.
 - Run Inspector App as usual
 
 

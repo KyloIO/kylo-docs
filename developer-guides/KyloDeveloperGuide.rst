@@ -266,31 +266,24 @@ Web Development
 
 Most of the Kylo UI depends on |AngularJsLink| and |AngularJsMaterialLink| but a few parts have been upgraded to |Angular2Link| and |CovalentLink|. New plugins should be written in Typescript and use Angular 2 for future compatibility.
 
-NPM should be used to configure and start your web development environment:
+Start your web development environment:
 
-1. Install NPM in your development environment:
-
-    * apt-get install npm (Debian / Ubuntu)
-    * brew install npm (Mac)
-
-2. Install the development packages:
+1. Install the development packages and local NPM:
 
 .. code-block:: shell
 
     $ cd kylo/ui/ui-app
-    $ npm install
-    $ npm run-script reinstall
-    $ npm run-script build
+    $ mvn clean package
 
-3. Start Kylo and the development server:
+2. Start Kylo and the development server:
 
 .. code-block:: shell
 
     $ service kylo-services start
     $ service kylo-ui start
-    $ npm run start
+    $ ./npm start
 
-4. A new browser window will open showing the Kylo UI. Any changes you make will automatically refresh the page with the new changes.
+3. A new browser window will open showing the Kylo UI. Any changes you make will automatically refresh the page with the new changes.
 
 
 Angular Material Notes

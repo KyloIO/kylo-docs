@@ -1,156 +1,190 @@
-
 ============
 NiFi and SSL
 ============
 
-This link provides additional instruction for enabling SSL for NiFi:
+This guide describes how to enable SSL for NiFi and configure Kylo to communicate with NiFi over SSL. As part of enabling SSL, NiFi will also automatically enable authentication requiring all users to provide a client certificate to access the NiFi UI unless an additional authentication method is configured. Information on additional authentication methods can be found in the NiFi System Administrator's Guide under |nifi_user_authentication|. Please see |hdp_link| for additional instructions on enabling SSL for NiFi.
 
-  |hdp_link|
+To enable SSL for Kylo and configure NiFi to communicate with Kylo over SSL, please see the :doc:`KyloUIWithSSL` guide.
 
-.. rubric:: Creating a Self-signed Cert
+Certificates
+============
+
+Client certificates are used to authenticate the default admin user (aka Initial Admin Identity) and other NiFi nodes. It can either be a self-signed certificate or one signed by a CA (certificate authority). A self-signed certificate is the most common option and is the easiest to install, but a certificate signed by a CA provides an additional chain of trust for those that need it. Kylo should be configured to use this client certificate to communicate with NiFi.
+
+It is recommended to start with a self-signed certificate and verify that everything works. It can then be replaced with a certificate signed by a CA.
+
+Option: Self-Signed
+-------------------
+
+NiFi provides a toolkit for generating a self-signed CA and the certificates necessary for SSL communication and authentication. However, web browsers will display an "untrusted certificate" error when accessing the NiFi UI and will only allow access after acknowledging the risk. Adding the CA to the web browser's trust store will prevent the error from being displayed.
 
 1. Download the NiFi toolkit from `https://nifi.apache.org/download.html <https://nifi.apache.org/download.html>`__
 
-2. Unzip it to a directory.
+2. Upload it to the server (if necessary) and extract the contents:
 
 .. code-block:: shell
 
-   /opt/nifi/nifi-toolkit-1.0.0
+   # For a tar.gz file:
+   tar xzvf nifi-toolkit-1.6.0-bin.tar.gz -C /opt/nifi/
 
-..
+   # For a zip file:
+   unzip nifi-toolkit-1.6.0-bin.zip -d /opt/nifi/
 
-3. Go into that directory.
+3. Prepare a directory for the certificates:
 
 .. code-block:: shell
 
-   cd /opt/nifi/nifi-toolkit-1.0.0/bin
+   mkdir /opt/nifi/data/ssl
+   chown nifi /opt/nifi/data/ssl
 
-..      
+4. Determine the hostnames that will be used to access NiFi from web browsers and from Kylo. Then generate the certificates using tls-toolkit:
 
-4. Update the "tls-toolkit.sh" file and add the current version of JAVA_HOME.
+.. code-block:: shell
 
-   1. Add this line to the start of the script:   
+   export JAVA_HOME=/opt/java/current
+
+   # Replace <hostname> with the comma-separate list of hostnames used to access NiFi
+   /opt/nifi/nifi-toolkit-1.6.0/bin/tls-toolkit.sh standalone -n '<hostname>' -C 'CN=kylo, OU=NIFI' -o .
+
+5. Protect the files by ensuring that only Kylo and NiFi have access to them:
+
+.. code-block:: shell
+
+    chmod 755 /opt/nifi/data/ssl/
+    chmod 600 /opt/nifi/data/ssl/CN\=kylo_OU\=NIFI.*
+    chown kylo /opt/nifi/data/ssl/CN\=kylo_OU\=NIFI.*
+
+    chmod 700 /opt/nifi/data/ssl/<hostname>/
+    chown nifi -R /opt/nifi/data/ssl/<hostname>/
+
+6. Remember the following properties and continue to the `Configuration`_ section:
 
 .. code-block:: properties
 
-         export JAVA_HOME=/opt/java/current
+   # Find the values for these properties in /opt/nifi/data/ssl/<hostname>/nifi.properties:
+   nifi.security.keystore=/opt/nifi/data/ssl/<hostname>/keystore.jks
+   nifi.security.keystoreType=jks
+   nifi.security.keystorePasswd=...
+   nifi.security.truststore=/opt/nifi/data/ssl/<hostname>/truststore.jks
+   nifi.security.truststoreType=jks
+   nifi.security.truststorePasswd=...
 
-..
+   # Additional properties (not in nifi.properties):
+   # Replace <hostname> with the host Kylo will use to communicate with NiFi
+   # Replace <kylo-keystore-password> with the contents of /opt/nifi/data/ssl/CN=kylo_OU=NIFI.password
+   nifi.rest.host=<hostname>
+   nifi.rest.keystorePath=/opt/nifi/data/ssl/CN=kylo_OU=NIFI.p12
+   nifi.rest.keystorePassword=<kylo-keystore-password>
+   nifi.rest.keystoreType=PKCS12
 
+Option: CA Signed SSL
+---------------------
 
-5.  Make an SSL directory under /opt/nifi/data as the nifi owner:
+An SSL certificate signed by a CA (certificate authority) will ensure that all web browsers display NiFi as a trusted site. This section assumes that you've already completed `Option: Self-Signed`_.
 
-.. code-block:: shell
+1. Generate a CSR (certificate signing request) with the CN (common name) set to the hostname that will be used to access the NiFi UI. Send the CSR to the CA and have it signed.
 
-      mkdir /opt/nifi/data/ssl
-      chown nifi /opt/nifi/data/ssl
-
-..
-
-6.  Change to that directory and generate certs using the tls-toolkit. 
-
-.. code-block:: shell
-
-      cd /opt/nifi/data/ssl
-      /opt/nifi/nifi-toolkit-1.0.0/bin/tls-toolkit.sh standalone -n 'localhost' -C 'CN=kylo, OU=NIFI' -o .
-
-    .. note:: Use the hostname of the NiFi node if running Kylo and NiFi on different servers to prevent certificate issues
-
-..
-
-    This will generate one client cert and password file along with a
-    server keystore and trust store:
+2. Download the SSL certificate bundle (.p7b or .p12 file) from the CA and convert it to a JKS file:
 
 .. code-block:: shell
 
-    -rwxr-xr-x 1 nifi root 1675 Apr 26 21:28 nifi-key.key
-    -rwxr-xr-x 1 nifi root 1200 Apr 26 21:28 nifi-cert.pem
-    -rwxr-xr-x 1 nifi root   43 Apr 26 21:28 CN=kylo_OU=NIFI.password
-    -rwxr-xr-x 1 nifi root 3434 Apr 26 21:28 CN=kylo_OU=NIFI.p12
-    drwxr-xr-x 2 nifi root 4096 Apr 26 21:46 localhost
-..
+   # Replace /path/to/host.p12 with the certificate file provided by the CA
+   # Enter a new password when prompted to enter a keystore password
+   # If prompted to trust this certificate type 'yes'
+   /opt/java/current/bin/keytool -import -trustcacerts -alias nifi-key -file /path/to/host.p12 -keystore /opt/nifi/data/conf/keystore.jks
 
-    .. note:: The client cert is the p.12 (PKCS12) file along with its respective password. This will be needed later when you add the client cert to the browser/computer.
-
-    The directory 'localhost' is for the server side keystore and
-    truststore .jks files.
+3. Download the CA's intermediate certificate (.crt file) and convert it to a JKS file:
 
 .. code-block:: shell
 
-    -rwxr-xr-x 1 nifi root 3053 Apr 26 21:28 keystore.jks
-    -rwxr-xr-x 1 nifi root  911 Apr 26 21:28 truststore.jks
-    -rwxr-xr-x 1 nifi root 8921 Apr 26 21:28 nifi.properties
-..
+   # Replace /path/to/ca.p12 with the intermediate certificate file provided by the CA
+   # Enter the nifi.security.truststorePasswd value when prompted to enter a keystore password
+   # If prompted to trust this certificate type 'yes'
+   /opt/java/current/bin/keytool -importcert -trustcacerts -alias ca-cert -file /path/to/ca.crt -keystore /opt/nifi/data/ssl/<hostname>/truststore.jks
 
+4. Remember the following properties and continue to the `Configuration`_ section:
 
-7. Change permissions on files.
+.. code-block:: properties
 
-.. code-block:: shell
+   nifi.security.keystore=/opt/nifi/data/conf/keystore.jks
+   nifi.security.keystoreType=jks
+   # Replace value with password entered in step 2:
+   nifi.security.keystorePasswd=...
 
-    chown nifi -R /opt/nifi/data/ssl/*
-    chmod 755 -R /opt/nifi/data/ssl/*
+Option: CA Signed Client
+------------------------
 
-..
+A client certificate signed by a CA (certificate authority) provides an additional chain of trust for Kylo to communicate with NiFi. This section assumes that you've already completed `Option: CA Signed SSL`_.
 
-8. Merge the generated properties (/opt/nifi/data/ssl/localhost) with the the NiFi configuration properties (/opt/nifi/current/conf/nifi.properties).
+1. Generate a CSR (certificate signing request) with the subject set to :code:`/OU=NIFI/CN=kylo` and the DNS hostname set to the hostname that will be used by Kylo to access NiFi. Send the CSR to the CA and have it signed.
 
-   a. Open the /opt/nifi/data/ssl/localhost/nifi.properties file.
+2. Download the SSL certificate bundle (a .p12 file) and place it in a known location such as /opt/kylo/kylo-services/conf/nifi-cert.p12
 
-   b. Compare and update the below properties
+3. Remember the following properties and continue to the `Configuration`_ section:
 
-    .. note:: Below is an example. Do not copy this text directly, as your keystore/truststore passwords will be different!
+.. code-block:: properties
+
+   # Replace <hostname> with the host Kylo will use to communicate with NiFi
+   nifi.rest.host=<hostname>
+   nifi.rest.keystorePath=/opt/kylo/kylo-services/conf/nifi-cert.p12
+   # Replace with the password to the certificate bundle:
+   nifi.rest.keystorePassword=...
+   nifi.rest.keystoreType=PKCS12
+
+Configuration
+=============
+
+Kylo and NiFi will need to be configured to use the certificates created in the previous section.
+
+1. If a self-signed certificate was generated, replace the following properties in /opt/nifi/current/conf/nifi.properties with the values from /opt/nifi/data/ssl/<hostname>/nifi.properties:
 
 .. code-block:: properties
 
     # Site to Site properties
-    nifi.remote.input.host=localhost
-    nifi.remote.input.secure=true
-    nifi.remote.input.socket.port=10443
-    nifi.remote.input.http.enabled=true
-    nifi.remote.input.http.transaction.ttl=30 sec
+    nifi.remote.input.host
+    nifi.remote.input.secure
+    nifi.remote.input.socket.port
+    nifi.remote.input.http.enabled
+    nifi.remote.input.http.transaction.ttl
 
     # web properties #
-    nifi.web.war.directory=./lib
-    nifi.web.http.host=
-    nifi.web.http.port=
-    nifi.web.https.host=0.0.0.0
-    nifi.web.https.port=9443
-    nifi.web.jetty.working.directory=./work/jetty
-    nifi.web.jetty.threads=200
+    nifi.web.war.directory
+    nifi.web.http.host
+    nifi.web.http.port
+    nifi.web.https.host
+    nifi.web.https.port
+    nifi.web.jetty.working.directory
+    nifi.web.jetty.threads
 
     # security properties #
-    nifi.sensitive.props.key=
-    nifi.sensitive.props.key.protected=
-    nifi.sensitive.props.algorithm=PBEWITHMD5AND256BITAES-CBC-OPENSSL
-    nifi.sensitive.props.provider=BC
-    nifi.sensitive.props.additional.keys=
+    nifi.sensitive.props.key
+    nifi.sensitive.props.key.protected
+    nifi.sensitive.props.algorithm
+    nifi.sensitive.props.provider
+    nifi.sensitive.props.additional.keys
 
-    nifi.security.keystore=/opt/nifi/data/ssl/localhost/keystore.jks
-    nifi.security.keystoreType=jks
-    nifi.security.keystorePasswd=fCrusEdGOKdik7P5UORRegQOILoZTBQ+9kyhf8D+PUU
-    nifi.security.keyPasswd=fCrusEdGOKdik7P5UORRegQOILoZTBQ+9kyhf8D+PUU
-    nifi.security.truststore=/opt/nifi/data/ssl/localhost/truststore.jks
-    nifi.security.truststoreType=jks
-    nifi.security.truststorePasswd=DHJS0+HIaUMRkhrbqlK/ys5j7iL/ef9mnGJIDRlFokA
-    nifi.security.needClientAuth=
-    nifi.security.user.authorizer=file-provider
-    nifi.security.user.login.identity.provider=
-    nifi.security.ocsp.responder.url=
-    nifi.security.ocsp.responder.certificate=
+    nifi.security.keystoreType
+    nifi.security.truststoreType
+    nifi.security.needClientAuth
+    nifi.security.user.authorizer
+    nifi.security.user.login.identity.provider
+    nifi.security.ocsp.responder.url
+    nifi.security.ocsp.responder.certificate
 
-..
-
-9. Edit the /opt/nifi/data/conf/authorizers.xml file to add the initial
-   admin identity.  This entry needs to match the phrase you used to
-   generate the certificates in step 6.
+2. Replace the following properties in /opt/nifi/current/conf/nifi.properties with your remembered properties:
 
 .. code-block:: properties
 
-      <property name="Initial Admin Identity">CN=kylo,OU=NIFI</property>
+    nifi.security.keystore
+    nifi.security.keystorePasswd
+    # Set to the save value as nifi.security.keystorePasswd:
+    nifi.security.keyPasswd
+    nifi.security.truststore
+    nifi.security.truststorePasswd
 
-..
+3. Configure NiFi to give admin access to the client certificate by editing /opt/nifi/data/conf/authorizers.xml and adding the `Initial Admin Identity` property. Here is an example:
 
-    Here is an example:
+.. note:: The `Initial Admin Identity` must exactly match the subject of the client certificate as displayed by keytool. NiFi will automatically add a matching user to /opt/nifi/current/conf/users.xml. If the client certificate is updated with a different CN, then users.xml will also need to be updated.
 
 .. code-block:: xml
 
@@ -168,34 +202,60 @@ This link provides additional instruction for enabling SSL for NiFi:
         -->
     </authorizer>
 
-..
+4. Restart NiFi if any files were changed.
 
-    For reference:  This will create a record in the /opt/nifi/current/conf/users.xml.  Should you need to regenerate your SSL file with a different CN, you will need to modify the
-    users.xml file for that entry.
+5. Validate that NiFi is using the correct certificate for SSL communication:
 
-10. Set the following parameters in the kylo-services "application.properties" file for the NiFi connection.
+.. code-block:: shell
+
+   # The displayed certificate should have a CN that matches the hostname,
+   # and the issuer should be NIFI for self-signed certificates or the CA
+   openssl s_client -showcerts -servername <hostname> -connect <hostname>:9443 2>/dev/null \
+   | openssl x509 -inform pem -noout -text
+
+6. Validate that NiFi accepts the client certificate:
+
+.. code-block:: shell
+
+   # Extract the certificate and key from the nifi.rest.keystorePath .p12 bundle:
+   openssl pkcs12 -in <nifi.rest.keystorePath> -out nifi-rest.key -nocerts -nodes
+   openssl pkcs12 -in <nifi.rest.keystorePath> -out nifi-rest.crt -clcerts -nokeys
+
+   # The output should be a JSON object that includes the `Initial Admin Identity` used above
+   curl -k --key ./nifi-rest.key --cert ./nifi-rest.crt https://<hostname>:<port>/
+
+7. Replace the following properties in /opt/kylo/kylo-services/conf/application.properties with your remembered properties:
 
 .. code-block:: properties
 
-    nifi.rest.host=localhost
-    nifi.rest.https=true
-    ### The port should match the port found in the /opt/nifi/current/conf/nifi.properties (nifi.web.https.port)
-    nifi.rest.port=9443
-    nifi.rest.useConnectionPooling=false
-    nifi.rest.truststorePath=/opt/nifi/data/ssl/localhost/truststore.jks
-    ##the truststore password below needs to match that found in the nifi.properties file (nifi.security.truststorePasswd)
-    nifi.rest.truststorePassword=UsqLPVksIe/taZbfpVIsYElF8qFLhXbeVGRgB0pLjKE
-    nifi.rest.truststoreType=JKS
-    nifi.rest.keystorePath=/opt/nifi/data/ssl/CN=kylo_OU=NIFI.p12
-    ###value found in the .password file /opt/nifi/data/ssl/CN=kylo_OU=NIFI.password
-    nifi.rest.keystorePassword=mw5ePri
-    nifi.rest.keystoreType=PKCS12
+   # Use the following exact values for these properties:
+   nifi.rest.https=true
+   nifi.rest.useConnectionPooling=false
+   nifi.rest.truststoreType=JKS
+   nifi.rest.keystoreType=PKCS12
 
-..
+   # Set to nifi.web.https.port from nifi.properties:
+   nifi.rest.port
+   # Set to nifi.security.truststore from nifi.properties:
+   nifi.rest.truststorePath
+   # Set to nifi.security.truststorePasswd from nifi.properties:
+   nifi.rest.truststorePassword
+
+   # Use the remembered values for these properties:
+   nifi.rest.host
+   nifi.rest.keystorePath
+   nifi.rest.keystorePassword
+
+8. Restart kylo-services and add a new feed to verify that Kylo can communicate with NiFi
+
+Web Browsers
+============
+
+Web browsers can also be configured to use the client certificate to access NiFi.
 
 .. rubric:: Importing the Client Cert on the Mac
 
-1. Copy the .p12 file that you created above (/opt/nifi/data/ssl/CN=kylo_OU=NIFI.p12) in step 6 to your Mac.
+1. Copy the .p12 file that you created above (nifi.rest.keystorePath) to your Mac.
 
 2. Open Keychain Access.
 
@@ -299,6 +359,10 @@ once.
 .. |image15| image:: ../media/kylo-config/KC15.png
    :width: 5.92426in
    :height: 1.91146in
+.. |nifi_user_authentication| raw:: html
+
+    <a href="https://nifi.apache.org/docs/nifi-docs/html/administration-guide.html#user_authentication" target="_blank">User Authentication</a>
+
 .. |hdp_link| raw:: html
 
-    <a href="https://docs.hortonworks.com/HDPDocuments/HDF2/HDF-2.0.0/bk_ambari-installation/content/ch_enabling-ssl-for-nifi.html" target="_blank">https://docs.hortonworks.com/HDPDocuments/HDF2/HDF-2.0.0/bk_ambari-installation/content/ch_enabling-ssl-for-nifi.html</a>
+    <a href="https://docs.hortonworks.com/HDPDocuments/HDF2/HDF-2.0.0/bk_ambari-installation/content/ch_enabling-ssl-for-nifi.html" target="_blank">Enabling SSL for NiFi</a>

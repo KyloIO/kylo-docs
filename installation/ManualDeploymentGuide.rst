@@ -264,7 +264,7 @@ a. Install NiFi in either online or offline mode:
 
 .. code-block:: shell
 
-          $ <SETUP_DIR>/nifi/install-nifi.sh <NIFI_BASE_FOLDER> <NIFI_LINUX_USER> <NIFI_LINUX_GROUP>
+          $ <SETUP_DIR>/nifi/install-nifi.sh <NIFI_VERSION> <NIFI_BASE_FOLDER> <NIFI_LINUX_USER> <NIFI_LINUX_GROUP>
 
 ..
 
@@ -272,7 +272,7 @@ a. Install NiFi in either online or offline mode:
 
 .. code-block:: shell
 
-          $ <OFFLINE_SETUP_DIR>/nifi/install-nifi.sh  <NIFI_BASE_FOLDER> <NIFI_LINUX_USER> <NIFI_LINUX_GROUP> <OFFLINE_SETUP_DIR> -o
+          $ <OFFLINE_SETUP_DIR>/nifi/install-nifi.sh <NIFI_VERSION> <NIFI_BASE_FOLDER> <NIFI_LINUX_USER> <NIFI_LINUX_GROUP> <OFFLINE_SETUP_DIR> -o
 
 ..
 
