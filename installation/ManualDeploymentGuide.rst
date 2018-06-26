@@ -317,23 +317,23 @@ In some cases you may want to leverage separate instances of NiFi or Hortonworks
 
 .. code-block:: shell
 
-           $ mkdir -p <NIFI_HOME>/kylo/lib
+           $ mkdir -p <NIFI_HOME>/current/lib
 
 ..
 
-4.  Copy the kylo-\*.nar files to the <NIFI_HOME>/kylo/lib directory.
+4.  Copy the kylo-\*.nar files to the <NIFI_HOME>/current/lib directory.
 
 ..
 
-5.  Create a directory called "app" in the <NIFI_HOME>/kylo/lib directory.
+5.  Create a directory called "app" in the <NIFI_HOME>/current/lib directory.
 
 .. code-block:: shell
 
-           $ mkdir <NIFI_HOME>/kylo/lib/app
+           $ mkdir <NIFI_HOME>/current/lib/app
 
 ..
 
-6.  Copy the kylo-spark-\*.jar files to the <NIFI_HOME>/kylo/lib/app directory.
+6.  Copy the kylo-spark-\*.jar files to the <NIFI_HOME>/current/lib/app directory.
 
 ..
 
@@ -341,9 +341,9 @@ In some cases you may want to leverage separate instances of NiFi or Hortonworks
 
 .. code-block:: shell
 
-           $ ln -s <NIFI_HOME>/kylo/lib/kylo-nifi-spark-nar-*.nar <NIFI_HOME>/lib/kylo-nifi-spark-nar.nar
+           $ ln -s <NIFI_HOME>/current/lib/kylo-nifi-spark-nar-*.nar <NIFI_HOME>/lib/kylo-nifi-spark-nar.nar
 
-           $ ln -s <NIFI_HOME>/kylo/lib/app/kylo-spark-interpreter-*-jar-with-dependencies.jar
+           $ ln -s <NIFI_HOME>/current/lib/app/kylo-spark-interpreter-*-jar-with-dependencies.jar
                      <NIFI_HOME>/lib/app/kylo-spark-interpreter-jar-with-dependencies.jar
 
 ..
