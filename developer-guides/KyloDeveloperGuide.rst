@@ -192,6 +192,25 @@ IntelliJ Configuration
 
         modeshape.index.dir=<value>
 
+   h. The Kylo Spark Shell currently does not run from an IDE. When you run the server you will encounter error stating: "Unable to determine Spark version."
+
+   i. If you won't be uploading sample files or using Data Transformation or Visual Query, then you can ignore that error and continue development. 
+
+   j. If you want to have spark shell started you need to manually run it in your sandbox by running command:
+
+    .. code-block:: shell
+
+        $ /opt/kylo/kylo-services/bin/run-kylo-spark-shell.sh
+
+   k. `Enable port forwarding for port 8450 <https://www.virtualbox.org/manual/ch06.html>`__ in VirtualBox.
+
+   l. Add the following lines to spark.properties in your IDE:
+   
+     .. code-block:: shell
+
+         spark.shell.server.host=localhost
+         spark.shell.server.port=8450
+
 3. Create the kylo-ui application run configuration.
 
    a. Open the Run configurations.
