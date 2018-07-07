@@ -20,12 +20,21 @@ Upgrade Instructions from v0.9.1
 
 2. Stop and uninstall Kylo
 
- .. code-block:: shell
+    2.1 Stop Kylo
 
-    /opt/kylo/stop-kylo-apps.sh
-    /opt/kylo/remove-kylo.sh
+        .. code-block:: shell
 
- ..
+          /opt/kylo/stop-kylo-apps.sh
+
+        ..
+
+    2.2 Uninstall Kylo
+
+        .. code-block:: shell
+
+          /opt/kylo/remove-kylo.sh
+
+        ..
 
 
 3. Install the new RPM:
