@@ -18,23 +18,17 @@ Upgrade Instructions from v0.9.1
   If you have any custom plugins in either `kylo-services/plugin`  or `kylo-ui/plugin` then you will want to manually back them up to a different location.
 
 
-2. Stop Kylo
+2. Stop and uninstall Kylo
 
  .. code-block:: shell
 
     /opt/kylo/stop-kylo-apps.sh
- ..
-
-
-3. Uninstall Kylo:
-
- .. code-block:: shell
-
-   /opt/kylo/remove-kylo.sh
+    /opt/kylo/remove-kylo.sh
 
  ..
 
-4. Install the new RPM:
+
+3. Install the new RPM:
 
  .. code-block:: shell
 
