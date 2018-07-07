@@ -3,7 +3,6 @@ Downloads
 =========
 This page contains links to the commons files you might want to download
 
-=======
 Kylo Distribution (0.9.1.1)
 ---------------------------
 +-------------+------------------------+

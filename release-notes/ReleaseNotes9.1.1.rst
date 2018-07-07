@@ -1,12 +1,12 @@
-Release 0.9.1.1 (July xx, 2018)
-===============================
+Release 0.9.1.1 (July 6, 2018)
+==============================
 
 Highlights
 ----------
 - Various :doc:`issues <ReleaseNotes9.1.1.issues>` fixed.
 
-Download Links (To be updated)
-------------------------------
+Download Links
+--------------
 - Visit the :doc:`Downloads <../about/Downloads>` page for links.
 
 
@@ -17,7 +17,16 @@ Upgrade Instructions from v0.9.1
   When Kylo is uninstalled it will backup configuration files, but not the `/plugin` jar files.
   If you have any custom plugins in either `kylo-services/plugin`  or `kylo-ui/plugin` then you will want to manually back them up to a different location.
 
-2. Uninstall Kylo:
+
+2. Stop Kylo
+
+ .. code-block:: shell
+
+    /opt/kylo/stop-kylo-apps.sh
+ ..
+
+
+3. Uninstall Kylo:
 
  .. code-block:: shell
 
@@ -25,7 +34,7 @@ Upgrade Instructions from v0.9.1
 
  ..
 
-3. Install the new RPM:
+4. Install the new RPM:
 
  .. code-block:: shell
 
@@ -50,9 +59,29 @@ Upgrade Instructions from v0.9.1
 
         ..
 
-     4.3 Copy the /bkup-config/TIMESTAMP/kylo-ui/application.properties file to `/opt/kylo/kylo-ui/conf`
+     4.3 If you copied the backup version of application.properties in step 4.2 you will need to make the below changes based on the 0.9.1.1 version of the properties file
 
-     4.4 Ensure the property ``security.jwt.key`` in both kylo-services and kylo-ui application.properties file match.  They property below needs to match in both of these files:
+        .. code-block:: shell
+
+          vi /opt/kylo/kylo-services/conf/application.properties
+
+          # protocol for absolute hdfs url's (change to s3 or azure specific if needed)
+          config.hdfs.protocol=hdfs
+
+        ..
+
+     4.4 Copy the /bkup-config/TIMESTAMP/kylo-ui/application.properties file to `/opt/kylo/kylo-ui/conf`
+
+        .. code-block:: shell
+
+          ### move the application.properties shipped with the .rpm to a backup file
+          mv /opt/kylo/kylo-ui/conf/application.properties /opt/kylo/kylo-ui/conf/application.properties.0_9_1_1_template
+          ### copy the backup properties  (Replace the YYYY_MM_DD_HH_MM_millis  with the valid timestamp)
+          cp /opt/kylo/bkup-config/YYYY_MM_DD_HH_MM_millis/kylo-ui/application.properties /opt/kylo/kylo-ui/conf
+
+        ..
+
+     4.5 Ensure the property ``security.jwt.key`` in both kylo-services and kylo-ui application.properties file match.  The property below needs to match in both of these files:
 
         - */opt/kylo/kylo-ui/conf/application.properties*
         - */opt/kylo/kylo-services/conf/application.properties*
