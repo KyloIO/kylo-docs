@@ -104,7 +104,7 @@ In the statement for this processor the protocol for the s3 location may need to
 The following property has been modified:
 
 **filename**
-  The filename property will later be used by Failed Flow processor when the flowfile is placed into the temp location.  Since filename coming from S3List in the feed flow includes path information, it is stripped of that here.
+  The filename property will later be used by Failed Flow processor when the flowfile is placed into the temp location.  Since filename coming from the ListS3 processor in the feed flow includes path information, it is stripped of that here.
 
 1.3.5 Create Feed Partition
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -270,7 +270,7 @@ Create a category called "S3 Feeds" to place your new feed.   Create a feed and 
 
 In the S3 bucket you configured for the feed, manually create an input folder with the name you provided for 'prefix' in the feed.  This is where the inputs for the feed should be placed.  Put a data file in this folder and check Kylo to ensure your feed ran successfully!
 
-.. note::  The ListS3 processor in the feed template will, by design, keep state information about which files it has seen in your folder (the 'systemFeedName' folder you created in S3).  Consult Apache NiFi's istS3 processor documentation for more info.
+.. note::  The ListS3 processor in the feed template will, by design, keep state information about which files it has seen in your folder (the 'systemFeedName' folder you created in S3).  Consult Apache NiFi's istS3 processor documentation for more info.  This means that the feed only processes the data of the folder once, and again when the S3 folder contents change.
 
 3. Helpful Tips
 ===============
