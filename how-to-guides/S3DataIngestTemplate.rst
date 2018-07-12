@@ -270,6 +270,8 @@ Create a category called "S3 Feeds" to place your new feed.   Create a feed and 
 
 In the S3 bucket you configured for the feed, manually create an input folder with the name you provided for 'prefix' in the feed.  This is where the inputs for the feed should be placed.  Put a data file in this folder and check Kylo to ensure your feed ran successfully!
 
+.. note::  The ListS3 processor in the feed template will, by design, keep state information about which files it has seen in your folder (the 'systemFeedName' folder you created in S3).  Consult Apache NiFi's istS3 processor documentation for more info.
+
 3. Helpful Tips
 ===============
 
