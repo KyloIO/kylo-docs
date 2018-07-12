@@ -89,6 +89,17 @@ Upgrade Instructions from v0.9.1
 
           ..
 
+    4.7 (If using Elasticsearch for search) Create/Update Kylo Indexes
+
+        Execute a script to create/update kylo indexes. If these already exist, Elasticsearch will report an ``index_already_exists_exception``. It is safe to ignore this and continue.
+        Change the host and port if necessary.
+
+            .. code-block:: shell
+
+                /opt/kylo/bin/create-kylo-indexes-es.sh localhost 9200 1 1
+
+            ..
+
 
 5. Update the NiFi nars.
 
