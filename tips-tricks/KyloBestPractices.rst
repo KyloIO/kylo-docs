@@ -22,10 +22,6 @@ responsible for activities such as install, configuration, connections, security
 Designers
 ~~~~~~~~~~~
 
-Designers are responsible for developing templates for pipelines using
-Apache NiFi. When configured in Kylo provide the processing model for feeds created by end-users.  System Administrators are responsible for activities such as install, configuration, connections,
-security, performance tuning and role-based security.
-
 Designers should limit the properties exposed to end-users and assume a
 user has limited knowledge of the internal working of the pipeline. For
 example, it is poor practice to expose Spark parameters, paths to
