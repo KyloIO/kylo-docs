@@ -107,23 +107,23 @@ file when `auth-file` is used with `auth-kylo`, as the latter profile will load 
 assigned groups from the Kylo store as well as those defined in the group file.  It would likely
 be confusing to have to manage groups from two different sources.
 
-.. note:: The `auth-file` profile should generally not be used in a production environment unless the passwords are encrypted (see below.)  The default is to expect the user passwords to be unencrypted.  It is primarily used only in development and testing.
+.. note:: The `auth-file` profile should generally not be used in a production environment unless the passwords are encrypted (see below.)  The default is to expect the user passwords to be **unencrypted**.
 
-+--------------------------------------------------+----------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
-| Properties                                       | Required | Example               | Description                                                                                                        |
-+==================================================+==========+=======================+====================================================================================================================+
-| security.auth.file.users                         | No       | ``users.properties``  | The value is either a name of a resource found on the classpath or, if prepended by `file:///`, a direct file path |
-+--------------------------------------------------+----------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
-| security.auth.file.groups                        | No       | ``groups.properties`` | The same as security.auth.file.users but for the groups file                                                       |
-+--------------------------------------------------+----------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
-| security.auth.file.password.hash.enabled         | No       | ``false``             | Indicates whether the passwords in ``users.properties`` are hashed                                                 |
-+--------------------------------------------------+----------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
-| security.auth.file.password.hash.algorithm       | No       | ``SHA-256``           | Specifies the java.security.MessageDigest algorithm used to hash the passwords                                     |
-+--------------------------------------------------+----------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
-| security.auth.file.password.hash.encoding:base64 | No       | ``hex``               | Specifies the byte encoding used for the hashed passwords (``hex``, ``base64``, ``rfc2617``)                       |
-+--------------------------------------------------+----------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
++--------------------------------------------+----------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
+| Properties                                 | Required | Example               | Description                                                                                                        |
++============================================+==========+=======================+====================================================================================================================+
+| security.auth.file.users                   | No       | ``users.properties``  | The value is either a name of a resource found on the classpath or, if prepended by `file:///`, a direct file path |
++--------------------------------------------+----------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
+| security.auth.file.groups                  | No       | ``groups.properties`` | The same as security.auth.file.users but for the groups file                                                       |
++--------------------------------------------+----------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
+| security.auth.file.password.hash.enabled   | No       | ``false``             | Indicates whether the passwords in ``users.properties`` are hashed                                                 |
++--------------------------------------------+----------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
+| security.auth.file.password.hash.algorithm | No       | ``SHA-256``           | Specifies the java.security.MessageDigest algorithm used to hash the passwords                                     |
++--------------------------------------------+----------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
+| security.auth.file.password.hash.encoding  | No       | ``hex``               | Specifies the byte encoding used for the hashed passwords (``hex``, ``base64``, ``rfc2617``)                       |
++--------------------------------------------+----------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
 
-If `auth-file` is configured to use hashed passwords then password values can be generated (assuming the default digest and encoding settings of `SHA-256` and `hex`) on the command line of most *nix systems using:
+If `auth-file` is configured to use hashed passwords, then password values can be generated on the command line of most *nix systems, assuming the default digest and encoding settings, using:
 
 ::
 
