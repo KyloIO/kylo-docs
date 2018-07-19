@@ -34,6 +34,8 @@ Installing Kylo inlcudes the following software:
 
 -  **Elasticsearch/SOLR**: Kylo can use either Elasticsearch or SOLR, as a distributed, multi-tenant capable full-text search engine.
 
+-  **Vault**: Kylo uses HashiCorp Vault to securely store user credentials
+
 Default Installation Locations
 ==============================
 
@@ -50,6 +52,8 @@ system locations:
 
 -  Elasticsearch - RPM installation default location
 
+-  Vault - /opt/vault/current
+
 Demo Sandbox
-==============
+============
 If you are interested in running a working example of Kylo you might consider running one of our demo sandboxes located on the http://kylo.io/quickstart.html website

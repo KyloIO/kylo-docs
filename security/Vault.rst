@@ -8,91 +8,43 @@ Overview
 
 Kylo uses HashiCorp Vault to securely store secret information, such as user credentials to databases, S3 buckets etc.
 For detailed information about Vault review |HashiCorp_Vault_Link|, while here we will show how Kylo integrates with Vault.
+Kylo integration with Vault is implemented as a Kylo plugin. This allows to easily replace Vault with any other technology.
+It is a required plugin unless replaced with other implementation. Plugin can be found at ``kylo-services/plugins/kylo-catalog-credential-vault-<version>.jar``.
 
 
 Installation
 ------------
 
-If you already use Vault you can skip to :ref:`Kylo Configuration <kylo_configuration>`
+If you already use Vault in your organisation you can skip to :ref:`Kylo Configuration <kylo_configuration>`, otherwise
+use either of two options to install Vault with our scripts:
 
-Vault would normally be installed and run by a specific user. Lets create this user:
+  - :doc:`../installation/SetupWizardDeploymentGuide` for local development and single node development
+  - :ref:`Manual Vault Installation <install_vault>` in :doc:`../installation/ManualDeploymentGuide` for test and production environment
 
- .. code-block:: shell
+After installation you can find Vault at following default locations:
 
-   useradd -r -m -s /bin/bash vault
+   - ``/opt/vault/current`` installation directory
+   - ``/opt/vault/data`` encrypted data storage location
+   - ``/opt/vault/current/conf`` configuration location
+   - ``/var/log/vault`` vault log and vault unseal log
 
- ..
-
-
-Use standard Kylo setup wizard ``/opt/kylo/setup/setup-wizard.sh`` to install Vault as a service.
-You only need to supply four parameters: vault version, location, user and group.
-
-   .. code-block:: shell
-
-    /opt/kylo/setup/setup-wizard.sh
-
-    # unrelated output truncated for brevity
-
-    Would you like me to install a local Vault instance? Please enter y/n: y
-    Enter Vault version you wish to install, hit Enter for '0.10.1':
-    Enter the Vault home folder location, hit Enter for '/opt/vault':
-    Enter the user Vault should run as, hit Enter for 'vault':
-    Enter the linux group Vault should run as, hit Enter for 'vault':
-
-   ..
-
-You then should see the output similar to the following:
-
-   .. code-block:: shell
-
-    Installing Vault
-    The Vault home folder is /opt/vault
-    Using permissions vault:vault
-    Installing Vault
-    Downloading Vault 0.10.1
-    Downloading Vault with certs verification
-      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                     Dload  Upload   Total   Spent    Left  Speed
-    100 20.4M  100 20.4M    0     0  5124k      0  0:00:04  0:00:04 --:--:-- 5124k
-    Installing Vault to '/opt/vault'
-    Archive:  vault_0.10.1_linux_amd64.zip
-      inflating: vault
-    Creating Vault data directory '/opt/vault/data'
-    Creating Vault configuration at '/opt/vault/current/conf'
-    Creating Vault PID directory '/var/run/vault'
-    Creating Vault log directory '/var/log/vault'
-    Creating Vault service at '/etc/init.d/vault'
-    Assigning owner and group to 'vault:vault'
-    Initialising Vault
-    Starting Vault ...
-    Running:
-    UID        PID  PPID  C STIME TTY          TIME CMD
-    vault    26811     1  0 01:53 ?        00:00:00 /opt/vault/vault_0.10.1_linux_amd64/bin/vault server -config=/opt/vault/vault_0.10.1_linux_amd64/conf/vault.conf
-    Unsealing Vault ...
-    Restoring non-versioned K/V backend at secret/
-    Success! Disabled the secrets engine (if it existed) at: secret/
-    Success! Enabled the kv secrets engine at: secret/
-    Stopping Vault ...
-    Vault initialised
-    Updating Kylo configuration
-    Vault installation complete
-    The unseal keys and root token have been stored in /opt/vault/vault_0.10.1_linux_amd64/conf/vault.init.
-
-   ..
-
-Take note of the following locations:
-
-   - Data directory ``/opt/vault/data``. This is where Vault will store encrypted data. While data is encrypted, access to this directory should be limited.
-   - Log directory ``/var/log/vault``
-   - Configuration directory ``/opt/vault/current/conf``
-
+Access to all of these directories should be limited to security personnel.
+Note that Kylo installation scripts adhere to this security recommendation and install Vault with least permissive privileges where only "vault" user is allowed access to Vault.
 
 Service
 -------
 
+Service can be found at ``/etc/init.d/vault``.
+You can use following commands to interact:
+
    .. code-block:: shell
 
+    # to start and automatically unseal
     service vault start
+
+    # to start sealed and unseal manually
+    service vault run
+
     service vault status
     service vault stop
     service vault restart
@@ -103,48 +55,148 @@ Service
 Vault Configuration
 -------------------
 
-By default configuration is stored in ``/opt/vault/current/conf``. This directory contains:
+By default configuration is stored in ``/opt/vault/current/conf``. This directory contains
 
-  - ``vault.conf`` which configures Vault parameters, such as storage locations, transport protocols, memory lock etc. For details see |HashiCorp_Vault_conf|.
-    By default Vault is configured without TLS and with memory lock turned off. For maximum security consider running with TLS and with memory lock turned on.
+- ``vault.conf``
+- ``vault.init``
+- ``vault-cert.pem``
+- ``vault-key.pem``
+- ``ca-cert.pem``
 
-  - ``vault.init`` which contains unseal keys and root key generated by standard ``vault operator init`` output. Access to this file should be limited.
-    Vault uses this file to automatically unseal itself when started with ``service vault start``. For maximum security unseal keys should be securely distributed to
-    designated security personnel and this file should be destroyed after Vault initialisation. If this file is destroyed Vault will not be able to automatically
-    unseal itself. In this case use ``service vault run`` to start Vault and unseal Vault manually.
+vault.conf
+==========
 
+Configures Vault parameters, such as storage locations, transport protocols, memory lock etc. For details see |HashiCorp_Vault_conf|.
+Kylo installation scripts configure Vault with self-signed SSL certificates and with memory lock turned off, because memory lock is not supported on all operating systems.
+For production environments it is recommended to turn memory lock on, e.g. ``disable_mlock=false``. If Vault doesn't start with
+``Failed to lock memory: cannot allocate memory`` set ``disable_mlock=true``.
+Consider installing Vault on another OS if memory lock is not supported on your OS.
+
+vault.init
+==========
+
+Contains unseal keys and root key generated by standard ``vault operator init`` output.
+Vault Service uses this file to automatically unseal Vault when started with ``service vault start``. For maximum security unseal keys should be securely distributed to
+designated security personnel and this file should be securely destroyed with ``shred`` after Vault installation. If this file is destroyed Vault Service will not be able to automatically
+unseal Vault. In this case use ``service vault run`` to start Vault sealed and unseal Vault manually.
+
+
+vault-key.pem
+=============
+
+Vault private key which is used to setup SSL. This file is referenced by ``vault.conf``
+
+vault-cert.pem
+==============
+
+Vault certificate. Used by Vault to identify itself. Signed by CA certificate ``ca-cert.pem``.
+Imported to Kylo's truststore ``/opt/kylo/ssl/kylo-vault-truststore.jks``. Referenced by ``vault.conf``
+
+ca-cert.pem
+===========
+
+CA certificate which signed Vault certificate ``vault-cert.pem``. CA certificate is used to initialise and unseal Vault.
+Referenced by ``init.sh``, ``setup.sh`` and ``unseal.sh`` scripts in ``/opt/vault/current/conf`` directory.
+
+
+.. _kylo_configuration:
 
 Kylo Configuration
 ------------------
 
-.. _kylo_configuration:
+Find following Vault properties in ``kylo-services/conf/application.properties``:
 
-Properties
+Connection
 ==========
 
-Configure Kylo for Vault using following properties in ``kylo-services/conf/application.properties``:
++------------------------------+-------------------------------------------+
+| Property                     | Default Value                             |
++==============================+===========================================+
+| vault.scheme                 | https                                     |
++------------------------------+-------------------------------------------+
+| vault.host                   | localhost                                 |
++------------------------------+-------------------------------------------+
+| vault.port                   | 8200                                      |
++------------------------------+-------------------------------------------+
 
-  - ``secret.vault.token`` Required, Kylo uses this access token to read from and write to Vault. When Vault is initialised by ``setup-wizard.sh`` this property is automatically updated
-    with root token. Root token is not strictly necessary for Kylo, any token will work which is allowed to read from and write to ``secrets/kylo`` path in Vault.
-    Access to Kylo's Vault token should be limited, because access to this token implies access to secrets stored in Vault.
+Path in Vault
+=============
 
-  - ``secret.vault.root`` Optional, location in Vault where secrets are stored, defaults to ``secret/kylo/catalog/datasource``
-  - ``secret.vault.host`` Optional, defaults to ``localhost``
-  - ``secret.vault.port`` Optional, defaults to ``8200``
-  - ``secret.vault.scheme`` Required for SSL connections, defaults to ``http``. Set to ``https`` for SSL
-  - ``secret.vault.trustStoreDirectory`` Required for SSL connections, truststore directory
-  - ``secret.vault.trustStoreName`` Required for SSL connections, truststore file name in truststore directory
-  - ``secret.vault.trustStorePassword`` Required for SSL connections
-  - ``secret.vault.trustSelfSignedCert`` Required for SSL connections, ``true`` or ``false``
+Kylo needs to write data to Vault. Update this property to change where data is stored.
+Kylo token or certificate used for authentication with Vault will need to have *read* and *write* access to this path.
 
++------------------------------+-------------------------------------------+
+| Property                     | Default Value                             |
++==============================+===========================================+
+| vault.root                   | secrets/kylo                              |
++------------------------------+-------------------------------------------+
 
-Plugin
-======
+Authentication
+==============
 
-Kylo integration with Vault is implemented as a Kylo plugin. This allows to easily replace Vault with any other technology.
-Plugin can be found at ``kylo-services/plugins/kylo-catalog-credential-vault-<version>.jar``.
+By default Kylo is configured to use client certificate authentication with Vault, but it also supports simple token authentication.
+Only one of these authentication methods should be used at a time. Certificate authentication will take precedence over token authentication when both are configured.
+Note that both token and cert need to have *read* and *write* access to path defined by ``vault.root`` property mentioned previously.
+Access to token or keystore implies access to secrets stored in Vault by Kylo, therefore care should be taken to limit access to either of these items to only required personnel.
+SSL configuration is located outside of ``kylo-services`` directory in ``/opt/kylo/ssl`` to avoid it being overwritten when Kylo is upgraded.
 
++------------------------------+-------------------------------------------+
+| Property                     | Default Value                             |
++==============================+===========================================+
+| vault.keyStoreDirectory      | /opt/kylo/ssl                             |
++------------------------------+-------------------------------------------+
+| vault.keyStoreName           | kylo-vault-keystore.jks                   |
++------------------------------+-------------------------------------------+
+| vault.keyStorePassword       | no default value                          |
++------------------------------+-------------------------------------------+
+| vault.trustStoreDirectory    | /opt/kylo/ssl                             |
++------------------------------+-------------------------------------------+
+| vault.trustStoreName         | kylo-vault-truststore.jks                 |
++------------------------------+-------------------------------------------+
+| vault.trustStorePassword     | no default value                          |
++------------------------------+-------------------------------------------+
+| vault.token                  | no default value                          |
++------------------------------+-------------------------------------------+
 
+Vault Operations
+----------------
+
+Setup client environment:
+
+.. code-block:: shell
+
+ vi /opt/vault/current/bin/env.sh
+     #! /bin/sh
+     export VAULT_TOKEN=<insert root token here from /opt/vault/current/conf/vault.init>
+     export VAULT_ADDR=https://localhost:8200
+     export VAULT_CAPATH="/opt/vault/current/conf/ca-cert.pem"
+ source env.sh
+
+..
+
+Once client environment is set up, here are most common Vault operations you can do, refer to |HashiCorp_Vault_cli| for full list:
+
+.. code-block:: shell
+
+ # List keys on path
+ /opt/vault/current/bin/vault list secret
+ /opt/vault/current/bin/vault list secret/kylo
+ /opt/vault/current/bin/vault list secret/kylo/catalog
+ /opt/vault/current/bin/vault list secret/kylo/catalog/datasource
+ /opt/vault/current/bin/vault list secret/kylo/catalog/datasource/<data-source-name>
+ /opt/vault/current/bin/vault list secret/kylo/catalog/datasource/<data-source-name>/users
+ /opt/vault/current/bin/vault list secret/kylo/catalog/datasource/<data-source-name>/groups
+
+ # Read values of keys
+ /opt/vault/current/bin/vault read secret/kylo/catalog/datasource/<data-source-name>/defaults
+ /opt/vault/current/bin/vault read secret/kylo/catalog/datasource/<data-source-name>/users/<user-name>
+ /opt/vault/current/bin/vault read secret/kylo/catalog/datasource/<data-source-name>/groups/<group-name>
+
+ # Write secrets
+ /opt/vault/current/bin/vault write secret/kylo/catalog/datasource/<data-source-name>/users/<user-name> options=@user-options.json
+ /opt/vault/current/bin/vault write secret/kylo/catalog/datasource/<data-source-name>/groups/<group-name> options=@group-options.json index=1
+
+..
 
 
 
@@ -155,3 +207,7 @@ Plugin can be found at ``kylo-services/plugins/kylo-catalog-credential-vault-<ve
 .. |HashiCorp_Vault_conf| raw:: html
 
    <a href='https://www.vaultproject.io/docs/configuration/index.html' target="_blank">HashiCorp Vault Configuration</a>
+
+.. |HashiCorp_Vault_cli| raw:: html
+
+   <a href='https://www.vaultproject.io/docs/commands/index.html' target="_blank">HashiCorp Vault CLI</a>

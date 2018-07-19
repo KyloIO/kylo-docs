@@ -29,6 +29,7 @@ b. Offline mode from another directory (using TAR file)
 .. note:: Both -o and -O work.
 
 Follow the directions to install the following:
+
 -  MySQL or Postgres scripts into the local database
 
 -  Elasticsearch
@@ -38,5 +39,7 @@ Follow the directions to install the following:
 -  Java 8 (If the system Java is 7 or below)
 
 -  NiFi and the Kylo dependencies
+
+-  HashiCorp Vault
 
 The Elasticsearch and ActiveMQ services start when the wizard is finished.

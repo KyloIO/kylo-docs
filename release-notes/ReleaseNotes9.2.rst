@@ -133,16 +133,24 @@ Upgrade Instructions from v0.9.1
 6. Install and start HashiCorp Vault
 
    Kylo uses Vault to securely store user credentials. Kylo script installs Vault as a service, similar to other Kylo services.
-   The script to install Vault takes following form: ``install-vault.sh <kylo-home> <vault-version> <vault-home> <vault-user> <vault-group>``.
-   This script will also update ``security.vault.token`` property in ``kylo-services/conf/application.properties``
-   You can also use ``/opt/kylo/setup/setup-wizard.sh`` to install Vault, which internally delegates to ``install-vault.sh``.
+   The script to install Vault takes following form: ``install-vault.sh <kylo-home> <kylo-user> <kylo-group> <vault-version> <vault-home> <vault-user> <vault-group>``
 
  .. code-block:: shell
 
    useradd -r -m -s /bin/bash vault
-   /opt/kylo/setup/vault/install-vault.sh /opt/kylo 0.10.1 /opt/vault vault vault
+   /opt/kylo/setup/vault/install-vault.sh /opt/kylo kylo users 0.9.0 /opt/vault vault vault
    service vault start
  ..
+
+ Vault installation also creates Kylo configuration which allows Kylo to connect to Vault over SSL.
+ SSL configuration is stored in ``/opt/kylo/ssl`` and following properties are updated in ``kylo-services/conf/application.properties``:
+
+ - ``vault.keyStoreDirectory``
+ - ``vault.keyStorePassword``
+ - ``vault.trustStoreDirectory``
+ - ``vault.trustStorePassword``
+
+ For further details about Vault refer to :doc:`Kylo Vault Documentation <../security/Vault>`
 
 
 7. Start Kylo

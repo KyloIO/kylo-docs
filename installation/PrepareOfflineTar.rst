@@ -1,16 +1,16 @@
-====================
+===================
 Prepare Offline TAR
-====================
+===================
 The OPTIONAL offline TAR file can be useful in two scenarios:
 
-    1. You are installing ActiveMQ, Elasticsearch, Java, or NiFi on nodes with no external network access.
+    1. You are installing ActiveMQ, Elasticsearch, Java, NiFi or Vault on nodes with no external network access.
 
-    2. You plan on installing ActiveMQ, Elasticsearch, Java, or NiFi on separate nodes than Kylo and want to take advantage of the setup files you will want to generate an
+    2. You plan on installing ActiveMQ, Elasticsearch, Java, NiFi or Vault on separate nodes than Kylo and want to take advantage of the setup files you will want to generate an
 
-The offline TAR file will include the binaries required to install the 4 services mentioned above.
+The offline TAR file will include the binaries required to install the services mentioned above.
 
 Generate the TAR file
-----------------------
+---------------------
 
 1. Install the Kylo RPM on a node that has internet access.
 
@@ -26,12 +26,10 @@ Generate the TAR file
     $ /opt/kylo/setup/generate-offline-install.sh
 ..
 
-+------------+-------------------------------------------------------------------------------------------------------+
-| **Note**   | If installing the Debian packages make sure to change the Elasticsearch download from RPM to DEB      |
-+------------+-------------------------------------------------------------------------------------------------------+
+.. note:: If installing the Debian packages make sure to change the Elasticsearch download from RPM to DEB
 
 
-3. Copy the /opt/kylo/setup/kylo-install.tar file to the node you install the RPM on. This can be copied to a temp directory. It doesn’t have to be put in the /opt/kylo/setup folder.
+3. Copy the ``/opt/kylo/setup/kylo-install.tar`` file to the node you install the RPM on. This can be copied to a temp directory. It doesn’t have to be put in the ``/opt/kylo/setup`` folder.
 
 4. Run the command to tar up the setup folder.
 
@@ -40,4 +38,5 @@ Generate the TAR file
     tar -xvf kylo-install.tar
 ..
 
-5. Note the directory name where you untar’d the files. You will need to reference the setup location when manually running the shell scripts
+5. Note the directory name where you untar’d the files. You will need to reference the setup location when running installation setup wizard in offline mode or manually running shell scripts.
+   Refer to :doc:`InstallAdditionalKyloComponents` for installing in offline mode.

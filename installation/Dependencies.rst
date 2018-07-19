@@ -1,6 +1,6 @@
 
 Review Dependencies
-====================
+===================
 This page can be used as a guide to prepare you environment for installation.
 
 Supported Operating Systems
@@ -65,6 +65,8 @@ Below is a list of some of the major components Kylo uses along with the version
 +----------------+------------------+------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Search         | Solr             | 6.5.1 (SolrCloud mode)                   | For index and search of Hive metadata and indexing feed data when selected as part of creating a feed                                                                                                                                                                                           |
 +----------------+------------------+------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Security       | HashiCorp Vault  | 0.9.0                                    | For securely storing secrets such as user credentials to data sources                                                                                                                                                                                                                           |
++----------------+------------------+------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Linux Tools
 -----------
@@ -77,10 +79,16 @@ Below are tools required to be installed on the Linux box before installing the 
 +-----------------------------------------------------------------------------------+
 | RPM or dpkg(for install)                                                          |
 +-----------------------------------------------------------------------------------+
+| unzip (for install)                                                               |
++-----------------------------------------------------------------------------------+
+| openssl (for generating self-singed certs during install)                         |
++-----------------------------------------------------------------------------------+
+| keytool (for creating keystores and truststores during install)                   |
++-----------------------------------------------------------------------------------+
 
 
 Service Accounts
-------------------
+----------------
 Required new linux service accounts are listed below. Within enterprises there
 are often approvals required and long lead times to obtain service
 accounts. Kerberos principals are required where the service interacts
@@ -102,6 +110,8 @@ and Kylo metastore databases (mysql or postgres) are IO intensive.
 | elasticsearch       | Manages searchable index                                   | elasticsearch           | elasticsearch                  |                                                  |                                                            |           |
 +---------------------+------------------------------------------------------------+-------------------------+--------------------------------+--------------------------------------------------+------------------------------------------------------------+-----------+
 | mysql or postgres   | Metastore for Kylo feed manager and operational metadata   | mysql or postgres       | mysql or postgres              |                                                  |                                                            |           |
++---------------------+------------------------------------------------------------+-------------------------+--------------------------------+--------------------------------------------------+------------------------------------------------------------+-----------+
+| vault               | For storing secrets                                        | vault                   | vault                          |                                                  |                                                            |           |
 +---------------------+------------------------------------------------------------+-------------------------+--------------------------------+--------------------------------------------------+------------------------------------------------------------+-----------+
 
 .. note:: You have the flexibility to change the installation locations and service accounts when using the TAR installation method
@@ -132,6 +142,8 @@ Required
 +-----------+-----------------------+--------------------+
 | 9983      | kylo-services/NiFi    | SOLR               |
 +-----------+-----------------------+--------------------+
+| 8200      | kylo-services         | Vault              |
++-----------+-----------------------+--------------------+
 | 10000     | kylo-services/NiFi    |   HiveServer2      |
 +-----------+-----------------------+--------------------+
 | ALL       | kylo-spark-shell      |   Yarn, data nodes |
@@ -148,7 +160,7 @@ Optional
 +-----------+-----------------------+----------------+
 
 Default HDFS Locations (for standard ingest)
----------------------------------------------
+--------------------------------------------
 The below locations are configurable. If you plan on using the default locations they will be create here.
 
 +----------------------+---------------------------------------------+
