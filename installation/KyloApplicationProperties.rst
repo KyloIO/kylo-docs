@@ -369,7 +369,7 @@ These properties allow Kylo to interact with Vault
 +------------------------------+-------------------------------------------+----------------------------------------------------------------------------------------------------------------+
 | vault.root                   | secrets/kylo/catalog/datasource           | Path in Vault where Kylo will store secrets                                                                    |
 +------------------------------+-------------------------------------------+----------------------------------------------------------------------------------------------------------------+
-| vault.token                  | randomly value generated                  | Either vault.token or vault.keyStore*, but not both, is used for authentication with Vault                    |
+| vault.token                  | randomly value generated                  | Either vault.token or vault.keyStore*, but not both, is used for authentication with Vault                     |
 +------------------------------+-------------------------------------------+----------------------------------------------------------------------------------------------------------------+
 | vault.keyStoreDirectory      | /opt/kylo/ssl                             |                                                                                                                |
 +------------------------------+-------------------------------------------+----------------------------------------------------------------------------------------------------------------+
