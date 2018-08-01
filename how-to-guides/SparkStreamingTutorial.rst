@@ -72,6 +72,7 @@ The extra classpath libraries needed will depend on your specific Hadoop and Kaf
 .. code-block:: shell
 
     # From local machine
+    kafka-clients-0.10.0.2.5.5.0-157.jar
     kafka-streams-0.10.0.2.5.5.0-157.jar
     spark-examples_2.11-2.0.2.2.5.5.0-157.jar
     spark-streaming-kafka-0-10_2.11-2.1.1.jar
