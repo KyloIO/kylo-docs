@@ -510,7 +510,7 @@ Token and certificate must be allowed to read and write on path defined by ``vau
 
 **SSL Configuration**
 
-Vault certificate should be imported into Kylo truststore. Use following properties to change set up truststore:
+Vault certificate should be imported into Kylo truststore. Use following properties to set up truststore:
 
   - ``vault.trustStoreDirectory`` truststore directory
   - ``vault.trustStoreName`` truststore file name in truststore directory
