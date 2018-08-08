@@ -59,9 +59,20 @@ Upgrade Instructions from v0.9.1
 
           vi /opt/kylo/kylo-services/conf/application.properties
 
-          # Add new Vault property as shown here, its value will be set when you install Vault in following steps
-          security.vault.token=<insert-vault-secret-token-here>
-
+          # Add new Vault properties, where missing values will be updated automatically when Vault is installed in following steps
+          vault.root=secret/kylo
+          vault.scheme=https
+          vault.host=localhost
+          vault.port=8200
+          vault.token=
+          vault.keyStoreName=kylo-vault-keystore.jks
+          vault.keyStorePassword=
+          vault.keyStoreDirectory=
+          vault.keyStoreType=jks
+          vault.trustStoreName=kylo-vault-truststore.jks
+          vault.trustStorePassword=
+          vault.trustStoreDirectory=
+          vault.trustStoreType=jks
 
         ..
 
