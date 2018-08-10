@@ -462,6 +462,7 @@ Option1: Create new Vault installation
 ..
 
 .. note:: By default Vault will be downloaded over TLS with certificate validation. You can download without certificate validation with ``export IGNORE_CERTS=yes`` before running ``install-vault.sh`` command
+.. note:: Ensure ``keytool`` is at least Java 8, otherwise following error will occur ``keytool error: java.io.IOException: Invalid keystore format``
 
 Once installed you can find Vault at following default locations:
 
