@@ -374,10 +374,10 @@ Add the following properties to the kylo-services application.properties file
     vi /opt/kylo/kylo-services/conf/application.properties
 
         config.s3ingest.s3.protocol=s3a
-        config.s3ingest.hiveBucket=thinkbig.jeremy.emr-doc
-        config.s3ingest.es.jar_url=s3a://thinkbig.jeremy.emr-doc/elasticsearch-hadoop-5.5.0.jar
-        config.s3ingest.apache-commons.jar_url=s3a://thinkbig.jeremy.emr-doc/commons-httpclient-3.1.jar
-        config.s3ingest.es.nodes=172.31.15.230
+        config.s3ingest.hiveBucket=<S3_BUCKET>
+        config.s3ingest.es.jar_url=s3a://<S3_BUCKET>/elasticsearch-hadoop-5.5.0.jar
+        config.s3ingest.apache-commons.jar_url=s3a://<S3_BUCKET>/commons-httpclient-3.1.jar
+        config.s3ingest.es.nodes=<KYLO_NODE_IP_ADDRESS>
 
 ..
 
