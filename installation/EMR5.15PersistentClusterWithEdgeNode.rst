@@ -466,8 +466,7 @@ Create a Test Feed
 
 7. Choose a few fields to be indexed so we can test that Elasticsearch indexing works. Then continue to step 7
 
-8. Change the schedule to be timer based and run every 15 seconds. Then click the "Create" button. The feed will be looking at a folder in your S3 bucket based on the feed name. Since I called the feed "Ingest Test" it will be looking
- at the <S3 Bucket>/ingest_test folder
+8. Change the schedule to be timer based and run every 15 seconds. Then click the "Create" button. The feed will be looking at a folder in your S3 bucket based on the feed name. Since I called the feed "Ingest Test" it will be looking at the <S3 Bucket>/ingest_test folder
 
 9. Drop a test file in the S3 bucket and folder you created for the feed.
 
