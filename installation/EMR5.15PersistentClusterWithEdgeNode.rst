@@ -8,10 +8,10 @@ About
 
 The Kylo team provides two ways to deploy Kylo with EMR
 
- 1. On an edge node with a persistent cluster
- 2. An enterprise plugin that will spin up an EMR cluster, store all data in S3, and terminate the cluster on a scheduled basis.
+ 1. Deploy Kylo to an edge node with an existing persistent EMR cluster. There is an S3 ingest template that will ingest data in S3 and land data in S3 which allows you to avoid passing data through NiFi.
+ 2. Deploy the Kylo enterprise EMR plugin which is a set of Nifi processors, Nifi templates and scripts that are designed to aid in the management of an EMR cluster to provide the ability to start, stop or check status of and EMR cluster from within Nifi. In conjunction with a modified S3 Standard Ingest Template, Kylo effectively provides an ephemeral cluster that can be as large as needed for processing and the permanence and the reliability of storing all resources in S3.
 
-This guide provides instructions on how to configure Kylo to communicate with a persistent EMR cluster. If you are interested in
+This guide provides instructions on how to configure Kylo to communicate with a persistent EMR cluster (Option #1). If you are interested in
 learning more about the EMR enterprise plugin please |Teradata_support_link|
 
 This guide will help you do you following:
@@ -32,50 +32,53 @@ Create an EMR Cluster
 
 You can either create a new EMR cluster or leverage an existing EMR cluster that you have. This section provides an example on how to spin up an EMR cluster
 
- 1. Create an S3 bucket for your EMR cluster. It must be in the same region as the EMR cluster
+1. Create an S3 bucket for your EMR cluster. It must be in the same region as the EMR cluster
 
- 2. Create a folder in the S3 bucket called "logs".
+2. Create a folder in the S3 bucket called "logs".
 
- 3. Click the button to create an EMR cluster
+3. Click the button to create an EMR cluster
 
- 4. Go to the advanced settings and make sure Hadoop, Hive, Spark, Tez, and HCatalog are chosen
+4. Go to the advanced settings and make sure Hadoop, Hive, Spark, Tez, and HCatalog are chosen
 
 |create_emrcluster_options_image|
 
- 5. Choose the hardware to meet your requirements
+5. Choose the hardware to meet your requirements
 
 |emr_hardware_config_image|
 
- 6. For logging, choose the S3 bucket and folder you created. For example, s3://my.bucket/logs/
+6. For logging, choose the S3 bucket and folder you created. For example, s3://my.bucket/logs/
 
- 7. Complete the rest of the steps and create the EMR cluster
+7. Complete the rest of the steps and create the EMR cluster
 
 Create a Kylo EMR edge node
 ===========================
 
-The next step is to create a new CentOS EC2 instance to install.
+The next step is to create a new CentOS EC2 instance to install Kylo on. Make sure to create it in the same VPC and Subnet as the EMR cluster
 
- 1. Go to the EC2 page and click on "Launch Instance" in the same region you created the EMR cluster in.
+1. Go to the EC2 page and click on "Launch Instance" in the same region you created the EMR cluster in.
 
- 2. Under "AWS Marketplace" choose the "CentOS 7 (x86_64) - with Updates HVM" AMI.
+2. Under "AWS Marketplace" choose the "CentOS 7 (x86_64) - with Updates HVM" AMI.
 
- 3. Make sure to choose at least with at least 8 vCPUs and 16GB RAM
+3. Make sure to choose at least 8 vCPUs and 16GB RAM
 
- 4. Create the EC2 instance in the same VPC as the EMR cluster
+4. Create the EC2 instance in the same VPC as the EMR cluster
 
- 5. Finish creating and launching your EC2 instance
+5. Finish creating and launching your EC2 instance
 
 Configure Security Groups
 =========================
 
- 1. Modify the Master and Slave security groups to allow access from the Kylo EC2 instance.
- 2. Modify the security group for the Kylo edge node to allow access from the master and slave nodes
+For this installation we will open up all ports between the EMR master, slave, and Kylo edge node. If you prefer to open up
+only the required ports please see the :doc:`dependencies page <../installation/Dependencies>`
+
+1. Modify the Master and Slave security groups to allow access from the Kylo EC2 instance.
+2. Modify the security group for the Kylo edge node to allow access from the master and slave nodes
 
 Install Kylo on Edge Node
 =========================
 
- 1. SSH into the edge node and su to the root user
- 2. Run the following commands
+1. SSH into the edge node and su to the root user
+2. Run the following commands
 
 .. code-block:: console
 
@@ -185,7 +188,7 @@ Next we will run the Kylo setup wizard to install NiFi, ActiveMQ, and Elasticsea
 ..
 
 Test Spark on the edge node
-=========================
+===========================
 
 We want to test that spark words from the command line before running it from Kylo
 
@@ -199,10 +202,23 @@ We want to test that spark words from the command line before running it from Ky
     http://<MASTER_NODE>:8088/cluster
 ..
 
+Open up permissions to the mnt folders
+======================================
+
+Temporary files are written to the /mnt and /mnt1 folders when the ingest template is processing
+
+.. code-block:: console
+
+    chmod 777 /mnt
+    mkdir /mnt1
+    chmod -R 777 /mnt1
+
+..
+
 Prepare the EMR cluster
 =======================
 
- 1. Create the kylo and nifi users on the EMR Master Node
+1. Create the kylo and nifi users on the EMR Master Node
 
 .. code-block:: console
 
@@ -212,7 +228,7 @@ Prepare the EMR cluster
 
 ..
 
- 2. Create the Kylo and NiFi users in HDFS
+2. Create the Kylo and NiFi users in HDFS
 
 .. code-block:: console
 
@@ -228,7 +244,7 @@ Prepare the EMR cluster
 Edit the Kylo Properties Files
 ==============================
 
- 1. Retrieve the hive metastore password on the EMR master node
+1. Retrieve the hive metastore password on the EMR master node
 
 .. code-block:: console
 
@@ -236,7 +252,7 @@ Edit the Kylo Properties Files
 
 ..
 
- 2. Modify
+2. Modify the Kylo properties files
 
 .. code-block:: properties
 
@@ -280,7 +296,7 @@ Edit the Kylo Properties Files
 
 ..
 
- 3. Modify spark.properties
+3. Modify spark.properties
 
 .. code-block:: properties
 
@@ -294,7 +310,8 @@ Edit the Kylo Properties Files
 Start Kylo and NiFi
 ===================
 
- 1. Start up Kylo and NiFi
+1. Start up Kylo and NiFi
+
 .. code-block:: console
 
     service nifi start
@@ -303,22 +320,24 @@ Start Kylo and NiFi
 
 ..
 
- 2. Login to the NiFi and Kylo UI to test that it's up and running
+2. Login to the NiFi and Kylo UI to test that it's up and running
 
 
 
 Install the S3 Ingest Template
 ==============================
 
- 1. Upload required Jars to the S3 EMR bucket you created above
+This section follows the steps from the :doc:`S3 Data Ingest Template <../how-to-guides/S3DataIngestTemplate>` how to page
 
-http://central.maven.org/maven2/org/elasticsearch/elasticsearch-hadoop/5.5.0/elasticsearch-hadoop-5.5.0.jar
+1. Upload required Jars to the S3 EMR bucket you created above
 
-http://central.maven.org/maven2/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar
+ - http://central.maven.org/maven2/org/elasticsearch/elasticsearch-hadoop/5.5.0/elasticsearch-hadoop-5.5.0.jar
+
+ - http://central.maven.org/maven2/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar
 
 |emr_s3_jars_image|
 
- 2. Modify core-site.xml file on the Kylo edge and the EMR master node
+2. Modify core-site.xml file on the Kylo edge and the EMR master node
 
  For the S3 ingest template to work you need to set some S3 properties in the core-site.xml on both the Kylo edge node AND
  the EMR master node
@@ -354,7 +373,7 @@ http://central.maven.org/maven2/commons-httpclient/commons-httpclient/3.1/common
           </property>
 ..
 
- 3. Restart the namenode
+3. Restart the namenode
 
  Restart the namenode from the master node
 
@@ -365,7 +384,7 @@ http://central.maven.org/maven2/commons-httpclient/commons-httpclient/3.1/common
     start hadoop-hdfs-namenode
 ..
 
- 4. Update application.properties to prepare for the template
+4. Update application.properties to prepare for the template
 
 Add the following properties to the kylo-services application.properties file
 
@@ -381,7 +400,7 @@ Add the following properties to the kylo-services application.properties file
 
 ..
 
- 5. Restart kylo-services
+5. Restart kylo-services
 
 .. code-block:: console
 
@@ -389,19 +408,7 @@ Add the following properties to the kylo-services application.properties file
 
 ..
 
- 6. Open up permissions to the mnt folders
-
-Temporary files are written to the /mnt and /mnt1 folders when the ingest template is processing
-
-.. code-block:: console
-
-    chmod 777 /mnt
-    mkdir /mnt1
-    chmod -R 777 /mnt1
-
-..
-
- 7. Allow Access to Elasticsearch from the Cluster
+6. Allow Access to Elasticsearch from the Cluster
 
  The S3 ingest template creates a hive index table based on Elasticsearch. We need to make sure Elasticsearch allows access from external nodes.
 
@@ -415,25 +422,25 @@ Temporary files are written to the /mnt and /mnt1 folders when the ingest templa
 
 ..
 
- 8. Import the S3 Ingest Template
+7. Import the S3 Ingest Template
 
-     Make sure to install the version of the S3 ingest template that matches the your Kylo version. Be careful not to download it from the master branch in Github
+     Make sure to install the version of the S3 ingest template that matches your Kylo version. Be careful not to download it from the master branch in Github
      since the template may have changed. The template "s3_data_ingest.template.zip" is located in the /opt/kylo/setup/data/templates/nifi-1.0 folder. You will need to copy it to your local box
      to upload it via the browser
 
-     8.1 In Kylo go to the Admin --> Templates page and click the plus icon
+     7.1 In Kylo go to the Admin --> Templates page and click the plus icon
 
     |import_template_start_image|
 
-     8.2 Choose "Import from a File"
+     7.2 Choose "Import from a File"
 
-     8.3 Choose the file and select "Import the Reusable Template"
+     7.3 Choose the file and select "Import the Reusable Template"
 
     |import_template_upload_image|
 
-     8.4 Click "Import Template"
+     7.4 Click "Import Template"
 
- 9. Add the AWS credentials to the Controller Services
+8. Add the AWS credentials to the Controller Services
 
  Disable and edit the AWSCredentialsProviderControllerService created when importing the S3 ingest template. Set
  the value for both the "Access Key" field and "Secret Key" field. Re-enable the controller service.
@@ -441,30 +448,28 @@ Temporary files are written to the /mnt and /mnt1 folders when the ingest templa
 Create a Test Feed
 ==================
 
- 1. Go to the Categories page in Kylo and create a new Category
+1. Go to the Categories page in Kylo and create a new Category
 
- 2. Go to Feed Manager -> Feeds and click the plus icon to create a new feed
+2. Go to Feed Manager -> Feeds and click the plus icon to create a new feed
 
- 3. Click the S3 Data Ingest template
+3. Click the S3 Data Ingest template
 
- 4. Give the feed a name and select a category. Then click "Continue to Step 2"
+4. Give the feed a name and select a category. Then click "Continue to Step 2"
 
 |create_feed_name_image|
 
- 5. Specify the S3 bucket you will drop a file in, as well as the AWS region. Click "Continue to Step 3"
+5. Specify the S3 bucket you will drop a file in, as well as the AWS region. Click "Continue to Step 3"
 
 |create_feed_s3_values_image|
 
- 6. Choose a sample file and upload it. Then modify the data types as needed. Click "Continue to Step 4"
+6. Choose a sample file and upload it. Then modify the data types as needed. Click "Continue to Step 4"
 
- 7. Choose a few fields to be indexed so we can test that Elasticsearch indexing works. Then continue to step 7
+7. Choose a few fields to be indexed so we can test that Elasticsearch indexing works. Then continue to step 7
 
- 8. Change the schedule to be timer based and run every 15 seconds. Then click the "Create" button
-
- The feed will be looking at a folder in your S3 bucket based on the feed name. Since I called the feed "Ingest Test" it will be looking
+8. Change the schedule to be timer based and run every 15 seconds. Then click the "Create" button. The feed will be looking at a folder in your S3 bucket based on the feed name. Since I called the feed "Ingest Test" it will be looking
  at the <S3 Bucket>/ingest_test folder
 
- 9. Drop a test file in the S3 bucket folder
+9. Drop a test file in the S3 bucket and folder you created for the feed.
 
 
 Monitor NiFi and Kylo to verify the feed ran successfully.
