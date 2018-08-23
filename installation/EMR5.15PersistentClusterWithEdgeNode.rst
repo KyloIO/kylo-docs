@@ -6,7 +6,7 @@ EMR Persistent Cluster Kylo Installation Guide
 About
 =====
 
-The Kylo team provides two ways to deploy Kylo with EMR
+The Kylo team provides two ways to deploy Kylo with EMR:
 
  1. Deploy Kylo to an edge node with an existing persistent EMR cluster. There is an S3 ingest template that will ingest data in S3 and land data in S3 which allows you to avoid passing data through NiFi.
  2. Deploy the Kylo enterprise EMR plugin which is a set of Nifi processors, Nifi templates and scripts that are designed to aid in the management of an EMR cluster to provide the ability to start, stop or check status of and EMR cluster from within Nifi. In conjunction with a modified S3 Standard Ingest Template, Kylo effectively provides an ephemeral cluster that can be as large as needed for processing and the permanence and the reliability of storing all resources in S3.
