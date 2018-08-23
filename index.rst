@@ -60,6 +60,7 @@ The documentation for the site is organized into a few sections:
     :caption: Installation Examples
 
     installation/HDP25ClusterDeploymentGuide
+    installation/EMR5.15PersistentClusterWithEdgeNode
 
 .. _common_configuration_toc:
 .. toctree::
