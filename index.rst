@@ -61,6 +61,7 @@ The documentation for the site is organized into a few sections:
 
     installation/HDP25ClusterDeploymentGuide
     installation/EMR5.15PersistentClusterWithEdgeNode
+    installation/Mapr6.01KyloInstallation
 
 .. _common_configuration_toc:
 .. toctree::
