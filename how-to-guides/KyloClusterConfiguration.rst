@@ -22,7 +22,7 @@ ModeShape Configuration
 
    ..
 
-   Make sure the file you referenced in the "configuration" paraemeter is in the `/kylo-services/conf` folder.  Refer to the sample files for setting up a jgroups configuration at `/opt/kylo/setup/config/kylo-cluster`.
+   Make sure the file you referenced in the "configuration" parameter is in the `/opt/kylo/kylo-services/conf` folder.  Refer to the sample files for setting up a jgroups configuration at `/opt/kylo/setup/config/kylo-cluster`.
    Note if working in Amazon AWS, refer to the "s3" jgroups configuration.  Both modeshape and kylo jgroups files should use S3_PING, not TCPPING or MPING, to perform node discovery.
 
 Kylo Configuration
