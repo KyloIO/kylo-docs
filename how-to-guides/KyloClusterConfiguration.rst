@@ -22,16 +22,16 @@ ModeShape Configuration
 
    ..
 
-   Make sure the name of the jgroups-config.xml file is in the `/kylo-services/conf` folder.  Refer sample files for setting up a jgroups configuration at `/opt/kylo/setup/config/kylo-cluster`.
-   Note if working in Amazon you need to refer to the "s3" jgroups configuration as it needs to use an S3Ping to have the nodes communicate with each other.
+   Make sure the file you referenced in the "configuration" paraemeter is in the `/kylo-services/conf` folder.  Refer to the sample files for setting up a jgroups configuration at `/opt/kylo/setup/config/kylo-cluster`.
+   Note if working in Amazon AWS, refer to the "s3" jgroups configuration.  Both modeshape and kylo jgroups files should use S3_PING, not TCPPING or MPING, to perform node discovery.
 
 Kylo Configuration
 ~~~~~~~~~~~~~~~~~~
 
 We also have another jgroups configuration setup for Kylo nodes.  We cannot use the ModeShape cluster configuration since that is internal to ModeShape.
 
-1. Create a similar jgroup-config.xml file and add it to the `/kylo-services/conf` file.  Refer sample files for setting up a jgroups configuration at `/opt/kylo/setup/config/kylo-cluster`.
-Ensure the ports are different between this xml file and the ModeShape xml file
+1. Create a similar jgroup-config.xml file and add it to the `/opt/kylo/kylo-services/conf` file.  Refer to the sample files for setting up a jgroups configuration at `/opt/kylo/setup/config/kylo-cluster`.
+Generally, the modeshape and kylo jgroup config files only differ in the port that they are configured to listen on.  Ensure the value of the "TCP bind_port" attribute are different between this xml file and the ModeShape xml file
 
 2. Add a property to the kylo-services/conf/application.properties to reference this file
 
