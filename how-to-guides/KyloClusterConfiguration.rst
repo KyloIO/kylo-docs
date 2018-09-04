@@ -166,6 +166,19 @@ Troubleshooting
 
         ..
 
+- If you get a `No subject alternative DNS  name` error, this could be because you are using periods in your S3 bucket name.  To remedy, use a bucket without periods in the name. 
+
+        .. code-block:: text
+
+            java.security.cert.CertificateException: No subject alternative DNS name matching my.kyloha.bucket.s3.amazonaws.com found.
+                at sun.security.util.HostnameChecker.matchDNS(HostnameChecker.java:204)
+                at sun.security.util.HostnameChecker.match(HostnameChecker.java:95)
+                at sun.security.ssl.X509TrustManagerImpl.checkIdentity(X509TrustManagerImpl.java:455)
+                at sun.security.ssl.X509TrustManagerImpl.checkIdentity(X509TrustManagerImpl.java:436)
+                at sun.security.ssl.X509TrustManagerImpl.checkTrusted(X509TrustManagerImpl.java:200)
+                at sun.security.ssl.X509TrustManagerImpl.checkServerTrusted(X509TrustManagerImpl.java:124)
+                at sun.security.ssl.ClientHandshaker.serverCertificate(ClientHandshaker.java:1496)
+
 - Multicast
 
     - Enabling multicast is done via the `<MPING .. />` xml node in the jgroups-configuration xml file.  Multicast may not work in your environment.  If you have issues you can remove the `<MPING ../>` node and ensure your host names are configured propertly in the `<TCPPING ../>` node.  Refer to the jgroups documentation around MPING for more information:  http://jgroups.org/manual-3.x/html/protlist.html#d0e4760
