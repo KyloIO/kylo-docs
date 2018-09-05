@@ -317,30 +317,6 @@ There are a few notes worth mentioning about using AngularJS Material:
 3. Do not use ``flex`` element where you don't have to. Browsers will usually flex elements correctly. This is to minimise the occurrence of ``flex`` being required by Safari while breaking layout on IE.
 
 
-Vault Development
------------------
-
-:doc:`Vault <../security/Vault>` will not be in use if you are running from IDE because it is a plugin and should be explicitly added to kylo-services class path.
-You don’t normally need Vault unless working with passwords. Kylo will work fine without this plugin on class path.
-
-If you decide to run with Vault from IDE then:
-
-- Add Vault to class path by adding ``catalog-credential-vault`` to kylo-services ``pom.xml`` or otherwise updating kylo-services module’s dependencies in IDE
-
-- :ref:`Install Vault in VM <install_vault>`
-
-- Start Vault in VM with ``service vault start``
-
-- Forward port 8200 to VM
-
-- Copy ``kylo-vault-keystore.jks`` and ``kylo-vault-truststore.jks`` from ``/opt/kylo/ssl`` on VM to your box and update ``vault.keyStoreDirectory`` and ``vault.trustStoreDirectory`` in local ``application.properties``
-
-- Copy values of ``vault.keyStorePassword`` and ``vault.trustStorePassword`` from ``application.properties`` on VM to ``application.properties`` on local box
-
-- Start Kylo services
-
-
-
 
 .. |AngularJsLink| raw:: html
 

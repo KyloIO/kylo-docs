@@ -3,9 +3,9 @@ Prepare Offline TAR
 ===================
 The OPTIONAL offline TAR file can be useful in two scenarios:
 
-    1. You are installing ActiveMQ, Elasticsearch, Java, NiFi or Vault on nodes with no external network access.
+    1. You are installing ActiveMQ, Elasticsearch, Java or NiFi on nodes with no external network access.
 
-    2. You plan on installing ActiveMQ, Elasticsearch, Java, NiFi or Vault on separate nodes than Kylo and want to take advantage of the setup files you will want to generate an
+    2. You plan on installing ActiveMQ, Elasticsearch, Java or NiFi on separate nodes than Kylo and want to take advantage of the setup files you will want to generate an
 
 The offline TAR file will include the binaries required to install the services mentioned above.
 

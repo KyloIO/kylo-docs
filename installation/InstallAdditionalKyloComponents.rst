@@ -2,7 +2,7 @@
 Install Additional Components
 =============================
 
-Now that Kylo has been installed you have a few different option to install the database scripts, ActiveMQ, Elasticsearch, Java, NiFi and Vault
+Now that Kylo has been installed you have a few different option to install the database scripts, ActiveMQ, Elasticsearch, Java and NiFi
 
 .. note:: The setup wizard currently doesn't autodetect that its on a SUSE. Therefore you should skip the Elasticsearch installation step and download/install the DEB distribution manually.
 

@@ -1,12 +1,12 @@
-=====================
+========
 Overview
-=====================
+========
 The best way to get started with Kylo is to keep it simple at first. Get Kylo up and running with a single node and test a simple feed
 before enabling features such as clustering, SSL, encryption,etc. This installation section will help you get Kylo up and running, then
 give you some guidance on where to go from there.
 
 Installation Methods
-=====================
+====================
 Kylo has 3 build distributions:
 
   - **RPM** - An easy and opinionated way of installing Kylo on Redhat based systems
@@ -34,8 +34,6 @@ Installing Kylo inlcudes the following software:
 
 -  **Elasticsearch/SOLR**: Kylo can use either Elasticsearch or SOLR, as a distributed, multi-tenant capable full-text search engine.
 
--  **Vault**: Kylo uses HashiCorp Vault to securely store user credentials
-
 Default Installation Locations
 ==============================
 
@@ -51,8 +49,6 @@ system locations:
 -  ActiveMQ - /opt/activemq
 
 -  Elasticsearch - RPM installation default location
-
--  Vault - /opt/vault/current
 
 Demo Sandbox
 ============

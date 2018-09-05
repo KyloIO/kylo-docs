@@ -1,6 +1,6 @@
-=========================
+=======================
 Create Service Accounts
-=========================
+=======================
 
 Creation of users and groups is done manually because many organizations have their own user and group management system. Therefore we cannot script it as part of the RPM install.
 
@@ -13,7 +13,7 @@ To create all the users and groups on a single machine, run the following comman
 
 .. code-block:: shell
 
-    useradd -r -m -s /bin/bash nifi && useradd -r -m -s /bin/bash kylo && useradd -r -m -s /bin/bash activemq && useradd -r -m -s /bin/bash vault
+    useradd -r -m -s /bin/bash nifi && useradd -r -m -s /bin/bash kylo && useradd -r -m -s /bin/bash activemq
 
 ..
 
@@ -27,7 +27,6 @@ users, run the following commands on the appropriate machines:
   useradd -r -m -s /bin/bash nifi
   useradd -r -m -s /bin/bash kylo
   useradd -r -m -s /bin/bash activemq
-  useradd -r -m -s /bin/bash vault
 
 ..
 
@@ -35,7 +34,7 @@ The following command can be used to confirm if the user and group creation was 
 
 .. code-block:: shell
 
-  grep 'nifi\|kylo\|activemq\|vault' /etc/group /etc/passwd
+  grep 'nifi\|kylo\|activemq' /etc/group /etc/passwd
 ..
 
 This command should give two results per user, one for the user in /etc/passwd and one in /etc/group.
@@ -49,12 +48,11 @@ If the groups are missing, they can be added individually:
    groupadd -f kylo
    groupadd -f nifi
    groupadd -f activemq
-   groupadd -f vault
 ..
 
 If all groups are missing, they can be all added with the following command:
 
 .. code-block:: shell
 
-  groupadd -f kylo && groupadd -f nifi && groupadd -f activemq && groupadd -f vault
+  groupadd -f kylo && groupadd -f nifi && groupadd -f activemq
 ..

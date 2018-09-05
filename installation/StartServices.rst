@@ -1,14 +1,13 @@
-===============
+==============
 Start Services
-===============
+==============
 
-Start NiFi and Vault
---------------------
+Start NiFi
+----------
 
 .. code-block:: shell
 
     $ service nifi start
-    $ service vault start
 
 ..
 
@@ -19,7 +18,6 @@ At this point all services should be running. Verify by running:
     $ service nifi status
     $ service elasticsearch status
     $ service activemq status
-    $ service vault status
 ..
 
 Optionally Inspect Kylo Configuration

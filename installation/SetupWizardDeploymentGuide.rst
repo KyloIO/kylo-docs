@@ -40,6 +40,4 @@ Follow the directions to install the following:
 
 -  NiFi and the Kylo dependencies
 
--  HashiCorp Vault
-
 The Elasticsearch and ActiveMQ services start when the wizard is finished.

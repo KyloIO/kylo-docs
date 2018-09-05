@@ -93,7 +93,6 @@ The documentation for the site is organized into a few sections:
     Configure Kerberos SPNEGO <security/KyloKerberosSPNEGO>
     Configure Access Control <security/AccessControl>
     Enable Hive User Impersonation <security/KyloUserImpersonation.rst>
-    security/Vault.rst
 
 
 .. _how_to_guides:

@@ -4,7 +4,6 @@ Release 0.9.2 (TBD, 2018)
 Highlights
 ----------
 - Various issues fixed - |JIRA_Issues_Link|
-- :ref:`Secret store with HashiCorp Vault <vault>`
 
 Download Links
 --------------
@@ -58,21 +57,6 @@ Upgrade Instructions from v0.9.1
         .. code-block:: shell
 
           vi /opt/kylo/kylo-services/conf/application.properties
-
-          # Add new Vault properties, where missing values will be updated automatically when Vault is installed in following steps
-          vault.root=secret/kylo
-          vault.scheme=https
-          vault.host=localhost
-          vault.port=8200
-          vault.token=
-          vault.keyStoreName=kylo-vault-keystore.jks
-          vault.keyStorePassword=
-          vault.keyStoreDirectory=
-          vault.keyStoreType=jks
-          vault.trustStoreName=kylo-vault-truststore.jks
-          vault.trustStorePassword=
-          vault.trustStoreDirectory=
-          vault.trustStoreType=jks
 
         ..
 
@@ -141,30 +125,7 @@ Upgrade Instructions from v0.9.1
    ..
 
 
-6. Install and start HashiCorp Vault
-
-   Kylo uses Vault to securely store user credentials. Kylo script installs Vault as a service, similar to other Kylo services.
-   The script to install Vault takes following form: ``install-vault.sh <kylo-home> <kylo-user> <kylo-group> <vault-version> <vault-home> <vault-user> <vault-group>``
-
- .. code-block:: shell
-
-   useradd -r -m -s /bin/bash vault
-   /opt/kylo/setup/vault/install-vault.sh /opt/kylo kylo users 0.9.0 /opt/vault vault vault
-   service vault start
- ..
-
- Vault installation also creates Kylo configuration which allows Kylo to connect to Vault over SSL.
- SSL configuration is stored in ``/opt/kylo/ssl`` and following properties are updated in ``kylo-services/conf/application.properties``:
-
- - ``vault.keyStoreDirectory``
- - ``vault.keyStorePassword``
- - ``vault.trustStoreDirectory``
- - ``vault.trustStorePassword``
-
- For further details about Vault refer to :doc:`Kylo Vault Documentation <../security/Vault>`
-
-
-7. Start Kylo
+6. Start Kylo
 
  .. code-block:: shell
 
@@ -176,19 +137,6 @@ Upgrade Instructions from v0.9.1
 Highlight Details
 -----------------
 
-.. _vault:
-
-  - Secret store with HashiCorp Vault
-
-      - Kylo now uses HashiCorp Vault to securely store user credentials. Make sure to review Vault documentation
-
-         - :doc:`Kylo Vault Documentation <../security/Vault>`
-         - |HashiCorp_Vault_Link|
-
 .. |JIRA_Issues_Link| raw:: html
 
    <a href="https://kylo-io.atlassian.net/issues/?jql=project%20%3D%20KYLO%20AND%20status%20%3D%20Done%20AND%20fixVersion%20%3D%200.9.2%20ORDER%20BY%20summary%20ASC%2C%20lastViewed%20DESC" target="_blank">Jira Issues</a>
-
-.. |HashiCorp_Vault_Link| raw:: html
-
-   <a href='https://www.vaultproject.io/' target="_blank">HashiCorp Vault Documentation</a>
