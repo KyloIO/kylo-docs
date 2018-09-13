@@ -138,3 +138,40 @@ Accesing S3 and other distributed filesystems
    :width: 308px
    :height: 157px
 
+Repository
+==========
+Repository allows automatic import of templates and feeds via Kylo UI by going to Admin -> Repository. Repository is a directory where templates and feeds (.zip files) are located. Kylo must have read/write access to repository location so that templates/feeds can be imported or published. Kylo monitors all the repositories for any new template or feed and displays them in UI.
+
+Import Template
+---------------
+- Go to Admin -> Repository
+- Select the repository from drop down
+- Click 'Import' to import or update the template.
+
+Publish Template
+----------------
+- Open any of the registered templates. 
+- Click on Publish.
+- Select the repository to publish to.
+- Go to Admin -> Repository to verify the template has been published.
+
+Configure multiple repositories
+-------------------------------
+Edit repositories.json under kylo-services/config folder to configure multiple repositories. Modifying this file requires kylo-services restart.
+::
+    {"name": "Repository name", "readOnly": false, "location": "sample/feeds", "icon":"", "type":"FileSystem"}
+
+Above is an example line from repositories.json file.
+- name: Name of repository to be displayed on UI.
+- readOnly: Templates can be imported from this repository, but cannot be published here.
+- location: directory reachable by Kylo.
+- icon: Icon to represent the repository.
+- type: Templates or feeds will be read from filesystem. Only filesystem is supported as of now, more possibilities may be added in the future.
+
+Updates and update comments
+---------------------------
+- When a user has modified a registered template, they can can now enter a brief description of the change before saving the template. When the user logs in to Kylo UI, a notification is displayed in top right corner if any of the registered templates have an update available.
+- The 'Registered templates' view in Kylo UI now shows 'Update available' notification when a new update is available for the template.
+- In repository, when an update is available, clicking on 'View updates' shows when and what has changed in the template.
+
+An internal cache is maintained to track template updates. In cluster mode, this cache needs to be refreshed. Add expire.repository.cache=true in application.properties to enable this cache auto refresh.
