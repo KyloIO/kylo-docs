@@ -10,7 +10,7 @@ Download Links
 - Visit the :doc:`Downloads <../about/Downloads>` page for links.
 
 
-Upgrade Instructions from v0.9.2
+Upgrade Instructions from v0.9.1
 --------------------------------
 1. Backup any Kylo plugins
 
