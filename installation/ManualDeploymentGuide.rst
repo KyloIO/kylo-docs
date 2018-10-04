@@ -188,6 +188,13 @@ b. Offline Mode
 
 .. note:: Tip: To test that Elasticsearch is running type "curl localhost:9200". You should see a JSON response.
 
+**Option 3**: Use an existing Solr.
+    - To use Solr instead of Elastic search, follow 
+    https://kylo.readthedocs.io/en/latest/how-to-guides/ConfigureKyloForGlobalSearch.html#solr
+    
+.. note:: Also, please take a look at this thread that talks about a known limitation when using Solr:
+        https://groups.google.com/forum/#!msg/kylo-community/kbCIyRjUCCo/b9FPUi1IDAAJ 
+
 Step 6: Install ActiveMQ
 ========================
 
