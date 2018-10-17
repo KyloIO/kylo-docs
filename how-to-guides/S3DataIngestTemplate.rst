@@ -33,7 +33,9 @@ Creating feeds from the S3 template is simplified by adding default values into 
 **config.s3ingest.hiveBucket**
   This property is the name output bucket where the data ends up. Hive will generate the folder structure within it.  Note: This bucket must have something in it. Hive cannot create folders within an empty S3 bucket.
 **config.s3ingest.es.nodes**
-  A comma separated list of Elasticsearch nodes that will be connected to.  
+  A comma separated list of Elasticsearch nodes that will be connected to.
+**config.s3ingest.hive.metastore_warehouse_location**
+  The location for the hive metastore warehouse found in hive-site.xml
 
 For Example settings see below.
 
@@ -68,6 +70,8 @@ Just like in the Standard ingestion template, this processor sets the attributes
   The comma separated list of node names for your elasticsearch nodes. 
 **s3ingest.s3.protocol:=${config.s3ingest.s3.protocol}**
   The protocol your cluster will use to access the S3 bucket. (e.g. 's3a')
+**s3ingest.hive.metastore_warehouse_location:=${config.s3ingest.hive.metastore_warehouse_location}**
+  The location for the hive metastore warehouse found in hive-site.xml
 
 1.2.3 DropInvalidFlowFile
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -236,6 +240,7 @@ Edit /opt/kylo/kylo-services/conf/application.properties and edit your settings.
   config.s3ingest.es.jar_url=s3a://hive-bucket/jars/elasticsearch-hadoop-5.4.0.jar
   config.s3ingest.apache-commons.jar_url=s3a://hive-bucket/jars/commons-httpclient-3.1.jar
   config.s3ingest.es.nodes=localhost
+  config.s3ingest.hive.metastore_warehouse_location=/hive_warehouse
 
 ..
 
