@@ -153,11 +153,11 @@ This processor replaces the RemoveHDFSFolder processor in standard ingest.  It i
 2.1 Prerequisites
 -----------------
 
-Download the required JARS for Hive to write table data to ElasticSearch.  You can find these in Maven Central at `Maven Central: Elasticsearch Hadoop 5.5.0 Jars <https://mvnrepository.com/artifact/org.elasticsearch/elasticsearch-hadoop/5.5.0>`_ and `Maven Central: Apache Commons HTTP 3.1 Jars <https://mvnrepository.com/artifact/commons-httpclient/commons-httpclient/3.1>`_.  Once you've downloaded thema you should place them in a folder within your hive bucket.  In the end you should have jars available in S3 and the following commands should produce a good result (see `Install the AWS Command Line Interface on Linux <https://docs.aws.amazon.com/cli/latest/userguide/awscli-install-linux.html>`_ to install AWS CLI on your edge node) :
+Download the required JARS for Hive to write table data to ElasticSearch.  You can find these in Maven Central at `Maven Central: Elasticsearch Hadoop 5.5.3 Jars <https://mvnrepository.com/artifact/org.elasticsearch/elasticsearch-hadoop/5.5.3>`_ and `Maven Central: Apache Commons HTTP 3.1 Jars <https://mvnrepository.com/artifact/commons-httpclient/commons-httpclient/3.1>`_.  Once you've downloaded thema you should place them in a folder within your hive bucket.  In the end you should have jars available in S3 and the following commands should produce a good result (see `Install the AWS Command Line Interface on Linux <https://docs.aws.amazon.com/cli/latest/userguide/awscli-install-linux.html>`_ to install AWS CLI on your edge node) :
 
 .. code-block:: shell
 
-  aws s3 ls s3://hive-bucket/jars/elasticsearch-hadoop-5.5.0.jar
+  aws s3 ls s3://hive-bucket/jars/elasticsearch-hadoop-5.5.3.jar
   aws s3 ls s3://hive-bucket/jars/commons-httpclient-3.1.jar
 
 ..
@@ -237,7 +237,7 @@ Edit /opt/kylo/kylo-services/conf/application.properties and edit your settings.
 
   config.s3ingest.s3.protocol=s3a
   config.s3ingest.hiveBucket=hive-bucket
-  config.s3ingest.es.jar_url=s3a://hive-bucket/jars/elasticsearch-hadoop-5.4.0.jar
+  config.s3ingest.es.jar_url=s3a://hive-bucket/jars/elasticsearch-hadoop-5.5.3.jar
   config.s3ingest.apache-commons.jar_url=s3a://hive-bucket/jars/commons-httpclient-3.1.jar
   config.s3ingest.es.nodes=localhost
   config.s3ingest.hive.metastore_warehouse_location=/hive_warehouse
