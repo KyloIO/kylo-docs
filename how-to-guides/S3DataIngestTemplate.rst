@@ -206,6 +206,21 @@ Open Ambari and go to HDFS -> Configs -> Advanced -> Custom core-site section.  
 
 ..
 
+.. warning::
+
+  Your cluster may not have been configured for Spark or Hive to read properties from core-site.xml.  In which case you may need to add the properties to one or more hive-site.xml files.
+
+  For Hive, go to Ambari and do this via the UI at 'Hive -> Configs -> Advanced -> Custom hive-site'
+
+  For Spark, manually edit the hive-site.xml files (which will be overwritten if Ambari restarts spark services, the Ambari section to maintain these properties is not currently working in HDP-2.6.5.0 and this bug has been observed by others https://community.hortonworks.com/questions/164800/spark2-custom-properties-in-hive-sitexml-are-ignor.html )
+
+  The hive-site xml files are: /etc/spark/conf/hive-site.xml, /etc/spark2/conf/hive-site.xml
+
+Beware that if you restart 
+
+..
+
+
 Go to Hive -> Configs -> Advanced -> Custom hive-site section.  Add the mapred.input.dir.recursive and hive.mapred.supports.subdirectories properties.
 
 .. code-block:: properties
