@@ -125,6 +125,8 @@ Upgrade Instructions from v0.9.1
    ..
 
 
+6. :ref:`Install XML support <install-xml-support>` if not using Hortonworks.
+
 6. Start Kylo
 
  .. code-block:: shell

@@ -441,3 +441,18 @@ OPTIONAL: The /opt/kylo/setup/nifi/install-kylo-components.sh contains steps to 
 .. |Install_Elasticsearch_Link| raw:: html
 
     <a href="https://www.elastic.co/support/matrix" target="_blank">Install_Elasticsearch</a>
+
+.. _install-xml-support:
+
+Step 8: Install XML Support
+===========================
+
+These instructions are not necessary for Hortonworks.
+
+1. Download the hivexmlserde.jar file from https://search.maven.org/search?q=hivexmlserde.
+
+2. Install the hivexmlserde.jar to Hive's auxlib folder on nodes running Hiveserver2 or NiFi. The auxlib folder is located at /usr/lib/hive/auxlib/ on CDH.
+
+3. Restart Hiveserver2.
+
+4. Find the `Validate and Split Records` processors in NiFi and add hivexmlserde.jar to the properties. If `SparkMaster` is "local" or "yarn-client" then add the path to the `Spark Configurations` property as :code:`spark.driver.extraClassPath=/usr/lib/hive/auxlib/hivexmlserde.jar`. If `SparkMaster` is "yarn-cluster" then add the path to the `Extra JARs` property.
