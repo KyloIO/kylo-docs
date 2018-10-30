@@ -51,19 +51,7 @@ a. Create a users.properties file and add the username/password
 
 ..
 
-b. Modify the /opt/kylo/kylo-ui/conf/application.properties file
-
-.. code-block:: shell
-
-    $ vi /opt/kylo/kylo-ui/conf/application.properties
-
-        # uncomment this line
-        security.auth.file.users=file:///opt/kylo/users.properties
-
-
-..
-
-c. Modify the /opt/kylo/kylo-services/conf/application.properties file
+b. Modify the /opt/kylo/kylo-services/conf/application.properties file
 
 .. code-block:: shell
 
@@ -134,8 +122,9 @@ If you already have Java 8 installed, and want to reference that installation, t
 Step 4: Install Java Cryptographic Extension
 ============================================
 
-The Java 8 install script above will automatically download and install the `Java Cryptographic Extension <http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html>`__.
-This extension is required to allow encrypted property values in the Kylo configuration files. If you already have a Java 8 installed on the
+Skip this step if you followed Scenario 2 in the previous step or already installed JCE for Java 8.
+
+The `Java Cryptographic Extension <http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html>`__ is required to allow encrypted property values in the Kylo configuration files. If you already have a Java 8 installed on the
 system, you can install the Java Cryptographic Extension by running the following script:
 
 .. code-block:: shell
@@ -388,6 +377,8 @@ In some cases you may want to leverage separate instances of NiFi or Hortonworks
 Configure the ext-config folder
 -------------------------------
 
+This section is required for Option 2 above. Skip this section if you followed Option 1.
+
 1. Create the folder.
 
 .. code-block:: shell
@@ -409,6 +400,8 @@ Configure the ext-config folder
 
 Configure the activemq folder
 -----------------------------
+
+This section is required for Option 2 above. Skip this section if you followed Option 1.
 
 1. Create the folder.
 

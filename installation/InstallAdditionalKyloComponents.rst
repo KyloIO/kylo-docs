@@ -8,6 +8,27 @@ Now that Kylo has been installed you have a few different option to install the 
 
 Database Preparation
 --------------------
+
+Kylo supports MySQL, PostgreSQL, and MS SQL Server for storing Kylo metadata. The default configuration is for Kylo to create the necessary tables automatically but the database must be created manually.
+
+**MySQL**
+
+.. code-block:: shell
+
+    mysql -h ${hostname} -u "${username}" -p -e "create database if not exists kylo character set utf8 collate utf8_general_ci;"
+
+**PostgreSQL**
+
+.. code-block:: shell
+
+    PGPASSWORD="${password}" createdb -U kylo -h ${hostname} -E UTF8 -e kylo
+
+**MS SQL Server**
+
+.. code-block:: shell
+
+    sqlcmd -S ${hostname} -U "${username}" -P "${password}" -Q "CREATE DATABASE kylo ${azure_options}"
+
 If you would like to run Kylo as a non-privileged user you should create a kylo database user and configure the appropriate permissions.
 
 .. toctree::

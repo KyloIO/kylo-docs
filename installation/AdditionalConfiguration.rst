@@ -1,6 +1,6 @@
-=========================
+========================
 Additional Configuration
-=========================
+========================
 Before starting Kylo you will want to make sure the configuration is correct. Some common cases of when you would want to change the defaults is
 
     1. Database configuration
@@ -27,7 +27,7 @@ For more details on the properties please see :doc:`../how-to-guides/Configurati
 
 Kylo HDP Demo Sandbox Example
 -----------------------------
-Here is an example of the properties that need to be changed to work on the Kylo HDP demo sandbox
+Here is an example of the properties that need to be changed in :code:`kylo-services/conf/application.properties` to work on the Kylo HDP demo sandbox:
 
 .. code-block:: properties
 
@@ -55,10 +55,8 @@ Here is an example of the properties that need to be changed to work on the Kylo
 
 
 Kylo Cloudera Demo Sandbox Example
-------------------------
-The configuration is setup to work out of the box with the Kylo Hortonworks
-sandbox. There are a few differences that require configuration changes
-for Cloudera.
+----------------------------------
+The configuration is setup to work out of the box with the Kylo Hortonworks sandbox. There are a few differences that require configuration changes for Cloudera.
 
 
 1. /opt/kylo/kylo-services/conf/application.properties

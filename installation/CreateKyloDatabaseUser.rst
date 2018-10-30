@@ -5,20 +5,6 @@ If you prefer to run Kylo as a non-privileged user and want to create the databa
 
 .. Note:: These commands need to be ran as a database administrator
 
-Create the kylo database
------------------------------
-This must be done as a database administrator
-
-Postgres
-
-.. code-block:: shell
-
-    $ sudo -u postgres psql
-
-    > CREATE DATABASE kylo;
-
-..
-
 Create the kylo database user
 -------------------------------
 
@@ -33,7 +19,7 @@ Postgres
 ..
 
 Grant Kylo user access to DB
------------------------------
+----------------------------
 
 Postgres
 
