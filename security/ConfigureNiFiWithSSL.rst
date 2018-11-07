@@ -171,6 +171,9 @@ Kylo and NiFi will need to be configured to use the certificates created in the 
     nifi.security.ocsp.responder.url
     nifi.security.ocsp.responder.certificate
 
+    # cluster common properties (all nodes must have same values)
+    nifi.cluster.protocol.is.secure
+    
 2. Replace the following properties in /opt/nifi/current/conf/nifi.properties with your remembered properties:
 
 .. code-block:: properties
