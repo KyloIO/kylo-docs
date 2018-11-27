@@ -116,12 +116,11 @@ Hadoop distribution. It is therefore compatible with most Hadoop distributions,
 Does Kylo support either Apache NiFi or Hortonworks DataFlow (HDF)? What is the difference?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Yes, Kylo supports vanilla Apache NiFi or NiFi bundled with Hortonworks DataFlow. HDF bundles Apache NiFi, Storm, and Kafka within a distribution. Apache NiFi within HDF contains the same codebase
-as the open-source project.  NiFi is a critical component of the Kylo solution. Kylo is an HDF-certified technology.  Kylo's commercial support subscription bundles 16 cores of Apache NiFi support.
+Yes, Kylo supports vanilla Apache NiFi or NiFi bundled with Hortonworks DataFlow. HDF bundles Apache NiFi, Storm, and Kafka within a distribution. Apache NiFi within HDF may contain minor differences with the the open-source project. For example, Hortonworks bundles their own versions of Hadoop client libraries in NiFi Hadooop NAR library.  HDF may not bundle the latest version of Apache NiFi and Hortonworks only performs Q/A against NiFi versions bundled into HDF.  NiFi is a core component of the Kylo solution. Kylo is an HDF-certified technology.  
 
 Can Kylo be used in the cloud?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Absolutely. Kylo is used in production on AWS utilizing EC2, S3, SQS, and other AWS features for at least one major Fortune 100 company. Kylo has also been used with Azure.
+Absolutely. Kylo is used in production on Azure and AWS and can take advantage of many of the cloud native technologies such as Azure blob or AWS S3-backed Hive tables.
 
 Does Kylo support high-availability (HA) features?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
