@@ -94,10 +94,14 @@ The configuration is setup to work out of the box with the Kylo Hortonworks sand
 
 .. code-block:: shell
 
-    cp /etc/hive/conf/hive-site.xml /etc/spark/conf/hive-site.xml
+    # Allow Spark to access Hive
+    cp -n /etc/hive/conf/hive-site.xml /etc/spark/conf/hive-site.xml
 
     # Snappy isn't working well for Spark on Cloudera
     echo "spark.io.compression.codec=lz4" >> /etc/spark/conf/spark-defaults.conf
+
+    # If using Spark 2, enable support in Kylo
+    echo "config.spark.version=2" >> /opt/kylo/kylo-services/conf/application.properties
 ..
 
 
