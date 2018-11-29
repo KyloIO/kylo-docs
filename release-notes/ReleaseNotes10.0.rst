@@ -127,7 +127,7 @@ Upgrade Instructions from v0.9.1
 
 6. :ref:`Install XML support <install-xml-support>` if not using Hortonworks.
 
-6. Start Kylo
+7. Start Kylo
 
  .. code-block:: shell
 
@@ -135,6 +135,7 @@ Upgrade Instructions from v0.9.1
 
  ..
 
+8. The Hive data source is no longer accessible to all users by default. To grant permissions to Hive go to the Catalog page and click the pencil icon to the left of the Hive data source. This page will provide options for granting access to Hive or granting permissions to edit the data source details.
 
 Highlight Details
 -----------------
