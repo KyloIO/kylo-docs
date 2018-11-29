@@ -21,6 +21,9 @@ Upgrade Instructions from v0.9.1
   When Kylo is uninstalled it will backup configuration files, but not the `/plugin` jar files.
   If you have any custom plugins in either `kylo-services/plugin`  or `kylo-ui/plugin` then you will want to manually back them up to a different location.
 
+  .. note:: Kylo ui plugins 0.9.x or earlier will not work with 0.10.0.  If you had custom kylo ui code please refer to this doc to migrate your code to a 0.10.0 compatible plugin: |ui_plugin_upgrade_link|
+
+
 2. Uninstall Kylo:
 
  .. code-block:: shell
@@ -57,13 +60,30 @@ Upgrade Instructions from v0.9.1
 
      4.3 If you copied the backup version of application.properties in step 4.2 you will need to make a couple of other changes based on the 0.10.0 version of the properties file
 
+        A new spring profile of 'kylo-shell' is needed.  Below is an example
+
         .. code-block:: shell
 
-          vi /opt/kylo/kylo-services/conf/application.properties
+         vi /opt/kylo/kylo-services/conf/application.properties
+
+          ## add in the 'kylo-shell' profile (example below)
+          spring.profiles.include=native,nifi-v1.2,auth-kylo,auth-file,search-esr,jms-activemq,auth-spark,kylo-shell
 
         ..
 
-     4.4 Repeat previous copy step for other relevant backup files to the /opt/kylo/kylo-services/conf folder. Some examples of files:
+        Add the following new properties below:
+
+        .. code-block:: shell
+
+          #default location where Kylo looks for templates. This is a read-only location and Kylo UI won't be able to publish to this location.
+          #Additional repositories can be setup using config/repositories.json where templates can be published
+          kylo.template.repository.default=/opt/kylo/setup/data/templates/nifi-1.0
+
+          kylo.install.template.notification=true
+
+        ..
+
+     4.4 Repeat previous copy step (4.2 above) for other relevant backup files to the /opt/kylo/kylo-services/conf folder. Some examples of files:
 
         - spark.properties
         - ambari.properties
@@ -75,6 +95,21 @@ Upgrade Instructions from v0.9.1
 
 
      4.5 Copy the /bkup-config/TIMESTAMP/kylo-ui/application.properties file to `/opt/kylo/kylo-ui/conf`
+
+       Ensure the new property 'zuul.routes.api.sensitiveHeaders' exists.  Example below
+
+       .. code-block:: shell
+
+           vi /opt/kylo/kylo-ui/conf/application.properties
+
+             zuul.prefix=/proxy
+             zuul.routes.api.path=/**
+             zuul.routes.api.url=http://localhost:8420/api
+
+             ## add this line below for 0.10.0
+             zuul.routes.api.sensitiveHeaders
+       ..
+
 
      4.6 Ensure the property ``security.jwt.key`` in both kylo-services and kylo-ui application.properties file match.  They property below needs to match in both of these files:
 
@@ -162,14 +197,16 @@ Upgrade Instructions from v0.9.1
 
 8. The Hive data source is no longer accessible to all users by default. To grant permissions to Hive go to the Catalog page and click the pencil icon to the left of the Hive data source. This page will provide options for granting access to Hive or granting permissions to edit the data source details.
 
+   |hive_grant_image|
+
 Mandatory Template Updates
 --------------------------
-The following templates need to get updated.
+Once Kylo is running the following templates need to to be updated.
 
   - XML Ingest
   - Data Transformation
 
-To update these templates use the new :doc:`Repository <../how-to-guides/KyloTemplatesDocs>` feature within Kylo to import the latest templates.
+Use the new :doc:`Repository <../how-to-guides/KyloTemplatesDocs>` feature within Kylo to import the latest templates.
 
 Highlight Details
 -----------------
@@ -228,6 +265,11 @@ Highlight Details
 
 
 
+.. |ui_plugin_upgrade_link| raw:: html
+
+   <a href="https://github.com/Germanaz0/kylo-sample-module" target="_blank">Kylo UI Plugin Upgrade</a>
+
+
 
 .. |JIRA_Issues_Link| raw:: html
 
@@ -269,4 +311,8 @@ Highlight Details
 .. |wrangler_image04| image:: ../media/release-notes/release-0.10.0/wrangler_image04.png
    :width: 2546px
    :height: 416px
+   :scale: 15%
+.. |hive_grant_image| image:: ../media/release-notes/release-0.10.0/hive_grant.png
+   :width: 1932px
+   :height: 436px
    :scale: 15%
