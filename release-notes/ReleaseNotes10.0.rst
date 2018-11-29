@@ -216,6 +216,7 @@ Upgrade Instructions from v0.9.1
 
    |hive_grant_image|
 
+  .. note:: If, after the upgrade, you experience any UI issues in your browser then you may need to empty your browser's cache.
 
 Mandatory Template Updates
 --------------------------
