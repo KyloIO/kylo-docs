@@ -212,7 +212,7 @@ Upgrade Instructions from v0.9.1
  ..
  .. note:: NiFi must be started and available during the Kylo upgrade process.
 
-8. The Hive data source is no longer accessible to all users by default. To grant permissions to Hive go to the Catalog page and click the pencil icon to the left of the Hive data source. This page will provide options for granting access to Hive or granting permissions to edit the data source details.
+8. If entity access is enabled, the Hive data source will no longer be accessible to all users by default. To grant permissions to Hive go to the Catalog page and click the pencil icon to the left of the Hive data source. This page will provide options for granting access to Hive or granting permissions to edit the data source details.
 
    |hive_grant_image|
 
