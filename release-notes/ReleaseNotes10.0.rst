@@ -3,14 +3,31 @@ Release 0.10.0 (TBD, 2018)
 
 Highlights
 ----------
- 1. :ref:`Kylo's user interface <new_ui>` has been redone to make it easier to create and edit feeds.  Saving a feed is now separated from deploying to NiFi, allowing for users to save and come back to their feed prior to deploying.
- 2. :ref:`New template repository <repository>` for exposing common templates and assisting in upgrading
- 3. :ref:`Wrangler improvements <wrangler>`. Many new features have been added to the wrangler such as: quick clean feature, quick schema manipulation, column statistics view, and a number of bug fixes
- 4. :ref:`New catalog support <catalog>`. Kylo allows you to create various catalog entries for browsing different datasources such as Amazon S3, Azure, JDBC, and others
+ 1. :ref:`Kylo's user interface <new_ui_highlight>` has been redone to make it easier to create and edit feeds.  Saving a feed is now separated from deploying to NiFi, allowing for users to save and come back to their feed prior to deploying.
+ 2. :ref:`New template repository <repository_highlight>` for exposing common templates and assisting in upgrading
+ 3. :ref:`Wrangler improvements <wrangler_highlight>`. Many new features have been added to the wrangler such as: quick clean feature, quick schema manipulation, column statistics view, and a number of bug fixes
+ 4. :ref:`New catalog support <catalog_highlight>`. Kylo allows you to create various catalog entries for browsing different datasources such as Amazon S3, Azure, JDBC, and others
+ 5. :ref:`Search on custom properties <search_properties_es_highlight>` defined for feeds and categories, when using Elasticsearch.
 
 Download Links
 --------------
 - Visit the :doc:`Downloads <../about/Downloads>` page for links.
+
+
+Important Changes
+-----------------
+
+Kylo UI Plugin Changes
+~~~~~~~~~~~~~~~~~~~~~~
+
+ - Kylo UI plugins 0.9.x or earlier will not work with 0.10.0.  If you had custom kylo ui code please refer to this doc to migrate your code to a 0.10.0 compatible plugin: |ui_plugin_upgrade_link|
+
+ - Kylo UI custom |feed_stepper_plugin_link| are not supported. Do not upgrade if you need this functionality.
+
+Catalog Changes
+~~~~~~~~~~~~~~~~
+
+ - The Catalog page used to allow you to query and preview data.  This has been removed.  You will now need to go to the wrangler to preview catalog data sets
 
 
 Upgrade Instructions from v0.9.1
@@ -195,25 +212,28 @@ Upgrade Instructions from v0.9.1
  ..
  .. note:: NiFi must be started and available during the Kylo upgrade process.
 
-8. The Hive data source is no longer accessible to all users by default. To grant permissions to Hive go to the Catalog page and click the pencil icon to the left of the Hive data source. This page will provide options for granting access to Hive or granting permissions to edit the data source details.
+8. If entity access is enabled, the Hive data source will no longer be accessible to all users by default. To grant permissions to Hive go to the Catalog page and click the pencil icon to the left of the Hive data source. This page will provide options for granting access to Hive or granting permissions to edit the data source details.
 
    |hive_grant_image|
 
+
 Mandatory Template Updates
 --------------------------
-Once Kylo is running the following templates need to to be updated.
+    Once Kylo is running the following templates need to to be updated.
 
-  - XML Ingest
-  - Data Transformation
+      - XML Ingest
+      - Data Transformation
 
-Use the new :doc:`Repository <../how-to-guides/KyloTemplatesDocs>` feature within Kylo to import the latest templates.
+    Use the new :ref:`Repository <repository>` feature within Kylo to import the latest templates.
+
 
 Highlight Details
 -----------------
 
-.. _new_ui:
+.. _new_ui_highlight:
 
-   - New User Interface
+New User Interface
+~~~~~~~~~~~~~~~~~~
 
        - Kylo now has a new user interface for creating and editing feeds.
 
@@ -225,7 +245,10 @@ Highlight Details
 
            |new_ui_image02|
 
-.. _catalog:
+.. _catalog_highlight:
+
+Catalog
+~~~~~~~
 
     - Kylo allows you to create and browse various catalog sources. Kylo ships with the following datasource connectors:  Amazon S3, Azure, HDFS, Hive, JDBC, Local Files
 
@@ -237,7 +260,10 @@ Highlight Details
 
     - *Note:* Kylo Datasources  have been upgraded to a new Catalog feature.  All legacy JDBC and Hive datasources will be automatically converted to catalog data source entries.
 
-.. _wrangler:
+.. _wrangler_highlight:
+
+Wrangler
+~~~~~~~~
 
      The Wrangler has been upgrade with many new features
 
@@ -256,7 +282,10 @@ Highlight Details
         |wrangler_image04|
 
 
-.. _repository:
+.. _repository_highlight:
+
+Repository
+~~~~~~~~~~
 
    Kylo now has customizable repository locations to store feed and template exports.  The repository is an easy way to browse for new feeds/templates and import directly into Kylo.
    Kylo creates a default repository exposing the sample templates.
@@ -264,12 +293,23 @@ Highlight Details
      |repository_image01|
 
 
+.. _search_properties_es_highlight:
+
+Search
+~~~~~~
+
+    - Custom properties defined for categories and feeds can be searched via Global Search, when using Elasticsearch engine.
+
+        |search_category_and_feed_properties_es.png|
+
 
 .. |ui_plugin_upgrade_link| raw:: html
 
    <a href="https://github.com/Germanaz0/kylo-sample-module" target="_blank">Kylo UI Plugin Upgrade</a>
 
+.. |feed_stepper_plugin_link| raw:: html
 
+   <a href="https://github.com/Teradata/kylo/tree/master/samples/plugins/example-ui-feed-stepper-plugin">feed stepper plugin's</a>
 
 .. |JIRA_Issues_Link| raw:: html
 
@@ -316,3 +356,7 @@ Highlight Details
    :width: 1932px
    :height: 436px
    :scale: 15%
+.. |search_category_and_feed_properties_es.png| image:: ../media/release-notes/release-0.10.0/search_category_and_feed_properties_es.png
+    :width: 1015px
+    :height: 585 px
+    :scale: 40%

@@ -138,6 +138,8 @@ Accesing S3 and other distributed filesystems
    :width: 308px
    :height: 157px
 
+.. _repository:
+
 Repository
 ==========
 Repository allows automatic import of templates and feeds via Kylo UI by going to Admin -> Repository. Repository is a directory where templates and feeds (.zip files) are located. Kylo must have read/write access to repository location so that templates/feeds can be imported or published. Kylo monitors all the repositories for any new template or feed and displays them in UI.
