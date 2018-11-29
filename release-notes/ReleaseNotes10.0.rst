@@ -33,7 +33,7 @@ Catalog Changes
 Upgrade Instructions from v0.9.1
 --------------------------------
 
-.. note:: Before getting stgarted we suggest backing up your Kylo database.
+.. note:: Before getting started we suggest backing up your Kylo database.
 
 1. Backup any custom Kylo plugins
 
