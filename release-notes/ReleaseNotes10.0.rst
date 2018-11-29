@@ -3,7 +3,10 @@ Release 0.10.0 (TBD, 2018)
 
 Highlights
 ----------
-- Various issues fixed - |JIRA_Issues_Link|
+ 1. :ref:`Kylo's user interface <new_ui>` has been redone to make it easier to create and edit feeds.  Saving a feed is now separated from deploying to NiFi, allowing for users to save and come back to their feed prior to deploying.
+ 2. :ref:`New template repository <repository>` for exposing common templates and assisting in upgrading
+ 3. :ref:`Wrangler improvements <wrangler>`. Many new features have been added to the wrangler such as: quick clean feature, quick schema manipulation, column statistics view, and a number of bug fixes
+ 4. :ref:`New catalog support <catalog>`. Kylo allows you to create various catalog entries for browsing different datasources such as Amazon S3, Azure, JDBC, and others
 
 Download Links
 --------------
@@ -159,9 +162,111 @@ Upgrade Instructions from v0.9.1
 
 8. The Hive data source is no longer accessible to all users by default. To grant permissions to Hive go to the Catalog page and click the pencil icon to the left of the Hive data source. This page will provide options for granting access to Hive or granting permissions to edit the data source details.
 
+Mandatory Template Updates
+--------------------------
+The following templates need to get updated.
+
+  - XML Ingest
+  - Data Transformation
+
+To update these templates use the new :doc:`Repository <../how-to-guides/KyloTemplatesDocs>` feature within Kylo to import the latest templates.
+
 Highlight Details
 -----------------
+
+.. _new_ui:
+
+   - New User Interface
+
+       - Kylo now has a new user interface for creating and editing feeds.
+
+           |new_ui_image01|
+
+       - Editing feeds is separate from deploying to NiFi.  This allows you to edit and save your feed state and when ready deploy it.
+
+       - Centralized feed information. The feed activity view of the running feed jobs is now integrated with the feed setup.
+
+           |new_ui_image02|
+
+.. _catalog:
+
+    - Kylo allows you to create and browse various catalog sources. Kylo ships with the following datasource connectors:  Amazon S3, Azure, HDFS, Hive, JDBC, Local Files
+
+         |catalog_image01|
+
+    - During feed creation and data wrangling you can browse the catalog to preview and select specific sources to work with:
+
+       |catalog_image02|
+
+    - *Note:* Kylo Datasources  have been upgraded to a new Catalog feature.  All legacy JDBC and Hive datasources will be automatically converted to catalog data source entries.
+
+.. _wrangler:
+
+     The Wrangler has been upgrade with many new features
+
+      |wrangler_image01|
+
+     - New quick clean feature allows you to modify the entire dataset
+
+      |wrangler_image02|
+
+     - New schema view allows you to rename, delete, and move columns
+
+       |wrangler_image03|
+
+     -  New column profile view shows graphical stats about each column
+
+        |wrangler_image04|
+
+
+.. _repository:
+
+   Kylo now has customizable repository locations to store feed and template exports.  The repository is an easy way to browse for new feeds/templates and import directly into Kylo.
+   Kylo creates a default repository exposing the sample templates.
+
+     |repository_image01|
+
+
+
 
 .. |JIRA_Issues_Link| raw:: html
 
    <a href="https://kylo-io.atlassian.net/issues/?jql=project%20%3D%20KYLO%20AND%20status%20%3D%20Done%20AND%20fixVersion%20%3D%200.10.0%20ORDER%20BY%20summary%20ASC%2C%20lastViewed%20DESC" target="_blank">Jira Issues</a>
+
+
+.. |new_ui_image01| image:: ../media/release-notes/release-0.10.0/new_ui_image01.png
+   :width: 2632px
+   :height: 1348px
+   :scale: 15%
+.. |new_ui_image02| image:: ../media/release-notes/release-0.10.0/new_ui_image02.png
+   :width: 2612px
+   :height: 652px
+   :scale: 15%
+.. |catalog_image01| image:: ../media/release-notes/release-0.10.0/catalog_image01.png
+    :width: 1544px
+    :height: 392px
+    :scale: 15%
+.. |catalog_image02| image:: ../media/release-notes/release-0.10.0/catalog_image02.png
+   :width: 3312px
+   :height: 444px
+   :scale: 15%
+.. |repository_image01| image:: ../media/release-notes/release-0.10.0/repository_image01.png
+   :width: 2766px
+   :height: 1500px
+   :scale: 15%
+.. |wrangler_image01| image:: ../media/release-notes/release-0.10.0/wrangler_image01.png
+   :width: 942px
+   :height: 280px
+   :scale: 15%
+.. |wrangler_image02| image:: ../media/release-notes/release-0.10.0/wrangler_image02.png
+   :width: 2562px
+   :height: 358px
+   :scale: 15%
+.. |wrangler_image03| image:: ../media/release-notes/release-0.10.0/wrangler_image03.png
+   :width: 2562px
+   :height: 402px
+   :scale: 15%
+.. |wrangler_image04| image:: ../media/release-notes/release-0.10.0/wrangler_image04.png
+   :width: 2546px
+   :height: 416px
+   :scale: 15%
