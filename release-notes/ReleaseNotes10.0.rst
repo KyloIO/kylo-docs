@@ -1,5 +1,5 @@
 Release 0.10.0 (TBD, 2018)
-=========================
+==========================
 
 Highlights
 ----------
@@ -115,6 +115,27 @@ Upgrade Instructions from v0.9.1
       Example:  /opt/kylo/setup/nifi/update-nars-jars.sh /opt/nifi /opt/kylo/setup nifi users
 
    ..
+   
+   Setup the shared Kylo encryption key:
+   
+      1. Copy Kylo's encryption key file (ex: ``/opt/kylo/encrypt.key``) to the NiFi extention config directory ``/opt/nifi/ext-config``
+      
+      2. Change the ownership of that file to the "nifi" user and ensure only nifi can read it
+
+   .. code-block:: shell
+
+      chown nifi /opt/nifi/ext-config/encrypt.key
+      chmod 400 /opt/nifi/ext-config/encrypt.key
+
+   ..
+   
+      3. Edit the ``/opt/nifi/current/bin/nifi-env.sh`` file and add the ENCRYPT_KEY variable with the key value
+
+   .. code-block:: shell
+
+      export ENCRYPT_KEY="$(< /opt/nifi/ext-config/encrypt.key)"
+      
+   ..
 
    Start NiFi
 
@@ -127,13 +148,14 @@ Upgrade Instructions from v0.9.1
 
 6. :ref:`Install XML support <install-xml-support>` if not using Hortonworks.
 
-7. Start Kylo
+7. Start Kylo to begin the upgrade
 
  .. code-block:: shell
 
    kylo-service start
 
  ..
+ .. note:: NiFi must be started and available during the Kylo upgrade process.
 
 8. The Hive data source is no longer accessible to all users by default. To grant permissions to Hive go to the Catalog page and click the pencil icon to the left of the Hive data source. This page will provide options for granting access to Hive or granting permissions to edit the data source details.
 
