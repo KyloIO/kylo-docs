@@ -3,11 +3,10 @@ Release 0.10.0 (TBD, 2018)
 
 Highlights
 ----------
- 1. :ref:`Kylo's user interface <new_ui>` has been redone to make it easier to create and edit feeds.  Saving a feed is now separated from deploying to NiFi, allowing for users to save and come back to their feed prior to deploying.
- 2. :ref:`New template repository <repository>` for exposing common templates and assisting in upgrading
- 3. :ref:`Wrangler improvements <wrangler>`. Many new features have been added to the wrangler such as: quick clean feature, quick schema manipulation, column statistics view, and a number of bug fixes
- 4. :ref:`New catalog support <catalog>`. Kylo allows you to create various catalog entries for browsing different datasources such as Amazon S3, Azure, JDBC, and others
-
+ 1. :ref:`Kylo's user interface <new_ui_highlight>` has been redone to make it easier to create and edit feeds.  Saving a feed is now separated from deploying to NiFi, allowing for users to save and come back to their feed prior to deploying.
+ 2. :ref:`New template repository <repository_highlight>` for exposing common templates and assisting in upgrading
+ 3. :ref:`Wrangler improvements <wrangler_highlight>`. Many new features have been added to the wrangler such as: quick clean feature, quick schema manipulation, column statistics view, and a number of bug fixes
+ 4. :ref:`New catalog support <catalog_highlight>`. Kylo allows you to create various catalog entries for browsing different datasources such as Amazon S3, Azure, JDBC, and others
 Download Links
 --------------
 - Visit the :doc:`Downloads <../about/Downloads>` page for links.
@@ -218,21 +217,21 @@ Upgrade Instructions from v0.9.1
 
 Mandatory Template Updates
 --------------------------
-Once Kylo is running the following templates need to to be updated.
+    Once Kylo is running the following templates need to to be updated.
 
-  - XML Ingest
-  - Data Transformation
+      - XML Ingest
+      - Data Transformation
 
-Use the new :doc:`Repository <../how-to-guides/KyloTemplatesDocs>` feature within Kylo to import the latest templates.
-
+    Use the new :ref:`Repository <repository>` feature within Kylo to import the latest templates.
 
 
 Highlight Details
 -----------------
 
-.. _new_ui:
+.. _new_ui_highlight:
 
-   - New User Interface
+New User Interface
+~~~~~~~~~~~~~~~~~~
 
        - Kylo now has a new user interface for creating and editing feeds.
 
@@ -244,7 +243,10 @@ Highlight Details
 
            |new_ui_image02|
 
-.. _catalog:
+.. _catalog_highlight:
+
+Catalog
+~~~~~~~
 
     - Kylo allows you to create and browse various catalog sources. Kylo ships with the following datasource connectors:  Amazon S3, Azure, HDFS, Hive, JDBC, Local Files
 
@@ -256,7 +258,10 @@ Highlight Details
 
     - *Note:* Kylo Datasources  have been upgraded to a new Catalog feature.  All legacy JDBC and Hive datasources will be automatically converted to catalog data source entries.
 
-.. _wrangler:
+.. _wrangler_highlight:
+
+Wrangler
+~~~~~~~~
 
      The Wrangler has been upgrade with many new features
 
@@ -275,7 +280,10 @@ Highlight Details
         |wrangler_image04|
 
 
-.. _repository:
+.. _repository_highlight:
+
+Repository
+~~~~~~~~~~
 
    Kylo now has customizable repository locations to store feed and template exports.  The repository is an easy way to browse for new feeds/templates and import directly into Kylo.
    Kylo creates a default repository exposing the sample templates.
