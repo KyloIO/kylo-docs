@@ -7,6 +7,8 @@ Highlights
  2. :ref:`New template repository <repository_highlight>` for exposing common templates and assisting in upgrading
  3. :ref:`Wrangler improvements <wrangler_highlight>`. Many new features have been added to the wrangler such as: quick clean feature, quick schema manipulation, column statistics view, and a number of bug fixes
  4. :ref:`New catalog support <catalog_highlight>`. Kylo allows you to create various catalog entries for browsing different datasources such as Amazon S3, Azure, JDBC, and others
+ 5. :ref:`Search on custom properties <search_properties_es_highlight>` defined for feeds and categories, when using Elasticsearch.
+
 Download Links
 --------------
 - Visit the :doc:`Downloads <../about/Downloads>` page for links.
@@ -291,6 +293,15 @@ Repository
      |repository_image01|
 
 
+.. _search_properties_es_highlight:
+
+Search
+~~~~~~
+
+    - Custom properties defined for categories and feeds can be searched via Global Search, when using Elasticsearch engine.
+
+        |search_category_and_feed_properties_es.png|
+
 
 .. |ui_plugin_upgrade_link| raw:: html
 
@@ -345,3 +356,7 @@ Repository
    :width: 1932px
    :height: 436px
    :scale: 15%
+.. |search_category_and_feed_properties_es.png| image:: ../media/release-notes/release-0.10.0/search_category_and_feed_properties_es.png
+    :width: 1015px
+    :height: 585 px
+    :scale: 40%
