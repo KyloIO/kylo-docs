@@ -4,9 +4,9 @@ Release 0.10.0 (TBD, 2018)
 Highlights
 ----------
  1. :ref:`Kylo's user interface <new_ui_highlight>` has been redone to make it easier to create and edit feeds.  Saving a feed is now separated from deploying to NiFi, allowing for users to save and come back to their feed prior to deploying.
- 2. :ref:`New template repository <repository_highlight>` for exposing common templates and assisting in upgrading
- 3. :ref:`Wrangler improvements <wrangler_highlight>`. Many new features have been added to the wrangler such as: quick clean feature, quick schema manipulation, column statistics view, and a number of bug fixes
- 4. :ref:`New catalog support <catalog_highlight>`. Kylo allows you to create various catalog entries for browsing different datasources such as Amazon S3, Azure, JDBC, and others
+ 2. :ref:`New Template Manager <repository_highlight>` We’ve added a template manager and repository that enables users to add, update and publish templates through a simple user interface.
+ 3. :ref:`Wrangler improvements <wrangler_highlight>`. Many new features have been added to the wrangler to make data scientists more productive. Features includes: quick data clean; improved schema manipulation; new data transformations, including imputing new values; column statistics view.
+ 4. :ref:`New Data Catalog <catalog_highlight>`. Kylo allows you to manage and browse data sources in a new data catalog. Kylo ships with the following datasource connectors: Amazon S3, Azure, HDFS, Hive, JDBC, Local Files
  5. :ref:`Search on custom properties <search_properties_es_highlight>` defined for feeds and categories, when using Elasticsearch.
 
 Download Links
@@ -25,7 +25,7 @@ Kylo UI Plugin Changes
  - Kylo UI custom |feed_stepper_plugin_link| are not supported. Do not upgrade if you need this functionality.
 
 Catalog Changes
-~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
 
  - The Catalog page used to allow you to query and preview data.  This has been removed.  You will now need to go to the wrangler to preview catalog data sets
 
@@ -33,7 +33,9 @@ Catalog Changes
 Upgrade Instructions from v0.9.1
 --------------------------------
 
-1. Backup any Kylo plugins
+.. note:: Before getting stgarted we suggest backing up your Kylo database.
+
+1. Backup any custom Kylo plugins
 
   When Kylo is uninstalled it will backup configuration files, but not the `/plugin` jar files.
   If you have any custom plugins in either `kylo-services/plugin`  or `kylo-ui/plugin` then you will want to manually back them up to a different location.
@@ -127,6 +129,16 @@ Upgrade Instructions from v0.9.1
              zuul.routes.api.sensitiveHeaders
        ..
 
+       The `multipart.maxFileSize` and `multipart.maxRequestSize` properties have changed.  Update these 2 properties to be the following:
+
+       .. code-block:: shell
+
+          ### allow large file uploads
+          spring.http.multipart.maxFileSize=100MB
+          spring.http.multipart.maxRequestSize=-1
+
+       ..
+
 
      4.6 Ensure the property ``security.jwt.key`` in both kylo-services and kylo-ui application.properties file match.  They property below needs to match in both of these files:
 
@@ -151,7 +163,7 @@ Upgrade Instructions from v0.9.1
             ..
 
 
-5. Update the NiFi nars.
+5. Update NiFi
 
    Stop NiFi
 
@@ -222,8 +234,11 @@ Mandatory Template Updates
 --------------------------
     Once Kylo is running the following templates need to to be updated.
 
-      - XML Ingest
+      - Advanced Ingest
+      - Data Ingest
       - Data Transformation
+      - S3 Data Ingest  (:doc:`S3 Data Ingest documentation <../how-to-guides/S3DataIngestTemplate>`)
+      - XML Ingest
 
     Use the new :ref:`Repository <repository>` feature within Kylo to import the latest templates.
 
@@ -266,7 +281,7 @@ Catalog
 Wrangler
 ~~~~~~~~
 
-     The Wrangler has been upgrade with many new features
+     The Wrangler has been upgraded with many new features.
 
       |wrangler_image01|
 
@@ -282,6 +297,9 @@ Wrangler
 
         |wrangler_image04|
 
+     - Users can also perform transformations and flattening operations on complex JSON and XML files
+
+        |wrangler_image05|
 
 .. _repository_highlight:
 
@@ -352,6 +370,10 @@ Search
 .. |wrangler_image04| image:: ../media/release-notes/release-0.10.0/wrangler_image04.png
    :width: 2546px
    :height: 416px
+   :scale: 15%
+.. |wrangler_image05| image:: ../media/release-notes/release-0.10.0/wrangler_flatten.png
+   :width: 1510px
+   :height: 1572px
    :scale: 15%
 .. |hive_grant_image| image:: ../media/release-notes/release-0.10.0/hive_grant.png
    :width: 1932px
