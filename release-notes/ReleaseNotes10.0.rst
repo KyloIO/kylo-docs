@@ -13,6 +13,22 @@ Download Links
 - Visit the :doc:`Downloads <../about/Downloads>` page for links.
 
 
+Important Changes
+-----------------
+
+Kylo UI Plugin Changes
+~~~~~~~~~~~~~~~~~~~~~~
+
+ - Kylo UI plugins 0.9.x or earlier will not work with 0.10.0.  If you had custom kylo ui code please refer to this doc to migrate your code to a 0.10.0 compatible plugin: |ui_plugin_upgrade_link|
+
+ - Kylo UI custom |feed_stepper_plugin_link| are not supported. Do not upgrade if you need this functionality.
+
+Catalog Changes
+~~~~~~~~~~~~~~~~
+
+ - The Catalog page used to allow you to query and preview data.  This has been removed.  You will now need to go to the wrangler to preview catalog data sets
+
+
 Upgrade Instructions from v0.9.1
 --------------------------------
 
@@ -199,6 +215,7 @@ Upgrade Instructions from v0.9.1
 
    |hive_grant_image|
 
+
 Mandatory Template Updates
 --------------------------
 Once Kylo is running the following templates need to to be updated.
@@ -207,6 +224,8 @@ Once Kylo is running the following templates need to to be updated.
   - Data Transformation
 
 Use the new :doc:`Repository <../how-to-guides/KyloTemplatesDocs>` feature within Kylo to import the latest templates.
+
+
 
 Highlight Details
 -----------------
@@ -269,7 +288,9 @@ Highlight Details
 
    <a href="https://github.com/Germanaz0/kylo-sample-module" target="_blank">Kylo UI Plugin Upgrade</a>
 
+.. |feed_stepper_plugin_link| raw:: html
 
+   <a href="https://github.com/Teradata/kylo/tree/master/samples/plugins/example-ui-feed-stepper-plugin">feed stepper plugin's</a>
 
 .. |JIRA_Issues_Link| raw:: html
 
