@@ -8,13 +8,13 @@ Kylo Distribution (0.10.0)
 +-------------+------------------------+
 |Type         |Link                    |
 +-------------+------------------------+
-|RPM          | Coming Soon            |
+|RPM          | http://bit.ly/2Sl0iB8  |
 +-------------+------------------------+
-|DEB          | Coming Soon            |
+|DEB          | http://bit.ly/2FQLPeM  |
 +-------------+------------------------+
-|TAR          | Coming Soon            |
+|TAR          | http://bit.ly/2P7YE3L  |
 +-------------+------------------------+
-|Offline TAR  | Coming Soon            |
+|Offline TAR  | http://bit.ly/2AxZNMH  |
 +-------------+------------------------+
 
 
