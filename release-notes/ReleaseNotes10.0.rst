@@ -187,7 +187,7 @@ Upgrade Instructions from v0.9.1
    
       1. Copy Kylo's encryption key file (ex: ``/opt/kylo/encrypt.key``) to the NiFi extention config directory ``/opt/nifi/ext-config``
       
-      2. Change the ownership of that file to the "nifi" user and ensure only nifi can read it
+      2. Change the ownership and permissions of the key file to ensure only nifi can read it
 
    .. code-block:: shell
 
