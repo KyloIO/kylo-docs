@@ -3,7 +3,7 @@ Release 0.10.0 (November 29, 2018)
 
 Highlights
 ----------
- 1. :ref:`Kylo's user interface <new_ui_highlight>`. Improved look-and-feel, performance, and modernized color scheme. Simplified setup guide for creating new feeds.
+ 1. :ref:`New user interface <new_ui_highlight>`. Improved look-and-feel, performance, and modernized color scheme. Simplified setup guide for creating new feeds.
  2. :ref:`Template Manager <repository_highlight>` New template management that enables admins to quickly update when new versions of templates become available or publish templates for the enterprise.
  3. :ref:`Wrangler improvements <wrangler_highlight>`. Many new features have been added to the wrangler to make data scientists more productive. Features includes: quick data clean; improved schema manipulation; new data transformations, including imputing new values; column statistics view.
  4. :ref:`Data Catalog <catalog_highlight>`. New virtual catalog to access remote datasets to wrangle, preview, and feed setup. Kylo 0.10 includes the following connectors: Amazon S3, Azure, HDFS, Hive, JDBC, Local Files, NAS Filesystem
