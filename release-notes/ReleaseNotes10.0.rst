@@ -183,9 +183,9 @@ Upgrade Instructions from v0.9.1
 
    ..
    
-   Setup the shared Kylo encryption key:
+   Configure NiFi with Kylo's shared :doc:`../security/EncryptingConfigurationProperties`
    
-      1. Copy Kylo's shared encryption key file to the NiFi extention config directory
+      1. Copy the Kylo encryption key file to the NiFi extention config directory
 
    .. code-block:: shell
 

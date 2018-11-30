@@ -390,7 +390,7 @@ This section is required for Option 2 above. Skip this section if you followed O
    
 3. Setup the shared Kylo encryption key:
    
-      1. Copy Kylo's shared encryption key file to the folder
+      1. Copy the encryption key file to the folder
 
    .. code-block:: shell
 
