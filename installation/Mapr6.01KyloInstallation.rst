@@ -6,7 +6,7 @@ MapR 6.0.1 Kylo Installation Guide
 About
 =====
 
-This guide provides an end to end example of installing Kylo 0.9.1.1 on a single MapR 6.0.1 in AWS. Kylo is generally installed
+This guide provides an end to end example of installing Kylo on a single MapR 6.0.1 in AWS. Kylo is generally installed
 on an edge node in a Hadoop cluster.
 
 Two things are required before installing Kylo
@@ -83,7 +83,7 @@ Download the Kylo RPM
 .. code-block:: console
 
     # Run as root
-    wget http://bit.ly/2KDX4cy -O /opt/kylo-0.9.1.1.rpm
+    wget http://bit.ly/2KDX4cy -O /opt/kylo-#.#.#.#.rpm
 
 ..
 
@@ -115,7 +115,7 @@ Install the Kylo RPM
 .. code-block:: console
 
     # Run as root
-    rpm -ivh kylo-0.9.1.1.rpm
+    rpm -ivh kylo-#.#.#.#.rpm
 
 ..
 
