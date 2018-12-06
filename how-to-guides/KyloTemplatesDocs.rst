@@ -142,7 +142,47 @@ Accesing S3 and other distributed filesystems
 
 Repository
 ==========
-Repository allows automatic import of templates and feeds via Kylo UI by going to Admin -> Repository. Repository is a directory where templates and feeds (.zip files) are located. Kylo must have read/write access to repository location so that templates/feeds can be imported or published. Kylo monitors all the repositories for any new template or feed and displays them in UI.
+Repository makes it easier to register/import templates into Kylo without having to browse through the file system everytime.
+By default, templates from **/opt/kylo/setup/data/repository/templates**, coming from **kylo.template.repository.default** property, are displayed (see screenshot below).
+    |repository_templates_image|
+The default Kylo Repository is read-only and therefore templates cannot be published to this repository. Create a new repository to publish new or modified templates.
+
+.. |repository_templates_image| image:: ../media/repository_templates/kylo_templates.png
+   :width: 401px
+   :height: 181px
+
+Create new repository
+---------------------
+1. Open repositories.json under /opt/kylo/kylo-services/config folder.
+2. Add a new line between [] brackets.
+
+.. code-block:: none
+
+    {"name": "<name-of-repository>", "readOnly": false, "location": "<path-from-root>", "type":"FileSystem"}
+
+..
+
+    - **name**: Name of repository to be displayed.
+    - **readOnly**: Templates can be imported from this repository, but cannot be published here.
+    - **location**: Folder location from root with read-write access to Kylo. If not reachable, it is not displayed on UI.
+    - **type**: Templates or feeds will be read from filesystem. Only filesystem is supported as of now, more possibilities may be added in the future.
+3. Repeat Step 2 to add more repositories. Separate the lines by a comma.
+4. Restart kylo-services (service kylo-services restart).
+
+For example, if the repositories.json file looks as below:
+
+.. code-block:: none
+
+    {"name": "Custom Repository", "readOnly": false, "location": "/opt/0.10.0/templates", "type":"FileSystem"}
+
+..
+The new repository is now visible from Repository page (see below)
+|new_repository_image|
+
+
+.. |new_repository_image| image:: ../media/repository_templates/create_repository.png
+   :width: 401px
+   :height: 181px
 
 Import Template
 ---------------
@@ -155,25 +195,34 @@ Publish Template
 - Open any of the registered templates. 
 - Click on Publish.
 - Select the repository to publish to.
-- Go to Admin -> Repository to verify the template has been published.
+|publish_template|
 
-Configure multiple repositories
--------------------------------
-Edit repositories.json under kylo-services/config folder to configure multiple repositories. Modifying this file requires kylo-services restart.
-::
-    {"name": "Repository name", "readOnly": false, "location": "sample/feeds", "icon":"", "type":"FileSystem"}
+- Go to Admin -> Repository and select repository from dropdown, to verify the template has been published.
 
-Above is an example line from repositories.json file.
-- name: Name of repository to be displayed on UI.
-- readOnly: Templates can be imported from this repository, but cannot be published here.
-- location: directory reachable by Kylo.
-- icon: Icon to represent the repository.
-- type: Templates or feeds will be read from filesystem. Only filesystem is supported as of now, more possibilities may be added in the future.
+.. important::
+   If the repository location in repositories.json does not exist/not reachable/readOnly=true then the repository will not be displayed in publish popup window.
 
-Updates and update comments
----------------------------
-- When a user has modified a registered template, they can can now enter a brief description of the change before saving the template. When the user logs in to Kylo UI, a notification is displayed in top right corner if any of the registered templates have an update available.
-- The 'Registered templates' view in Kylo UI now shows 'Update available' notification when a new update is available for the template.
-- In repository, when an update is available, clicking on 'View updates' shows when and what has changed in the template.
 
-An internal cache is maintained to track template updates. In cluster mode, this cache needs to be refreshed. Add expire.repository.cache=true in application.properties to enable this cache auto refresh.
+.. |publish_template| image:: ../media/repository_templates/publish_template.png
+   :width: 401px
+   :height: 181px
+
+Add change comment to template
+------------------------------
+- If a registered template is modified, you can enter a brief description of the change before saving the template.
+|add_template_comment|
+
+View change comments
+--------------------
+- Any change comments for a template can be viewed in template details view
+|view_change_history|
+
+.. |add_template_comment| image:: ../media/repository_templates/add_template_comment.png
+   :width: 401px
+   :height: 181px
+
+.. |view_change_history| image:: ../media/repository_templates/view_change_history.png
+   :width: 401px
+   :height: 181px
+
+An internal cache is maintained to track template updates. In cluster mode, this cache needs to be refreshed. Add **expire.repository.cache=true** in application.properties to enable this cache auto refresh.
