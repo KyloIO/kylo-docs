@@ -19,6 +19,38 @@ to make authorization checks.  For instance, a LoginModule that authenticates
 a user's credentials using LDAP may also load any groups defined in the LDAP store
 for that user, and these groups can have permissions granted to them in Kylo.
 
+Logging
+~~~~~~~
+
+Kylo can be configured to log every authentication request and logout by every user.  This is turned off by default.    The log message format can be specified with various standard fields that will substitued in the message based on the context
+during the access control check.  The valid fields are: 
+
++----------+-------------------------------------------------------------------------------------------------------+
+| Field    | Description                                                                                           |
++==========+=======================================================================================================+
+| `RESULT` | The result of the authentication or logout attempt (ex: "success" or "failure" with an error message) |
++----------+-------------------------------------------------------------------------------------------------------+
+| `USER`   | The user being authenticated / logged out                                                             |
++----------+-------------------------------------------------------------------------------------------------------+
+| `GROUPS` | The groups of the user                                                                                |
++----------+-------------------------------------------------------------------------------------------------------+
+
+To enable authentication logging you can configure the properties in the table below in the kylo-ui and/or kylo-services properties file.
+
+.. note:: If kylo-ui is configured with the profile **auth-kylo** then it will deletage all authentication to kylo-services.  In this case you may only want to configure authentication logging on the kylo-services side.
+
++---------------------------------+----------+----------------------------------------------------+----------------------------------------------------------------------------------------------------------------+
+| Properties                      | Required | Default                                            | Description                                                                                                    |
++=================================+==========+====================================================+================================================================================================================+
+| security.log.auth               | No       | ``false``                                          | Activates logging of every access control check                                                                |
++---------------------------------+----------+----------------------------------------------------+----------------------------------------------------------------------------------------------------------------+
+| security.log.auth.level         | No       | ``DEBUG``                                          | The log level used to log the attempt                                                                          |
++---------------------------------+----------+----------------------------------------------------+----------------------------------------------------------------------------------------------------------------+
+| security.log.auth.login.format  | No       | ``Authentication attempt: {RESULT}, user: {USER}`` | The format of the login attempt message with embedded fields to be substitued with the authentication details  |
++---------------------------------+----------+----------------------------------------------------+----------------------------------------------------------------------------------------------------------------+
+| security.log.auth.logout.format | No       | ``Logout attempt: {RESULT}, user: {USER}``         | The format of the logout attempt message with embedded fields to be substitued with the authentication details |
++---------------------------------+----------+----------------------------------------------------+----------------------------------------------------------------------------------------------------------------+
+
 Built-In Pluggable Authentication Profiles
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

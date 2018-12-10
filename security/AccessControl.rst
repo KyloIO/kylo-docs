@@ -24,6 +24,43 @@ Users and Groups can be updated using the Users and Groups pages under the Admin
 
 .. note:: If groups are enabled only by an external authentication source (such as LDAP) via a plugin module then user groups may not be visible in the Users page.
 
+Logging
+~~~~~~~
+
+Kylo can be configured to log every access control check made by each user.  This is turned off by default.    The log message format can be specified with various standard fields that will substitued in the message based on the context
+during the access control check.  The valid fields are: 
+
++----------+---------------------------------------------------------------------------------------+
+| Field    | Description                                                                           |
++==========+=======================================================================================+
+| `PERM`   | The permission being checked                                                          |
++----------+---------------------------------------------------------------------------------------+
+| `ENTITY` | The entity against which the permission is being checked                              |
++----------+---------------------------------------------------------------------------------------+
+| `RESULT` | The result of the permission check (ex: "success" or "failure" with an error message) |
++----------+---------------------------------------------------------------------------------------+
+| `USER`   | The user for which the permission is being checked                                    |
++----------+---------------------------------------------------------------------------------------+
+| `GROUPS` | The groups of the user                                                                |
++----------+---------------------------------------------------------------------------------------+
+
+To enable access check logging you can configure the properties in the table below for the kylo-services properties file:
+
++-----------------------------------+----------+--------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| Properties                        | Required | Default                                                                                    | Description                                                                                                          |
++===================================+==========+============================================================================================+======================================================================================================================+
+| security.log.access               | No       | ``false``                                                                                  | Activates logging of every access control check                                                                      |
++-----------------------------------+----------+--------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| security.log.access.level         | No       | ``DEBUG``                                                                                  | The log level used to log the access control check                                                                   |
++-----------------------------------+----------+--------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| security.log.access.format        | No       | ``Permission check entity: {ENTITY}, permission: {PERM}, result: {RESULT} - user: {USER}`` | The format of the log message with embedded fields to be substitued with the access check details                    |
++-----------------------------------+----------+--------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| security.log.access.ignore.users  | No       | ``service``                                                                                | A comma-separated list of users to ignore when logging; can be useful for service accounts which might flood the log |
++-----------------------------------+----------+--------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| security.log.access.ignore.groups | No       |                                                                                            | A comma-separated list of groups to ignore when logging                                                              |
++-----------------------------------+----------+--------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+
+
 Default Users and Groups
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -198,9 +235,9 @@ Kylo comes with a set of default roles for each kind of entity as described belo
  Read-Only  Allows a user to view the datasource
 ==========  ===
 
-~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Category-Wide Feed Role Memberships
-~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Kylo supports adding users and groups to feed roles at the category level that apply to all feeds under that category.
 This is useful when you wish to organize your feed access control around feeds grouped by category and apply all feed
