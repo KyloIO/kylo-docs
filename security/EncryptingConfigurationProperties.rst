@@ -1,3 +1,14 @@
+==============
+Encryption Key
+==============
+
+Kylo uses a encryption key file (`/opt/kylo/encrypt.key`) to both encrypt credentials stored in its metadata store,
+and to allow properties in Kylo's configuration files to be encrypted.  This same key is shared with NiFi (`/opt/nifi/ext-config/encrypt.key`) so that it can supply that key to the Spark jobs that
+it launches; allowing those jobs can decrypt the credentials needed to access their data sources.
+
+The Kylo key file is usually generated automatically during installation.  This same key is automatically configured for NiFi during installation when using the :doc:`../installation/SetupWizardDeploymentGuide`.  
+There are also manual configuration steps to provide this key to NiFi as described in :doc:`../installation/ManualDeploymentGuide`.
+
 ===================================
 Encrypting Configuration Properties
 ===================================

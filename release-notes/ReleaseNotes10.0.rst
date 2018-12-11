@@ -3,11 +3,11 @@ Release 0.10.0 (November 29, 2018)
 
 Highlights
 ----------
- 1. :ref:`Kylo's user interface <new_ui_highlight>` has been redone to make it easier to create and edit feeds.  Saving a feed is now separated from deploying to NiFi, allowing for users to save and come back to their feed prior to deploying.
- 2. :ref:`New Template Manager <repository_highlight>` We’ve added a template manager and repository that enables users to add, update and publish templates through a simple user interface.
+ 1. :ref:`New user interface <new_ui_highlight>`. Improved look-and-feel, performance, and modernized color scheme. Simplified setup guide for creating new feeds.
+ 2. :ref:`Template Manager <repository_highlight>` New template management that enables admins to quickly update when new versions of templates become available or publish templates for the enterprise.
  3. :ref:`Wrangler improvements <wrangler_highlight>`. Many new features have been added to the wrangler to make data scientists more productive. Features includes: quick data clean; improved schema manipulation; new data transformations, including imputing new values; column statistics view.
- 4. :ref:`New Data Catalog <catalog_highlight>`. Kylo allows you to manage and browse data sources in a new data catalog. Kylo ships with the following datasource connectors: Amazon S3, Azure, HDFS, Hive, JDBC, Local Files
- 5. :ref:`Search on custom properties <search_properties_es_highlight>` defined for feeds and categories, when using Elasticsearch.
+ 4. :ref:`Data Catalog <catalog_highlight>`. New virtual catalog to access remote datasets to wrangle, preview, and feed setup. Kylo 0.10 includes the following connectors: Amazon S3, Azure, HDFS, Hive, JDBC, Local Files, NAS Filesystem
+ 5. :ref:`Search custom properties <search_properties_es_highlight>`. Any custom properties defined for feeds and categories are indexed and available via the global metadata search feature.
 
 Download Links
 --------------
@@ -183,11 +183,16 @@ Upgrade Instructions from v0.9.1
 
    ..
    
-   Setup the shared Kylo encryption key:
+   Configure NiFi with Kylo's shared :doc:`../security/EncryptingConfigurationProperties`
    
-      1. Copy Kylo's encryption key file (ex: ``/opt/kylo/encrypt.key``) to the NiFi extention config directory ``/opt/nifi/ext-config``
+      1. Copy the Kylo encryption key file to the NiFi extention config directory
+
+   .. code-block:: shell
+
+      cp /opt/kylo/encrypt.key /opt/nifi/ext-config
+   ..
       
-      2. Change the ownership of that file to the "nifi" user and ensure only nifi can read it
+      2. Change the ownership and permissions of the key file to ensure only nifi can read it
 
    .. code-block:: shell
 

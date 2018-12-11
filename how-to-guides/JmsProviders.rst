@@ -45,6 +45,87 @@ Refer to the ActiveMQ documentation, http://activemq.apache.org/redelivery-polic
 
   ..
 
+Dead Letter Queue Strategy
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+When a queue fails to process a message it will retry based upon the `redelivery strategy` (configured above) and then send the message to the Dead Letter Queue (DLQ).
+By default there is an `ActiveMQ.DLQ` queue that all messages will go to.
+It is recommened you change this for the Kylo queues so they each go to their respective DLQ.
+
+To do this you need to modify the `activemq.xml` file (/opt/activemq/current/conf/activemq.xml) and add the policy entries to describe the DLQ strategy.
+Below is an example:
+
+.. code-block:: xml
+
+    <destinationPolicy>
+      <policyMap>
+        <policyEntries>
+          <policyEntry topic=">" >
+            <!-- The constantPendingMessageLimitStrategy is used to prevent
+                 slow topic consumers to block producers and affect other consumers
+                 by limiting the number of messages that are retained
+                 For more information, see:
+                 http://activemq.apache.org/slow-consumer-handling.html
+            -->
+            <pendingMessageLimitStrategy>
+              <constantPendingMessageLimitStrategy limit="1000"/>
+            </pendingMessageLimitStrategy>
+          </policyEntry>
+
+          <policyEntry queue="thinkbig.feed-manager">
+            <deadLetterStrategy>
+              <!--
+                Use the prefix 'DLQ.' for the destination name, and make
+                the DLQ a queue rather than a topic
+              -->
+              <individualDeadLetterStrategy queuePrefix="DLQ." useQueueForQueueMessages="true"/>
+            </deadLetterStrategy>
+          </policyEntry>
+          <policyEntry queue="thinkbig.provenance-event-stats">
+            <deadLetterStrategy>
+              <!--
+                Use the prefix 'DLQ.' for the destination name, and make
+                the DLQ a queue rather than a topic
+              -->
+              <individualDeadLetterStrategy queuePrefix="DLQ." useQueueForQueueMessages="true"/>
+            </deadLetterStrategy>
+          </policyEntry>
+        </policyEntries>
+      </policyMap>
+    </destinationPolicy>
+
+..
+
+In case of an error then the above code block will send the messages to separate DLQ queues (see screenshot below)
+
+|image0|
+
+Refer to the ActiveMQ docs for more info: http://activemq.apache.org/message-redelivery-and-dlq-handling.html
+
+ActiveMQ Cluster
+~~~~~~~~~~~~~~~~
+If you have ActiveMQ setup as a cluster you need to change the broker URL to support the Active MQ failover syntax.
+
+1. Update the kylo-services/conf/application.properties and change the jms.activemq.broker.url to include the `failover` protocol with the clustered amq urls:
+
+  .. code-block:: shell
+
+    jms.activemq.broker.url=failover:(tcp://localhost:61616, tcp://other amq url)
+
+  ..
+
+2. do the same for the nifi /opt/nifi/ext-config/config.properties
+
+  .. code-block:: shell
+
+    jms.activemq.broker.url=failover:(tcp://localhost:61616, tcp://other amq url)
+
+  ..
+
+3. make sure the NiFi JMS controller services use the failover protocol with the similar url as above
+
+
+Refer to the ActiveMQ docs for more information: http://activemq.apache.org/failover-transport-reference.html
+
 Amazon SQS
 ----------
 
@@ -107,6 +188,7 @@ Select ``jms-activemq`` profile and provide ActiveMQ specific configuration prop
 
   ..
 
+Refer to the ActiveMQ Cluster above for additional settings if you are running with an ActiveMQ cluster.
 
 
 
@@ -157,3 +239,10 @@ ConsumeJMS processors with GetSQS processors in following feeds:
     - index_schema_service -> Receive Schema Index Request (ConsumeJMS)
 
     - index_text_service -> Receive Index Request (ConsumeJms)
+
+
+
+.. |image0| image:: ../media/jms/jms-dlq.png
+   :width: 1902px
+   :height: 1270px
+   :scale: 15%

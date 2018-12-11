@@ -387,16 +387,40 @@ This section is required for Option 2 above. Skip this section if you followed O
 ..
 
 2. Copy the /opt/kylo/setup/nifi/config.properties file to the /opt/nifi/ext-config folder.
+   
+3. Setup the shared Kylo encryption key:
+   
+      1. Copy the encryption key file to the folder
 
-3. Change the ownership of the above folder to the same owner that nifi runs under. For example, if nifi runs as the "nifi" user:
+   .. code-block:: shell
+
+      cp /opt/kylo/encrypt.key /opt/nifi/ext-config
+   ..
+      
+      2. Change the ownership and permissions of the key file to ensure only nifi can read it
+
+   .. code-block:: shell
+
+      chown nifi /opt/nifi/ext-config/encrypt.key
+      chmod 400 /opt/nifi/ext-config/encrypt.key
+
+   ..
+   
+      3. Edit the ``/opt/nifi/current/bin/nifi-env.sh`` file and add the ENCRYPT_KEY variable with the key value
+
+   .. code-block:: shell
+
+      export ENCRYPT_KEY="$(< /opt/nifi/ext-config/encrypt.key)"
+      
+   ..
+
+4. Change the ownership of the above folder to the same owner that nifi runs under. For example, if nifi runs as the "nifi" user:
 
 .. code-block:: shell
 
                   $ chown -R nifi:users /opt/nifi
 
 ..
-
-11.  Create an activemq folder to provide JARs required for the JMS processors.
 
 Configure the activemq folder
 -----------------------------
