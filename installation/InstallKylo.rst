@@ -53,6 +53,16 @@ assume you want to install Kylo in the /apps folder, run it as the "ad_kylo" use
 
     ..
 
+4. Update kylo-services application.properties file
+
+    .. code-block:: shell
+
+        $ sudo vi /apps/kylo/kylo-services/conf/application.properties
+
+        modeshape.index.dir=/apps/kylo/modeshape/modeshape-local-index
+
+    ..
+
 TAR File Upgrade
 -----------------
 If you are performing an upgrade please see the TAR file upgrade page for instructions
