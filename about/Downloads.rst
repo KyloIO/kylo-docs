@@ -14,8 +14,11 @@ Kylo Distribution (0.10.0)
 +-------------+------------------------+
 |TAR          | http://bit.ly/2P7YE3L  |
 +-------------+------------------------+
-|Offline TAR  | http://bit.ly/2AxZNMH  |
-+-------------+------------------------+
+
++----------------------+------------------------+
+|Offline Setup Folder  | http://bit.ly/2AxZNMH  |
++----------------------+------------------------+
+.. note::  The offline setup folder is used to run the setup wizard on edge nodes with no internet access
 
 
 Kylo Distribution (0.9.1.3)
@@ -29,8 +32,12 @@ Kylo Distribution (0.9.1.3)
 +-------------+------------------------+
 |TAR          | http://bit.ly/2A0ox11  |
 +-------------+------------------------+
-|Offline TAR  | http://bit.ly/2A0Vr1B  |
-+-------------+------------------------+
+
++----------------------+------------------------+
+|Offline Setup Folder  | http://bit.ly/2A0Vr1B  |
++----------------------+------------------------+
+.. note::  The offline setup folder is used to run the setup wizard on edge nodes with no internet access
+
 
 Kylo Distribution (0.9.1.2)
 ---------------------------
@@ -43,8 +50,12 @@ Kylo Distribution (0.9.1.2)
 +-------------+------------------------+
 |TAR          | http://bit.ly/2Idp4zm  |
 +-------------+------------------------+
-|Offline TAR  | http://bit.ly/2IcVf1R  |
-+-------------+------------------------+
+
++----------------------+------------------------+
+|Offline Setup Folder  | http://bit.ly/2IcVf1R  |
++----------------------+------------------------+
+.. note::  The offline setup folder is used to run the setup wizard on edge nodes with no internet access
+
 
 Kylo Distribution (0.9.1.1)
 ---------------------------
@@ -57,8 +68,11 @@ Kylo Distribution (0.9.1.1)
 +-------------+------------------------+
 |TAR          | http://bit.ly/2J4aVDl  |
 +-------------+------------------------+
-|Offline TAR  | http://bit.ly/2KXsREU  |
-+-------------+------------------------+
+
++----------------------+------------------------+
+|Offline Setup Folder  |  http://bit.ly/2KXsREU  |
++----------------------+------------------------+
+.. note::  The offline setup folder is used to run the setup wizard on edge nodes with no internet access
 
 
 Kylo Distribution (0.9.1)
@@ -72,8 +86,11 @@ Kylo Distribution (0.9.1)
 +-------------+------------------------+
 |TAR          | http://bit.ly/2LqxXH5  |
 +-------------+------------------------+
-|Offline TAR  | http://bit.ly/2IG1dMa  |
-+-------------+------------------------+
+
++----------------------+------------------------+
+|Offline Setup Folder  |  http://bit.ly/2IG1dMa  |
++----------------------+------------------------+
+.. note::  The offline setup folder is used to run the setup wizard on edge nodes with no internet access
 
 
 Kylo Distribution (0.9.0.2)
@@ -87,8 +104,12 @@ Kylo Distribution (0.9.0.2)
 +-------------+------------------------+
 |TAR          | http://bit.ly/2Gq0wkL  |
 +-------------+------------------------+
-|Offline TAR  | http://bit.ly/2E64o8S  |
-+-------------+------------------------+
+
++----------------------+------------------------+
+|Offline Setup Folder  |  http://bit.ly/2E64o8S  |
++----------------------+------------------------+
+.. note::  The offline setup folder is used to run the setup wizard on edge nodes with no internet access
+
 
 Kylo Distribution (0.9.0.1)
 ---------------------------
