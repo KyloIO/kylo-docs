@@ -18,7 +18,7 @@ a. From the /opt/kylo/setup directory
 
     $ /opt/kylo/setup/setup-wizard.sh
 
-b. Offline mode from another directory (using TAR file)
+b. Offline mode from another directory (using offline setup TAR file)
 
 .. code-block:: shell
 
