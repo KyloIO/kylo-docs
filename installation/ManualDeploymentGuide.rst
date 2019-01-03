@@ -28,7 +28,7 @@ everything to one node, the setup directory would typically be:
 
     SETUP_DIR=/opt/kylo/setup
 
-You might install some of these components on a differnet edge node than where Kylo is installed. In this case, copy
+You might install some of these components on a different edge node than where Kylo is installed. In this case, copy
 the setup folder or offline TAR file to those nodes that do not have the Kylo applications installed. In that case, use this SETUP_DIR command:
 
 .. code-block:: properties

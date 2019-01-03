@@ -1,16 +1,16 @@
-===================
-Prepare Offline TAR
-===================
-The OPTIONAL offline TAR file can be useful in two scenarios:
+============================
+Prepare Offline Setup Folder
+============================
+The OPTIONAL offline setup TAR file can be useful in two scenarios:
 
     1. You are installing ActiveMQ, Elasticsearch, Java or NiFi on nodes with no external network access.
 
     2. You plan on installing ActiveMQ, Elasticsearch, Java or NiFi on separate nodes than Kylo and want to take advantage of the setup files you will want to generate an
 
-The offline TAR file will include the binaries required to install the services mentioned above.
+The offline setup TAR file will include the binaries required to install the services mentioned above.
 
-Generate the TAR file
----------------------
+Generate the Setup TAR file
+---------------------------
 
 1. Install the Kylo RPM on a node that has internet access.
 
