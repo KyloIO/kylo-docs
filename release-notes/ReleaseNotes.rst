@@ -10,6 +10,14 @@ Latest Stable Release
 
     ReleaseNotes10.0
 
+Development Release
+~~~~~~~~~~~~~~~~~
+
+.. toctree::
+    :maxdepth: 1
+
+    ReleaseNotes10.1
+
 Previous Releases
 ~~~~~~~~~~~~~~~~~
 
