@@ -3,6 +3,24 @@ Downloads
 =========
 This page contains links to the commons files you might want to download
 
+Kylo Distribution (0.10.1)
+--------------------------
++-------------+------------------------+
+|Type         |Link                    |
++-------------+------------------------+
+|RPM          | http://bit.ly/2BXUXtI  |
++-------------+------------------------+
+|DEB          | http://bit.ly/2NCgqgt  |
++-------------+------------------------+
+|TAR          | http://bit.ly/2tKific  |
++-------------+------------------------+
+
++----------------------+------------------------+
+|Offline Setup Folder  | Coming soon            |
++----------------------+------------------------+
+.. note::  The offline setup folder is used to run the setup wizard on edge nodes with no internet access
+
+
 Kylo Distribution (0.10.0)
 --------------------------
 +-------------+------------------------+
