@@ -15,9 +15,10 @@ Kylo Distribution (0.10.1)
 |TAR          | http://bit.ly/2tKific  |
 +-------------+------------------------+
 
-+----------------------+------------------------+
-|Offline Setup Folder  | Coming soon            |
-+----------------------+------------------------+
++----------------------+---------------------------+
+|Offline Setup Folder  | Use 0.10.0 download: |br| |
+|                      | http://bit.ly/2AxZNMH     |
++----------------------+---------------------------+
 .. note::  The offline setup folder is used to run the setup wizard on edge nodes with no internet access
 
 
@@ -198,3 +199,7 @@ Plugins
 -------
 Plugins can be downloaded from the maven central repository
 https://search.maven.org/
+
+.. |br| raw:: html
+
+   <br/>
