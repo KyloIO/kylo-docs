@@ -65,7 +65,7 @@ point and start clean.
 .. code-block:: properties
 
     #!/bin/bash
-    docker run --name cloudera =
+    docker run --name cloudera \
       --hostname=quickstart.cloudera \
       --privileged=true -t -d \
       -p 8888:8888 \
